@@ -13,7 +13,7 @@ end
 
 OptionParser.new do |opts|
   opts.banner = "Usage: xcodebuild [options] | xcpretty"
-  opts.on('-d', '--dots', 'Use RSpec style output') do
+  opts.on('-t', '--test', 'Use RSpec style output') do
     @printer = XCPretty::Printer::RSpec.new
   end
   opts.on('-s', '--simple', 'Use simple output (default)') do

@@ -38,8 +38,8 @@ make: *** [test] Error 65
 
 ## Formats
 
-- Simple (default)
-- Dots (RSpec style, shown above)
+- simple (default)
+- test (RSpec style, shown above)
 
 ## XCPretty isn't
 
