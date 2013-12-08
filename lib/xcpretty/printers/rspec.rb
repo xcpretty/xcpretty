@@ -2,6 +2,7 @@ module XCPretty
   module Printer
   
     class RSpec
+      include Printer
 
       def pretty_print(text)
         STDOUT.print(pretty_format(text))
@@ -16,9 +17,9 @@ module XCPretty
           ""
         when /^Executed/
           @tests_done ? test_summary(text) : ""
-        # TODO: excract this common logic out.
+        # TODO: extract this common logic out.
         # Both reporters should report failures the same way.
-        when /(.+:\d+):\serror:\s[\+\-].*\s:\s'(.*)'\s\[FAILED\],\s(.*)/
+        when FAILURE_MATCHER
           store_failure($1, $2, $3)
           "F"
         else

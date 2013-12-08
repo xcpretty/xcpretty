@@ -5,6 +5,7 @@ module XCPretty
   module Printer
 
     class Simple
+      include Printer
 
       def pretty_print(text)
         formatted = pretty_format(text)
