@@ -12,8 +12,6 @@ It does one thing, and it should do it well.
 XCPretty is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
 This means, when `xcodebuild` works, `xcpretty` works.
 
-It plays well with Makefiles and Rakefiles, and it should retain the `stderr` and status code from `xcodebuild`.
-
 ```
 $ make test | xcpretty
 ....................................................................................
