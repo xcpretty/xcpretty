@@ -55,8 +55,8 @@ A smaller project ([ObjectiveSugar](https://github.com/mneorr/objectivesugar)) w
 ```
 ....................................................................................
 
-Executed 84 tests, with 0 failures (0 unexpected) in 0.071 (0.094) seconds
-        4.28 real         6.15 user         2.22 sys
+Executed 84 tests, with 0 failures (0 unexpected) in 0.070 (0.094) seconds
+        4.08 real         5.82 user         2.08 sys
 ```
 #### xcodebuild
 ```
