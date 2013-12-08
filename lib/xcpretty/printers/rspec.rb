@@ -11,7 +11,7 @@ module XCPretty
         format case text
         when /\[PASSED\]$/
           PASS
-        when /Test Suite 'All tests' finished at/
+        when /Test Suite ('All tests'|'.*\.octest(.*)') finished at/
           @tests_done = true
           ""
         when /^Executed/

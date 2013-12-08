@@ -4,7 +4,7 @@ module XCPretty
 	module Printer
 		attr_accessor :colorize
 
-		FAILURE_MATCHER = /(.+:\d+):\serror:\s[\+\-].*\s:\s'(.*)'\s\[FAILED\],\s(.*)/
+		FAILURE_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
 		Paint::SHORTCUTS[:printer] = {
 		  :white => Paint.color(:bold),
@@ -20,7 +20,7 @@ module XCPretty
 				store_failure($1, $2, $3)
 			end
       formatted_text = pretty_format(text)
-      STDOUT.print(pretty_prefix + formatted_text) unless formatted_text.empty?
+      STDOUT.print(formatted_text + pretty_prefix) unless formatted_text.empty?
     end
 
     def pretty_prefix

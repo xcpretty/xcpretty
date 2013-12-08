@@ -35,18 +35,32 @@ EOS
         ).should == "F"
       end
 
-      def given_tests_are_done
-        subject.pretty_format("Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000.")
+      KIWI = 'kiwi'
+      OCUNIT = 'ocunit'
+
+      def given_tests_are_done(reporter = KIWI)
+        if reporter == KIWI
+          subject.pretty_format("Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000.")
+        else
+          subject.pretty_format("Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000.")
+        end
       end
 
       def executed_tests_message
         subject.pretty_format(EXECUTED_TEXT)
       end
 
-      it "knows when the test suite is done" do
+      it "knows when the test suite is done for Kiwi" do
         executed_tests_message.should == ""
 
         given_tests_are_done
+        executed_tests_message.should == "\n\n#{EXECUTED_TEXT}"
+      end
+      
+      it "knows when the test suite is done for OCunit / Specta" do
+        executed_tests_message.should == ""
+
+        given_tests_are_done(OCUNIT)
         executed_tests_message.should == "\n\n#{EXECUTED_TEXT}"
       end
 
@@ -60,10 +74,10 @@ EOS
         given_tests_are_done
         executed_tests_message.should include(
 %Q(
-Iterators, times： iterates the exact number of times, expected subject to equal 4, got 5
+NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes, expected subject to equal 4, got 5
 /Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49
 
-Iterators, -upto iterates inclusively, expected subject to equal 8, got 4
+NumberAdditions Iterators_uptoIteratesInclusively, expected subject to equal 8, got 4
 /Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30
 
 
@@ -71,8 +85,17 @@ Iterators, -upto iterates inclusively, expected subject to equal 8, got 4
         )
       end
 
-
-
+      it "prints failures nicely with specta / ocunit" do
+        subject.pretty_print(
+"/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458: error: -[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES] : expected: 1, got: 0"
+        )
+        given_tests_are_done
+        executed_tests_message.should include(
+%Q(
+RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0
+/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458
+)       )
+      end
 
       describe "doesn't output any compiling output" do
 
