@@ -22,11 +22,7 @@ module XCPretty
       end
 
       it "prints F for failing tests" do
-        subject.pretty_format(
-<<-EOS
-/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30: error: -[NumberAdditions Iterators_uptoIteratesInclusively] : 'Iterators, -upto iterates inclusively' [FAILED], expected subject to equal 5, got 4
-EOS
-        ).should == "F"
+        subject.pretty_format(SAMPLE_KIWI_FAILURE).should == "F"
       end
 
       def given_tests_are_done(reporter = KIWI)
@@ -60,8 +56,8 @@ EOS
         subject.pretty_print(SAMPLE_KIWI_FAILURE)
         given_tests_are_done
         executed_tests_message.should include(%Q(
-NumberAdditions Iterators_uptoIteratesInclusively, expected subject to equal 5, got 4
-/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30
+NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes, expected subject to equal 4, got 5
+/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49
 
 
 #{SAMPLE_EXECUTED_TESTS}))
