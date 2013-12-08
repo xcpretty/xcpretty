@@ -16,6 +16,8 @@ module XCPretty
           ""
         when /^Executed/
           @tests_done ? test_summary(text) : ""
+        # TODO: excract this common logic out.
+        # Both reporters should report failures the same way.
         when /(.+:\d+):\serror:\s[\+\-].*\s:\s'(.*)'\s\[FAILED\],\s(.*)/
           store_failure($1, $2, $3)
           "F"
