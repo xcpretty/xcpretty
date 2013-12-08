@@ -9,6 +9,11 @@ module XCPretty
           "."
         when /\[FAILED\]/
           "F"
+        when /Test Suite 'All tests' finished at/
+          @tests_done = true
+          ""
+        when /^Executed/
+          @tests_done ? "\n\n#{text}" : ""
         else
           ""
         end

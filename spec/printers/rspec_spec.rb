@@ -22,6 +22,22 @@ EOS
         ).should == "F"
       end
 
+      def given_tests_are_done
+        subject.pretty_print("Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000.")
+      end
+
+      def executed_tests_message
+        subject.pretty_print("Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds")
+      end
+
+      it "knows when the test suite is done" do
+        executed_tests_message.should == ""
+      
+        given_tests_are_done
+        executed_tests_message.should == 
+"\n\nExecuted 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
+      end
+
       describe "doesn't output any compiling output" do
 
         it "compiling output" do
