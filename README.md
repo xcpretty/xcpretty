@@ -20,10 +20,10 @@ $ make test | xcpretty
 ...................................................F.F..............................
 
 Iterators, -upto iterates inclusively, expected subject to equal 8, got 4
-/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30
+/Users/mneorr/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30
 
 Iterators, tests plural date inflections, expected subject to equal 51840, got 5184000
-/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:78
+/Users/mneorr/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:78
 
 
 Executed 84 tests, with 4 failures (4 unexpected) in 0.071 (0.095) seconds
