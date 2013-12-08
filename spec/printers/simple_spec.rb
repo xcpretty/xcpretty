@@ -6,8 +6,18 @@ module XCPretty
 
     describe Simple do
       
+      it "prints to stdout using puts" do
+        STDOUT.should receive(:puts)
+        subject.pretty_print("=== CLEAN TARGET Pods OF PROJECT Pods WITH CONFIGURATION Debug ===")
+      end
+
+      it "doesn't print empty lines" do
+        STDOUT.should_not receive(:puts)
+        subject.pretty_print("")
+      end
+
       it "parses compiling output" do
-        subject.pretty_print(
+        subject.pretty_format(
 <<-EOS
 CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTHTMLParser.o DTFoundation/Core/Source/DTHTMLParser/DTHTMLParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/yammer/ios-chat/Pods
@@ -19,7 +29,7 @@ EOS
       end
 
       it "parses another compiling output" do
-        subject.pretty_print(<<-EOS
+        subject.pretty_format(<<-EOS
 CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTExtendedFileAttributes.o DTFoundation/Core/Source/DTExtendedFileAttributes.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/yammer/ios-chat/Pods
     setenv LANG en_US.US-ASCII
@@ -30,7 +40,7 @@ EOS
       end
 
       it "parses precompiling output" do
-        subject.pretty_print(
+        subject.pretty_format(
 <<-EOS
 ProcessPCH /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CocoaLumberjack-prefix-aklsecopvqdctoeroyamrkgktpei/Pods-CocoaLumberjack-prefix.pch.pch Pods-CocoaLumberjack-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/yammer/ios-chat/Pods
@@ -42,7 +52,7 @@ EOS
       end
     
       it "parses another precompiling output" do
-        subject.pretty_print(
+        subject.pretty_format(
 <<-EOS
 ProcessPCH /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CrittercismSDK-prefix-ayqymsvxomizqsdqzftsirxxyful/Pods-CrittercismSDK-prefix.pch.pch Pods-CrittercismSDK-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/yammer/ios-chat/Pods
@@ -54,7 +64,7 @@ EOS
       end
 
       it "parses clean output" do
-        subject.pretty_print(
+        subject.pretty_format(
 <<-EOS
 Clean.Remove clean /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugarTests.build
     builtin-rm -rf /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugarTests.build
@@ -63,32 +73,32 @@ EOS
       end
 
       it "kills 'Check dependencies'" do
-        subject.pretty_print("Check dependencies").should == ""
+        subject.pretty_format("Check dependencies").should == ""
       end
     
       it "parses clean target/project/configuration" do
-        subject.pretty_print(
+        subject.pretty_format(
 "=== CLEAN TARGET Pods-ObjectiveSugar OF PROJECT Pods WITH CONFIGURATION Debug ==="
         ).should == "Cleaning Pods/ObjectiveSugar [Debug]"
-        subject.pretty_print(
+        subject.pretty_format(
 "=== CLEAN TARGET Pods OF PROJECT Pods WITH CONFIGURATION Debug ==="
         ).should == "Cleaning Pods/Pods [Debug]"
       end
 
       it "parses build target/project/configuration with target" do
-        subject.pretty_print(
+        subject.pretty_format(
 "=== BUILD TARGET The Spacer OF PROJECT Pods WITH THE DEFAULT CONFIGURATION Debug ==="
         ).should == "Building Pods/The Spacer [Debug]"
       end
 
       it "parses clean target/project/configuration with nested pods" do
-        subject.pretty_print(
+        subject.pretty_format(
 "=== CLEAN TARGET Pods-ObjectiveSugarTests-Kiwi OF PROJECT Pods WITH CONFIGURATION Debug ==="
         ).should == "Cleaning Pods/Kiwi [Debug]"
       end
 
       it "parses PhaseScriptExecution" do
-        subject.pretty_print(
+        subject.pretty_format(
 <<-EOS
 PhaseScriptExecution Check\\ Pods\\ Manifest.lock /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
@@ -427,7 +437,7 @@ EOS
       end
 
       it "parses Libtool" do
-        subject.pretty_print(<<-EOS
+        subject.pretty_format(<<-EOS
 Libtool /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/libPods-ObjectiveSugarTests-Kiwi.a normal i386
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example/Pods
     setenv IPHONEOS_DEPLOYMENT_TARGET 5.0
@@ -438,7 +448,7 @@ EOS
       end
 
       it "parses CpResource" do
-        subject.pretty_print(<<-EOS
+        subject.pretty_format(<<-EOS
 CpResource ObjectiveSugar/Default-568h@2x.png /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/Default-568h@2x.png
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -448,7 +458,7 @@ EOS
       end
 
       it "parses CopyStringsFile" do
-        subject.pretty_print(<<-EOS
+        subject.pretty_format(<<-EOS
 CopyStringsFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/en.lproj/InfoPlist.strings ObjectiveSugar/en.lproj/InfoPlist.strings
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -458,7 +468,7 @@ EOS
       end
 
       it "parses GenerateDSYMFile" do
-        subject.pretty_print(<<-EOS
+        subject.pretty_format(<<-EOS
 GenerateDSYMFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest.dSYM /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest/ObjectiveSugarTests
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -468,7 +478,7 @@ EOS
       end
 
       it "parses info.plist processing" do
-        subject.pretty_print(<<-EOS
+        subject.pretty_format(<<-EOS
 ProcessInfoPlistFile build/Release/The\\ Spacer.app/Contents/Info.plist The\\ Spacer/The\\ Spacer-Info.plist
     cd "/Users/delisa/Code/Personal/The Spacer"
     builtin-infoPlistUtility /Users/delisa/Code/Personal/The\\ Spacer/The\\ Spacer/The\\ Spacer-Info.plist -genpkginfo /Users/delisa/Code/Personal/The\\ Spacer/build/Release/The\\ Spacer.app/Contents/PkgInfo -expandbuildsettings -platform macosx -additionalcontentfile /Users/delisa/Code/Personal/The\\ Spacer/build/The\\ Spacer.build/Release/The\\ Spacer.build/assetcatalog_generated_info.plist -o /Users/delisa/Code/Personal/The\\ Spacer/build/Release/The\\ Spacer.app/Contents/Info.plist
@@ -477,7 +487,7 @@ EOS
       end
 
       it "parses Ld" do
-        subject.pretty_print(<<-EOS
+        subject.pretty_format(<<-EOS
 Ld /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/ObjectiveSugar normal i386
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
     setenv IPHONEOS_DEPLOYMENT_TARGET 4.3

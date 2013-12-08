@@ -7,7 +7,12 @@ module XCPretty
     class Simple
 
       def pretty_print(text)
-        output = case text
+        formatted = pretty_format(text)
+        STDOUT.puts(formatted) unless formatted.empty?
+      end
+
+      def pretty_format(text)
+        case text
         when /^ProcessPCH/
           print_pch(text)
         when /^CompileC/
@@ -37,7 +42,6 @@ module XCPretty
         else
           ""
         end
-        "#{output}\n"
       end
 
       def print_linking(text)

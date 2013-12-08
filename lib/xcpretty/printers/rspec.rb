@@ -4,6 +4,10 @@ module XCPretty
     class RSpec
 
       def pretty_print(text)
+        STDOUT.print(pretty_format(text))
+      end
+
+      def pretty_format(text)
         case text
         when /\[PASSED\]$/
           "."

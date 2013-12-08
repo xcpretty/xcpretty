@@ -6,9 +6,10 @@ if RUBY_VERSION < '1.9.3'
   abort "error: XCPretty requires Ruby 1.9.3 or higher."
 end
 
-# printer = XCPretty::Printer::Simple.new
-printer = XCPretty::Printer::RSpec.new
+
+printer = ARGV.delete('dots') ? XCPretty::Printer::RSpec.new
+                              : XCPretty::Printer::Simple.new
+
 ARGF.each_line do |line| 
-  pwetty = printer.pretty_print(line)
-  STDOUT.print pwetty unless pwetty.empty?
+  printer.pretty_print(line)
 end

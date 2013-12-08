@@ -6,16 +6,23 @@ module XCPretty
 
     describe RSpec do
 
-      it "prints dots for passing tests" do
-        subject.pretty_print(
-<<-EOS
+      SAMPLE_TEST = <<-EOS
 2013-12-07 19:53:01.881 ObjectiveSugar[32626:907] + 'Additions, -strip strips whitespaces and newlines from both ends' [PASSED]
 EOS
-        ).should == "."
+      EXECUTED_TEXT = "Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
+
+
+      it "prints dots in the same line" do
+        STDOUT.should receive(:print)
+        subject.pretty_print(SAMPLE_TEST)
+      end
+
+      it "prints dots for passing tests" do
+        subject.pretty_format(SAMPLE_TEST).should == "."
       end
 
       it "prints F for failing tests" do
-        subject.pretty_print(
+        subject.pretty_format(
 <<-EOS
 /Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30: error: -[NumberAdditions Iterators_uptoIteratesInclusively] : 'Iterators, -upto iterates inclusively' [FAILED], expected subject to equal 5, got 4
 EOS
@@ -23,12 +30,11 @@ EOS
       end
 
       def given_tests_are_done
-        subject.pretty_print("Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000.")
+        subject.pretty_format("Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000.")
       end
-
-      EXECUTED_TEXT = "Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
+      
       def executed_tests_message
-        subject.pretty_print(EXECUTED_TEXT)
+        subject.pretty_format(EXECUTED_TEXT)
       end
 
       it "knows when the test suite is done" do
@@ -39,10 +45,10 @@ EOS
       end
 
       it "prints out failures nicely" do
-        subject.pretty_print(
+        subject.pretty_format(
 "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49: error: -[NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes] : 'Iterators, times： iterates the exact number of times' [FAILED], expected subject to equal 4, got 5"
         )
-        subject.pretty_print(
+        subject.pretty_format(
 "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30: error: -[NumberAdditions Iterators_uptoIteratesInclusively] : 'Iterators, -upto iterates inclusively' [FAILED], expected subject to equal 8, got 4"
         )
         given_tests_are_done
@@ -65,7 +71,7 @@ Iterators, -upto iterates inclusively, expected subject to equal 8, got 4
       describe "doesn't output any compiling output" do
 
         it "compiling output" do
-          subject.pretty_print(
+          subject.pretty_format(
 <<-EOS
 CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTHTMLParser.o DTFoundation/Core/Source/DTHTMLParser/DTHTMLParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/yammer/ios-chat/Pods
@@ -78,7 +84,7 @@ EOS
 
         
         it "clean target/project/configuration with nested pods" do
-          subject.pretty_print(
+          subject.pretty_format(
 "=== CLEAN TARGET Pods-ObjectiveSugarTests-Kiwi OF PROJECT Pods WITH CONFIGURATION Debug ==="
           ).should == ""
         end
