@@ -1,15 +1,25 @@
 #! /usr/bin/env ruby
 $:.unshift File.expand_path('../../lib', __FILE__)
 require 'xcpretty'
+require 'optparse'
 
 if RUBY_VERSION < '1.9.3'
   abort "error: XCPretty requires Ruby 1.9.3 or higher."
 end
 
-
-printer = ARGV.delete('dots') ? XCPretty::Printer::RSpec.new
-                              : XCPretty::Printer::Simple.new
+OptionParser.new do |opts|
+  opts.banner = "Usage: xcodebuild [options] | xcpretty"
+  opts.on('-d', '--dots', 'Use RSpec style output') do
+    @printer = XCPretty::Printer::RSpec.new
+  end
+  opts.on('-s', '--simple', 'Use simple output (default)') do
+    @printer = XCPretty::Printer::RSpec.new
+  end
+  opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
+  opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
+  opts.parse!
+end
 
 ARGF.each_line do |line| 
-  printer.pretty_print(line)
+  @printer.pretty_print(line)
 end

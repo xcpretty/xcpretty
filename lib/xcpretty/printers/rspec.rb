@@ -28,7 +28,8 @@ module XCPretty
       private
 
       def test_summary(executed_message)
-        failures.empty? ? "\n\n#{executed_message}" : summary_with_failures(executed_message)
+        failures.empty? ? "\n\n#{executed_message}"
+                        : summary_with_failures(executed_message)
       end
 
       def summary_with_failures(executed_message)
