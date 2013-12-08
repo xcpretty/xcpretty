@@ -26,17 +26,44 @@ EOS
         subject.pretty_print("Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000.")
       end
 
+      EXECUTED_TEXT = "Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
       def executed_tests_message
-        subject.pretty_print("Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds")
+        subject.pretty_print(EXECUTED_TEXT)
       end
 
       it "knows when the test suite is done" do
         executed_tests_message.should == ""
       
         given_tests_are_done
-        executed_tests_message.should == 
-"\n\nExecuted 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
+        executed_tests_message.should == "\n\n#{EXECUTED_TEXT}"
       end
+
+      it "prints out failures nicely" do
+        subject.pretty_print(
+"/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49: error: -[NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes] : 'Iterators, times： iterates the exact number of times' [FAILED], expected subject to equal 4, got 5"
+        )
+        subject.pretty_print(
+"/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30: error: -[NumberAdditions Iterators_uptoIteratesInclusively] : 'Iterators, -upto iterates inclusively' [FAILED], expected subject to equal 8, got 4"
+        )
+        given_tests_are_done
+        executed_tests_message.should include(
+%Q(
+Iterators, times： iterates the exact number of times, expected subject to equal 4, got 5
+/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49
+
+Iterators, -upto iterates inclusively, expected subject to equal 8, got 4
+/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30
+
+
+#{EXECUTED_TEXT})
+
+
+
+        )
+      end
+
+
+
 
       describe "doesn't output any compiling output" do
 
