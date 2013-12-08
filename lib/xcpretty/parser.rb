@@ -1,4 +1,7 @@
+require 'shellwords'
+
 module XCPretty
+
   class Parser
 
     def parse(text)
@@ -21,17 +24,33 @@ module XCPretty
         parse_libtool(text)
       when /^CpResource/
         parse_cpresource(text)
+      when /^CopyStringsFile/
+        parse_copy_strings_file(text)
+      when /^GenerateDSYMFile/
+        parse_generating_dsym(text)
+      when /^ProcessInfoPlistFile/
+        parse_processing_info_plist(text)
+      when /^Ld/
+        parse_linking(text)
       else
-        text
+        ""
       end
     end
 
+    def parse_linking(text)
+      "Linking #{text.shellsplit[1].split('/').last}"      
+    end
+
     def parse_pch(text)
-      "Precompiling #{text.split(' ')[2]}"
+      "Precompiling " + Shellwords.shellsplit(text)[2]
+    end
+
+    def parse_processing_info_plist(text)
+      "Processing #{text.lines.first.shellsplit.last.split('/').last}"
     end
 
     def parse_compiling(text)
-      "Compiling #{text.split(' ')[2].split('/').last}"
+      "Compiling #{text.shellsplit[2].split('/').last}"
     end
 
     def parse_clean_target(text)
@@ -45,24 +64,35 @@ module XCPretty
     end
 
     def parse_run_script(text)
-      text =~ /PhaseScriptExecution\s([\w\s\\]*\s.+?)\s/
-      "Running script '#{$1}'"
+      "Running script '#{text.lines.first.shellsplit[1..-2].join(' ').gsub('\ ',' ')}'"
     end
 
     def parse_libtool(text)
-      "Building library #{text.split(' ')[1].split('/').last}"
+      "Building library #{text.shellsplit[1].split('/').last}"
     end
 
     def parse_cpresource(text)
-      "Copying #{text.split(' ')[1]}"
+      "Copying #{text.shellsplit[1]}"
+    end
+
+    def parse_copy_strings_file(text)
+      "Copying #{text.shellsplit.last.split('/').last}"  
+    end
+
+    def parse_generating_dsym(text)
+      "Generating DSYM file"
     end
 
     def project_build_info(text)
-      target = text.split('OF PROJECT').first.split(' ').last
-      clean_target = target.split('-').last
-      project = text.split('OF PROJECT').last.split(' ').first
-      configuration = text.split('WITH CONFIGURATION').last.split(' ').first
-      { :target => clean_target, :project => project, :configuration => configuration }
+      target = text.split('TARGET').last.split('OF PROJECT').first
+      clean_target = target.split('-').last.strip
+      project = text.split('OF PROJECT').last.split('WITH').first.strip
+      configuration = text.split('CONFIGURATION').last.split('===').first.strip
+      { 
+        :target => clean_target, 
+        :project => project, 
+        :configuration => configuration
+      }
     end
 
   end
