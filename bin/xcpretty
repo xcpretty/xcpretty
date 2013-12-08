@@ -20,11 +20,12 @@ OptionParser.new do |opts|
     @printer = XCPretty::Printer::Simple.new
   end
   opts.on('-c', '--color', 'Use colorized output') do
-    printer.colorize = true
+    @colorize = true
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
   opts.parse!
+  printer.colorize = @colorize
 end
 
 ARGF.each_line do |line|
