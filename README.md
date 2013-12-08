@@ -9,6 +9,11 @@ It does one thing, and it should do it well.
 
 ## Usage
 
+XCPretty is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
+This means, when `xcodebuild` works, `xcpretty` works.
+
+It plays well with Makefiles and Rakefiles, and it should retain the `stderr` and status code from `xcodebuild`.
+
 ```
 $ make test | xcpretty
 ....................................................................................
@@ -31,11 +36,6 @@ Executed 84 tests, with 4 failures (4 unexpected) in 0.071 (0.095) seconds
 
 make: *** [test] Error 65
 ```
-XCPretty is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
-This means, when `xcodebuild` works, `xcpretty` works.
-
-It plays well with Makefiles and Rakefiles, and it should retain the `stderr` and status code from `xcodebuild`.
-
 
 ## XCPretty isn't
 Unlike [xctool](https://github.com/facebook/xctool), `xcpretty` isn't a build tool.
