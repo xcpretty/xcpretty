@@ -1,12 +1,13 @@
-require "xcpretty/parser"
+require "xcpretty/printers/simple"
 
 module XCPretty
 
+  module Printer
 
-  describe Parser do
-    
-    it "parses compiling output" do
-      subject.parse(
+    describe Simple do
+      
+      it "parses compiling output" do
+        subject.pretty_print(
 <<-EOS
 CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTHTMLParser.o DTFoundation/Core/Source/DTHTMLParser/DTHTMLParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/yammer/ios-chat/Pods
@@ -14,22 +15,22 @@ CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqub
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/.rbenv/versions/2.0.0-p247/bin:/usr/local/Cellar/rbenv/0.4.0/libexec:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=178 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=gnu99 -fmodules -fmodules-cache-path=/Users/musalj/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=6.0 -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Pods-DTFoundation-generated-files.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Pods-DTFoundation-own-target-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Pods-DTFoundation-all-target-headers.hmap -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Pods-DTFoundation-project-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Products/Debug-iphonesimulator/include -I/Users/musalj/code/yammer/ios-chat/Pods/BuildHeaders -I/Users/musalj/code/yammer/ios-chat/Pods/BuildHeaders/DTFoundation -I/Users/musalj/code/yammer/ios-chat/Pods/Headers -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/ABContactHelper -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/AFNetworking -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/CocoaLumberjack -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/CrittercismSDK -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/DTCoreText -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/DTFoundation -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/HPGrowingTextView -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/Kiwi -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MAKVONotificationCenter -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MAKVONotificationCenter/MAKVONotificationCenter -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MBSwitch -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MBSwitch/MBSwitch -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/Reachability -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/SBJson -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/SSKeychain -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/TITokenField -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamDrawReport -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamCore -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamData -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamSerf -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamUI -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKitTests -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/cometclient -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/include/libxml2 -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/DerivedSources/i386 -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/DerivedSources -F/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Products/Debug-iphonesimulator -fobjc-arc -DOS_OBJECT_USE_OBJC=0 -include /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-DTFoundation-prefix-bakffbcvipwgglclplqvierkuzyi/Pods-DTFoundation-prefix.pch -MMD -MT dependencies -MF /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTHTMLParser.d --serialize-diagnostics /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTHTMLParser.dia -c /Users/musalj/code/yammer/ios-chat/Pods/DTFoundation/Core/Source/DTHTMLParser/DTHTMLParser.m -o /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTHTMLParser.o
 EOS
-      ).should == "Compiling DTHTMLParser.m"
-    end
+        ).should == "Compiling DTHTMLParser.m"
+      end
 
-    it "parses another compiling output" do
-      subject.parse(<<-EOS
+      it "parses another compiling output" do
+        subject.pretty_print(<<-EOS
 CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTExtendedFileAttributes.o DTFoundation/Core/Source/DTExtendedFileAttributes.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/yammer/ios-chat/Pods
     setenv LANG en_US.US-ASCII
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/.rbenv/versions/2.0.0-p247/bin:/usr/local/Cellar/rbenv/0.4.0/libexec:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=178 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=gnu99 -fmodules -fmodules-cache-path=/Users/musalj/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=6.0 -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Pods-DTFoundation-generated-files.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Pods-DTFoundation-own-target-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Pods-DTFoundation-all-target-headers.hmap -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Pods-DTFoundation-project-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Products/Debug-iphonesimulator/include -I/Users/musalj/code/yammer/ios-chat/Pods/BuildHeaders -I/Users/musalj/code/yammer/ios-chat/Pods/BuildHeaders/DTFoundation -I/Users/musalj/code/yammer/ios-chat/Pods/Headers -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/ABContactHelper -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/AFNetworking -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/CocoaLumberjack -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/CrittercismSDK -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/DTCoreText -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/DTFoundation -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/HPGrowingTextView -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/Kiwi -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MAKVONotificationCenter -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MAKVONotificationCenter/MAKVONotificationCenter -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MBSwitch -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MBSwitch/MBSwitch -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/Reachability -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/SBJson -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/SSKeychain -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/TITokenField -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamDrawReport -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamCore -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamData -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamSerf -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamUI -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKitTests -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/cometclient -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/include/libxml2 -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/DerivedSources/i386 -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/DerivedSources -F/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Products/Debug-iphonesimulator -fobjc-arc -DOS_OBJECT_USE_OBJC=0 -include /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-DTFoundation-prefix-bakffbcvipwgglclplqvierkuzyi/Pods-DTFoundation-prefix.pch -MMD -MT dependencies -MF /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTExtendedFileAttributes.d --serialize-diagnostics /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTExtendedFileAttributes.dia -c /Users/musalj/code/yammer/ios-chat/Pods/DTFoundation/Core/Source/DTExtendedFileAttributes.m -o /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-DTFoundation.build/Objects-normal/i386/DTExtendedFileAttributes.o
 EOS
-      ).should == "Compiling DTExtendedFileAttributes.m"
-    end
+        ).should == "Compiling DTExtendedFileAttributes.m"
+      end
 
-    it "parses precompiling output" do
-      subject.parse(
+      it "parses precompiling output" do
+        subject.pretty_print(
 <<-EOS
 ProcessPCH /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CocoaLumberjack-prefix-aklsecopvqdctoeroyamrkgktpei/Pods-CocoaLumberjack-prefix.pch.pch Pods-CocoaLumberjack-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/yammer/ios-chat/Pods
@@ -37,11 +38,11 @@ ProcessPCH /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzq
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/.rbenv/versions/2.0.0-p247/bin:/usr/local/Cellar/rbenv/0.4.0/libexec:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=178 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=gnu99 -fmodules -fmodules-cache-path=/Users/musalj/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=6.0 -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CocoaLumberjack.build/Pods-CocoaLumberjack-generated-files.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CocoaLumberjack.build/Pods-CocoaLumberjack-own-target-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CocoaLumberjack.build/Pods-CocoaLumberjack-all-target-headers.hmap -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CocoaLumberjack.build/Pods-CocoaLumberjack-project-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Products/Debug-iphonesimulator/include -I/Users/musalj/code/yammer/ios-chat/Pods/BuildHeaders -I/Users/musalj/code/yammer/ios-chat/Pods/BuildHeaders/CocoaLumberjack -I/Users/musalj/code/yammer/ios-chat/Pods/Headers -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/ABContactHelper -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/AFNetworking -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/CocoaLumberjack -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/CrittercismSDK -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/DTCoreText -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/DTFoundation -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/HPGrowingTextView -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/Kiwi -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MAKVONotificationCenter -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MAKVONotificationCenter/MAKVONotificationCenter -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MBSwitch -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MBSwitch/MBSwitch -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/Reachability -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/SBJson -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/SSKeychain -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/TITokenField -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamDrawReport -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamCore -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamData -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamSerf -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamUI -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKitTests -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/cometclient -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CocoaLumberjack.build/DerivedSources/i386 -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CocoaLumberjack.build/DerivedSources -F/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Products/Debug-iphonesimulator -fobjc-arc -DOS_OBJECT_USE_OBJC=0 --serialize-diagnostics /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CocoaLumberjack-prefix-aklsecopvqdctoeroyamrkgktpei/Pods-CocoaLumberjack-prefix.pch.dia -MMD -MT dependencies -MF /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CocoaLumberjack-prefix-aklsecopvqdctoeroyamrkgktpei/Pods-CocoaLumberjack-prefix.pch.d -c /Users/musalj/code/yammer/ios-chat/Pods/Pods-CocoaLumberjack-prefix.pch -o /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CocoaLumberjack-prefix-aklsecopvqdctoeroyamrkgktpei/Pods-CocoaLumberjack-prefix.pch.pch    
 EOS
-      ).should == "Precompiling Pods-CocoaLumberjack-prefix.pch"
-    end
-  
-    it "parses another precompiling output" do
-      subject.parse(
+        ).should == "Precompiling Pods-CocoaLumberjack-prefix.pch"
+      end
+    
+      it "parses another precompiling output" do
+        subject.pretty_print(
 <<-EOS
 ProcessPCH /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CrittercismSDK-prefix-ayqymsvxomizqsdqzftsirxxyful/Pods-CrittercismSDK-prefix.pch.pch Pods-CrittercismSDK-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/yammer/ios-chat/Pods
@@ -49,47 +50,45 @@ ProcessPCH /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzq
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/.rbenv/versions/2.0.0-p247/bin:/usr/local/Cellar/rbenv/0.4.0/libexec:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=178 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=gnu99 -fmodules -fmodules-cache-path=/Users/musalj/Library/Developer/Xcode/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=6.0 -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CrittercismSDK.build/Pods-CrittercismSDK-generated-files.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CrittercismSDK.build/Pods-CrittercismSDK-own-target-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CrittercismSDK.build/Pods-CrittercismSDK-all-target-headers.hmap -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CrittercismSDK.build/Pods-CrittercismSDK-project-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Products/Debug-iphonesimulator/include -I/Users/musalj/code/yammer/ios-chat/Pods/BuildHeaders -I/Users/musalj/code/yammer/ios-chat/Pods/BuildHeaders/CrittercismSDK -I/Users/musalj/code/yammer/ios-chat/Pods/Headers -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/ABContactHelper -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/AFNetworking -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/CocoaLumberjack -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/CrittercismSDK -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/DTCoreText -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/DTFoundation -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/HPGrowingTextView -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/Kiwi -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MAKVONotificationCenter -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MAKVONotificationCenter/MAKVONotificationCenter -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MBSwitch -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/MBSwitch/MBSwitch -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/Reachability -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/SBJson -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/SSKeychain -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/TITokenField -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamDrawReport -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamCore -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamData -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamSerf -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKit/YamUI -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/YamKitTests -I/Users/musalj/code/yammer/ios-chat/Pods/Headers/cometclient -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CrittercismSDK.build/DerivedSources/i386 -I/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-CrittercismSDK.build/DerivedSources -F/Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Products/Debug-iphonesimulator --serialize-diagnostics /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CrittercismSDK-prefix-ayqymsvxomizqsdqzftsirxxyful/Pods-CrittercismSDK-prefix.pch.dia -MMD -MT dependencies -MF /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CrittercismSDK-prefix-ayqymsvxomizqsdqzftsirxxyful/Pods-CrittercismSDK-prefix.pch.d -c /Users/musalj/code/yammer/ios-chat/Pods/Pods-CrittercismSDK-prefix.pch -o /Users/musalj/Library/Developer/Xcode/DerivedData/YammerNow-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CrittercismSDK-prefix-ayqymsvxomizqsdqzftsirxxyful/Pods-CrittercismSDK-prefix.pch.pch
 EOS
-      ).should == "Precompiling Pods-CrittercismSDK-prefix.pch"
-    end
+        ).should == "Precompiling Pods-CrittercismSDK-prefix.pch"
+      end
 
-    it "parses clean output" do
-      subject.parse(
+      it "parses clean output" do
+        subject.pretty_print(
 <<-EOS
 Clean.Remove clean /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugarTests.build
     builtin-rm -rf /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugarTests.build
 EOS
-      ).should == ""
-    end
+        ).should == ""
+      end
 
-    it "kills 'Check dependencies'" do
-      subject.parse("Check dependencies").should == ""
-    end
-  
-    it "parses clean target/project/configuration" do
-      subject.parse(
+      it "kills 'Check dependencies'" do
+        subject.pretty_print("Check dependencies").should == ""
+      end
+    
+      it "parses clean target/project/configuration" do
+        subject.pretty_print(
 "=== CLEAN TARGET Pods-ObjectiveSugar OF PROJECT Pods WITH CONFIGURATION Debug ==="
-      ).should == "Cleaning Pods/ObjectiveSugar [Debug]"
-      subject.parse(
+        ).should == "Cleaning Pods/ObjectiveSugar [Debug]"
+        subject.pretty_print(
 "=== CLEAN TARGET Pods OF PROJECT Pods WITH CONFIGURATION Debug ==="
-      ).should == "Cleaning Pods/Pods [Debug]"
-    end
+        ).should == "Cleaning Pods/Pods [Debug]"
+      end
 
-    it "parses build target/project/configuration with target" do
-      subject.parse(
+      it "parses build target/project/configuration with target" do
+        subject.pretty_print(
 "=== BUILD TARGET The Spacer OF PROJECT Pods WITH THE DEFAULT CONFIGURATION Debug ==="
-      ).should == "Building Pods/The Spacer [Debug]"
-    end
+        ).should == "Building Pods/The Spacer [Debug]"
+      end
 
-    it "parses clean target/project/configuration with nested pods" do
-      subject.parse(
-<<-EOS
-=== CLEAN TARGET Pods-ObjectiveSugarTests-Kiwi OF PROJECT Pods WITH CONFIGURATION Debug ===
-EOS
-      ).should == "Cleaning Pods/Kiwi [Debug]"
-    end
+      it "parses clean target/project/configuration with nested pods" do
+        subject.pretty_print(
+"=== CLEAN TARGET Pods-ObjectiveSugarTests-Kiwi OF PROJECT Pods WITH CONFIGURATION Debug ==="
+        ).should == "Cleaning Pods/Kiwi [Debug]"
+      end
 
-    it "parses PhaseScriptExecution" do
-      subject.parse(
+      it "parses PhaseScriptExecution" do
+        subject.pretty_print(
 <<-EOS
 PhaseScriptExecution Check\\ Pods\\ Manifest.lock /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
@@ -424,69 +423,70 @@ PhaseScriptExecution Check\\ Pods\\ Manifest.lock /Users/musalj/Library/Develope
     setenv variant normal
     /bin/sh -c /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh
 EOS
-      ).should == "Running script 'Check Pods Manifest.lock'"
-    end
+        ).should == "Running script 'Check Pods Manifest.lock'"
+      end
 
-    it "parses Libtool" do
-      subject.parse(<<-EOS
+      it "parses Libtool" do
+        subject.pretty_print(<<-EOS
 Libtool /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/libPods-ObjectiveSugarTests-Kiwi.a normal i386
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example/Pods
     setenv IPHONEOS_DEPLOYMENT_TARGET 5.0
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -L/Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator -filelist /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-ObjectiveSugarTests-Kiwi.build/Objects-normal/i386/Pods-ObjectiveSugarTests-Kiwi.LinkFileList -framework Foundation -framework SenTestingKit -o /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/libPods-ObjectiveSugarTests-Kiwi.a
 EOS
-      ).should == "Building library libPods-ObjectiveSugarTests-Kiwi.a"
-    end
+        ).should == "Building library libPods-ObjectiveSugarTests-Kiwi.a"
+      end
 
-    it "parses CpResource" do
-      subject.parse(<<-EOS
+      it "parses CpResource" do
+        subject.pretty_print(<<-EOS
 CpResource ObjectiveSugar/Default-568h@2x.png /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/Default-568h@2x.png
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugar/Default-568h@2x.png /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app
 EOS
-      ).should == "Copying ObjectiveSugar/Default-568h@2x.png"
-    end
+        ).should == "Copying ObjectiveSugar/Default-568h@2x.png"
+      end
 
-    it "parses CopyStringsFile" do
-      subject.parse(<<-EOS
+      it "parses CopyStringsFile" do
+        subject.pretty_print(<<-EOS
 CopyStringsFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/en.lproj/InfoPlist.strings ObjectiveSugar/en.lproj/InfoPlist.strings
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/en.lproj -- ObjectiveSugar/en.lproj/InfoPlist.strings
 EOS
-      ).should == "Copying InfoPlist.strings"
-    end
+        ).should == "Copying InfoPlist.strings"
+      end
 
-    it "parses GenerateDSYMFile" do
-      subject.parse(<<-EOS
+      it "parses GenerateDSYMFile" do
+        subject.pretty_print(<<-EOS
 GenerateDSYMFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest.dSYM /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest/ObjectiveSugarTests
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest/ObjectiveSugarTests -o /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest.dSYM
-    EOS
-      ).should == "Generating DSYM file"
-    end
+EOS
+        ).should == "Generating DSYM file"
+      end
 
-    it "parses info.plist processing" do
-      subject.parse(<<-EOS
+      it "parses info.plist processing" do
+        subject.pretty_print(<<-EOS
 ProcessInfoPlistFile build/Release/The\\ Spacer.app/Contents/Info.plist The\\ Spacer/The\\ Spacer-Info.plist
     cd "/Users/delisa/Code/Personal/The Spacer"
     builtin-infoPlistUtility /Users/delisa/Code/Personal/The\\ Spacer/The\\ Spacer/The\\ Spacer-Info.plist -genpkginfo /Users/delisa/Code/Personal/The\\ Spacer/build/Release/The\\ Spacer.app/Contents/PkgInfo -expandbuildsettings -platform macosx -additionalcontentfile /Users/delisa/Code/Personal/The\\ Spacer/build/The\\ Spacer.build/Release/The\\ Spacer.build/assetcatalog_generated_info.plist -o /Users/delisa/Code/Personal/The\\ Spacer/build/Release/The\\ Spacer.app/Contents/Info.plist
 EOS
-      ).should == "Processing The Spacer-Info.plist"
-    end
+        ).should == "Processing The Spacer-Info.plist"
+      end
 
-    it "parses Ld" do
-      subject.parse(<<-EOS
+      it "parses Ld" do
+        subject.pretty_print(<<-EOS
 Ld /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/ObjectiveSugar normal i386
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
     setenv IPHONEOS_DEPLOYMENT_TARGET 4.3
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -L/Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator -F/Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator -filelist /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Objects-normal/i386/ObjectiveSugar.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -ObjC -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=4.3 -framework UIKit -framework Foundation -framework CoreGraphics -lPods -Xlinker -dependency_info -Xlinker /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Objects-normal/i386/ObjectiveSugar_dependency_info.dat -o /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/ObjectiveSugar
 EOS
-      ).should == "Linking ObjectiveSugar"
-    end
+        ).should == "Linking ObjectiveSugar"
+      end
 
+    end
   end
 end

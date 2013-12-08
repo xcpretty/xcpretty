@@ -6,8 +6,9 @@ if RUBY_VERSION < '1.9.3'
   abort "error: XCPretty requires Ruby 1.9.3 or higher."
 end
 
-parser = XCPretty::Parser.new
+# printer = XCPretty::Printer::Simple.new
+printer = XCPretty::Printer::RSpec.new
 ARGF.each_line do |line| 
-  pwetty = parser.parse(line)
-  puts pwetty unless pwetty.empty?
+  pwetty = printer.pretty_print(line)
+  STDOUT.print pwetty unless pwetty.empty?
 end
