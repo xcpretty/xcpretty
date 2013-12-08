@@ -6,11 +6,18 @@ require 'xcpretty/version'
 Gem::Specification.new do |spec|
   spec.name          = "xcpretty"
   spec.version       = XCPretty::VERSION
-  spec.authors       = ["Marin Usalj"]
-  spec.email         = ["mneorr@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.authors       = ["Marin Usalj", "Delisa Mason"]
+  spec.email         = ["mneorr@gmail.com", "kattrali@gmail.com"]
+  spec.description   = 
+  %q{
+  Xcodebuild formatter designed to be piped with `xcodebuild`,
+  and thus keeping 100% compatibility.
+
+  It has modes for CI, running tests (RSpec dot-style),
+  and it can also mine Bitcoins.
+  }
+  spec.summary       = %q{xcodebuild formatter done right}
+  spec.homepage      = "https://github.com/mneorr/xcpretty"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
