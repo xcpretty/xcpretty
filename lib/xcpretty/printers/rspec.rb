@@ -1,60 +1,58 @@
 module XCPretty
   module Printer
-  
+
     class RSpec
       include Printer
 
-      def pretty_print(text)
-        STDOUT.print(pretty_format(text))
-      end
+      FAIL = "F"
+      PASS = "."
 
       def pretty_format(text)
-        case text
+        output = case text
         when /\[PASSED\]$/
-          "."
+          PASS
         when /Test Suite 'All tests' finished at/
           @tests_done = true
           ""
         when /^Executed/
           @tests_done ? test_summary(text) : ""
-        # TODO: extract this common logic out.
-        # Both reporters should report failures the same way.
         when FAILURE_MATCHER
-          store_failure($1, $2, $3)
-          "F"
+          FAIL
         else
           ""
         end
-      end
 
+        format(output)
+      end
 
       private
 
+      def format(output)
+        if colorize?
+          return case output
+          when FAIL then red(output)
+          when PASS then green(output)
+          else
+            output
+          end
+        end
+        output
+      end
+
       def test_summary(executed_message)
-        failures.empty? ? "\n\n#{executed_message}"
-                        : summary_with_failures(executed_message)
-      end
-
-      def summary_with_failures(executed_message)
         formatted_failures = failures.map do |f|
-          "#{f[:test_case]}, #{f[:failure_message]}\n#{f[:file]}"
+          reason = colorize? ? red(f[:failure_message]) : f[:failure_message]
+          path   = colorize? ? link(f[:file]) : f[:file]
+          "#{f[:test_case]}, #{reason}\n#{path}"
         end.join("\n\n")
-
-        "\n\n#{formatted_failures}\n\n\n#{executed_message}"
+        final_message = if colorize?
+          failures.any? ? red(executed_message) : green(executed_message)
+        else
+          executed_message
+        end
+        text = [formatted_failures, final_message].join("\n\n\n").strip
+        "\n\n#{text}"
       end
-
-      def store_failure(file, test_case, failure_message)
-        failures << {
-          file: file,
-          test_case: test_case,
-          failure_message: failure_message
-        }
-      end
-
-      def failures
-        @failures ||= []
-      end
-
     end
   end
 end

@@ -1,3 +1,4 @@
+require "xcpretty/printer"
 require "xcpretty/printers/simple"
 
 module XCPretty

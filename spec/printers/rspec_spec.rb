@@ -1,3 +1,4 @@
+require "xcpretty/printer"
 require "xcpretty/printers/rspec"
 
 module XCPretty

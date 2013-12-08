@@ -7,6 +7,9 @@ module XCPretty
     class Simple
       include Printer
 
+      PASS = "✓"
+      FAIL = "✗"
+
       def pretty_print(text)
         formatted = pretty_format(text)
         STDOUT.puts(formatted) unless formatted.empty?
@@ -46,63 +49,65 @@ module XCPretty
       end
 
       def print_linking(text)
-        "Linking #{text.shellsplit[1].split('/').last}"      
+        format("Linking", text.shellsplit[1].split('/').last)
       end
 
       def print_pch(text)
-        "Precompiling " + Shellwords.shellsplit(text)[2]
+        format("Precompiling", Shellwords.shellsplit(text)[2])
       end
 
       def print_processing_info_plist(text)
-        "Processing #{text.lines.first.shellsplit.last.split('/').last}"
+        format("Processing", text.lines.first.shellsplit.last.split('/').last)
       end
 
       def print_compiling(text)
-        "Compiling #{text.shellsplit[2].split('/').last}"
+        format("Compiling", text.shellsplit[2].split('/').last)
       end
 
       def print_clean_target(text)
         info = project_build_info(text)
-        "Cleaning #{info[:project]}/#{info[:target]} [#{info[:configuration]}]"
+        format("Cleaning", "#{info[:project]}/#{info[:target]} [#{info[:configuration]}]")
       end
 
       def print_build_target(text)
         info = project_build_info(text)
-        "Building #{info[:project]}/#{info[:target]} [#{info[:configuration]}]"
+        format("Building", "#{info[:project]}/#{info[:target]} [#{info[:configuration]}]")
       end
 
       def print_run_script(text)
-        "Running script '#{text.lines.first.shellsplit[1..-2].join(' ').gsub('\ ',' ')}'"
+        format("Running script", "'#{text.lines.first.shellsplit[1..-2].join(' ').gsub('\ ',' ')}'")
       end
 
       def print_libtool(text)
-        "Building library #{text.shellsplit[1].split('/').last}"
+        format("Building library", text.shellsplit[1].split('/').last)
       end
 
       def print_cpresource(text)
-        "Copying #{text.shellsplit[1]}"
+        format("Copying", text.shellsplit[1])
       end
 
       def print_copy_strings_file(text)
-        "Copying #{text.shellsplit.last.split('/').last}"  
+        format("Copying", text.shellsplit.last.split('/').last)
       end
 
       def print_generating_dsym(text)
-        "Generating DSYM file"
+        format("Generating DSYM file")
       end
 
-      def project_build_info(text)
-        target = text.split('TARGET').last.split('OF PROJECT').first
-        clean_target = target.split('-').last.strip
-        project = text.split('OF PROJECT').last.split('WITH').first.strip
-        configuration = text.split('CONFIGURATION').last.split('===').first.strip
-        { 
-          :target => clean_target, 
-          :project => project, 
-          :configuration => configuration
-        }
+      def format(command, argument_text="", success=true)
+        command_text = colorize? ? white(command) : command
+        [status_symbol(success), command_text, argument_text].join(" ").strip
       end
 
+      def status_symbol(success)
+        if success && colorize?
+          green(PASS)
+        elsif colorize?
+          red(FAIL)
+        else
+          ""
+        end
+      end
     end
   end
 end
