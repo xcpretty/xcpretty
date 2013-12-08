@@ -1,0 +1,9 @@
+#! /usr/bin/env ruby
+$:.unshift File.expand_path('../../lib', __FILE__)
+require 'xcpretty'
+
+parser = XCPretty::Parser.new
+ARGF.each_line("\n\n") do |line| 
+  pwetty = parser.parse(line)
+  puts pwetty unless pwetty.empty?
+end

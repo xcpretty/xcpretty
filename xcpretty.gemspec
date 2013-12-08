@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'pretty_xcodebuild/version'
+require 'xcpretty/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "pretty_xcodebuild"
-  spec.version       = PrettyXcodebuild::VERSION
+  spec.name          = "xcpretty"
+  spec.version       = XCPretty::VERSION
   spec.authors       = ["Marin Usalj"]
   spec.email         = ["mneorr@gmail.com"]
   spec.description   = %q{TODO: Write a gem description}

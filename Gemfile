@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in pretty_xcodebuild.gemspec
+# Specify your gem's dependencies in xcpretty.gemspec
 gemspec
