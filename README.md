@@ -1,6 +1,6 @@
 # XCPretty
 
-__XCPretty is a flexible formatter for `xcodebuild`__.<br/>
+__XCPretty is a fast and flexible formatter for `xcodebuild`__.<br/>
 It does one thing, and it should do it well.
 
 ## Installation
@@ -11,6 +11,7 @@ It does one thing, and it should do it well.
 
 XCPretty is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
 This means, when `xcodebuild` works, `xcpretty` works.
+It's even a bit faster than `xcodebuild` only, since it saves your terminal some prints.
 
 ```
 $ make test | xcpretty
