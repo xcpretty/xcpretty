@@ -1,29 +1,20 @@
 # XCPretty
 
-TODO: Write a gem description
+__XCPretty is a flexible formatter for `xcodebuild`__
+It does one thing, and it should do it well.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'xcpretty'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install xcpretty
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ xcodebuild -project MyProject.xcodeproj | xcpretty
 
-## Contributing
+XCPretty is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
+This means, when `xcodebuild` works, `xcpretty` works.
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+## XCPretty isn't
+Unlike [xctool](https://github.com/facebook/xctool), `xcpretty` isn't a build tool.
+It relies on `xcodebuild` to do the build process, and it formats the output.
+
