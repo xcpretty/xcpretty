@@ -8,9 +8,9 @@ module XCPretty
 
 		Paint::SHORTCUTS[:printer] = {
 		  :white => Paint.color(:bold),
-		  :red => Paint.color(:red),
+		  :red   => Paint.color(:red),
 		  :green => Paint.color(:green, :bright),
-		  :link => Paint.color(:cyan),
+		  :link  => Paint.color(:cyan),
 		}
 
 		include Paint::Printer
@@ -19,7 +19,12 @@ module XCPretty
 			if text =~ FAILURE_MATCHER
 				store_failure($1, $2, $3)
 			end
-      STDOUT.print(pretty_format(text))
+      formatted_text = pretty_format(text)
+      STDOUT.print(pretty_prefix + formatted_text) unless formatted_text.empty?
+    end
+
+    def pretty_prefix
+      ""
     end
 
     def project_build_info(text)

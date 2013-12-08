@@ -8,7 +8,7 @@ module XCPretty
       PASS = "."
 
       def pretty_format(text)
-        output = case text
+        format case text
         when /\[PASSED\]$/
           PASS
         when /Test Suite 'All tests' finished at/
@@ -21,8 +21,6 @@ module XCPretty
         else
           ""
         end
-
-        format(output)
       end
 
       private

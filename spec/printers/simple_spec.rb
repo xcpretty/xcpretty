@@ -7,13 +7,13 @@ module XCPretty
 
     describe Simple do
       
-      it "prints to stdout using puts" do
-        STDOUT.should receive(:puts)
+      it "prints to stdout" do
+        STDOUT.should receive(:print)
         subject.pretty_print("=== CLEAN TARGET Pods OF PROJECT Pods WITH CONFIGURATION Debug ===")
       end
 
       it "doesn't print empty lines" do
-        STDOUT.should_not receive(:puts)
+        STDOUT.should_not receive(:print)
         subject.pretty_print("")
       end
 

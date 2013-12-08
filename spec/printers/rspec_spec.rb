@@ -7,6 +7,11 @@ module XCPretty
 
     describe RSpec do
 
+      before(:each) do
+        STDOUT.stub(:print) {|text| text }
+      end
+
+
       SAMPLE_TEST = <<-EOS
 2013-12-07 19:53:01.881 ObjectiveSugar[32626:907] + 'Additions, -strip strips whitespaces and newlines from both ends' [PASSED]
 EOS
@@ -33,23 +38,23 @@ EOS
       def given_tests_are_done
         subject.pretty_format("Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000.")
       end
-      
+
       def executed_tests_message
         subject.pretty_format(EXECUTED_TEXT)
       end
 
       it "knows when the test suite is done" do
         executed_tests_message.should == ""
-      
+
         given_tests_are_done
         executed_tests_message.should == "\n\n#{EXECUTED_TEXT}"
       end
 
       it "prints out failures nicely" do
-        subject.pretty_format(
+        subject.pretty_print(
 "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49: error: -[NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes] : 'Iterators, times： iterates the exact number of times' [FAILED], expected subject to equal 4, got 5"
         )
-        subject.pretty_format(
+        subject.pretty_print(
 "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:30: error: -[NumberAdditions Iterators_uptoIteratesInclusively] : 'Iterators, -upto iterates inclusively' [FAILED], expected subject to equal 8, got 4"
         )
         given_tests_are_done

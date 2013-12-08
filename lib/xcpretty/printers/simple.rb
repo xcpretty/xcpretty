@@ -10,11 +10,6 @@ module XCPretty
       PASS = "✓"
       FAIL = "✗"
 
-      def pretty_print(text)
-        formatted = pretty_format(text)
-        STDOUT.puts(formatted) unless formatted.empty?
-      end
-
       def pretty_format(text)
         case text
         when /^ProcessPCH/
@@ -46,6 +41,10 @@ module XCPretty
         else
           ""
         end
+      end
+
+      def pretty_prefix
+        "\n"
       end
 
       def print_linking(text)
