@@ -9,7 +9,7 @@ module XCPretty
 
       def pretty_format(text)
         format case text
-        when /\[PASSED\]$/
+        when /Test Case\s'-\[(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
           PASS
         when /Test Suite ('All tests'|'.*\.octest(.*)') finished at/
           @tests_done = true
