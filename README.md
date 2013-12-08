@@ -37,6 +37,11 @@ Executed 84 tests, with 4 failures (4 unexpected) in 0.071 (0.095) seconds
 make: *** [test] Error 65
 ```
 
+## Formats
+
+- Simple (default)
+- Dots (RSpec style, shown above)
+
 ## XCPretty isn't
 Unlike [xctool](https://github.com/facebook/xctool), `xcpretty` isn't a build tool.
 It relies on `xcodebuild` to do the build process, and it formats the output.
