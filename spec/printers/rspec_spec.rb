@@ -56,9 +56,6 @@ Iterators, -upto iterates inclusively, expected subject to equal 8, got 4
 
 
 #{EXECUTED_TEXT})
-
-
-
         )
       end
 

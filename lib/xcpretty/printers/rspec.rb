@@ -28,8 +28,8 @@ module XCPretty
       end
 
       def summary_with_failures(executed_message)
-        formatted_failures = failures.map do |failure|
-          "#{failure[:test_case]}, #{failure[:failure_message]}\n#{failure[:file]}"
+        formatted_failures = failures.map do |f|
+          "#{f[:test_case]}, #{f[:failure_message]}\n#{f[:file]}"
         end.join("\n\n")
 
         "\n\n#{formatted_failures}\n\n\n#{executed_message}"
