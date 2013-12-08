@@ -10,7 +10,13 @@ It does one thing, and it should do it well.
 ## Usage
 
 ```
-master $ make test | xcpretty
+$ make test | xcpretty
+....................................................................................
+
+Executed 84 tests, with 0 failures (0 unexpected) in 0.071 (0.093) seconds
+```
+```
+$ make test | xcpretty
 ...................................................F.F..............................
 
 Iterators, -upto iterates inclusively, expected subject to equal 8, got 4
