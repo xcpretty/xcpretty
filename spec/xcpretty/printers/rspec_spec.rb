@@ -8,10 +8,6 @@ module XCPretty
 
     describe RSpec do
 
-      before(:each) do
-        STDOUT.stub(:print) { |text| text }
-      end
-
       it "prints dots in the same line" do
         STDOUT.should receive(:print)
         subject.pretty_print(SAMPLE_OCUNIT_TEST)
