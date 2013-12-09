@@ -40,6 +40,7 @@ At this point, `xcodebuild` has got improved a lot, and it's ready to be used di
 There are many usages of this tool. Let me give you some ideas:
 - Xcode's test tools are close to useless. Failures in a sidebar, non-dettachable console,... You can use `xcpretty` to build your next Xcode test runner plugin
 - Run tests each time you hit save. Here's an example of doing so:
+
 ``` ruby
 require 'listen'
 ignored = [/.git/, /xcuserdata/, /\.txt$/, /test-reports/]
