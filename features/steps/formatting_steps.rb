@@ -1,3 +1,4 @@
+# encoding: utf-8
 Given(/^I have a file to compile$/) do
   add_run_input SAMPLE_COMPILE
 end
