@@ -2,7 +2,8 @@ require "paint"
 
 module XCPretty
 	module Printer
-		attr_accessor :colorize
+
+		attr_reader :colorize
 
 		FAILURE_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 

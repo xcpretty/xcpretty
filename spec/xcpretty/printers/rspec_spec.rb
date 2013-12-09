@@ -45,7 +45,7 @@ module XCPretty
       end
 
       it "knows when the test suite is done for OCunit / Specta" do
-        executed_tests_message.should == "a"
+        executed_tests_message.should == ""
 
         given_tests_are_done(OCUNIT)
         executed_tests_message.should == "\n\n#{SAMPLE_EXECUTED_TESTS}"
