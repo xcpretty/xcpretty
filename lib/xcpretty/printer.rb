@@ -17,7 +17,10 @@ module XCPretty
     # $2 = time
     PASSING_TEST_MATCHER = /Test Case\s'-\[(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
 
-    TESTS_DONE_MATCHER = /Test Suite ('.*\.(oc|xc)test(.*)') finished at/
+    TESTS_DONE_MATCHER = /Test Suite ('.*\.(o|x)ctest(.*)') finished at/
+    # @regex Captured groups
+    # $1 test suite name
+    TESTS_START_MATCHER = /Test Suite ('.*(\.(o|x)ctest(.*))?') started at/
     EXECUTED_MATCHER = /^Executed/
 
 		Paint::SHORTCUTS[:printer] = {
