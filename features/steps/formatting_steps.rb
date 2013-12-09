@@ -56,7 +56,7 @@ Then(/^I should see a red failed test icon$/) do
 end
 
 Then(/^the final execution message should be (red|green)$/) do |color|
-  last_line = run_output.lines.last
+  last_line = run_output.lines.to_a.last
   start_color = color == "red" ? RED_START : GREEN_START
   last_line.should start_with(start_color)
   last_line.strip.should end_with(COLOR_END)
