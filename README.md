@@ -15,10 +15,10 @@ It's even a bit faster than `xcodebuild` only, since it saves your terminal some
 
 ## Formats
 
-- simple (default)
+- --simple (default)
 ![xcpretty --simple](http://i.imgur.com/SMx0gUD.gif)
 
-- test (RSpec style, shown above)
+- --test (RSpec style, shown above)
 ![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
 
 - tun / tap (not yet implemented. possible solution for most CI servers)
@@ -38,6 +38,10 @@ There are many usages of this tool. Let me give you some ideas:
 - Xcode's test tools are close to useless. Failures in a sidebar, non-dettachable console,... You can use `xcpretty` to build your next Xcode test runner plugin
 - Run tests each time you hit save. The output is minimal, so go and wire it up with [Kicker](https://github.com/alloy/kicker) or [Guard](https://github.com/guard/guard) and be a real hipster!
 - Mine Bitcoins. You can't with this tool, but you'll be so productive that you can earn all the money and buy them!!!1!
+
+## Roadmap
+- Improve test reporting, group tests semantically
+- Write original xcodebuild output with -o flag
 
 ## Benchmark
 
