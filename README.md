@@ -44,10 +44,11 @@ There are many usages of this tool. Let me give you some ideas:
 ``` ruby
 require 'listen'
 ignored = [/.git/, /xcuserdata/, /\.txt$/, /test-reports/]
+build_task = xcodebuild -workspace Myapp.xcworkspace -scheme MyApp -sdk iphonesimulator -destination 'name=iPhone Retina (4-inch 64-bit)'
 
 listener = Listen.to(Dir.pwd, ignore: ignored) do |modified, added, removed|
   system 'killall "iPhone Simulator"'
-  system "#{build_task} -destination 'name=iPhone Retina (4-inch 64-bit)' test | xcpretty -tc"
+  system "#{build_task} test | xcpretty -tc"
 end
 
 listener.start
