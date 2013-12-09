@@ -1,3 +1,4 @@
+rvm: 2.0.0
 language: ruby
 script: rake ci
 
