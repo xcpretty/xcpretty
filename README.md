@@ -1,4 +1,4 @@
-# XCPretty
+# XCPretty [![Build Status](https://travis-ci.org/mneorr/XCPretty.png?branch=master)](https://travis-ci.org/mneorr/XCPretty)
 
 __XCPretty is a fast and flexible formatter for `xcodebuild`__.<br/>
 It does one thing, and it should do it well.
@@ -6,6 +6,8 @@ It does one thing, and it should do it well.
 ## Installation
 
     $ gem install xcpretty
+
+XCPretty requires Ruby 1.9.3 or above.
 
 ## Usage
 
