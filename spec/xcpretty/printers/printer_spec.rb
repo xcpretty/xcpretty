@@ -6,7 +6,7 @@ module XCPretty
   module Printer
 
     describe Printer do
-      
+
       include Printer
 
       def pretty_format(text)
@@ -37,7 +37,7 @@ module XCPretty
         given_tests_are_done
         executed_tests_message.should ==  "\n\n#{SAMPLE_EXECUTED_TESTS}"
       end
-      
+
       it "knows when the test suite is done for XCtest" do
         executed_tests_message.should == ""
 
@@ -72,7 +72,6 @@ RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsC
         given_kiwi_tests_are_done
         executed_tests_message.should == ""
       end
-
     end
   end
 end

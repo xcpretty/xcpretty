@@ -95,9 +95,9 @@ module XCPretty
 
     def store_failure(file, test_case, failure_message)
       failures << {
-        file: file,
-        test_case: test_case,
-        failure_message: failure_message
+        :file => file,
+        :test_case => test_case,
+        :failure_message => failure_message
       }
     end
 
