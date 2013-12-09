@@ -36,7 +36,7 @@ At this point, `xcodebuild` has got improved a lot, and it's ready to be used di
 
 There are many usages of this tool. Let me give you some ideas:
 - Xcode's test tools are close to useless. Failures in a sidebar, non-dettachable console,... You can use `xcpretty` to build your next Xcode test runner plugin
-- Run tests each time you hit save. The output is minimal, so go and wire it up with Kicker or Guard and be a real hipster!
+- Run tests each time you hit save. The output is minimal, so go and wire it up with [Kicker](https://github.com/alloy/kicker) or [Guard](https://github.com/guard/guard) and be a real hipster!
 - Mine Bitcoins. You can't with this tool, but you'll be so productive that you can earn all the money and buy them!!!1!
 
 ## Benchmark
@@ -96,3 +96,9 @@ $ time xctool -project ReactiveCocoa.xcodeproj -scheme ReactiveCocoa test
 
        10.80 real         6.72 user         0.76 sys
 ```
+
+
+## Thanks
+
+- [Delisa Mason](http://github.com/kattrali) - for being a part of this
+- [Fred Potter](http://github.com/fpotter) for making xctool and inspiring us
