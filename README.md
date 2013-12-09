@@ -15,10 +15,11 @@ It's even a bit faster than `xcodebuild` only, since it saves your terminal some
 
 ## Formats
 
-- --simple (default)
+- --color, -c (you can add it to any format)
+- --simple, -s (default)
 ![xcpretty --simple](http://i.imgur.com/SMx0gUD.gif)
 
-- --test (RSpec style, shown above)
+- --test, -t (RSpec style, shown above)
 ![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
 
 - tun / tap (not yet implemented. possible solution for most CI servers)
