@@ -18,7 +18,9 @@ def run_xcpretty flags
   add_run_input SAMPLE_OCUNIT_SUITE_COMPLETION
   add_run_input SAMPLE_EXECUTED_TESTS
   input_file = Tempfile.new(INPUT_FILE)
-  File.write(input_file.path, run_input)
+  File.open(input_file.path, 'w') do |file|
+    file.print run_input
+  end
   @output = %x(cat '#{input_file.path}' | bin/xcpretty #{flags})
   input_file.unlink
 end
