@@ -25,6 +25,14 @@ It's even a bit faster than `xcodebuild` only, since it saves your terminal some
 Unlike [xctool](https://github.com/facebook/xctool), `xcpretty` isn't a build tool.
 It relies on `xcodebuild` to do the build process, and it formats the output.
 
+## Why?
+
+There are many usages of this tool. Let me give you some ideas:
+
+- Xcode's test tools are close to useless. Failures in a sidebar, non-dettachable console,... You can use `xcpretty` to build your next Xcode test runner plugin
+- Run tests each time you hit save. The output is minimal, so go and wire it up with Kicker or Guard and be a real hipster!
+- Mine Bitcoins. You can't with this tool (yet)
+
 
 ## Benchmark
 
