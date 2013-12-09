@@ -13,12 +13,13 @@ XCPretty is designed to be piped with `xcodebuild` and thus keeping 100% compati
 This means, when `xcodebuild` works, `xcpretty` works.
 It's even a bit faster than `xcodebuild` only, since it saves your terminal some prints.
 
-![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
-
 ## Formats
 
 - simple (default)
+![xcpretty --simple](http://i.imgur.com/ZJq8bKq.gif)
+
 - test (RSpec style, shown above)
+![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
 
 ## XCPretty isn't
 
