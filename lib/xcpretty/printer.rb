@@ -21,24 +21,28 @@ module XCPretty
 		include Paint::Printer
 
 		def pretty_print(text)
+      update_test_state(text)
       formatted_text = pretty_format(text)
       formatted_text = format_test_summary(text) if formatted_text.empty?
-    
+
       STDOUT.print(formatted_text + pretty_prefix) unless formatted_text.empty?
     end
 
-    def format_test_summary(text)
+    def update_test_state(text)
       case text
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3)
-        ""
       when TESTS_DONE_MATCHER
         @tests_done = true
-        ""
-      when EXECUTED_MATCHER
-        @tests_done ? test_summary(text) : ""
       end
-      ""
+    end
+
+    def format_test_summary(text)
+      if text =~ EXECUTED_MATCHER && @tests_done
+        test_summary(text)
+      else
+        ""
+      end
     end
 
     def pretty_prefix
