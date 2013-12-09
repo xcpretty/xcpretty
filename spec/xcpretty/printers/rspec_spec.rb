@@ -27,9 +27,9 @@ module XCPretty
 
       def given_tests_are_done(reporter = KIWI)
         if reporter == KIWI
-          subject.pretty_format("Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000.")
+          subject.pretty_format(SAMPLE_KIWI_SUITE_COMPLETION)
         else
-          subject.pretty_format("Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000.")
+          subject.pretty_format(SAMPLE_OCUNIT_SUITE_COMPLETION)
         end
       end
 
