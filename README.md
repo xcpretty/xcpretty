@@ -53,6 +53,7 @@ A smaller project ([ObjectiveSugar](https://github.com/mneorr/objectivesugar)) w
 
 #### XCPretty
 ```
+$ time xcodebuild -workspace ObjectiveSugar.xcworkspace -scheme ObjectiveSugar -sdk iphonesimulator test | xcpretty -tc
 ....................................................................................
 
 Executed 84 tests, with 0 failures (0 unexpected) in 0.070 (0.094) seconds
@@ -60,6 +61,7 @@ Executed 84 tests, with 0 failures (0 unexpected) in 0.070 (0.094) seconds
 ```
 #### xcodebuild
 ```
+$ time xcodebuild -workspace ObjectiveSugar.xcworkspace -scheme ObjectiveSugar -sdk iphonesimulator test
 ... ommitted output ...
 Executed 84 tests, with 0 failures (0 unexpected) in 0.103 (0.129) seconds
 ** TEST SUCCEEDED **
@@ -68,6 +70,7 @@ Executed 84 tests, with 0 failures (0 unexpected) in 0.103 (0.129) seconds
 ```
 #### XCtool
 ```
+$ time xctool -workspace ObjectiveSugar.xcworkspace -scheme ObjectiveSugar -sdk iphonesimulator test
 ... ommitted output ...
 ** TEST SUCCEEDED: 84 passed, 0 failed, 0 errored, 84 total ** (26964 ms)
 
@@ -86,6 +89,7 @@ Executed 922 tests, with 0 failures (0 unexpected) in 6.437 (6.761) seconds
 ```
 #### xcodebuild
 ```
+$ time xcodebuild -project ReactiveCocoa.xcodeproj -scheme ReactiveCocoa test
 ... ommitted output ...
 Executed 922 tests, with 0 failures (0 unexpected) in 6.542 (6.913) seconds
 ** TEST SUCCEEDED **
@@ -94,6 +98,7 @@ Executed 922 tests, with 0 failures (0 unexpected) in 6.542 (6.913) seconds
 ```
 #### XCtool
 ```
+$ time xctool -project ReactiveCocoa.xcodeproj -scheme ReactiveCocoa test
 ... ommitted output ...
 ** TEST SUCCEEDED: 922 passed, 0 failed, 0 errored, 922 total ** (9584 ms)
 
