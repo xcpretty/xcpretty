@@ -1,3 +1,4 @@
+# encoding: utf-8
 KIWI = 'kiwi'
 OCUNIT = 'ocunit'
 SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite '/path/to/a/suite.xctest(Tests)' started at 2013-12-09 05:05:58 +0000."
