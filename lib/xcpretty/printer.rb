@@ -7,7 +7,7 @@ module XCPretty
 		attr_accessor :colorize
 
 		FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
-    TESTS_DONE_MATCHER = /Test Suite ('.*\.octest(.*)') finished at/
+    TESTS_DONE_MATCHER = /Test Suite ('.*\.(oc|xc)test(.*)') finished at/
     PASSING_TEST_MATCHER = /Test Case\s'-\[(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
     EXECUTED_MATCHER = /^Executed/
 
@@ -38,7 +38,8 @@ module XCPretty
     end
 
     def format_test_summary(text)
-      if text =~ EXECUTED_MATCHER && @tests_done
+      if text =~ EXECUTED_MATCHER && @tests_done && !@printed_summary
+        @printed_summary = true
         test_summary(text)
       else
         ""

@@ -17,11 +17,28 @@ module XCPretty
         format_test_summary(SAMPLE_EXECUTED_TESTS)
       end
 
-      def given_tests_are_done
-        pretty_print("Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000.")
+      def given_tests_are_done(reporter = SAMPLE_XCTEST_SUITE_COMPLETION)
+        pretty_print(reporter)
+      end
+
+      def given_kiwi_tests_are_done
+        pretty_print(SAMPLE_XCTEST_SUITE_COMPLETION)
+        pretty_print(SAMPLE_EXECUTED_TESTS)
+        pretty_print(SAMPLE_KIWI_SUITE_COMPLETION)
+      end
+
+      before(:each) do
+        STDOUT.stub(:print) { |text| text }
       end
 
       it "knows when the test suite is done for OCunit / Specta" do
+        executed_tests_message.should == ""
+
+        given_tests_are_done
+        executed_tests_message.should ==  "\n\n#{SAMPLE_EXECUTED_TESTS}"
+      end
+      
+      it "knows when the test suite is done for XCtest" do
         executed_tests_message.should == ""
 
         given_tests_are_done
@@ -48,6 +65,12 @@ RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsC
 
 
 #{SAMPLE_EXECUTED_TESTS}))
+      end
+
+      it "doesn't print executed message twice for Kiwi tests" do
+        Printer.instance_variable_set(:@printed_summary, false)
+        given_kiwi_tests_are_done
+        executed_tests_message.should == ""
       end
 
     end
