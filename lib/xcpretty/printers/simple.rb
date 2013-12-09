@@ -42,6 +42,8 @@ module XCPretty
           print_passing_test($1, $2)
         when FAILING_TEST_MATCHER
           print_failing_test($2, $3)
+        when TESTS_START_MATCHER
+          print_suite_start($1)
         else
           ""
         end
@@ -103,6 +105,15 @@ module XCPretty
 
       def print_generating_dsym(text)
         format("Generating DSYM file")
+      end
+
+      def print_suite_start(name)
+        heading("Test Suite", name, "started")
+      end
+
+      def heading(prefix, text, description)
+        heading_text = colorize? ? white(text) : text
+        [prefix, heading_text, description].join(" ").strip
       end
 
       def format(command, argument_text="", success=true)
