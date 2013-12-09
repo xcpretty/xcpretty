@@ -101,9 +101,14 @@ module XCPretty
         "Linking ObjectiveSugar"
       end
 
-      it "parses test cases" do
+      it "parses passing tests" do
         subject.pretty_format(SAMPLE_OCUNIT_TEST).should == 
         "RACTupleSpec _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
+      end
+
+      it "parses failing tests" do
+        subject.pretty_format(SAMPLE_SPECTA_FAILURE).should == 
+        "RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
       end
 
     end

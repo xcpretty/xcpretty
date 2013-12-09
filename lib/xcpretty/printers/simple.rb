@@ -40,6 +40,8 @@ module XCPretty
           print_linking(text)
         when PASSING_TEST_MATCHER
           print_passing_test($1, $2)
+        when FAILING_TEST_MATCHER
+          print_failing_test($2, $3)
         else
           ""
         end
@@ -47,6 +49,10 @@ module XCPretty
 
       def optional_newline
         "\n"
+      end
+
+      def print_failing_test(test_case, reason)
+        format("", "#{test_case}, #{reason}", false)
       end
 
       def print_passing_test(test_case, time)
