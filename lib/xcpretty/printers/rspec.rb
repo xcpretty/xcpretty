@@ -18,7 +18,6 @@ module XCPretty
           ""
         end
       end
-
     end
   end
 end
