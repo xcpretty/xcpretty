@@ -5,7 +5,7 @@ module XCPretty
   module Printer
 
     class Simple
-      
+
       include Printer
 
       PASS = "✓"

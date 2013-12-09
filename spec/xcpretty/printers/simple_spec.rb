@@ -7,7 +7,7 @@ module XCPretty
   module Printer
 
     describe Simple do
-      
+
       it "prints to stdout" do
         STDOUT.should receive(:print)
         subject.pretty_print(SAMPLE_CLEAN)
@@ -32,7 +32,7 @@ module XCPretty
         subject.pretty_format(SAMPLE_PRECOMPILE).should ==
         "Precompiling Pods-CocoaLumberjack-prefix.pch"
       end
-    
+
       it "parses another precompiling output" do
         subject.pretty_format(SAMPLE_ANOTHER_PRECOMPILE).should ==
         "Precompiling Pods-CrittercismSDK-prefix.pch"
@@ -45,7 +45,7 @@ module XCPretty
       it "kills 'Check dependencies'" do
         subject.pretty_format("Check dependencies").should == ""
       end
-    
+
       it "parses clean target/project/configuration" do
         subject.pretty_format(SAMPLE_CLEAN).should ==
         "Cleaning Pods/ObjectiveSugar [Debug]"
@@ -82,7 +82,7 @@ module XCPretty
       end
 
       it "parses CopyStringsFile" do
-        subject.pretty_format(SAMPLE_COPYSTRINGS).should == 
+        subject.pretty_format(SAMPLE_COPYSTRINGS).should ==
         "Copying InfoPlist.strings"
       end
 
@@ -97,17 +97,17 @@ module XCPretty
       end
 
       it "parses Ld" do
-        subject.pretty_format(SAMPLE_LD).should == 
+        subject.pretty_format(SAMPLE_LD).should ==
         "Linking ObjectiveSugar"
       end
 
       it "parses passing tests" do
-        subject.pretty_format(SAMPLE_OCUNIT_TEST).should == 
+        subject.pretty_format(SAMPLE_OCUNIT_TEST).should ==
         "RACTupleSpec _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
       end
 
       it "parses failing tests" do
-        subject.pretty_format(SAMPLE_SPECTA_FAILURE).should == 
+        subject.pretty_format(SAMPLE_SPECTA_FAILURE).should ==
         "RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
       end
 
