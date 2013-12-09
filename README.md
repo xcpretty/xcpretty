@@ -16,10 +16,12 @@ It's even a bit faster than `xcodebuild` only, since it saves your terminal some
 ## Formats
 
 - simple (default)
-![xcpretty --simple](http://i.imgur.com/ZJq8bKq.gif)
+![xcpretty --simple](http://i.imgur.com/SMx0gUD.gif)
 
 - test (RSpec style, shown above)
 ![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
+
+- tun / tap (not yet implemented. possible solution for most CI servers)
 
 ## XCPretty isn't
 
