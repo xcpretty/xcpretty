@@ -43,7 +43,7 @@ module XCPretty
         end
       end
 
-      def pretty_prefix
+      def optional_newline
         "\n"
       end
 

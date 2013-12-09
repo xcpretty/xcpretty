@@ -25,7 +25,7 @@ module XCPretty
       formatted_text = pretty_format(text)
       formatted_text = format_test_summary(text) if formatted_text.empty?
 
-      STDOUT.print(formatted_text + pretty_prefix) unless formatted_text.empty?
+      STDOUT.print(formatted_text + optional_newline) unless formatted_text.empty?
     end
 
     def update_test_state(text)
@@ -45,7 +45,7 @@ module XCPretty
       end
     end
 
-    def pretty_prefix
+    def optional_newline
       ""
     end
 
