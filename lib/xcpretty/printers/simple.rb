@@ -38,6 +38,8 @@ module XCPretty
           print_processing_info_plist(text)
         when /^Ld/
           print_linking(text)
+        when PASSING_TEST_MATCHER
+          print_passing_test($1, $2)
         else
           ""
         end
@@ -45,6 +47,10 @@ module XCPretty
 
       def optional_newline
         "\n"
+      end
+
+      def print_passing_test(test_case, time)
+        format("", "#{test_case} (#{time} seconds)")
       end
 
       def print_linking(text)

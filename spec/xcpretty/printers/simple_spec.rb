@@ -101,6 +101,11 @@ module XCPretty
         "Linking ObjectiveSugar"
       end
 
+      it "parses test cases" do
+        subject.pretty_format(SAMPLE_OCUNIT_TEST).should == 
+        "RACTupleSpec _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
+      end
+
     end
   end
 end
