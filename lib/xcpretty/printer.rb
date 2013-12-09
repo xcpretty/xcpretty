@@ -6,9 +6,18 @@ module XCPretty
 
 		attr_accessor :colorize
 
+    # @regex Captured groups
+    # $1 = file
+    # $2 = test_case
+    # $3 = failure_message
 		FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
-    TESTS_DONE_MATCHER = /Test Suite ('.*\.(oc|xc)test(.*)') finished at/
+
+    # @regex Captured groups
+    # $1 = test_case
+    # $2 = time
     PASSING_TEST_MATCHER = /Test Case\s'-\[(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+
+    TESTS_DONE_MATCHER = /Test Suite ('.*\.(oc|xc)test(.*)') finished at/
     EXECUTED_MATCHER = /^Executed/
 
 		Paint::SHORTCUTS[:printer] = {
