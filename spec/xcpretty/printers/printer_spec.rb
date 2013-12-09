@@ -10,7 +10,6 @@ module XCPretty
       include Printer
 
       def pretty_format(text)
-        puts "SHOULD PRETTY FORMAT: #{text}"
         ""
       end
 

@@ -86,7 +86,6 @@ module XCPretty
         test_case: test_case,
         failure_message: failure_message
       }
-      puts "STORING: #{failures}"
     end
 
     def colorize?
