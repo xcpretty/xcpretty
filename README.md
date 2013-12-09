@@ -31,7 +31,7 @@ There are many usages of this tool. Let me give you some ideas:
 
 - Xcode's test tools are close to useless. Failures in a sidebar, non-dettachable console,... You can use `xcpretty` to build your next Xcode test runner plugin
 - Run tests each time you hit save. The output is minimal, so go and wire it up with Kicker or Guard and be a real hipster!
-- Mine Bitcoins. You can't with this tool (yet)
+- Mine Bitcoins. You can't with this tool, but you'll be so productive that you can earn all the money and buy them!!!1!
 
 
 ## Benchmark
