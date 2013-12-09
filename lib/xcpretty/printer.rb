@@ -2,15 +2,15 @@ require "paint"
 
 module XCPretty
 
-	module Printer
+  module Printer
 
-		attr_accessor :colorize
+    attr_accessor :colorize
 
     # @regex Captured groups
     # $1 = file
     # $2 = test_case
     # $3 = failure_message
-		FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
+    FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
     # @regex Captured groups
     # $1 = test_case
@@ -23,16 +23,16 @@ module XCPretty
     TESTS_START_MATCHER = /Test Suite ('.*(\.(o|x)ctest(.*))?') started at/
     EXECUTED_MATCHER = /^Executed/
 
-		Paint::SHORTCUTS[:printer] = {
-		  :white => Paint.color(:bold),
+    Paint::SHORTCUTS[:printer] = {
+      :white => Paint.color(:bold),
       :red   => Paint.color(:red),
       :green => Paint.color(:green, :bright),
       :link  => Paint.color(:cyan),
     }
 
-		include Paint::Printer
+    include Paint::Printer
 
-		def pretty_print(text)
+    def pretty_print(text)
       update_test_state(text)
       formatted_text = pretty_format(text)
       formatted_text = format_test_summary(text) if formatted_text.empty?
@@ -81,10 +81,10 @@ module XCPretty
         "#{f[:test_case]}, #{reason}\n#{path}"
       end.join("\n\n")
       final_message = if colorize?
-        failures.any? ? red(executed_message) : green(executed_message)
-      else
-        executed_message
-      end
+                        failures.any? ? red(executed_message) : green(executed_message)
+                      else
+                        executed_message
+                      end
       text = [formatted_failures, final_message].join("\n\n\n").strip
       "\n\n#{text}"
     end
@@ -93,7 +93,7 @@ module XCPretty
       @failures ||= []
     end
 
-		def store_failure(file, test_case, failure_message)
+    def store_failure(file, test_case, failure_message)
       failures << {
         file: file,
         test_case: test_case,
@@ -102,7 +102,7 @@ module XCPretty
     end
 
     def colorize?
-    	!!@colorize
+      !!@colorize
     end
-	end
+  end
 end
