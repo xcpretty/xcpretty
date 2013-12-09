@@ -2,7 +2,7 @@ module XCPretty
   module Printer
 
     class RSpec
-      
+
       include Printer
 
       FAIL = "F"
@@ -18,7 +18,7 @@ module XCPretty
           ""
         end
       end
-      
+
     end
   end
 end
