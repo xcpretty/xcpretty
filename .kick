@@ -1,1 +1,15 @@
 recipe :ruby
+
+process do |files|
+  cuke_files = files.take_and_map do |path|
+    if path =~ %r{^features/\w+\.feature$}
+      path
+    elsif path =~ %r{^bin} || path =~ %r{^features}
+      Dir.glob("features/**/*.feature")
+    end
+  end
+
+  puts "CUKES: #{cuke_files}"
+
+  execute "cucumber -f progress #{cuke_files.join(' ')}"
+end
