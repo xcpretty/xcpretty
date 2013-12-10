@@ -36,7 +36,7 @@ module XCPretty
     include ANSI
     include Matchers
 
-    def use_unicode= bool
+    def use_unicode=(bool)
       @use_unicode = !!bool
     end
 
