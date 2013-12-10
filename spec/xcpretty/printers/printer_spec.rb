@@ -47,9 +47,13 @@ module XCPretty
 
       it "prints out Kiwi failures nicely" do
         pretty_print(SAMPLE_KIWI_FAILURE)
+        pretty_print(SAMPLE_KIWI_FAILURE)
         given_tests_are_done
         executed_tests_message.should include(%Q(
 NumberAdditions
+  Iterators_TimesIteratesTheExactNumberOfTimes, expected subject to equal 4, got 5
+  /Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49
+
   Iterators_TimesIteratesTheExactNumberOfTimes, expected subject to equal 4, got 5
   /Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49
 
@@ -59,9 +63,13 @@ NumberAdditions
 
       it "prints out specta failures nicely" do
         pretty_print(SAMPLE_SPECTA_FAILURE)
+        pretty_print(SAMPLE_SPECTA_FAILURE)
         given_tests_are_done
         executed_tests_message.should include(%Q(
 RACCommandSpec
+  enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0
+  /Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458
+
   enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0
   /Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458
 
