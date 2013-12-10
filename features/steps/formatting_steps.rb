@@ -36,15 +36,15 @@ When(/^I pipe to xcpretty with "(.*?)"$/) do |flags|
 end
 
 Then(/^I should see a successful compilation message$/) do
-  run_output.should start_with("> Compiling")
+  run_output.should start_with("▸ Compiling")
 end
 
 Then(/^I should see a successful precompilation message$/) do
-  run_output.should start_with("> Precompiling")
+  run_output.should start_with("▸ Precompiling")
 end
 
 Then(/^I should see a yellow completion icon$/) do
-  run_output.should start_with(yellow(">"))
+  run_output.should start_with(yellow("▸"))
 end
 
 Then(/^I should see a failed test icon$/) do
@@ -97,11 +97,11 @@ Then(/^I should see that the test suite finished$/) do
 end
 
 Then(/^I should see a red failed test mark$/) do
-  run_output.should include(red("x"))
+  run_output.should include(red("✗"))
 end
 
 Then(/^I should see a green passing test mark$/) do
-  run_output.should include(green("."))
+  run_output.should include(green("✓"))
 end
 
 Then(/^I should not see the name of the test group$/) do
