@@ -18,7 +18,7 @@ module XCPretty
     }
 
     def white(text)
-      ansi_parse(text, :white, :bold)
+      ansi_parse(text, :black, :bold)
     end
 
     def red(text)
