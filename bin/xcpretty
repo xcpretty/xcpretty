@@ -12,7 +12,6 @@ def printer
 end
 
 OptionParser.new do |opts|
-  @unicode = true
   opts.banner = "Usage: xcodebuild [options] | xcpretty"
   opts.on('-t', '--test', 'Use RSpec style output') do
     @printer = XCPretty::Printer::RSpec.new
@@ -30,7 +29,7 @@ OptionParser.new do |opts|
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
   opts.parse!
   printer.colorize = @colorize
-  printer.use_unicode = @unicode
+  printer.use_unicode = @unicode || true
 end
 
 ARGF.each_line do |line|
