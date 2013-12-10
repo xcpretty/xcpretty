@@ -1,6 +1,7 @@
 # encoding: utf-8
 KIWI = 'kiwi'
 OCUNIT = 'ocunit'
+SAMPLE_TEST_GROUP_NAME = "RACTupleSpec"
 SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite '/path/to/a/suite.xctest(Tests)' started at 2013-12-09 05:05:58 +0000."
 SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000."
 SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
@@ -16,7 +17,7 @@ Clean.Remove clean /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSu
     builtin-rm -rf /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugarTests.build
 )
 SAMPLE_EXECUTED_TESTS = "Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
-SAMPLE_OCUNIT_TEST = "Test Case '-[RACTupleSpec _tupleByAddingObject__should_add_a_non_nil_object]' passed (0.001 seconds)."
+SAMPLE_OCUNIT_TEST = "Test Case '-[#{SAMPLE_TEST_GROUP_NAME} _tupleByAddingObject__should_add_a_non_nil_object]' passed (0.001 seconds)."
 SAMPLE_COMPILE = %Q(
 CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-ObjectiveSugar.build/Objects-normal/i386/NSMutableArray+ObjectiveSugar.o /Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example/Pods
