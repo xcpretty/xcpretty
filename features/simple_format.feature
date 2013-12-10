@@ -40,6 +40,7 @@ Scenario: Showing successful test output
 Given I have a passing test in my suite
 When I pipe to xcpretty with "--simple"
 Then I should see the name of a passing test
+And I should not see the name of the test suite
 And I should not see the path of a passing test
 
 Scenario: Showing failed test output with color

@@ -103,7 +103,7 @@ module XCPretty
 
       it "parses passing tests" do
         subject.pretty_format(SAMPLE_OCUNIT_TEST).should ==
-        "RACTupleSpec _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
+        "_tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
       end
 
       it "parses failing tests" do

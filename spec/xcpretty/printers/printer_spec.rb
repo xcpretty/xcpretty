@@ -72,6 +72,7 @@ RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsC
         given_kiwi_tests_are_done
         executed_tests_message.should == ""
       end
+
     end
   end
 end
