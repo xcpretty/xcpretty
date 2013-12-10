@@ -16,11 +16,12 @@ module XCPretty
       :yellow => '33',
       :blue   => '34',
       :cyan   => '36',
-      :white  => '37'
+      :white  => '37',
+      :plain  => '39'
     }
 
     def white(text)
-      ansi_parse(text, :black, :bold)
+      ansi_parse(text, :plain, :bold)
     end
 
     def red(text)
