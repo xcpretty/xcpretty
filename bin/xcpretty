@@ -12,6 +12,7 @@ def printer
 end
 
 OptionParser.new do |opts|
+  @unicode = true
   opts.banner = "Usage: xcodebuild [options] | xcpretty"
   opts.on('-t', '--test', 'Use RSpec style output') do
     @printer = XCPretty::Printer::RSpec.new
@@ -22,8 +23,8 @@ OptionParser.new do |opts|
   opts.on('-c', '--color', 'Use colorized output') do
     @colorize = true
   end
-  opts.on('-u', '--unicode', 'Use unicode characters in output') do
-    @unicode = true
+  opts.on('--no-utf', 'Disable unicode characters in output') do
+    @unicode = false
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
