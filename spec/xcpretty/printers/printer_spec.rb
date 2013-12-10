@@ -52,7 +52,7 @@ module XCPretty
       it "prints out Kiwi failures nicely" do
         pretty_print(SAMPLE_KIWI_FAILURE)
         pretty_print(SAMPLE_KIWI_FAILURE)
-        given_tests_are_done
+        given_tests_are_done(SAMPLE_KIWI_TEST_RUN_COMPLETION)
         executed_tests_message.should include(%Q(
 NumberAdditions
   Iterators_TimesIteratesTheExactNumberOfTimes, expected subject to equal 4, got 5
@@ -83,27 +83,32 @@ RACCommandSpec
 
       it "doesn't print executed message twice for Kiwi tests" do
           given_tests_have_started(SAMPLE_KIWI_TEST_RUN_BEGINNING)
-          given_kiwi_tests_are_done
-
+          given_tests_are_done(SAMPLE_KIWI_TEST_RUN_COMPLETION)
           executed_tests_message.should ==  "\n\n#{SAMPLE_EXECUTED_TESTS}"
+
+          given_tests_are_done(SAMPLE_KIWI_SUITE_COMPLETION)
+          executed_tests_message.should ==  ""
       end
 
       it "prints OCunit / XCTest summary twice if tests executed twice" do
         2.times do
           given_tests_have_started
           given_tests_are_done
-          given_tests_are_done
-
           executed_tests_message.should ==  "\n\n#{SAMPLE_EXECUTED_TESTS}"
+
+          given_tests_are_done(SAMPLE_XCTEST_SUITE_COMPLETION)
+          executed_tests_message.should ==  ""
         end
       end
 
       it "prints Kiwi summary twice if tests executed twice" do
         2.times do
           given_tests_have_started(SAMPLE_KIWI_TEST_RUN_BEGINNING)
-          given_kiwi_tests_are_done
-
+          given_tests_are_done(SAMPLE_KIWI_TEST_RUN_COMPLETION)
           executed_tests_message.should ==  "\n\n#{SAMPLE_EXECUTED_TESTS}"
+
+          given_tests_are_done(SAMPLE_KIWI_SUITE_COMPLETION)
+          executed_tests_message.should ==  ""
         end
       end
 
