@@ -5,6 +5,7 @@ module XCPretty
     include ANSI
 
     before do
+      self.colorize = true
       @text = "This is the PARTY"
     end
 

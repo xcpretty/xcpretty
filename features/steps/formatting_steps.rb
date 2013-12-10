@@ -19,7 +19,7 @@ Given(/^I have a passing test in my suite$/) do
   add_run_input SAMPLE_OCUNIT_TEST
 end
 
-Given(/^the tests start running$/) do
+Given(/^the tests have started running$/) do
   add_run_input SAMPLE_OCUNIT_TEST_RUN_BEGINNING
 end
 
@@ -36,15 +36,15 @@ When(/^I pipe to xcpretty with "(.*?)"$/) do |flags|
 end
 
 Then(/^I should see a successful compilation message$/) do
-  run_output.should start_with("Compiling")
+  run_output.should start_with("▸ Compiling")
 end
 
 Then(/^I should see a successful precompilation message$/) do
-  run_output.should start_with("Precompiling")
+  run_output.should start_with("▸ Precompiling")
 end
 
-Then(/^I should see a green success icon$/) do
-  run_output.should start_with(green("✓"))
+Then(/^I should see a yellow completion icon$/) do
+  run_output.should start_with(yellow("▸"))
 end
 
 Then(/^I should see a failed test icon$/) do

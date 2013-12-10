@@ -4,14 +4,12 @@ module XCPretty
 
   module Printer
 
-    attr_accessor :colorize
-
     module Matchers
       # @regex Captured groups
       # $1 = suite
       # $2 = time
       TESTS_RUN_START_MATCHER = /Test Suite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)/
-      
+
       # @regex Captured groups
       # $1 = suite
       # $2 = time
@@ -37,6 +35,14 @@ module XCPretty
 
     include ANSI
     include Matchers
+
+    def use_unicode=(bool)
+      @use_unicode = !!bool
+    end
+
+    def use_unicode?
+      !!@use_unicode
+    end
 
     def pretty_print(text)
       update_test_state(text)
@@ -109,14 +115,10 @@ module XCPretty
     def store_failure(file, test_suite, test_case, reason)
       failures_per_suite[test_suite] ||= []
       failures_per_suite[test_suite] << {
-        :file => colorize? ? cyan(file) : file,
-        :reason => colorize? ? red(reason) : reason,
+        :file => cyan(file),
+        :reason => red(reason),
         :test_case => test_case,
       }
-    end
-
-    def colorize?
-      !!@colorize
     end
   end
 end

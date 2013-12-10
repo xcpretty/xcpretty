@@ -11,9 +11,9 @@ module XCPretty
       def pretty_format(text)
         case text
         when PASSING_TEST_MATCHER
-          colorize? ? green(PASS) : PASS
+          green(PASS)
         when FAILING_TEST_MATCHER
-          colorize? ? red(FAIL) : FAIL
+          red(FAIL)
         else
           ""
         end

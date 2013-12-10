@@ -22,10 +22,14 @@ OptionParser.new do |opts|
   opts.on('-c', '--color', 'Use colorized output') do
     @colorize = true
   end
+  opts.on('--no-utf', 'Disable unicode characters in output') do
+    @unicode = false
+  end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
   opts.parse!
   printer.colorize = @colorize
+  printer.use_unicode = @unicode || true
 end
 
 ARGF.each_line do |line|

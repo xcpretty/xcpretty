@@ -1,5 +1,6 @@
 module XCPretty
   module ANSI
+    attr_accessor :colorize
 
     FORMATTED_MATCHER = %r{\e\[(\d+)[;]?(\d+)?m(.*)\e\[0m}
 
@@ -20,6 +21,10 @@ module XCPretty
       :plain  => '39'
     }
 
+    def colorize?
+      !!@colorize
+    end
+
     def white(text)
       ansi_parse(text, :plain, :bold)
     end
@@ -34,6 +39,10 @@ module XCPretty
 
     def cyan(text)
       ansi_parse(text, :cyan)
+    end
+
+    def yellow(text)
+      ansi_parse(text, :yellow)
     end
 
     def applied_effects(text)
@@ -52,6 +61,7 @@ module XCPretty
     end
 
     def ansi_parse(text, color, effect=nil)
+      return text unless colorize?
       colors_code = COLORS[color]  || ''
       effect_code = EFFECT[effect] ? ';' + EFFECT[effect] : ''
       "\e[#{colors_code}#{effect_code}m#{text}\e[#{EFFECT[:reset]}m"

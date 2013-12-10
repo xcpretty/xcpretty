@@ -13,12 +13,12 @@ Feature: Showing build output in simple format
     Scenario: Showing file compilation with color
         Given I have a file to compile
         When I pipe to xcpretty with "--simple --color"
-        Then I should see a green success icon
+        Then I should see a yellow completion icon
 
     Scenario: Showing precompilation
         Given I have a precompiled header
         When I pipe to xcpretty with "--simple --color"
-        Then I should see a green success icon
+        Then I should see a yellow completion icon
 
     Scenario: Showing the start of a test run
         Given the tests have started running
