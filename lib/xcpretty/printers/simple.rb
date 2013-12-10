@@ -43,7 +43,7 @@ module XCPretty
           print_passing_test($1, $2)
         when FAILING_TEST_MATCHER
           print_failing_test($3, $4)
-        when SUITE_START_MATCHER
+        when TEST_SUITE_START_MATCHER
           print_suite_start($1)
         else
           ""
@@ -109,7 +109,7 @@ module XCPretty
       end
 
       def print_suite_start(name)
-        heading("Test Suite", name, "started")
+        heading("", name, "")
       end
 
       def heading(prefix, text, description)

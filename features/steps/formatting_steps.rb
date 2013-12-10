@@ -81,7 +81,7 @@ Then(/^I should not see the path of a passing test$/) do
 end
 
 Then(/^I should see that the test suite started$/) do
-  run_output.should =~ TEST_SUITE_BEGINNING_MATCHER
+  run_output.should =~ TEST_SUITE_START_MATCHER
 end
 
 Then(/^I should see that the test suite finished$/) do
