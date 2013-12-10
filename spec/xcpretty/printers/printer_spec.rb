@@ -26,7 +26,7 @@ module XCPretty
       end
 
       def given_kiwi_tests_are_done
-        pretty_print(SAMPLE_XCTEST_SUITE_COMPLETION)
+        pretty_print(SAMPLE_KIWI_TEST_RUN_COMPLETION)
         pretty_print(SAMPLE_EXECUTED_TESTS)
         pretty_print(SAMPLE_KIWI_SUITE_COMPLETION)
       end
@@ -82,9 +82,8 @@ RACCommandSpec
       end
 
       it "doesn't print executed message twice for Kiwi tests" do
-          given_tests_have_started
-          given_tests_are_done
-          given_tests_are_done
+          given_tests_have_started(SAMPLE_KIWI_TEST_RUN_BEGINNING)
+          given_kiwi_tests_are_done
 
           executed_tests_message.should ==  "\n\n#{SAMPLE_EXECUTED_TESTS}"
       end
@@ -101,9 +100,8 @@ RACCommandSpec
 
       it "prints Kiwi summary twice if tests executed twice" do
         2.times do
-          given_tests_have_started
-          given_tests_are_done
-          given_tests_are_done
+          given_tests_have_started(SAMPLE_KIWI_TEST_RUN_BEGINNING)
+          given_kiwi_tests_are_done
 
           executed_tests_message.should ==  "\n\n#{SAMPLE_EXECUTED_TESTS}"
         end

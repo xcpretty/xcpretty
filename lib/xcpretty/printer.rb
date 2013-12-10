@@ -9,7 +9,12 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TEST_RUN_MATCHER = /Test Suite\s'(?:.*\/)?(.*[ox]ctest.*)'\sstarted at(.*)/
+    TESTS_RUN_START_MATCHER = /Test Suite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)/
+    
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = time
+    TESTS_RUN_COMPLETION_MATCHER = /Test Suite '(?:.*\/)?(.*[ox]ctest.*)' finished at(.*)/
 
     # @regex Captured groups
     # $1 = test_case
@@ -23,10 +28,9 @@ module XCPretty
     # $4 = reason
     FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
-    TESTS_DONE_MATCHER = /Test Suite ('.*\.[ox]ctest.*') finished at/
     # @regex Captured groups
     # $1 test suite name
-    TESTS_START_MATCHER = /Test Suite ('.*(\.[ox]ctest.*)?') started at/
+    SUITE_START_MATCHER = /Test Suite '(.*)' started at/
     EXECUTED_MATCHER = /^Executed/
 
     include ANSI
@@ -41,13 +45,14 @@ module XCPretty
 
     def update_test_state(text)
       case text
-      when TEST_RUN_MATCHER
+      when TESTS_RUN_START_MATCHER
+        @tests_done = false
         @printed_summary = false
         @failures = {}
+      when TESTS_RUN_COMPLETION_MATCHER
+        @tests_done = true
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
-      when TESTS_DONE_MATCHER
-        @tests_done = true
       end
     end
 
@@ -78,7 +83,6 @@ module XCPretty
 
     def test_summary(executed_message)
       formatted_suites = failures_per_suite.map do |suite, failures|
-
         formatted_failures = failures.map do |f|
           "  #{f[:test_case]}, #{f[:reason]}\n  #{f[:file]}"
         end.join("\n\n")

@@ -43,7 +43,7 @@ module XCPretty
           print_passing_test($1, $2)
         when FAILING_TEST_MATCHER
           print_failing_test($3, $4)
-        when TESTS_START_MATCHER
+        when SUITE_START_MATCHER
           print_suite_start($1)
         else
           ""
