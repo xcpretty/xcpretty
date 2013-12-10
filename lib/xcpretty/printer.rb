@@ -94,7 +94,7 @@ module XCPretty
     def store_failure(file, test_suite, test_case, reason)
       failures_per_suite[test_suite] ||= []
       failures_per_suite[test_suite] << {
-        :file => colorize? ? link(file) : file,
+        :file => colorize? ? cyan(file) : file,
         :reason => colorize? ? red(reason) : reason,
         :test_case => test_case,
       }
