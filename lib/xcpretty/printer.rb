@@ -1,4 +1,4 @@
-require "paint"
+require "xcpretty/ansi"
 
 module XCPretty
 
@@ -23,14 +23,7 @@ module XCPretty
     TESTS_START_MATCHER = /Test Suite ('.*(\.(o|x)ctest(.*))?') started at/
     EXECUTED_MATCHER = /^Executed/
 
-    Paint::SHORTCUTS[:printer] = {
-      :white => Paint.color(:bold),
-      :red   => Paint.color(:red),
-      :green => Paint.color(:green, :bright),
-      :link  => Paint.color(:cyan),
-    }
-
-    include Paint::Printer
+    include ANSI
 
     def pretty_print(text)
       update_test_state(text)
