@@ -13,8 +13,8 @@ module XCPretty
         red(@text).should == "\e[31m#{@text}\e[0m"
       end
 
-      it "colors text white" do
-        white(@text).should == "\e[30;1m#{@text}\e[0m"
+      it "formats text bold" do
+        white(@text).should == "\e[39;1m#{@text}\e[0m"
       end
 
       it "colors text green" do
