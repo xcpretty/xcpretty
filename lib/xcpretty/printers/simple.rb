@@ -43,7 +43,9 @@ module XCPretty
           print_passing_test($1, $2)
         when FAILING_TEST_MATCHER
           print_failing_test($3, $4)
-        when TESTS_START_MATCHER
+        when TESTS_RUN_START_MATCHER
+          print_test_run_start($1)
+        when TEST_SUITE_START_MATCHER
           print_suite_start($1)
         else
           ""
@@ -108,8 +110,12 @@ module XCPretty
         format("Generating DSYM file")
       end
 
+      def print_test_run_start(name)
+        heading("Test Suite", name, "started")  
+      end
+
       def print_suite_start(name)
-        heading("Test Suite", name, "started")
+        heading("", name, "")
       end
 
       def heading(prefix, text, description)

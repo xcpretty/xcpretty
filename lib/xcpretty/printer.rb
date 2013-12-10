@@ -6,25 +6,37 @@ module XCPretty
 
     attr_accessor :colorize
 
-    # @regex Captured groups
-    # $1 = test_case
-    # $2 = time
-    PASSING_TEST_MATCHER = /Test Case\s'-\[.*\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+    module Matchers
+      # @regex Captured groups
+      # $1 = suite
+      # $2 = time
+      TESTS_RUN_START_MATCHER = /Test Suite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)/
+      
+      # @regex Captured groups
+      # $1 = suite
+      # $2 = time
+      TESTS_RUN_COMPLETION_MATCHER = /Test Suite '(?:.*\/)?(.*[ox]ctest.*)' finished at(.*)/
 
-    # @regex Captured groups
-    # $1 = file
-    # $2 = test_suite
-    # $3 = test_case
-    # $4 = reason
-    FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
+      # @regex Captured groups
+      # $1 = test_case
+      # $2 = time
+      PASSING_TEST_MATCHER = /Test Case\s'-\[.*\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
 
-    TESTS_DONE_MATCHER = /Test Suite ('.*\.(o|x)ctest(.*)') finished at/
-    # @regex Captured groups
-    # $1 test suite name
-    TESTS_START_MATCHER = /Test Suite ('.*(\.(o|x)ctest(.*))?') started at/
-    EXECUTED_MATCHER = /^Executed/
+      # @regex Captured groups
+      # $1 = file
+      # $2 = test_suite
+      # $3 = test_case
+      # $4 = reason
+      FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
+
+      # @regex Captured groups
+      # $1 test suite name
+      TEST_SUITE_START_MATCHER = /Test Suite '(.*)' started at/
+      EXECUTED_MATCHER = /^Executed/
+    end
 
     include ANSI
+    include Matchers
 
     def pretty_print(text)
       update_test_state(text)
@@ -36,10 +48,14 @@ module XCPretty
 
     def update_test_state(text)
       case text
+      when TESTS_RUN_START_MATCHER
+        @tests_done = false
+        @printed_summary = false
+        @failures = {}
+      when TESTS_RUN_COMPLETION_MATCHER
+        @tests_done = true
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
-      when TESTS_DONE_MATCHER
-        @tests_done = true
       end
     end
 
@@ -70,7 +86,6 @@ module XCPretty
 
     def test_summary(executed_message)
       formatted_suites = failures_per_suite.map do |suite, failures|
-
         formatted_failures = failures.map do |f|
           "  #{f[:test_case]}, #{f[:reason]}\n  #{f[:file]}"
         end.join("\n\n")
