@@ -21,7 +21,7 @@ Feature: Showing build output in simple format
         Then I should see a green success icon
 
     Scenario: Showing the start of a test run
-        Given the tests start running
+        Given the tests have started running
         When I pipe to xcpretty with "--simple"
         Then I should see that test suite has started
 
