@@ -19,6 +19,10 @@ Given(/^I have a passing test in my suite$/) do
   add_run_input SAMPLE_OCUNIT_TEST
 end
 
+Given(/^the tests start running$/) do
+  add_run_input SAMPLE_OCUNIT_TEST_RUN_BEGINNING
+end
+
 Given(/^I start a test suite$/) do
   add_run_input SAMPLE_OCUNIT_SUITE_BEGINNING
 end
@@ -80,7 +84,11 @@ Then(/^I should not see the path of a passing test$/) do
   run_output.should_not =~ TEST_PATH_MATCHER
 end
 
-Then(/^I should see that the test suite started$/) do
+Then(/^I should see that test suite has started$/) do
+  run_output.should =~ TEST_RUN_START_MATCHER
+end
+
+Then(/^I should see the name of suite only$/) do
   run_output.should =~ TEST_SUITE_START_MATCHER
 end
 

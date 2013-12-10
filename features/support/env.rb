@@ -7,6 +7,7 @@ require "lib/xcpretty/ansi"
 
 include XCPretty::ANSI
 
+TEST_RUN_START_MATCHER  = /Test Suite .+ started/
 TEST_SUITE_COMPLETION_MATCHER = /Executed \d+ tests, with \d+ failures \(\d+ unexpected\) in \d+\.\d+ \(\d+\.\d+\) seconds/
 TEST_SUITE_START_MATCHER = /[\w]*(Spec|Tests)$/
 TEST_PATH_MATCHER = %r{[\w/\-\s]+:\d+}

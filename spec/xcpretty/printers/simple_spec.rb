@@ -110,6 +110,16 @@ module XCPretty
         subject.pretty_format(SAMPLE_SPECTA_FAILURE).should ==
         "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
       end
+
+      it "parses test run started" do
+        subject.pretty_format(SAMPLE_OCUNIT_TEST_RUN_BEGINNING).should ==
+        "Test Suite ReactiveCocoaTests.octest(Tests) started"
+      end
+
+      it "parses test suite started" do
+        subject.pretty_format(SAMPLE_OCUNIT_SUITE_BEGINNING).should ==
+        "RACKVOWrapperSpec"
+      end
     end
   end
 end
