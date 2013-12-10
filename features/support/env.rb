@@ -37,6 +37,10 @@ def run_output
   @output ||= ""
 end
 
+Before do
+ self.colorize = true
+end
+
 After do
   @input  = ""
   @output = ""
