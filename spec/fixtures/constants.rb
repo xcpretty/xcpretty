@@ -2,6 +2,8 @@
 KIWI = 'kiwi'
 OCUNIT = 'ocunit'
 SAMPLE_TEST_GROUP_NAME = "RACTupleSpec"
+SAMPLE_OCUNIT_TEST_RUN_BEGINNING = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/SampleProject-fwkvzpjqvgdogxbyowspkqajeecg/Build/Products/Debug-iphonesimulator/SampleProjectTests.octest(Tests)' started at 2013-12-10 06:02:19 +0000"
+SAMPLE_KIWI_TEST_RUN_BEGINNING = "Test Suite 'ObjectiveRecordTests.xctest' started at 2013-12-10 06:15:39 +0000"
 SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite '/path/to/a/suite.xctest(Tests)' started at 2013-12-09 05:05:58 +0000."
 SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000."
 SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
