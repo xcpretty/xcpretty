@@ -10,8 +10,8 @@ include XCPretty::ANSI
 TEST_SUITE_COMPLETION_MATCHER = /Executed \d+ tests, with \d+ failures \(\d+ unexpected\) in \d+\.\d+ \(\d+\.\d+\) seconds/
 TEST_SUITE_BEGINNING_MATCHER  = /Test Suite '.+' started/
 TEST_PATH_MATCHER = %r{[\w/\-\s]+:\d+}
-PASSING_TEST_NAME_MATCHER = %r{\w+\s\w+\s\(\d+\.\d+\sseconds\)}
-FAILING_TEST_NAME_MATCHER = %r{\w+\s\w+, expected:}
+PASSING_TEST_NAME_MATCHER = %r{\w+\s\(\d+\.\d+\sseconds\)}
+FAILING_TEST_NAME_MATCHER = %r{\w+, expected:}
 
 def run_xcpretty flags
   add_run_input SAMPLE_OCUNIT_SUITE_COMPLETION

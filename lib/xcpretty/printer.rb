@@ -7,15 +7,16 @@ module XCPretty
     attr_accessor :colorize
 
     # @regex Captured groups
-    # $1 = file
-    # $2 = test_case
-    # $3 = failure_message
-    FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
-
-    # @regex Captured groups
     # $1 = test_case
     # $2 = time
-    PASSING_TEST_MATCHER = /Test Case\s'-\[(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+    PASSING_TEST_MATCHER = /Test Case\s'-\[.*\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+
+    # @regex Captured groups
+    # $1 = file
+    # $2 = test_suite
+    # $3 = test_case
+    # $4 = reason
+    FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
     TESTS_DONE_MATCHER = /Test Suite ('.*\.(o|x)ctest(.*)') finished at/
     # @regex Captured groups
@@ -36,7 +37,7 @@ module XCPretty
     def update_test_state(text)
       case text
       when FAILING_TEST_MATCHER
-        store_failure($1, $2, $3)
+        store_failure($1, $2, $3, $4)
       when TESTS_DONE_MATCHER
         @tests_done = true
       end
@@ -68,29 +69,34 @@ module XCPretty
     end
 
     def test_summary(executed_message)
-      formatted_failures = failures.map do |f|
-        reason = colorize? ? red(f[:failure_message]) : f[:failure_message]
-        path   = colorize? ? cyan(f[:file]) : f[:file]
-        "#{f[:test_case]}, #{reason}\n#{path}"
-      end.join("\n\n")
+      formatted_suites = failures_per_suite.map do |suite, failures|
+
+        formatted_failures = failures.map do |f|
+          "  #{f[:test_case]}, #{f[:reason]}\n  #{f[:file]}"
+        end.join("\n\n")
+
+        "#{suite}\n#{formatted_failures}"
+      end
+
       final_message = if colorize?
-                        failures.any? ? red(executed_message) : green(executed_message)
+                        formatted_suites.any? ? red(executed_message) : green(executed_message)
                       else
                         executed_message
                       end
-      text = [formatted_failures, final_message].join("\n\n\n").strip
+      text = [formatted_suites, final_message].join("\n\n\n").strip
       "\n\n#{text}"
     end
 
-    def failures
-      @failures ||= []
+    def failures_per_suite
+      @failures ||= {}
     end
 
-    def store_failure(file, test_case, failure_message)
-      failures << {
-        :file => file,
+    def store_failure(file, test_suite, test_case, reason)
+      failures_per_suite[test_suite] ||= []
+      failures_per_suite[test_suite] << {
+        :file => colorize? ? cyan(file) : file,
+        :reason => colorize? ? red(reason) : reason,
         :test_case => test_case,
-        :failure_message => failure_message
       }
     end
 
