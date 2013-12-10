@@ -10,6 +10,10 @@ module XCPretty
 
       PASS = "✓"
       FAIL = "✗"
+      ASCII_PASS = "."
+      ASCII_FAIL = "x"
+      COMPLETION = "▸"
+      ASCII_COMPLETION = ">"
 
       def pretty_format(text)
         case text
@@ -57,11 +61,11 @@ module XCPretty
       end
 
       def print_failing_test(test_case, reason)
-        format("", "#{test_case}, #{reason}", false)
+        format_test("#{test_case}, #{reason}", false)
       end
 
       def print_passing_test(test_case, time)
-        format("", "#{test_case} (#{time} seconds)")
+        format_test("#{test_case} (#{time} seconds)")
       end
 
       def print_linking(text)
@@ -125,14 +129,21 @@ module XCPretty
 
       def format(command, argument_text="", success=true)
         command_text = colorize? ? white(command) : command
-        [status_symbol(success), command_text, argument_text].join(" ").strip
+        [status_symbol(success ? :completion : :fail), command_text, argument_text].join(" ").strip
       end
 
-      def status_symbol(success)
-        if success && colorize?
-          green(PASS)
-        elsif colorize?
-          red(FAIL)
+      def format_test(test_case, success=true)
+        [status_symbol(success ? :pass : :fail), test_case].join(" ").strip
+      end
+
+      def status_symbol(status)
+        case status
+        when :pass
+          green(use_unicode? ? PASS : ASCII_PASS)
+        when :fail
+          red(use_unicode? ? FAIL : ASCII_FAIL)
+        when :completion
+          yellow(use_unicode? ? COMPLETION : ASCII_COMPLETION)
         else
           ""
         end
