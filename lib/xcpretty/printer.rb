@@ -70,7 +70,7 @@ module XCPretty
     def test_summary(executed_message)
       formatted_failures = failures.map do |f|
         reason = colorize? ? red(f[:failure_message]) : f[:failure_message]
-        path   = colorize? ? link(f[:file]) : f[:file]
+        path   = colorize? ? cyan(f[:file]) : f[:file]
         "#{f[:test_case]}, #{reason}\n#{path}"
       end.join("\n\n")
       final_message = if colorize?

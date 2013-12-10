@@ -1,6 +1,6 @@
+require "spec_helper"
 require "xcpretty/printer"
 require "xcpretty/printers/rspec"
-require "fixtures/constants"
 
 module XCPretty
 
@@ -13,12 +13,28 @@ module XCPretty
         subject.pretty_print(SAMPLE_OCUNIT_TEST)
       end
 
-      it "prints dots for passing tests" do
-        subject.pretty_format(SAMPLE_OCUNIT_TEST).should == "."
+      context "without colors" do
+
+        it "prints green dots for passing tests" do
+          subject.pretty_format(SAMPLE_OCUNIT_TEST).should == "."
+        end
+
+        it "prints F for failing tests" do
+          subject.pretty_format(SAMPLE_KIWI_FAILURE).should == "F"
+        end
       end
 
-      it "prints F for failing tests" do
-        subject.pretty_format(SAMPLE_KIWI_FAILURE).should == "F"
+      context "with colors" do
+
+        before { subject.colorize = true }
+
+        it "prints green for passing tests" do
+          subject.pretty_format(SAMPLE_OCUNIT_TEST).should be_colored :green
+        end
+
+        it "prints red for failing tests" do
+          subject.pretty_format(SAMPLE_KIWI_FAILURE).should be_colored :red
+        end
       end
 
       describe "doesn't output any compiling output" do

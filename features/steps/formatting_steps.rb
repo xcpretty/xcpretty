@@ -40,7 +40,7 @@ Then(/^I should see a successful precompilation message$/) do
 end
 
 Then(/^I should see a green success icon$/) do
-  run_output.should start_with("#{GREEN_START}✓#{COLOR_END}")
+  run_output.should start_with(green("✓"))
 end
 
 Then(/^I should see a failed test icon$/) do
@@ -52,18 +52,16 @@ Then(/^I should see a passing test icon in ASCII$/) do
 end
 
 Then(/^I should see a red failed test icon$/) do
-  run_output.should include("#{RED_START}F#{COLOR_END}")
+  run_output.should include(red("F"))
 end
 
 Then(/^the final execution message should be (red|green)$/) do |color|
   last_line = run_output.lines.to_a.last
-  start_color = color == "red" ? RED_START : GREEN_START
-  last_line.should start_with(start_color)
-  last_line.strip.should end_with(COLOR_END)
+  last_line.should be_colored(color.to_sym)
 end
 
 Then(/^I should see a green passing test icon$/) do
-  run_output.should include("#{GREEN_START}.#{COLOR_END}")
+  run_output.should include(green("."))
 end
 
 Then(/^I should see the name of a failed test$/) do
@@ -91,9 +89,9 @@ Then(/^I should see that the test suite finished$/) do
 end
 
 Then(/^I should see a red failed test mark$/) do
-  run_output.should include("#{RED_START}✗#{COLOR_END}")
+  run_output.should include(red("✗"))
 end
 
 Then(/^I should see a green passing test mark$/) do
-  run_output.should include("#{GREEN_START}✓#{COLOR_END}")
+  run_output.should include(green("✓"))
 end

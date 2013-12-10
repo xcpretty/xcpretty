@@ -1,5 +1,5 @@
+require "spec_helper"
 require "xcpretty/printer"
-require "fixtures/constants"
 
 module XCPretty
 
