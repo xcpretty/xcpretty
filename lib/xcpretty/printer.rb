@@ -28,6 +28,11 @@ module XCPretty
       FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
       # @regex Captured groups
+      # $1 = file
+      # $2 = warning
+      BUILD_WARNINGS_MATCHER = /\s(.*)warning:\s(.*)/
+
+      # @regex Captured groups
       # $1 test suite name
       TEST_SUITE_START_MATCHER = /Test Suite '(.*)' started at/
       EXECUTED_MATCHER = /^Executed/
