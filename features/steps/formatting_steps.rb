@@ -104,6 +104,12 @@ Then(/^I should see a green passing test mark$/) do
   run_output.should include(green("✓"))
 end
 
+Then(/^I should see a non-utf prefixed output$/) do
+  run_output.should start_with(".")
+end
+
+
+
 Then(/^I should not see the name of the test group$/) do
   run_output.should_not include(SAMPLE_TEST_GROUP_NAME)
 end

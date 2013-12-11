@@ -60,3 +60,8 @@ Feature: Showing build output in simple format
         And I finish a test suite
         When I pipe to xcpretty with "--simple --color"
         Then I should see a green passing test mark
+
+    Scenario: Running tests without UTF-8 support
+        Given I have a passing test in my suite
+        And I pipe to xcpretty with "--no-utf"
+        Then I should see a non-utf prefixed output
