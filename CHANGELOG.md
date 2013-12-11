@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.5
+
+###### Bug Fixes
+
+* --no-utf was set uncorrectly. now it works
+
+
 ## 0.0.4
 
 ###### Enhancements
