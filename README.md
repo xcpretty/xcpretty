@@ -19,7 +19,7 @@ It's even a bit faster than `xcodebuild` only, since it saves your terminal some
 
 - --color, -c (you can add it to any format)
 - --simple, -s (default)
-![xcpretty --simple](http://i.imgur.com/SMx0gUD.gif)
+![xcpretty --simple](http://i.imgur.com/LdmozBS.gif)
 
 - --test, -t (RSpec style)
 ![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
