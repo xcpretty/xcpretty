@@ -5,6 +5,11 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple"
         Then I should see a successful compilation message
 
+    Scenario: Showing xib compilation
+        Given I have a xib to compile
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful compilation message
+
     Scenario: Showing precompilation
         Given I have a precompiled header
         When I pipe to xcpretty with "--simple"
@@ -15,8 +20,33 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple --color"
         Then I should see a yellow completion icon
 
+    Scenario: Showing xib compilation with color
+        Given I have a xib to compile
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a yellow completion icon
+
     Scenario: Showing precompilation
         Given I have a precompiled header
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a yellow completion icon
+
+    Scenario: Showing analyze
+        Given I have a file to analyze
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful analyze message
+
+    Scenario: Showing shallow analyze
+        Given I have a file to shallow analyze
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful analyze message
+
+    Scenario: Showing analyze with color
+        Given I have a file to analyze
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a yellow completion icon
+
+    Scenario: Showing shallow analyze with color
+        Given I have a file to shallow analyze
         When I pipe to xcpretty with "--simple --color"
         Then I should see a yellow completion icon
 

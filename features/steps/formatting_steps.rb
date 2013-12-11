@@ -3,8 +3,20 @@ Given(/^I have a file to compile$/) do
   add_run_input SAMPLE_COMPILE
 end
 
+Given(/^I have a xib to compile$/) do
+  add_run_input SAMPLE_COMPILE_XIB
+end
+
 Given(/^I have a precompiled header$/) do
   add_run_input SAMPLE_PRECOMPILE
+end
+
+Given(/^I have a file to analyze$/) do
+  add_run_input SAMPLE_ANALYZE
+end
+
+Given(/^I have a file to shallow analyze$/) do
+  add_run_input SAMPLE_ANALYZE_SHALLOW
 end
 
 Given(/^I have a failing test in my suite$/) do
@@ -41,6 +53,10 @@ end
 
 Then(/^I should see a successful precompilation message$/) do
   run_output.should start_with("▸ Precompiling")
+end
+
+Then(/^I should see a successful analyze message$/) do
+  run_output.should start_with("▸ Analyzing")
 end
 
 Then(/^I should see a yellow completion icon$/) do
