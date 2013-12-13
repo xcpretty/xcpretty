@@ -16,9 +16,10 @@ module XCPretty
       TESTS_RUN_COMPLETION_MATCHER = /Test Suite '(?:.*\/)?(.*[ox]ctest.*)' finished at(.*)/
 
       # @regex Captured groups
-      # $1 = test_case
-      # $2 = time
-      PASSING_TEST_MATCHER = /Test Case\s'-\[.*\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+      # $1 = class
+      # $2 = test_case
+      # $3 = time
+      PASSING_TEST_MATCHER = /Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
 
       # @regex Captured groups
       # $1 = file

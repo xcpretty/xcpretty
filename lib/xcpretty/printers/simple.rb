@@ -44,7 +44,7 @@ module XCPretty
         when /^Ld/
           print_linking(text)
         when PASSING_TEST_MATCHER
-          print_passing_test($1, $2)
+          print_passing_test($2, $3)
         when FAILING_TEST_MATCHER
           print_failing_test($3, $4)
         when TESTS_RUN_START_MATCHER
