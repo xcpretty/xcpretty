@@ -28,7 +28,7 @@ module XCPretty
       when PASSING_TEST_MATCHER
         create_passing_test_case($1, $2, $3)
       when FAILING_TEST_MATCHER
-        create_failing_test_case($2, $3, $4)
+        create_failing_test_case($1, $2, $3, $4)
       end
     end
 
@@ -57,13 +57,13 @@ module XCPretty
       @document.elements.to_a.last
     end
 
-    def create_failing_test_case(classname, name, reason)
+    def create_failing_test_case(file, classname, name, reason)
       test_node = current_suite.add_element("testcase")
       test_node.attributes["classname"] = classname
       test_node.attributes["name"]      = name
       fail_node = test_node.add_element("failure")
-      fail_node.attributes["message"] = "test failure"
-      fail_node.text = reason
+      fail_node.attributes["message"] = reason
+      fail_node.text = file
       @test_count+=1
       @fail_count+=1
     end
