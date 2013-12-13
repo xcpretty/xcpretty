@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
-$:.unshift File.expand_path('../../lib', __FILE__)
+
+if $0 == __FILE__
+  $:.unshift File.expand_path('../../lib', __FILE__)
+end
 require 'xcpretty'
 require 'optparse'
 
