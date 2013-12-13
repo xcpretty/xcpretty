@@ -3,13 +3,13 @@ module XCPretty
   class JUnit
     include Printer::Matchers
 
-    FILEPATH = "build/reports/junit.xml"
+    FILEPATH = 'build/reports/junit.xml'
 
     def load_dependencies
       unless @@loaded ||= false
-        require "fileutils"
-        require "rexml/document"
-        require "rexml/formatters/pretty"
+        require 'fileutils'
+        require 'rexml/document'
+        require 'rexml/formatters/pretty'
         @@loaded = true
       end
     end
@@ -42,13 +42,13 @@ module XCPretty
     def create_test_suite(name)
       @test_count = 0
       @fail_count = 0
-      suite = @document.add_element("testsuite")
-      suite.attributes["name"] = $1
+      suite = @document.add_element('testsuite')
+      suite.attributes['name'] = $1
     end
 
     def finish_test_suite
-      current_suite.attributes["tests"] = @test_count
-      current_suite.attributes["failures"] = @fail_count
+      current_suite.attributes['tests'] = @test_count
+      current_suite.attributes['failures'] = @fail_count
       @test_count = 0
       @fail_count = 0
     end
@@ -58,21 +58,21 @@ module XCPretty
     end
 
     def create_failing_test_case(file, classname, name, reason)
-      test_node = current_suite.add_element("testcase")
-      test_node.attributes["classname"] = classname
-      test_node.attributes["name"]      = name
-      fail_node = test_node.add_element("failure")
-      fail_node.attributes["message"] = reason
+      test_node = current_suite.add_element('testcase')
+      test_node.attributes['classname'] = classname
+      test_node.attributes['name']      = name
+      fail_node = test_node.add_element('failure')
+      fail_node.attributes['message'] = reason
       fail_node.text = file
       @test_count+=1
       @fail_count+=1
     end
 
     def create_passing_test_case(classname, name, time)
-      test_node = current_suite.add_element("testcase")
-      test_node.attributes["classname"] = classname
-      test_node.attributes["name"]      = name
-      test_node.attributes["time"]      = time
+      test_node = current_suite.add_element('testcase')
+      test_node.attributes['classname'] = classname
+      test_node.attributes['name']      = name
+      test_node.attributes['time']      = time
       @test_count+=1
     end
   end
