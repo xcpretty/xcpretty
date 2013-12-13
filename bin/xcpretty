@@ -7,7 +7,12 @@ if RUBY_VERSION < '1.8.7'
   abort "error: XCPretty requires Ruby 1.8.7 or higher."
 end
 
+report_formats = {
+  "junit" => XCPretty::JUnit
+}
+
 OptionParser.new do |opts|
+  @report_formats = []
   opts.banner = "Usage: xcodebuild [options] | xcpretty"
   opts.on('-t', '--test', 'Use RSpec style output') do
     @klass = XCPretty::Printer::RSpec
@@ -21,6 +26,10 @@ OptionParser.new do |opts|
   opts.on('--no-utf', 'Disable unicode characters in output') do
     @no_utf = true
   end
+  opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
+                "  Choices: #{report_formats.keys.join(', ')}") do |format|
+    @report_formats << report_formats[format]
+  end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
   opts.parse!
@@ -30,6 +39,11 @@ printer = (@klass || XCPretty::Printer::Simple).new
 printer.colorize = @colorize
 printer.use_unicode = !@no_utf
 
+reporters = @report_formats.compact.map(&:new)
+
 ARGF.each_line do |line|
   printer.pretty_print(line)
+  reporters.each {|r| r.handle(line) }
 end
+
+reporters.each(&:finish)
