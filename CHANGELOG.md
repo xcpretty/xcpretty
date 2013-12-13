@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.6
+
+###### Enhancements
+
+* Added support for reporters
+* Added JUnit reporter
+
 ## 0.0.5
 
 ###### Bug Fixes
