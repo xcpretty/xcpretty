@@ -20,7 +20,7 @@ FAILING_TEST_NAME_MATCHER = %r{\w+, expected:}
 def run_xcpretty flags
   add_run_input SAMPLE_OCUNIT_SUITE_COMPLETION
   add_run_input SAMPLE_EXECUTED_TESTS
-  input_file = Tempfile.new("xcpretty_input")
+  input_file = Tempfile.new('xcpretty_input')
   File.open(input_file.path, 'w') do |file|
     file.print run_input
   end
@@ -33,11 +33,11 @@ def add_run_input text
 end
 
 def run_input
-  @input ||= ""
+  @input ||= ''
 end
 
 def run_output
-  @output ||= ""
+  @output ||= ''
 end
 
 def junit_report
@@ -45,7 +45,7 @@ def junit_report
 end
 
 Before do
- self.colorize = true
+  self.colorize = true
 end
 
 After do
@@ -53,3 +53,4 @@ After do
   @output = ""
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
 end
+

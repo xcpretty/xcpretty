@@ -11,20 +11,26 @@ report_formats = {
   "junit" => XCPretty::JUnit
 }
 
+@constructor = {
+  :unicode => true,
+  :colorize => false,
+  :formatter => XCPretty::Simple 
+}
+
 OptionParser.new do |opts|
   @report_formats = []
   opts.banner = "Usage: xcodebuild [options] | xcpretty"
   opts.on('-t', '--test', 'Use RSpec style output') do
-    @klass = XCPretty::Printer::RSpec
+    @constructor[:formatter] = XCPretty::RSpec
   end
   opts.on('-s', '--simple', 'Use simple output (default)') do
-    @klass = XCPretty::Printer::Simple
+    @constructor[:formatter] = XCPretty::Simple
   end
   opts.on('-c', '--color', 'Use colorized output') do
-    @colorize = true
+    @constructor[:colorize] = true
   end
   opts.on('--no-utf', 'Disable unicode characters in output') do
-    @no_utf = true
+    @constructor[:unicode] = false
   end
   opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
                 "  Choices: #{report_formats.keys.join(', ')}") do |format|
@@ -35,10 +41,7 @@ OptionParser.new do |opts|
   opts.parse!
 end
 
-printer = (@klass || XCPretty::Printer::Simple).new
-printer.colorize = @colorize
-printer.use_unicode = !@no_utf
-
+printer = XCPretty::Printer.new(@constructor)
 reporters = @report_formats.compact.map(&:new)
 
 ARGF.each_line do |line|
@@ -47,3 +50,4 @@ ARGF.each_line do |line|
 end
 
 reporters.each(&:finish)
+

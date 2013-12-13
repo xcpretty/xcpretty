@@ -1,5 +1,6 @@
 module XCPretty
   module ANSI
+    
     attr_accessor :colorize
 
     FORMATTED_MATCHER = %r{\e\[(\d+)[;]?(\d+)?m(.*)\e\[0m}
