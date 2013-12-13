@@ -4,6 +4,9 @@ require "tempfile"
 require "spec/fixtures/constants"
 require "spec/support/matchers/colors"
 require "lib/xcpretty/ansi"
+require "rexml/document"
+require "lib/xcpretty/printer"
+require "lib/xcpretty/reporters/junit"
 
 include XCPretty::ANSI
 
@@ -37,6 +40,10 @@ def run_output
   @output ||= ""
 end
 
+def junit_report
+  REXML::Document.new(File.open(XCPretty::JUnit::FILEPATH, 'r').read)
+end
+
 Before do
  self.colorize = true
 end
@@ -44,4 +51,5 @@ end
 After do
   @input  = ""
   @output = ""
+  FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
 end

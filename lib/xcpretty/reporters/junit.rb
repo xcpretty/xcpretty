@@ -23,7 +23,7 @@ module XCPretty
       case line
       when TESTS_RUN_START_MATCHER
         @test_count = 0
-        suite = @document.add_element("test_suite")
+        suite = @document.add_element("testsuite")
         suite.attributes["name"] = $1
       when TESTS_RUN_COMPLETION_MATCHER
         current_suite.attributes["tests"] = @test_count
