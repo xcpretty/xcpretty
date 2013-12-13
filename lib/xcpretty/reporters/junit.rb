@@ -8,6 +8,7 @@ module XCPretty
     def load_dependencies
       unless @@loaded ||= false
         require 'fileutils'
+        require 'pathname'
         require 'rexml/document'
         require 'rexml/formatters/pretty'
         @@loaded = true
@@ -16,7 +17,8 @@ module XCPretty
 
     def initialize
       load_dependencies
-      @document = REXML::Document.new
+      @directory = `pwd`.strip
+      @document  = REXML::Document.new
     end
 
     def handle(line)
@@ -63,7 +65,7 @@ module XCPretty
       test_node.attributes['name']      = name
       fail_node = test_node.add_element('failure')
       fail_node.attributes['message'] = reason
-      fail_node.text = file
+      fail_node.text = file.sub(@directory.strip + '/', '')
       @test_count+=1
       @fail_count+=1
     end
