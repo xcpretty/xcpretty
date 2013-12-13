@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 
+if RUBY_VERSION < '1.8.7'
+  abort "error: XCPretty requires Ruby 1.8.7 or higher."
+end
+
 if $0 == __FILE__
   $:.unshift File.expand_path('../../lib', __FILE__)
 end
 require 'xcpretty'
 require 'optparse'
-
-if RUBY_VERSION < '1.8.7'
-  abort "error: XCPretty requires Ruby 1.8.7 or higher."
-end
 
 report_formats = {
   "junit" => XCPretty::JUnit
