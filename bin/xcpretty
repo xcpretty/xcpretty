@@ -23,6 +23,15 @@ OptionParser.new do |opts|
   opts.on('-s', '--simple', 'Use simple output (default)') do
     @klass = XCPretty::Printer::Simple
   end
+  opts.on('-p', '--printer PATH', 'Use printer returned from evaluating the specified Ruby file') do |path|
+    $:.unshift File.dirname(path)
+    source = File.read(path)
+    @klass = eval(source, nil, path)
+    unless @klass.is_a?(Class)
+      $stderr.puts '[!] Expected printer source file to return a class.'
+      exit 1
+    end
+  end
   opts.on('-c', '--color', 'Use colorized output') do
     @colorize = true
   end
