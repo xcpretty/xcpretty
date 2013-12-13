@@ -10,6 +10,19 @@ end
 require 'xcpretty'
 require 'optparse'
 
+def load_custom_formatter(path)
+  begin
+    $:.unshift File.dirname(path)
+    source = File.read(path)
+    klass = eval(source, nil, path)
+    raise unless klass.is_a?(Class)
+    klass
+  rescue SyntaxError => e
+    $stderr.puts "[!] Expected formatter source file to return a class. #{e}"
+    exit 1
+  end
+end
+
 report_formats = {
   "junit" => XCPretty::JUnit
 }
@@ -29,6 +42,9 @@ OptionParser.new do |opts|
   end
   opts.on('-s', '--simple', 'Use simple output (default)') do
     constructor[:formatter] = XCPretty::Simple
+  end
+  opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
+    constructor[:formatter] = load_custom_formatter(path)
   end
   opts.on('-c', '--color', 'Use colorized output') do
     constructor[:colorize] = true
