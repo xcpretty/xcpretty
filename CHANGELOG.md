@@ -6,6 +6,7 @@
 
 * Added support for reporters
 * Added JUnit reporter
+* Added support for loading arbitrary custom printers
 
 ## 0.0.5
 
