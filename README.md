@@ -1,8 +1,10 @@
-# XCPretty [![Build Status](https://travis-ci.org/mneorr/XCPretty.png?branch=master)](https://travis-ci.org/mneorr/XCPretty)
+# XCPretty
 
 __XCPretty is a fast and flexible formatter for `xcodebuild`__.<br/>
 It does one thing, and it should do it well.
 
+[![Build Status](https://travis-ci.org/mneorr/XCPretty.png?branch=master)](https://travis-ci.org/mneorr/XCPretty)
+[![Code Climate](https://codeclimate.com/github/mneorr/XCPretty.png)](https://codeclimate.com/github/mneorr/XCPretty)
 ## Installation
 
     $ gem install xcpretty
