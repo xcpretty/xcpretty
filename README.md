@@ -17,14 +17,18 @@ It's even a bit faster than `xcodebuild` only, since it saves your terminal some
 
 ## Formats
 
-- --color, -c (you can add it to any format)
-- --simple, -s (default)
+- `--color`, `-c` (you can add it to any format)
+- `--simple`, `-s` (default)
 ![xcpretty --simple](http://i.imgur.com/LdmozBS.gif)
 
-- --test, -t (RSpec style)
+- `--test`, `-t` (RSpec style)
 ![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
 
 - tun / tap (not yet implemented. possible solution for most CI servers)
+
+## Reporters
+
+- `--report junit`, `-r junit`: Creates a JUnit-style XML report at `build/reports/junit.xml`, compatible with Jenkins CI.
 
 ## Have you just cloned xctool?
 
