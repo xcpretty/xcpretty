@@ -1,12 +1,19 @@
 # Changelog
 
+## master
+
+###### Enhancements
+
+* Added support for loading arbitrary custom printers
+
+
 ## 0.0.6
 
 ###### Enhancements
 
 * Added support for reporters
 * Added JUnit reporter
-* Added support for loading arbitrary custom printers
+
 
 ## 0.0.5
 
