@@ -1,7 +1,7 @@
 require 'xcpretty/ansi'
 
 module XCPretty
-  
+
   class Formatter
 
     include ANSI
@@ -26,10 +26,10 @@ module XCPretty
           "  #{f[:test_case]}, #{f[:reason]}\n  #{f[:file]}"
         end.join("\n\n")
 
-        "#{suite}\n#{formatted_failures}"
-      end
+        "\n#{suite}\n#{formatted_failures}"
+      end.join("\n")
     end
-    
+
   end
 
 end
