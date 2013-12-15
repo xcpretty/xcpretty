@@ -1,3 +1,4 @@
+require 'xcpretty/formatters/formatter'
 require "xcpretty/formatters/simple"
 require "fixtures/constants"
 
@@ -8,6 +9,14 @@ module XCPretty
       before(:each) do
         @formatter = Simple.new(false, false)
       end
+
+      it "formats analyzing" do
+        @formatter.format_analyzing("CCChip8DisplayView.m").should ==
+        "> Analyzing CCChip8DisplayView.m"
+      end
+
+
+
 
       it "parses compiling output" do
         @formatter.pretty_format(SAMPLE_COMPILE).should ==
@@ -20,7 +29,7 @@ module XCPretty
       end
 
       it "parses compiling xib output" do
-        @formatter.pretty_format(SAMPLE_COMPILE_XIB).should ==
+        subject.pretty_format(SAMPLE_COMPILE_XIB).should ==
         "> Compiling MainMenu.xib"
       end
 
@@ -97,13 +106,9 @@ module XCPretty
         "> Linking ObjectiveSugar"
       end
 
-      it "parses analyze" do
-        @formatter.pretty_format(SAMPLE_ANALYZE).should ==
-        "> Analyzing CCChip8DisplayView.m"
-      end
 
       it "parses analyze shallow" do
-        @formatter.pretty_format(SAMPLE_ANALYZE_SHALLOW).should ==
+        subject.pretty_format(SAMPLE_ANALYZE_SHALLOW).should ==
         "> Analyzing CCChip8DisplayView.m"
       end
 
