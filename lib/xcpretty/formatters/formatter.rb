@@ -5,6 +5,7 @@ module XCPretty
   class Formatter
 
     include ANSI
+    EMPTY_STRING = ""
 
     def initialize(use_unicode, colorize)
       @use_unicode = use_unicode
@@ -50,13 +51,13 @@ module XCPretty
     # PROTECTED / OVERRIDES
     #########################################################
 
-    def format_compiling(file)
-      ""
-    end
-
-    def format_cleaning(project, target, configuration)
-      ""
-    end
+    def format_check_dependencies;                    EMPTY_STRING; end
+    def format_clean(project, target, configuration); EMPTY_STRING; end
+    def format_clean_remove;                          EMPTY_STRING; end # not sure if we need it / not implemented
+    def format_compile(file);                         EMPTY_STRING; end
+    def format_compile_xib(file);                     EMPTY_STRING; end
+    def format_analyze(file);                         EMPTY_STRING; end
+    def format_process_pch(file);                     EMPTY_STRING; end
 
     #########################################################
 

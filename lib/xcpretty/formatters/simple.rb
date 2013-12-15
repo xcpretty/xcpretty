@@ -16,16 +16,8 @@ module XCPretty
       case text
       when /^ProcessPCH/
         format_pch(text)
-      when /^CompileC/
-        format_compiling(text)
-      when /^Clean.Remove/
-        ""
-      when /^Check dependencies/
-        ""
       when /^=== CLEAN TARGET/
         format_clean_target(text)
-      when /^CompileXIB/
-        format_compiling_xib(text)
       when /^=== BUILD TARGET/
         format_build_target(text)
       when /^PhaseScriptExecution/
@@ -55,20 +47,16 @@ module XCPretty
       end
     end
 
-    def optional_newline
-      "\n"
-    end
-
-    def format_analyzing(text)
-      format("Analyzing", text)
+    def format_analyze(file)
+      format("Analyzing", file)
     end
       
-    def format_compiling(text)
-      format("Compiling", text.shellsplit[2].split('/').last)
+    def format_compile(file)
+      format("Compiling", file)
     end
     
-    def format_compiling_xib(text)
-      format("Compiling", text.shellsplit[1].split('/').last)
+    def format_compile_xib(file)
+      format("Compiling", file)
     end
 
     def format_clean_target(text)

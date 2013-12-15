@@ -11,44 +11,23 @@ module XCPretty
       end
 
       it "formats analyzing" do
-        @formatter.format_analyzing("CCChip8DisplayView.m").should ==
+        @formatter.format_analyze("CCChip8DisplayView.m").should ==
         "> Analyzing CCChip8DisplayView.m"
       end
 
-
-
-
-      it "parses compiling output" do
-        @formatter.pretty_format(SAMPLE_COMPILE).should ==
+      it "formats compiling output" do
+        @formatter.format_compile("NSMutableArray+ObjectiveSugar.m").should ==
         "> Compiling NSMutableArray+ObjectiveSugar.m"
       end
 
-      it "parses another compiling output" do
-        @formatter.pretty_format(SAMPLE_ANOTHER_COMPILE).should ==
-        "> Compiling KWNull.m"
-      end
-
-      it "parses compiling xib output" do
-        subject.pretty_format(SAMPLE_COMPILE_XIB).should ==
+      it "formats compiling xib output" do
+        @formatter.format_compile_xib("MainMenu.xib").should ==
         "> Compiling MainMenu.xib"
       end
 
-      it "parses precompiling output" do
+      it "formats precompiling output" do
         @formatter.pretty_format(SAMPLE_PRECOMPILE).should ==
         "> Precompiling Pods-CocoaLumberjack-prefix.pch"
-      end
-
-      it "parses another precompiling output" do
-        @formatter.pretty_format(SAMPLE_ANOTHER_PRECOMPILE).should ==
-        "> Precompiling Pods-CrittercismSDK-prefix.pch"
-      end
-
-      it "parses clean remove output" do
-        @formatter.pretty_format(SAMPLE_CLEAN_REMOVE).should == ""
-      end
-
-      it "kills 'Check dependencies'" do
-        @formatter.pretty_format("Check dependencies").should == ""
       end
 
       it "parses clean target/project/configuration" do
@@ -104,12 +83,6 @@ module XCPretty
       it "parses Ld" do
         @formatter.pretty_format(SAMPLE_LD).should ==
         "> Linking ObjectiveSugar"
-      end
-
-
-      it "parses analyze shallow" do
-        subject.pretty_format(SAMPLE_ANALYZE_SHALLOW).should ==
-        "> Analyzing CCChip8DisplayView.m"
       end
 
       it "parses passing tests" do
