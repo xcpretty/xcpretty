@@ -25,25 +25,25 @@ module XCPretty
         'StringSpec' => [
           {
             :file => 'path/to/file1',
-            :reason => 'doesnt split',
+            :reason => "doesn't split",
             :test_case => 'Splitting the string'
           }
         ],
         'CarSpec' => [
           {
             :file => 'path/to/file2',
-            :reason => 'just doesnt work',
+            :reason => "just doesn't work",
             :test_case => 'Starting the car'
           }
         ]
       }
       @formatter.format_failures(failures).should == %Q(
 StringSpec
-  Splitting the string, doesnt split
+  Splitting the string, doesn't split
   path/to/file1
 
 CarSpec
-  Starting the car, just doesnt work
+  Starting the car, just doesn't work
   path/to/file2)
     end
 

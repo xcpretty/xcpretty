@@ -1,7 +1,6 @@
 
 module XCPretty
   class JUnit
-    include Printer::Matchers
 
     FILEPATH = 'build/reports/junit.xml'
 

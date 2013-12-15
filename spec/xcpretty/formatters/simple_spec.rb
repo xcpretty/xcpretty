@@ -20,7 +20,7 @@ module XCPretty
       end
 
       it "parses compiling xib output" do
-        subject.pretty_format(SAMPLE_COMPILE_XIB).should ==
+        @formatter.pretty_format(SAMPLE_COMPILE_XIB).should ==
         "> Compiling MainMenu.xib"
       end
 
@@ -98,12 +98,12 @@ module XCPretty
       end
 
       it "parses analyze" do
-        subject.pretty_format(SAMPLE_ANALYZE).should ==
+        @formatter.pretty_format(SAMPLE_ANALYZE).should ==
         "> Analyzing CCChip8DisplayView.m"
       end
 
       it "parses analyze shallow" do
-        subject.pretty_format(SAMPLE_ANALYZE_SHALLOW).should ==
+        @formatter.pretty_format(SAMPLE_ANALYZE_SHALLOW).should ==
         "> Analyzing CCChip8DisplayView.m"
       end
 

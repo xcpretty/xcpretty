@@ -5,19 +5,16 @@ module XCPretty
     FAIL = "F"
     PASS = "."
 
-    def pretty_format(text)
-      case text
-      when PASSING_TEST_MATCHER
-        green(PASS)
-      when FAILING_TEST_MATCHER
-        red(FAIL)
-      else
-        ""
-      end
-    end
-
     def optional_newline
       ''
+    end
+
+    def format_passing_test(test_case, time)
+      green(PASS)
+    end
+
+    def format_failing_test(file, test_suite, test_case, reason)
+      red(FAIL)
     end
 
   end

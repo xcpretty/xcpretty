@@ -1,4 +1,5 @@
-require 'spec_helper'
+require "spec_helper"
+require "xcpretty"
 require "xcpretty/formatters/rspec"
 
 module XCPretty
@@ -16,11 +17,13 @@ module XCPretty
     context "without colors" do
 
       it "prints green dots for passing tests" do
-        @formatter.pretty_format(SAMPLE_OCUNIT_TEST).should == "."
+        @formatter.format_passing_test("sample spec", "0.002").should == "."
       end
 
       it "prints F for failing tests" do
-        @formatter.pretty_format(SAMPLE_KIWI_FAILURE).should == "F"
+        @formatter.format_failing_test(
+          "///file", "NSNumber Specs", "adding numbers", "should add 2 numbers"
+        ).should == "F"
       end
     end
 
@@ -29,22 +32,14 @@ module XCPretty
       before { @formatter.colorize = true }
 
       it "prints green for passing tests" do
-        @formatter.pretty_format(SAMPLE_OCUNIT_TEST).should be_colored :green
+        @formatter.format_passing_test("sample spec", "0.002")
+        .should be_colored :green
       end
 
       it "prints red for failing tests" do
-        @formatter.pretty_format(SAMPLE_KIWI_FAILURE).should be_colored :red
-      end
-    end
-
-    describe "doesn't output any compiling output" do
-
-      it "compiling output" do
-        @formatter.pretty_format(SAMPLE_COMPILE).should == ""
-      end
-
-      it "clean target/project/configuration with nested pods" do
-        @formatter.pretty_format(SAMPLE_CLEAN).should == ""
+        @formatter.format_failing_test(
+          "///file", "NSNumber Specs", "adding numbers", "should add 2 numbers"
+        ).should be_colored :red
       end
     end
   end

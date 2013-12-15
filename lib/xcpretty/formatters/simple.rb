@@ -14,6 +14,8 @@ module XCPretty
 
     def pretty_format(text)
       case text
+      when /^Analyze/
+        print_analyzing(text)
       when /^ProcessPCH/
         print_pch(text)
       when /^CompileC/
@@ -24,6 +26,8 @@ module XCPretty
         ""
       when /^=== CLEAN TARGET/
         print_clean_target(text)
+      when /^CompileXIB/
+        print_compiling_xib(text)
       when /^=== BUILD TARGET/
         print_build_target(text)
       when /^PhaseScriptExecution/
@@ -55,6 +59,14 @@ module XCPretty
 
     def optional_newline
       "\n"
+    end
+
+    def print_analyzing(text)
+      format("Analyzing", text.shellsplit[1].split('/').last)
+    end
+      
+    def print_compiling_xib(text)
+      format("Compiling", text.shellsplit[1].split('/').last)
     end
 
     def print_failing_test(test_case, reason)
