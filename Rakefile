@@ -5,7 +5,7 @@ task :kick do
 end
 
 task :spec do
-  sh 'rspec spec'
+  sh 'rspec spec --color --format nested'
 end
 
 task :cucumber do
