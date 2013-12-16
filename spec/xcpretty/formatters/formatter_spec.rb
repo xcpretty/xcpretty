@@ -20,6 +20,7 @@ module XCPretty
       @formatter.optional_newline.should == "\n"
     end
 
+if RUBY_VERSION > '1.8.7'
     it "formats failures per suite" do
       failures = {
         'StringSpec' => [
@@ -51,5 +52,6 @@ CarSpec
 #{@formatter.red(SAMPLE_EXECUTED_TESTS)})
     end
 
+end
   end
 end
