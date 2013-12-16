@@ -45,6 +45,16 @@ module XCPretty
         "> Copying InfoPlist.strings"
       end
 
+      it "formats GenerateDSYMFile" do
+        @formatter.format_generate_dsym("ObjectiveSugarTests.octest.dSYM").should ==
+        "> Generating 'ObjectiveSugarTests.octest.dSYM'"
+      end
+      
+      it "formats info.plist processing" do
+        @formatter.format_process_info_plist("The Spacer-Info.plist").should ==
+        "> Processing The Spacer-Info.plist"
+      end
+      
       it "formats Linking" do
         @formatter.format_linking("ObjectiveSugar").should ==
         "> Linking ObjectiveSugar"
@@ -53,6 +63,16 @@ module XCPretty
       it "formats Libtool" do
         @formatter.format_libtool("libPods-ObjectiveSugarTests-Kiwi.a").should ==
         "> Building library libPods-ObjectiveSugarTests-Kiwi.a"
+      end
+
+      it "formats failing tests" do
+        @formatter.format_failing_test("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0").should ==
+        "x enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
+      end
+
+      it "formats passing tests" do
+        @formatter.format_passing_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", "0.001").should ==
+        ". _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
       end
 
       it "formats Phase Script Execution" do
@@ -65,37 +85,15 @@ module XCPretty
         "> Precompiling Pods-CocoaLumberjack-prefix.pch"
       end
 
-
-      
-
-      xit "parses GenerateDSYMFile" do
-        @formatter.pretty_format(SAMPLE_DSYM).should ==
-        "> Generating DSYM file"
-      end
-      
-      xit "parses info.plist processing" do
-        @formatter.pretty_format(SAMPLE_PROCESS_INFOPLIST).should ==
-        "> Processing The Spacer-Info.plist"
-      end      
-
-      xit "parses passing tests" do
-        @formatter.pretty_format(SAMPLE_OCUNIT_TEST).should ==
-        ". _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
-      end
-
-      xit "parses failing tests" do
-        @formatter.pretty_format(SAMPLE_SPECTA_FAILURE).should ==
-        "x enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
-      end
-
-      xit "parses test run started" do
-        @formatter.pretty_format(SAMPLE_OCUNIT_TEST_RUN_BEGINNING).should ==
+      it "formats test run start" do
+        @formatter.format_test_run_started("ReactiveCocoaTests.octest(Tests)").should ==
         "Test Suite ReactiveCocoaTests.octest(Tests) started"
       end
-
-      xit "parses test suite started" do
-        @formatter.pretty_format(SAMPLE_OCUNIT_SUITE_BEGINNING).should ==
+      
+      it "formats tests suite started" do
+        @formatter.format_test_suite_started("RACKVOWrapperSpec").should ==
         "RACKVOWrapperSpec"
       end
+
     end
 end

@@ -71,6 +71,16 @@ module XCPretty
       @tokenizer.tokenize(SAMPLE_CPRESOURCE, @formatter)
     end
 
+    it "parses GenerateDSYMFile" do
+      @formatter.should receive(:format_generate_dsym).with('ObjectiveSugarTests.octest.dSYM')
+      @tokenizer.tokenize(SAMPLE_DSYM, @formatter)
+    end
+    
+    it "parses info.plist processing" do
+      @formatter.should receive(:format_process_info_plist).with('The Spacer-Info.plist')
+      @tokenizer.tokenize(SAMPLE_PROCESS_INFOPLIST, @formatter)
+    end
+
     it "parses Ld" do
       @formatter.should receive(:format_linking).with('ObjectiveSugar', 'normal', 'i386')
       @tokenizer.tokenize(SAMPLE_LD, @formatter)
@@ -79,6 +89,16 @@ module XCPretty
     it "parses Libtool" do
       @formatter.should receive(:format_libtool).with('libPods-ObjectiveSugarTests-Kiwi.a')
       @tokenizer.tokenize(SAMPLE_LIBTOOL, @formatter)
+    end
+    
+    it "parses failing tests" do
+      @formatter.should receive(:format_failing_test).with("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458")
+      @tokenizer.tokenize(SAMPLE_SPECTA_FAILURE, @formatter)
+    end
+
+    it "parses passing tests" do
+      @formatter.should receive(:format_passing_test).with('RACTupleSpec', '_tupleByAddingObject__should_add_a_non_nil_object', '0.001')
+      @tokenizer.tokenize(SAMPLE_OCUNIT_TEST, @formatter)
     end
 
     it "parses PhaseScriptExecution" do
@@ -91,6 +111,15 @@ module XCPretty
       @tokenizer.tokenize(SAMPLE_PRECOMPILE, @formatter)
     end
 
-  end
+    it "parses test run started" do
+      @formatter.should receive(:format_test_run_started).with('ReactiveCocoaTests.octest(Tests)')
+      @tokenizer.tokenize(SAMPLE_OCUNIT_TEST_RUN_BEGINNING, @formatter)
+    end
 
+    it "parses test suite started" do
+      @formatter.should receive(:format_test_suite_started).with('RACKVOWrapperSpec')
+      @tokenizer.tokenize(SAMPLE_OCUNIT_SUITE_BEGINNING, @formatter)
+    end
+
+  end
 end

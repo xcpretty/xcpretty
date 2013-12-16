@@ -60,10 +60,15 @@ module XCPretty
     def format_compile_xib(file);                              EMPTY_STRING; end
     def format_copy_strings_file(file);                        EMPTY_STRING; end
     def format_cpresource(file);                               EMPTY_STRING; end
+    def format_generate_dsym(dsym);                            EMPTY_STRING; end
     def format_linking(file);                                  EMPTY_STRING; end
+    def format_passing_test(suite, test_case, time);           EMPTY_STRING; end
+    def format_failing_test(suite, test_case, time, file);     EMPTY_STRING; end
     def format_process_pch(file);                              EMPTY_STRING; end
     def format_phase_script_execution(script_name);            EMPTY_STRING; end
-
+    def format_process_info_plist(file);                       EMPTY_STRING; end
+    def format_test_run_started(name);                         EMPTY_STRING; end
+    def format_test_suite_started(name);                       EMPTY_STRING; end
 
     #########################################################
 

@@ -12,25 +12,6 @@ module XCPretty
     COMPLETION = "▸"
     ASCII_COMPLETION = ">"
 
-    def pretty_format(text)
-      case text
-      when /^GenerateDSYMFile/
-        format_generating_dsym(text)
-      when /^ProcessInfoPlistFile/
-        format_processing_info_plist(text)
-      when PASSING_TEST_MATCHER
-        format_passing_test($1, $2)
-      when FAILING_TEST_MATCHER
-        format_failing_test($3, $4)
-      when TESTS_RUN_START_MATCHER
-        format_test_run_start($1)
-      when TEST_SUITE_START_MATCHER
-        format_suite_start($1)
-      else
-        ""
-      end
-    end
-
     def format_analyze(file)
       format("Analyzing", file)
     end
@@ -59,6 +40,10 @@ module XCPretty
       format("Copying", resource)
     end
 
+    def format_generate_dsym(dsym)
+      format("Generating '#{dsym}'")
+    end
+
     def format_libtool(library)
       format("Building library", library)
     end
@@ -67,41 +52,37 @@ module XCPretty
       format("Linking", target)
     end
 
+    def format_failing_test(suite, test_case, reason)
+      format_test("#{test_case}, #{reason}", false)
+    end
+
+    def format_passing_test(suite, test_case, time)
+      format_test("#{test_case} (#{time} seconds)")
+    end
+
     def format_phase_script_execution(script_name)
       format("Running script", "'#{script_name}'")
+    end
+
+    def format_process_info_plist(file)
+      format("Processing", file)
     end
 
     def format_process_pch(file)
       format("Precompiling", file)
     end
 
-
-
-
-    def format_failing_test(test_case, reason)
-      format_test("#{test_case}, #{reason}", false)
-    end
-
-    def format_passing_test(test_case, time)
-      format_test("#{test_case} (#{time} seconds)")
-    end
-
-    def format_processing_info_plist(text)
-      format("Processing", text.lines.first.shellsplit.last.split('/').last)
-    end
-
-    def format_generating_dsym(text)
-      format("Generating DSYM file")
-    end
-
-    def format_test_run_start(name)
+    def format_test_run_started(name)
       heading("Test Suite", name, "started")  
     end
 
-    def format_suite_start(name)
+    def format_test_suite_started(name)
       heading("", name, "")
     end
 
+
+    private
+    
     def heading(prefix, text, description)
       [prefix, white(text), description].join(" ").strip
     end

@@ -52,6 +52,10 @@ module XCPretty
     FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
     # @regex Captured groups
+    # $1 = dsym
+    GENERATE_DSYM_MATCHER = /^GenerateDSYMFile \/.*\/(.*\.dSYM)/
+
+    # @regex Captured groups
     # $1 = library
     LIBTOOL_MATCHER = /^Libtool.*\/(.*\.a)/
 
@@ -62,9 +66,10 @@ module XCPretty
     LINKING_MATCHER = /^Ld \/.*\/(.*) (.*) (.*)$/
 
     # @regex Captured groups
-    # $1 = test_case
-    # $2 = time
-    PASSING_TEST_MATCHER = /Test Case\s'-\[.*\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+    # $1 = suite
+    # $2 = test_case
+    # $3 = time
+    PASSING_TEST_MATCHER = /^Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
 
     # @regex Captured groups
     # $1 = script_name
@@ -73,6 +78,11 @@ module XCPretty
     # @regex Captured groups
     # $1 = file
     PROCESS_PCH_MATCHER = /^ProcessPCH\s.*\s(.*.pch)/
+
+
+    # @regex Captured groups
+    # $1 = file
+    PROCESS_INFO_PLIST_MATCHER = /^ProcessInfoPlistFile .*\/(.*.plist)$/
 
     # @regex Captured groups
     # $1 = suite
@@ -113,14 +123,26 @@ module XCPretty
         formatter.format_compile_xib($1)
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
+      when FAILING_TEST_MATCHER
+        formatter.format_failing_test($2, $3, $4, $1)
+      when GENERATE_DSYM_MATCHER
+        formatter.format_generate_dsym($1)
       when LIBTOOL_MATCHER
         formatter.format_libtool($1)
       when LINKING_MATCHER
         formatter.format_linking($1, $2, $3)
+      when PASSING_TEST_MATCHER
+        formatter.format_passing_test($1, $2, $3)
+      when PROCESS_INFO_PLIST_MATCHER
+        formatter.format_process_info_plist($1.gsub('\\', ''))
       when PHASE_SCRIPT_EXECUTION_MATCHER
         formatter.format_phase_script_execution($1.gsub('\\', ''))
       when PROCESS_PCH_MATCHER
         formatter.format_process_pch($1)
+      when TESTS_RUN_START_MATCHER
+        formatter.format_test_run_started($1)
+      when TEST_SUITE_START_MATCHER
+        formatter.format_test_suite_started($1)
       end
     end
 
