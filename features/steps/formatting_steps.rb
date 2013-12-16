@@ -23,6 +23,10 @@ Given(/^I have a failing test in my suite$/) do
   add_run_input SAMPLE_SPECTA_FAILURE
 end
 
+Given(/^I have a warning in my build output$/) do
+  add_run_input SAMPLE_COMPILE_WARNING
+end
+
 Given(/^all of my tests will pass in my suite$/) do
   3.times { add_run_input SAMPLE_OCUNIT_TEST }
 end
@@ -75,6 +79,10 @@ Then(/^I should see a red failed test icon$/) do
   run_output.should include(red("F"))
 end
 
+Then(/^I should see a warning icon$/) do
+  run_output.should include("✗")
+end
+
 Then(/^the final execution message should be (red|green)$/) do |color|
   last_line = run_output.lines.to_a.last
   last_line.should be_colored(color.to_sym)
@@ -124,8 +132,10 @@ Then(/^I should see a non-utf prefixed output$/) do
   run_output.should start_with(".")
 end
 
-
-
 Then(/^I should not see the name of the test group$/) do
   run_output.should_not include(SAMPLE_TEST_GROUP_NAME)
+end
+
+Then(/^I should see a warning description$/) do
+  run_output.should include(SAMPLE_WARNING_UOTPUT)
 end

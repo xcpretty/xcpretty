@@ -135,6 +135,12 @@ module XCPretty
         subject.pretty_format(SAMPLE_OCUNIT_SUITE_BEGINNING).should ==
         "RACKVOWrapperSpec"
       end
+
+      it "parses build warning" do
+        subject.pretty_format(SAMPLE_COMPILE_WARNING).should ==
+        "x Warning     /Users/berceg/Documents/source/someProject/NiceClassName.m:85:18:  warns you about incompatible pointer types initializing 'NSArray *' with an expression of type"
+      end
+
     end
   end
 end

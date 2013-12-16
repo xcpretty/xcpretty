@@ -55,6 +55,8 @@ module XCPretty
           print_test_run_start($1)
         when TEST_SUITE_START_MATCHER
           print_suite_start($1)
+        when BUILD_WARNINGS_MATCHER
+          print_warning($1, $2)
         else
           ""
         end
@@ -132,6 +134,10 @@ module XCPretty
 
       def print_suite_start(name)
         heading("", name, "")
+      end
+
+      def print_warning(file, warning)
+        format("Warning", "#{file} warns you about #{warning}", false)
       end
 
       def heading(prefix, text, description)
