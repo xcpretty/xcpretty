@@ -57,6 +57,8 @@ module XCPretty
     def format_clean_remove;                                   EMPTY_STRING; end
     def format_compile(file);                                  EMPTY_STRING; end
     def format_compile_xib(file);                              EMPTY_STRING; end
+    def format_copy_strings_file(file);                        EMPTY_STRING; end
+    def format_cpresource(file);                               EMPTY_STRING; end
     def format_analyze(file);                                  EMPTY_STRING; end
     def format_process_pch(file);                              EMPTY_STRING; end
     def format_phase_script_execution(script_name);            EMPTY_STRING; end

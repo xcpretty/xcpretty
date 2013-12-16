@@ -15,6 +15,16 @@ module XCPretty
         "> Analyzing CCChip8DisplayView.m"
       end
 
+      it "formats build target/project/configuration with target" do
+        @formatter.format_build_target("The Spacer", "Pods", "Debug").should ==
+        "> Building Pods/The Spacer [Debug]"
+      end
+      
+      it "formats clean target/project/configuration" do
+        @formatter.format_clean_target("Pods-ObjectiveSugar", "Pods", "Debug").should ==
+        "> Cleaning Pods/Pods-ObjectiveSugar [Debug]"
+      end
+      
       it "formats compiling output" do
         @formatter.format_compile("NSMutableArray+ObjectiveSugar.m").should ==
         "> Compiling NSMutableArray+ObjectiveSugar.m"
@@ -25,40 +35,34 @@ module XCPretty
         "> Compiling MainMenu.xib"
       end
 
-      it "formats precompiling output" do
-        @formatter.format_process_pch("Pods-CocoaLumberjack-prefix.pch").should ==
-        "> Precompiling Pods-CocoaLumberjack-prefix.pch"
+      it "formats copy resource" do
+        @formatter.format_cpresource("ObjectiveSugar/Default-568h@2x.png").should ==
+        "> Copying ObjectiveSugar/Default-568h@2x.png"
       end
 
-      it "formats clean target/project/configuration" do
-        @formatter.format_clean_target("Pods-ObjectiveSugar", "Pods", "Debug").should ==
-        "> Cleaning Pods/Pods-ObjectiveSugar [Debug]"
+      it "formats Copy strings file" do
+        @formatter.format_copy_strings_file("InfoPlist.strings").should ==
+        "> Copying InfoPlist.strings"
       end
 
-      it "formats build target/project/configuration with target" do
-        @formatter.format_build_target("The Spacer", "Pods", "Debug").should ==
-        "> Building Pods/The Spacer [Debug]"
+      it "formats Libtool" do
+        @formatter.format_libtool("libPods-ObjectiveSugarTests-Kiwi.a").should ==
+        "> Building library libPods-ObjectiveSugarTests-Kiwi.a"
       end
+
 
       it "formats Phase Script Execution" do
         @formatter.format_phase_script_execution("Check Pods Manifest.lock").should ==
         "> Running script 'Check Pods Manifest.lock'"
       end
 
-      it "parses Libtool" do
-        @formatter.pretty_format(SAMPLE_LIBTOOL).should ==
-        "> Building library libPods-ObjectiveSugarTests-Kiwi.a"
+      it "formats precompiling output" do
+        @formatter.format_process_pch("Pods-CocoaLumberjack-prefix.pch").should ==
+        "> Precompiling Pods-CocoaLumberjack-prefix.pch"
       end
 
-      it "parses CpResource" do
-        @formatter.pretty_format(SAMPLE_CPRESOURCE).should ==
-        "> Copying ObjectiveSugar/Default-568h@2x.png"
-      end
 
-      it "parses CopyStringsFile" do
-        @formatter.pretty_format(SAMPLE_COPYSTRINGS).should ==
-        "> Copying InfoPlist.strings"
-      end
+      
 
       it "parses GenerateDSYMFile" do
         @formatter.pretty_format(SAMPLE_DSYM).should ==

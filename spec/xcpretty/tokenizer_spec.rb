@@ -61,6 +61,21 @@ module XCPretty
       @tokenizer.tokenize(SAMPLE_COMPILE_XIB, @formatter)
     end
 
+    it "parses CopyStringsFile" do
+      @formatter.should receive(:format_copy_strings_file).with('InfoPlist.strings')
+      @tokenizer.tokenize(SAMPLE_COPYSTRINGS, @formatter)
+    end
+
+    it "parses CpResource" do
+      @formatter.should receive(:format_cpresource).with('ObjectiveSugar/Default-568h@2x.png')
+      @tokenizer.tokenize(SAMPLE_CPRESOURCE, @formatter)
+    end
+
+    it "parses Libtool" do
+      @formatter.should receive(:format_libtool).with('libPods-ObjectiveSugarTests-Kiwi.a')
+      @tokenizer.tokenize(SAMPLE_LIBTOOL, @formatter)
+    end
+
     it "parses PhaseScriptExecution" do
       @formatter.should receive(:format_phase_script_execution).with('Check Pods Manifest.lock')
       @tokenizer.tokenize(SAMPLE_RUN_SCRIPT, @formatter)

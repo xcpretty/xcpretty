@@ -14,12 +14,6 @@ module XCPretty
 
     def pretty_format(text)
       case text
-      when /^Libtool/
-        format_libtool(text)
-      when /^CpResource/
-        format_cpresource(text)
-      when /^CopyStringsFile/
-        format_copy_strings_file(text)
       when /^GenerateDSYMFile/
         format_generating_dsym(text)
       when /^ProcessInfoPlistFile/
@@ -47,21 +41,38 @@ module XCPretty
       format("Building", "#{project}/#{target} [#{configuration}]")
     end
 
-    def format_compile(file)
-      format("Compiling", file)
-    end
-    
     def format_clean_target(target, project, configuration)
       format("Cleaning", "#{project}/#{target} [#{configuration}]")
     end
+
+    def format_compile(file)
+      format("Compiling", file)
+    end    
 
     def format_compile_xib(file)
       format("Compiling", file)
     end
 
+    def format_copy_strings_file(file)
+      format("Copying", file)
+    end
+
+    def format_cpresource(resource)
+      format("Copying", resource)
+    end
+
+    def format_libtool(library)
+      format("Building library", library)
+    end
+
+    def format_phase_script_execution(script_name)
+      format("Running script", "'#{script_name}'")
+    end
+
     def format_process_pch(file)
       format("Precompiling", file)
     end
+
 
 
 
@@ -77,25 +88,8 @@ module XCPretty
       format("Linking", text.shellsplit[1].split('/').last)
     end
 
-    def format_phase_script_execution(script_name)
-      format("Running script", "'#{script_name}'")
-    end
-
     def format_processing_info_plist(text)
       format("Processing", text.lines.first.shellsplit.last.split('/').last)
-    end
-
-
-    def format_libtool(text)
-      format("Building library", text.shellsplit[1].split('/').last)
-    end
-
-    def format_cpresource(text)
-      format("Copying", text.shellsplit[1])
-    end
-
-    def format_copy_strings_file(text)
-      format("Copying", text.shellsplit.last.split('/').last)
     end
 
     def format_generating_dsym(text)
@@ -111,13 +105,11 @@ module XCPretty
     end
 
     def heading(prefix, text, description)
-      heading_text = colorize? ? white(text) : text
-      [prefix, heading_text, description].join(" ").strip
+      [prefix, white(text), description].join(" ").strip
     end
 
     def format(command, argument_text="", success=true)
-      command_text = colorize? ? white(command) : command
-      [status_symbol(success ? :completion : :fail), command_text, argument_text].join(" ").strip
+      [status_symbol(success ? :completion : :fail), white(command), argument_text].join(" ").strip
     end
 
     def format_test(test_case, success=true)

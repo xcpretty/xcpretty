@@ -32,6 +32,13 @@ module XCPretty
     # $1 file (short path, e.g. MainMenu.xib)
     COMPILE_XIB_MATCHER = /^CompileXIB\s.*\/(.*\.xib)/
 
+    # @regex Captured groups
+    # $1 file
+    COPY_STRINGS_MATCHER = /^CopyStringsFile.*\/(.*.strings)/
+
+    # @regex Captured groups
+    # $1 resource
+    CPRESOURCE_MATCHER = /^CpResource\s(.*)\s\//
 
     EXECUTED_MATCHER = /^Executed/
 
@@ -41,6 +48,10 @@ module XCPretty
     # $3 = test_case
     # $4 = reason
     FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
+
+    # @regex Captured groups
+    # $1 = library
+    LIBTOOL_MATCHER = /^Libtool.*\/(.*\.a)/
 
     # @regex Captured groups
     # $1 = test_case
@@ -84,12 +95,18 @@ module XCPretty
         formatter.format_clean_remove
       when CLEAN_TARGET_MATCHER
         formatter.format_clean_target($1, $2, $3)
+      when COPY_STRINGS_MATCHER
+        formatter.format_copy_strings_file($1)
       when CHECK_DEPENDENCIES_MATCHER
         formatter.format_check_dependencies
       when COMPILE_MATCHER
         formatter.format_compile($1)
       when COMPILE_XIB_MATCHER
         formatter.format_compile_xib($1)
+      when CPRESOURCE_MATCHER
+        formatter.format_cpresource($1)
+      when LIBTOOL_MATCHER
+        formatter.format_libtool($1)
       when PHASE_SCRIPT_EXECUTION_MATCHER
         formatter.format_phase_script_execution($1.gsub('\\', ''))
       when PROCESS_PCH_MATCHER
