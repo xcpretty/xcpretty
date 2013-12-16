@@ -1,19 +1,20 @@
 require 'xcpretty/ansi'
 
 module XCPretty
-
   class Formatter
 
     include ANSI
+    
     EMPTY_STRING = ""
+    attr_reader :tokenizer
 
     def initialize(use_unicode, colorize)
       @use_unicode = use_unicode
       @colorize = colorize
+      @tokenizer = Tokenizer.new(self)
     end
 
     def pretty_format(text)
-      update_test_state(text) # move this to tokenizer
       tokenizer.tokenize(text)
     end
 
@@ -72,44 +73,5 @@ module XCPretty
 
     #########################################################
 
-
-    private
-
-    def update_test_state(text)
-      case text
-      when TESTS_RUN_START_MATCHER
-        @tests_done = false
-        @printed_summary = false
-        @failures = {}
-      when TESTS_RUN_COMPLETION_MATCHER
-        @tests_done = true
-      when FAILING_TEST_MATCHER
-        store_failure($1, $2, $3, $4)
-      end
-    end
-    
-    def store_failure(file, test_suite, test_case, reason)
-      failures_per_suite[test_suite] ||= []
-      failures_per_suite[test_suite] << {
-        :file => cyan(file),
-        :reason => red(reason),
-        :test_case => test_case,
-      }
-    end
-
-    def failures_per_suite
-      @failures ||= {}
-    end
-
-    def test_summary(executed_message)
-      if executed_message =~ EXECUTED_MATCHER && @tests_done && !@printed_summary
-        @printed_summary = true
-        format_test_summary(executed_message)
-      else
-        ""
-      end
-    end
-
   end
-
 end

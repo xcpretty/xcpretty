@@ -2,8 +2,6 @@ module XCPretty
 
   module Matchers
 
-    # FILE_PATH_MATCHER
-
     # @regex Captured groups
     # $1 file
     ANALYZE_MATCHER = /^Analyze(?:Shallow)?\s(?:.*\/)(.*.m)*/
@@ -102,8 +100,14 @@ module XCPretty
   class Tokenizer
     
     include Matchers
+    attr_reader :formatter
 
-    def tokenize(text, formatter)
+    def initialize(formatter)
+      @formatter = formatter
+    end
+
+    def tokenize(text)
+      update_test_state(text)
       case text
       when ANALYZE_MATCHER
         formatter.format_analyze($1)
@@ -113,7 +117,7 @@ module XCPretty
         formatter.format_clean_remove
       when CLEAN_TARGET_MATCHER
         formatter.format_clean_target($1, $2, $3)
-      when COPY_STRINGS_MATCHER
+      when COPY_STRINGS_MATCHER 
         formatter.format_copy_strings_file($1)
       when CHECK_DEPENDENCIES_MATCHER
         formatter.format_check_dependencies
@@ -123,6 +127,8 @@ module XCPretty
         formatter.format_compile_xib($1)
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
+      when EXECUTED_MATCHER
+        print_summary_if_needed
       when FAILING_TEST_MATCHER
         formatter.format_failing_test($2, $3, $4, $1)
       when GENERATE_DSYM_MATCHER
@@ -144,6 +150,45 @@ module XCPretty
       when TEST_SUITE_START_MATCHER
         formatter.format_test_suite_started($1)
       end
+    end
+
+    private
+
+    def update_test_state(text)
+      case text
+      when TESTS_RUN_START_MATCHER
+        @tests_done = false
+        @printed_summary = false
+        @failures = {}
+      when TESTS_RUN_COMPLETION_MATCHER
+        @tests_done = true
+      when FAILING_TEST_MATCHER
+        store_failure($1, $2, $3, $4)
+      end
+    end
+
+    def store_failure(file, test_suite, test_case, reason)
+      failures_per_suite[test_suite] ||= []
+      failures_per_suite[test_suite] << {
+        :file => file,
+        :reason => reason,
+        :test_case => test_case,
+      }
+    end
+
+    def failures_per_suite
+      @failures ||= {}
+    end
+
+    def print_summary_if_needed
+      return unless should_print_summary?
+
+      formatter.format_test_summary(failures_per_suite) 
+      @printed_summary = true
+    end
+
+    def should_print_summary?
+      @tests_done && !@printed_summary
     end
 
   end
