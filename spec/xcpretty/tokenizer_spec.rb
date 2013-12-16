@@ -71,6 +71,11 @@ module XCPretty
       @tokenizer.tokenize(SAMPLE_CPRESOURCE, @formatter)
     end
 
+    it "parses Ld" do
+      @formatter.should receive(:format_linking).with('ObjectiveSugar', 'normal', 'i386')
+      @tokenizer.tokenize(SAMPLE_LD, @formatter)
+    end
+
     it "parses Libtool" do
       @formatter.should receive(:format_libtool).with('libPods-ObjectiveSugarTests-Kiwi.a')
       @tokenizer.tokenize(SAMPLE_LIBTOOL, @formatter)

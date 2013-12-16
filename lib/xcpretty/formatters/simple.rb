@@ -18,8 +18,6 @@ module XCPretty
         format_generating_dsym(text)
       when /^ProcessInfoPlistFile/
         format_processing_info_plist(text)
-      when /^Ld/
-        format_linking(text)
       when PASSING_TEST_MATCHER
         format_passing_test($1, $2)
       when FAILING_TEST_MATCHER
@@ -65,6 +63,10 @@ module XCPretty
       format("Building library", library)
     end
 
+    def format_linking(target)
+      format("Linking", target)
+    end
+
     def format_phase_script_execution(script_name)
       format("Running script", "'#{script_name}'")
     end
@@ -82,10 +84,6 @@ module XCPretty
 
     def format_passing_test(test_case, time)
       format_test("#{test_case} (#{time} seconds)")
-    end
-
-    def format_linking(text)
-      format("Linking", text.shellsplit[1].split('/').last)
     end
 
     def format_processing_info_plist(text)

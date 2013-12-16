@@ -45,11 +45,15 @@ module XCPretty
         "> Copying InfoPlist.strings"
       end
 
+      it "formats Linking" do
+        @formatter.format_linking("ObjectiveSugar").should ==
+        "> Linking ObjectiveSugar"
+      end
+
       it "formats Libtool" do
         @formatter.format_libtool("libPods-ObjectiveSugarTests-Kiwi.a").should ==
         "> Building library libPods-ObjectiveSugarTests-Kiwi.a"
       end
-
 
       it "formats Phase Script Execution" do
         @formatter.format_phase_script_execution("Check Pods Manifest.lock").should ==
@@ -64,37 +68,32 @@ module XCPretty
 
       
 
-      it "parses GenerateDSYMFile" do
+      xit "parses GenerateDSYMFile" do
         @formatter.pretty_format(SAMPLE_DSYM).should ==
         "> Generating DSYM file"
       end
-
-      it "parses info.plist processing" do
+      
+      xit "parses info.plist processing" do
         @formatter.pretty_format(SAMPLE_PROCESS_INFOPLIST).should ==
         "> Processing The Spacer-Info.plist"
-      end
+      end      
 
-      it "parses Ld" do
-        @formatter.pretty_format(SAMPLE_LD).should ==
-        "> Linking ObjectiveSugar"
-      end
-
-      it "parses passing tests" do
+      xit "parses passing tests" do
         @formatter.pretty_format(SAMPLE_OCUNIT_TEST).should ==
         ". _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
       end
 
-      it "parses failing tests" do
+      xit "parses failing tests" do
         @formatter.pretty_format(SAMPLE_SPECTA_FAILURE).should ==
         "x enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
       end
 
-      it "parses test run started" do
+      xit "parses test run started" do
         @formatter.pretty_format(SAMPLE_OCUNIT_TEST_RUN_BEGINNING).should ==
         "Test Suite ReactiveCocoaTests.octest(Tests) started"
       end
 
-      it "parses test suite started" do
+      xit "parses test suite started" do
         @formatter.pretty_format(SAMPLE_OCUNIT_SUITE_BEGINNING).should ==
         "RACKVOWrapperSpec"
       end

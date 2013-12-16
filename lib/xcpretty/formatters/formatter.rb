@@ -50,6 +50,7 @@ module XCPretty
     # PROTECTED / OVERRIDES
     #########################################################
 
+    def format_analyze(file);                                  EMPTY_STRING; end
     def format_build_target(target, project, configuration);   EMPTY_STRING; end
     def format_check_dependencies;                             EMPTY_STRING; end
     def format_clean(project, target, configuration);          EMPTY_STRING; end
@@ -59,7 +60,7 @@ module XCPretty
     def format_compile_xib(file);                              EMPTY_STRING; end
     def format_copy_strings_file(file);                        EMPTY_STRING; end
     def format_cpresource(file);                               EMPTY_STRING; end
-    def format_analyze(file);                                  EMPTY_STRING; end
+    def format_linking(file);                                  EMPTY_STRING; end
     def format_process_pch(file);                              EMPTY_STRING; end
     def format_phase_script_execution(script_name);            EMPTY_STRING; end
 

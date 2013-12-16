@@ -2,6 +2,8 @@ module XCPretty
 
   module Matchers
 
+    # FILE_PATH_MATCHER
+
     # @regex Captured groups
     # $1 file
     ANALYZE_MATCHER = /^Analyze(?:Shallow)?\s(?:.*\/)(.*.m)*/
@@ -52,6 +54,12 @@ module XCPretty
     # @regex Captured groups
     # $1 = library
     LIBTOOL_MATCHER = /^Libtool.*\/(.*\.a)/
+
+    # @regex Captured groups
+    # $1 = target
+    # $2 = build_variants (normal, profile, debug)
+    # $3 = architecture
+    LINKING_MATCHER = /^Ld \/.*\/(.*) (.*) (.*)$/
 
     # @regex Captured groups
     # $1 = test_case
@@ -107,6 +115,8 @@ module XCPretty
         formatter.format_cpresource($1)
       when LIBTOOL_MATCHER
         formatter.format_libtool($1)
+      when LINKING_MATCHER
+        formatter.format_linking($1, $2, $3)
       when PHASE_SCRIPT_EXECUTION_MATCHER
         formatter.format_phase_script_execution($1.gsub('\\', ''))
       when PROCESS_PCH_MATCHER
