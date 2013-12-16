@@ -442,3 +442,10 @@ CompileXIB CocoaChip/en.lproj/MainMenu.xib
     setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..
     /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 10.7 --output-format human-readable-text --compile /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app/Contents/Resources/en.lproj/MainMenu.nib /Users/dustin/Source/CocoaChip/CocoaChip/en.lproj/MainMenu.xib
 )
+SAMPLE_COMPILE_WARNING = %Q(
+    /Users/berceg/Documents/source/someProject/NiceClassName.m:85:18: warning: incompatible pointer types initializing 'NSArray *' with an expression of type
+      'NSString *' [-Wincompatible-pointer-types]
+        NSArray* supported = @"";//[infoDict objectForKey:@"UISupportedExternalAccessoryProtocols"];
+                 ^           ~~~
+)
+SAMPLE_WARNING_UOTPUT = %Q(/NiceClassName.m:85:18:  warns you about incompatible pointer types initializing 'NSArray *' with an expression of type)

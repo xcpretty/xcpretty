@@ -95,3 +95,9 @@ Feature: Showing build output in simple format
         Given I have a passing test in my suite
         And I pipe to xcpretty with "--no-utf"
         Then I should see a non-utf prefixed output
+
+    Scenario: Showing warnings in test output
+        Given I have a warning in my build output
+        When I pipe to xcpretty with "--simple"
+        Then I should see a warning icon
+        And I should see a warning description
