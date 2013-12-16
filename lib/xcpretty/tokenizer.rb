@@ -130,7 +130,7 @@ module XCPretty
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
       when EXECUTED_MATCHER
-        print_summary_if_needed
+        print_summary_if_needed(text)
       when FAILING_TEST_MATCHER
         formatter.format_failing_test($2, $3, $4, $1)
       when GENERATE_DSYM_MATCHER
@@ -186,11 +186,11 @@ module XCPretty
       @failures ||= {}
     end
 
-    def print_summary_if_needed
-      return unless should_print_summary?
+    def print_summary_if_needed(executed_message)
+      return "" unless should_print_summary?
 
       @printed_summary = true
-      formatter.format_test_summary(failures_per_suite)
+      formatter.format_test_summary(executed_message, failures_per_suite)
     end
 
     def should_print_summary?

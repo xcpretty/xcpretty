@@ -43,7 +43,7 @@ OptionParser.new do |opts|
 end
 
 printer = XCPretty::Printer.new(constructor)
-reporters.compact.map!(&:new)
+reporters = reporters.compact.map(&:new)
 
 ARGF.each_line do |line|
   printer.pretty_print(line)

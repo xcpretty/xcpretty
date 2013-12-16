@@ -16,7 +16,8 @@ module XCPretty
     def format_copy_strings_file(file);                      EMPTY_STRING; end
     def format_cpresource(file);                             EMPTY_STRING; end
     def format_generate_dsym(dsym);                          EMPTY_STRING; end
-    def format_linking(file);                                EMPTY_STRING; end
+    def format_linking(file, build_variant, arch);           EMPTY_STRING; end
+    def format_libtool(library);                             EMPTY_STRING; end
     def format_passing_test(suite, test_case, time);         EMPTY_STRING; end
     def format_failing_test(suite, test_case, time, file);   EMPTY_STRING; end
     def format_process_pch(file);                            EMPTY_STRING; end
@@ -25,6 +26,7 @@ module XCPretty
     def format_test_run_started(name);                       EMPTY_STRING; end
     def format_test_run_finished(name, time);                EMPTY_STRING; end
     def format_test_suite_started(name);                     EMPTY_STRING; end
+    def format_test_summary(message, failures_per_suite);    EMPTY_STRING; end
   end
 
   class Formatter
@@ -52,21 +54,21 @@ module XCPretty
       "\n"
     end
 
-    def format_test_summary(executed_message)
+    def format_test_summary(executed_message, failures_per_suite)
       failures = format_failures(failures_per_suite)
-      final_message = if colorize?
-                        failures.empty? ? green(executed_message) : red(executed_message)
-                      else
-                        executed_message
-                      end
+      final_message = failures.empty? ? green(executed_message) : red(executed_message)
+                      
       text = [failures, final_message].join("\n\n\n").strip
       "\n\n#{text}"
     end
 
+
+    private
+
     def format_failures(failures)
       failures.map do |suite, failures|
         formatted_failures = failures.map do |f|
-          "  #{f[:test_case]}, #{f[:reason]}\n  #{f[:file]}"
+          "  #{f[:test_case]}, #{red(f[:reason])}\n  #{cyan(f[:file])}"
         end.join("\n\n")
 
         "\n#{suite}\n#{formatted_failures}"

@@ -56,7 +56,7 @@ module XCPretty
       end
       
       it "formats Linking" do
-        @formatter.format_linking("ObjectiveSugar").should ==
+        @formatter.format_linking("ObjectiveSugar", 'normal', 'i386').should ==
         "> Linking ObjectiveSugar"
       end
 
@@ -66,7 +66,7 @@ module XCPretty
       end
 
       it "formats failing tests" do
-        @formatter.format_failing_test("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0").should ==
+        @formatter.format_failing_test("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", 'path/to/file').should ==
         "x enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
       end
 

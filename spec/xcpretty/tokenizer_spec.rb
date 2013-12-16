@@ -143,6 +143,10 @@ module XCPretty
         @tokenizer.tokenize(SAMPLE_KIWI_SUITE_COMPLETION)
       end
 
+      it "returns empty string if the suite is not done" do
+        @tokenizer.tokenize(SAMPLE_EXECUTED_TESTS).should == ""
+      end
+
       it "knows when the test suite is done for OCunit / Specta" do
         given_tests_are_done
         @formatter.should receive(:format_test_summary)

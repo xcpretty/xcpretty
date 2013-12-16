@@ -48,11 +48,11 @@ module XCPretty
       format("Building library", library)
     end
 
-    def format_linking(target)
+    def format_linking(target, build_variants, arch)
       format("Linking", target)
     end
 
-    def format_failing_test(suite, test_case, reason)
+    def format_failing_test(suite, test_case, reason, file)
       format_test("#{test_case}, #{reason}", false)
     end
 
@@ -82,7 +82,7 @@ module XCPretty
 
 
     private
-    
+
     def heading(prefix, text, description)
       [prefix, white(text), description].join(" ").strip
     end

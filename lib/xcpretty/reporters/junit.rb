@@ -41,16 +41,16 @@ module XCPretty
 
     def format_passing_test(suite, test_case, time)
       test_node = current_suite.add_element('testcase')
-      test_node.attributes['classname'] = classname
-      test_node.attributes['name']      = name
+      test_node.attributes['classname'] = suite
+      test_node.attributes['name']      = test_case
       test_node.attributes['time']      = time
       @test_count += 1
     end
 
-    def format_failing_test(suite, test_case, time, file)
+    def format_failing_test(suite, test_case, reason, file)
       test_node = current_suite.add_element('testcase')
-      test_node.attributes['classname'] = classname
-      test_node.attributes['name']      = name
+      test_node.attributes['classname'] = suite
+      test_node.attributes['name']      = test_case
       fail_node = test_node.add_element('failure')
       fail_node.attributes['message'] = reason
       fail_node.text = file.sub(@directory.strip + '/', '')

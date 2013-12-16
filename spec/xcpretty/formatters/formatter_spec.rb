@@ -37,14 +37,18 @@ module XCPretty
           }
         ]
       }
-      @formatter.format_failures(failures).should == %Q(
+      @formatter.format_test_summary(SAMPLE_EXECUTED_TESTS, failures).should == %Q(
+
 StringSpec
-  Splitting the string, doesn't split
-  path/to/file1
+  Splitting the string, #{@formatter.red("doesn't split")}
+  #{@formatter.cyan("path/to/file1")}
 
 CarSpec
-  Starting the car, just doesn't work
-  path/to/file2)
+  Starting the car, #{@formatter.red("just doesn't work")}
+  #{@formatter.cyan("path/to/file2")}
+
+
+#{@formatter.red(SAMPLE_EXECUTED_TESTS)})
     end
 
   end
