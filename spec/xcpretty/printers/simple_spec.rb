@@ -28,6 +28,11 @@ module XCPretty
         "> Compiling KWNull.m"
       end
 
+      it "parses compiling xib output" do
+        subject.pretty_format(SAMPLE_COMPILE_XIB).should ==
+        "> Compiling MainMenu.xib"
+      end
+
       it "parses precompiling output" do
         subject.pretty_format(SAMPLE_PRECOMPILE).should ==
         "> Precompiling Pods-CocoaLumberjack-prefix.pch"
@@ -99,6 +104,16 @@ module XCPretty
       it "parses Ld" do
         subject.pretty_format(SAMPLE_LD).should ==
         "> Linking ObjectiveSugar"
+      end
+
+      it "parses analyze" do
+        subject.pretty_format(SAMPLE_ANALYZE).should ==
+        "> Analyzing CCChip8DisplayView.m"
+      end
+
+      it "parses analyze shallow" do
+        subject.pretty_format(SAMPLE_ANALYZE_SHALLOW).should ==
+        "> Analyzing CCChip8DisplayView.m"
       end
 
       it "parses passing tests" do

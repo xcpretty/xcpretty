@@ -21,6 +21,8 @@ module XCPretty
           print_pch(text)
         when /^CompileC/
           print_compiling(text)
+        when /^CompileXIB/
+          print_compiling_xib(text)
         when /^Clean.Remove/
           ""
         when /^Check dependencies/
@@ -43,8 +45,10 @@ module XCPretty
           print_processing_info_plist(text)
         when /^Ld/
           print_linking(text)
+        when /^Analyze/
+          print_analyzing(text)
         when PASSING_TEST_MATCHER
-          print_passing_test($1, $2)
+          print_passing_test($2, $3)
         when FAILING_TEST_MATCHER
           print_failing_test($3, $4)
         when TESTS_RUN_START_MATCHER
@@ -70,6 +74,10 @@ module XCPretty
         format_test("#{test_case} (#{time} seconds)")
       end
 
+      def print_analyzing(text)
+        format("Analyzing", text.shellsplit[1].split('/').last)
+      end
+
       def print_linking(text)
         format("Linking", text.shellsplit[1].split('/').last)
       end
@@ -84,6 +92,10 @@ module XCPretty
 
       def print_compiling(text)
         format("Compiling", text.shellsplit[2].split('/').last)
+      end
+
+      def print_compiling_xib(text)
+        format("Compiling", text.shellsplit[1].split('/').last)
       end
 
       def print_clean_target(text)

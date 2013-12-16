@@ -1,10 +1,17 @@
 # Changelog
 
+## 0.0.6
+
+###### Enhancements
+
+* Added support for reporters
+* Added JUnit reporter
+
 ## 0.0.5
 
 ###### Bug Fixes
 
-* --no-utf was set uncorrectly. now it works
+* `--no-utf` was set incorrectly. now it works as expected.
 
 
 ## 0.0.4
@@ -20,7 +27,7 @@
 
 * Added example of running tests continuously
 
-* Support for not using Unicode (--no-utf)
+* Support for not using Unicode (`--no-utf`)
 
 ###### Bug Fixes
 
