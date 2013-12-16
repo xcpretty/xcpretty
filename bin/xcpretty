@@ -1,11 +1,14 @@
 #!/usr/bin/env ruby
-$:.unshift File.expand_path('../../lib', __FILE__)
-require 'xcpretty'
-require 'optparse'
 
 if RUBY_VERSION < '1.8.7'
   abort "error: XCPretty requires Ruby 1.8.7 or higher."
 end
+
+if $0 == __FILE__
+  $:.unshift File.expand_path('../../lib', __FILE__)
+end
+require 'xcpretty'
+require 'optparse'
 
 report_formats = {
   "junit" => XCPretty::JUnit
@@ -20,6 +23,15 @@ OptionParser.new do |opts|
   opts.on('-s', '--simple', 'Use simple output (default)') do
     @klass = XCPretty::Printer::Simple
   end
+  opts.on('-p', '--printer PATH', 'Use printer returned from evaluating the specified Ruby file') do |path|
+    $:.unshift File.dirname(path)
+    source = File.read(path)
+    @klass = eval(source, nil, path)
+    unless @klass.is_a?(Class)
+      $stderr.puts '[!] Expected printer source file to return a class.'
+      exit 1
+    end
+  end
   opts.on('-c', '--color', 'Use colorized output') do
     @colorize = true
   end
@@ -32,7 +44,13 @@ OptionParser.new do |opts|
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
-  opts.parse!
+
+  if STDIN.tty?
+    $stderr.puts opts.help
+    exit 1
+  else
+    opts.parse!
+  end
 end
 
 printer = (@klass || XCPretty::Printer::Simple).new

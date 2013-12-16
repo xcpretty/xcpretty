@@ -81,7 +81,7 @@ module XCPretty
       end
 
       def print_pch(text)
-        format("Precompiling", Shellwords.shellsplit(text)[2])
+        format("Precompiling", text.shellsplit[2])
       end
 
       def print_processing_info_plist(text)
