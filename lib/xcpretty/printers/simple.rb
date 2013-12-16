@@ -125,7 +125,7 @@ module XCPretty
       end
 
       def print_warning(file, warning)
-        format("Warning", "#{file} has warning #{warning}", false)
+        format("Warning", "#{file} warns you about #{warning}", false)
       end
 
       def heading(prefix, text, description)
