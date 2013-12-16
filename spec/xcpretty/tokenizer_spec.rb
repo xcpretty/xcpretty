@@ -21,9 +21,24 @@ module XCPretty
       @tokenizer.tokenize(SAMPLE_ANALYZE_SHALLOW, @formatter)
     end
 
+    it "parses build target" do
+      @formatter.should receive(:format_build_target).with("The Spacer", "Pods", "Debug")
+      @tokenizer.tokenize(SAMPLE_BUILD, @formatter)
+    end
+
     it "parses clean remove" do
       @formatter.should receive(:format_clean_remove)
       @tokenizer.tokenize(SAMPLE_CLEAN_REMOVE, @formatter)
+    end
+
+    it "parses clean target" do
+      @formatter.should receive(:format_clean_target).with("Pods-ObjectiveSugar", "Pods", "Debug")
+      @tokenizer.tokenize(SAMPLE_CLEAN, @formatter)
+    end
+
+    it "parses clean target withut dash in target name" do
+      @formatter.should receive(:format_clean_target).with("Pods", "Pods", "Debug")
+      @tokenizer.tokenize(SAMPLE_ANOTHER_CLEAN, @formatter)
     end
 
     it "parses check dependencies" do
@@ -46,12 +61,15 @@ module XCPretty
       @tokenizer.tokenize(SAMPLE_COMPILE_XIB, @formatter)
     end
 
+    it "parses PhaseScriptExecution" do
+      @formatter.should receive(:format_phase_script_execution).with('Check Pods Manifest.lock')
+      @tokenizer.tokenize(SAMPLE_RUN_SCRIPT, @formatter)
+    end
+
     it "parses process PCH" do
       @formatter.should receive(:format_process_pch).with("Pods-CocoaLumberjack-prefix.pch")
       @tokenizer.tokenize(SAMPLE_PRECOMPILE, @formatter)
     end
-
-    
 
   end
 

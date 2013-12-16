@@ -6,11 +6,23 @@ module XCPretty
     # $1 file
     ANALYZE_MATCHER = /^Analyze(?:Shallow)?\s(?:.*\/)(.*.m)*/
 
+    # @regex Captured groups
+    # $1 target
+    # $2 project
+    # $3 configuration
+    BUILD_TARGET_MATCHER = /^=== BUILD TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH.*CONFIGURATION\s(.*)\s===/
+
     # @regex Nothnig returned here for now
     CHECK_DEPENDENCIES_MATCHER = /^Check dependencies/
 
     # @regex Nothnig returned here for now
     CLEAN_REMOVE_MATCHER = /^Clean.Remove/
+
+    # @regex Captured groups
+    # $1 target
+    # $2 project
+    # $3 configuration
+    CLEAN_TARGET_MATCHER = /^=== CLEAN TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH CONFIGURATION\s(.*)\s===/
 
     # @regex Captured groups
     # $1 file (short path, e.g. KWNull.m)
@@ -34,6 +46,10 @@ module XCPretty
     # $1 = test_case
     # $2 = time
     PASSING_TEST_MATCHER = /Test Case\s'-\[.*\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+
+    # @regex Captured groups
+    # $1 = script_name
+    PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)\s\//
 
     # @regex Captured groups
     # $1 = file
@@ -62,17 +78,24 @@ module XCPretty
       case text
       when ANALYZE_MATCHER
         formatter.format_analyze($1)
+      when BUILD_TARGET_MATCHER
+        formatter.format_build_target($1, $2, $3)
       when CLEAN_REMOVE_MATCHER
         formatter.format_clean_remove
+      when CLEAN_TARGET_MATCHER
+        formatter.format_clean_target($1, $2, $3)
       when CHECK_DEPENDENCIES_MATCHER
         formatter.format_check_dependencies
       when COMPILE_MATCHER
         formatter.format_compile($1)
       when COMPILE_XIB_MATCHER
         formatter.format_compile_xib($1)
+      when PHASE_SCRIPT_EXECUTION_MATCHER
+        formatter.format_phase_script_execution($1.gsub('\\', ''))
       when PROCESS_PCH_MATCHER
         formatter.format_process_pch($1)
       end
     end
+
   end
 end

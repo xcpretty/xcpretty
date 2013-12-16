@@ -14,14 +14,6 @@ module XCPretty
 
     def pretty_format(text)
       case text
-      when /^ProcessPCH/
-        format_pch(text)
-      when /^=== CLEAN TARGET/
-        format_clean_target(text)
-      when /^=== BUILD TARGET/
-        format_build_target(text)
-      when /^PhaseScriptExecution/
-        format_run_script(text)
       when /^Libtool/
         format_libtool(text)
       when /^CpResource/
@@ -50,19 +42,28 @@ module XCPretty
     def format_analyze(file)
       format("Analyzing", file)
     end
-      
+    
+    def format_build_target(target, project, configuration)
+      format("Building", "#{project}/#{target} [#{configuration}]")
+    end
+
     def format_compile(file)
       format("Compiling", file)
     end
     
+    def format_clean_target(target, project, configuration)
+      format("Cleaning", "#{project}/#{target} [#{configuration}]")
+    end
+
     def format_compile_xib(file)
       format("Compiling", file)
     end
 
-    def format_clean_target(text)
-      info = project_build_info(text)
-      format("Cleaning", "#{info[:project]}/#{info[:target]} [#{info[:configuration]}]")
+    def format_process_pch(file)
+      format("Precompiling", file)
     end
+
+
 
     def format_failing_test(test_case, reason)
       format_test("#{test_case}, #{reason}", false)
@@ -76,23 +77,14 @@ module XCPretty
       format("Linking", text.shellsplit[1].split('/').last)
     end
 
-    def format_pch(text)
-      format("Precompiling", Shellwords.shellsplit(text)[2])
+    def format_phase_script_execution(script_name)
+      format("Running script", "'#{script_name}'")
     end
 
     def format_processing_info_plist(text)
       format("Processing", text.lines.first.shellsplit.last.split('/').last)
     end
 
-
-    def format_build_target(text)
-      info = project_build_info(text)
-      format("Building", "#{info[:project]}/#{info[:target]} [#{info[:configuration]}]")
-    end
-
-    def format_run_script(text)
-      format("Running script", "'#{text.lines.first.shellsplit[1..-2].join(' ').gsub('\ ',' ')}'")
-    end
 
     def format_libtool(text)
       format("Building library", text.shellsplit[1].split('/').last)
@@ -143,18 +135,6 @@ module XCPretty
       else
         ""
       end
-    end
-
-    def project_build_info(text)
-      target = text.split('TARGET').last.split('OF PROJECT').first
-      clean_target = target.split('-').last.strip
-      project = text.split('OF PROJECT').last.split('WITH').first.strip
-      configuration = text.split('CONFIGURATION').last.split('===').first.strip
-      {
-        :target => clean_target,
-        :project => project,
-        :configuration => configuration
-      }
     end
     
   end

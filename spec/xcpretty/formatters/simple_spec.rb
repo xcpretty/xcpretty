@@ -26,32 +26,22 @@ module XCPretty
       end
 
       it "formats precompiling output" do
-        @formatter.pretty_format(SAMPLE_PRECOMPILE).should ==
+        @formatter.format_process_pch("Pods-CocoaLumberjack-prefix.pch").should ==
         "> Precompiling Pods-CocoaLumberjack-prefix.pch"
       end
 
-      it "parses clean target/project/configuration" do
-        @formatter.pretty_format(SAMPLE_CLEAN).should ==
-        "> Cleaning Pods/ObjectiveSugar [Debug]"
+      it "formats clean target/project/configuration" do
+        @formatter.format_clean_target("Pods-ObjectiveSugar", "Pods", "Debug").should ==
+        "> Cleaning Pods/Pods-ObjectiveSugar [Debug]"
       end
 
-      it "parses another clean target/project/configuration" do
-        @formatter.pretty_format(SAMPLE_ANOTHER_CLEAN).should ==
-        "> Cleaning Pods/Pods [Debug]"
-      end
-
-      it "parses build target/project/configuration with target" do
-        @formatter.pretty_format(SAMPLE_BUILD).should ==
+      it "formats build target/project/configuration with target" do
+        @formatter.format_build_target("The Spacer", "Pods", "Debug").should ==
         "> Building Pods/The Spacer [Debug]"
       end
 
-      it "parses clean target/project/configuration with nested pods" do
-        @formatter.pretty_format(SAMPLE_CLEAN_NESTED_PODS).should ==
-        "> Cleaning Pods/Kiwi [Debug]"
-      end
-
-      it "parses PhaseScriptExecution" do
-        @formatter.pretty_format(SAMPLE_RUN_SCRIPT).should ==
+      it "formats Phase Script Execution" do
+        @formatter.format_phase_script_execution("Check Pods Manifest.lock").should ==
         "> Running script 'Check Pods Manifest.lock'"
       end
 

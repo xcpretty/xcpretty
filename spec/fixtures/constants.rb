@@ -18,7 +18,6 @@ SAMPLE_SPECTA_FAILURE = "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFrame
 SAMPLE_BUILD = "=== BUILD TARGET The Spacer OF PROJECT Pods WITH THE DEFAULT CONFIGURATION Debug ==="
 SAMPLE_CLEAN = "=== CLEAN TARGET Pods-ObjectiveSugar OF PROJECT Pods WITH CONFIGURATION Debug ==="
 SAMPLE_ANOTHER_CLEAN = "=== CLEAN TARGET Pods OF PROJECT Pods WITH CONFIGURATION Debug ==="
-SAMPLE_CLEAN_NESTED_PODS = "=== CLEAN TARGET Pods-ObjectiveSugarTests-Kiwi OF PROJECT Pods WITH CONFIGURATION Debug ==="
 SAMPLE_CLEAN_REMOVE = %Q(
 Clean.Remove clean /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugarTests.build
     builtin-rm -rf /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugarTests.build
@@ -83,8 +82,8 @@ GenerateDSYMFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSuga
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest/ObjectiveSugarTests -o /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest.dSYM
 )
-SAMPLE_RUN_SCRIPT = 
-%Q(PhaseScriptExecution Check\\ Pods\\ Manifest.lock /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh
+SAMPLE_RUN_SCRIPT = %Q(
+PhaseScriptExecution Check\\ Pods\\ Manifest.lock /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
     setenv ACTION build
     setenv AD_HOC_CODE_SIGNING_ALLOWED NO

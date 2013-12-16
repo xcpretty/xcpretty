@@ -13,9 +13,8 @@ module XCPretty
     end
 
     def pretty_format(text)
+      update_test_state(text) # move this to tokenizer
       tokenizer.tokenize(text)
-      update_test_state(text)
-      formatted_text = pretty_format(text)
     end
 
     def use_unicode?
@@ -51,13 +50,17 @@ module XCPretty
     # PROTECTED / OVERRIDES
     #########################################################
 
-    def format_check_dependencies;                    EMPTY_STRING; end
-    def format_clean(project, target, configuration); EMPTY_STRING; end
-    def format_clean_remove;                          EMPTY_STRING; end # not sure if we need it / not implemented
-    def format_compile(file);                         EMPTY_STRING; end
-    def format_compile_xib(file);                     EMPTY_STRING; end
-    def format_analyze(file);                         EMPTY_STRING; end
-    def format_process_pch(file);                     EMPTY_STRING; end
+    def format_build_target(target, project, configuration);   EMPTY_STRING; end
+    def format_check_dependencies;                             EMPTY_STRING; end
+    def format_clean(project, target, configuration);          EMPTY_STRING; end
+    def format_clean_target(target, project, configuration);   EMPTY_STRING; end
+    def format_clean_remove;                                   EMPTY_STRING; end
+    def format_compile(file);                                  EMPTY_STRING; end
+    def format_compile_xib(file);                              EMPTY_STRING; end
+    def format_analyze(file);                                  EMPTY_STRING; end
+    def format_process_pch(file);                              EMPTY_STRING; end
+    def format_phase_script_execution(script_name);            EMPTY_STRING; end
+
 
     #########################################################
 
