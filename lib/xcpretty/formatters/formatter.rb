@@ -1,11 +1,37 @@
 require 'xcpretty/ansi'
+require 'xcpretty/tokenizer'
 
 module XCPretty
+
+  module FormatMethods
+    EMPTY_STRING = ''
+    def format_analyze(file);                                EMPTY_STRING; end
+    def format_build_target(target, project, configuration); EMPTY_STRING; end
+    def format_check_dependencies;                           EMPTY_STRING; end
+    def format_clean(project, target, configuration);        EMPTY_STRING; end
+    def format_clean_target(target, project, configuration); EMPTY_STRING; end
+    def format_clean_remove;                                 EMPTY_STRING; end
+    def format_compile(file);                                EMPTY_STRING; end
+    def format_compile_xib(file);                            EMPTY_STRING; end
+    def format_copy_strings_file(file);                      EMPTY_STRING; end
+    def format_cpresource(file);                             EMPTY_STRING; end
+    def format_generate_dsym(dsym);                          EMPTY_STRING; end
+    def format_linking(file);                                EMPTY_STRING; end
+    def format_passing_test(suite, test_case, time);         EMPTY_STRING; end
+    def format_failing_test(suite, test_case, time, file);   EMPTY_STRING; end
+    def format_process_pch(file);                            EMPTY_STRING; end
+    def format_phase_script_execution(script_name);          EMPTY_STRING; end
+    def format_process_info_plist(file);                     EMPTY_STRING; end
+    def format_test_run_started(name);                       EMPTY_STRING; end
+    def format_test_run_finished(name, time);                EMPTY_STRING; end
+    def format_test_suite_started(name);                     EMPTY_STRING; end
+  end
+
   class Formatter
 
     include ANSI
+    include FormatMethods
     
-    EMPTY_STRING = ""
     attr_reader :tokenizer
 
     def initialize(use_unicode, colorize)
@@ -46,32 +72,6 @@ module XCPretty
         "\n#{suite}\n#{formatted_failures}"
       end.join("\n")
     end
-
-    #########################################################
-    # PROTECTED / OVERRIDES
-    #########################################################
-
-    def format_analyze(file);                                  EMPTY_STRING; end
-    def format_build_target(target, project, configuration);   EMPTY_STRING; end
-    def format_check_dependencies;                             EMPTY_STRING; end
-    def format_clean(project, target, configuration);          EMPTY_STRING; end
-    def format_clean_target(target, project, configuration);   EMPTY_STRING; end
-    def format_clean_remove;                                   EMPTY_STRING; end
-    def format_compile(file);                                  EMPTY_STRING; end
-    def format_compile_xib(file);                              EMPTY_STRING; end
-    def format_copy_strings_file(file);                        EMPTY_STRING; end
-    def format_cpresource(file);                               EMPTY_STRING; end
-    def format_generate_dsym(dsym);                            EMPTY_STRING; end
-    def format_linking(file);                                  EMPTY_STRING; end
-    def format_passing_test(suite, test_case, time);           EMPTY_STRING; end
-    def format_failing_test(suite, test_case, time, file);     EMPTY_STRING; end
-    def format_process_pch(file);                              EMPTY_STRING; end
-    def format_phase_script_execution(script_name);            EMPTY_STRING; end
-    def format_process_info_plist(file);                       EMPTY_STRING; end
-    def format_test_run_started(name);                         EMPTY_STRING; end
-    def format_test_suite_started(name);                       EMPTY_STRING; end
-
-    #########################################################
 
   end
 end

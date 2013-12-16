@@ -111,6 +111,11 @@ module XCPretty
       @tokenizer.tokenize(SAMPLE_PRECOMPILE)
     end
 
+    it "parses test run finished" do
+      @formatter.should receive(:format_test_run_finished).with('ReactiveCocoaTests.octest(Tests)', '2013-12-10 07:03:03 +0000.')
+      @tokenizer.tokenize(SAMPLE_OCUNIT_TEST_RUN_COMPLETION)  
+    end
+
     it "parses test run started" do
       @formatter.should receive(:format_test_run_started).with('ReactiveCocoaTests.octest(Tests)')
       @tokenizer.tokenize(SAMPLE_OCUNIT_TEST_RUN_BEGINNING)
@@ -120,6 +125,7 @@ module XCPretty
       @formatter.should receive(:format_test_suite_started).with('RACKVOWrapperSpec')
       @tokenizer.tokenize(SAMPLE_OCUNIT_SUITE_BEGINNING)
     end
+
 
     context "summary" do
 

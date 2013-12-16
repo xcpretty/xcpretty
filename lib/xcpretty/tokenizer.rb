@@ -40,6 +40,8 @@ module XCPretty
     # $1 resource
     CPRESOURCE_MATCHER = /^CpResource\s(.*)\s\//
 
+    # @regex Captured groups
+    #
     EXECUTED_MATCHER = /^Executed/
 
     # @regex Captured groups
@@ -85,7 +87,7 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TESTS_RUN_COMPLETION_MATCHER = /Test Suite '(?:.*\/)?(.*[ox]ctest.*)' finished at(.*)/
+    TESTS_RUN_COMPLETION_MATCHER = /Test Suite '(?:.*\/)?(.*[ox]ctest.*)' finished at (.*)/
 
     # @regex Captured groups
     # $1 = suite
@@ -145,10 +147,14 @@ module XCPretty
         formatter.format_phase_script_execution($1.gsub('\\', ''))
       when PROCESS_PCH_MATCHER
         formatter.format_process_pch($1)
+      when TESTS_RUN_COMPLETION_MATCHER
+        formatter.format_test_run_finished($1, $2)
       when TESTS_RUN_START_MATCHER
         formatter.format_test_run_started($1)
       when TEST_SUITE_START_MATCHER
         formatter.format_test_suite_started($1)
+      else
+        ""
       end
     end
 
@@ -183,8 +189,8 @@ module XCPretty
     def print_summary_if_needed
       return unless should_print_summary?
 
-      formatter.format_test_summary(failures_per_suite) 
       @printed_summary = true
+      formatter.format_test_summary(failures_per_suite)
     end
 
     def should_print_summary?

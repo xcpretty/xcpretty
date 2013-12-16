@@ -6,6 +6,7 @@ require "spec/support/matchers/colors"
 require "lib/xcpretty/ansi"
 require "rexml/document"
 require "lib/xcpretty/printer"
+require 'lib/xcpretty/formatters/formatter'
 require "lib/xcpretty/reporters/junit"
 
 include XCPretty::ANSI
