@@ -1,7 +1,8 @@
 require "xcpretty/version"
 require "xcpretty/printer"
-require "xcpretty/printers/simple"
-require "xcpretty/printers/rspec"
+require "xcpretty/formatters/formatter"
+require "xcpretty/formatters/simple"
+require "xcpretty/formatters/rspec"
 require "xcpretty/reporters/junit"
 
 module XCPretty
