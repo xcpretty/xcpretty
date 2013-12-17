@@ -18,11 +18,11 @@ module XCPretty
       load_dependencies
       @directory = `pwd`.strip
       @document  = REXML::Document.new
-      @tokenizer = Tokenizer.new(self)
+      @parser = Parser.new(self)
     end
 
     def handle(line)
-      @tokenizer.tokenize(line)
+      @parser.parse(line)
     end
 
     def format_test_run_started(name)

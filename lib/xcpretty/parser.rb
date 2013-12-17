@@ -99,7 +99,7 @@ module XCPretty
     TEST_SUITE_START_MATCHER = /Test Suite '(.*)' started at/
   end
 
-  class Tokenizer
+  class Parser
     
     include Matchers
     attr_reader :formatter
@@ -108,7 +108,7 @@ module XCPretty
       @formatter = formatter
     end
 
-    def tokenize(text)
+    def parse(text)
       update_test_state(text)
       case text
       when ANALYZE_MATCHER

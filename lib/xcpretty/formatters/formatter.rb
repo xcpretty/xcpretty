@@ -1,5 +1,5 @@
 require 'xcpretty/ansi'
-require 'xcpretty/tokenizer'
+require 'xcpretty/parser'
 
 module XCPretty
 
@@ -34,16 +34,16 @@ module XCPretty
     include ANSI
     include FormatMethods
     
-    attr_reader :tokenizer
+    attr_reader :parser
 
     def initialize(use_unicode, colorize)
       @use_unicode = use_unicode
       @colorize = colorize
-      @tokenizer = Tokenizer.new(self)
+      @parser = Parser.new(self)
     end
 
     def pretty_format(text)
-      tokenizer.tokenize(text)
+      parser.parse(text)
     end
 
     def use_unicode?
