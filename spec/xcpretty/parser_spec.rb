@@ -12,12 +12,12 @@ module XCPretty
     end
 
     it "parses analyze" do
-      @formatter.should receive(:format_analyze).with("CCChip8DisplayView.m")
+      @formatter.should receive(:format_analyze).with("CCChip8DisplayView.m", "CocoaChip/CCChip8DisplayView.m")
       @parser.parse(SAMPLE_ANALYZE)
     end
 
     it "parses analyze shallow" do
-      @formatter.should receive(:format_analyze).with("CCChip8DisplayView.m")
+      @formatter.should receive(:format_analyze).with("CCChip8DisplayView.m", "CocoaChip/CCChip8DisplayView.m")
       @parser.parse(SAMPLE_ANALYZE_SHALLOW)
     end
 
@@ -47,17 +47,17 @@ module XCPretty
     end
 
     it "parses compiling categories" do
-      @formatter.should receive(:format_compile).with("NSMutableArray+ObjectiveSugar.m")
+      @formatter.should receive(:format_compile).with("NSMutableArray+ObjectiveSugar.m", "/Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m")
       @parser.parse(SAMPLE_COMPILE)
     end
 
     it "parses compiling classes" do
-      @formatter.should receive(:format_compile).with("KWNull.m")
+      @formatter.should receive(:format_compile).with("KWNull.m", "Classes/Core/KWNull.m")
       @parser.parse(SAMPLE_ANOTHER_COMPILE)
     end
 
     it "parses compiling XIBs" do
-      @formatter.should receive(:format_compile_xib).with("MainMenu.xib")
+      @formatter.should receive(:format_compile_xib).with("MainMenu.xib", "CocoaChip/en.lproj/MainMenu.xib")
       @parser.parse(SAMPLE_COMPILE_XIB)
     end
 

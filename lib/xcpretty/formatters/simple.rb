@@ -12,10 +12,10 @@ module XCPretty
     COMPLETION = "▸"
     ASCII_COMPLETION = ">"
 
-    def format_analyze(file)
-      format("Analyzing", file)
+    def format_analyze(file_name, file_path)
+      format("Analyzing", file_name)
     end
-    
+
     def format_build_target(target, project, configuration)
       format("Building", "#{project}/#{target} [#{configuration}]")
     end
@@ -24,12 +24,12 @@ module XCPretty
       format("Cleaning", "#{project}/#{target} [#{configuration}]")
     end
 
-    def format_compile(file)
-      format("Compiling", file)
-    end    
+    def format_compile(file_name, file_path)
+      format("Compiling", file_name)
+    end
 
-    def format_compile_xib(file)
-      format("Compiling", file)
+    def format_compile_xib(file_name, file_path)
+      format("Compiling", file_name)
     end
 
     def format_copy_strings_file(file)
@@ -107,6 +107,6 @@ module XCPretty
         ""
       end
     end
-    
+
   end
 end

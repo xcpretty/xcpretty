@@ -3,8 +3,9 @@ module XCPretty
   module Matchers
 
     # @regex Captured groups
-    # $1 file
-    ANALYZE_MATCHER = /^Analyze(?:Shallow)?\s(?:.*\/)(.*.m)*/
+    # $1 file_path
+    # $2 file_name
+    ANALYZE_MATCHER = /^Analyze(?:Shallow)?\s(.*\/(.*\.m))*/
 
     # @regex Captured groups
     # $1 target
@@ -25,12 +26,14 @@ module XCPretty
     CLEAN_TARGET_MATCHER = /^=== CLEAN TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH CONFIGURATION\s(.*)\s===/
 
     # @regex Captured groups
-    # $1 file (short path, e.g. KWNull.m)
-    COMPILE_MATCHER = /^CompileC\s.*\s.*\/(.*.m)(?:\s.*){4}/
+    # $1 file_path
+    # $2 file_name (e.g. KWNull.m)
+    COMPILE_MATCHER = /^CompileC\s.*\s(.*\/(.*\.m))\s.*/
 
     # @regex Captured groups
-    # $1 file (short path, e.g. MainMenu.xib)
-    COMPILE_XIB_MATCHER = /^CompileXIB\s.*\/(.*\.xib)/
+    # $1 file_path
+    # $2 file_name (e.g. MainMenu.xib)
+    COMPILE_XIB_MATCHER = /^CompileXIB\s(.*\/(.*\.xib))/
 
     # @regex Captured groups
     # $1 file
@@ -112,7 +115,7 @@ module XCPretty
       update_test_state(text)
       case text
       when ANALYZE_MATCHER
-        formatter.format_analyze($1)
+        formatter.format_analyze($2, $1)
       when BUILD_TARGET_MATCHER
         formatter.format_build_target($1, $2, $3)
       when CLEAN_REMOVE_MATCHER
@@ -124,9 +127,9 @@ module XCPretty
       when CHECK_DEPENDENCIES_MATCHER
         formatter.format_check_dependencies
       when COMPILE_MATCHER
-        formatter.format_compile($1)
+        formatter.format_compile($2, $1)
       when COMPILE_XIB_MATCHER
-        formatter.format_compile_xib($1)
+        formatter.format_compile_xib($2, $1)
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
       when EXECUTED_MATCHER

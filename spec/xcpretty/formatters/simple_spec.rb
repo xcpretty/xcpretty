@@ -11,7 +11,7 @@ module XCPretty
       end
 
       it "formats analyzing" do
-        @formatter.format_analyze("CCChip8DisplayView.m").should ==
+        @formatter.format_analyze("CCChip8DisplayView.m", 'path/to/file').should ==
         "> Analyzing CCChip8DisplayView.m"
       end
 
@@ -19,19 +19,19 @@ module XCPretty
         @formatter.format_build_target("The Spacer", "Pods", "Debug").should ==
         "> Building Pods/The Spacer [Debug]"
       end
-      
+
       it "formats clean target/project/configuration" do
         @formatter.format_clean_target("Pods-ObjectiveSugar", "Pods", "Debug").should ==
         "> Cleaning Pods/Pods-ObjectiveSugar [Debug]"
       end
-      
+
       it "formats compiling output" do
-        @formatter.format_compile("NSMutableArray+ObjectiveSugar.m").should ==
+        @formatter.format_compile("NSMutableArray+ObjectiveSugar.m", 'path/to/file').should ==
         "> Compiling NSMutableArray+ObjectiveSugar.m"
       end
 
       it "formats compiling xib output" do
-        @formatter.format_compile_xib("MainMenu.xib").should ==
+        @formatter.format_compile_xib("MainMenu.xib", 'path/to/file').should ==
         "> Compiling MainMenu.xib"
       end
 

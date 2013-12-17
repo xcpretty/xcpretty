@@ -5,14 +5,14 @@ module XCPretty
 
   module FormatMethods
     EMPTY_STRING = ''
-    def format_analyze(file);                                EMPTY_STRING; end
+    def format_analyze(file_name, file_path);                EMPTY_STRING; end
     def format_build_target(target, project, configuration); EMPTY_STRING; end
     def format_check_dependencies;                           EMPTY_STRING; end
     def format_clean(project, target, configuration);        EMPTY_STRING; end
     def format_clean_target(target, project, configuration); EMPTY_STRING; end
     def format_clean_remove;                                 EMPTY_STRING; end
-    def format_compile(file);                                EMPTY_STRING; end
-    def format_compile_xib(file);                            EMPTY_STRING; end
+    def format_compile(file_name, file_path);                EMPTY_STRING; end
+    def format_compile_xib(file_name, file_path);            EMPTY_STRING; end
     def format_copy_strings_file(file);                      EMPTY_STRING; end
     def format_cpresource(file);                             EMPTY_STRING; end
     def format_generate_dsym(dsym);                          EMPTY_STRING; end
