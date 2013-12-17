@@ -49,12 +49,12 @@ module XCPretty
         @formatter.format_generate_dsym("ObjectiveSugarTests.octest.dSYM").should ==
         "> Generating 'ObjectiveSugarTests.octest.dSYM'"
       end
-      
+
       it "formats info.plist processing" do
-        @formatter.format_process_info_plist("The Spacer-Info.plist").should ==
+        @formatter.format_process_info_plist("The Spacer-Info.plist", "The Spacer/The Spacer-Info.plist").should ==
         "> Processing The Spacer-Info.plist"
       end
-      
+
       it "formats Linking" do
         @formatter.format_linking("ObjectiveSugar", 'normal', 'i386').should ==
         "> Linking ObjectiveSugar"
@@ -89,7 +89,7 @@ module XCPretty
         @formatter.format_test_run_started("ReactiveCocoaTests.octest(Tests)").should ==
         "Test Suite ReactiveCocoaTests.octest(Tests) started"
       end
-      
+
       it "formats tests suite started" do
         @formatter.format_test_suite_started("RACKVOWrapperSpec").should ==
         "RACKVOWrapperSpec"

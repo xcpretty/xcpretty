@@ -64,8 +64,8 @@ module XCPretty
       format("Running script", "'#{script_name}'")
     end
 
-    def format_process_info_plist(file)
-      format("Processing", file)
+    def format_process_info_plist(file_name, file_path)
+      format("Processing", file_name)
     end
 
     def format_process_pch(file)
@@ -73,7 +73,7 @@ module XCPretty
     end
 
     def format_test_run_started(name)
-      heading("Test Suite", name, "started")  
+      heading("Test Suite", name, "started")
     end
 
     def format_test_suite_started(name)
