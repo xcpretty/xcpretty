@@ -77,7 +77,7 @@ module XCPretty
     end
     
     it "parses info.plist processing" do
-      @formatter.should receive(:format_process_info_plist).with('The Spacer-Info.plist')
+      @formatter.should receive(:format_process_info_plist).with('The Spacer-Info.plist', 'The Spacer/The Spacer-Info.plist')
       @parser.parse(SAMPLE_PROCESS_INFOPLIST)
     end
 

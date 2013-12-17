@@ -85,8 +85,7 @@ module XCPretty
 
     # @regex Captured groups
     # $1 = file
-    PROCESS_INFO_PLIST_MATCHER = /^ProcessInfoPlistFile .*\/(.*.plist)$/
-
+    PROCESS_INFO_PLIST_MATCHER = /^ProcessInfoPlistFile\s.*\.plist\s(.*\/+(.*\.plist))/
     # @regex Captured groups
     # $1 = suite
     # $2 = time
@@ -103,7 +102,7 @@ module XCPretty
   end
 
   class Parser
-    
+
     include Matchers
     attr_reader :formatter
 
@@ -122,7 +121,7 @@ module XCPretty
         formatter.format_clean_remove
       when CLEAN_TARGET_MATCHER
         formatter.format_clean_target($1, $2, $3)
-      when COPY_STRINGS_MATCHER 
+      when COPY_STRINGS_MATCHER
         formatter.format_copy_strings_file($1)
       when CHECK_DEPENDENCIES_MATCHER
         formatter.format_check_dependencies
@@ -145,9 +144,9 @@ module XCPretty
       when PASSING_TEST_MATCHER
         formatter.format_passing_test($1, $2, $3)
       when PROCESS_INFO_PLIST_MATCHER
-        formatter.format_process_info_plist($1.gsub('\\', ''))
+        formatter.format_process_info_plist(*unescaped($2, $1))
       when PHASE_SCRIPT_EXECUTION_MATCHER
-        formatter.format_phase_script_execution($1.gsub('\\', ''))
+        formatter.format_phase_script_execution(*unescaped($1))
       when PROCESS_PCH_MATCHER
         formatter.format_process_pch($1)
       when TESTS_RUN_COMPLETION_MATCHER
@@ -198,6 +197,10 @@ module XCPretty
 
     def should_print_summary?
       @tests_done && !@printed_summary
+    end
+
+    def unescaped(*escaped_values)
+      escaped_values.map { |v| v.gsub('\\', '') }
     end
 
   end
