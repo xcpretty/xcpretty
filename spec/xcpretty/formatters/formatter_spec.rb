@@ -20,22 +20,23 @@ module XCPretty
       @formatter.optional_newline.should == "\n"
     end
 
-    it "formats failures per suite" do
-      failures = {
-        'CarSpec' => [
-          {
-            :file => 'path/to/file2',
-            :reason => "just doesn't work",
-            :test_case => 'Starting the car'
-          }],
-          'StringSpec' => [
+    if RUBY_VERSION > '1.8.7'
+      it "formats failures per suite" do
+        failures = {
+          'CarSpec' => [
             {
-              :file => 'path/to/file1',
-              :reason => "doesn't split",
-              :test_case => 'Splitting the string'
-            }]
-      }
-      @formatter.format_test_summary(SAMPLE_EXECUTED_TESTS, failures).should == %Q(
+              :file => 'path/to/file2',
+              :reason => "just doesn't work",
+              :test_case => 'Starting the car'
+            }],
+            'StringSpec' => [
+              {
+                :file => 'path/to/file1',
+                :reason => "doesn't split",
+                :test_case => 'Splitting the string'
+              }]
+        }
+        @formatter.format_test_summary(SAMPLE_EXECUTED_TESTS, failures).should == %Q(
 
 CarSpec
   Starting the car, #{@formatter.red("just doesn't work")}
@@ -47,7 +48,9 @@ StringSpec
 
 
 #{@formatter.red(SAMPLE_EXECUTED_TESTS)})
+
       end
+    end # only ruby 1.9 above because of ordered hashes
 
   end
 end
