@@ -17,7 +17,7 @@ constructor = {
   :formatter => XCPretty::Simple
 }
 
-reporters = []
+reporter_classes = []
 
 OptionParser.new do |opts|
   opts.banner = "Usage: xcodebuild [options] | xcpretty"
@@ -35,7 +35,7 @@ OptionParser.new do |opts|
   end
   opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
                 "  Choices: #{report_formats.keys.join(', ')}") do |format|
-    reporters << report_formats[format]
+    reporter_classes << report_formats[format]
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
@@ -43,7 +43,7 @@ OptionParser.new do |opts|
 end
 
 printer = XCPretty::Printer.new(constructor)
-reporters = reporters.compact.map(&:new)
+reporters = reporter_classes.compact.map(&:new)
 
 ARGF.each_line do |line|
   printer.pretty_print(line)
