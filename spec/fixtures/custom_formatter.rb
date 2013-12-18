@@ -1,10 +1,6 @@
 # encoding: utf-8
 class EmojiFormatter < XCPretty::Formatter
 
-  ALPHABET   = ('a'..'z').to_a
-  VOWELS     = %w[a e i o u]
-  CONSONANTS = ALPHABET - VOWELS
-
   def format_compile(file_name, file_path)
     "😎 Compilation party time for #{file_name}"
   end
