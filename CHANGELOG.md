@@ -4,15 +4,15 @@
 
 ###### Enhancements
 
-* Added support for loading arbitrary custom printers (experimental)
-  [Eloy Durán](https://github.com/alloy)
+* Added support for loading arbitrary custom printers (experimental) |
+  [Eloy Durán](https://github.com/alloy) |
   [#29](https://github.com/mneorr/xcpretty/pulls/29)
 
-* Show help banner in case no data is piped in
-  [Eloy Durán](https://github.com/alloy)
+* Show help banner in case no data is piped in |
+  [Eloy Durán](https://github.com/alloy) |
   [#29](https://github.com/mneorr/xcpretty/pulls/29)
 
-* Exit(1) if xcodebild failure detected
+* exit(1) if xcodebuild failure detected
 
 ## 0.0.6
 
