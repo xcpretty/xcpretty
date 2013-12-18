@@ -131,7 +131,3 @@ end
 Then(/^I should not see the name of the test group$/) do
   run_output.should_not include(SAMPLE_TEST_GROUP_NAME)
 end
-
-Then(/^the exit status code should be (\d)$/) do |numbah|
-  $?.send(:exit).should == numbah.to_i
-end

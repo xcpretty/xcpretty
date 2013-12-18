@@ -51,4 +51,4 @@ ARGF.each_line do |line|
 end
 
 reporters.each(&:finish)
-
+exit($exit_status || 0)
