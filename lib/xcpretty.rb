@@ -20,8 +20,8 @@ module XCPretty
     end
 
     def self.handle(text)
-      POSSIBLE_FAILURES.each do |failure|
-        $exit_status = 1 and return if text =~ failure
+      POSSIBLE_FAILURES.detect do |failure|
+        $exit_status = 1 if text =~ failure
       end
     end
 
