@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "xcpretty"
   spec.version       = XCPretty::VERSION
   spec.authors       = ["Marin Usalj", "Delisa Mason"]
-  spec.email         = ["mneorr@gmail.com", "kattrali@gmail.com"]
+  spec.email         = ["mneorr@gmail.com", "iskanamagus@gmail.com"]
   spec.required_ruby_version = '>= 1.8.7'
   spec.description   =
   %q{
