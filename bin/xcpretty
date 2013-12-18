@@ -1,10 +1,26 @@
 #!/usr/bin/env ruby
-$:.unshift File.expand_path('../../lib', __FILE__)
-require 'xcpretty'
-require 'optparse'
 
 if RUBY_VERSION < '1.8.7'
   abort "error: XCPretty requires Ruby 1.8.7 or higher."
+end
+
+if $0 == __FILE__
+  $:.unshift File.expand_path('../../lib', __FILE__)
+end
+require 'xcpretty'
+require 'optparse'
+
+def load_custom_formatter(path)
+  begin
+    $:.unshift File.dirname(path)
+    source = File.read(path)
+    klass = eval(source, nil, path)
+    raise unless klass.is_a?(Class)
+    klass
+  rescue SyntaxError => e
+    $stderr.puts "[!] Expected formatter source file to return a class. #{e}"
+    exit 1
+  end
 end
 
 report_formats = {
@@ -27,6 +43,9 @@ OptionParser.new do |opts|
   opts.on('-s', '--simple', 'Use simple output (default)') do
     constructor[:formatter] = XCPretty::Simple
   end
+  opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
+    constructor[:formatter] = load_custom_formatter(path)
+  end
   opts.on('-c', '--color', 'Use colorized output') do
     constructor[:colorize] = true
   end
@@ -39,7 +58,13 @@ OptionParser.new do |opts|
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
-  opts.parse!
+
+  if STDIN.tty?
+    $stderr.puts opts.help
+    exit 1
+  else
+    opts.parse!
+  end
 end
 
 printer = XCPretty::Printer.new(constructor)
