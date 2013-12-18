@@ -171,10 +171,7 @@ module XCPretty
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
       when FAILING_TEST_MATCHER
-        $exit_status = 1
         store_failure($1, $2, $3, $4)
-      when /FAILED \*\*/
-        $exit_status = 1
       end
     end
 
