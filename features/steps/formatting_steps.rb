@@ -47,6 +47,10 @@ When(/^I pipe to xcpretty with "(.*?)"$/) do |flags|
   run_xcpretty(flags)
 end
 
+When(/^I pipe to xcpretty$/) do
+  run_xcpretty("")
+end
+
 Then(/^I should see a successful compilation message$/) do
   run_output.should start_with("▸ Compiling")
 end
@@ -123,8 +127,6 @@ end
 Then(/^I should see a non-utf prefixed output$/) do
   run_output.should start_with(".")
 end
-
-
 
 Then(/^I should not see the name of the test group$/) do
   run_output.should_not include(SAMPLE_TEST_GROUP_NAME)

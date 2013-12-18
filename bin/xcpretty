@@ -46,9 +46,10 @@ printer = XCPretty::Printer.new(constructor)
 reporters = reporter_classes.compact.map(&:new)
 
 ARGF.each_line do |line|
+  XCPretty::ExitStatus.handle(line)
   printer.pretty_print(line)
   reporters.each { |r| r.handle(line) }
 end
 
 reporters.each(&:finish)
-
+exit(XCPretty::ExitStatus.code)
