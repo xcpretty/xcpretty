@@ -10,12 +10,19 @@ module XCPretty
 
     include XCPretty::Matchers
 
+    POSSIBLE_FAILURES = [
+      FAILING_TEST_MATCHER,
+      /\serror:\s/
+    ]
+
     def self.code
       $exit_status || 0
     end
 
     def self.handle(text)
-      $exit_status = 1 if text =~ FAILING_TEST_MATCHER || text =~ /FAILED \*\*/
+      POSSIBLE_FAILURES.each do |failure|
+        $exit_status = 1 and return if text =~ failure
+      end
     end
 
   end

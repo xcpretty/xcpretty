@@ -1,9 +1,5 @@
 Given(/^the build has failed$/) do
-  add_run_input "** BUILD FAILED **"
-end
-
-Given(/^the tests have failed building$/) do
-  add_run_input "** TEST FAILED **"
+  add_run_input "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSArrayCategoriesTests.m:53:13: error: use of undeclared identifier 'something'"
 end
 
 Then(/^the exit status code should be (\d)$/) do |numbah|
