@@ -10,13 +10,17 @@ end
 require 'xcpretty'
 require 'optparse'
 
+def class_from_path(path)
+  source = File.read(path)
+  klass = eval(source, nil, path)
+  raise unless klass.is_a?(Class)
+  klass
+end
+
 def load_custom_formatter(path)
   begin
     $:.unshift File.dirname(path)
-    source = File.read(path)
-    klass = eval(source, nil, path)
-    raise unless klass.is_a?(Class)
-    klass
+    class_from_path(path)
   rescue SyntaxError => e
     $stderr.puts "[!] Expected formatter source file to return a class. #{e}"
     exit 1
