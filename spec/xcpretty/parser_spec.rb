@@ -66,6 +66,11 @@ module XCPretty
       @parser.parse(SAMPLE_COPYSTRINGS)
     end
 
+    it "parses cocoapods errors" do
+      @formatter.should receive(:format_error).with("The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.")
+      @parser.parse(SAMPLE_PODS_ERROR)
+    end
+
     it "parses CpResource" do
       @formatter.should receive(:format_cpresource).with('ObjectiveSugar/Default-568h@2x.png')
       @parser.parse(SAMPLE_CPRESOURCE)
@@ -145,6 +150,7 @@ module XCPretty
       @formatter.should receive(:format_test_suite_started).with('RACKVOWrapperSpec')
       @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
     end
+
 
 
     context "summary" do

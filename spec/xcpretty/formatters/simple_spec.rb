@@ -25,6 +25,11 @@ module XCPretty
         "> Cleaning Pods/Pods-ObjectiveSugar [Debug]"
       end
 
+      it "formats cocoapods errors" do
+        @formatter.format_error("The sandbox is not in sync...").should ==
+        "[!] The sandbox is not in sync..."
+      end
+
       it "formats compiling output" do
         @formatter.format_compile("NSMutableArray+ObjectiveSugar.m", 'path/to/file').should ==
         "> Compiling NSMutableArray+ObjectiveSugar.m"

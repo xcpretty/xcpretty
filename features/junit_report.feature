@@ -21,6 +21,7 @@ Feature: Creating a JUnit test report
     Scenario: Counting tests
         Given I have a passing test in my suite
         And I have a failing test in my suite
+        And the test suite has finished
         When I pipe to xcpretty with "--report junit"
         Then I should see 2 tests in my report
 
@@ -28,3 +29,4 @@ Feature: Creating a JUnit test report
         Given I have tests in my suite from 2 classes
         When I pipe to xcpretty with "--report junit"
         Then I should see 2 test suites
+

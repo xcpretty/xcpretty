@@ -17,6 +17,7 @@ module XCPretty
     def format_compile_xib(file_name, file_path);            EMPTY_STRING; end
     def format_copy_strings_file(file_name);                 EMPTY_STRING; end
     def format_cpresource(file);                             EMPTY_STRING; end
+    def format_error(message);                               EMPTY_STRING; end
     def format_generate_dsym(dsym);                          EMPTY_STRING; end
     def format_linking(file, build_variant, arch);           EMPTY_STRING; end
     def format_libtool(library);                             EMPTY_STRING; end

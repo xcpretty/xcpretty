@@ -18,9 +18,7 @@ TEST_PATH_MATCHER = %r{[\w/\-\s]+:\d+}
 PASSING_TEST_NAME_MATCHER = %r{\w+\s\(\d+\.\d+\sseconds\)}
 FAILING_TEST_NAME_MATCHER = %r{\w+, expected:}
 
-def run_xcpretty flags
-  add_run_input SAMPLE_OCUNIT_SUITE_COMPLETION
-  add_run_input SAMPLE_EXECUTED_TESTS
+def run_xcpretty(flags)
   input_file = Tempfile.new('xcpretty_input')
   File.open(input_file.path, 'w') do |file|
     file.print run_input
@@ -29,7 +27,7 @@ def run_xcpretty flags
   input_file.unlink
 end
 
-def add_run_input text
+def add_run_input(text)
   run_input << "\n#{text}"
 end
 

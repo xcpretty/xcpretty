@@ -459,3 +459,5 @@ PBXCp build/Release/CocoaChipCore.framework build/Release/CocoaChip.app/Contents
     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app/Contents/Frameworks
 warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework/Versions/A/CocoaChipCore
 )
+SAMPLE_PODS_ERROR = "error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation."
+

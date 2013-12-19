@@ -26,6 +26,14 @@ module XCPretty
     CLEAN_TARGET_MATCHER = /^=== CLEAN TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH CONFIGURATION\s(.*)\s===/
 
     # @regex Captured groups
+    # $1 = file
+    CODESIGN_MATCHER = /^CodeSign\s((?:\\ |[^ ])*)$/
+
+    # @regex Captured groups
+    # $1 = file
+    CODESIGN_FRAMEWORK_MATCHER = /^CodeSign\s((?:\\ |[^ ])*.framework)\/Versions/
+
+    # @regex Captured groups
     # $1 file_path
     # $2 file_name (e.g. KWNull.m)
     COMPILE_MATCHER = /^CompileC\s.*\s(.*\/(.*\.m))\s.*/
@@ -52,7 +60,7 @@ module XCPretty
     # $2 = test_suite
     # $3 = test_case
     # $4 = reason
-    FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
+    FAILING_TEST_MATCHER = /^(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
     # @regex Captured groups
     # $1 = dsym
@@ -79,16 +87,11 @@ module XCPretty
     PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)\s\//
 
     # @regex Captured groups
+    PODS_ERROR_MATCHER = /^error:\s(.*)/
+
+    # @regex Captured groups
     # $1 = file
     PROCESS_PCH_MATCHER = /^ProcessPCH\s.*\s(.*.pch)/
-
-    # @regex Captured groups
-    # $1 = file
-    CODESIGN_MATCHER = /^CodeSign\s((?:\\ |[^ ])*)$/
-
-    # @regex Captured groups
-    # $1 = file
-    CODESIGN_FRAMEWORK_MATCHER = /^CodeSign\s((?:\\ |[^ ])*.framework)\/Versions/
 
     # @regex Captured groups
     # $1 = file
@@ -158,6 +161,8 @@ module XCPretty
         formatter.format_linking($1, $2, $3)
       when PASSING_TEST_MATCHER
         formatter.format_passing_test($1, $2, $3)
+      when PODS_ERROR_MATCHER
+        formatter.format_error($1)
       when PROCESS_INFO_PLIST_MATCHER
         formatter.format_process_info_plist(*unescaped($2, $1))
       when PHASE_SCRIPT_EXECUTION_MATCHER
