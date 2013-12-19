@@ -13,10 +13,10 @@ module XCPretty
     # $3 configuration
     BUILD_TARGET_MATCHER = /^=== BUILD TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH.*CONFIGURATION\s(.*)\s===/
 
-    # @regex Nothnig returned here for now
+    # @regex Nothing returned here for now
     CHECK_DEPENDENCIES_MATCHER = /^Check dependencies/
 
-    # @regex Nothnig returned here for now
+    # @regex Nothing returned here for now
     CLEAN_REMOVE_MATCHER = /^Clean.Remove/
 
     # @regex Captured groups
@@ -82,6 +82,21 @@ module XCPretty
     # $1 = file
     PROCESS_PCH_MATCHER = /^ProcessPCH\s.*\s(.*.pch)/
 
+    # @regex Captured groups
+    # $1 = file
+    CODESIGN_MATCHER = /^^CodeSign\s((?:\S|(?<=\\) )*)/
+
+    # @regex Captured groups
+    # $1 = file
+    CODESIGN_FRAMEWORK_MATCHER = /^CodeSign\s((?:\S|(?<=\\) )*.framework)\/Versions/
+
+    # @regex Captured groups
+    # $1 = file
+    PREPROCESS_MATCHER = /^Preprocess\s(?:(?:\S|(?<=\\) )*)\s((?:\S|(?<=\\) )*)/
+
+    # @regex Captured groups
+    # $1 = file
+    PBXCP_MATCHER = /^PBXCp\s((?:\S|(?<=\\) )*)/
 
     # @regex Captured groups
     # $1 = file
@@ -149,6 +164,14 @@ module XCPretty
         formatter.format_phase_script_execution(*unescaped($1))
       when PROCESS_PCH_MATCHER
         formatter.format_process_pch($1)
+      when CODESIGN_FRAMEWORK_MATCHER
+        formatter.format_codesign($1)
+      when CODESIGN_MATCHER
+        formatter.format_codesign($1)
+      when PREPROCESS_MATCHER
+        formatter.format_preprocess($1)
+      when PBXCP_MATCHER
+        formatter.format_pbxcp($1)
       when TESTS_RUN_COMPLETION_MATCHER
         formatter.format_test_run_finished($1, $2)
       when TESTS_RUN_START_MATCHER

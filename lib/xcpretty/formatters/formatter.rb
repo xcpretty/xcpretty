@@ -25,6 +25,9 @@ module XCPretty
     def format_process_pch(file);                            EMPTY_STRING; end
     def format_phase_script_execution(script_name);          EMPTY_STRING; end
     def format_process_info_plist(file_name, file_path);     EMPTY_STRING; end
+    def format_codesign(file);                               EMPTY_STRING; end
+    def format_preprocess(file);                             EMPTY_STRING; end
+    def format_pbxcp(file);                                  EMPTY_STRING; end
     def format_test_run_started(name);                       EMPTY_STRING; end
     def format_test_run_finished(name, time);                EMPTY_STRING; end
     def format_test_suite_started(name);                     EMPTY_STRING; end

@@ -85,6 +85,21 @@ module XCPretty
         "> Precompiling Pods-CocoaLumberjack-prefix.pch"
       end
 
+      it "formats code signing" do
+        @formatter.format_codesign("build/Release/CocoaChip.app").should ==
+        "> Signing build/Release/CocoaChip.app"
+      end
+
+      it "formats preprocessing a file" do
+        @formatter.format_preprocess("CocoaChip/CocoaChip-Info.plist").should ==
+        "> Preprocessing CocoaChip/CocoaChip-Info.plist"
+      end
+
+      it "formats PBXCp" do
+        @formatter.format_pbxcp("build/Release/CocoaChipCore.framework").should ==
+        "> Copying build/Release/CocoaChipCore.framework"
+      end
+
       it "formats test run start" do
         @formatter.format_test_run_started("ReactiveCocoaTests.octest(Tests)").should ==
         "Test Suite ReactiveCocoaTests.octest(Tests) started"

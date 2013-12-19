@@ -434,3 +434,28 @@ CompileXIB CocoaChip/en.lproj/MainMenu.xib
     setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..
     /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 10.7 --output-format human-readable-text --compile /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app/Contents/Resources/en.lproj/MainMenu.nib /Users/dustin/Source/CocoaChip/CocoaChip/en.lproj/MainMenu.xib
 )
+SAMPLE_CODESIGN = %Q(
+CodeSign build/Release/CocoaChip.app
+    cd /Users/dustin/Source/CocoaChip
+    setenv CODESIGN_ALLOCATE /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+    Using code signing identity \"Mac Developer: John Smith (0123456789)\"
+    /usr/bin/codesign --force --sign 0123456789ABCDEF0123456789ABCDEF01234567 /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app
+)
+SAMPLE_CODESIGN_FRAMEWORK = %Q(
+CodeSign build/Release/CocoaChipCore.framework/Versions/A
+    cd /Users/dustin/Source/CocoaChip
+    setenv CODESIGN_ALLOCATE /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+    Using code signing identity "Mac Developer: John Smith (0123456789)"
+    /usr/bin/codesign --force --sign 0123456789ABCDEF0123456789ABCDEF01234567 /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework/Versions/A
+)
+SAMPLE_PREPROCESS = %Q(
+Preprocess build/CocoaChip.build/Release/CocoaChip.build/Preprocessed-Info.plist CocoaChip/CocoaChip-Info.plist
+    cd /Users/dustin/Source/CocoaChip
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -E -P -x c -Wno-trigraphs /Users/dustin/Source/CocoaChip/CocoaChip/CocoaChip-Info.plist -F/Users/dustin/Source/CocoaChip/build/Release -o /Users/dustin/Source/CocoaChip/build/CocoaChip.build/Release/CocoaChip.build/Preprocessed-Info.plist
+)
+SAMPLE_PBXCP = %Q(
+PBXCp build/Release/CocoaChipCore.framework build/Release/CocoaChip.app/Contents/Frameworks/CocoaChipCore.framework
+    cd /Users/dustin/Source/CocoaChip
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app/Contents/Frameworks
+warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework/Versions/A/CocoaChipCore
+)

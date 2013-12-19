@@ -72,6 +72,18 @@ module XCPretty
       format("Precompiling", file)
     end
 
+    def format_codesign(file)
+      format("Signing", file)
+    end
+
+    def format_preprocess(file)
+      format("Preprocessing", file)
+    end
+
+    def format_pbxcp(file)
+      format("Copying", file)
+    end
+
     def format_test_run_started(name)
       heading("Test Suite", name, "started")
     end
