@@ -75,7 +75,7 @@ module XCPretty
       @formatter.should receive(:format_generate_dsym).with('ObjectiveSugarTests.octest.dSYM')
       @parser.parse(SAMPLE_DSYM)
     end
-    
+
     it "parses info.plist processing" do
       @formatter.should receive(:format_process_info_plist).with('The Spacer-Info.plist', 'The Spacer/The Spacer-Info.plist')
       @parser.parse(SAMPLE_PROCESS_INFOPLIST)
@@ -90,9 +90,9 @@ module XCPretty
       @formatter.should receive(:format_libtool).with('libPods-ObjectiveSugarTests-Kiwi.a')
       @parser.parse(SAMPLE_LIBTOOL)
     end
-    
+
     it "parses failing tests" do
-      @formatter.should receive(:format_failing_test).with("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458")
+      @formatter.should receive(:format_failing_test).with(SAMPLE_TEST_GROUP_NAME, "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/#{SAMPLE_TEST_GROUP_NAME}.m:458")
       @parser.parse(SAMPLE_SPECTA_FAILURE)
     end
 
@@ -113,7 +113,7 @@ module XCPretty
 
     it "parses test run finished" do
       @formatter.should receive(:format_test_run_finished).with('ReactiveCocoaTests.octest(Tests)', '2013-12-10 07:03:03 +0000.')
-      @parser.parse(SAMPLE_OCUNIT_TEST_RUN_COMPLETION)  
+      @parser.parse(SAMPLE_OCUNIT_TEST_RUN_COMPLETION)
     end
 
     it "parses test run started" do
@@ -130,7 +130,7 @@ module XCPretty
     context "summary" do
 
       def given_tests_have_started(reporter = SAMPLE_OCUNIT_TEST_RUN_BEGINNING)
-        @parser.parse(reporter)  
+        @parser.parse(reporter)
       end
 
       def given_tests_are_done(reporter = SAMPLE_OCUNIT_TEST_RUN_COMPLETION)
