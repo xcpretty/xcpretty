@@ -3,6 +3,7 @@ module XCPretty
     
     include XCPretty::FormatMethods
     FILEPATH = 'build/reports/junit.xml'
+    REPORT_DIR = 'build/test-reports'
 
     def load_dependencies
       unless @@loaded ||= false
