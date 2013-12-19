@@ -47,6 +47,7 @@ module XCPretty
 
     def finish
       set_test_counters
+      FileUtils.rm_rf(REPORT_DIR)
       FileUtils.mkdir_p(REPORT_DIR)
       formatter = REXML::Formatters::Pretty.new(2)
       formatter.compact = true
