@@ -84,19 +84,19 @@ module XCPretty
 
     # @regex Captured groups
     # $1 = file
-    CODESIGN_MATCHER = /^^CodeSign\s((?:\S|(?<=\\) )*)/
+    CODESIGN_MATCHER = /^CodeSign\s((?:\\ |[^ ])*)$/
 
     # @regex Captured groups
     # $1 = file
-    CODESIGN_FRAMEWORK_MATCHER = /^CodeSign\s((?:\S|(?<=\\) )*.framework)\/Versions/
+    CODESIGN_FRAMEWORK_MATCHER = /^CodeSign\s((?:\\ |[^ ])*.framework)\/Versions/
 
     # @regex Captured groups
     # $1 = file
-    PREPROCESS_MATCHER = /^Preprocess\s(?:(?:\S|(?<=\\) )*)\s((?:\S|(?<=\\) )*)/
+    PREPROCESS_MATCHER = /^Preprocess\s(?:(?:\\ |[^ ])*)\s((?:\\ |[^ ])*)$/
 
     # @regex Captured groups
     # $1 = file
-    PBXCP_MATCHER = /^PBXCp\s((?:\S|(?<=\\) )*)/
+    PBXCP_MATCHER = /^PBXCp\s((?:\\ |[^ ])*)/
 
     # @regex Captured groups
     # $1 = file
