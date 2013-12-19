@@ -92,7 +92,7 @@ module XCPretty
     end
 
     it "parses failing tests" do
-      @formatter.should receive(:format_failing_test).with(SAMPLE_TEST_GROUP_NAME, "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/#{SAMPLE_TEST_GROUP_NAME}.m:458")
+      @formatter.should receive(:format_failing_test).with("RACTupleSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACTupleSpec.m:458")
       @parser.parse(SAMPLE_SPECTA_FAILURE)
     end
 
