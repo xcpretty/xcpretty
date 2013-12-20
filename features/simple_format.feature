@@ -95,3 +95,23 @@ Feature: Showing build output in simple format
         Given I have a passing test in my suite
         And I pipe to xcpretty with "--no-utf"
         Then I should see a non-utf prefixed output
+
+    Scenario: Showing code signing
+        Given I have a file to code sign
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful code signing message
+
+    Scenario: Showing code signing a framework
+        Given I have a framework to code sign
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful code signing message
+
+    Scenario: Showing preprocess
+        Given I have a file to preprocess
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful preprocessing message
+
+    Scenario: Showing a PBXCp copy
+        Given I have a file to copy with PBXCp
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful copying message

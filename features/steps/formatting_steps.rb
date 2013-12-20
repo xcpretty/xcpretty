@@ -43,6 +43,22 @@ Given(/^I finish a test suite$/) do
   add_run_input SAMPLE_OCUNIT_SUITE_COMPLETION
 end
 
+Given(/^I have a file to code sign$/) do
+  add_run_input SAMPLE_CODESIGN
+end
+
+Given(/^I have a framework to code sign$/) do
+  add_run_input SAMPLE_CODESIGN_FRAMEWORK
+end
+
+Given(/^I have a file to preprocess$/) do
+  add_run_input SAMPLE_PREPROCESS
+end
+
+Given(/^I have a file to copy with PBXCp/) do
+  add_run_input SAMPLE_PBXCP
+end
+
 When(/^I pipe to xcpretty with "(.*?)"$/) do |flags|
   run_xcpretty(flags)
 end
@@ -70,6 +86,18 @@ end
 
 Then(/^I should see a successful analyze message$/) do
   run_output.should start_with("▸ Analyzing")
+end
+
+Then(/^I should see a successful code signing message$/) do
+  run_output.should start_with("▸ Signing")
+end
+
+Then(/^I should see a successful preprocessing message$/) do
+  run_output.should start_with("▸ Preprocessing")
+end
+
+Then(/^I should see a successful copying message$/) do
+  run_output.should start_with("▸ Copying")
 end
 
 Then(/^I should see a yellow completion icon$/) do
