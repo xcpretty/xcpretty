@@ -42,12 +42,11 @@ def run_output
 end
 
 def junit_report
-  path = Dir.glob("#{junit_report_dir}/*.xml").first
-  REXML::Document.new(File.open(path, 'r').read)
+  REXML::Document.new(File.open(XCPretty::JUnit::FILEPATH, 'r').read)
 end
 
-def junit_report_dir
-  XCPretty::JUnit::REPORT_DIR
+def junit_report_root
+  junit_report.root.elements.to_a.first
 end
 
 Before do
@@ -57,5 +56,5 @@ end
 After do
   @input  = ""
   @output = ""
-  FileUtils.rm_rf(junit_report_dir)
+  FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
 end

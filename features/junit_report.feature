@@ -27,4 +27,4 @@ Feature: Creating a JUnit test report
     Scenario: Having many test classes
         Given I have tests in my suite from 2 classes
         When I pipe to xcpretty with "--report junit"
-        Then I should see 2 test report files
+        Then I should see 2 test suites
