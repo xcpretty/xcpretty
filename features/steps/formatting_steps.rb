@@ -166,5 +166,5 @@ Then(/^I should see a non-utf prefixed output$/) do
 end
 
 Then(/^I should not see the name of the test group$/) do
-  run_output.should_not include(SAMPLE_TEST_GROUP_NAME)
+  run_output.should_not include("RACTupleSpec")
 end

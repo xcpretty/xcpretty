@@ -45,6 +45,10 @@ def junit_report
   REXML::Document.new(File.open(XCPretty::JUnit::FILEPATH, 'r').read)
 end
 
+def junit_report_root
+  junit_report.root.elements.to_a.first
+end
+
 Before do
   self.colorize = true
 end
@@ -54,4 +58,3 @@ After do
   @output = ""
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
 end
-
