@@ -188,11 +188,11 @@ Then(/^I should see a red compilation error$/) do
   run_output.should include(red("expected identifier"))
 end
 
-Then(/^I should see a failed line with bad syntax$/) do
+Then(/^I should see a failed line$/) do
   run_output.should include("[[thread.lastMessage should] equal:thread.];")
 end
 
-Then(/^I should see a red cursor$/) do
+Then(/^I should see a cyan cursor$/) do
   run_output.should include(cyan("                                                          ^"))
 end
 

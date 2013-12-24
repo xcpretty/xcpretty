@@ -34,9 +34,13 @@ module XCPretty
         @formatter.format_compile_error("file", "path/to/file", "expected valid syntax",
                                         "[a should",
                                         "         ^").should ==
-%Q(path/to/file: expected valid syntax
+%Q(
+path/to/file: expected valid syntax
+
 [a should
-         ^)
+         ^
+
+)
       end
 
       it "formats compiling output" do

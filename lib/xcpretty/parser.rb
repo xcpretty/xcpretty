@@ -58,6 +58,10 @@ module XCPretty
     CPRESOURCE_MATCHER = /^CpResource\s(.*)\s\//
 
     # @regex Captured groups
+    # $1 cursor (with whitespaces and tildes)
+    CURSOR_MATCHER = /^([\s~]*\^[\s~]*)$/
+
+    # @regex Captured groups
     #
     EXECUTED_MATCHER = /^Executed/
 
@@ -220,14 +224,15 @@ module XCPretty
         current_error[:reason]    = $3
         current_error[:file_path] = $1
         current_error[:file_name] = $2
-      elsif text =~ /(\s*\^)/
+      elsif text =~ CURSOR_MATCHER
         @printing_error = false
-        current_error[:cursor]    = $1
+        current_error[:cursor]    = $1.chomp
       else
         current_error[:line]      = text.chomp if @printing_error
       end
     end
 
+    # TODO: clean up the mess around all this
     def should_print_error?
       current_error[:reason] && current_error[:cursor] && current_error[:line]
     end

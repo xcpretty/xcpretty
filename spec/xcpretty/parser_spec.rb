@@ -92,7 +92,11 @@ module XCPretty
     end
 
     it "parses failing tests" do
-      @formatter.should receive(:format_failing_test).with("RACTupleSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACTupleSpec.m:458")
+      @formatter.should receive(:format_failing_test).with("RACCommandSpec",
+                                                           "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES",
+                                                           "expected: 1, got: 0",
+                                                           #"expect([command.enabled first]).to.equal(@YES);", # outside of PR scope
+                                                           "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458")
       @parser.parse(SAMPLE_SPECTA_FAILURE)
     end
 
@@ -155,12 +159,25 @@ module XCPretty
 
       it "parses compiling errors" do
         @formatter.should receive(:format_compile_error).with(
-          "YDThreadSpec.m",
-          "/Users/musalj/code/yammer/landshark/Shared/YamKitTests/YDThreadSpec.m:833:59",
+          "SampleTest.m",
+          "/Users/musalj/code/OSS/SampleApp/SampleTest.m:12:59",
           "expected identifier",
           "                [[thread.lastMessage should] equal:thread.];",
           "                                                          ^")
         SAMPLE_COMPILE_ERROR.each_line do |line|
+          @parser.parse(line)
+        end
+      end
+
+
+      it "parses compiling errors with tildes" do
+        @formatter.should receive(:format_compile_error).with(
+          'NSSetTests.m',
+          '/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSSetTests.m:93:16',
+          "no visible @interface for 'NSArray' declares the selector 'shoulds'",
+          '            }] shoulds] equal:@[ @"F458 Italia", @"Testarossa" ]];',
+          '            ~~ ^~~~~~~')
+        SAMPLE_COMPILE_ERROR_WITH_TILDES.each_line do |line|
           @parser.parse(line)
         end
       end

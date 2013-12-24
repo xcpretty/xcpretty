@@ -461,9 +461,14 @@ warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/
 )
 SAMPLE_PODS_ERROR = "error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation."
 
-SAMPLE_COMPILE_ERROR =
-%Q(/Users/musalj/code/yammer/landshark/Shared/YamKitTests/YDThreadSpec.m:833:59: error: expected identifier
+SAMPLE_COMPILE_ERROR = %Q(
+/Users/musalj/code/OSS/SampleApp/SampleTest.m:12:59: error: expected identifier
                 [[thread.lastMessage should] equal:thread.];
                                                           ^
+)
+SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
+/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSSetTests.m:93:16: error: no visible @interface for 'NSArray' declares the selector 'shoulds'
+            }] shoulds] equal:@[ @"F458 Italia", @"Testarossa" ]];
+            ~~ ^~~~~~~
 )
 

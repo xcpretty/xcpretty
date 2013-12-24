@@ -1,13 +1,13 @@
 $:.unshift File.expand_path('../../..', __FILE__)
 
-require "tempfile"
-require "spec/fixtures/constants"
-require "spec/support/matchers/colors"
-require "lib/xcpretty/ansi"
-require "rexml/document"
-require "lib/xcpretty/printer"
+require 'tempfile'
+require 'spec/fixtures/constants'
+require 'spec/support/matchers/colors'
+require 'lib/xcpretty/ansi'
+require 'lib/xcpretty/syntax'
+require 'rexml/document'
 require 'lib/xcpretty/formatters/formatter'
-require "lib/xcpretty/reporters/junit"
+require 'lib/xcpretty/reporters/junit'
 
 include XCPretty::ANSI
 
