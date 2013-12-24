@@ -66,11 +66,6 @@ module XCPretty
       @parser.parse(SAMPLE_COPYSTRINGS)
     end
 
-    it "parses cocoapods errors" do
-      @formatter.should receive(:format_error).with("The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.")
-      @parser.parse(SAMPLE_PODS_ERROR)
-    end
-
     it "parses CpResource" do
       @formatter.should receive(:format_cpresource).with('ObjectiveSugar/Default-568h@2x.png')
       @parser.parse(SAMPLE_CPRESOURCE)
@@ -151,6 +146,26 @@ module XCPretty
       @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
     end
 
+    context "errors" do
+
+      it "parses cocoapods errors" do
+        @formatter.should receive(:format_error).with("The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.")
+        @parser.parse(SAMPLE_PODS_ERROR)
+      end
+
+      it "parses compiling errors" do
+        @formatter.should receive(:format_compile_error).with(
+          "YDThreadSpec.m",
+          "/Users/musalj/code/yammer/landshark/Shared/YamKitTests/YDThreadSpec.m:833:59",
+          "expected identifier",
+          "                [[thread.lastMessage should] equal:thread.];",
+          "                                                          ^")
+        SAMPLE_COMPILE_ERROR.split("\n").each do |line|
+          @parser.parse(line)
+        end
+      end
+
+    end
 
 
     context "summary" do

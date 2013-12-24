@@ -14,6 +14,7 @@ module XCPretty
     def format_clean_target(target, project, configuration); EMPTY_STRING; end
     def format_clean_remove;                                 EMPTY_STRING; end
     def format_compile(file_name, file_path);                EMPTY_STRING; end
+    def format_compile_error(file_name, file_path, reason, line, cursor); EMPTY_STRING; end
     def format_compile_xib(file_name, file_path);            EMPTY_STRING; end
     def format_copy_strings_file(file_name);                 EMPTY_STRING; end
     def format_cpresource(file);                             EMPTY_STRING; end

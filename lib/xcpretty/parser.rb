@@ -39,6 +39,12 @@ module XCPretty
     COMPILE_MATCHER = /^CompileC\s.*\s(.*\/(.*\.m))\s.*/
 
     # @regex Captured groups
+    # $1 = file_path
+    # $2 = file_name
+    # $3 = reason
+    COMPILE_ERROR_MATCHER = /^(.+\/(.*\.[h,m,c]).*):\serror:\s(.*)/
+
+    # @regex Captured groups
     # $1 file_path
     # $2 file_name (e.g. MainMenu.xib)
     COMPILE_XIB_MATCHER = /^CompileXIB\s(.*\/(.*\.xib))/
@@ -130,6 +136,12 @@ module XCPretty
 
     def parse(text)
       update_test_state(text)
+      update_error_state(text)
+
+      if should_print_error?
+        print_error and return
+      end
+
       case text
       when ANALYZE_MATCHER
         formatter.format_analyze($2, $1)
@@ -201,6 +213,35 @@ module XCPretty
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
       end
+    end
+
+    # @ return Hash { :file_name, :file_path, :reason, :line }
+    def update_error_state(text)
+      if text =~ COMPILE_ERROR_MATCHER
+        @printing_error = true
+        @current_error = {}
+        @current_error[:reason]    = $3
+        @current_error[:file_path] = $1
+        @current_error[:file_name] = $2
+      elsif text =~ /\s*\^/
+        @printing_error = false
+        @current_error[:cursor]    = text
+      else
+        @current_error[:line]      = text if @printing_error
+      end
+    end
+
+    def should_print_error?
+      @current_error && @current_error[:reason] && @current_error[:cursor] && @current_error[:line]
+    end
+
+    def print_error
+      error = @current_error
+      formatter.format_compile_error(error[:file_name],
+                                     error[:file_path],
+                                     error[:reason],
+                                     error[:line],
+                                     error[:cursor])
     end
 
     def store_failure(file, test_suite, test_case, reason)
