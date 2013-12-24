@@ -160,9 +160,17 @@ module XCPretty
           "expected identifier",
           "                [[thread.lastMessage should] equal:thread.];",
           "                                                          ^")
-        SAMPLE_COMPILE_ERROR.split("\n").each do |line|
+        SAMPLE_COMPILE_ERROR.each_line do |line|
           @parser.parse(line)
         end
+      end
+
+      it "doesn't print the same error over and over" do
+        SAMPLE_COMPILE_ERROR.each_line do |line|
+          @parser.parse(line)
+        end
+        @formatter.should_not receive(:format_compile_error)
+        @parser.parse("hohohoooo")
       end
 
     end

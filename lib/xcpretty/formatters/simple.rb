@@ -47,6 +47,10 @@ module XCPretty
       status_symbol(:error) + " " + red(message)
     end
 
+    def format_compile_error(file, file_path, reason, line, cursor)
+      "#{file_path}: #{red(reason)}\n#{line}\n#{cyan(cursor)}"
+    end
+
     def format_generate_dsym(dsym)
       format("Generating '#{dsym}'")
     end

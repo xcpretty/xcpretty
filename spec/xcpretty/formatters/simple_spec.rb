@@ -30,6 +30,15 @@ module XCPretty
         "[!] The sandbox is not in sync..."
       end
 
+      it "formats compiling errors" do
+        @formatter.format_compile_error("file", "path/to/file", "expected valid syntax",
+                                        "[a should",
+                                        "         ^").should ==
+%Q(path/to/file: expected valid syntax
+[a should
+         ^)
+      end
+
       it "formats compiling output" do
         @formatter.format_compile("NSMutableArray+ObjectiveSugar.m", 'path/to/file').should ==
         "> Compiling NSMutableArray+ObjectiveSugar.m"

@@ -42,7 +42,7 @@ module XCPretty
     # $1 = file_path
     # $2 = file_name
     # $3 = reason
-    COMPILE_ERROR_MATCHER = /^(.+\/(.*\.[h,m,c]).*):\serror:\s(.*)/
+    COMPILE_ERROR_MATCHER = /^(.+\/(.*\.[h,m,c]).*):\serror:\s(.*)$/
 
     # @regex Captured groups
     # $1 file_path
@@ -138,9 +138,7 @@ module XCPretty
       update_test_state(text)
       update_error_state(text)
 
-      if should_print_error?
-        print_error and return
-      end
+      return print_error if should_print_error?
 
       case text
       when ANALYZE_MATCHER
@@ -219,24 +217,28 @@ module XCPretty
     def update_error_state(text)
       if text =~ COMPILE_ERROR_MATCHER
         @printing_error = true
-        @current_error = {}
-        @current_error[:reason]    = $3
-        @current_error[:file_path] = $1
-        @current_error[:file_name] = $2
-      elsif text =~ /\s*\^/
+        current_error[:reason]    = $3
+        current_error[:file_path] = $1
+        current_error[:file_name] = $2
+      elsif text =~ /(\s*\^)/
         @printing_error = false
-        @current_error[:cursor]    = text
+        current_error[:cursor]    = $1
       else
-        @current_error[:line]      = text if @printing_error
+        current_error[:line]      = text.chomp if @printing_error
       end
     end
 
     def should_print_error?
-      @current_error && @current_error[:reason] && @current_error[:cursor] && @current_error[:line]
+      current_error[:reason] && current_error[:cursor] && current_error[:line]
+    end
+
+    def current_error
+      @current_error ||= {}
     end
 
     def print_error
-      error = @current_error
+      error = current_error.dup
+      @current_error = {}
       formatter.format_compile_error(error[:file_name],
                                      error[:file_path],
                                      error[:reason],

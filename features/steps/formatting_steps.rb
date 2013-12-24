@@ -64,6 +64,12 @@ Given(/^podfile.lock wasn't in sync$/) do
   add_run_input SAMPLE_PODS_ERROR
 end
 
+Given(/^there was a syntax error$/) do
+  SAMPLE_COMPILE_ERROR.split("\n").each do |line|
+    add_run_input(line)
+  end
+end
+
 When(/^I pipe to xcpretty with "(.*?)"$/) do |flags|
   run_xcpretty(flags)
 end
@@ -176,5 +182,17 @@ end
 
 Then(/^I should see a red error message$/) do
   run_output.should include(red("⌦ ") + " " + red(SAMPLE_PODS_ERROR.gsub('error: ', '')))
+end
+
+Then(/^I should see a red compilation error$/) do
+  run_output.should include(red("expected identifier"))
+end
+
+Then(/^I should see a failed line with bad syntax$/) do
+  run_output.should include("[[thread.lastMessage should] equal:thread.];")
+end
+
+Then(/^I should see a red cursor$/) do
+  run_output.should include(cyan("                                                          ^"))
 end
 

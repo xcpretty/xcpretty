@@ -461,8 +461,8 @@ warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/
 )
 SAMPLE_PODS_ERROR = "error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation."
 
-SAMPLE_COMPILE_ERROR = %Q(
-/Users/musalj/code/yammer/landshark/Shared/YamKitTests/YDThreadSpec.m:833:59: error: expected identifier
+SAMPLE_COMPILE_ERROR =
+%Q(/Users/musalj/code/yammer/landshark/Shared/YamKitTests/YDThreadSpec.m:833:59: error: expected identifier
                 [[thread.lastMessage should] equal:thread.];
                                                           ^
 )
