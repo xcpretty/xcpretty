@@ -1,6 +1,6 @@
 # Changelog
 
-## master
+## 0.0.7
 
 ###### Enhancements
 
