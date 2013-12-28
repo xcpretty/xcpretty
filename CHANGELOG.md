@@ -4,6 +4,11 @@
 
 ###### Enhancements
 
+* exit(1) if xcodebuild failure detected
+
+* Print compile errors nicely. Currently we support compiler erorrs,
+  and Pods-not-installed errors. Missing mach-o-linker failures
+
 * Added support for loading arbitrary custom printers (experimental) |
   [Eloy Durán](https://github.com/alloy) |
   [#29](https://github.com/mneorr/xcpretty/pulls/29)
@@ -11,8 +16,6 @@
 * Show help banner in case no data is piped in |
   [Eloy Durán](https://github.com/alloy) |
   [#29](https://github.com/mneorr/xcpretty/pulls/29)
-
-* exit(1) if xcodebuild failure detected
 
 ## 0.0.6
 
