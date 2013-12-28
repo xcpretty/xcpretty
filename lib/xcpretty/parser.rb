@@ -142,7 +142,7 @@ module XCPretty
       update_test_state(text)
       update_error_state(text)
 
-      return print_error if should_print_error?
+      return format_error if should_format_error?
 
       case text
       when ANALYZE_MATCHER
@@ -164,7 +164,7 @@ module XCPretty
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
       when EXECUTED_MATCHER
-        print_summary_if_needed(text)
+        format_summary_if_needed(text)
       when FAILING_TEST_MATCHER
         formatter.format_failing_test($2, $3, $4, $1)
       when GENERATE_DSYM_MATCHER
@@ -208,7 +208,7 @@ module XCPretty
       case text
       when TESTS_RUN_START_MATCHER
         @tests_done = false
-        @printed_summary = false
+        @formatted_summary = false
         @failures = {}
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
@@ -220,20 +220,20 @@ module XCPretty
     # @ return Hash { :file_name, :file_path, :reason, :line }
     def update_error_state(text)
       if text =~ COMPILE_ERROR_MATCHER
-        @printing_error = true
+        @formatting_error = true
         current_error[:reason]    = $3
         current_error[:file_path] = $1
         current_error[:file_name] = $2
       elsif text =~ CURSOR_MATCHER
-        @printing_error = false
+        @formatting_error = false
         current_error[:cursor]    = $1.chomp
       else
-        current_error[:line]      = text.chomp if @printing_error
+        current_error[:line]      = text.chomp if @formatting_error
       end
     end
 
     # TODO: clean up the mess around all this
-    def should_print_error?
+    def should_format_error?
       current_error[:reason] && current_error[:cursor] && current_error[:line]
     end
 
@@ -241,7 +241,7 @@ module XCPretty
       @current_error ||= {}
     end
 
-    def print_error
+    def format_error
       error = current_error.dup
       @current_error = {}
       formatter.format_compile_error(error[:file_name],
@@ -264,15 +264,15 @@ module XCPretty
       @failures ||= {}
     end
 
-    def print_summary_if_needed(executed_message)
-      return "" unless should_print_summary?
+    def format_summary_if_needed(executed_message)
+      return "" unless should_format_summary?
 
-      @printed_summary = true
+      @formatted_summary = true
       formatter.format_test_summary(executed_message, failures_per_suite)
     end
 
-    def should_print_summary?
-      @tests_done && !@printed_summary
+    def should_format_summary?
+      @tests_done && !@formatted_summary
     end
 
     def unescaped(*escaped_values)
