@@ -30,3 +30,4 @@ Then(/^I should see (\d+) test suites$/) do |count|
   suites.size.should == count.to_i
   suites.select {|s| s.name == 'testsuite' }.size.should == count.to_i
 end
+

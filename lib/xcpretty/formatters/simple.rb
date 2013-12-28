@@ -7,8 +7,11 @@ module XCPretty
 
     PASS = "✓"
     FAIL = "✗"
+    ERROR = "⌦ "
+
     ASCII_PASS = "."
     ASCII_FAIL = "x"
+    ASCII_ERROR = "[!]"
     COMPLETION = "▸"
     ASCII_COMPLETION = ">"
 
@@ -38,6 +41,14 @@ module XCPretty
 
     def format_cpresource(resource)
       format("Copying", resource)
+    end
+
+    def format_error(message)
+      status_symbol(:error) + " " + red(message)
+    end
+
+    def format_compile_error(file, file_path, reason, line, cursor)
+      "\n#{file_path}: #{red(reason)}\n\n#{line}\n#{cyan(cursor)}\n\n"
     end
 
     def format_generate_dsym(dsym)
@@ -113,6 +124,8 @@ module XCPretty
         green(use_unicode? ? PASS : ASCII_PASS)
       when :fail
         red(use_unicode? ? FAIL : ASCII_FAIL)
+      when :error
+        red(use_unicode? ? ERROR : ASCII_ERROR)
       when :completion
         yellow(use_unicode? ? COMPLETION : ASCII_COMPLETION)
       else

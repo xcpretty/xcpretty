@@ -26,9 +26,23 @@ module XCPretty
     CLEAN_TARGET_MATCHER = /^=== CLEAN TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH CONFIGURATION\s(.*)\s===/
 
     # @regex Captured groups
+    # $1 = file
+    CODESIGN_MATCHER = /^CodeSign\s((?:\\ |[^ ])*)$/
+
+    # @regex Captured groups
+    # $1 = file
+    CODESIGN_FRAMEWORK_MATCHER = /^CodeSign\s((?:\\ |[^ ])*.framework)\/Versions/
+
+    # @regex Captured groups
     # $1 file_path
     # $2 file_name (e.g. KWNull.m)
     COMPILE_MATCHER = /^CompileC\s.*\s(.*\/(.*\.m))\s.*/
+
+    # @regex Captured groups
+    # $1 = file_path
+    # $2 = file_name
+    # $3 = reason
+    COMPILE_ERROR_MATCHER = /^(.+\/(.*\.[h,m,c]).*):\serror:\s(.*)$/
 
     # @regex Captured groups
     # $1 file_path
@@ -44,6 +58,10 @@ module XCPretty
     CPRESOURCE_MATCHER = /^CpResource\s(.*)\s\//
 
     # @regex Captured groups
+    # $1 cursor (with whitespaces and tildes)
+    CURSOR_MATCHER = /^([\s~]*\^[\s~]*)$/
+
+    # @regex Captured groups
     #
     EXECUTED_MATCHER = /^Executed/
 
@@ -52,7 +70,7 @@ module XCPretty
     # $2 = test_suite
     # $3 = test_case
     # $4 = reason
-    FAILING_TEST_MATCHER = /(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
+    FAILING_TEST_MATCHER = /^(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
     # @regex Captured groups
     # $1 = dsym
@@ -79,16 +97,11 @@ module XCPretty
     PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)\s\//
 
     # @regex Captured groups
+    PODS_ERROR_MATCHER = /^error:\s(.*)/
+
+    # @regex Captured groups
     # $1 = file
     PROCESS_PCH_MATCHER = /^ProcessPCH\s.*\s(.*.pch)/
-
-    # @regex Captured groups
-    # $1 = file
-    CODESIGN_MATCHER = /^CodeSign\s((?:\\ |[^ ])*)$/
-
-    # @regex Captured groups
-    # $1 = file
-    CODESIGN_FRAMEWORK_MATCHER = /^CodeSign\s((?:\\ |[^ ])*.framework)\/Versions/
 
     # @regex Captured groups
     # $1 = file
@@ -127,6 +140,10 @@ module XCPretty
 
     def parse(text)
       update_test_state(text)
+      update_error_state(text)
+
+      return format_error if should_format_error?
+
       case text
       when ANALYZE_MATCHER
         formatter.format_analyze($2, $1)
@@ -147,7 +164,7 @@ module XCPretty
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
       when EXECUTED_MATCHER
-        print_summary_if_needed(text)
+        format_summary_if_needed(text)
       when FAILING_TEST_MATCHER
         formatter.format_failing_test($2, $3, $4, $1)
       when GENERATE_DSYM_MATCHER
@@ -158,6 +175,8 @@ module XCPretty
         formatter.format_linking($1, $2, $3)
       when PASSING_TEST_MATCHER
         formatter.format_passing_test($1, $2, $3)
+      when PODS_ERROR_MATCHER
+        formatter.format_error($1)
       when PROCESS_INFO_PLIST_MATCHER
         formatter.format_process_info_plist(*unescaped($2, $1))
       when PHASE_SCRIPT_EXECUTION_MATCHER
@@ -189,13 +208,47 @@ module XCPretty
       case text
       when TESTS_RUN_START_MATCHER
         @tests_done = false
-        @printed_summary = false
+        @formatted_summary = false
         @failures = {}
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
       end
+    end
+
+    # @ return Hash { :file_name, :file_path, :reason, :line }
+    def update_error_state(text)
+      if text =~ COMPILE_ERROR_MATCHER
+        @formatting_error = true
+        current_error[:reason]    = $3
+        current_error[:file_path] = $1
+        current_error[:file_name] = $2
+      elsif text =~ CURSOR_MATCHER
+        @formatting_error = false
+        current_error[:cursor]    = $1.chomp
+      else
+        current_error[:line]      = text.chomp if @formatting_error
+      end
+    end
+
+    # TODO: clean up the mess around all this
+    def should_format_error?
+      current_error[:reason] && current_error[:cursor] && current_error[:line]
+    end
+
+    def current_error
+      @current_error ||= {}
+    end
+
+    def format_error
+      error = current_error.dup
+      @current_error = {}
+      formatter.format_compile_error(error[:file_name],
+                                     error[:file_path],
+                                     error[:reason],
+                                     error[:line],
+                                     error[:cursor])
     end
 
     def store_failure(file, test_suite, test_case, reason)
@@ -211,15 +264,15 @@ module XCPretty
       @failures ||= {}
     end
 
-    def print_summary_if_needed(executed_message)
-      return "" unless should_print_summary?
+    def format_summary_if_needed(executed_message)
+      return "" unless should_format_summary?
 
-      @printed_summary = true
+      @formatted_summary = true
       formatter.format_test_summary(executed_message, failures_per_suite)
     end
 
-    def should_print_summary?
-      @tests_done && !@printed_summary
+    def should_format_summary?
+      @tests_done && !@formatted_summary
     end
 
     def unescaped(*escaped_values)

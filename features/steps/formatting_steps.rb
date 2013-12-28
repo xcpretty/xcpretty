@@ -39,8 +39,9 @@ Given(/^I start a test suite$/) do
   add_run_input SAMPLE_OCUNIT_SUITE_BEGINNING
 end
 
-Given(/^I finish a test suite$/) do
+Given(/^the test suite has finished$/) do
   add_run_input SAMPLE_OCUNIT_SUITE_COMPLETION
+  add_run_input SAMPLE_EXECUTED_TESTS
 end
 
 Given(/^I have a file to code sign$/) do
@@ -57,6 +58,16 @@ end
 
 Given(/^I have a file to copy with PBXCp/) do
   add_run_input SAMPLE_PBXCP
+end
+
+Given(/^podfile.lock wasn't in sync$/) do
+  add_run_input SAMPLE_PODS_ERROR
+end
+
+Given(/^there was a syntax error$/) do
+  SAMPLE_COMPILE_ERROR.split("\n").each do |line|
+    add_run_input(line)
+  end
 end
 
 When(/^I pipe to xcpretty with "(.*?)"$/) do |flags|
@@ -162,9 +173,26 @@ Then(/^I should see a green passing test mark$/) do
 end
 
 Then(/^I should see a non-utf prefixed output$/) do
-  run_output.should start_with(".")
+  run_output.should start_with(green("."))
 end
 
 Then(/^I should not see the name of the test group$/) do
   run_output.should_not include("RACTupleSpec")
 end
+
+Then(/^I should see a red error message$/) do
+  run_output.should include(red("⌦ ") + " " + red(SAMPLE_PODS_ERROR.gsub('error: ', '')))
+end
+
+Then(/^I should see a red compilation error$/) do
+  run_output.should include(red("expected identifier"))
+end
+
+Then(/^I should see a failed line$/) do
+  run_output.should include("[[thread.lastMessage should] equal:thread.];")
+end
+
+Then(/^I should see a cyan cursor$/) do
+  run_output.should include(cyan("                                                          ^"))
+end
+

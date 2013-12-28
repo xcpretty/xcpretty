@@ -92,12 +92,18 @@ module XCPretty
     end
 
     it "parses failing tests" do
-      @formatter.should receive(:format_failing_test).with("RACTupleSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACTupleSpec.m:458")
+      @formatter.should receive(:format_failing_test).with("RACCommandSpec",
+                                                           "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES",
+                                                           "expected: 1, got: 0",
+                                                           #"expect([command.enabled first]).to.equal(@YES);", # outside of PR scope
+                                                           "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458")
       @parser.parse(SAMPLE_SPECTA_FAILURE)
     end
 
     it "parses passing tests" do
-      @formatter.should receive(:format_passing_test).with('RACTupleSpec', '_tupleByAddingObject__should_add_a_non_nil_object', '0.001')
+      @formatter.should receive(:format_passing_test).with('RACCommandSpec',
+                                                           'enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES',
+                                                           '0.001')
       @parser.parse(SAMPLE_OCUNIT_TEST)
     end
 
@@ -144,6 +150,48 @@ module XCPretty
     it "parses test suite started" do
       @formatter.should receive(:format_test_suite_started).with('RACKVOWrapperSpec')
       @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
+    end
+
+    context "errors" do
+
+      it "parses cocoapods errors" do
+        @formatter.should receive(:format_error).with("The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.")
+        @parser.parse(SAMPLE_PODS_ERROR)
+      end
+
+      it "parses compiling errors" do
+        @formatter.should receive(:format_compile_error).with(
+          "SampleTest.m",
+          "/Users/musalj/code/OSS/SampleApp/SampleTest.m:12:59",
+          "expected identifier",
+          "                [[thread.lastMessage should] equal:thread.];",
+          "                                                          ^")
+        SAMPLE_COMPILE_ERROR.each_line do |line|
+          @parser.parse(line)
+        end
+      end
+
+
+      it "parses compiling errors with tildes" do
+        @formatter.should receive(:format_compile_error).with(
+          'NSSetTests.m',
+          '/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSSetTests.m:93:16',
+          "no visible @interface for 'NSArray' declares the selector 'shoulds'",
+          '            }] shoulds] equal:@[ @"F458 Italia", @"Testarossa" ]];',
+          '            ~~ ^~~~~~~')
+        SAMPLE_COMPILE_ERROR_WITH_TILDES.each_line do |line|
+          @parser.parse(line)
+        end
+      end
+
+      it "doesn't print the same error over and over" do
+        SAMPLE_COMPILE_ERROR.each_line do |line|
+          @parser.parse(line)
+        end
+        @formatter.should_not receive(:format_compile_error)
+        @parser.parse("hohohoooo")
+      end
+
     end
 
 

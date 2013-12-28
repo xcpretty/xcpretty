@@ -12,6 +12,7 @@ Feature: Showing RSpec-style test output
 
     Scenario: Showing some tests failed with color
         Given I have a failing test in my suite
+        And the test suite has finished
         When I pipe to xcpretty with "--test --color"
         Then I should see a red failed test icon
         And I should see the path of a failed test

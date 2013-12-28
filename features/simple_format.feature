@@ -61,12 +61,13 @@ Feature: Showing build output in simple format
         Then I should see the name of suite only
 
     Scenario: Showing the end of a test suite
-        Given I finish a test suite
+        Given the test suite has finished
         When I pipe to xcpretty with "--simple"
         Then I should see that the test suite finished
 
     Scenario: Showing failed test output
         Given I have a failing test in my suite
+        And the test suite has finished
         When I pipe to xcpretty with "--simple"
         Then I should see the name of a failed test
         And I should see the path of a failed test
@@ -80,20 +81,20 @@ Feature: Showing build output in simple format
 
     Scenario: Showing failed test output with color
         Given I have a failing test in my suite
-        And I finish a test suite
+        And the test suite has finished
         When I pipe to xcpretty with "--simple --color"
         Then I should see a red failed test mark
         And the final execution message should be red
 
     Scenario: Showing successful test output with color
         Given I have a passing test in my suite
-        And I finish a test suite
+        And the test suite has finished
         When I pipe to xcpretty with "--simple --color"
         Then I should see a green passing test mark
 
     Scenario: Running tests without UTF-8 support
         Given I have a passing test in my suite
-        And I pipe to xcpretty with "--no-utf"
+        And I pipe to xcpretty with "--no-utf --color"
         Then I should see a non-utf prefixed output
 
     Scenario: Showing code signing
@@ -115,3 +116,16 @@ Feature: Showing build output in simple format
         Given I have a file to copy with PBXCp
         When I pipe to xcpretty with "--simple"
         Then I should see a successful copying message
+
+    Scenario: Build fails when Pod install hasn't been run
+        Given podfile.lock wasn't in sync
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a red error message
+
+  Scenario: Compilation fails because of syntax errors
+      Given there was a syntax error
+      When I pipe to xcpretty with "--simple --color"
+      Then I should see a red compilation error
+      And I should see a failed line
+      And I should see a cyan cursor
+

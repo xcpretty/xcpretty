@@ -9,3 +9,4 @@ Feature: Status codes
         Given the build has failed
         When I pipe to xcpretty
         Then the exit status code should be 1
+

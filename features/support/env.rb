@@ -1,13 +1,13 @@
 $:.unshift File.expand_path('../../..', __FILE__)
 
-require "tempfile"
-require "spec/fixtures/constants"
-require "spec/support/matchers/colors"
-require "lib/xcpretty/ansi"
-require "rexml/document"
-require "lib/xcpretty/printer"
+require 'tempfile'
+require 'spec/fixtures/constants'
+require 'spec/support/matchers/colors'
+require 'lib/xcpretty/ansi'
+require 'lib/xcpretty/syntax'
+require 'rexml/document'
 require 'lib/xcpretty/formatters/formatter'
-require "lib/xcpretty/reporters/junit"
+require 'lib/xcpretty/reporters/junit'
 
 include XCPretty::ANSI
 
@@ -18,9 +18,7 @@ TEST_PATH_MATCHER = %r{[\w/\-\s]+:\d+}
 PASSING_TEST_NAME_MATCHER = %r{\w+\s\(\d+\.\d+\sseconds\)}
 FAILING_TEST_NAME_MATCHER = %r{\w+, expected:}
 
-def run_xcpretty flags
-  add_run_input SAMPLE_OCUNIT_SUITE_COMPLETION
-  add_run_input SAMPLE_EXECUTED_TESTS
+def run_xcpretty(flags)
   input_file = Tempfile.new('xcpretty_input')
   File.open(input_file.path, 'w') do |file|
     file.print run_input
@@ -29,7 +27,7 @@ def run_xcpretty flags
   input_file.unlink
 end
 
-def add_run_input text
+def add_run_input(text)
   run_input << "\n#{text}"
 end
 
