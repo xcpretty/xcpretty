@@ -1,5 +1,14 @@
 # Changelog
 
+## master
+
+###### Bug Fixes
+
+* show version if not piped [#39](https://github.com/mneorr/XCPretty/issues/39)
+
+###### Enhancements
+
+
 ## 0.0.7
 
 ###### Enhancements
