@@ -62,12 +62,11 @@ OptionParser.new do |opts|
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
+  opts.parse!
 
   if STDIN.tty?
     $stderr.puts opts.help
     exit 1
-  else
-    opts.parse!
   end
 end
 

@@ -1,4 +1,4 @@
-Feature: Status codes
+Feature: CLI behavior
 
     Scenario: Xcode tests have failed
         Given I have a failing test in my suite
@@ -9,4 +9,12 @@ Feature: Status codes
         Given the build has failed
         When I pipe to xcpretty
         Then the exit status code should be 1
+
+    Scenario: Starting xcpretty without any flags
+        When I run xcpretty
+        Then I should see the help banner
+
+    Scenario: Starting xcpretty with version
+        When I run xcpretty with -v
+        Then I should see the xcpretty version
 
