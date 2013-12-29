@@ -183,7 +183,7 @@ Then(/^I should not see the name of the test group$/) do
 end
 
 Then(/^I should see a red error message$/) do
-  run_output.should include(red("⌦ ") + " " + red(SAMPLE_PODS_ERROR.gsub('error: ', '')))
+  run_output.should include(red("⌦ " + SAMPLE_PODS_ERROR.gsub('error: ', '')))
 end
 
 Then(/^I should see a red compilation error$/) do

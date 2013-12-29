@@ -35,7 +35,8 @@ module XCPretty
     def format_test_summary(message, failures_per_suite);    EMPTY; end
 
     # COMPILER / LINKER ERRORS
-    def format_compile_error(file_name, file_path, reason, line, cursor); EMPTY; end
+    def format_compile_error(file_name, file_path, reason,
+                             line, cursor, *stack_trace);    EMPTY; end
     def format_error(message);                               EMPTY; end
     def format_linker_failure(message, symbol, reference);   EMPTY; end
   end
@@ -74,6 +75,17 @@ module XCPretty
 
       text = [failures, final_message].join("\n\n\n").strip
       "\n\n#{text}"
+    end
+
+    ERROR = "⌦"
+    ASCII_ERROR = "[!]"
+
+    def format_error(message)
+      red((use_unicode? ? ERROR : ASCII_ERROR) + " " + message)
+    end
+
+    def format_compile_error(file, file_path, reason, line, cursor)
+      "\n#{file_path}: #{red(reason)}\n\n#{line}\n#{cyan(cursor)}\n\n"
     end
 
     def format_linker_failure(message, symbol, reference)

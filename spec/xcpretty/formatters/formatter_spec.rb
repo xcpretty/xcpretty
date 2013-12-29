@@ -20,6 +20,25 @@ module XCPretty
       @formatter.optional_newline.should == "\n"
     end
 
+    it "formats cocoapods errors" do
+      @formatter.format_error("The sandbox is not in sync...").should ==
+      "#{@formatter.red("⌦ The sandbox is not in sync...")}"
+    end
+
+    it "formats compiling errors" do
+      @formatter.format_compile_error("file", "path/to/file", "expected valid syntax",
+                                      "[a should",
+                                      "         ^").should ==
+%Q(
+path/to/file: #{@formatter.red("expected valid syntax")}
+
+[a should
+#{@formatter.cyan("         ^")}
+
+)
+    end
+
+
     it "formats linker failures by default" do
       @formatter.format_linker_failure("Undefined symbols for architecture x86_64",
                                        '_OBJC_CLASS_$_CABasicAnimation',
