@@ -8,23 +8,23 @@
 
 ###### Enhancements
 
+* format linker failures (Undefined symbols for arch...)
+
 
 ## 0.0.7
 
 ###### Enhancements
 
 * exit(1) if xcodebuild failure detected
-
 * Print compile errors nicely. Currently we support compiler erorrs,
   and Pods-not-installed errors. Missing mach-o-linker failures
-
 * Added support for loading arbitrary custom printers (experimental) |
   [Eloy Durán](https://github.com/alloy) |
   [#29](https://github.com/mneorr/xcpretty/pulls/29)
-
 * Show help banner in case no data is piped in |
   [Eloy Durán](https://github.com/alloy) |
   [#29](https://github.com/mneorr/xcpretty/pulls/29)
+
 
 ## 0.0.6
 
@@ -32,6 +32,7 @@
 
 * Added support for reporters
 * Added JUnit reporter
+
 
 ## 0.0.5
 
@@ -46,13 +47,9 @@
 
 * Prettier `--simple` output
   [Preview](https://travis-ci.org/allending/Kiwi/builds/15190533)
-
 * Removed Paint dependency
-
 * Better test failure formatting (added indentation, grouped by suite)
-
 * Added example of running tests continuously
-
 * Support for not using Unicode (`--no-utf`)
 
 ###### Bug Fixes
@@ -62,12 +59,13 @@
 
 ## 0.0.3
 
-- add Ruby 1.8 support
+* add Ruby 1.8 support
 
 ## 0.0.2
 
-- add Ruby 1.9 support
+* add Ruby 1.9 support
 
 ## 0.0.1
 
-- initial version
+* initial version
+
