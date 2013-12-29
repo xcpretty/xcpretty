@@ -81,6 +81,10 @@ module XCPretty
     LIBTOOL_MATCHER = /^Libtool.*\/(.*\.a)/
 
     # @regex Captured groups
+    # $1 reason
+    LINKER_FAILURE_MATCHER = /^(Undefined symbols for architecture .*):$/
+
+    # @regex Captured groups
     # $1 = target
     # $2 = build_variants (normal, profile, debug)
     # $3 = architecture
@@ -114,6 +118,11 @@ module XCPretty
     # @regex Captured groups
     # $1 = file
     PROCESS_INFO_PLIST_MATCHER = /^ProcessInfoPlistFile\s.*\.plist\s(.*\/+(.*\.plist))/
+
+    # @regex Captured groups
+    # $1 = reference
+    SYMBOL_REFERENCED_FROM_MATCHER = /\s*"(.*)", referenced from:$/
+
     # @regex Captured groups
     # $1 = suite
     # $2 = time
@@ -141,8 +150,10 @@ module XCPretty
     def parse(text)
       update_test_state(text)
       update_error_state(text)
+      update_linker_failure_state(text)
 
       return format_error if should_format_error?
+      return format_linker_failure if should_format_linker_failure?
 
       case text
       when ANALYZE_MATCHER
@@ -227,8 +238,20 @@ module XCPretty
       elsif text =~ CURSOR_MATCHER
         @formatting_error = false
         current_error[:cursor]    = $1.chomp
-      else
-        current_error[:line]      = text.chomp if @formatting_error
+      elsif @formatting_error
+        current_error[:line]      = text.chomp
+      end
+    end
+
+    def update_linker_failure_state(text)
+      if text =~ LINKER_FAILURE_MATCHER
+        @formatting_linker_error = true
+        current_linker_failure[:message] = $1
+      elsif text =~ SYMBOL_REFERENCED_FROM_MATCHER
+        current_linker_failure[:symbol] = $1
+      elsif @formatting_linker_error
+        current_linker_failure[:reference] = text.strip
+        @formatting_linker_error = false
       end
     end
 
@@ -237,8 +260,18 @@ module XCPretty
       current_error[:reason] && current_error[:cursor] && current_error[:line]
     end
 
+    def should_format_linker_failure?
+      current_linker_failure[:message]           &&
+      current_linker_failure[:symbol]         &&
+      current_linker_failure[:reference]
+    end
+
     def current_error
       @current_error ||= {}
+    end
+
+    def current_linker_failure
+      @linker_failure ||= {}
     end
 
     def format_error
@@ -249,6 +282,14 @@ module XCPretty
                                      error[:reason],
                                      error[:line],
                                      error[:cursor])
+    end
+
+    def format_linker_failure
+      failure = current_linker_failure.dup
+      @linker_failure = {}
+      formatter.format_linker_failure(failure[:message],
+                                      failure[:symbol],
+                                      failure[:reference])
     end
 
     def store_failure(file, test_suite, test_case, reason)

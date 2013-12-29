@@ -122,10 +122,16 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple --color"
         Then I should see a red error message
 
-  Scenario: Compilation fails because of syntax errors
-      Given there was a syntax error
-      When I pipe to xcpretty with "--simple --color"
-      Then I should see a red compilation error
-      And I should see a failed line
-      And I should see a cyan cursor
+    Scenario: Compilation fails because of syntax errors
+        Given there was a syntax error
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a red compilation error
+        And I should see a failed line
+        And I should see a cyan cursor
+
+    Scenario: Linker fails with undefined symbols
+        Given the linker has failed with undefined symbols
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see the undefined symbold message
+        And I should see the symbol and reference that caused failure
 

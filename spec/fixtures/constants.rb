@@ -471,4 +471,11 @@ SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
             }] shoulds] equal:@[ @"F458 Italia", @"Testarossa" ]];
             ~~ ^~~~~~~
 )
+SAMPLE_UNDEFINED_SYMBOLS = %Q(
+Undefined symbols for architecture x86_64:
+  "_OBJC_CLASS_$_CABasicAnimation", referenced from:
+      objc-class-ref in ATZRadialProgressControl.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+)
 
