@@ -77,7 +77,7 @@ module XCPretty
     end
 
     def format_linker_failure(message, symbol, reference)
-      "#{red(message)}\n> Symbol: #{symbol}\n> Referenced from: #{reference}"
+      "\n#{red(message)}\n> Symbol: #{symbol}\n> Referenced from: #{reference}\n\n"
     end
 
 
