@@ -6,34 +6,38 @@ module XCPretty
   # Making a new formatter is easy.
   # Just make a subclass of Formatter, and override any of these methods.
   module FormatMethods
-    EMPTY_STRING = ''
-    def format_analyze(file_name, file_path);                EMPTY_STRING; end
-    def format_build_target(target, project, configuration); EMPTY_STRING; end
-    def format_check_dependencies;                           EMPTY_STRING; end
-    def format_clean(project, target, configuration);        EMPTY_STRING; end
-    def format_clean_target(target, project, configuration); EMPTY_STRING; end
-    def format_clean_remove;                                 EMPTY_STRING; end
-    def format_compile(file_name, file_path);                EMPTY_STRING; end
-    def format_compile_error(file_name, file_path, reason, line, cursor); EMPTY_STRING; end
-    def format_compile_xib(file_name, file_path);            EMPTY_STRING; end
-    def format_copy_strings_file(file_name);                 EMPTY_STRING; end
-    def format_cpresource(file);                             EMPTY_STRING; end
-    def format_error(message);                               EMPTY_STRING; end
-    def format_generate_dsym(dsym);                          EMPTY_STRING; end
-    def format_linking(file, build_variant, arch);           EMPTY_STRING; end
-    def format_libtool(library);                             EMPTY_STRING; end
-    def format_passing_test(suite, test, time);              EMPTY_STRING; end
-    def format_failing_test(suite, test, time, file_path);   EMPTY_STRING; end
-    def format_process_pch(file);                            EMPTY_STRING; end
-    def format_phase_script_execution(script_name);          EMPTY_STRING; end
-    def format_process_info_plist(file_name, file_path);     EMPTY_STRING; end
-    def format_codesign(file);                               EMPTY_STRING; end
-    def format_preprocess(file);                             EMPTY_STRING; end
-    def format_pbxcp(file);                                  EMPTY_STRING; end
-    def format_test_run_started(name);                       EMPTY_STRING; end
-    def format_test_run_finished(name, time);                EMPTY_STRING; end
-    def format_test_suite_started(name);                     EMPTY_STRING; end
-    def format_test_summary(message, failures_per_suite);    EMPTY_STRING; end
+    EMPTY = ''.freeze
+
+    def format_analyze(file_name, file_path);                EMPTY; end
+    def format_build_target(target, project, configuration); EMPTY; end
+    def format_check_dependencies;                           EMPTY; end
+    def format_clean(project, target, configuration);        EMPTY; end
+    def format_clean_target(target, project, configuration); EMPTY; end
+    def format_clean_remove;                                 EMPTY; end
+    def format_compile(file_name, file_path);                EMPTY; end
+    def format_compile_error(file_name, file_path, reason, line, cursor); EMPTY; end
+    def format_compile_xib(file_name, file_path);            EMPTY; end
+    def format_copy_strings_file(file_name);                 EMPTY; end
+    def format_cpresource(file);                             EMPTY; end
+    def format_generate_dsym(dsym);                          EMPTY; end
+    def format_linking(file, build_variant, arch);           EMPTY; end
+    def format_libtool(library);                             EMPTY; end
+    def format_passing_test(suite, test, time);              EMPTY; end
+    def format_failing_test(suite, test, time, file_path);   EMPTY; end
+    def format_process_pch(file);                            EMPTY; end
+    def format_phase_script_execution(script_name);          EMPTY; end
+    def format_process_info_plist(file_name, file_path);     EMPTY; end
+    def format_codesign(file);                               EMPTY; end
+    def format_preprocess(file);                             EMPTY; end
+    def format_pbxcp(file);                                  EMPTY; end
+    def format_test_run_started(name);                       EMPTY; end
+    def format_test_run_finished(name, time);                EMPTY; end
+    def format_test_suite_started(name);                     EMPTY; end
+    def format_test_summary(message, failures_per_suite);    EMPTY; end
+
+    # COMPILER / LINKER ERRORS
+    def format_error(message);                               EMPTY; end
+    def format_linker_failure(arch, symbol, reference);      EMPTY; end
   end
 
   class Formatter

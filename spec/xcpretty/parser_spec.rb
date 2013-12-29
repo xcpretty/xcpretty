@@ -46,6 +46,16 @@ module XCPretty
       @parser.parse("Check dependencies")
     end
 
+    it "parses code signing" do
+      @formatter.should receive(:format_codesign).with("build/Release/CocoaChip.app")
+      @parser.parse(SAMPLE_CODESIGN)
+    end
+
+    it "parses code signing a framework" do
+      @formatter.should receive(:format_codesign).with("build/Release/CocoaChipCore.framework")
+      @parser.parse(SAMPLE_CODESIGN_FRAMEWORK)
+    end
+
     it "parses compiling categories" do
       @formatter.should receive(:format_compile).with("NSMutableArray+ObjectiveSugar.m", "/Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m")
       @parser.parse(SAMPLE_COMPILE)
@@ -117,16 +127,6 @@ module XCPretty
       @parser.parse(SAMPLE_PRECOMPILE)
     end
 
-    it "parses code signing" do
-      @formatter.should receive(:format_codesign).with("build/Release/CocoaChip.app")
-      @parser.parse(SAMPLE_CODESIGN)
-    end
-
-    it "parses code signing a framework" do
-      @formatter.should receive(:format_codesign).with("build/Release/CocoaChipCore.framework")
-      @parser.parse(SAMPLE_CODESIGN_FRAMEWORK)
-    end
-
     it "parses preprocessing" do
       @formatter.should receive(:format_preprocess).with("CocoaChip/CocoaChip-Info.plist")
       @parser.parse(SAMPLE_PREPROCESS)
@@ -135,6 +135,16 @@ module XCPretty
     it "parses PBXCp" do
       @formatter.should receive(:format_pbxcp).with("build/Release/CocoaChipCore.framework")
       @parser.parse(SAMPLE_PBXCP)
+    end
+
+    it "parses undefined symbols" do
+      @formatter.should receive(:format_undefined_symbols).with("Undefined symbols for architecture x86_64",
+                                                                '_OBJC_CLASS_$_CABasicAnimation',
+                                                                'objc-class-ref in ATZRadialProgressControl.o')
+
+      SAMPLE_UNDEFINED_SYMBOLS.each_line do |line|
+        @parser.parse(line)
+      end
     end
 
     it "parses test run finished" do
