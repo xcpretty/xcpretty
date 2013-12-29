@@ -287,9 +287,9 @@ module XCPretty
     def format_linker_failure
       failure = current_linker_failure.dup
       @linker_failure = {}
-      formatter.format_undefined_symbols(failure[:message],
-                                         failure[:symbol],
-                                         failure[:reference])
+      formatter.format_linker_failure(failure[:message],
+                                      failure[:symbol],
+                                      failure[:reference])
     end
 
     def store_failure(file, test_suite, test_case, reason)

@@ -15,7 +15,6 @@ module XCPretty
     def format_clean_target(target, project, configuration); EMPTY; end
     def format_clean_remove;                                 EMPTY; end
     def format_compile(file_name, file_path);                EMPTY; end
-    def format_compile_error(file_name, file_path, reason, line, cursor); EMPTY; end
     def format_compile_xib(file_name, file_path);            EMPTY; end
     def format_copy_strings_file(file_name);                 EMPTY; end
     def format_cpresource(file);                             EMPTY; end
@@ -36,8 +35,9 @@ module XCPretty
     def format_test_summary(message, failures_per_suite);    EMPTY; end
 
     # COMPILER / LINKER ERRORS
+    def format_compile_error(file_name, file_path, reason, line, cursor); EMPTY; end
     def format_error(message);                               EMPTY; end
-    def format_linker_failure(arch, symbol, reference);      EMPTY; end
+    def format_linker_failure(message, symbol, reference);   EMPTY; end
   end
 
   class Formatter
@@ -74,6 +74,10 @@ module XCPretty
 
       text = [failures, final_message].join("\n\n\n").strip
       "\n\n#{text}"
+    end
+
+    def format_linker_failure(message, symbol, reference)
+      "#{red(message)}\n> Symbol: #{symbol}\n> Referenced from: #{reference}"
     end
 
 

@@ -65,9 +65,11 @@ Given(/^podfile.lock wasn't in sync$/) do
 end
 
 Given(/^there was a syntax error$/) do
-  SAMPLE_COMPILE_ERROR.split("\n").each do |line|
-    add_run_input(line)
-  end
+  add_run_input SAMPLE_COMPILE_ERROR
+end
+
+Given(/^the linker has failed with undefined symbols$/) do
+  add_run_input SAMPLE_UNDEFINED_SYMBOLS
 end
 
 When(/^I pipe to xcpretty with "(.*?)"$/) do |flags|
@@ -194,5 +196,14 @@ end
 
 Then(/^I should see a cyan cursor$/) do
   run_output.should include(cyan("                                                          ^"))
+end
+
+Then(/^I should see the undefined symbold message$/) do
+  run_output.should include(red("Undefined symbols for architecture x86_64"))
+end
+
+Then(/^I should see the symbol and reference that caused failure$/) do
+  run_output.should include("_OBJC_CLASS_$_CABasicAnimation")
+  run_output.should include("objc-class-ref in ATZRadialProgressControl.o")
 end
 

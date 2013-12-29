@@ -138,9 +138,9 @@ module XCPretty
     end
 
     it "parses undefined symbols" do
-      @formatter.should receive(:format_undefined_symbols).with("Undefined symbols for architecture x86_64",
-                                                                '_OBJC_CLASS_$_CABasicAnimation',
-                                                                'objc-class-ref in ATZRadialProgressControl.o')
+      @formatter.should receive(:format_linker_failure).with("Undefined symbols for architecture x86_64",
+                                                             '_OBJC_CLASS_$_CABasicAnimation',
+                                                             'objc-class-ref in ATZRadialProgressControl.o')
 
       SAMPLE_UNDEFINED_SYMBOLS.each_line do |line|
         @parser.parse(line)
