@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'xcpretty'
 
 module XCPretty
@@ -43,7 +45,7 @@ path/to/file: #{@formatter.red("expected valid syntax")}
       @formatter.format_linker_failure("Undefined symbols for architecture x86_64",
                                        '_OBJC_CLASS_$_CABasicAnimation',
                                        'objc-class-ref in ATZRadialProgressControl.o').should == %Q(
-#{@formatter.red("Undefined symbols for architecture x86_64")}
+#{@formatter.red("⌦ Undefined symbols for architecture x86_64")}
 > Symbol: _OBJC_CLASS_$_CABasicAnimation
 > Referenced from: objc-class-ref in ATZRadialProgressControl.o
 

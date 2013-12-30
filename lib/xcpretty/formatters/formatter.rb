@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'xcpretty/ansi'
 require 'xcpretty/parser'
 
@@ -89,7 +90,7 @@ module XCPretty
     end
 
     def format_linker_failure(message, symbol, reference)
-      "\n#{red(message)}\n> Symbol: #{symbol}\n> Referenced from: #{reference}\n\n"
+      "\n#{red("⌦ " + message)}\n> Symbol: #{symbol}\n> Referenced from: #{reference}\n\n"
     end
 
 

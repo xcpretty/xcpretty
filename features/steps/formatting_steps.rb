@@ -199,7 +199,7 @@ Then(/^I should see a cyan cursor$/) do
 end
 
 Then(/^I should see the undefined symbold message$/) do
-  run_output.should include(red("Undefined symbols for architecture x86_64"))
+  run_output.should include(red("⌦ Undefined symbols for architecture x86_64"))
 end
 
 Then(/^I should see the symbol and reference that caused failure$/) do
