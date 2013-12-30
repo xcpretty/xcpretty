@@ -184,7 +184,7 @@ module XCPretty
       it 'parses fatal compiling errors' do
         @formatter.should receive(:format_compile_error).with(
           'SomeRandomClass.h',
-          '/Users/musalj/code/OSS/SampleApp/Pods/Headers/LessCoolPod/SomeRandomClass.h:31:9:',
+          '/Users/musalj/code/OSS/SampleApp/Pods/Headers/LessCoolPod/SomeRandomClass.h:31:9',
           "'SomeRandomHeader.h' file not found",
           '#import "SomeRandomHeader.h"',
           '        ^',
