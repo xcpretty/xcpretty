@@ -36,7 +36,7 @@ module XCPretty
 
     # COMPILER / LINKER ERRORS
     def format_compile_error(file_name, file_path, reason,
-                             line, cursor, *stack_trace);    EMPTY; end
+                             line, cursor);                  EMPTY; end
     def format_error(message);                               EMPTY; end
     def format_linker_failure(message, symbol, reference);   EMPTY; end
   end

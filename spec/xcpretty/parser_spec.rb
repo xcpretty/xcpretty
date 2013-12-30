@@ -187,10 +187,12 @@ module XCPretty
           '/Users/musalj/code/OSS/SampleApp/Pods/Headers/LessCoolPod/SomeRandomClass.h:31:9',
           "'SomeRandomHeader.h' file not found",
           '#import "SomeRandomHeader.h"',
-          '        ^',
-%Q(In file included from /Users/musalj/code/OSS/SampleApp/Pods/SuperCoolPod/SuperAwesomeClass.m:12:
-In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/LessCoolClass.h:9:
-In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/EvenLessCoolClass.h:10:)
+          '        ^'
+          # For now, it's probably not worth to provide the import stack
+          # It'd require more state, and not sure if it'd be any useful
+#%Q(In file included from /Users/musalj/code/OSS/SampleApp/Pods/SuperCoolPod/SuperAwesomeClass.m:12:
+#In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/LessCoolClass.h:9:
+#In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/EvenLessCoolClass.h:10:)
         )
         SAMPLE_FATAL_COMPILE_ERROR.each_line do |line|
           @parser.parse(line)
