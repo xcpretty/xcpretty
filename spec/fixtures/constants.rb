@@ -466,6 +466,15 @@ SAMPLE_COMPILE_ERROR = %Q(
                 [[thread.lastMessage should] equal:thread.];
                                                           ^
 )
+
+SAMPLE_FATAL_COMPILE_ERROR = %Q(
+In file included from /Users/musalj/code/OSS/SampleApp/Pods/SuperCoolPod/SuperAwesomeClass.m:12:
+In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/LessCoolClass.h:9:
+In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/EvenLessCoolClass.h:10:
+/Users/musalj/code/OSS/SampleApp/Pods/Headers/LessCoolPod/SomeRandomClass.h:31:9: fatal error: 'SomeRandomHeader.h' file not found
+#import "SomeRandomHeader.h"
+        ^
+)
 SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
 /Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSSetTests.m:93:16: error: no visible @interface for 'NSArray' declares the selector 'shoulds'
             }] shoulds] equal:@[ @"F458 Italia", @"Testarossa" ]];

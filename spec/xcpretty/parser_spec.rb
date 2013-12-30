@@ -181,6 +181,23 @@ module XCPretty
         end
       end
 
+      it 'parses fatal compiling errors' do
+        @formatter.should receive(:format_compile_error).with(
+          'SomeRandomClass.h',
+          '/Users/musalj/code/OSS/SampleApp/Pods/Headers/LessCoolPod/SomeRandomClass.h:31:9',
+          "'SomeRandomHeader.h' file not found",
+          '#import "SomeRandomHeader.h"',
+          '        ^'
+          # For now, it's probably not worth to provide the import stack
+          # It'd require more state, and not sure if it'd be any useful
+#%Q(In file included from /Users/musalj/code/OSS/SampleApp/Pods/SuperCoolPod/SuperAwesomeClass.m:12:
+#In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/LessCoolClass.h:9:
+#In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/EvenLessCoolClass.h:10:)
+        )
+        SAMPLE_FATAL_COMPILE_ERROR.each_line do |line|
+          @parser.parse(line)
+        end
+      end
 
       it "parses compiling errors with tildes" do
         @formatter.should receive(:format_compile_error).with(
