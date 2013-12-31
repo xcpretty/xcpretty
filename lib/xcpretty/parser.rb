@@ -121,7 +121,7 @@ module XCPretty
 
     # @regex Captured groups
     # $1 = reference
-    SYMBOL_REFERENCED_FROM_MATCHER = /\s*"(.*)", referenced from:$/
+    SYMBOL_REFERENCED_FROM_MATCHER = /\s+"(.*)", referenced from:$/
 
     # @regex Captured groups
     # $1 = suite

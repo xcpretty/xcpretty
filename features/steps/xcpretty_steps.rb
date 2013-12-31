@@ -28,21 +28,8 @@ Then(/^the exit status code should be (\d)$/) do |numbah|
   $?.exitstatus.should == numbah.to_i
 end
 
-Then(/^the performance should be (\d+) times faster than running cat$/) do |numbah|
-  cat_start = Time.now
-  `cat features/fixtures/xcodebuild.log`.each_line do |line|
-    # this is pretty horrible right now, but the numbers are real.
-    # We need to find a soultion with real numbers that doesn't
-    # bloat the test output
-    STDOUT.puts line
-  end
-
-  cat_run_time = Time.now - cat_start
-
+Then(/^the performance should be way faster than running cat$/) do
   puts "XCPretty run time: #{@xcpretty_run_time}"
-  puts "XCPretty run time * #{numbah}: #{@xcpretty_run_time * numbah.to_f}"
-  puts "Cat run time: #{cat_run_time}"
-
-  (@xcpretty_run_time * numbah.to_f).should < cat_run_time
+  @xcpretty_run_time.should < 1
 end
 

@@ -20,5 +20,5 @@ Feature: CLI behavior
 
     Scenario: Performance
         When I run xcpretty over a big file
-        Then the performance should be 3 times faster than running cat
+        Then the performance should be way faster than running cat
 
