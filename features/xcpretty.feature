@@ -18,3 +18,7 @@ Feature: CLI behavior
         When I run xcpretty with -v
         Then I should see the xcpretty version
 
+    Scenario: Performance
+        When I run xcpretty over a big file
+        Then the performance should be 3 times faster than running cat
+

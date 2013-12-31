@@ -42,7 +42,7 @@ module XCPretty
     # $1 = file_path
     # $2 = file_name
     # $3 = reason
-    COMPILE_ERROR_MATCHER = /^(.+\/(.*\.[h,m,c]).*):(?:\sfatal)?\serror:\s(.*)$/
+    COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):.*:.*):(?:\sfatal)?\serror:\s(.*)$/
 
     # @regex Captured groups
     # $1 file_path
@@ -322,3 +322,4 @@ module XCPretty
 
   end
 end
+
