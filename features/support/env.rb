@@ -48,6 +48,13 @@ def junit_report_root
   junit_report.root.elements.to_a.first
 end
 
+def custom_report_path
+  @custom_report_path ||= begin
+    @custom_report_file = Tempfile.new('custom_report_path')
+    @custom_report_file.path
+  end
+end
+
 Before do
   self.colorize = true
 end
@@ -55,5 +62,6 @@ end
 After do
   @input  = ""
   @output = ""
+  @custom_report_file.unlink if @custom_report_file
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
 end
