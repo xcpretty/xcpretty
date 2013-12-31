@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.9
+
+###### Enhancements
+
+* major performance fix, it's faster than `cat` by 2-3 times on big inputs
+
+
 ## 0.0.8
 
 ###### Bug Fixes
