@@ -31,7 +31,9 @@ report_formats = {
   "junit" => XCPretty::JUnit
 }
 
-constructor = {
+reporter_opts = {}
+
+printer_opts = {
   :unicode => true,
   :colorize => false,
   :formatter => XCPretty::Simple
@@ -42,23 +44,26 @@ reporter_classes = []
 OptionParser.new do |opts|
   opts.banner = "Usage: xcodebuild [options] | xcpretty"
   opts.on('-t', '--test', 'Use RSpec style output') do
-    constructor[:formatter] = XCPretty::RSpec
+    printer_opts[:formatter] = XCPretty::RSpec
   end
   opts.on('-s', '--simple', 'Use simple output (default)') do
-    constructor[:formatter] = XCPretty::Simple
+    printer_opts[:formatter] = XCPretty::Simple
   end
   opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
-    constructor[:formatter] = load_custom_formatter(path)
+    printer_opts[:formatter] = load_custom_formatter(path)
   end
   opts.on('-c', '--color', 'Use colorized output') do
-    constructor[:colorize] = true
+    printer_opts[:colorize] = true
   end
   opts.on('--no-utf', 'Disable unicode characters in output') do
-    constructor[:unicode] = false
+    printer_opts[:unicode] = false
   end
   opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
                 "  Choices: #{report_formats.keys.join(', ')}") do |format|
     reporter_classes << report_formats[format]
+  end
+  opts.on('-o', '--output PATH', 'Write report output to PATH') do |path|
+    reporter_opts[:path] = path
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
@@ -70,8 +75,8 @@ OptionParser.new do |opts|
   end
 end
 
-printer = XCPretty::Printer.new(constructor)
-reporters = reporter_classes.compact.map(&:new)
+printer = XCPretty::Printer.new(printer_opts)
+reporters = reporter_classes.compact.map {|k| k.new(reporter_opts)}
 
 ARGF.each_line do |line|
   XCPretty::ExitStatus.handle(line)
