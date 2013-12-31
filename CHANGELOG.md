@@ -4,7 +4,8 @@
 
 ###### Enhancements
 
-* major performance fix, it's faster than `cat` by 2-3 times on big inputs
+* major performance fix, it's faster than `cat` by 2-3 times on big inputs.
+  Thanks @kviksilver for debug log
 
 
 ## 0.0.8
