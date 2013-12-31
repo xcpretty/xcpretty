@@ -14,8 +14,9 @@ module XCPretty
       end
     end
 
-    def initialize
+    def initialize options
       load_dependencies
+      @filepath  = options[:path] || FILEPATH
       @directory = `pwd`.strip
       @document  = REXML::Document.new
       @document << REXML::XMLDecl.new('1.0','UTF-8')
@@ -58,10 +59,10 @@ module XCPretty
     private
 
     def write_report_file
-      FileUtils.mkdir_p(File.dirname(FILEPATH))
+      FileUtils.mkdir_p(File.dirname(@filepath))
       formatter = REXML::Formatters::Pretty.new(2)
       formatter.compact = true
-      formatter.write(@document, File.open(FILEPATH, 'w+'))
+      formatter.write(@document, File.open(@filepath, 'w+'))
     end
 
     def suite(classname)
