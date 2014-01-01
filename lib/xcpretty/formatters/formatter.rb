@@ -35,6 +35,8 @@ module XCPretty
     def format_test_run_finished(name, time);                EMPTY; end
     def format_test_suite_started(name);                     EMPTY; end
     def format_test_summary(message, failures_per_suite);    EMPTY; end
+    def format_touch(file_path, file_name);                  EMPTY; end
+    def format_tiffutil(file);                               EMPTY; end
 
     # COMPILER / LINKER ERRORS
     def format_compile_error(file_name, file_path, reason,

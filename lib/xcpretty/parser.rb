@@ -141,6 +141,15 @@ module XCPretty
     # @regex Captured groups
     # $1 test suite name
     TEST_SUITE_START_MATCHER = /Test Suite '(.*)' started at/
+
+    # @regex Captured groups
+    # $1 file_name
+    TIFFUTIL_MATCHER = /^TiffUtil\s(.*)/
+
+    # @regex Captured groups
+    # $1 file_path
+    # $2 file_name
+    TOUCH_MATCHER = /^Touch\s(.*\/([\w+\.]+))/
   end
 
   class Parser
@@ -215,6 +224,10 @@ module XCPretty
         formatter.format_test_run_started($1)
       when TEST_SUITE_START_MATCHER
         formatter.format_test_suite_started($1)
+      when TIFFUTIL_MATCHER
+        formatter.format_tiffutil($1)
+      when TOUCH_MATCHER
+        formatter.format_touch($1, $2)
       else
         ""
       end

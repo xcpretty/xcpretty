@@ -76,6 +76,22 @@ Given(/^I have a pending test in my suite$/) do
   add_run_input SAMPLE_PENDING_KIWI_TEST
 end
 
+Given(/^I have a tiff file to validate$/) do
+  add_run_input SAMPLE_TIFFUTIL
+end
+
+Given(/^I have a file to touch$/) do
+  add_run_input SAMPLE_TOUCH
+end
+
+Then(/^I should see a successful tiff validation message$/) do
+  run_output.should start_with("▸ Validating")
+end
+
+Then(/^I should see a successful touch message$/) do
+  run_output.should start_with("▸ Touching")
+end
+
 When(/^I pipe to xcpretty with "(.*?)"$/) do |flags|
   run_xcpretty(flags)
 end
