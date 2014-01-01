@@ -7,7 +7,7 @@ module XCPretty
 
     PASS = "✓"
     FAIL = "✗"
-    PENDING = "⏳"
+    PENDING = "⧖"
 
     ASCII_PASS = "."
     ASCII_FAIL = "x"
