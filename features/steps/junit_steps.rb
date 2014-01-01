@@ -7,8 +7,21 @@ When(/^I pipe to xcpretty with "(.*?)" and specify a custom path$/) do |args|
   step("I pipe to xcpretty with \"#{args} --output #{custom_report_path}\"")
 end
 
+When(/^I pipe to xcpretty with two custom report paths$/) do
+  step("I pipe to xcpretty with \"--report junit --output #{custom_report_path} --report junit --output #{other_custom_report_path}\"")
+end
+
+Then(/^I should have test reports in two custom paths$/) do
+  step("I should have a test report at \"#{custom_report_path}\"")
+  step("I should have a test report at \"#{other_custom_report_path}\"")
+end
+
 Then(/^I should have a test report in a custom path$/) do
-  doc = REXML::Document.new(File.open(custom_report_path, 'r').read)
+  step("I should have a test report at \"#{custom_report_path}\"")
+end
+
+Then(/^I should have a test report at "(.*?)"$/) do |path|
+  doc = REXML::Document.new(File.open(path, 'r').read)
   doc.root.should_not be_nil
 end
 

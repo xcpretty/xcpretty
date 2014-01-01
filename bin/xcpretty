@@ -31,7 +31,7 @@ report_formats = {
   "junit" => XCPretty::JUnit
 }
 
-reporter_opts = {}
+reporter_opts = []
 
 printer_opts = {
   :unicode => true,
@@ -61,9 +61,14 @@ OptionParser.new do |opts|
   opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
                 "  Choices: #{report_formats.keys.join(', ')}") do |format|
     reporter_classes << report_formats[format]
+    reporter_opts << {}
   end
   opts.on('-o', '--output PATH', 'Write report output to PATH') do |path|
-    reporter_opts[:path] = path
+    unless opts = reporter_opts.last
+      $stderr.puts "[!] Expected report format to be speficied before before output path"
+      exit 1
+    end
+    opts[:path] = path
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
@@ -76,7 +81,7 @@ OptionParser.new do |opts|
 end
 
 printer = XCPretty::Printer.new(printer_opts)
-reporters = reporter_classes.compact.map {|k| k.new(reporter_opts)}
+reporters = reporter_classes.compact.map.with_index {|k,i| k.new(reporter_opts[i])}
 
 ARGF.each_line do |line|
   XCPretty::ExitStatus.handle(line)

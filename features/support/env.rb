@@ -50,8 +50,15 @@ end
 
 def custom_report_path
   @custom_report_path ||= begin
-    @custom_report_file = Tempfile.new('custom_report_path')
-    @custom_report_file.path
+    @custom_report_file1 = Tempfile.new('custom_report_path')
+    @custom_report_file1.path
+  end
+end
+
+def other_custom_report_path
+  @custom_report_path2 ||= begin
+    @custom_report_file2 = Tempfile.new('custom_report_path')
+    @custom_report_file2.path
   end
 end
 
@@ -62,6 +69,7 @@ end
 After do
   @input  = ""
   @output = ""
-  @custom_report_file.unlink if @custom_report_file
+  @custom_report_file1.unlink if @custom_report_file1
+  @custom_report_file2.unlink if @custom_report_file2
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
 end
