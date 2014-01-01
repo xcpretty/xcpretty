@@ -40,6 +40,16 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple"
         Then I should see a successful analyze message
 
+    Scenario: Showing tiff file validation
+        Given I have a tiff file to validate
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful tiff validation message
+
+    Scenario: Showing touch file
+        Given I have a file to touch
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful touch message
+
     Scenario: Showing analyze with color
         Given I have a file to analyze
         When I pipe to xcpretty with "--simple --color"
@@ -47,6 +57,16 @@ Feature: Showing build output in simple format
 
     Scenario: Showing shallow analyze with color
         Given I have a file to shallow analyze
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a yellow completion icon
+
+    Scenario: Showing tiff file validation with color
+        Given I have a tiff file to validate
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a yellow completion icon
+
+    Scenario: Showing touch file with color
+        Given I have a file to touch
         When I pipe to xcpretty with "--simple --color"
         Then I should see a yellow completion icon
 

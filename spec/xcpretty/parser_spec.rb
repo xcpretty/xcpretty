@@ -143,6 +143,18 @@ module XCPretty
       @parser.parse(SAMPLE_PBXCP)
     end
 
+    it "parses Touch" do
+      @formatter.should receive(:format_touch).with(
+        '/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/AlcatrazTests.octest',
+        'AlcatrazTests.octest')
+      @parser.parse(SAMPLE_TOUCH)
+    end
+
+    it "parses TiffUtil" do
+      @formatter.should receive(:format_tiffutil).with('eye_icon.tiff')
+      @parser.parse(SAMPLE_TIFFUTIL)
+    end
+
     it "parses undefined symbols" do
       @formatter.should receive(:format_linker_failure).with("Undefined symbols for architecture x86_64",
                                                              '_OBJC_CLASS_$_CABasicAnimation',

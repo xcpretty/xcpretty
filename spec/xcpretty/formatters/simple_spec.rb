@@ -115,5 +115,15 @@ module XCPretty
         "RACKVOWrapperSpec"
       end
 
+      it "formats Touch" do
+        @formatter.format_touch("/path/to/SomeFile.txt","SomeFile.txt").should ==
+        "> Touching SomeFile.txt"
+      end
+
+      it "formats TiffUtil" do
+        @formatter.format_tiffutil("unbelievable.tiff").should ==
+        "> Validating unbelievable.tiff"
+      end
+
     end
 end
