@@ -81,7 +81,7 @@ OptionParser.new do |opts|
 end
 
 printer = XCPretty::Printer.new(printer_opts)
-reporters = reporter_classes.compact.map.with_index {|k,i| k.new(reporter_opts[i])}
+reporters = reporter_classes.compact.each_with_index.map {|k,i| k.new(reporter_opts[i])}
 
 ARGF.each_line do |line|
   XCPretty::ExitStatus.handle(line)
