@@ -99,6 +99,13 @@ module XCPretty
       heading("", name, "")
     end
 
+    def format_touch(file_path, file_name)
+      format("Touching", file_name)
+    end
+
+    def format_tiffutil(file_name)
+      format("Validating", file_name)
+    end
 
     private
 
