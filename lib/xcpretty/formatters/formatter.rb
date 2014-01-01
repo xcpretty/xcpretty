@@ -23,6 +23,7 @@ module XCPretty
     def format_linking(file, build_variant, arch);           EMPTY; end
     def format_libtool(library);                             EMPTY; end
     def format_passing_test(suite, test, time);              EMPTY; end
+    def format_pending_test(suite, test);                    EMPTY; end
     def format_failing_test(suite, test, time, file_path);   EMPTY; end
     def format_process_pch(file);                            EMPTY; end
     def format_phase_script_execution(script_name);          EMPTY; end

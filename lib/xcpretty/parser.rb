@@ -97,6 +97,11 @@ module XCPretty
     PASSING_TEST_MATCHER = /^Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
 
     # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    PENDING_TEST_MATCHER = /^Test Case\s'-\[(.*)\s(.*)PENDING\]'\spassed/
+
+    # @regex Captured groups
     # $1 = script_name
     PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)\s\//
 
@@ -184,6 +189,8 @@ module XCPretty
         formatter.format_libtool($1)
       when LINKING_MATCHER
         formatter.format_linking($1, $2, $3)
+      when PENDING_TEST_MATCHER
+        formatter.format_pending_test($1, $2)
       when PASSING_TEST_MATCHER
         formatter.format_passing_test($1, $2, $3)
       when PODS_ERROR_MATCHER
