@@ -79,6 +79,11 @@ Feature: Showing build output in simple format
         And I should not see the name of the test group
         And I should not see the path of a passing test
 
+    Scenario: Showing pending test output
+        Given I have a pending test in my suite
+        When I pipe to xcpretty with "--simple"
+        Then I should see the name of a pending test
+
     Scenario: Showing failed test output with color
         Given I have a failing test in my suite
         And the test suite has finished

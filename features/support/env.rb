@@ -17,6 +17,7 @@ TEST_SUITE_COMPLETION_MATCHER = /Executed \d+ tests, with \d+ failures \(\d+ une
 TEST_SUITE_START_MATCHER = /[\w]*(Spec|Tests)$/
 TEST_PATH_MATCHER = %r{[\w/\-\s]+:\d+}
 PASSING_TEST_NAME_MATCHER = %r{\w+\s\(\d+\.\d+\sseconds\)}
+PENDING_TEST_NAME_MATCHER = %r{\w+\s\[PENDING\]}
 FAILING_TEST_NAME_MATCHER = %r{\w+, expected:}
 
 def run_xcpretty(flags)
