@@ -10,36 +10,17 @@ end
 require 'xcpretty'
 require 'optparse'
 
-def class_from_path(path)
-  source = File.read(path)
-  klass = eval(source, nil, path)
-  raise unless klass.is_a?(Class)
-  klass
-end
-
-def load_custom_formatter(path)
-  begin
-    $:.unshift File.dirname(path)
-    class_from_path(path)
-  rescue SyntaxError => e
-    $stderr.puts "[!] Expected formatter source file to return a class. #{e}"
-    exit 1
-  end
-end
-
+report_options = []
+report_classes = []
 report_formats = {
   "junit" => XCPretty::JUnit
 }
-
-reporter_opts = []
 
 printer_opts = {
   :unicode => true,
   :colorize => false,
   :formatter => XCPretty::Simple
 }
-
-reporter_classes = []
 
 OptionParser.new do |opts|
   opts.banner = "Usage: xcodebuild [options] | xcpretty"
@@ -50,7 +31,7 @@ OptionParser.new do |opts|
     printer_opts[:formatter] = XCPretty::Simple
   end
   opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
-    printer_opts[:formatter] = load_custom_formatter(path)
+    printer_opts[:formatter] = XCPretty::Runner.load_custom_formatter(path)
   end
   opts.on('-c', '--color', 'Use colorized output') do
     printer_opts[:colorize] = true
@@ -60,13 +41,12 @@ OptionParser.new do |opts|
   end
   opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
                 "  Choices: #{report_formats.keys.join(', ')}") do |format|
-    reporter_classes << report_formats[format]
-    reporter_opts << {}
+    report_classes << report_formats[format]
+    report_options << {}
   end
   opts.on('-o', '--output PATH', 'Write report output to PATH') do |path|
-    unless opts = reporter_opts.last
-      $stderr.puts "[!] Expected report format to be speficied before before output path"
-      exit 1
+    unless opts = report_options.last
+      XCPretty::Runner.exit_with_error('Expected report format to be speficied before before output path')
     end
     opts[:path] = path
   end
@@ -75,13 +55,12 @@ OptionParser.new do |opts|
   opts.parse!
 
   if STDIN.tty?
-    $stderr.puts opts.help
-    exit 1
+    XCPretty::Runner.exit_with_error(opts.help)
   end
 end
 
 printer = XCPretty::Printer.new(printer_opts)
-reporters = reporter_classes.compact.each_with_index.map {|k,i| k.new(reporter_opts[i])}
+reporters = report_classes.compact.each_with_index.map {|k,i| k.new(report_options[i])}
 
 ARGF.each_line do |line|
   XCPretty::ExitStatus.handle(line)
