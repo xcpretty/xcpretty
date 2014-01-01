@@ -7,10 +7,12 @@ module XCPretty
 
     PASS = "✓"
     FAIL = "✗"
+    PENDING = "⏳"
 
     ASCII_PASS = "."
     ASCII_FAIL = "x"
     COMPLETION = "▸"
+    ASCII_PENDING = "P"
     ASCII_COMPLETION = ">"
 
     def format_analyze(file_name, file_path)
@@ -54,11 +56,15 @@ module XCPretty
     end
 
     def format_failing_test(suite, test_case, reason, file)
-      format_test("#{test_case}, #{reason}", false)
+      format_test("#{test_case}, #{reason}", :fail)
     end
 
     def format_passing_test(suite, test_case, time)
-      format_test("#{test_case} (#{time} seconds)")
+      format_test("#{test_case} (#{time} seconds)", :pass)
+    end
+
+    def format_pending_test(suite, test_case)
+      format_test("#{test_case} [PENDING]", :pending)
     end
 
     def format_phase_script_execution(script_name)
@@ -104,8 +110,8 @@ module XCPretty
       [status_symbol(success ? :completion : :fail), white(command), argument_text].join(" ").strip
     end
 
-    def format_test(test_case, success=true)
-      [status_symbol(success ? :pass : :fail), test_case].join(" ").strip
+    def format_test(test_case, status)
+      [status_symbol(status), test_case].join(" ").strip
     end
 
     def status_symbol(status)
@@ -114,6 +120,8 @@ module XCPretty
         green(use_unicode? ? PASS : ASCII_PASS)
       when :fail
         red(use_unicode? ? FAIL : ASCII_FAIL)
+      when :pending
+        yellow(use_unicode? ? PENDING : ASCII_PENDING)
       when :error
         red(use_unicode? ? ERROR : ASCII_ERROR)
       when :completion

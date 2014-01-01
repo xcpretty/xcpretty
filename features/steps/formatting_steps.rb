@@ -72,6 +72,10 @@ Given(/^the linker has failed with undefined symbols$/) do
   add_run_input SAMPLE_UNDEFINED_SYMBOLS
 end
 
+Given(/^I have a pending test in my suite$/) do
+  add_run_input SAMPLE_PENDING_KIWI_TEST
+end
+
 When(/^I pipe to xcpretty with "(.*?)"$/) do |flags|
   run_xcpretty(flags)
 end
@@ -127,6 +131,14 @@ end
 
 Then(/^I should see a red failed test icon$/) do
   run_output.should include(red("F"))
+end
+
+Then(/^I should see a pending test icon in ASCII$/) do
+  run_output.should start_with("P")
+end
+
+Then(/^I should see a yellow pending test icon$/) do
+  run_output.should start_with(yellow("P"))
 end
 
 Then(/^the final execution message should be (red|green)$/) do |color|
@@ -207,3 +219,6 @@ Then(/^I should see the symbol and reference that caused failure$/) do
   run_output.should include("objc-class-ref in ATZRadialProgressControl.o")
 end
 
+Then(/^I should see the name of a pending test$/) do
+  run_output.should =~ PENDING_TEST_NAME_MATCHER
+end

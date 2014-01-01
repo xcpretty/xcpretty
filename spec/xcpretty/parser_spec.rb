@@ -117,6 +117,12 @@ module XCPretty
       @parser.parse(SAMPLE_OCUNIT_TEST)
     end
 
+    it "parses pending tests" do
+      @formatter.should receive(:format_pending_test).with('TAPIConversationSpec',
+                                                           'TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpoint')
+      @parser.parse(SAMPLE_PENDING_KIWI_TEST)
+    end
+
     it "parses PhaseScriptExecution" do
       @formatter.should receive(:format_phase_script_execution).with('Check Pods Manifest.lock')
       @parser.parse(SAMPLE_RUN_SCRIPT)
