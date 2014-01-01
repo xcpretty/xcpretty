@@ -14,7 +14,7 @@ module XCPretty
       end
     end
 
-    def initialize options
+    def initialize(options)
       load_dependencies
       @filepath  = options[:path] || FILEPATH
       @directory = `pwd`.strip
