@@ -16,8 +16,12 @@ module XCPretty
 
     context "without colors" do
 
-      it "prints green dots for passing tests" do
+      it "prints dots for passing tests" do
         @formatter.format_passing_test("sweez testz", "sample spec", "0.002").should == "."
+      end
+
+      it "prints P for pending tests" do
+        @formatter.format_pending_test("sweez testz", "sample spec").should == "P"
       end
 
       it "prints F for failing tests" do
@@ -34,6 +38,11 @@ module XCPretty
       it "prints green for passing tests" do
         @formatter.format_passing_test("sweez testz", "sample spec", "0.002"
         ).should be_colored :green
+      end
+
+      it "prints yellow for pending tests" do
+        @formatter.format_pending_test("sweez testz", "sample spec"
+        ).should be_colored :yellow
       end
 
       it "prints red for failing tests" do

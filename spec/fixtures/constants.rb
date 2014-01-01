@@ -24,6 +24,7 @@ Clean.Remove clean /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSu
 SAMPLE_EXECUTED_TESTS = "Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
 SAMPLE_OCUNIT_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.001 seconds)."
 SAMPLE_KIWI_TEST = "Test Case '-[MappingsTests Mappings_SupportsCreatingAParentObjectUsingJustIDFromTheServer]' passed (0.004 seconds)."
+SAMPLE_PENDING_KIWI_TEST = "Test Case '-[TAPIConversationSpec TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpointPENDING]' passed (0.001 seconds)."
 SAMPLE_COMPILE = %Q(
 CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-ObjectiveSugar.build/Objects-normal/i386/NSMutableArray+ObjectiveSugar.o /Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example/Pods
