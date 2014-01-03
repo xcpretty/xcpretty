@@ -6,6 +6,7 @@
 
 * Color semi-slow tests in yellow, slow tests in red |
   [#46](https://github.com/mneorr/xcpretty/pull/46)
+* Add option to specify a custom location for report generation | [#43](https://github.com/mneorr/XCPretty/pull/43)
 
 
 ## 0.0.9
