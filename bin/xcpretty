@@ -31,7 +31,7 @@ OptionParser.new do |opts|
     printer_opts[:formatter] = XCPretty::Simple
   end
   opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
-    printer_opts[:formatter] = XCPretty::Runner.load_custom_formatter(path)
+    printer_opts[:formatter] = XCPretty.load_custom_formatter(path)
   end
   opts.on('-c', '--color', 'Use colorized output') do
     printer_opts[:colorize] = true
@@ -46,7 +46,7 @@ OptionParser.new do |opts|
   end
   opts.on('-o', '--output PATH', 'Write report output to PATH') do |path|
     unless opts = report_options.last
-      XCPretty::Runner.exit_with_error('Expected report format to be speficied before before output path')
+      XCPretty.exit_with_error('Expected report format to be speficied before before output path')
     end
     opts[:path] = path
   end
@@ -55,7 +55,7 @@ OptionParser.new do |opts|
   opts.parse!
 
   if STDIN.tty?
-    XCPretty::Runner.exit_with_error(opts.help)
+    XCPretty.exit_with_error(opts.help)
   end
 end
 
@@ -70,3 +70,4 @@ end
 
 reporters.each(&:finish)
 exit(XCPretty::ExitStatus.code)
+
