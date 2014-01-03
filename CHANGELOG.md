@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0
+
+###### Enhancements
+
+* Color semi-slow tests in yellow, slow tests in red |
+  [#46](https://github.com/mneorr/xcpretty/pull/46)
+
+
 ## 0.0.9
 
 ###### Enhancements
@@ -12,7 +20,8 @@
 
 ###### Bug Fixes
 
-* show version if not piped [#39](https://github.com/mneorr/XCPretty/issues/39)
+* show version if not piped |
+  [#39](https://github.com/mneorr/XCPretty/issues/39)
 
 ###### Enhancements
 
@@ -53,7 +62,7 @@
 
 ###### Enhancements
 
-* Prettier `--simple` output
+* Prettier `--simple` output |
   [Preview](https://travis-ci.org/allending/Kiwi/builds/15190533)
 * Removed Paint dependency
 * Better test failure formatting (added indentation, grouped by suite)
