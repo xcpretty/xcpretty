@@ -10,68 +10,57 @@ end
 require 'xcpretty'
 require 'optparse'
 
-def class_from_path(path)
-  source = File.read(path)
-  klass = eval(source, nil, path)
-  raise unless klass.is_a?(Class)
-  klass
-end
-
-def load_custom_formatter(path)
-  begin
-    $:.unshift File.dirname(path)
-    class_from_path(path)
-  rescue SyntaxError => e
-    $stderr.puts "[!] Expected formatter source file to return a class. #{e}"
-    exit 1
-  end
-end
-
+report_options = []
+report_classes = []
 report_formats = {
   "junit" => XCPretty::JUnit
 }
 
-constructor = {
+printer_opts = {
   :unicode => true,
   :colorize => false,
   :formatter => XCPretty::Simple
 }
 
-reporter_classes = []
-
 OptionParser.new do |opts|
   opts.banner = "Usage: xcodebuild [options] | xcpretty"
   opts.on('-t', '--test', 'Use RSpec style output') do
-    constructor[:formatter] = XCPretty::RSpec
+    printer_opts[:formatter] = XCPretty::RSpec
   end
   opts.on('-s', '--simple', 'Use simple output (default)') do
-    constructor[:formatter] = XCPretty::Simple
+    printer_opts[:formatter] = XCPretty::Simple
   end
   opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
-    constructor[:formatter] = load_custom_formatter(path)
+    printer_opts[:formatter] = XCPretty::Runner.load_custom_formatter(path)
   end
   opts.on('-c', '--color', 'Use colorized output') do
-    constructor[:colorize] = true
+    printer_opts[:colorize] = true
   end
   opts.on('--no-utf', 'Disable unicode characters in output') do
-    constructor[:unicode] = false
+    printer_opts[:unicode] = false
   end
   opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
                 "  Choices: #{report_formats.keys.join(', ')}") do |format|
-    reporter_classes << report_formats[format]
+    report_classes << report_formats[format]
+    report_options << {}
+  end
+  opts.on('-o', '--output PATH', 'Write report output to PATH') do |path|
+    unless opts = report_options.last
+      XCPretty::Runner.exit_with_error('Expected report format to be speficied before before output path')
+    end
+    opts[:path] = path
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
   opts.parse!
 
   if STDIN.tty?
-    $stderr.puts opts.help
-    exit 1
+    XCPretty::Runner.exit_with_error(opts.help)
   end
 end
 
-printer = XCPretty::Printer.new(constructor)
-reporters = reporter_classes.compact.map(&:new)
+printer = XCPretty::Printer.new(printer_opts)
+reporters = report_classes.compact.each_with_index.map {|k,i| k.new(report_options[i])}
 
 ARGF.each_line do |line|
   XCPretty::ExitStatus.handle(line)

@@ -30,3 +30,10 @@ Feature: Creating a JUnit test report
         When I pipe to xcpretty with "--report junit"
         Then I should see 2 test suites
 
+    Scenario: Writing to a custom file path
+        When I pipe to xcpretty with "--report junit" and specify a custom path
+        Then I should have a test report in a custom path
+
+    Scenario: Writing to multiple custom file paths
+        When I pipe to xcpretty with two custom report paths
+        Then I should have test reports in two custom paths

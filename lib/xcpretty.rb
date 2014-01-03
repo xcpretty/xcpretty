@@ -27,5 +27,29 @@ module XCPretty
     end
 
   end
+
+  class Runner
+
+    def self.class_from_path(path)
+      source = File.read(path)
+      klass = eval(source, nil, path)
+      raise unless klass.is_a?(Class)
+      klass
+    end
+
+    def self.load_custom_formatter(path)
+      begin
+        $:.unshift File.dirname(path)
+        class_from_path(path)
+      rescue SyntaxError => e
+        exit_with_error("Expected formatter source file to return a class. #{e}")
+      end
+    end
+
+    def self.exit_with_error(message)
+      $stderr.puts "[!] #{message}"
+      exit 1
+    end
+  end
 end
 
