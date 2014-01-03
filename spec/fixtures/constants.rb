@@ -23,6 +23,8 @@ Clean.Remove clean /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSu
 )
 SAMPLE_EXECUTED_TESTS = "Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
 SAMPLE_OCUNIT_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.001 seconds)."
+SAMPLE_SLOWISH_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.026 seconds)."
+SAMPLE_SLOW_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.101 seconds)."
 SAMPLE_KIWI_TEST = "Test Case '-[MappingsTests Mappings_SupportsCreatingAParentObjectUsingJustIDFromTheServer]' passed (0.004 seconds)."
 SAMPLE_PENDING_KIWI_TEST = "Test Case '-[TAPIConversationSpec TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpointPENDING]' passed (0.001 seconds)."
 SAMPLE_COMPILE = %Q(

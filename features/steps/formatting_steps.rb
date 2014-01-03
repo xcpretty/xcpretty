@@ -31,6 +31,14 @@ Given(/^I have a passing test in my suite$/) do
   add_run_input SAMPLE_OCUNIT_TEST
 end
 
+Given(/^I have a slow\-ish test in my suite$/) do
+  add_run_input SAMPLE_SLOWISH_TEST
+end
+
+Given(/^I have a slow test in my suite$/) do
+  add_run_input SAMPLE_SLOW_TEST
+end
+
 Given(/^the tests have started running$/) do
   add_run_input SAMPLE_OCUNIT_TEST_RUN_BEGINNING
 end
@@ -238,3 +246,11 @@ end
 Then(/^I should see the name of a pending test$/) do
   run_output.should =~ PENDING_TEST_NAME_MATCHER
 end
+
+Then(/^I should see the test time in yellow$/) do
+  run_output.should include("#{yellow("0.026")}")
+end
+
+Then(/^I should see the test time in red$/) do
+  run_output.should include("#{red("0.101")}") end
+

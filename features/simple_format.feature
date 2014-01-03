@@ -99,6 +99,16 @@ Feature: Showing build output in simple format
         And I should not see the name of the test group
         And I should not see the path of a passing test
 
+    Scenario: Colorizing slow-ish tests in yellow
+        Given I have a slow-ish test in my suite
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see the test time in yellow
+
+    Scenario: Colorizing slow tests in red
+        Given I have a slow test in my suite
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see the test time in red
+
     Scenario: Showing pending test output
         Given I have a pending test in my suite
         When I pipe to xcpretty with "--simple"
