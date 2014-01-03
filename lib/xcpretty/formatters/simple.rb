@@ -60,7 +60,7 @@ module XCPretty
     end
 
     def format_passing_test(suite, test_case, time)
-      format_test("#{test_case} (#{time} seconds)", :pass)
+      format_test("#{test_case} (#{colored_time(time)} seconds)", :pass)
     end
 
     def format_pending_test(suite, test_case)
@@ -135,6 +135,17 @@ module XCPretty
         yellow(use_unicode? ? COMPLETION : ASCII_COMPLETION)
       else
         ""
+      end
+    end
+
+    def colored_time(time)
+      case time.to_f
+      when 0..0.025
+        time
+      when 0.026..0.100
+        yellow(time)
+      else
+        red(time)
       end
     end
 
