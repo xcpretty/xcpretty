@@ -53,23 +53,10 @@ At this point, `xcodebuild` has got improved a lot, and it's ready to be used di
 
 There are many usages of this tool. Let me give you some ideas:
 - Xcode's test tools are close to useless. Failures in a sidebar, non-dettachable console,... You can use `xcpretty` to build your next Xcode test runner plugin
-- Run tests each time you hit save. Here's an example of doing so:
+- Run tests each time you hit save. Use [xclisten](https://gihtub.com/mneorr/xclisten) for that
 
 ![continuous specs](http://i.imgur.com/9Oiht9y.gif)
 
-``` ruby
-require 'listen'
-ignored = [/.git/, /xcuserdata/, /\.txt$/, /test-reports/]
-build_task = "xcodebuild -workspace Myapp.xcworkspace -scheme MyApp -sdk iphonesimulator -destination 'name=iPhone Retina (4-inch 64-bit)'"
-
-listener = Listen.to(Dir.pwd, ignore: ignored) do |modified, added, removed|
-  system 'killall "iPhone Simulator"'
-  system "#{build_task} test | xcpretty -tc"
-end
-
-listener.start
-sleep
-```
 Just add this to your Rakefile, or in a ruby script. Make sure you `gem install listen`.
 - Mine Bitcoins. You can't with this tool, but you'll be so productive that you can earn all the money and buy them!!!1!
 
