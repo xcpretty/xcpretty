@@ -24,7 +24,7 @@ module XCPretty
 
     it "formats cocoapods errors" do
       @formatter.format_error("The sandbox is not in sync...").should ==
-      "#{@formatter.red("⌦ The sandbox is not in sync...")}"
+      "\n#{@formatter.red("⌦ The sandbox is not in sync...")}\n\n"
     end
 
     it "formats compiling errors" do
@@ -32,7 +32,7 @@ module XCPretty
                                       "[a should",
                                       "         ^").should ==
 %Q(
-path/to/file: #{@formatter.red("expected valid syntax")}
+#{@formatter.red('⌦ ')}path/to/file: #{@formatter.red("expected valid syntax")}
 
 [a should
 #{@formatter.cyan("         ^")}

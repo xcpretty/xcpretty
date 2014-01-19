@@ -85,15 +85,15 @@ module XCPretty
     ASCII_ERROR = "[!]"
 
     def format_error(message)
-      red((use_unicode? ? ERROR : ASCII_ERROR) + " " + message)
+      "\n#{red(error_symbol + " " + message)}\n\n"
     end
 
     def format_compile_error(file, file_path, reason, line, cursor)
-      "\n#{file_path}: #{red(reason)}\n\n#{line}\n#{cyan(cursor)}\n\n"
+      "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n#{line}\n#{cyan(cursor)}\n\n"
     end
 
     def format_linker_failure(message, symbol, reference)
-      "\n#{red("⌦ " + message)}\n> Symbol: #{symbol}\n> Referenced from: #{reference}\n\n"
+      "\n#{red(error_symbol + " " + message)}\n> Symbol: #{symbol}\n> Referenced from: #{reference}\n\n"
     end
 
 
@@ -107,6 +107,10 @@ module XCPretty
 
         "\n#{suite}\n#{formatted_failures}"
       end.join("\n")
+    end
+
+    def error_symbol
+      use_unicode? ? ERROR : ASCII_ERROR
     end
 
   end
