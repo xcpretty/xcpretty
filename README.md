@@ -17,9 +17,8 @@ XCPretty is designed to be piped with `xcodebuild` and thus keeping 100% compati
 This means, when `xcodebuild` works, `xcpretty` works.
 It's even a bit faster than `xcodebuild` only, since it saves your terminal some prints.
 
-__Important:__ exiting status code is still experimental, and could potentially
-be removed from `xcpretty`. If you want to ensure the exit status code from
-`xcodebuild`, add this to the end of pipe:
+__Important:__ lots of CIs are using exit status for determining if build has
+failed. You probably want to exit with the same status code as `xcodebuild`.
 
 ```
 xcodebuild ... | xcpretty -c; exit ${PIPESTATUS[0]}
