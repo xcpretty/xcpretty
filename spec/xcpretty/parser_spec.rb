@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'xcpretty'
 require 'xcpretty/parser'
 require 'fixtures/constants'
