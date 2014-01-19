@@ -1,12 +1,20 @@
 # Changelog
 
+## 0.1.1
+
+###### Enhancements
+
+* Parse more fatal errors, and CodeSign errors that were printed to STDOUT |
+  [#51](https://github.com/mneorr/XCPretty/issues/51)
+
+
 ## 0.1.0
 
 ###### Enhancements
 
 * Color semi-slow tests in yellow, slow tests in red |
   [#46](https://github.com/mneorr/xcpretty/pull/46)
-* Add option to specify a custom location for report generation | 
+* Add option to specify a custom location for report generation |
   [#43](https://github.com/mneorr/XCPretty/pull/43)
 
 
