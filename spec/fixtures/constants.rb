@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 KIWI = 'kiwi'
 OCUNIT = 'ocunit'
 SAMPLE_OCUNIT_TEST_RUN_BEGINNING = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' started at 2013-12-10 07:04:33 +0000"
@@ -472,12 +473,26 @@ PBXCp build/Release/CocoaChipCore.framework build/Release/CocoaChip.app/Contents
     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app/Contents/Frameworks
 warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework/Versions/A/CocoaChipCore
 )
+
+
+################################################################################
+# ERRORS
+################################################################################
+
 SAMPLE_PODS_ERROR = "error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation."
 
 SAMPLE_COMPILE_ERROR = %Q(
 /Users/musalj/code/OSS/SampleApp/SampleTest.m:12:59: error: expected identifier
                 [[thread.lastMessage should] equal:thread.];
                                                           ^
+)
+
+SAMPLE_CODESIGN_ERROR = %Q(
+Code Sign error: No code signing identites found: No valid signing identities (i.e. certificate and private key pair) matching the team ID ‚ÄúCAT6HF57NJ‚Äù were found.
+)
+
+SAMPLE_CODESIGN_ERROR_NO_SPACES = %Q(
+CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 7.0'
 )
 
 SAMPLE_FATAL_COMPILE_ERROR = %Q(
@@ -488,17 +503,21 @@ In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/EvenL
 #import "SomeRandomHeader.h"
         ^
 )
+
 SAMPLE_FATAL_COMPILE_PCH_ERROR = %Q(
 fatal error: file '/path/to/myproject/Pods/Pods-environment.h' has been modified since the precompiled header '/Users/hiroshi/Library/Developer/Xcode/DerivedData/MyProject-gfmuvpipjscewkdnqacgumhfarrd/Build/Intermediates/PrecompiledHeaders/MyProject-Prefix-dwjpvcnrlaydzmegejmcvrtcfkpf/MyProject-Prefix.pch.pch' was built
 )
+
 SAMPLE_FATAL_HEADER_ERROR = %Q(
 fatal error: malformed or corrupted AST file: 'could not find file '/Users/mpv/dev/project/Crashlytics.framework/Headers/Crashlytics.h' referenced by AST file' note: after modifying system headers, please delete the module cache at '/Users/mpv/Library/Developer/Xcode/DerivedData/ModuleCache/M5WJ0FYE7N06'
 )
+
 SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
 /Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSSetTests.m:93:16: error: no visible @interface for 'NSArray' declares the selector 'shoulds'
             }] shoulds] equal:@[ @"F458 Italia", @"Testarossa" ]];
             ~~ ^~~~~~~
 )
+
 SAMPLE_UNDEFINED_SYMBOLS = %Q(
 Undefined symbols for architecture x86_64:
   "_OBJC_CLASS_$_CABasicAnimation", referenced from:
@@ -506,4 +525,3 @@ Undefined symbols for architecture x86_64:
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 )
-

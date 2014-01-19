@@ -245,6 +245,20 @@ module XCPretty
         end
       end
 
+      it "parses code sign error:" do
+        @formatter.should receive(:format_error).with(
+          'Code Sign error: No code signing identites found: No valid signing identities (i.e. certificate and private key pair) matching the team ID ‚ÄúCAT6HF57NJ‚Äù were found.'
+        )
+        @parser.parse(SAMPLE_CODESIGN_ERROR)
+      end
+
+      it "parses CodeSign error: (no spaces)" do
+        @formatter.should receive(:format_error).with(
+          "CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 7.0'"
+        )
+        @parser.parse(SAMPLE_CODESIGN_ERROR_NO_SPACES)
+      end
+
       it "doesn't print the same error over and over" do
         SAMPLE_COMPILE_ERROR.each_line do |line|
           @parser.parse(line)

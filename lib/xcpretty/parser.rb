@@ -34,6 +34,10 @@ module XCPretty
     CODESIGN_FRAMEWORK_MATCHER = /^CodeSign\s((?:\\ |[^ ])*.framework)\/Versions/
 
     # @regex Captured groups
+    # $1 = whole error
+    CODESIGN_ERROR_MATCHER = /^(Code\s?Sign error:.*)$/
+
+    # @regex Captured groups
     # $1 file_path
     # $2 file_name (e.g. KWNull.m)
     COMPILE_MATCHER = /^CompileC\s.*\s(.*\/(.*\.m))\s.*/
@@ -187,6 +191,12 @@ module XCPretty
         formatter.format_copy_strings_file($1)
       when CHECK_DEPENDENCIES_MATCHER
         formatter.format_check_dependencies
+      when CODESIGN_FRAMEWORK_MATCHER
+        formatter.format_codesign($1)
+      when CODESIGN_MATCHER
+        formatter.format_codesign($1)
+      when CODESIGN_ERROR_MATCHER
+        formatter.format_error($1)
       when COMPILE_MATCHER
         formatter.format_compile($2, $1)
       when COMPILE_XIB_MATCHER
@@ -217,10 +227,6 @@ module XCPretty
         formatter.format_phase_script_execution(*unescaped($1))
       when PROCESS_PCH_MATCHER
         formatter.format_process_pch($1)
-      when CODESIGN_FRAMEWORK_MATCHER
-        formatter.format_codesign($1)
-      when CODESIGN_MATCHER
-        formatter.format_codesign($1)
       when PREPROCESS_MATCHER
         formatter.format_preprocess($1)
       when PBXCP_MATCHER
