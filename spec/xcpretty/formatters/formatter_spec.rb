@@ -40,7 +40,6 @@ path/to/file: #{@formatter.red("expected valid syntax")}
 )
     end
 
-
     it "formats linker failures by default" do
       @formatter.format_linker_failure("Undefined symbols for architecture x86_64",
                                        '_OBJC_CLASS_$_CABasicAnimation',

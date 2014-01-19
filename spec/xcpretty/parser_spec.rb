@@ -217,6 +217,22 @@ module XCPretty
         end
       end
 
+      it 'parses fatal error: on the beginning of the line for corrupted AST files' do
+        @formatter.should receive(:format_error).with(
+          "fatal error: malformed or corrupted AST file: 'could not find file '/Users/mpv/dev/project/Crashlytics.framework/Headers/Crashlytics.h' referenced by AST file' note: after modifying system headers, please delete the module cache at '/Users/mpv/Library/Developer/Xcode/DerivedData/ModuleCache/M5WJ0FYE7N06'"
+        )
+        @parser.parse(SAMPLE_FATAL_HEADER_ERROR)
+      end
+
+      it 'parses fatal error: on the beginning of the line for cached PCH' do
+        @formatter.should receive(:format_error).with(
+          "fatal error: file '/path/to/myproject/Pods/Pods-environment.h' has been modified since the precompiled header '/Users/hiroshi/Library/Developer/Xcode/DerivedData/MyProject-gfmuvpipjscewkdnqacgumhfarrd/Build/Intermediates/PrecompiledHeaders/MyProject-Prefix-dwjpvcnrlaydzmegejmcvrtcfkpf/MyProject-Prefix.pch.pch' was built"
+        )
+        @parser.parse(SAMPLE_FATAL_COMPILE_PCH_ERROR)
+      end
+
+
+
       it "parses compiling errors with tildes" do
         @formatter.should receive(:format_compile_error).with(
           'NSSetTests.m',

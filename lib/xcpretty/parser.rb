@@ -73,6 +73,11 @@ module XCPretty
     FAILING_TEST_MATCHER = /^(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
     # @regex Captured groups
+    # $1 = whole error.
+    #      it varies a lot, not sure if it makes sense to catch everything separately
+    FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
+
+    # @regex Captured groups
     # $1 = dsym
     GENERATE_DSYM_MATCHER = /^GenerateDSYMFile \/.*\/(.*\.dSYM)/
 
@@ -166,7 +171,7 @@ module XCPretty
       update_error_state(text)
       update_linker_failure_state(text)
 
-      return format_error if should_format_error?
+      return format_compile_error if should_format_error?
       return format_linker_failure if should_format_linker_failure?
 
       case text
@@ -192,6 +197,8 @@ module XCPretty
         format_summary_if_needed(text)
       when FAILING_TEST_MATCHER
         formatter.format_failing_test($2, $3, $4, $1)
+      when FATAL_ERROR_MATCHER
+        formatter.format_error($1)
       when GENERATE_DSYM_MATCHER
         formatter.format_generate_dsym($1)
       when LIBTOOL_MATCHER
@@ -281,8 +288,8 @@ module XCPretty
     end
 
     def should_format_linker_failure?
-      current_linker_failure[:message]           &&
-      current_linker_failure[:symbol]         &&
+      current_linker_failure[:message]     &&
+      current_linker_failure[:symbol]      &&
       current_linker_failure[:reference]
     end
 
@@ -294,7 +301,7 @@ module XCPretty
       @linker_failure ||= {}
     end
 
-    def format_error
+    def format_compile_error
       error = current_error.dup
       @current_error = {}
       formatter.format_compile_error(error[:file_name],
@@ -317,7 +324,7 @@ module XCPretty
       failures_per_suite[test_suite] << {
         :file => file,
         :reason => reason,
-        :test_case => test_case,
+        :test_case => test_case
       }
     end
 

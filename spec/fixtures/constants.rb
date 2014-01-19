@@ -488,6 +488,12 @@ In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/EvenL
 #import "SomeRandomHeader.h"
         ^
 )
+SAMPLE_FATAL_COMPILE_PCH_ERROR = %Q(
+fatal error: file '/path/to/myproject/Pods/Pods-environment.h' has been modified since the precompiled header '/Users/hiroshi/Library/Developer/Xcode/DerivedData/MyProject-gfmuvpipjscewkdnqacgumhfarrd/Build/Intermediates/PrecompiledHeaders/MyProject-Prefix-dwjpvcnrlaydzmegejmcvrtcfkpf/MyProject-Prefix.pch.pch' was built
+)
+SAMPLE_FATAL_HEADER_ERROR = %Q(
+fatal error: malformed or corrupted AST file: 'could not find file '/Users/mpv/dev/project/Crashlytics.framework/Headers/Crashlytics.h' referenced by AST file' note: after modifying system headers, please delete the module cache at '/Users/mpv/Library/Developer/Xcode/DerivedData/ModuleCache/M5WJ0FYE7N06'
+)
 SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
 /Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSSetTests.m:93:16: error: no visible @interface for 'NSArray' declares the selector 'shoulds'
             }] shoulds] equal:@[ @"F458 Italia", @"Testarossa" ]];
