@@ -1,5 +1,12 @@
 # Changelog
 
+## master
+
+###### Enhancements
+
+* More consistent error output (add some spacing before and after)
+
+
 ## 0.1.1
 
 ###### Enhancements
