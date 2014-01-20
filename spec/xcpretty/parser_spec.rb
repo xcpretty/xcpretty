@@ -184,6 +184,11 @@ module XCPretty
 
     context "errors" do
 
+      it "parses clang errors" do
+        @formatter.should receive(:format_error).with(SAMPLE_CLANG_ERROR)
+        @parser.parse(SAMPLE_CLANG_ERROR)
+      end
+
       it "parses cocoapods errors" do
         @formatter.should receive(:format_error).with("The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.")
         @parser.parse(SAMPLE_PODS_ERROR)
@@ -259,6 +264,20 @@ module XCPretty
           "CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 7.0'"
         )
         @parser.parse(SAMPLE_CODESIGN_ERROR_NO_SPACES)
+      end
+
+      it "parses ld library errors" do
+        @formatter.should receive(:format_error).with(
+          SAMPLE_LD_LIBRARY_ERROR
+        )
+        @parser.parse(SAMPLE_LD_LIBRARY_ERROR)
+      end
+
+      it 'parses ld symbols errors' do
+        @formatter.should receive(:format_error).with(
+          SAMPLE_LD_SYMBOLS_ERROR
+        )
+        @parser.parse(SAMPLE_LD_SYMBOLS_ERROR)
       end
 
       it "doesn't print the same error over and over" do

@@ -16,6 +16,10 @@ module XCPretty
     # @regex Nothing returned here for now
     CHECK_DEPENDENCIES_MATCHER = /^Check dependencies/
 
+    # @regex Captured groups
+    # $1 = whole error
+    CLANG_ERROR_MATCHER = /^(clang: error:.*)$/
+
     # @regex Nothing returned here for now
     CLEAN_REMOVE_MATCHER = /^Clean.Remove/
 
@@ -88,6 +92,10 @@ module XCPretty
     # @regex Captured groups
     # $1 = library
     LIBTOOL_MATCHER = /^Libtool.*\/(.*\.a)/
+
+    # @regex Captured groups
+    # $1 = whole error
+    LD_ERROR_MATCHER = /^(ld:.*not found for.*)/
 
     # @regex Captured groups
     # $1 reason
@@ -191,6 +199,8 @@ module XCPretty
         formatter.format_copy_strings_file($1)
       when CHECK_DEPENDENCIES_MATCHER
         formatter.format_check_dependencies
+      when CLANG_ERROR_MATCHER
+        formatter.format_error($1)
       when CODESIGN_FRAMEWORK_MATCHER
         formatter.format_codesign($1)
       when CODESIGN_MATCHER
@@ -211,6 +221,8 @@ module XCPretty
         formatter.format_error($1)
       when GENERATE_DSYM_MATCHER
         formatter.format_generate_dsym($1)
+      when LD_ERROR_MATCHER
+        formatter.format_error($1)
       when LIBTOOL_MATCHER
         formatter.format_libtool($1)
       when LINKING_MATCHER

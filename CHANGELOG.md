@@ -1,10 +1,12 @@
 # Changelog
 
-## master
+## 0.1.2
 
 ###### Enhancements
 
 * More consistent error output (add some spacing before and after)
+* Parsed clang errors
+* Parsed ld: errors
 
 
 ## 0.1.1

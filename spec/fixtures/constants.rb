@@ -523,5 +523,10 @@ Undefined symbols for architecture x86_64:
   "_OBJC_CLASS_$_CABasicAnimation", referenced from:
       objc-class-ref in ATZRadialProgressControl.o
 ld: symbol(s) not found for architecture x86_64
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
 )
+
+SAMPLE_LD_SYMBOLS_ERROR = 'ld: symbol(s) not found for architecture x86_64'
+SAMPLE_LD_LIBRARY_ERROR = 'ld: library not found for -lPods-Yammer'
+
+SAMPLE_CLANG_ERROR = 'clang: error: linker command failed with exit code 1 (use -v to see invocation)'
+
