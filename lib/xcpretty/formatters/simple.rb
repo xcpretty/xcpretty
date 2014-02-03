@@ -15,6 +15,8 @@ module XCPretty
     ASCII_PENDING = "P"
     ASCII_COMPLETION = ">"
 
+    INDENT = "    "
+
     def format_analyze(file_name, file_path)
       format("Analyzing", file_name)
     end
@@ -56,15 +58,15 @@ module XCPretty
     end
 
     def format_failing_test(suite, test_case, reason, file)
-      format_test("#{test_case}, #{reason}", :fail)
+      INDENT + format_test("#{test_case}, #{reason}", :fail)
     end
 
     def format_passing_test(suite, test_case, time)
-      format_test("#{test_case} (#{colored_time(time)} seconds)", :pass)
+      INDENT + format_test("#{test_case} (#{colored_time(time)} seconds)", :pass)
     end
 
     def format_pending_test(suite, test_case)
-      format_test("#{test_case} [PENDING]", :pending)
+      INDENT + format_test("#{test_case} [PENDING]", :pending)
     end
 
     def format_phase_script_execution(script_name)
