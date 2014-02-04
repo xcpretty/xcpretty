@@ -1,5 +1,16 @@
 # Changelog
 
+## master
+
+###### Enhancements
+
+* Indented test runs by suite
+
+###### Misc
+
+* removed the faux exit statuts hangling. use `exit ${PIPESTATUS[0]}`
+
+
 ## 0.1.2
 
 ###### Enhancements
