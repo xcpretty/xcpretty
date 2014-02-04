@@ -7,26 +7,6 @@ require "xcpretty/formatters/rspec"
 require "xcpretty/reporters/junit"
 
 module XCPretty
-  module ExitStatus
-
-    include XCPretty::Matchers
-
-    POSSIBLE_FAILURES = [
-      FAILING_TEST_MATCHER,
-      /\serror:\s/
-    ]
-
-    def self.code
-      $exit_status || 0
-    end
-
-    def self.handle(text)
-      POSSIBLE_FAILURES.detect do |failure|
-        $exit_status = 1 if text =~ failure
-      end
-    end
-
-  end
 
   def self.class_from_path(path)
     source = File.read(path)

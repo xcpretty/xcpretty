@@ -109,10 +109,6 @@ When(/^I pipe to xcpretty with a custom formatter$/) do
   run_xcpretty("-f #{formatter_path}")
 end
 
-When(/^I pipe to xcpretty$/) do
-  run_xcpretty("")
-end
-
 Then(/^I should see a custom compilation message$/) do
   run_output.should start_with("😎 Compilation party time")
 end

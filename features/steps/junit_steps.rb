@@ -20,11 +20,6 @@ Then(/^I should have a test report in a custom path$/) do
   step("I should have a test report at \"#{custom_report_path}\"")
 end
 
-Then(/^I should have a test report at "(.*?)"$/) do |path|
-  doc = REXML::Document.new(File.open(path, 'r').read)
-  doc.root.should_not be_nil
-end
-
 Then(/^I should see a failed test node in my report$/) do
   junit_report_root.elements.to_a.detect do |node|
     element = node.elements.to_a.first
