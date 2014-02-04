@@ -211,7 +211,7 @@ Then(/^I should see a green passing test mark$/) do
 end
 
 Then(/^I should see a non-utf prefixed output$/) do
-  run_output.should start_with(green("."))
+  run_output.should start_with("    " + green("."))
 end
 
 Then(/^I should not see the name of the test group$/) do

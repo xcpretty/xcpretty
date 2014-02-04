@@ -67,17 +67,17 @@ module XCPretty
 
       it "formats failing tests" do
         @formatter.format_failing_test("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", 'path/to/file').should ==
-        "x enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
+        "    x enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
       end
 
       it "formats passing tests" do
         @formatter.format_passing_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", "0.001").should ==
-        ". _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
+        "    . _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
       end
 
       it "formats pending tests" do
         @formatter.format_pending_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object").should ==
-        "P _tupleByAddingObject__should_add_a_non_nil_object [PENDING]"
+        "    P _tupleByAddingObject__should_add_a_non_nil_object [PENDING]"
       end
 
       it "formats Phase Script Execution" do
