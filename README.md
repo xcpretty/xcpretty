@@ -39,19 +39,19 @@ xcodebuild ... | xcpretty -c; exit ${PIPESTATUS[0]}
 
 - `--report junit`, `-r junit`: Creates a JUnit-style XML report at `build/reports/junit.xml`, compatible with Jenkins CI.
 
-## Have you just cloned xctool?
+## Did you just clone xctool?
 
 Unlike [xctool](https://github.com/facebook/xctool), `xcpretty` isn't a build tool.
 It relies on `xcodebuild` to do the build process, and it formats the output.
 
 By the time when [xctool](https://github.com/facebook/xctool) was made, `xcodebuild`
-wasn't aware of the `test` command. That means, running tests in general via CLI was a pain.
-At this point, `xcodebuild` has got improved a lot, and it's ready to be used directly.
+wasn't aware of the `test` command, thus running tests in general via CLI was a pain.
+At this point `xcodebuild` has been improved significantly, and is ready to be used directly.
 
-## Why?
+## Why should I use this?
 
 There are many usages of this tool. Let me give you some ideas:
-- Xcode's test tools are close to useless. Failures in a sidebar, non-dettachable console,... You can use `xcpretty` to build your next Xcode test runner plugin
+- Xcode's test tools are close to useless. Failures in a sidebar, non-detachable console,... You can use `xcpretty` to build your next Xcode test runner plugin
 - Run tests each time you hit save. Use [xclisten](https://github.com/mneorr/xclisten) for that
 - Mine Bitcoins. You can't with this tool, but you'll be so productive that you can earn all the money and buy them!!!1!
 
