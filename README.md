@@ -11,16 +11,18 @@ It does one thing, and it should do it well.
 
 
 ## Usage
-
+``` bash
+$ xcodebuild [flags] | xcpretty -c
+```
 `xcpretty` is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
 This means, when `xcodebuild` works, `xcpretty` works.
 It's even a bit faster than `xcodebuild` only, since it saves your terminal some prints.
 
-__Important:__ lots of CIs are using exit status for determining if build has
-failed. You probably want to exit with the same status code as `xcodebuild`.
+__Important:__ If you're running `xcpretty` on a CI like Travis or Jenkins, you may want to exit with same status code as `xcodebuild`.
+CI uses the status code to determine if build has failed.
 
-```
-xcodebuild ... | xcpretty -c; exit ${PIPESTATUS[0]}
+``` bash
+$ xcodebuild [flags] | xcpretty -c; exit ${PIPESTATUS[0]}
 ```
 
 ## Formats
