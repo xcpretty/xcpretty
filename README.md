@@ -3,7 +3,7 @@
 __`xcpretty` is a fast and flexible formatter for `xcodebuild`__.<br/>
 It does one thing, and it should do it well.
 
-[![Build Status](https://travis-ci.org/mneorr/XCPretty.png?branch=master)](https://travis-ci.org/mneorr/XCPretty)
+[![Build Status](https://travis-ci.org/mneorr/xcpretty.png?branch=master)](https://travis-ci.org/mneorr/xcpretty)
 [![Code Climate](https://codeclimate.com/github/mneorr/XCPretty.png)](https://codeclimate.com/github/mneorr/XCPretty)
 ## Installation
 
