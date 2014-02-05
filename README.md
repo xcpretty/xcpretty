@@ -1,6 +1,6 @@
-# XCPretty
+# xcpretty
 
-__XCPretty is a fast and flexible formatter for `xcodebuild`__.<br/>
+__`xcpretty` is a fast and flexible formatter for `xcodebuild`__.<br/>
 It does one thing, and it should do it well.
 
 [![Build Status](https://travis-ci.org/mneorr/XCPretty.png?branch=master)](https://travis-ci.org/mneorr/XCPretty)
@@ -9,11 +9,11 @@ It does one thing, and it should do it well.
 
     $ gem install xcpretty
 
-XCPretty requires Ruby 1.8.7 or above.
+`xcpretty` requires Ruby 1.8.7 or above.
 
 ## Usage
 
-XCPretty is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
+`xcpretty` is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
 This means, when `xcodebuild` works, `xcpretty` works.
 It's even a bit faster than `xcodebuild` only, since it saves your terminal some prints.
 
@@ -63,7 +63,7 @@ There are many usages of this tool. Let me give you some ideas:
 
 A smaller project ([ObjectiveSugar](https://github.com/mneorr/objectivesugar)) with a fast suite
 
-#### XCPretty
+#### xcpretty
 ```
 $ time xcodebuild -workspace ObjectiveSugar.xcworkspace -scheme ObjectiveSugar -sdk iphonesimulator test | xcpretty -tc
 ....................................................................................
@@ -80,7 +80,7 @@ Executed 84 tests, with 0 failures (0 unexpected) in 0.103 (0.129) seconds
 
         4.35 real         6.07 user         2.21 sys
 ```
-#### XCtool
+#### xctool
 ```
 $ time xctool -workspace ObjectiveSugar.xcworkspace -scheme ObjectiveSugar -sdk iphonesimulator test
 ... ommitted output ...
@@ -91,7 +91,7 @@ $ time xctool -workspace ObjectiveSugar.xcworkspace -scheme ObjectiveSugar -sdk 
 
 A bit bigger project, without CocoaPods ([ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa))
 
-#### XCPretty
+#### xcpretty
 ```
 $ time xcodebuild -project ReactiveCocoa.xcodeproj -scheme ReactiveCocoa test | xcpretty -tc
 ..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
@@ -108,7 +108,7 @@ Executed 922 tests, with 0 failures (0 unexpected) in 6.542 (6.913) seconds
 
         8.82 real         5.65 user         0.75 sys
 ```
-#### XCtool
+#### xctool
 ```
 $ time xctool -project ReactiveCocoa.xcodeproj -scheme ReactiveCocoa test
 ... ommitted output ...
