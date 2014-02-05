@@ -35,5 +35,5 @@ Feature: Creating a JUnit test report
         Then I should have a test report in a custom path
 
     Scenario: Writing to multiple custom file paths
-        When I pipe to xcpretty with two custom report paths
+        When I pipe to xcpretty with two custom "junit" report paths
         Then I should have test reports in two custom paths

@@ -1,7 +1,3 @@
-When(/^I pipe to xcpretty with two custom HTML report paths$/) do
-  step("I pipe to xcpretty with \"--report html --output #{custom_report_path} --report html --output #{other_custom_report_path}\"")
-end
-
 Then(/^I should see a test suite section in HTML$/) do
   html_test_suites.first.should_not be_nil
 end
