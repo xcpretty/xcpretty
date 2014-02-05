@@ -48,3 +48,7 @@ Then(/^I should see (\d+) test suites$/) do |count|
   suites.select {|s| s.name == 'testsuite' }.size.should == count.to_i
 end
 
+Then(/^I should have a test report at "(.*?)"$/) do |path|
+  doc = REXML::Document.new(File.open(path, 'r').read)
+  doc.root.should_not be_nil
+end
