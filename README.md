@@ -9,7 +9,6 @@ It does one thing, and it should do it well.
 
     $ gem install xcpretty
 
-`xcpretty` requires Ruby 1.8.7 or above.
 
 ## Usage
 
