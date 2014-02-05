@@ -32,8 +32,8 @@ Feature: Creating a HTML test report
 
     Scenario: Writing to a custom file path
         When I pipe to xcpretty with "--report html" and specify a custom path
-        Then I should have a HTML report in a custom path
+        Then I should have a test report in a custom path
 
     Scenario: Writing to multiple custom file paths
         When I pipe to xcpretty with two custom HTML report paths
-        Then I should have HTML reports in two custom paths
+        Then I should have test reports in two custom paths
