@@ -3,42 +3,55 @@ module XCPretty
 
     include XCPretty::FormatMethods
     FILEPATH = 'build/reports/tests.html'
+    TEMPLATE = File.expand_path('../../../../assets/report.html.erb', __FILE__)
 
     def load_dependencies
       unless @@loaded ||= false
         require 'fileutils'
         require 'pathname'
-        require 'rexml/document'
-        require 'rexml/formatters/pretty'
+        require 'erb'
         @@loaded = true
       end
     end
 
     def initialize(options)
       load_dependencies
-      @filepath  = options[:path] || FILEPATH
-      @directory = Dir.pwd
-      @document  = REXML::Document.new
-      @document << REXML::DocType.new('html')
-      @document.add_element('html')
-      @parser    = Parser.new(self)
+      @test_suites = {}
+      @filepath    = options[:path] || FILEPATH
+      @parser      = Parser.new(self)
     end
 
     def handle(line)
       @parser.parse(line)
     end
 
+    def format_failing_test(suite, test_case, reason, file)
+      add_test(suite, {:name => test_case, :failing => true})
+    end
+
+    def format_passing_test(suite, test_case, time)
+      add_test(suite, {:name => test_case, :time => time})
+    end
+
     def finish
-      write_report_file
+      FileUtils.mkdir_p(File.dirname(@filepath))
+      write_report
     end
 
     private
 
-    def write_report_file
-      FileUtils.mkdir_p(File.dirname(@filepath))
-      formatter = REXML::Formatters::Pretty.new(2)
-      formatter.compact = true
-      formatter.write(@document, File.open(@filepath, 'w+'))
+    def add_test(suite_name, data)
+      @test_suites[suite_name] ||= {:tests => []}
+      @test_suites[suite_name][:tests] << data
+      @test_suites[suite_name][:failing] = true if data[:failing]
+    end
+
+    def write_report
+      File.open(@filepath, 'w') do |f|
+        test_suites = @test_suites
+        erb = ERB.new(File.open(TEMPLATE, 'r').read)
+        f.write erb.result(binding)
+      end
     end
   end
 end
