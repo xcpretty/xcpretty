@@ -5,10 +5,11 @@ It does one thing, and it should do it well.
 
 [![Build Status](https://travis-ci.org/mneorr/xcpretty.png?branch=master)](https://travis-ci.org/mneorr/xcpretty)
 [![Code Climate](https://codeclimate.com/github/mneorr/XCPretty.png)](https://codeclimate.com/github/mneorr/XCPretty)
+
 ## Installation
-
-    $ gem install xcpretty
-
+``` bash
+$ gem install xcpretty
+```
 
 ## Usage
 ``` bash
