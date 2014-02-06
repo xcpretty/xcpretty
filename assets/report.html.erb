@@ -3,7 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <title>Test Results | xcpretty</title>
-    <style type="text/css"></style>
+    <style type="text/css">
+      h1 {}
+      .left {}
+      .right {}
+      .test-suite {}
+      .test-suite .heading {}
+      .test-suite .heading .title {}
+      .test {}
+      .test.failing {}
+      .test.passing {}
+      .test .heading {}
+      .test .heading .title {}
+      .test .heading .time {}
+      .snippet-control {}
+      .snippet-control.collapsed {}
+      .snippet {}
+      .snippet.hidden {}
+      #segment-bar {}
+      #segment-bar > a {}
+      #segment-bar > a.selected {}
+      #counters {}
+      #test-count {}
+      #fail-count {}
+    </style>
   </head>
   <body>
     <header>
@@ -11,11 +34,11 @@
         <h1>Test Results</h1>
       </section>
       <section class="right">
-        <section class="counters">
+        <section id="counters">
           <h2 id="test-count"></h2>
           <h2 id="fail-count"></h2>
         </section>
-        <section class="segment-bar">
+        <section id="segment-bar">
           <a class="selected">All</a><a>Failing</a><a>Passing</a>
         </section>
       </section>
