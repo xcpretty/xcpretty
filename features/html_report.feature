@@ -12,6 +12,7 @@ Feature: Creating a HTML test report
         Given I have a failing test in my suite
         When I pipe to xcpretty with "--report html"
         Then I should see a failed test in HTML
+        And the failure counter should show 1 test
 
     Scenario: Showing passing tests
         Given I have a passing test in my suite
