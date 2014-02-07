@@ -13,20 +13,22 @@
       .left { float: left;}
       .right { float: right; margin-top: 6px;}
       .test-suite { margin: 0 0 30px 0;}
-      .test-suite > .heading { border-color: #A1D761; background-color: #B8E986; border-width: 1px;}
+      .test-suite > .heading { font-family:Menlo, Monaco, monospace; font-weight: bold; border-color: #A1D761; background-color: #B8E986; border-width: 1px;}
+      .test-suite.failing > .heading { border-color: #C84F5E; background-color: #E58591;}
       .test-suite > .heading > .title { margin-top: 4px; margin-left: 10px;}
-      .test, .test-suite > .heading { border-width: 1px; border-collapse: collapse; border-style: solid; height: 30px;}
+      .test .heading, .test-suite > .heading { height: 30px;}
+      .test, .test-suite > .heading { border-width: 1px; border-collapse: collapse; border-style: solid; }
       .test { margin-left: 30px; border-top:none;}
-      .test.failing { border-color: #C84F5E; background-color: #E7A1AA;}
-      .test.passing { border-color: #A1D761; background-color: #CAF59F;}
-      .test.failing.odd  { background-color: #EEC7CC;}
-      .test.passing.odd  { background-color: #E5FBCF;}
+      .test.failing { border-color: #C84F5E; background-color: #F4DDE0;}
+      .test.passing { border-color: #A1D761;}
+      .test.failing .heading { background-color: #E7A1AA;}
+      .test.passing .heading { background-color: #CAF59F;}
+      .test.failing.odd .heading { background-color: #EEC7CC;}
+      .test.passing.odd .heading { background-color: #E5FBCF;}
+      .test .test-detail:last-child { padding-bottom: 8px;}
       .test .heading .title { float: left; margin-left: 40px; font-size: 0.9em; margin-top: 8px; font-family: Menlo, Monaco, monospace;}
       .test .heading .time { float:right; margin-right: 10px; margin-top:4px;}
-      .snippet-control {}
-      .snippet-control.collapsed {}
-      .snippet {}
-      .snippet.hidden {}
+      .test-detail { font-family:Menlo, Monaco, monospace; font-size: 0.9em; margin: 5px 0 5px 80px;}
       #segment-bar { float:right; margin-top: 6px;}
       #segment-bar a:first-child { border-radius: 9px 0 0 9px; border-right: none;}
       #segment-bar a:last-child { border-radius: 0 9px 9px 0; border-left: none;}
@@ -40,20 +42,22 @@
     <script type="text/javascript">
       var hide = function(element) { element.style.display = 'none';}
       var show = function(element) { element.style.display = '';}
+      var isHidden = function(element) { return element.style.display == 'none';}
+      var isSelected = function(element) { return element.classList.contains("selected");}
+      var deselect = function(element) { return element.classList.remove("selected");}
+      var select = function(element) { return element.classList.add("selected");}
+      var toggle = function(element) { isHidden(element) ? show(element) : hide(element);};
+      var toggleTests = function(heading) { toggle(heading.parentNode.children[1]);};
+      var toggleDetails = function(heading) {
+        var details = heading.parentNode.querySelectorAll('.test-detail');
+        for (var i = details.length - 1; i >= 0; i--) { toggle(details[i]);};
+      };
       var hideAll = function(collection) {
         for (var i = collection.length - 1; i >= 0; i--) { hide(collection[i]); };
       }
       var showAll = function(collection) {
         for (var i = collection.length - 1; i >= 0; i--) { show(collection[i]); };
       }
-      var isHidden = function(element) { return element.style.display == 'none';}
-      var isSelected = function(element) { return element.classList.contains("selected");}
-      var deselect = function(element) { return element.classList.remove("selected");}
-      var select = function(element) { return element.classList.add("selected");}
-      var toggle = function(element) {
-        isHidden(element) ? show(element) : hide(element);
-      };
-      var toggleTests = function(parent) { toggle(parent.children[1]);};
       var selectSegment = function(segment) {
         if (isSelected(segment)) return;
         var segments = document.querySelectorAll('#segment-bar > a');
@@ -91,24 +95,25 @@
     <section id="test-suites">
       <% test_suites.each do |name, info| %>
         <% next unless info[:tests].size > 0 %>
-        <section class="test-suite <%= info[:failing] ? 'failing' : 'passing'%>" id="<%= name %>" onclick="toggleTests(this);">
-          <section class="heading">
+        <section class="test-suite <%= info[:failing] ? 'failing' : 'passing'%>" id="<%= name %>">
+          <section class="heading" onclick="toggleTests(this);">
             <h3 class="title"><%= name %></h3>
           </section>
           <section class="tests">
             <% info[:tests].each_with_index do |test, index| %>
               <section class="test <%= test[:failing] ? 'failing' : 'passing'%> <%= index % 2 != 0 ? 'odd' :''%>" id="<%= test[:name] %>">
-                <section class="heading">
-                  <% if test[:snippet] %>
-                    <input type="button" class="snippet-control collapsed"/>
-                  <% end %>
+                <section class="heading" onclick="toggleDetails(this);">
                   <h3 class="title"><%= test[:name] %></h3>
                   <% if test[:time] %>
                     <h3 class="time"><%= test[:time] %></h3>
                   <% end %>
                 </section>
+                <% if test[:reason] %>
+                  <section class="test-detail reason"><%= test[:reason] %></section>
+                <% end %>
                 <% if test[:snippet] %>
-                  <section class="snippet hidden"><%= test[:snippet] %></section>
+                  <section class="test-detail snippet"><%= test[:snippet] %></section>
+                  <section class="test-detail"><%= test[:file] %></section>
                 <% end %>
               </section>
             <% end %>

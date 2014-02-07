@@ -28,7 +28,8 @@ module XCPretty
     end
 
     def format_failing_test(suite, test_case, reason, file)
-      add_test(suite, {:name => test_case, :failing => true})
+      add_test(suite, {:name => test_case, :failing => true,
+        :reason => reason, :file => file, :snippet => formatted_snippet(file)})
     end
 
     def format_passing_test(suite, test_case, time)
@@ -41,6 +42,17 @@ module XCPretty
     end
 
     private
+
+    def formatted_snippet filepath
+      file, line = filepath.split(':')
+      f = File.open(file)
+      line.to_i.times { f.gets }
+      text = $_.strip
+      f.close
+      Syntax.highlight(text, "-f html -O style=colorful -O noclasses")
+    rescue
+      nil
+    end
 
     def add_test(suite_name, data)
       @test_count += 1
