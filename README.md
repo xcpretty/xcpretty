@@ -16,7 +16,6 @@ $ gem install xcpretty
 $ xcodebuild [flags] | xcpretty -c
 ```
 `xcpretty` is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
-This means, when `xcodebuild` works, `xcpretty` works.
 It's even a bit faster than `xcodebuild` only, since it saves your terminal some prints.
 
 __Important:__ If you're running `xcpretty` on a CI like Travis or Jenkins, you may want to exit with same status code as `xcodebuild`.
@@ -35,7 +34,6 @@ $ xcodebuild [flags] | xcpretty -c; exit ${PIPESTATUS[0]}
 - `--test`, `-t` (RSpec style)
 ![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
 
-- tun / tap (not yet implemented. possible solution for most CI servers)
 
 ## Reporters
 
@@ -50,16 +48,6 @@ By the time when [xctool](https://github.com/facebook/xctool) was made, `xcodebu
 wasn't aware of the `test` command, thus running tests in general via CLI was a pain.
 At this point `xcodebuild` has been improved significantly, and is ready to be used directly.
 
-## Why should I use this?
-
-There are many usages of this tool. Let me give you some ideas:
-- Xcode's test tools are close to useless. Failures in a sidebar, non-detachable console,... You can use `xcpretty` to build your next Xcode test runner plugin
-- Run tests each time you hit save. Use [xclisten](https://github.com/mneorr/xclisten) for that
-- Mine Bitcoins. You can't with this tool, but you'll be so productive that you can earn all the money and buy them!!!1!
-
-## Roadmap
-- Improve test reporting, group tests semantically
-- Write original xcodebuild output with -o flag
 
 ## Benchmark
 
