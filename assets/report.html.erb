@@ -7,8 +7,8 @@
       body { font-family:Avenir Next, Helvetica Neue, sans-serif; color: #4A4A4A; background-color: #F0F3FB; padding-top: 30px; padding-left:10px;}
       h1 { font-weight: normal; font-size:3.5em; margin: 10px 0 0 0;}
       h3 { font-weight: normal; margin: 2px; font-size: 1.1em;}
-      header:before,
-      header:after { content:""; display:table;}
+      header { max-width: 1200px;}
+      header:before, header:after { content:""; display:table;}
       header:after { clear:both;}
       a:link { color: #A1D761;}
       footer { float:left; padding-bottom: 10px; margin-right:30px;}
@@ -41,6 +41,11 @@
       #counters h2 { font-size: 30px; font-family: Avenir, sans-serif; font-weight: lighter; display:inline;}
       #counters .number { font-size: 36px;}
       #fail-count { color: #D0021B; margin-left:10px;}
+      @media (max-width: 640px) { 
+        h1, #counters, #segment-bar { margin: 5px auto; text-align:center;}
+        header, #segment-bar { width: 100%;}
+        .left, .right { float:none; margin:0;}
+      }
     </style>
     <script type="text/javascript">
       var hide = function(element) { element.style.display = 'none';}
