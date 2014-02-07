@@ -78,8 +78,10 @@
       </section>
       <section class="right">
         <section id="counters">
-          <h2 id="test-count"></h2>
-          <h2 id="fail-count"></h2>
+          <h2 id="test-count"><span class="number"><%= test_count %></span> tests</h2>
+          <% if fail_count > 0 %>
+            <h2 id="fail-count"><span class="number"><%= fail_count %></span> failures</h2>
+          <% end %>
         </section>
         <section id="segment-bar">
           <a id="all-segment" onclick="selectSegment(this);" class="selected">All</a><a id="failing-segment" onclick="selectSegment(this);">Failing</a><a id="passing-segment" onclick="selectSegment(this);">Passing</a>
