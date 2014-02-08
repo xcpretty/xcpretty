@@ -5,7 +5,7 @@
     <title>Test Results | xcpretty</title>
     <style type="text/css">
       body { font-family:Avenir Next, Helvetica Neue, sans-serif; color: #4A4A4A; background-color: #F0F3FB; margin:0;}
-      h1 { font-weight: normal; font-size:3.5em; margin: 10px 0 0 0;}
+      h1 { font-weight: normal; font-size: 24px; margin: 10px 0 0 0;}
       h3 { font-weight: normal; margin: 2px; font-size: 1.1em;}
       header { position: fixed;width: 100%;background: rgba(249, 254, 255, 0.9);margin: 0;padding: 10px;}
       header:before, header:after { content:""; display:table;}
@@ -15,7 +15,7 @@
       table { width:100%; border-collapse: collapse;}
       tr td:first-child { width:7%}
       .left { float: left; margin-left:30px;}
-      .right { float: right; margin-top: 6px; margin-right: 40px;}
+      .right { float: right; margin-right: 40px; margin-top: 0; margin-bottom:0;}
       .test-suite { margin: 0 0 30px 0;}
       .test-suite > .heading { font-family:Menlo, Monaco, monospace; font-weight: bold; border-color: #A1D761; background-color: #B8E986; border-width: 1px;}
       .test-suite.failing > .heading { border-color: #C84F5E; background-color: #E58591;}
@@ -35,27 +35,22 @@
       .test .title { float: left; font-size: 0.9em; margin-top: 8px; font-family: Menlo, Monaco, monospace;}
       .test .time { float: left;margin: 4px 10px 0 20px;}
       .test-detail { font-family:Menlo, Monaco, monospace; font-size: 0.9em; margin: 5px 0 5px 0px;}
-      .narrow #counters { float: left;margin: 10px;}
-      .narrow #counters h2 { font-size: 16px;}
-      .narrow #counters .number { font-size: 20px;}
-      .narrow h1 { font-size: 24px;}
-      .narrow .right { margin-top: 0; margin-bottom:0;}
-      .narrow #segment-bar { margin-top: 10px;margin-left: 14px;}
       #test-suites { display: inline-block; width: 100%;margin-top:100px;}
-      #segment-bar { float:right; margin-top: 6px;}
+      #segment-bar { margin-top: 10px;margin-left: 14px;float:right;}
       #segment-bar a:first-child { border-radius: 9px 0 0 9px; border-right: none;}
       #segment-bar a:last-child { border-radius: 0 9px 9px 0; border-left: none;}
       #segment-bar > a { color: #565656; border: 2px solid  #7B7B7B; width: 80px; font-weight: bold; display:inline-block;text-align:center; font-weight: normal;}
       #segment-bar > a.selected { background-color: #979797; color: #F0F3FB;}
-      #counters { text-align: right;}
-      #counters h2 { font-size: 30px; font-family: Avenir, sans-serif; font-weight: lighter; display:inline;}
-      #counters .number { font-size: 36px;}
+      #counters { float: left;margin: 10px;text-align: right;}
+      #counters h2 { font-size: 16px; font-family: Avenir, sans-serif; font-weight: lighter; display:inline;}
+      #counters .number { font-size: 20px;}
       #fail-count { color: #D0021B; margin-left:10px;}
       @media (max-width: 640px) {
         h1, #counters, #segment-bar { margin: 5px auto; text-align:center;}
         header, #segment-bar { width: 100%; position: relative; background:none;}
         .left, .right { float:none; margin:0;}
         #test-suites { margin-top: 0;}
+        #counters { float:none;}
       }
     </style>
     <script type="text/javascript">
@@ -100,7 +95,7 @@
     </script>
   </head>
   <body>
-    <header class="narrow">
+    <header>
       <section class="left">
         <h1>Test Results</h1>
       </section>
