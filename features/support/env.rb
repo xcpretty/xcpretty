@@ -43,20 +43,16 @@ def run_output
 end
 
 def html_report
-  REXML::Document.new(File.open(XCPretty::HTML::FILEPATH, 'r').read.sub("<!DOCTYPE html>",""))
+  @html_report ||= REXML::Document.new(File.open(XCPretty::HTML::FILEPATH, 'r').read.sub("<!DOCTYPE html>",""))
 end
 
 def html_report_body
   html_report.root.get_elements('//body').first
 end
 
-def html_report_head
-  html_report.root.get_elements('//head').first
-end
-
 def html_test_suites
-  parent = html_report_body.get_elements("//section[@id='test-suites']/").first
-  parent.elements.to_a.select do |e| 
+  parent = html_report_body.get_elements("//*[@id='test-suites']/").first
+  parent.elements.to_a.select do |e|
     e.attributes['class'] && e.attributes['class'].include?('test-suite')
   end
 end
@@ -92,6 +88,7 @@ After do
   @output = ""
   @custom_report_file1.unlink if @custom_report_file1
   @custom_report_file2.unlink if @custom_report_file2
+  @html_report = nil
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
   FileUtils.rm_rf(XCPretty::HTML::FILEPATH)
 end
