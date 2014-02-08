@@ -5,6 +5,7 @@
 ###### Enhancements
 
 * Indented test runs by suite
+* Added HTML reporter
 
 ###### Misc
 

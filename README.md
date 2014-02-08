@@ -39,6 +39,10 @@ $ xcodebuild [flags] | xcpretty -c; exit ${PIPESTATUS[0]}
 
 - `--report junit`, `-r junit`: Creates a JUnit-style XML report at `build/reports/junit.xml`, compatible with Jenkins CI.
 
+- `--report html`, `-r html`: Creates a simple HTML report at `build/reports/tests.html`.
+
+Writing a report to a custom path can be specified using `--output PATH`.
+
 ## Did you just clone xctool?
 
 Unlike [xctool](https://github.com/facebook/xctool), `xcpretty` isn't a build tool.
