@@ -4,34 +4,38 @@
     <meta charset="utf-8" />
     <title>Test Results | xcpretty</title>
     <style type="text/css">
-      body { font-family:Avenir Next, Helvetica Neue, sans-serif; color: #4A4A4A; background-color: #F0F3FB; padding-top: 30px; padding-left:10px;}
+      body { font-family:Avenir Next, Helvetica Neue, sans-serif; color: #4A4A4A; background-color: #F0F3FB; margin:0;}
       h1 { font-weight: normal; font-size:3.5em; margin: 10px 0 0 0;}
       h3 { font-weight: normal; margin: 2px; font-size: 1.1em;}
-      header { max-width: 1200px;}
+      header { position: fixed;width: 100%;background: rgba(249, 254, 255, 0.9);margin: 0;padding: 10px;}
       header:before, header:after { content:""; display:table;}
       header:after { clear:both;}
       a:link { color: #A1D761;}
-      footer { float:left; padding-bottom: 10px; margin-right:30px;}
+      footer { clear: both;position: relative;z-index: 10;height: 40px;margin-top: -20px; margin-left:30px;}
+      table { width:100%; border-collapse: collapse;}
+      tr td:first-child { width:7%}
       .left { float: left;}
       .right { float: right; margin-top: 6px; margin-bottom: 10px; margin-right:30px;}
       .test-suite { margin: 0 0 30px 0;}
       .test-suite > .heading { font-family:Menlo, Monaco, monospace; font-weight: bold; border-color: #A1D761; background-color: #B8E986; border-width: 1px;}
       .test-suite.failing > .heading { border-color: #C84F5E; background-color: #E58591;}
       .test-suite > .heading > .title { margin-top: 4px; margin-left: 10px;}
-      .test .heading, .test-suite > .heading { height: 30px; overflow: hidden;}
+      .tests { overflow: scroll;margin: 0 30px 0 60px;}
+      .test, .test-suite > .heading { height: 30px; overflow: hidden; margin: 0 30px;}
       .test, .test-suite > .heading { border-width: 1px; border-collapse: collapse; border-style: solid; }
       .test { margin-left: 30px; border-top:none;}
       .test.failing { border-color: #C84F5E; background-color: #F4DDE0;}
       .test.passing { border-color: #A1D761;}
-      .test.failing .heading { background-color: #E7A1AA;}
-      .test.passing .heading { background-color: #CAF59F;}
-      .test.failing.odd .heading { background-color: #EEC7CC;}
-      .test.passing.odd .heading { background-color: #E5FBCF;}
+      .test.failing { background-color: #E7A1AA;}
+      .test.passing { background-color: #CAF59F;}
+      .test.failing.odd { background-color: #EEC7CC;}
+      .test.passing.odd { background-color: #E5FBCF;}
+      .details { background-color: #F4DDE0; border: 1px solid #C84F5E;}
       .test .test-detail:last-child { padding-bottom: 8px;}
-      .test .heading .title { float: left; margin-left: 40px; font-size: 0.9em; margin-top: 8px; font-family: Menlo, Monaco, monospace;}
-      .test .heading .time { float:right; margin-right: 10px; margin-top:4px;}
-      .test-detail { font-family:Menlo, Monaco, monospace; font-size: 0.9em; margin: 5px 0 5px 80px;}
-      #test-suites { display: inline-block; margin-right: 30px;}
+      .test .title { float: left; font-size: 0.9em; margin-top: 8px; font-family: Menlo, Monaco, monospace;}
+      .test .time { float: left;margin: 4px 10px 0 20px;}
+      .test-detail { font-family:Menlo, Monaco, monospace; font-size: 0.9em; margin: 5px 0 5px 0px;}
+      #test-suites { display: inline-block; width: 100%;margin-top:130px;}
       #segment-bar { float:right; margin-top: 6px;}
       #segment-bar a:first-child { border-radius: 9px 0 0 9px; border-right: none;}
       #segment-bar a:last-child { border-radius: 0 9px 9px 0; border-left: none;}
@@ -41,10 +45,11 @@
       #counters h2 { font-size: 30px; font-family: Avenir, sans-serif; font-weight: lighter; display:inline;}
       #counters .number { font-size: 36px;}
       #fail-count { color: #D0021B; margin-left:10px;}
-      @media (max-width: 640px) { 
+      @media (max-width: 640px) {
         h1, #counters, #segment-bar { margin: 5px auto; text-align:center;}
-        header, #segment-bar { width: 100%;}
+        header, #segment-bar { width: 100%; position: relative; background:none;}
         .left, .right { float:none; margin:0;}
+        #test-suites { margin-top: 0;}
       }
     </style>
     <script type="text/javascript">
@@ -56,8 +61,8 @@
       var select = function(element) { return element.classList.add("selected");}
       var toggle = function(element) { isHidden(element) ? show(element) : hide(element);};
       var toggleTests = function(heading) { toggle(heading.parentNode.children[1]);};
-      var toggleDetails = function(heading) {
-        var details = heading.parentNode.querySelectorAll('.test-detail');
+      var toggleDetails = function(detailClass) {
+        var details = document.querySelectorAll('.' + detailClass);
         for (var i = details.length - 1; i >= 0; i--) { toggle(details[i]);};
       };
       var hideAll = function(collection) {
@@ -73,10 +78,15 @@
         select(segment);
         if (segment.id == "all-segment") {
           showAll(document.querySelectorAll('.test-suite'));
+          showAll(document.querySelectorAll('.test'));
         } else if (segment.id == "failing-segment") {
+          hideAll(document.querySelectorAll('.test.passing'));
+          showAll(document.querySelectorAll('.test.failing'));
           hideAll(document.querySelectorAll('.test-suite.passing'));
           showAll(document.querySelectorAll('.test-suite.failing'));
         } else if (segment.id == "passing-segment") {
+          hideAll(document.querySelectorAll('.test.failing'));
+          showAll(document.querySelectorAll('.test.passing'));
           hideAll(document.querySelectorAll('.test-suite.failing'));
           showAll(document.querySelectorAll('.test-suite.passing'));
         }
@@ -108,23 +118,33 @@
             <h3 class="title"><%= name %></h3>
           </section>
           <section class="tests">
+            <table>
             <% info[:tests].each_with_index do |test, index| %>
-              <section class="test <%= test[:failing] ? 'failing' : 'passing'%> <%= index % 2 != 0 ? 'odd' :''%>" id="<%= test[:name] %>">
-                <section class="heading" onclick="toggleDetails(this);">
-                  <h3 class="title"><%= test[:name] %></h3>
+              <% detail_class = test[:name].gsub(/\s/,'') %>
+              <tr class="test <%= test[:failing] ? 'failing' : 'passing'%> <%= index % 2 != 0 ? 'odd' :''%>"  onclick="toggleDetails('<%= detail_class %>');">
+                <td>
                   <% if test[:time] %>
                     <h3 class="time"><%= test[:time] %>s</h3>
                   <% end %>
-                </section>
-                <% if test[:reason] %>
-                  <section class="test-detail reason"><%= test[:reason] %></section>
-                <% end %>
-                <% if test[:snippet] %>
-                  <section class="test-detail snippet"><%= test[:snippet] %></section>
-                  <section class="test-detail"><%= test[:file] %></section>
-                <% end %>
-              </section>
+                </td>
+                <td><h3 class="title"><%= test[:name] %></h3></td>
+              </tr>
+              <% if test[:reason] || test[:snippet] %>
+                <tr class="details <%= detail_class %>">
+                  <td></td>
+                  <td>
+                    <% if test[:reason] %>
+                      <section class="test-detail reason"><%= test[:reason] %></section>
+                    <% end %>
+                    <% if test[:snippet] %>
+                      <section class="test-detail snippet"><%= test[:snippet] %></section>
+                      <section class="test-detail"><%= test[:file] %></section>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
             <% end %>
+            </table>
           </section>
         </section>
       <% end %>
