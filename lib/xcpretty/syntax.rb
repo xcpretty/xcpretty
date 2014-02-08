@@ -1,8 +1,8 @@
 module XCPretty
   class Syntax
 
-    def self.highlight(code)
-      pygments_available? ? pygmentize(code) : code
+    def self.highlight(code, options="")
+      pygments_available? ? pygmentize(code, options) : code
     end
 
 
@@ -13,10 +13,9 @@ module XCPretty
       @available
     end
 
-    def self.pygmentize(code)
-      `echo "#{code}" | pygmentize -l objc`
+    def self.pygmentize(code, options)
+      `echo "#{code}" | pygmentize -l objc #{options}`
     end
-
   end
 end
 

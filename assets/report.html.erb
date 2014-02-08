@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Test Results | xcpretty</title>
+    <style type="text/css">
+      body { font-family:Avenir Next, Helvetica Neue, sans-serif; color: #4A4A4A; background-color: #F0F3FB; padding-top: 30px; padding-left:10px;}
+      h1 { font-weight: normal; font-size:3.5em; margin: 10px 0 0 0;}
+      h3 { font-weight: normal; margin: 2px; font-size: 1.1em;}
+      header { max-width: 1200px;}
+      header:before, header:after { content:""; display:table;}
+      header:after { clear:both;}
+      a:link { color: #A1D761;}
+      footer { float:left; padding-bottom: 10px; margin-right:30px;}
+      .left { float: left;}
+      .right { float: right; margin-top: 6px; margin-bottom: 10px; margin-right:30px;}
+      .test-suite { margin: 0 0 30px 0;}
+      .test-suite > .heading { font-family:Menlo, Monaco, monospace; font-weight: bold; border-color: #A1D761; background-color: #B8E986; border-width: 1px;}
+      .test-suite.failing > .heading { border-color: #C84F5E; background-color: #E58591;}
+      .test-suite > .heading > .title { margin-top: 4px; margin-left: 10px;}
+      .test .heading, .test-suite > .heading { height: 30px; overflow: hidden;}
+      .test, .test-suite > .heading { border-width: 1px; border-collapse: collapse; border-style: solid; }
+      .test { margin-left: 30px; border-top:none;}
+      .test.failing { border-color: #C84F5E; background-color: #F4DDE0;}
+      .test.passing { border-color: #A1D761;}
+      .test.failing .heading { background-color: #E7A1AA;}
+      .test.passing .heading { background-color: #CAF59F;}
+      .test.failing.odd .heading { background-color: #EEC7CC;}
+      .test.passing.odd .heading { background-color: #E5FBCF;}
+      .test .test-detail:last-child { padding-bottom: 8px;}
+      .test .heading .title { float: left; margin-left: 40px; font-size: 0.9em; margin-top: 8px; font-family: Menlo, Monaco, monospace;}
+      .test .heading .time { float:right; margin-right: 10px; margin-top:4px;}
+      .test-detail { font-family:Menlo, Monaco, monospace; font-size: 0.9em; margin: 5px 0 5px 80px;}
+      #test-suites { display: inline-block; margin-right: 30px;}
+      #segment-bar { float:right; margin-top: 6px;}
+      #segment-bar a:first-child { border-radius: 9px 0 0 9px; border-right: none;}
+      #segment-bar a:last-child { border-radius: 0 9px 9px 0; border-left: none;}
+      #segment-bar > a { color: #565656; border: 2px solid #4A4A4A; width: 80px; font-weight: bold; display:inline-block;text-align:center; font-weight: normal;}
+      #segment-bar > a.selected { background-color: #4A4A4A; color: #F0F3FB;}
+      #counters { text-align: right;}
+      #counters h2 { font-size: 30px; font-family: Avenir, sans-serif; font-weight: lighter; display:inline;}
+      #counters .number { font-size: 36px;}
+      #fail-count { color: #D0021B; margin-left:10px;}
+      @media (max-width: 640px) { 
+        h1, #counters, #segment-bar { margin: 5px auto; text-align:center;}
+        header, #segment-bar { width: 100%;}
+        .left, .right { float:none; margin:0;}
+      }
+    </style>
+    <script type="text/javascript">
+      var hide = function(element) { element.style.display = 'none';}
+      var show = function(element) { element.style.display = '';}
+      var isHidden = function(element) { return element.style.display == 'none';}
+      var isSelected = function(element) { return element.classList.contains("selected");}
+      var deselect = function(element) { return element.classList.remove("selected");}
+      var select = function(element) { return element.classList.add("selected");}
+      var toggle = function(element) { isHidden(element) ? show(element) : hide(element);};
+      var toggleTests = function(heading) { toggle(heading.parentNode.children[1]);};
+      var toggleDetails = function(heading) {
+        var details = heading.parentNode.querySelectorAll('.test-detail');
+        for (var i = details.length - 1; i >= 0; i--) { toggle(details[i]);};
+      };
+      var hideAll = function(collection) {
+        for (var i = collection.length - 1; i >= 0; i--) { hide(collection[i]); };
+      }
+      var showAll = function(collection) {
+        for (var i = collection.length - 1; i >= 0; i--) { show(collection[i]); };
+      }
+      var selectSegment = function(segment) {
+        if (isSelected(segment)) return;
+        var segments = document.querySelectorAll('#segment-bar > a');
+        for (var i = segments.length - 1; i >= 0; i--) { deselect(segments[i]);};
+        select(segment);
+        if (segment.id == "all-segment") {
+          showAll(document.querySelectorAll('.test-suite'));
+        } else if (segment.id == "failing-segment") {
+          hideAll(document.querySelectorAll('.test-suite.passing'));
+          showAll(document.querySelectorAll('.test-suite.failing'));
+        } else if (segment.id == "passing-segment") {
+          hideAll(document.querySelectorAll('.test-suite.failing'));
+          showAll(document.querySelectorAll('.test-suite.passing'));
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <section class="left">
+        <h1>Test Results</h1>
+      </section>
+      <section class="right">
+        <section id="counters">
+          <h2 id="test-count"><span class="number"><%= test_count %></span> tests</h2>
+          <% if fail_count > 0 %>
+            <h2 id="fail-count"><span class="number"><%= fail_count %></span> failures</h2>
+          <% end %>
+        </section>
+        <section id="segment-bar">
+          <a id="all-segment" onclick="selectSegment(this);" class="selected">All</a><a id="failing-segment" onclick="selectSegment(this);">Failing</a><a id="passing-segment" onclick="selectSegment(this);">Passing</a>
+        </section>
+      </section>
+    </header>
+    <section id="test-suites">
+      <% test_suites.each do |name, info| %>
+        <% next unless info[:tests].size > 0 %>
+        <section class="test-suite <%= info[:failing] ? 'failing' : 'passing'%>" id="<%= name %>">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title"><%= name %></h3>
+          </section>
+          <section class="tests">
+            <% info[:tests].each_with_index do |test, index| %>
+              <section class="test <%= test[:failing] ? 'failing' : 'passing'%> <%= index % 2 != 0 ? 'odd' :''%>" id="<%= test[:name] %>">
+                <section class="heading" onclick="toggleDetails(this);">
+                  <h3 class="title"><%= test[:name] %></h3>
+                  <% if test[:time] %>
+                    <h3 class="time"><%= test[:time] %>s</h3>
+                  <% end %>
+                </section>
+                <% if test[:reason] %>
+                  <section class="test-detail reason"><%= test[:reason] %></section>
+                <% end %>
+                <% if test[:snippet] %>
+                  <section class="test-detail snippet"><%= test[:snippet] %></section>
+                  <section class="test-detail"><%= test[:file] %></section>
+                <% end %>
+              </section>
+            <% end %>
+          </section>
+        </section>
+      <% end %>
+    </section>
+    <footer>Report generated with <a href="https://github.com/mneorr/xcpretty">xcpretty</a></footer>
+  </body>
+</html>
