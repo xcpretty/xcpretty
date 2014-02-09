@@ -48,7 +48,7 @@ module XCPretty
 
     # @regex Captured groups
     # $1 compiler_command
-    COMPILE_COMMAND_MATCHER = /^(.*\/usr\/bin\/clang\s.*\.o)$/
+    COMPILE_COMMAND_MATCHER = /^\s*(.*\/usr\/bin\/clang\s.*\.o)$/
 
     # @regex Captured groups
     # $1 = file_path
