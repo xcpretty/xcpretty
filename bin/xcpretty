@@ -13,8 +13,9 @@ require 'optparse'
 report_options = []
 report_classes = []
 report_formats = {
-  "junit" => XCPretty::JUnit,
-  "html"  => XCPretty::HTML
+  "junit"                     => XCPretty::JUnit,
+  "html"                      => XCPretty::HTML,
+  "json-compilation-database" => XCPretty::JSONCompilationDatabase,
 }
 
 printer_opts = {

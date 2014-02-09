@@ -47,6 +47,10 @@ module XCPretty
     COMPILE_MATCHER = /^CompileC\s.*\s(.*\/(.*\.(?:m|mm|c|cc|cpp|cxx)))\s.*/
 
     # @regex Captured groups
+    # $1 compiler_command
+    COMPILE_COMMAND_MATCHER = /^(.*\/usr\/bin\/clang\s.*\.o)$/
+
+    # @regex Captured groups
     # $1 = file_path
     # $2 = file_name
     # $3 = reason
@@ -209,6 +213,8 @@ module XCPretty
         formatter.format_error($1)
       when COMPILE_MATCHER
         formatter.format_compile($2, $1)
+      when COMPILE_COMMAND_MATCHER
+        formatter.format_compile_command($1)
       when COMPILE_XIB_MATCHER
         formatter.format_compile_xib($2, $1)
       when CPRESOURCE_MATCHER
