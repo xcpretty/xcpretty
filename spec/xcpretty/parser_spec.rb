@@ -68,6 +68,18 @@ module XCPretty
       @parser.parse(SAMPLE_ANOTHER_COMPILE)
     end
 
+    it "parses compiling Objective-C++ classes" do
+      @formatter.should receive(:format_compile).with("KWNull.mm", "Classes/Core/KWNull.mm")
+      @parser.parse(SAMPLE_ANOTHER_COMPILE.sub('.m', '.mm'))
+    end
+
+    it "parses compiling C and C++ files" do
+      for file_extension in ['.c', '.cc', '.cpp', '.cxx'] do
+        @formatter.should receive(:format_compile).with("KWNull" + file_extension, "Classes/Core/KWNull" + file_extension)
+        @parser.parse(SAMPLE_ANOTHER_COMPILE.sub('.m', file_extension))
+      end
+    end
+
     it "parses compiling XIBs" do
       @formatter.should receive(:format_compile_xib).with("MainMenu.xib", "CocoaChip/en.lproj/MainMenu.xib")
       @parser.parse(SAMPLE_COMPILE_XIB)
