@@ -1,4 +1,4 @@
-# xcpretty
+![logo](http://i.imgur.com/i2fElxx.png)
 
 __`xcpretty` is a fast and flexible formatter for `xcodebuild`__.<br/>
 It does one thing, and it should do it well.
