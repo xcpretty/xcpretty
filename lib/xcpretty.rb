@@ -6,6 +6,7 @@ require "xcpretty/formatters/simple"
 require "xcpretty/formatters/rspec"
 require "xcpretty/reporters/junit"
 require "xcpretty/reporters/html"
+require "xcpretty/reporters/json-compilation-database"
 
 module XCPretty
 
