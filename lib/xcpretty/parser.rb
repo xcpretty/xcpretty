@@ -51,10 +51,6 @@ module XCPretty
     COMPILE_COMMAND_MATCHER = /^\s*(.*\/usr\/bin\/clang\s.*\.o)$/
 
     # @regex Captured groups
-    # $1 compiler_command
-    COMPILE_COMMAND_MATCHER = /^\s*(.*\/usr\/bin\/clang\s.*\.o)$/
-
-    # @regex Captured groups
     # $1 = file_path
     # $2 = file_name
     # $3 = reason
