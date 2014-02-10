@@ -12,15 +12,19 @@ Then(/^I should have JSON compilation databases in two custom paths$/) do
   step("I should have a JSON compilation database at \"#{other_custom_report_path}\"")
 end
 
-Then(/^the JSON compilation database should contain a corresponding entry$/) do
-  json = JSON.parse(File.open(custom_report_path, 'r').read)
-  json.length.should == 1
+Then(/^the JSON compilation database should contain an entry with a command$/) do
+  json_db.length.should == 1
 
-  json[0]["command"].should start_with("/Applications/Xcode.app/Contents/Developer")
-  json[0]["command"].should end_with(".o")
+  json_db[0]["command"].should start_with("/Applications/Xcode.app/Contents/Developer")
+  json_db[0]["command"].should end_with(".o")
+end
 
-  json[0]["file"].should == "NSMutableArray+ObjectiveSugar.m"
-  json[0]["directory"].should == "/Users/musalj/code/OSS/ObjectiveSugar/Classes"
+Then(/^the JSON compilation database should contain an entry with a file$/) do
+  json_db[0]["file"].should == "NSMutableArray+ObjectiveSugar.m"
+end
+
+Then(/^the JSON compilation database should contain an entry with a directory$/) do
+  json_db[0]["directory"].should == "/Users/musalj/code/OSS/ObjectiveSugar/Classes"
 end
 
 Given(/^some big input$/) do
@@ -28,10 +32,9 @@ Given(/^some big input$/) do
 end
 
 Then(/^the JSON compilation database should be complete$/) do
-  json = JSON.parse(File.open(custom_report_path, 'r').read)
-  json.length.should == 557
+  json_db.length.should == JSON_DB_FIXTURE_COMMAND_COUNT
   
-  for entry in json do
+  for entry in json_db do
     entry['command'].should_not be_nil
     entry['file'].should_not be_nil
     entry['directory'].should_not be_nil
