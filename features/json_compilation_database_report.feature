@@ -3,7 +3,9 @@ Feature: Create a JSON compilation database
 	Scenario: Showing file compilation
         Given I have a file to compile
         When I pipe to xcpretty with "--report json-compilation-database" and specify a custom path
-        Then the JSON compilation database should contain a corresponding entry
+        Then the JSON compilation database should contain an entry with a command
+        Then the JSON compilation database should contain an entry with a directory
+        Then the JSON compilation database should contain an entry with a file
 
     Scenario: Handling a complete xcodebuild session
     	Given some big input
