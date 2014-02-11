@@ -59,7 +59,7 @@ module XCPretty
     end
 
     it "parses compiler commands" do
-      compile_statement = SAMPLE_ANOTHER_COMPILE.lines()[-1]
+      compile_statement = SAMPLE_ANOTHER_COMPILE.lines().to_a.last()
       @formatter.should receive(:format_compile_command).with(compile_statement.strip())
       @parser.parse(compile_statement)
     end
