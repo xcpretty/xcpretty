@@ -7,8 +7,16 @@ module XCPretty
     def load_dependencies
       unless @@loaded ||= false
         require 'fileutils'
-        require 'json'
         require 'pathname'
+        
+        unless Object.const_defined?(:JSON)
+            begin
+                require 'rubygems'
+                require 'json/pure'
+                rescue LoadError
+            end
+        end
+        
         @@loaded = true
       end
     end
