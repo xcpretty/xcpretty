@@ -11,9 +11,13 @@ module XCPretty
         
         unless Object.const_defined?(:JSON)
             begin
-                require 'rubygems'
-                require 'json/pure'
+                require 'json'
                 rescue LoadError
+                begin
+                    require 'rubygems'
+                    require 'json/pure'
+                    rescue LoadError
+                end
             end
         end
         
