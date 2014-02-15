@@ -91,6 +91,8 @@ After do
   @html_report = nil
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
   FileUtils.rm_rf(XCPretty::HTML::FILEPATH)
-  FileUtils.rmdir('build/reports')
-  FileUtils.rmdir('build')
+  begin
+    FileUtils.rmdir(['build/reports', 'build'])
+  rescue Errno::ENOENT
+  end
 end
