@@ -3,8 +3,8 @@
 __`xcpretty` is a fast and flexible formatter for `xcodebuild`__.<br/>
 It does one thing, and it should do it well.
 
-[![Build Status](https://travis-ci.org/mneorr/xcpretty.png?branch=master)](https://travis-ci.org/mneorr/xcpretty)
-[![Code Climate](https://codeclimate.com/github/mneorr/XCPretty.png)](https://codeclimate.com/github/mneorr/XCPretty)
+[![Build Status](https://travis-ci.org/supermarin/xcpretty.png?branch=master)](https://travis-ci.org/supermarin/xcpretty)
+[![Code Climate](https://codeclimate.com/github/supermarin/XCPretty.png)](https://codeclimate.com/github/supermarin/XCPretty)
 
 ## Installation
 ``` bash
@@ -56,7 +56,7 @@ At this point `xcodebuild` has been improved significantly, and is ready to be u
 
 ## Benchmark
 
-A smaller project ([ObjectiveSugar](https://github.com/mneorr/objectivesugar)) with a fast suite
+A smaller project ([ObjectiveSugar](https://github.com/supermarin/objectivesugar)) with a fast suite
 
 #### xcpretty
 ```
