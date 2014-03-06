@@ -153,11 +153,16 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = time
+    TESTS_SUITE_COMPLETION_MATCHER = /^\s*Test Suite '(.*)' finished at (.*)/
+
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = time
     TESTS_RUN_START_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)/
 
     # @regex Captured groups
     # $1 test suite name
-    TEST_SUITE_START_MATCHER = /^\s*Test Suite '(.*)' started at/
+    TESTS_SUITE_START_MATCHER = /^\s*Test Suite '(.*)' started at/
 
     # @regex Captured groups
     # $1 file_name
@@ -176,6 +181,8 @@ module XCPretty
 
     def initialize(formatter)
       @formatter = formatter
+      @test_suites_parsed = {}
+      @test_runs_parsed = {}
     end
 
     def parse(text)
@@ -247,7 +254,7 @@ module XCPretty
         formatter.format_test_run_finished($1, $2)
       when TESTS_RUN_START_MATCHER
         formatter.format_test_run_started($1)
-      when TEST_SUITE_START_MATCHER
+      when TESTS_SUITE_START_MATCHER
         formatter.format_test_suite_started($1)
       when TIFFUTIL_MATCHER
         formatter.format_tiffutil($1)
@@ -258,6 +265,28 @@ module XCPretty
       end
     end
 
+    def all_test_runs_complete?
+      @test_runs_parsed.count > 0 &&
+        @test_runs_parsed.values.all?{ |is_complete| is_complete }
+    end
+
+    def all_test_suites_complete?
+      @test_suites_parsed.count > 0 &&
+        @test_suites_parsed.values.all?{ |is_complete| is_complete }
+    end
+
+    def parsed_passing_tests?
+      @parsed_passing_tests == true
+    end
+
+    def parsed_failing_tests?
+      @parsed_failing_tests == true
+    end
+
+    def parsed_valid_test_build?
+      parsed_passing_tests? && !parsed_failing_tests? && all_test_runs_complete?
+    end
+
     private
 
     def update_test_state(text)
@@ -266,10 +295,19 @@ module XCPretty
         @tests_done = false
         @formatted_summary = false
         @failures = {}
+        @test_runs_parsed[$1] = false
+      when TESTS_SUITE_START_MATCHER
+        @test_suites_parsed[$1] = false
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
+        @test_runs_parsed[$1] = true
+      when TESTS_SUITE_COMPLETION_MATCHER
+        @test_suites_parsed[$1] = true
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
+        @parsed_failing_tests = true
+      when PASSING_TEST_MATCHER
+        @parsed_passing_tests = true
       end
     end
 

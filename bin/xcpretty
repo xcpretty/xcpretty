@@ -76,3 +76,10 @@ end
 
 reporters.each(&:finish)
 
+if (printer_opts[:formatter] == XCPretty::RSpec)
+
+  parsed_valid_build = printer.formatter.parser.parsed_valid_test_build?
+  exit(parsed_valid_build ? 0 : 1)
+
+end
+
