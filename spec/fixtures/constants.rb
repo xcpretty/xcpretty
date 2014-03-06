@@ -14,6 +14,7 @@ SAMPLE_SPECTA_SUITE_BEGINNING = "   Test Suite 'All tests' started at 2014-02-28
 SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000."
 SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
 SAMPLE_XCTEST_SUITE_COMPLETION = "Test Suite 'ObjectiveSugarTests.xctest' finished at 2013-12-09 04:42:13 +0000."
+SAMPLE_SPECTA_SUITE_COMPLETION = "   Test Suite 'All tests' finished at 2014-02-28 19:08:23 +0000"
 
 SAMPLE_KIWI_FAILURE = "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49: error: -[NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes] : 'Iterators, times： iterates the exact number of times' [FAILED], expected subject to equal 4, got 5"
 SAMPLE_OLD_SPECTA_FAILURE = "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458: error: -[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES] : expected: 1, got: 0"

@@ -12,6 +12,10 @@ When(/^I run xcpretty over a big file$/) do
   @xcpretty_run_time = Time.now - start_time
 end
 
+When /^I run xpretty over a file with a test suite that did not complete$/ do
+  @output = `cat features/fixtures/xcodebuild_truncated.log | bin/xcpretty`
+end
+
 Then(/^I should see the help banner$/) do
   run_output.should include("Usage: xcodebuild [options] | xcpretty")
 end
@@ -28,4 +32,3 @@ Then(/^the performance should be way faster than running cat$/) do
   puts "XCPretty run time: #{@xcpretty_run_time}"
   @xcpretty_run_time.should < 2
 end
-
