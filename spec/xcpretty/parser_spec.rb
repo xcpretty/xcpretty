@@ -115,20 +115,34 @@ module XCPretty
       @parser.parse(SAMPLE_LIBTOOL)
     end
 
-    it "parses failing tests" do
-      @formatter.should receive(:format_failing_test).with("RACCommandSpec",
-                                                           "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES",
-                                                           "expected: 1, got: 0",
-                                                           #"expect([command.enabled first]).to.equal(@YES);", # outside of PR scope
-                                                           "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458")
+    it "parses specta failing tests" do
+      @formatter.should receive(:format_failing_test).with("SKWelcomeViewControllerSpecSpec",
+                                                           "SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen",
+                                                           "The step timed out after 2.00 seconds: Failed to find accessibility element with the label \"The asimplest way to make smarter business decisions\"",
+                                                           "/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11")
       @parser.parse(SAMPLE_SPECTA_FAILURE)
     end
 
-    it "parses passing tests" do
+    it "parses old specta failing tests" do
+      @formatter.should receive(:format_failing_test).with("RACCommandSpec",
+                                                           "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES",
+                                                           "expected: 1, got: 0",
+                                                           "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458")
+      @parser.parse(SAMPLE_OLD_SPECTA_FAILURE)
+    end
+
+    it "parses passing ocunit tests" do
       @formatter.should receive(:format_passing_test).with('RACCommandSpec',
                                                            'enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES',
                                                            '0.001')
       @parser.parse(SAMPLE_OCUNIT_TEST)
+    end
+
+    it "parses passing specta tests" do
+      @formatter.should receive(:format_passing_test).with('SKWelcomeActivationViewControllerSpecSpec',
+                                                           'SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code',
+                                                           '0.725')
+      @parser.parse(SAMPLE_SPECTA_TEST)
     end
 
     it "parses pending tests" do
@@ -179,19 +193,44 @@ module XCPretty
       end
     end
 
-    it "parses test run finished" do
+    it "parses ocunit test run finished" do
       @formatter.should receive(:format_test_run_finished).with('ReactiveCocoaTests.octest(Tests)', '2013-12-10 07:03:03 +0000.')
       @parser.parse(SAMPLE_OCUNIT_TEST_RUN_COMPLETION)
     end
 
-    it "parses test run started" do
+    it "parses specta test run finished" do
+      @formatter.should receive(:format_test_run_finished).with('KIFTests.xctest', '2014-02-28 15:44:32 +0000.')
+      @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+    end
+
+    it "parses ocunit test run started" do
       @formatter.should receive(:format_test_run_started).with('ReactiveCocoaTests.octest(Tests)')
       @parser.parse(SAMPLE_OCUNIT_TEST_RUN_BEGINNING)
     end
 
-    it "parses test suite started" do
+    it "parses specta test run started" do
+      @formatter.should receive(:format_test_run_started).with('KIFTests.xctest')
+      @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+    end
+
+    it "parses ocunit test suite started" do
       @formatter.should receive(:format_test_suite_started).with('RACKVOWrapperSpec')
       @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
+    end
+
+    it "parses specta test suite started" do
+      @formatter.should receive(:format_test_suite_started).with('All tests')
+      @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+    end
+
+    it "does not treat a test run start as a test suite start" do
+      @formatter.should_not receive(:format_test_suite_started)
+      @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+    end
+
+    it "does not treat a test suite start as a test run start" do
+      @formatter.should_not receive(:format_test_run_started)
+      @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
     end
 
     context "errors" do
@@ -323,10 +362,16 @@ module XCPretty
         @parser.parse(SAMPLE_EXECUTED_TESTS).should == ""
       end
 
-      it "knows when the test suite is done for OCunit / Specta" do
+      it "knows when the test suite is done for OCunit" do
         given_tests_are_done
         @formatter.should receive(:format_test_summary)
         @parser.parse(SAMPLE_EXECUTED_TESTS)
+      end
+
+      it "knows when the test suite is done for Specta" do
+        given_tests_are_done
+        @formatter.should receive(:format_test_summary)
+        @parser.parse(SAMPLE_SPECTA_EXECUTED_TESTS)
       end
 
       it "doesn't print executed message twice for Kiwi tests" do
@@ -358,6 +403,98 @@ module XCPretty
           given_tests_have_started(SAMPLE_KIWI_TEST_RUN_BEGINNING)
           given_kiwi_tests_are_done
         }
+      end
+
+    end
+
+    context "test running detection" do
+
+      it "detects when a test run completes" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.all_test_runs_complete?.should be_true
+      end
+
+      it "detects when a test run does not complete" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.all_test_runs_complete?.should be_false
+      end
+
+      it "detects when a test suite completes" do
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.all_test_suites_complete?.should be_true
+      end
+
+      it "detects when a test suite does not complete" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.all_test_suites_complete?.should be_false
+      end
+
+      it "detects when a failing test is run" do
+        @parser.parse(SAMPLE_SPECTA_FAILURE)
+        @parser.parsed_failing_tests?.should be_true
+      end
+
+      it "detects when a passing test is run" do
+        @parser.parse(SAMPLE_OCUNIT_TEST)
+        @parser.parsed_passing_tests?.should be_true
+      end
+
+      it "detects when no passing tests are run" do
+        @parser.parse(SAMPLE_SPECTA_FAILURE)
+        @parser.parsed_passing_tests?.should be_false
+      end
+
+      it "detects when no failing tests are run" do
+        @parser.parse(SAMPLE_OCUNIT_TEST)
+        @parser.parsed_failing_tests?.should be_false
+      end
+
+    end
+
+    context "valid build detection" do
+
+      it "detects that a build is valid when one test passed" do
+        @parser.parse(SAMPLE_OCUNIT_TEST)
+        @parser.parsed_valid_test_build?.should be_true
+      end
+
+      it "detects that a build is invalid when one test failed" do
+        @parser.parse(SAMPLE_KIWI_TEST)
+        @parser.parse(SAMPLE_KIWI_FAILURE)
+        @parser.parsed_valid_test_build?.should be_false
+      end
+
+      it "detects that a build is invalid when no tests are run" do
+        @parser.parsed_valid_test_build?.should be_false
+      end
+
+      it "detects that a build is invalid when a test run starts and does not finish" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.parsed_valid_test_build?.should be_false
+      end
+
+      it "detects that a build is invalid when a test suite starts and does not finish" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST)
+        @parser.parsed_valid_test_build?.should be_false
+      end
+
+      it "detects that a build is valid when a test run starts, finish and passed tests" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.parsed_valid_test_build?.should be_true
       end
 
     end
