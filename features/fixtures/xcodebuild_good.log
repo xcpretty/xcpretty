@@ -1,0 +1,1510 @@
+Build settings from command line:
+    SDKROOT = iphonesimulator7.0
+
+=== BUILD TARGET Pods-register-Bolts OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-libffi OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-AFNetworking OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-CocoaLumberjack OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-FXBlurView OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-GBDeviceInfo OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-HexColors OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-BlocksKit OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET HockeySDKResources OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-JSQSystemSoundPlayer OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-MagicalRecord OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-Masonry OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-Mixpanel OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-HockeySDK OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-NPReachability OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-NSData+Base64 OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-PayPalHereSDK OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-SAMCategories OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-SBJson OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET SKBackgroundJobModels OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-SSKeychain OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-SKBackgroundJob OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register-UIImage+PDF OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET SKBackofficeSDKResources OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-STPTransitions OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-objective-zip OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-AFNetworking OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-CocoaLumberjack OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-register-SKBackofficeSDK OF PROJECT Pods WITH CONFIGURATION Test ===
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-GBDeviceInfo OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-Kiwi OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-MagicalRecord OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-NSData+Base64 OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-Nocilla OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-PayPalHereSDK OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-SAMCategories OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-SBJson OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-SKBackgroundJob OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-SSKeychain OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-UIImage+PDF OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests-SKBackofficeSDK OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-RegisterAppTests OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-register OF PROJECT Pods WITH CONFIGURATION Test ===
+
+Check dependencies
+
+=== BUILD TARGET register OF PROJECT Register WITH CONFIGURATION Test ===
+
+Check dependencies
+
+PhaseScriptExecution Check\ Pods\ Manifest.lock /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Script-CEE1C66B23494DBAACBB3CAA.sh
+    cd /Users/vickeryj/Code/ShopKeep/ipad-register
+    /bin/sh -c /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Script-CEE1C66B23494DBAACBB3CAA.sh
+
+PhaseScriptExecution Copy\ Build\ Configuration /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Script-FD83EF67168B509400B6AADA.sh
+    cd /Users/vickeryj/Code/ShopKeep/ipad-register
+    setenv ACTION build
+    setenv AD_HOC_CODE_SIGNING_ALLOWED NO
+    setenv ALTERNATE_GROUP staff
+    setenv ALTERNATE_MODE u+w,go-w,a+rX
+    setenv ALTERNATE_OWNER vickeryj
+    setenv ALWAYS_SEARCH_USER_PATHS YES
+    setenv ALWAYS_USE_SEPARATE_HEADERMAPS YES
+    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer
+    setenv APPLE_INTERNAL_DIR /AppleInternal
+    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation
+    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library
+    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools
+    setenv APPLY_RULES_IN_COPY_FILES NO
+    setenv ARCHS i386
+    setenv ARCHS_STANDARD i386
+    setenv ARCHS_STANDARD_32_64_BIT i386
+    setenv ARCHS_STANDARD_32_BIT i386
+    setenv ARCHS_STANDARD_64_BIT x86_64
+    setenv ARCHS_STANDARD_INCLUDING_64_BIT "i386 x86_64"
+    setenv ASSETCATALOG_COMPILER_APPICON_NAME AppIcon
+    setenv ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME LaunchImage
+    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"
+    setenv BUILD_COMPONENTS "headers build"
+    setenv BUILD_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products
+    setenv BUILD_ROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products
+    setenv BUILD_STYLE 
+    setenv BUILD_VARIANTS normal
+    setenv BUILT_PRODUCTS_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator
+    setenv CACHE_ROOT /var/folders/4d/rd_m6b915fs8_7rb237k0ym40000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode
+    setenv CCHROOT /var/folders/4d/rd_m6b915fs8_7rb237k0ym40000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode
+    setenv CHMOD /bin/chmod
+    setenv CHOWN /usr/sbin/chown
+    setenv CLANG_ENABLE_MODULES YES
+    setenv CLANG_ENABLE_OBJC_ARC YES
+    setenv CLASS_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/JavaClasses
+    setenv CLEAN_PRECOMPS YES
+    setenv CLONE_HEADERS NO
+    setenv CODESIGNING_FOLDER_PATH "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/ShopKeep Register.app"
+    setenv CODE_SIGNING_ALLOWED NO
+    setenv CODE_SIGN_CONTEXT_CLASS XCiPhoneSimulatorCodeSignContext
+    setenv CODE_SIGN_IDENTITY "iPhone Developer"
+    setenv COLOR_DIAGNOSTICS NO
+    setenv COMBINE_HIDPI_IMAGES NO
+    setenv COMMAND_MODE legacy
+    setenv COMPOSITE_SDK_DIRS /var/folders/4d/rd_m6b915fs8_7rb237k0ym40000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/CompositeSDKs
+    setenv COMPRESS_PNG_FILES YES
+    setenv CONFIGURATION Test
+    setenv CONFIGURATION_BUILD_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator
+    setenv CONFIGURATION_TEMP_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator
+    setenv CONTENTS_FOLDER_PATH "ShopKeep Register.app"
+    setenv COPYING_PRESERVES_HFS_DATA NO
+    setenv COPY_PHASE_STRIP NO
+    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES
+    setenv CP /bin/cp
+    setenv CREATE_INFOPLIST_SECTION_IN_BINARY NO
+    setenv CURRENT_ARCH i386
+    setenv CURRENT_VARIANT normal
+    setenv DEAD_CODE_STRIPPING NO
+    setenv DEBUGGING_SYMBOLS YES
+    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym
+    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0
+    setenv DEFAULT_KEXT_INSTALL_PATH /System/Library/Extensions
+    setenv DEPLOYMENT_LOCATION NO
+    setenv DEPLOYMENT_POSTPROCESSING NO
+    setenv DERIVED_FILES_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/DerivedSources
+    setenv DERIVED_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/DerivedSources
+    setenv DERIVED_SOURCES_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/DerivedSources
+    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications
+    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin
+    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer
+    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks
+    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED /Applications/Xcode.app/Contents/Developer/Library/Frameworks
+    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library
+    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools
+    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr
+    setenv DEVELOPMENT_LANGUAGE English
+    setenv DOCUMENTATION_FOLDER_PATH "ShopKeep Register.app/English.lproj/Documentation"
+    setenv DO_HEADER_SCANNING_IN_JAM NO
+    setenv DSTROOT /tmp/Register.dst
+    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain
+    setenv DWARF_DSYM_FILE_NAME "ShopKeep Register.app.dSYM"
+    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO
+    setenv DWARF_DSYM_FOLDER_PATH /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator
+    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator
+    setenv ENABLE_HEADER_DEPENDENCIES YES
+    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"
+    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"
+    setenv EXECUTABLES_FOLDER_PATH "ShopKeep Register.app/Executables"
+    setenv EXECUTABLE_FOLDER_PATH "ShopKeep Register.app"
+    setenv EXECUTABLE_NAME "ShopKeep Register"
+    setenv EXECUTABLE_PATH "ShopKeep Register.app/ShopKeep Register"
+    setenv FILE_LIST /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects/LinkFileList
+    setenv FIXED_FILES_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/FixedFiles
+    setenv FRAMEWORKS_FOLDER_PATH "ShopKeep Register.app/Frameworks"
+    setenv FRAMEWORK_FLAG_PREFIX -framework
+    setenv FRAMEWORK_SEARCH_PATHS "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/HockeySDK/Vendor\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/PayPalHereSDK/SDK/nohw/Release/\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/SKBackofficeSDK/vendors\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/vendor/Printer\""
+    setenv FRAMEWORK_VERSION A
+    setenv FULL_PRODUCT_NAME "ShopKeep Register.app"
+    setenv GCC3_VERSION 3.3
+    setenv GCC_C_LANGUAGE_STANDARD c99
+    setenv GCC_DYNAMIC_NO_PIC NO
+    setenv GCC_GENERATE_TEST_COVERAGE_FILES YES
+    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES
+    setenv GCC_INSTRUMENT_PROGRAM_FLOW_ARCS YES
+    setenv GCC_OBJC_LEGACY_DISPATCH YES
+    setenv GCC_OPTIMIZATION_LEVEL s
+    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"
+    setenv GCC_PRECOMPILE_PREFIX_HEADER YES
+    setenv GCC_PREFIX_HEADER Register_Prefix.pch
+    setenv GCC_PREPROCESSOR_DEFINITIONS " COCOAPODS=1  BITHOCKEY_VERSION=\"@\\\"3.5.0rc2\\\"\""
+    setenv GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS "CONFIGURATION=Test Configuration_Test"
+    setenv GCC_SYMBOLS_PRIVATE_EXTERN NO
+    setenv GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS YES
+    setenv GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS YES
+    setenv GCC_TREAT_WARNINGS_AS_ERRORS YES
+    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0
+    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvm_clang_1_0
+    setenv GCC_WARN_ABOUT_RETURN_TYPE YES
+    setenv GCC_WARN_UNDECLARED_SELECTOR YES
+    setenv GCC_WARN_UNUSED_VARIABLE YES
+    setenv GENERATE_MASTER_OBJECT_FILE NO
+    setenv GENERATE_PKGINFO_FILE YES
+    setenv GENERATE_PROFILING_CODE NO
+    setenv GID 20
+    setenv GROUP staff
+    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES
+    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES
+    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES
+    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES
+    setenv HEADER_SEARCH_PATHS "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/include \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/AFNetworking\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/BlocksKit\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Bolts\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/CocoaLumberjack\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Expecta\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/FXBlurView\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/GBDeviceInfo\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/HexColors\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/HockeySDK\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/JSQSystemSoundPlayer\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/KIF\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Kiwi\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/MagicalRecord\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Masonry\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Mixpanel\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/NPReachability\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/NSData+Base64\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Nocilla\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/OCMock\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/PayPalHereSDK\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SAMCategories\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SBJson\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SKBackgroundJob\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SKBackofficeSDK\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SSKeychain\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/STPTransitions\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Specta\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/UIImage+PDF\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/libffi\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/objective-zip\""
+    setenv ICONV /usr/bin/iconv
+    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES
+    setenv INFOPLIST_FILE Register.plist
+    setenv INFOPLIST_OUTPUT_FORMAT binary
+    setenv INFOPLIST_PATH "ShopKeep Register.app/Info.plist"
+    setenv INFOPLIST_PREPROCESS NO
+    setenv INFOSTRINGS_PATH "ShopKeep Register.app/English.lproj/InfoPlist.strings"
+    setenv INSTALL_DIR /tmp/Register.dst/Applications
+    setenv INSTALL_GROUP staff
+    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX
+    setenv INSTALL_OWNER vickeryj
+    setenv INSTALL_PATH /Applications
+    setenv INSTALL_ROOT /tmp/Register.dst
+    setenv IPHONEOS_DEPLOYMENT_TARGET 7.0
+    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"
+    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub
+    setenv JAVA_ARCHIVE_CLASSES YES
+    setenv JAVA_ARCHIVE_TYPE JAR
+    setenv JAVA_COMPILER /usr/bin/javac
+    setenv JAVA_FOLDER_PATH "ShopKeep Register.app/Java"
+    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources
+    setenv JAVA_JAR_FLAGS cv
+    setenv JAVA_SOURCE_SUBDIR .
+    setenv JAVA_USE_DEPENDENCIES YES
+    setenv JAVA_ZIP_FLAGS -urg
+    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"
+    setenv KEEP_PRIVATE_EXTERNS NO
+    setenv LD_DEPENDENCY_INFO_FILE "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects-normal/i386/ShopKeep Register_dependency_info.dat"
+    setenv LD_GENERATE_MAP_FILE NO
+    setenv LD_MAP_FILE_PATH "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/ShopKeep Register-LinkMap-normal-i386.txt"
+    setenv LD_NO_PIE NO
+    setenv LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER YES
+    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer
+    setenv LEX lex
+    setenv LIBRARY_FLAG_NOSPACE YES
+    setenv LIBRARY_FLAG_PREFIX -l
+    setenv LIBRARY_KEXT_INSTALL_PATH /Library/Extensions
+    setenv LIBRARY_SEARCH_PATHS "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator  \"/Users/vickeryj/Code/ShopKeep/ipad-register/vendor/MagTek\""
+    setenv LINKER_DISPLAYS_MANGLED_NAMES NO
+    setenv LINK_FILE_LIST_normal_i386 "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects-normal/i386/ShopKeep Register.LinkFileList"
+    setenv LINK_WITH_STANDARD_LIBRARIES YES
+    setenv LOCALIZED_RESOURCES_FOLDER_PATH "ShopKeep Register.app/English.lproj"
+    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities
+    setenv LOCAL_APPS_DIR /Applications
+    setenv LOCAL_DEVELOPER_DIR /Library/Developer
+    setenv LOCAL_LIBRARY_DIR /Library
+    setenv MACH_O_TYPE mh_execute
+    setenv MACOSX_DEPLOYMENT_TARGET 10.6
+    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 13C64
+    setenv MAC_OS_X_VERSION_ACTUAL 1092
+    setenv MAC_OS_X_VERSION_MAJOR 1090
+    setenv MAC_OS_X_VERSION_MINOR 0902
+    setenv MODULE_CACHE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/ModuleCache
+    setenv NATIVE_ARCH i386
+    setenv NATIVE_ARCH_32_BIT i386
+    setenv NATIVE_ARCH_64_BIT x86_64
+    setenv NATIVE_ARCH_ACTUAL x86_64
+    setenv NO_COMMON YES
+    setenv OBJC_ABI_VERSION 2
+    setenv OBJECT_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects
+    setenv OBJECT_FILE_DIR_normal /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects-normal
+    setenv OBJROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates
+    setenv ONLY_ACTIVE_ARCH NO
+    setenv OPTIMIZATION_LEVEL 0
+    setenv OS MACOS
+    setenv OSAC /usr/bin/osacompile
+    setenv OTHER_LDFLAGS "-ObjC -Wl,-no_compact_unwind -lsqlite3.0 -lz -framework Accelerate -framework AudioToolbox -framework CFNetwork -framework CoreData -framework CoreGraphics -framework CoreLocation -framework CoreTelephony -framework CoreText -framework CrashReporter -framework ExternalAccessory -framework Foundation -framework MessageUI -framework MobileCoreServices -framework PayPalHereSDK -framework QuartzCore -framework Security -framework StarIO -framework SystemConfiguration -framework UIKit"
+    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application
+    setenv PASCAL_STRINGS YES
+    setenv PATH "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Tools:/opt/local/bin:/opt/local/sbin:/Users/vickeryj/.rvm/gems/ruby-1.9.3-p194/bin:/Users/vickeryj/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/vickeryj/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/vickeryj/.rvm/bin:/Users/vickeryj/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Users/vickeryj/Programs/mongodb-osx-i386-2.0.6/bin"
+    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"
+    setenv PBDEVELOPMENTPLIST_PATH "ShopKeep Register.app/pbdevelopment.plist"
+    setenv PFE_FILE_C_DIALECTS objective-c
+    setenv PKGINFO_FILE_PATH /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/PkgInfo
+    setenv PKGINFO_PATH "ShopKeep Register.app/PkgInfo"
+    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications
+    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin
+    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library
+    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs
+    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools
+    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr
+    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform
+    setenv PLATFORM_NAME iphonesimulator
+    setenv PLATFORM_PREFERRED_ARCH i386
+    setenv PLATFORM_PRODUCT_BUILD_VERSION 11B508
+    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 70000
+    setenv PLIST_FILE_OUTPUT_FORMAT binary
+    setenv PLUGINS_FOLDER_PATH "ShopKeep Register.app/PlugIns"
+    setenv PODS_ROOT /Users/vickeryj/Code/ShopKeep/ipad-register/Pods
+    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES
+    setenv PRECOMP_DESTINATION_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/PrefixHeaders
+    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO
+    setenv PRIVATE_HEADERS_FOLDER_PATH "ShopKeep Register.app/PrivateHeaders"
+    setenv PRODUCT_NAME "ShopKeep Register"
+    setenv PRODUCT_SETTINGS_PATH /Users/vickeryj/Code/ShopKeep/ipad-register/Register.plist
+    setenv PRODUCT_TYPE com.apple.product-type.application
+    setenv PROFILING_CODE NO
+    setenv PROJECT Register
+    setenv PROJECT_DERIVED_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/DerivedSources
+    setenv PROJECT_DIR /Users/vickeryj/Code/ShopKeep/ipad-register
+    setenv PROJECT_FILE_PATH /Users/vickeryj/Code/ShopKeep/ipad-register/Register.xcodeproj
+    setenv PROJECT_NAME Register
+    setenv PROJECT_TEMP_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build
+    setenv PROJECT_TEMP_ROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates
+    setenv PUBLIC_HEADERS_FOLDER_PATH "ShopKeep Register.app/Headers"
+    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES
+    setenv REMOVE_CVS_FROM_RESOURCES YES
+    setenv REMOVE_GIT_FROM_RESOURCES YES
+    setenv REMOVE_HG_FROM_RESOURCES YES
+    setenv REMOVE_SVN_FROM_RESOURCES YES
+    setenv REZ_COLLECTOR_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/ResourceManagerResources
+    setenv REZ_OBJECTS_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/ResourceManagerResources/Objects
+    setenv REZ_SEARCH_PATHS "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator "
+    setenv RUN_CLANG_STATIC_ANALYZER NO
+    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES YES
+    setenv SCRIPTS_FOLDER_PATH "ShopKeep Register.app/Scripts"
+    setenv SCRIPT_INPUT_FILE_COUNT 0
+    setenv SCRIPT_OUTPUT_FILE_COUNT 0
+    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk
+    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk
+    setenv SDK_NAME iphonesimulator7.0
+    setenv SDK_PRODUCT_BUILD_VERSION 11B508
+    setenv SED /usr/bin/sed
+    setenv SEPARATE_STRIP NO
+    setenv SEPARATE_SYMBOL_EDIT NO
+    setenv SET_DIR_MODE_OWNER_GROUP YES
+    setenv SET_FILE_MODE_OWNER_GROUP NO
+    setenv SHALLOW_BUNDLE YES
+    setenv SHARED_DERIVED_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/DerivedSources
+    setenv SHARED_FRAMEWORKS_FOLDER_PATH "ShopKeep Register.app/SharedFrameworks"
+    setenv SHARED_PRECOMPS_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/PrecompiledHeaders
+    setenv SHARED_SUPPORT_FOLDER_PATH "ShopKeep Register.app/SharedSupport"
+    setenv SKIP_INSTALL NO
+    setenv SOURCE_ROOT /Users/vickeryj/Code/ShopKeep/ipad-register
+    setenv SRCROOT /Users/vickeryj/Code/ShopKeep/ipad-register
+    setenv STRINGS_FILE_OUTPUT_ENCODING binary
+    setenv STRIP_INSTALLED_PRODUCT YES
+    setenv STRIP_STYLE all
+    setenv SUPPORTED_DEVICE_FAMILIES "1 2"
+    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"
+    setenv SYMROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products
+    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities
+    setenv SYSTEM_APPS_DIR /Applications
+    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices
+    setenv SYSTEM_DEMOS_DIR /Applications/Extras
+    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications
+    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin
+    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"
+    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer
+    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"
+    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"
+    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"
+    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"
+    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"
+    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools
+    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"
+    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"
+    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr
+    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities
+    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation
+    setenv SYSTEM_KEXT_INSTALL_PATH /System/Library/Extensions
+    setenv SYSTEM_LIBRARY_DIR /System/Library
+    setenv TARGETED_DEVICE_FAMILY 2
+    setenv TARGETNAME register
+    setenv TARGET_BUILD_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator
+    setenv TARGET_NAME register
+    setenv TARGET_TEMP_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build
+    setenv TEMP_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build
+    setenv TEMP_FILES_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build
+    setenv TEMP_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build
+    setenv TEMP_ROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates
+    setenv TOOLCHAINS com.apple.dt.toolchain.XcodeDefault
+    setenv UID 501
+    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH "ShopKeep Register.app"
+    setenv UNSTRIPPED_PRODUCT NO
+    setenv USER vickeryj
+    setenv USER_APPS_DIR /Users/vickeryj/Applications
+    setenv USER_LIBRARY_DIR /Users/vickeryj/Library
+    setenv USE_DYNAMIC_NO_PIC YES
+    setenv USE_HEADERMAP YES
+    setenv USE_HEADER_SYMLINKS NO
+    setenv VALIDATE_PRODUCT NO
+    setenv VALID_ARCHS "i386 x86_64"
+    setenv VERBOSE_PBXCP NO
+    setenv VERSIONPLIST_PATH "ShopKeep Register.app/version.plist"
+    setenv VERSION_INFO_BUILDER vickeryj
+    setenv VERSION_INFO_FILE "ShopKeep Register_vers.c"
+    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:ShopKeep Register  PROJECT:Register-\""
+    setenv WRAPPER_EXTENSION app
+    setenv WRAPPER_NAME "ShopKeep Register.app"
+    setenv WRAPPER_SUFFIX .app
+    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode
+    setenv XCODE_PRODUCT_BUILD_VERSION 5A3005
+    setenv XCODE_VERSION_ACTUAL 0502
+    setenv XCODE_VERSION_MAJOR 0500
+    setenv XCODE_VERSION_MINOR 0500
+    setenv XPCSERVICES_FOLDER_PATH "ShopKeep Register.app/XPCServices"
+    setenv YACC yacc
+    setenv arch i386
+    setenv variant normal
+    /bin/sh -c /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Script-FD83EF67168B509400B6AADA.sh
+### Copying build configuration ###
+
+PhaseScriptExecution Copy\ Pods\ Resources /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Script-52C7B392640A4CDDB5B85816.sh
+    cd /Users/vickeryj/Code/ShopKeep/ipad-register
+    /bin/sh -c /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Script-52C7B392640A4CDDB5B85816.sh
+/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/PayPalHereSDK/SDK/nohw/Release/PayPalHereSDK.bundle
+/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/SAMCategories/SAMCategories/SAMCategories.bundle
+/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/HockeySDKResources.bundle
+/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/SKBackgroundJobModels.bundle
+/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/SKBackofficeSDKResources.bundle
+building file list ... done
+
+sent 3812 bytes  received 20 bytes  7664.00 bytes/sec
+total size is 4655291  speedup is 1214.85
+/* com.apple.actool.compilation-results */
+/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/ShopKeep Register.app/Assets.car
+
+
+PhaseScriptExecution Objective\ Clean /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Script-FDC28ACA18942F6D00BA1979.sh
+    cd /Users/vickeryj/Code/ShopKeep/ipad-register
+    setenv ACTION build
+    setenv AD_HOC_CODE_SIGNING_ALLOWED NO
+    setenv ALTERNATE_GROUP staff
+    setenv ALTERNATE_MODE u+w,go-w,a+rX
+    setenv ALTERNATE_OWNER vickeryj
+    setenv ALWAYS_SEARCH_USER_PATHS YES
+    setenv ALWAYS_USE_SEPARATE_HEADERMAPS YES
+    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer
+    setenv APPLE_INTERNAL_DIR /AppleInternal
+    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation
+    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library
+    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools
+    setenv APPLY_RULES_IN_COPY_FILES NO
+    setenv ARCHS i386
+    setenv ARCHS_STANDARD i386
+    setenv ARCHS_STANDARD_32_64_BIT i386
+    setenv ARCHS_STANDARD_32_BIT i386
+    setenv ARCHS_STANDARD_64_BIT x86_64
+    setenv ARCHS_STANDARD_INCLUDING_64_BIT "i386 x86_64"
+    setenv ASSETCATALOG_COMPILER_APPICON_NAME AppIcon
+    setenv ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME LaunchImage
+    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"
+    setenv BUILD_COMPONENTS "headers build"
+    setenv BUILD_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products
+    setenv BUILD_ROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products
+    setenv BUILD_STYLE 
+    setenv BUILD_VARIANTS normal
+    setenv BUILT_PRODUCTS_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator
+    setenv CACHE_ROOT /var/folders/4d/rd_m6b915fs8_7rb237k0ym40000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode
+    setenv CCHROOT /var/folders/4d/rd_m6b915fs8_7rb237k0ym40000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode
+    setenv CHMOD /bin/chmod
+    setenv CHOWN /usr/sbin/chown
+    setenv CLANG_ENABLE_MODULES YES
+    setenv CLANG_ENABLE_OBJC_ARC YES
+    setenv CLASS_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/JavaClasses
+    setenv CLEAN_PRECOMPS YES
+    setenv CLONE_HEADERS NO
+    setenv CODESIGNING_FOLDER_PATH "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/ShopKeep Register.app"
+    setenv CODE_SIGNING_ALLOWED NO
+    setenv CODE_SIGN_CONTEXT_CLASS XCiPhoneSimulatorCodeSignContext
+    setenv CODE_SIGN_IDENTITY "iPhone Developer"
+    setenv COLOR_DIAGNOSTICS NO
+    setenv COMBINE_HIDPI_IMAGES NO
+    setenv COMMAND_MODE legacy
+    setenv COMPOSITE_SDK_DIRS /var/folders/4d/rd_m6b915fs8_7rb237k0ym40000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/CompositeSDKs
+    setenv COMPRESS_PNG_FILES YES
+    setenv CONFIGURATION Test
+    setenv CONFIGURATION_BUILD_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator
+    setenv CONFIGURATION_TEMP_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator
+    setenv CONTENTS_FOLDER_PATH "ShopKeep Register.app"
+    setenv COPYING_PRESERVES_HFS_DATA NO
+    setenv COPY_PHASE_STRIP NO
+    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES
+    setenv CP /bin/cp
+    setenv CREATE_INFOPLIST_SECTION_IN_BINARY NO
+    setenv CURRENT_ARCH i386
+    setenv CURRENT_VARIANT normal
+    setenv DEAD_CODE_STRIPPING NO
+    setenv DEBUGGING_SYMBOLS YES
+    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym
+    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0
+    setenv DEFAULT_KEXT_INSTALL_PATH /System/Library/Extensions
+    setenv DEPLOYMENT_LOCATION NO
+    setenv DEPLOYMENT_POSTPROCESSING NO
+    setenv DERIVED_FILES_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/DerivedSources
+    setenv DERIVED_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/DerivedSources
+    setenv DERIVED_SOURCES_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/DerivedSources
+    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications
+    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin
+    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer
+    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks
+    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED /Applications/Xcode.app/Contents/Developer/Library/Frameworks
+    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library
+    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools
+    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr
+    setenv DEVELOPMENT_LANGUAGE English
+    setenv DOCUMENTATION_FOLDER_PATH "ShopKeep Register.app/English.lproj/Documentation"
+    setenv DO_HEADER_SCANNING_IN_JAM NO
+    setenv DSTROOT /tmp/Register.dst
+    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain
+    setenv DWARF_DSYM_FILE_NAME "ShopKeep Register.app.dSYM"
+    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO
+    setenv DWARF_DSYM_FOLDER_PATH /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator
+    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator
+    setenv ENABLE_HEADER_DEPENDENCIES YES
+    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"
+    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"
+    setenv EXECUTABLES_FOLDER_PATH "ShopKeep Register.app/Executables"
+    setenv EXECUTABLE_FOLDER_PATH "ShopKeep Register.app"
+    setenv EXECUTABLE_NAME "ShopKeep Register"
+    setenv EXECUTABLE_PATH "ShopKeep Register.app/ShopKeep Register"
+    setenv FILE_LIST /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects/LinkFileList
+    setenv FIXED_FILES_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/FixedFiles
+    setenv FRAMEWORKS_FOLDER_PATH "ShopKeep Register.app/Frameworks"
+    setenv FRAMEWORK_FLAG_PREFIX -framework
+    setenv FRAMEWORK_SEARCH_PATHS "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/HockeySDK/Vendor\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/PayPalHereSDK/SDK/nohw/Release/\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/SKBackofficeSDK/vendors\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/vendor/Printer\""
+    setenv FRAMEWORK_VERSION A
+    setenv FULL_PRODUCT_NAME "ShopKeep Register.app"
+    setenv GCC3_VERSION 3.3
+    setenv GCC_C_LANGUAGE_STANDARD c99
+    setenv GCC_DYNAMIC_NO_PIC NO
+    setenv GCC_GENERATE_TEST_COVERAGE_FILES YES
+    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES
+    setenv GCC_INSTRUMENT_PROGRAM_FLOW_ARCS YES
+    setenv GCC_OBJC_LEGACY_DISPATCH YES
+    setenv GCC_OPTIMIZATION_LEVEL s
+    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"
+    setenv GCC_PRECOMPILE_PREFIX_HEADER YES
+    setenv GCC_PREFIX_HEADER Register_Prefix.pch
+    setenv GCC_PREPROCESSOR_DEFINITIONS " COCOAPODS=1  BITHOCKEY_VERSION=\"@\\\"3.5.0rc2\\\"\""
+    setenv GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS "CONFIGURATION=Test Configuration_Test"
+    setenv GCC_SYMBOLS_PRIVATE_EXTERN NO
+    setenv GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS YES
+    setenv GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS YES
+    setenv GCC_TREAT_WARNINGS_AS_ERRORS YES
+    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0
+    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvm_clang_1_0
+    setenv GCC_WARN_ABOUT_RETURN_TYPE YES
+    setenv GCC_WARN_UNDECLARED_SELECTOR YES
+    setenv GCC_WARN_UNUSED_VARIABLE YES
+    setenv GENERATE_MASTER_OBJECT_FILE NO
+    setenv GENERATE_PKGINFO_FILE YES
+    setenv GENERATE_PROFILING_CODE NO
+    setenv GID 20
+    setenv GROUP staff
+    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES
+    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES
+    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES
+    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES
+    setenv HEADER_SEARCH_PATHS "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/include \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/AFNetworking\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/BlocksKit\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Bolts\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/CocoaLumberjack\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Expecta\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/FXBlurView\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/GBDeviceInfo\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/HexColors\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/HockeySDK\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/JSQSystemSoundPlayer\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/KIF\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Kiwi\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/MagicalRecord\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Masonry\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Mixpanel\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/NPReachability\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/NSData+Base64\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Nocilla\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/OCMock\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/PayPalHereSDK\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SAMCategories\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SBJson\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SKBackgroundJob\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SKBackofficeSDK\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/SSKeychain\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/STPTransitions\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/Specta\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/UIImage+PDF\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/libffi\" \"/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/Headers/objective-zip\""
+    setenv ICONV /usr/bin/iconv
+    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES
+    setenv INFOPLIST_FILE Register.plist
+    setenv INFOPLIST_OUTPUT_FORMAT binary
+    setenv INFOPLIST_PATH "ShopKeep Register.app/Info.plist"
+    setenv INFOPLIST_PREPROCESS NO
+    setenv INFOSTRINGS_PATH "ShopKeep Register.app/English.lproj/InfoPlist.strings"
+    setenv INSTALL_DIR /tmp/Register.dst/Applications
+    setenv INSTALL_GROUP staff
+    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX
+    setenv INSTALL_OWNER vickeryj
+    setenv INSTALL_PATH /Applications
+    setenv INSTALL_ROOT /tmp/Register.dst
+    setenv IPHONEOS_DEPLOYMENT_TARGET 7.0
+    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"
+    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub
+    setenv JAVA_ARCHIVE_CLASSES YES
+    setenv JAVA_ARCHIVE_TYPE JAR
+    setenv JAVA_COMPILER /usr/bin/javac
+    setenv JAVA_FOLDER_PATH "ShopKeep Register.app/Java"
+    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources
+    setenv JAVA_JAR_FLAGS cv
+    setenv JAVA_SOURCE_SUBDIR .
+    setenv JAVA_USE_DEPENDENCIES YES
+    setenv JAVA_ZIP_FLAGS -urg
+    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"
+    setenv KEEP_PRIVATE_EXTERNS NO
+    setenv LD_DEPENDENCY_INFO_FILE "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects-normal/i386/ShopKeep Register_dependency_info.dat"
+    setenv LD_GENERATE_MAP_FILE NO
+    setenv LD_MAP_FILE_PATH "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/ShopKeep Register-LinkMap-normal-i386.txt"
+    setenv LD_NO_PIE NO
+    setenv LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER YES
+    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer
+    setenv LEX lex
+    setenv LIBRARY_FLAG_NOSPACE YES
+    setenv LIBRARY_FLAG_PREFIX -l
+    setenv LIBRARY_KEXT_INSTALL_PATH /Library/Extensions
+    setenv LIBRARY_SEARCH_PATHS "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator  \"/Users/vickeryj/Code/ShopKeep/ipad-register/vendor/MagTek\""
+    setenv LINKER_DISPLAYS_MANGLED_NAMES NO
+    setenv LINK_FILE_LIST_normal_i386 "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects-normal/i386/ShopKeep Register.LinkFileList"
+    setenv LINK_WITH_STANDARD_LIBRARIES YES
+    setenv LOCALIZED_RESOURCES_FOLDER_PATH "ShopKeep Register.app/English.lproj"
+    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities
+    setenv LOCAL_APPS_DIR /Applications
+    setenv LOCAL_DEVELOPER_DIR /Library/Developer
+    setenv LOCAL_LIBRARY_DIR /Library
+    setenv MACH_O_TYPE mh_execute
+    setenv MACOSX_DEPLOYMENT_TARGET 10.6
+    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 13C64
+    setenv MAC_OS_X_VERSION_ACTUAL 1092
+    setenv MAC_OS_X_VERSION_MAJOR 1090
+    setenv MAC_OS_X_VERSION_MINOR 0902
+    setenv MODULE_CACHE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/ModuleCache
+    setenv NATIVE_ARCH i386
+    setenv NATIVE_ARCH_32_BIT i386
+    setenv NATIVE_ARCH_64_BIT x86_64
+    setenv NATIVE_ARCH_ACTUAL x86_64
+    setenv NO_COMMON YES
+    setenv OBJC_ABI_VERSION 2
+    setenv OBJECT_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects
+    setenv OBJECT_FILE_DIR_normal /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Objects-normal
+    setenv OBJROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates
+    setenv ONLY_ACTIVE_ARCH NO
+    setenv OPTIMIZATION_LEVEL 0
+    setenv OS MACOS
+    setenv OSAC /usr/bin/osacompile
+    setenv OTHER_LDFLAGS "-ObjC -Wl,-no_compact_unwind -lsqlite3.0 -lz -framework Accelerate -framework AudioToolbox -framework CFNetwork -framework CoreData -framework CoreGraphics -framework CoreLocation -framework CoreTelephony -framework CoreText -framework CrashReporter -framework ExternalAccessory -framework Foundation -framework MessageUI -framework MobileCoreServices -framework PayPalHereSDK -framework QuartzCore -framework Security -framework StarIO -framework SystemConfiguration -framework UIKit"
+    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application
+    setenv PASCAL_STRINGS YES
+    setenv PATH "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Tools:/opt/local/bin:/opt/local/sbin:/Users/vickeryj/.rvm/gems/ruby-1.9.3-p194/bin:/Users/vickeryj/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/vickeryj/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/vickeryj/.rvm/bin:/Users/vickeryj/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Users/vickeryj/Programs/mongodb-osx-i386-2.0.6/bin"
+    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"
+    setenv PBDEVELOPMENTPLIST_PATH "ShopKeep Register.app/pbdevelopment.plist"
+    setenv PFE_FILE_C_DIALECTS objective-c
+    setenv PKGINFO_FILE_PATH /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/PkgInfo
+    setenv PKGINFO_PATH "ShopKeep Register.app/PkgInfo"
+    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications
+    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin
+    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library
+    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs
+    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools
+    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr
+    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform
+    setenv PLATFORM_NAME iphonesimulator
+    setenv PLATFORM_PREFERRED_ARCH i386
+    setenv PLATFORM_PRODUCT_BUILD_VERSION 11B508
+    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 70000
+    setenv PLIST_FILE_OUTPUT_FORMAT binary
+    setenv PLUGINS_FOLDER_PATH "ShopKeep Register.app/PlugIns"
+    setenv PODS_ROOT /Users/vickeryj/Code/ShopKeep/ipad-register/Pods
+    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES
+    setenv PRECOMP_DESTINATION_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/PrefixHeaders
+    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO
+    setenv PRIVATE_HEADERS_FOLDER_PATH "ShopKeep Register.app/PrivateHeaders"
+    setenv PRODUCT_NAME "ShopKeep Register"
+    setenv PRODUCT_SETTINGS_PATH /Users/vickeryj/Code/ShopKeep/ipad-register/Register.plist
+    setenv PRODUCT_TYPE com.apple.product-type.application
+    setenv PROFILING_CODE NO
+    setenv PROJECT Register
+    setenv PROJECT_DERIVED_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/DerivedSources
+    setenv PROJECT_DIR /Users/vickeryj/Code/ShopKeep/ipad-register
+    setenv PROJECT_FILE_PATH /Users/vickeryj/Code/ShopKeep/ipad-register/Register.xcodeproj
+    setenv PROJECT_NAME Register
+    setenv PROJECT_TEMP_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build
+    setenv PROJECT_TEMP_ROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates
+    setenv PUBLIC_HEADERS_FOLDER_PATH "ShopKeep Register.app/Headers"
+    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES
+    setenv REMOVE_CVS_FROM_RESOURCES YES
+    setenv REMOVE_GIT_FROM_RESOURCES YES
+    setenv REMOVE_HG_FROM_RESOURCES YES
+    setenv REMOVE_SVN_FROM_RESOURCES YES
+    setenv REZ_COLLECTOR_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/ResourceManagerResources
+    setenv REZ_OBJECTS_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/ResourceManagerResources/Objects
+    setenv REZ_SEARCH_PATHS "/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator "
+    setenv RUN_CLANG_STATIC_ANALYZER NO
+    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES YES
+    setenv SCRIPTS_FOLDER_PATH "ShopKeep Register.app/Scripts"
+    setenv SCRIPT_INPUT_FILE_COUNT 0
+    setenv SCRIPT_OUTPUT_FILE_COUNT 0
+    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk
+    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk
+    setenv SDK_NAME iphonesimulator7.0
+    setenv SDK_PRODUCT_BUILD_VERSION 11B508
+    setenv SED /usr/bin/sed
+    setenv SEPARATE_STRIP NO
+    setenv SEPARATE_SYMBOL_EDIT NO
+    setenv SET_DIR_MODE_OWNER_GROUP YES
+    setenv SET_FILE_MODE_OWNER_GROUP NO
+    setenv SHALLOW_BUNDLE YES
+    setenv SHARED_DERIVED_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/DerivedSources
+    setenv SHARED_FRAMEWORKS_FOLDER_PATH "ShopKeep Register.app/SharedFrameworks"
+    setenv SHARED_PRECOMPS_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/PrecompiledHeaders
+    setenv SHARED_SUPPORT_FOLDER_PATH "ShopKeep Register.app/SharedSupport"
+    setenv SKIP_INSTALL NO
+    setenv SOURCE_ROOT /Users/vickeryj/Code/ShopKeep/ipad-register
+    setenv SRCROOT /Users/vickeryj/Code/ShopKeep/ipad-register
+    setenv STRINGS_FILE_OUTPUT_ENCODING binary
+    setenv STRIP_INSTALLED_PRODUCT YES
+    setenv STRIP_STYLE all
+    setenv SUPPORTED_DEVICE_FAMILIES "1 2"
+    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"
+    setenv SYMROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products
+    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities
+    setenv SYSTEM_APPS_DIR /Applications
+    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices
+    setenv SYSTEM_DEMOS_DIR /Applications/Extras
+    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications
+    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin
+    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"
+    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer
+    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"
+    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"
+    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"
+    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"
+    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"
+    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools
+    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"
+    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"
+    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr
+    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities
+    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation
+    setenv SYSTEM_KEXT_INSTALL_PATH /System/Library/Extensions
+    setenv SYSTEM_LIBRARY_DIR /System/Library
+    setenv TARGETED_DEVICE_FAMILY 2
+    setenv TARGETNAME register
+    setenv TARGET_BUILD_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator
+    setenv TARGET_NAME register
+    setenv TARGET_TEMP_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build
+    setenv TEMP_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build
+    setenv TEMP_FILES_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build
+    setenv TEMP_FILE_DIR /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build
+    setenv TEMP_ROOT /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates
+    setenv TOOLCHAINS com.apple.dt.toolchain.XcodeDefault
+    setenv UID 501
+    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH "ShopKeep Register.app"
+    setenv UNSTRIPPED_PRODUCT NO
+    setenv USER vickeryj
+    setenv USER_APPS_DIR /Users/vickeryj/Applications
+    setenv USER_LIBRARY_DIR /Users/vickeryj/Library
+    setenv USE_DYNAMIC_NO_PIC YES
+    setenv USE_HEADERMAP YES
+    setenv USE_HEADER_SYMLINKS NO
+    setenv VALIDATE_PRODUCT NO
+    setenv VALID_ARCHS "i386 x86_64"
+    setenv VERBOSE_PBXCP NO
+    setenv VERSIONPLIST_PATH "ShopKeep Register.app/version.plist"
+    setenv VERSION_INFO_BUILDER vickeryj
+    setenv VERSION_INFO_FILE "ShopKeep Register_vers.c"
+    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:ShopKeep Register  PROJECT:Register-\""
+    setenv WRAPPER_EXTENSION app
+    setenv WRAPPER_NAME "ShopKeep Register.app"
+    setenv WRAPPER_SUFFIX .app
+    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode
+    setenv XCODE_PRODUCT_BUILD_VERSION 5A3005
+    setenv XCODE_VERSION_ACTUAL 0502
+    setenv XCODE_VERSION_MAJOR 0500
+    setenv XCODE_VERSION_MINOR 0500
+    setenv XPCSERVICES_FOLDER_PATH "ShopKeep Register.app/XPCServices"
+    setenv YACC yacc
+    setenv arch i386
+    setenv variant normal
+    /bin/sh -c /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/register.build/Script-FDC28ACA18942F6D00BA1979.sh
+
+=== BUILD TARGET RegisterAppTests OF PROJECT Register WITH CONFIGURATION Test ===
+
+Check dependencies
+
+PhaseScriptExecution Check\ Pods\ Manifest.lock /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/RegisterAppTests.build/Script-14E3C2E43DB04852A09D0EBE.sh
+    cd /Users/vickeryj/Code/ShopKeep/ipad-register
+    /bin/sh -c /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/RegisterAppTests.build/Script-14E3C2E43DB04852A09D0EBE.sh
+
+PhaseScriptExecution Copy\ Pods\ Resources /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/RegisterAppTests.build/Script-251FA4A707854A9DBADDF892.sh
+    cd /Users/vickeryj/Code/ShopKeep/ipad-register
+    /bin/sh -c /Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Intermediates/Register.build/Test-iphonesimulator/RegisterAppTests.build/Script-251FA4A707854A9DBADDF892.sh
+/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/PayPalHereSDK/SDK/nohw/Release/PayPalHereSDK.bundle
+/Users/vickeryj/Code/ShopKeep/ipad-register/Pods/SAMCategories/SAMCategories/SAMCategories.bundle
+/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/SKBackgroundJobModels.bundle
+building file list ... done
+
+sent 1556 bytes  received 20 bytes  3152.00 bytes/sec
+total size is 406943  speedup is 258.21
+/* com.apple.actool.compilation-results */
+/Users/vickeryj/Library/Developer/Xcode/DerivedData/Register-dlmcxgbadhnztsghcqpohfkxibhk/Build/Products/Test-iphonesimulator/RegisterAppTests.xctest/Assets.car
+
+
+Test Suite 'All tests' started at 2014-03-06 16:58:49 +0000
+Test Suite 'RegisterAppTests.xctest' started at 2014-03-06 16:58:49 +0000
+Test Suite 'AppDelegateSpec' started at 2014-03-06 16:58:49 +0000
+Test Case '-[AppDelegateSpec SK_AppDelegate_applicationdidFinishLaunchingWithOptions_TagsTheApplicationLaunchedEvent]' started.
+2014-03-06 11:58:49.621 ShopKeep Register[56358:70b] CLTilesManagerClient: initialize, sSharedTilesManagerClient
+2014-03-06 11:58:49.622 ShopKeep Register[56358:70b] CLTilesManagerClient: init
+2014-03-06 11:58:49.622 ShopKeep Register[56358:70b] CLTilesManagerClient: reconnecting, 0xcfb5f80
+2014-03-06 11:58:49.762 ShopKeep Register[56358:70b] + 'SK, AppDelegate, -application:didFinishLaunchingWithOptions:, tags the Application Launched event' [PASSED]
+Test Case '-[AppDelegateSpec SK_AppDelegate_applicationdidFinishLaunchingWithOptions_TagsTheApplicationLaunchedEvent]' passed (0.231 seconds).
+Test Case '-[AppDelegateSpec SK_AppDelegate_cleanRegisterDataAndResetEnvironmentAndShowWelcomeVC_SetsCurrentRegisterToNil]' started.
+2014-03-06 11:58:49.788 ShopKeep Register[56358:70b] + 'SK, AppDelegate, -cleanRegisterDataAndResetEnvironmentAndShowWelcomeVC, sets currentRegister to nil' [PASSED]
+Test Case '-[AppDelegateSpec SK_AppDelegate_cleanRegisterDataAndResetEnvironmentAndShowWelcomeVC_SetsCurrentRegisterToNil]' passed (0.019 seconds).
+Test Case '-[AppDelegateSpec SK_AppDelegate_cleanRegisterDataAndResetEnvironmentAndShowWelcomeVC_DeletesAllData]' started.
+2014-03-06 11:58:49.803 ShopKeep Register[56358:70b] + 'SK, AppDelegate, -cleanRegisterDataAndResetEnvironmentAndShowWelcomeVC, deletes all data' [PASSED]
+Test Case '-[AppDelegateSpec SK_AppDelegate_cleanRegisterDataAndResetEnvironmentAndShowWelcomeVC_DeletesAllData]' passed (0.014 seconds).
+Test Suite 'AppDelegateSpec' finished at 2014-03-06 16:58:49 +0000.
+Executed 3 tests, with 0 failures (0 unexpected) in 0.265 (0.266) seconds
+Test Suite 'AuthenticationViewControllerSpec' started at 2014-03-06 16:58:49 +0000
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_openSupportPageURL_OpensTheSupportPageURL]' started.
+2014-03-06 11:58:49.814 ShopKeep Register[56358:70b] + 'SK, AuthenticationViewController, -openSupportPageURL, opens the support page URL' [PASSED]
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_openSupportPageURL_OpensTheSupportPageURL]' passed (0.010 seconds).
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_NoSKEmployeeRoleWithTheSignInCodeExists_DoesNotSignInTheUser]' started.
+2014-03-06 11:58:49.827 ShopKeep Register[56358:70b] + 'SK, AuthenticationViewController, -attemptSignInWithCode, no SKEmployeeRole with the sign in code exists, does not sign in the user' [PASSED]
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_NoSKEmployeeRoleWithTheSignInCodeExists_DoesNotSignInTheUser]' passed (0.012 seconds).
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAManager_PushesTheSKTransactionDrawerViewController]' started.
+2014-03-06 11:58:49.843 ShopKeep Register[56358:70b] + 'SK, AuthenticationViewController, -attemptSignInWithCode, a SKEmployeeRole with the sign in code exists and has an active employee, the SKEmployeeRole belongs to a manager, pushes the SKTransactionDrawerViewController' [PASSED]
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAManager_PushesTheSKTransactionDrawerViewController]' passed (0.017 seconds).
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAManager_TagsTheMixpanelEvent]' started.
+2014-03-06 11:58:49.855 ShopKeep Register[56358:70b] Warning: Attempt to present <SKWelcomeTourViewController: 0x1387c950> on <SKAuthenticationViewController: 0x1389db10> whose view is not in the window hierarchy!
+2014-03-06 11:58:49.855 ShopKeep Register[56358:70b] + 'SK, AuthenticationViewController, -attemptSignInWithCode, a SKEmployeeRole with the sign in code exists and has an active employee, the SKEmployeeRole belongs to a manager, tags the mixpanel event' [PASSED]
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAManager_TagsTheMixpanelEvent]' passed (0.011 seconds).
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAnEmployee_TheShiftIsClosed_DoesNotSignInTheTheUser]' started.
+2014-03-06 11:58:49.866 ShopKeep Register[56358:70b] + 'SK, AuthenticationViewController, -attemptSignInWithCode, a SKEmployeeRole with the sign in code exists and has an active employee, the SKEmployeeRole belongs to an employee, the shift is closed, does not sign in the the user' [PASSED]
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAnEmployee_TheShiftIsClosed_DoesNotSignInTheTheUser]' passed (0.010 seconds).
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAnEmployee_TheShiftIsOpen_PushesTheSKTransactionDrawerViewController]' started.
+2014-03-06 11:58:49.880 ShopKeep Register[56358:70b] + 'SK, AuthenticationViewController, -attemptSignInWithCode, a SKEmployeeRole with the sign in code exists and has an active employee, the SKEmployeeRole belongs to an employee, the shift is open, pushes the SKTransactionDrawerViewController' [PASSED]
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAnEmployee_TheShiftIsOpen_PushesTheSKTransactionDrawerViewController]' passed (0.013 seconds).
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAnEmployee_TheShiftIsOpen_TagsTheMixpanelEvent]' started.
+2014-03-06 11:58:49.892 ShopKeep Register[56358:70b] Warning: Attempt to present <SKWelcomeTourViewController: 0xbe51810> on <SKAuthenticationViewController: 0xbef6b60> whose view is not in the window hierarchy!
+2014-03-06 11:58:49.892 ShopKeep Register[56358:70b] + 'SK, AuthenticationViewController, -attemptSignInWithCode, a SKEmployeeRole with the sign in code exists and has an active employee, the SKEmployeeRole belongs to an employee, the shift is open, tags the mixpanel event' [PASSED]
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_attemptSignInWithCode_ASKEmployeeRoleWithTheSignInCodeExistsAndHasAnActiveEmployee_TheSKEmployeeRoleBelongsToAnEmployee_TheShiftIsOpen_TagsTheMixpanelEvent]' passed (0.011 seconds).
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_titleLabel_WhenTheShiftIsOpen_DisplaysTheStoreNameAndShiftOpen]' started.
+2014-03-06 11:58:49.901 ShopKeep Register[56358:70b] + 'SK, AuthenticationViewController, -titleLabel, when the shift is open, displays the store name and "Shift Open"' [PASSED]
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_titleLabel_WhenTheShiftIsOpen_DisplaysTheStoreNameAndShiftOpen]' passed (0.009 seconds).
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_titleLabel_WhenTheShiftIsClosed_DisplaysTheStoreNameAndShiftClosed]' started.
+2014-03-06 11:58:49.910 ShopKeep Register[56358:70b] + 'SK, AuthenticationViewController, -titleLabel, when the shift is closed, displays the store name and "Shift Closed"' [PASSED]
+Test Case '-[AuthenticationViewControllerSpec SK_AuthenticationViewController_titleLabel_WhenTheShiftIsClosed_DisplaysTheStoreNameAndShiftClosed]' passed (0.008 seconds).
+Test Suite 'AuthenticationViewControllerSpec' finished at 2014-03-06 16:58:49 +0000.
+Executed 9 tests, with 0 failures (0 unexpected) in 0.101 (0.107) seconds
+Test Suite 'CGRectSKConstructorsSpec' started at 2014-03-06 16:58:49 +0000
+Test Case '-[CGRectSKConstructorsSpec CGRectSKConstructors_CGRectWithNewXY_SetsXAndYAndCopiesTheOtherValues]' started.
+2014-03-06 11:58:49.912 ShopKeep Register[56358:70b] + 'CGRect+SKConstructors, CGRectWithNewXY, sets x and y and copies the other values' [PASSED]
+Test Case '-[CGRectSKConstructorsSpec CGRectSKConstructors_CGRectWithNewXY_SetsXAndYAndCopiesTheOtherValues]' passed (0.001 seconds).
+Test Case '-[CGRectSKConstructorsSpec CGRectSKConstructors_CGRectWithNewY_SetsY]' started.
+2014-03-06 11:58:49.913 ShopKeep Register[56358:70b] + 'CGRect+SKConstructors, CGRectWithNewY, sets y' [PASSED]
+Test Case '-[CGRectSKConstructorsSpec CGRectSKConstructors_CGRectWithNewY_SetsY]' passed (0.001 seconds).
+Test Case '-[CGRectSKConstructorsSpec CGRectSKConstructors_CGRectWithNewHeight_SetsTheHeight]' started.
+2014-03-06 11:58:49.914 ShopKeep Register[56358:70b] + 'CGRect+SKConstructors, CGRectWithNewHeight, sets the height' [PASSED]
+Test Case '-[CGRectSKConstructorsSpec CGRectSKConstructors_CGRectWithNewHeight_SetsTheHeight]' passed (0.001 seconds).
+Test Suite 'CGRectSKConstructorsSpec' finished at 2014-03-06 16:58:49 +0000.
+Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'KWSpec' started at 2014-03-06 16:58:49 +0000
+Test Suite 'KWSpec' finished at 2014-03-06 16:58:49 +0000.
+Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'SKAPIV1ClientPlusAppVersionSpec' started at 2014-03-06 16:58:49 +0000
+Test Case '-[SKAPIV1ClientPlusAppVersionSpec SK_SKAPIV1ClientAppVersion_getMostRecentVersionOnSuccessonFailure_WhenTheRequestFails_PassesAnErrorIntoTheFailureBlock]' started.
+2014-03-06 11:58:50.464 ShopKeep Register[56358:70b] + 'SK, SKAPIV1Client+AppVersion, -getMostRecentVersionOnSuccess:onFailure:, when the request fails, passes an error into the failure block' [PASSED]
+Test Case '-[SKAPIV1ClientPlusAppVersionSpec SK_SKAPIV1ClientAppVersion_getMostRecentVersionOnSuccessonFailure_WhenTheRequestFails_PassesAnErrorIntoTheFailureBlock]' passed (0.550 seconds).
+Test Case '-[SKAPIV1ClientPlusAppVersionSpec SK_SKAPIV1ClientAppVersion_getMostRecentVersionOnSuccessonFailure_WhenTheRequestSucceeds_ReturnsTheAppropriateSKVersionObject]' started.
+2014-03-06 11:58:50.773 ShopKeep Register[56358:70b] + 'SK, SKAPIV1Client+AppVersion, -getMostRecentVersionOnSuccess:onFailure:, when the request succeeds, returns the appropriate SKVersion object' [PASSED]
+Test Case '-[SKAPIV1ClientPlusAppVersionSpec SK_SKAPIV1ClientAppVersion_getMostRecentVersionOnSuccessonFailure_WhenTheRequestSucceeds_ReturnsTheAppropriateSKVersionObject]' passed (0.309 seconds).
+Test Suite 'SKAPIV1ClientPlusAppVersionSpec' finished at 2014-03-06 16:58:50 +0000.
+Executed 2 tests, with 0 failures (0 unexpected) in 0.859 (0.860) seconds
+Test Suite 'SKAmountButtonSpec' started at 2014-03-06 16:58:50 +0000
+Test Case '-[SKAmountButtonSpec SKAmountButton_WhenCreated_WithADefaultParser_HasAHandlerForWhenCurrentAmountRequested]' started.
+2014-03-06 11:58:50.775 ShopKeep Register[56358:70b] + 'SKAmountButton, when created, with a default parser, has a handler for whenCurrentAmountRequested' [PASSED]
+Test Case '-[SKAmountButtonSpec SKAmountButton_WhenCreated_WithADefaultParser_HasAHandlerForWhenCurrentAmountRequested]' passed (0.001 seconds).
+Test Case '-[SKAmountButtonSpec SKAmountButton_WhenCreated_WithADefaultParser_HasAHandlerForOnNewAmountParsed]' started.
+2014-03-06 11:58:50.776 ShopKeep Register[56358:70b] + 'SKAmountButton, when created, with a default parser, has a handler for onNewAmountParsed' [PASSED]
+Test Case '-[SKAmountButtonSpec SKAmountButton_WhenCreated_WithADefaultParser_HasAHandlerForOnNewAmountParsed]' passed (0.001 seconds).
+Test Suite 'SKAmountButtonSpec' finished at 2014-03-06 16:58:50 +0000.
+Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'SKAnalyticsCenterSpec' started at 2014-03-06 16:58:50 +0000
+Test Case '-[SKAnalyticsCenterSpec SK_SKAnalyticsCenter_load_IfCenterIsNotEnabled_DoesNothing]' started.
+2014-03-06 11:58:50.780 ShopKeep Register[56358:70b] + 'SK, SKAnalyticsCenter, +load, if center is not enabled, does nothing' [PASSED]
+Test Case '-[SKAnalyticsCenterSpec SK_SKAnalyticsCenter_load_IfCenterIsNotEnabled_DoesNothing]' passed (0.004 seconds).
+Test Case '-[SKAnalyticsCenterSpec SK_SKAnalyticsCenter_load_IfCenterIsEnabled_IfAPIKeyIsNotSetInAttributes_LogsAnError]' started.
+2014-03-06 11:58:50.785 ShopKeep Register[56358:70b] + 'SK, SKAnalyticsCenter, +load, if center is enabled, if API key is not set in attributes, logs an error' [PASSED]
+Test Case '-[SKAnalyticsCenterSpec SK_SKAnalyticsCenter_load_IfCenterIsEnabled_IfAPIKeyIsNotSetInAttributes_LogsAnError]' passed (0.004 seconds).
+Test Case '-[SKAnalyticsCenterSpec SK_SKAnalyticsCenter_tagEventInCurrentStoreDomainattributes_IfStoreNameIsNotExplicitlySpecifiedInTagAttributes_ShouldTagTheEventWithTheCurrentStoreName]' started.
+2014-03-06 11:58:50.789 ShopKeep Register[56358:70b] + 'SK, SKAnalyticsCenter, -tagEventInCurrentStoreDomain:attributes:, if store name is not explicitly specified in tag attributes, should tag the event with the current store name' [PASSED]
+Test Case '-[SKAnalyticsCenterSpec SK_SKAnalyticsCenter_tagEventInCurrentStoreDomainattributes_IfStoreNameIsNotExplicitlySpecifiedInTagAttributes_ShouldTagTheEventWithTheCurrentStoreName]' passed (0.004 seconds).
+Test Case '-[SKAnalyticsCenterSpec SK_SKAnalyticsCenter_tagEventInCurrentStoreDomainattributes_IfStoreNameIsExplicitlySpecifiedInTagAttributes_ShouldNotOverrideTheStoreNameSpecifiedInTheAttributes]' started.
+2014-03-06 11:58:50.794 ShopKeep Register[56358:70b] + 'SK, SKAnalyticsCenter, -tagEventInCurrentStoreDomain:attributes:, if store name is explicitly specified in tag attributes, should not override the store name specified in the attributes' [PASSED]
+Test Case '-[SKAnalyticsCenterSpec SK_SKAnalyticsCenter_tagEventInCurrentStoreDomainattributes_IfStoreNameIsExplicitlySpecifiedInTagAttributes_ShouldNotOverrideTheStoreNameSpecifiedInTheAttributes]' passed (0.004 seconds).
+Test Suite 'SKAnalyticsCenterSpec' finished at 2014-03-06 16:58:50 +0000.
+Executed 4 tests, with 0 failures (0 unexpected) in 0.017 (0.019) seconds
+Test Suite 'SKAnimationQueueSpec' started at 2014-03-06 16:58:50 +0000
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationHasABeforeBlock_ShouldExecuteTheBlock]' started.
+2014-03-06 11:58:50.796 ShopKeep Register[56358:70b] + 'SKAnimationQueue, -enqueueAnimation, there are no other animations queued, the animation has a before block, should execute the block' [PASSED]
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationHasABeforeBlock_ShouldExecuteTheBlock]' passed (0.001 seconds).
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationDoesNotHaveABeforeBlock_ShouldNotRaiseAnException]' started.
+2014-03-06 11:58:50.797 ShopKeep Register[56358:70b] + 'SKAnimationQueue, -enqueueAnimation, there are no other animations queued, the animation does not have a before block, should not raise an exception' [PASSED]
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationDoesNotHaveABeforeBlock_ShouldNotRaiseAnException]' passed (0.001 seconds).
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationHasAnAnimationBlock_ShouldExecuteTheBlock]' started.
+2014-03-06 11:58:50.798 ShopKeep Register[56358:70b] + 'SKAnimationQueue, -enqueueAnimation, there are no other animations queued, the animation has an animation block, should execute the block' [PASSED]
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationHasAnAnimationBlock_ShouldExecuteTheBlock]' passed (0.001 seconds).
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationDoesNotHaveAnAnimationBlock_ShouldNotRaiseAnException]' started.
+2014-03-06 11:58:50.799 ShopKeep Register[56358:70b] + 'SKAnimationQueue, -enqueueAnimation, there are no other animations queued, the animation does not have an animation block, should not raise an exception' [PASSED]
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationDoesNotHaveAnAnimationBlock_ShouldNotRaiseAnException]' passed (0.001 seconds).
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationHasACompletionBlock_ShouldExecuteTheBlock]' started.
+2014-03-06 11:58:50.801 ShopKeep Register[56358:70b] + 'SKAnimationQueue, -enqueueAnimation, there are no other animations queued, the animation has a completion block, should execute the block' [PASSED]
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationHasACompletionBlock_ShouldExecuteTheBlock]' passed (0.001 seconds).
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationDoesNotHaveACompletionBlock_ShouldNotRaiseAnException]' started.
+2014-03-06 11:58:50.802 ShopKeep Register[56358:70b] + 'SKAnimationQueue, -enqueueAnimation, there are no other animations queued, the animation does not have a completion block, should not raise an exception' [PASSED]
+Test Case '-[SKAnimationQueueSpec SKAnimationQueue_enqueueAnimation_ThereAreNoOtherAnimationsQueued_TheAnimationDoesNotHaveACompletionBlock_ShouldNotRaiseAnException]' passed (0.001 seconds).
+Test Suite 'SKAnimationQueueSpec' finished at 2014-03-06 16:58:50 +0000.
+Executed 6 tests, with 0 failures (0 unexpected) in 0.004 (0.007) seconds
+Test Suite 'SKBuildConfigurationSpec' started at 2014-03-06 16:58:50 +0000
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_buildConfigurationName_ReturnsDebugOrTestForTestRuns]' started.
+2014-03-06 11:58:50.803 ShopKeep Register[56358:70b] + 'SKBuildConfiguration, -buildConfigurationName, returns Debug or Test for test runs' [PASSED]
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_buildConfigurationName_ReturnsDebugOrTestForTestRuns]' passed (0.001 seconds).
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNil_RaisesAnException]' started.
+2014-03-06 11:58:50.805 ShopKeep Register[56358:70b] + 'SKBuildConfiguration, loading build configuration property lists, when default property list is nil, raises an exception' [PASSED]
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNil_RaisesAnException]' passed (0.001 seconds).
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsEmpty_RaisesAnException]' started.
+2014-03-06 11:58:50.806 ShopKeep Register[56358:70b] + 'SKBuildConfiguration, loading build configuration property lists, when default property list is empty, raises an exception' [PASSED]
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsEmpty_RaisesAnException]' passed (0.001 seconds).
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndAPropertyWithACorrespondingNameDoesNotExist_RaisesAnException]' started.
+2014-03-06 11:58:50.808 ShopKeep Register[56358:70b] + 'SKBuildConfiguration, loading build configuration property lists, when default property list is non-empty, and a property with a corresponding name does not exist, raises an exception' [PASSED]
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndAPropertyWithACorrespondingNameDoesNotExist_RaisesAnException]' passed (0.001 seconds).
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndACurrentBuildPropertyListIsPresent_PlistKeyExistsOnlyInTheDefaultList_SetsTheCorrespondingPropertyAccordingToDefault]' started.
+2014-03-06 11:58:50.810 ShopKeep Register[56358:70b] + 'SKBuildConfiguration, loading build configuration property lists, when default property list is non-empty, and a current build property list is present, plist key exists only in the default list, sets the corresponding property according to default' [PASSED]
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndACurrentBuildPropertyListIsPresent_PlistKeyExistsOnlyInTheDefaultList_SetsTheCorrespondingPropertyAccordingToDefault]' passed (0.001 seconds).
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndACurrentBuildPropertyListIsPresent_PlistKeyExistsBothInTheDefaultAndTheCurrentConfigurationList_SetsTheCurrespondingPropertyAccordingToCurrentConfiguration]' started.
+2014-03-06 11:58:50.811 ShopKeep Register[56358:70b] + 'SKBuildConfiguration, loading build configuration property lists, when default property list is non-empty, and a current build property list is present, plist key exists both in the default and the current configuration list, sets the curresponding property according to current configuration' [PASSED]
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndACurrentBuildPropertyListIsPresent_PlistKeyExistsBothInTheDefaultAndTheCurrentConfigurationList_SetsTheCurrespondingPropertyAccordingToCurrentConfiguration]' passed (0.001 seconds).
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndACurrentBuildPropertyListIsPresent_PlistKeyExistsBothInTheDefaultAndTheCurrentConfigurationList_WhenThePlistContainsYESForhockeyAppChecksDaily_ReturnsBITUpdateCheckDailyForHockeyAppUpdateFrequency]' started.
+2014-03-06 11:58:50.814 ShopKeep Register[56358:70b] + 'SKBuildConfiguration, loading build configuration property lists, when default property list is non-empty, and a current build property list is present, plist key exists both in the default and the current configuration list, when the plist contains YES for 'hockeyAppChecksDaily', returns BITUpdateCheckDaily for hockeyAppUpdateFrequency' [PASSED]
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndACurrentBuildPropertyListIsPresent_PlistKeyExistsBothInTheDefaultAndTheCurrentConfigurationList_WhenThePlistContainsYESForhockeyAppChecksDaily_ReturnsBITUpdateCheckDailyForHockeyAppUpdateFrequency]' passed (0.001 seconds).
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndACurrentBuildPropertyListIsPresent_PlistKeyExistsBothInTheDefaultAndTheCurrentConfigurationList_WhenThePlistDoesNotContainYESForhockeyAppChecksDaily_ReturnsBITUpdateCheckStartupForHockeyAppUpdateFrequency]' started.
+2014-03-06 11:58:50.816 ShopKeep Register[56358:70b] + 'SKBuildConfiguration, loading build configuration property lists, when default property list is non-empty, and a current build property list is present, plist key exists both in the default and the current configuration list, when the plist does not contain YES for 'hockeyAppChecksDaily', returns BITUpdateCheckStartup for hockeyAppUpdateFrequency' [PASSED]
+Test Case '-[SKBuildConfigurationSpec SKBuildConfiguration_LoadingBuildConfigurationPropertyLists_WhenDefaultPropertyListIsNonempty_AndACurrentBuildPropertyListIsPresent_PlistKeyExistsBothInTheDefaultAndTheCurrentConfigurationList_WhenThePlistDoesNotContainYESForhockeyAppChecksDaily_ReturnsBITUpdateCheckStartupForHockeyAppUpdateFrequency]' passed (0.001 seconds).
+Test Suite 'SKBuildConfigurationSpec' finished at 2014-03-06 16:58:50 +0000.
+Executed 8 tests, with 0 failures (0 unexpected) in 0.009 (0.014) seconds
+Test Suite 'SKCustomerViewControllerSpec' started at 2014-03-06 16:58:50 +0000
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_NoneOfTheThreeFieldsAreFilledIn_DoesNotPushIntoQueue]' started.
+2014-03-06 11:58:50.824 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, textfield validation logic, none of the three fields are filled in, does not push into queue' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_NoneOfTheThreeFieldsAreFilledIn_DoesNotPushIntoQueue]' passed (0.007 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_NoneOfTheThreeFieldsAreFilledIn_RollsBackChangesToTheCustomer]' started.
+2014-03-06 11:58:50.831 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, textfield validation logic, none of the three fields are filled in, rolls back changes to the customer' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_NoneOfTheThreeFieldsAreFilledIn_RollsBackChangesToTheCustomer]' passed (0.008 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_AtLeastOneOfTheThreeFieldsIsFilledIn_TriesSavingContext]' started.
+2014-03-06 11:58:50.840 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, textfield validation logic, at least one of the three fields is filled in, tries saving context' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_AtLeastOneOfTheThreeFieldsIsFilledIn_TriesSavingContext]' passed (0.008 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_AtLeastOneOfTheThreeFieldsIsFilledIn_EmailIsInvalid_DoesNotPushIntoQueue]' started.
+2014-03-06 11:58:50.847 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, textfield validation logic, at least one of the three fields is filled in, email is invalid, does not push into queue' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_AtLeastOneOfTheThreeFieldsIsFilledIn_EmailIsInvalid_DoesNotPushIntoQueue]' passed (0.007 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_AtLeastOneOfTheThreeFieldsIsFilledIn_EmailIsInvalid_MakesEmailFieldFirstResponder]' started.
+2014-03-06 11:58:50.856 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, textfield validation logic, at least one of the three fields is filled in, email is invalid, makes emailField firstResponder' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_AtLeastOneOfTheThreeFieldsIsFilledIn_EmailIsInvalid_MakesEmailFieldFirstResponder]' passed (0.008 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_AtLeastOneOfTheThreeFieldsIsFilledIn_EmailIsValid_PushesIntoQueue]' started.
+2014-03-06 11:58:50.865 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, textfield validation logic, at least one of the three fields is filled in, email is valid, pushes into queue' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_TextfieldValidationLogic_AtLeastOneOfTheThreeFieldsIsFilledIn_EmailIsValid_PushesIntoQueue]' passed (0.008 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_FillsInTheCustomerFormAllTextFields]' started.
+2014-03-06 11:58:50.873 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, sending customer data, with valid customer text fields, fills in the customer form all text fields' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_FillsInTheCustomerFormAllTextFields]' passed (0.008 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_NotInDemoMode_IsANewCustomer_PostsTheCustomer]' started.
+2014-03-06 11:58:50.881 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, sending customer data, with valid customer text fields, not in demo mode, is a new customer, posts the customer' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_NotInDemoMode_IsANewCustomer_PostsTheCustomer]' passed (0.008 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_NotInDemoMode_IsNotANewCustomer_UpdatesTheCustomer]' started.
+2014-03-06 11:58:50.889 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, sending customer data, with valid customer text fields, not in demo mode, is not a new customer, updates the customer' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_NotInDemoMode_IsNotANewCustomer_UpdatesTheCustomer]' passed (0.008 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_NotInDemoMode_ItPushesAJobOnTheQueueWithTheReturnedJob]' started.
+2014-03-06 11:58:50.898 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, sending customer data, with valid customer text fields, not in demo mode, it pushes a job on the queue with the returned job' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_NotInDemoMode_ItPushesAJobOnTheQueueWithTheReturnedJob]' passed (0.008 seconds).
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_InDemoMode_ItDoesNotPushAJobOnTheQueueWithTheReturnedJob]' started.
+2014-03-06 11:58:50.906 ShopKeep Register[56358:70b] + 'SK, SKCustomerViewController, -saveCustomer, sending customer data, with valid customer text fields, in demo mode, it does not push a job on the queue with the returned job' [PASSED]
+Test Case '-[SKCustomerViewControllerSpec SK_SKCustomerViewController_saveCustomer_SendingCustomerData_WithValidCustomerTextFields_InDemoMode_ItDoesNotPushAJobOnTheQueueWithTheReturnedJob]' passed (0.008 seconds).
+Test Suite 'SKCustomerViewControllerSpec' finished at 2014-03-06 16:58:50 +0000.
+Executed 11 tests, with 0 failures (0 unexpected) in 0.085 (0.091) seconds
+Test Suite 'SKDiagnosticsUploaderSpec' started at 2014-03-06 16:58:50 +0000
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_uploadWithSuccessfailure_WhenTheCurrentRegisterHasBeenSet_PostsTheDatabaseFileToAmazonWithTheStoreIDAndRegisterNumberForTheFilename]' started.
+2014-03-06 11:58:50.922 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +uploadWithSuccess:failure:, when the current register has been set, posts the database file to Amazon with the store ID and register number for the filename' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_uploadWithSuccessfailure_WhenTheCurrentRegisterHasBeenSet_PostsTheDatabaseFileToAmazonWithTheStoreIDAndRegisterNumberForTheFilename]' passed (0.014 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_uploadWithSuccessfailure_WhenTheCurrentRegisterHasNotBeenSet_ButTheRegisterNumberAndStoreIDCanBeFoundInTheDatabase_PostsTheDatabaseFileToAmazonWithTheStoreIDAndRegisterNumberForTheFilename]' started.
+2014-03-06 11:58:50.937 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +uploadWithSuccess:failure:, when the current register has not been set, but the register number and store ID can be found in the database, posts the database file to Amazon with the store ID and register number for the filename' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_uploadWithSuccessfailure_WhenTheCurrentRegisterHasNotBeenSet_ButTheRegisterNumberAndStoreIDCanBeFoundInTheDatabase_PostsTheDatabaseFileToAmazonWithTheStoreIDAndRegisterNumberForTheFilename]' passed (0.015 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_uploadWithSuccessfailure_WhenTheCurrentRegisterHasNotBeenSet_AndTheRegisterNumberAndStoreIDCannotBeFoundInTheDatabase_PostsTheDatabaseFileToAmazonWithAUUIDForTheFilename]' started.
+2014-03-06 11:58:50.952 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +uploadWithSuccess:failure:, when the current register has not been set, and the register number and store ID cannot be found in the database, posts the database file to Amazon with a UUID for the filename' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_uploadWithSuccessfailure_WhenTheCurrentRegisterHasNotBeenSet_AndTheRegisterNumberAndStoreIDCannotBeFoundInTheDatabase_PostsTheDatabaseFileToAmazonWithAUUIDForTheFilename]' passed (0.014 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheDocumentDirectory_AndThereAreOtherFilesInTheSameDirectory_FindsTheSqlitesFileInDocumentDirectory]' started.
+2014-03-06 11:58:50.959 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are sqlite files to be found, when there are sqlite files in the document directory, and there are other files in the same directory, finds the sqlites file in document directory' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheDocumentDirectory_AndThereAreOtherFilesInTheSameDirectory_FindsTheSqlitesFileInDocumentDirectory]' passed (0.006 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheDocumentDirectory_AndThereAreOtherFilesInTheSameDirectory_DoesNotReturnTheFilesOtherThanSqliteFiles]' started.
+2014-03-06 11:58:50.965 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are sqlite files to be found, when there are sqlite files in the document directory, and there are other files in the same directory, does not return the files other than sqlite files' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheDocumentDirectory_AndThereAreOtherFilesInTheSameDirectory_DoesNotReturnTheFilesOtherThanSqliteFiles]' passed (0.005 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheDocumentDirectory_AndThereAreNoOtherFilesInTheSameDirectory_FindsTheSqlitesFileInDocumentDirectory]' started.
+2014-03-06 11:58:50.971 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are sqlite files to be found, when there are sqlite files in the document directory, and there are no other files in the same directory, finds the sqlites file in document directory' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheDocumentDirectory_AndThereAreNoOtherFilesInTheSameDirectory_FindsTheSqlitesFileInDocumentDirectory]' passed (0.005 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheDocumentDirectory_WhenTheApplicationSupportDirectoryDoesntExist_FindsTheSqlitesFileInDocumentDirectory]' started.
+2014-03-06 11:58:50.977 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are sqlite files to be found, when there are sqlite files in the document directory, when the application support directory doesn't exist, finds the sqlites file in document directory' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheDocumentDirectory_WhenTheApplicationSupportDirectoryDoesntExist_FindsTheSqlitesFileInDocumentDirectory]' passed (0.005 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheApplicationSupportDirectory_AndThereAreOtherFilesInTheSameDirectory_FindsTheSqlitesFileInApplicationSupportDirectory]' started.
+2014-03-06 11:58:50.983 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are sqlite files to be found, when there are sqlite files in the application support directory, and there are other files in the same directory, finds the sqlites file in application support directory' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheApplicationSupportDirectory_AndThereAreOtherFilesInTheSameDirectory_FindsTheSqlitesFileInApplicationSupportDirectory]' passed (0.005 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheApplicationSupportDirectory_AndThereAreOtherFilesInTheSameDirectory_DoesNotReturnTheFilesOtherThanSqliteFiles]' started.
+2014-03-06 11:58:50.989 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are sqlite files to be found, when there are sqlite files in the application support directory, and there are other files in the same directory, does not return the files other than sqlite files' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheApplicationSupportDirectory_AndThereAreOtherFilesInTheSameDirectory_DoesNotReturnTheFilesOtherThanSqliteFiles]' passed (0.005 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheApplicationSupportDirectory_AndThereAreNoOtherFilesInTheSameDirectory_FindsTheSqlitesFileInDocumentDirectory]' started.
+2014-03-06 11:58:50.995 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are sqlite files to be found, when there are sqlite files in the application support directory, and there are no other files in the same directory, finds the sqlites file in document directory' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheApplicationSupportDirectory_AndThereAreNoOtherFilesInTheSameDirectory_FindsTheSqlitesFileInDocumentDirectory]' passed (0.005 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheApplicationSupportDirectory_WhenTheDocumentDirectoryDoesntExist_FindsTheSqlitesFileInApplicationSupportDirectory]' started.
+2014-03-06 11:58:51.001 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are sqlite files to be found, when there are sqlite files in the application support directory, when the document directory doesn't exist, finds the sqlites file in application support directory' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInTheApplicationSupportDirectory_WhenTheDocumentDirectoryDoesntExist_FindsTheSqlitesFileInApplicationSupportDirectory]' passed (0.005 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInBothTheApplicationSupportDirectoryAndTheDocumentDirectory_FindsTheSqlitesFileInBothDirectories]' started.
+2014-03-06 11:58:51.007 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are sqlite files to be found, when there are sqlite files in both the application support directory and the document directory, finds the sqlites file in both directories' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreSqliteFilesToBeFound_WhenThereAreSqliteFilesInBothTheApplicationSupportDirectoryAndTheDocumentDirectory_FindsTheSqlitesFileInBothDirectories]' passed (0.005 seconds).
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreNoSqliteFiles_ReturnsAnEmptyArray]' started.
+2014-03-06 11:58:51.012 ShopKeep Register[56358:70b] + 'SK, SKDiagnosticsUploader, +localDatabaseSqliteFileURLs, when there are no sqlite files, returns an empty array' [PASSED]
+Test Case '-[SKDiagnosticsUploaderSpec SK_SKDiagnosticsUploader_localDatabaseSqliteFileURLs_WhenThereAreNoSqliteFiles_ReturnsAnEmptyArray]' passed (0.005 seconds).
+Test Suite 'SKDiagnosticsUploaderSpec' finished at 2014-03-06 16:58:51 +0000.
+Executed 13 tests, with 0 failures (0 unexpected) in 0.095 (0.105) seconds
+Test Suite 'SKDiscountEditingButtonSpec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKDiscountEditingButtonSpec SKDiscountEditingButton_setDiscountAmount_DoesNotResultInACallToTheOnAmountChangedHandler]' started.
+2014-03-06 11:58:51.016 ShopKeep Register[56358:70b] + 'SKDiscountEditingButton, -setDiscountAmount, does not result in a call to the onAmountChanged handler' [PASSED]
+Test Case '-[SKDiscountEditingButtonSpec SKDiscountEditingButton_setDiscountAmount_DoesNotResultInACallToTheOnAmountChangedHandler]' passed (0.003 seconds).
+Test Suite 'SKDiscountEditingButtonSpec' finished at 2014-03-06 16:58:51 +0000.
+Executed 1 test, with 0 failures (0 unexpected) in 0.003 (0.003) seconds
+Test Suite 'SKJSONCleanerSpec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsAnArray_TheArrayContainedIsAValidArray_ReturnsTheSameDictionary]' started.
+2014-03-06 11:58:51.017 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +dictionaryWithoutInvalidJSONEntries:, dictionary contains an array, the array contained is a valid array, returns the same dictionary' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsAnArray_TheArrayContainedIsAValidArray_ReturnsTheSameDictionary]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsAnArray_TheArrayContainedHasAnInvalidItem_ReturnsADictionaryWithoutInvalidItem]' started.
+2014-03-06 11:58:51.018 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +dictionaryWithoutInvalidJSONEntries:, dictionary contains an array, the array contained has an invalid item, returns a dictionary without invalid item' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsAnArray_TheArrayContainedHasAnInvalidItem_ReturnsADictionaryWithoutInvalidItem]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsADictionary_ReturnsTheSameDictionary]' started.
+2014-03-06 11:58:51.020 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +dictionaryWithoutInvalidJSONEntries:, dictionary contains a dictionary, returns the same dictionary' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsADictionary_ReturnsTheSameDictionary]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsADictionary_TheDictionaryContainedIsAValidDictionary_ReturnsTheSameDictionary]' started.
+2014-03-06 11:58:51.021 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +dictionaryWithoutInvalidJSONEntries:, dictionary contains a dictionary, the dictionary contained is a valid dictionary, returns the same dictionary' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsADictionary_TheDictionaryContainedIsAValidDictionary_ReturnsTheSameDictionary]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsADictionary_TheDictionaryContainedHasAnInvalidEntry_ReturnsADictionaryWithoutInvalidEntry]' started.
+2014-03-06 11:58:51.022 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +dictionaryWithoutInvalidJSONEntries:, dictionary contains a dictionary, the dictionary contained has an invalid entry, returns a dictionary without invalid entry' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsADictionary_TheDictionaryContainedHasAnInvalidEntry_ReturnsADictionaryWithoutInvalidEntry]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsANSNull_ReturnsTheSameDictionary]' started.
+2014-03-06 11:58:51.023 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +dictionaryWithoutInvalidJSONEntries:, dictionary contains a NSNull, returns the same dictionary' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsANSNull_ReturnsTheSameDictionary]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsANSString_ReturnsTheSameDictionary]' started.
+2014-03-06 11:58:51.024 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +dictionaryWithoutInvalidJSONEntries:, dictionary contains a NSString, returns the same dictionary' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsANSString_ReturnsTheSameDictionary]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsANSNumber_ReturnsTheSameDictionary]' started.
+2014-03-06 11:58:51.025 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +dictionaryWithoutInvalidJSONEntries:, dictionary contains a NSNumber, returns the same dictionary' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsANSNumber_ReturnsTheSameDictionary]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsInvalidJSONEntry_ReturnsDictionaryWithoutInvalidJSONEntry]' started.
+2014-03-06 11:58:51.026 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +dictionaryWithoutInvalidJSONEntries:, dictionary contains invalid JSON entry, returns dictionary without invalid JSON entry' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_dictionaryWithoutInvalidJSONEntries_DictionaryContainsInvalidJSONEntry_ReturnsDictionaryWithoutInvalidJSONEntry]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsAnArray_TheArrayContainedIsAValidArray_ReturnsTheSameDictionary]' started.
+2014-03-06 11:58:51.027 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +arrayWithoutInvalidJSONEntries:, array contains an array, the array contained is a valid array, returns the same dictionary' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsAnArray_TheArrayContainedIsAValidArray_ReturnsTheSameDictionary]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsAnArray_TheArrayContainedHasAnInvalidItem_ReturnsAnArrayWithoutInvalidItem]' started.
+2014-03-06 11:58:51.029 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +arrayWithoutInvalidJSONEntries:, array contains an array, the array contained has an invalid item, returns an array without invalid item' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsAnArray_TheArrayContainedHasAnInvalidItem_ReturnsAnArrayWithoutInvalidItem]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsADictionary_ReturnsTheSameArray]' started.
+2014-03-06 11:58:51.030 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +arrayWithoutInvalidJSONEntries:, array contains a dictionary, returns the same array' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsADictionary_ReturnsTheSameArray]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsADictionary_TheDictionaryContainedIsAValidArray_ReturnsTheSameArray]' started.
+2014-03-06 11:58:51.031 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +arrayWithoutInvalidJSONEntries:, array contains a dictionary, the dictionary contained is a valid array, returns the same array' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsADictionary_TheDictionaryContainedIsAValidArray_ReturnsTheSameArray]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsADictionary_TheDictionaryContainedHasAnInvalidEntry_ReturnsAnArrayWithoutInvalidEntry]' started.
+2014-03-06 11:58:51.032 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +arrayWithoutInvalidJSONEntries:, array contains a dictionary, the dictionary contained has an invalid entry, returns an array without invalid entry' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsADictionary_TheDictionaryContainedHasAnInvalidEntry_ReturnsAnArrayWithoutInvalidEntry]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsANSNull_ReturnsTheSameArray]' started.
+2014-03-06 11:58:51.033 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +arrayWithoutInvalidJSONEntries:, array contains a NSNull, returns the same array' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsANSNull_ReturnsTheSameArray]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsANSString_ReturnsTheSameArray]' started.
+2014-03-06 11:58:51.034 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +arrayWithoutInvalidJSONEntries:, array contains a NSString, returns the same array' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsANSString_ReturnsTheSameArray]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsANSNumber_ReturnsTheSameArray]' started.
+2014-03-06 11:58:51.035 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +arrayWithoutInvalidJSONEntries:, array contains a NSNumber, returns the same array' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsANSNumber_ReturnsTheSameArray]' passed (0.001 seconds).
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsInvalidJSONItem_ReturnsArrayWithoutInvalidJSONItem]' started.
+2014-03-06 11:58:51.036 ShopKeep Register[56358:70b] + 'SKJSONCleaner, +arrayWithoutInvalidJSONEntries:, array contains invalid JSON item, returns array without invalid JSON item' [PASSED]
+Test Case '-[SKJSONCleanerSpec SKJSONCleaner_arrayWithoutInvalidJSONEntries_ArrayContainsInvalidJSONItem_ReturnsArrayWithoutInvalidJSONItem]' passed (0.001 seconds).
+Test Suite 'SKJSONCleanerSpec' finished at 2014-03-06 16:58:51 +0000.
+Executed 18 tests, with 0 failures (0 unexpected) in 0.012 (0.020) seconds
+Test Suite 'SKLineItemTableViewControllerSpec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewnumberOfRowsInSection_WhenThereAre0SoldItems_Returns0]' started.
+2014-03-06 11:58:51.043 ShopKeep Register[56358:70b] + 'SK, SKLineItemTableViewController, -tableView:numberOfRowsInSection, when there are 0 sold items, returns 0' [PASSED]
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewnumberOfRowsInSection_WhenThereAre0SoldItems_Returns0]' passed (0.007 seconds).
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewnumberOfRowsInSection_WhenThereAre2SoldItems_Returns2]' started.
+2014-03-06 11:58:51.100 ShopKeep Register[56358:70b] + 'SK, SKLineItemTableViewController, -tableView:numberOfRowsInSection, when there are 2 sold items, returns 2' [PASSED]
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewnumberOfRowsInSection_WhenThereAre2SoldItems_Returns2]' passed (0.074 seconds).
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewcommitEditingStyleforRowAtIndexPath_WhenTheEditingStyleIsUITableViewCellEditingStyleDelete_DeletesTheSoldItemFromTheManagedObjectContext]' started.
+2014-03-06 11:58:51.126 ShopKeep Register[56358:70b] + 'SK, SKLineItemTableViewController, -tableView:commitEditingStyle:forRowAtIndexPath:, when the editing style is UITableViewCellEditingStyleDelete, deletes the sold item from the managed object context' [PASSED]
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewcommitEditingStyleforRowAtIndexPath_WhenTheEditingStyleIsUITableViewCellEditingStyleDelete_DeletesTheSoldItemFromTheManagedObjectContext]' passed (0.008 seconds).
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewcommitEditingStyleforRowAtIndexPath_WhenTheEditingStyleIsUITableViewCellEditingStyleDelete_RemovesTheSoldItemFromTheDataSourcesCollection]' started.
+2014-03-06 11:58:51.133 ShopKeep Register[56358:70b] + 'SK, SKLineItemTableViewController, -tableView:commitEditingStyle:forRowAtIndexPath:, when the editing style is UITableViewCellEditingStyleDelete, removes the sold item from the data source's collection' [PASSED]
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewcommitEditingStyleforRowAtIndexPath_WhenTheEditingStyleIsUITableViewCellEditingStyleDelete_RemovesTheSoldItemFromTheDataSourcesCollection]' passed (0.006 seconds).
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewcommitEditingStyleforRowAtIndexPath_WhenTheEditingStyleIsAnythingElse_DoesNotDeleteTheSoldItemFromTheManagedObjectContext]' started.
+2014-03-06 11:58:51.139 ShopKeep Register[56358:70b] + 'SK, SKLineItemTableViewController, -tableView:commitEditingStyle:forRowAtIndexPath:, when the editing style is anything else, does not delete the sold item from the managed object context' [PASSED]
+Test Case '-[SKLineItemTableViewControllerSpec SK_SKLineItemTableViewController_tableViewcommitEditingStyleforRowAtIndexPath_WhenTheEditingStyleIsAnythingElse_DoesNotDeleteTheSoldItemFromTheManagedObjectContext]' passed (0.006 seconds).
+Test Suite 'SKLineItemTableViewControllerSpec' finished at 2014-03-06 16:58:51 +0000.
+Executed 5 tests, with 0 failures (0 unexpected) in 0.101 (0.104) seconds
+Test Suite 'SKMigration155Spec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_ClearsOutkCustomerAPIUpdateTimestampUserDefaultKeyRecordFromTheUserDefaults]' started.
+2014-03-06 11:58:51.145 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migration without errors, clears out 'kCustomerAPIUpdateTimestampUserDefaultKey' record from the user defaults' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_ClearsOutkCustomerAPIUpdateTimestampUserDefaultKeyRecordFromTheUserDefaults]' passed (0.005 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_RemovesAllTheCustomersFromCoreData]' started.
+2014-03-06 11:58:51.150 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migration without errors, removes all the customers from Core Data' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_RemovesAllTheCustomersFromCoreData]' passed (0.005 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_SavesTheManagedObjectContext]' started.
+2014-03-06 11:58:51.154 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migration without errors, saves the managed object context' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_SavesTheManagedObjectContext]' passed (0.004 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_PerformsTheUpdateMethod]' started.
+2014-03-06 11:58:51.159 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migration without errors, performs the update method' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_PerformsTheUpdateMethod]' passed (0.004 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_UpdatesRegisterUpdatedAtProperty]' started.
+2014-03-06 11:58:51.164 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migration without errors, updates register updated at property' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_UpdatesRegisterUpdatedAtProperty]' passed (0.004 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_PerformsTheCompletionBlock]' started.
+2014-03-06 11:58:51.169 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migration without errors, performs the completion block' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationWithoutErrors_PerformsTheCompletionBlock]' passed (0.004 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationsWhenThereIsNoInternet_PerformsTheFailureBlock]' started.
+2014-03-06 11:58:51.173 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migrations when there is no internet, performs the failure block' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationsWhenThereIsNoInternet_PerformsTheFailureBlock]' passed (0.004 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnError]' started.
+2014-03-06 11:58:51.178 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migrations when there is no internet, returns an error' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnError]' passed (0.004 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnErrorFromMigrationDomain]' started.
+2014-03-06 11:58:51.183 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migrations when there is no internet, returns an error from migration domain' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnErrorFromMigrationDomain]' passed (0.004 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnErrorAskingForInternet]' started.
+2014-03-06 11:58:51.187 ShopKeep Register[56358:70b] + 'SK, SKMigration155, when running the migrations when there is no internet, returns an error asking for internet' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnErrorAskingForInternet]' passed (0.004 seconds).
+Test Case '-[SKMigration155Spec SK_SKMigration155_IsAMigrationForTheVersion155]' started.
+2014-03-06 11:58:51.192 ShopKeep Register[56358:70b] + 'SK, SKMigration155, is a migration for the version 1.5.5' [PASSED]
+Test Case '-[SKMigration155Spec SK_SKMigration155_IsAMigrationForTheVersion155]' passed (0.004 seconds).
+Test Suite 'SKMigration155Spec' finished at 2014-03-06 16:58:51 +0000.
+Executed 11 tests, with 0 failures (0 unexpected) in 0.048 (0.052) seconds
+Test Suite 'SKMigration158Spec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_PerformsTheCompletionBlock]' started.
+2014-03-06 11:58:51.196 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, performs the completion block' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_PerformsTheCompletionBlock]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsNaN_SetsItToBe0]' started.
+2014-03-06 11:58:51.200 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSNumber, when the converted SKRegisterCardSignatureThreshold value is NaN, sets it to be '0'' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsNaN_SetsItToBe0]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThanZero_SetsItToBe0]' started.
+2014-03-06 11:58:51.205 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSNumber, when the converted SKRegisterCardSignatureThreshold value is less than zero, sets it to be '0'' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThanZero_SetsItToBe0]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsGreaterThan25_SetsItToBe25]' started.
+2014-03-06 11:58:51.210 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSNumber, when the converted SKRegisterCardSignatureThreshold value is greater than 25, sets it to be '25'' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsGreaterThan25_SetsItToBe25]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsEqualTo25_SetsItToBe25]' started.
+2014-03-06 11:58:51.214 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSNumber, when the converted SKRegisterCardSignatureThreshold value is equal to 25, sets it to be '25'' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsEqualTo25_SetsItToBe25]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds247DownTo24]' started.
+2014-03-06 11:58:51.219 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSNumber, when the converted SKRegisterCardSignatureThreshold value is less than 25, the number is not an integer, rounds 24.7 down to 24' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds247DownTo24]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds245DownTo24]' started.
+2014-03-06 11:58:51.224 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSNumber, when the converted SKRegisterCardSignatureThreshold value is less than 25, the number is not an integer, rounds 24.5 down to 24' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds245DownTo24]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds242DownTo24]' started.
+2014-03-06 11:58:51.228 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSNumber, when the converted SKRegisterCardSignatureThreshold value is less than 25, the number is not an integer, rounds 24.2 down to 24' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds242DownTo24]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsAnInteger_SetsItDirectly]' started.
+2014-03-06 11:58:51.233 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSNumber, when the converted SKRegisterCardSignatureThreshold value is less than 25, the number is an integer, sets it directly' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSNumber_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsAnInteger_SetsItDirectly]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsNaN_SetsItToBe0]' started.
+2014-03-06 11:58:51.238 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSString, when the converted SKRegisterCardSignatureThreshold value is NaN, sets it to be '0'' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsNaN_SetsItToBe0]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThanZero_SetsItToBe0]' started.
+2014-03-06 11:58:51.242 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSString, when the converted SKRegisterCardSignatureThreshold value is less than zero, sets it to be '0'' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThanZero_SetsItToBe0]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsGreaterThan25_SetsItToBe25]' started.
+2014-03-06 11:58:51.247 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSString, when the converted SKRegisterCardSignatureThreshold value is greater than 25, sets it to be '25'' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsGreaterThan25_SetsItToBe25]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsEqualTo25_SetsItToBe25]' started.
+2014-03-06 11:58:51.252 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSString, when the converted SKRegisterCardSignatureThreshold value is equal to 25, sets it to be '25'' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsEqualTo25_SetsItToBe25]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds247DownTo24]' started.
+2014-03-06 11:58:51.256 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSString, when the converted SKRegisterCardSignatureThreshold value is less than 25, the number is not an integer, rounds 24.7 down to 24' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds247DownTo24]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds245DownTo24]' started.
+2014-03-06 11:58:51.261 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSString, when the converted SKRegisterCardSignatureThreshold value is less than 25, the number is not an integer, rounds 24.5 down to 24' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds245DownTo24]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds242DownTo24]' started.
+2014-03-06 11:58:51.266 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSString, when the converted SKRegisterCardSignatureThreshold value is less than 25, the number is not an integer, rounds 24.2 down to 24' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsNotAnInteger_Rounds242DownTo24]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsAnInteger_SetsItDirectly]' started.
+2014-03-06 11:58:51.271 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is a NSString, when the converted SKRegisterCardSignatureThreshold value is less than 25, the number is an integer, sets it directly' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsANSString_WhenTheConvertedSKRegisterCardSignatureThresholdValueIsLessThan25_TheNumberIsAnInteger_SetsItDirectly]' passed (0.004 seconds).
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsNotAStringOrNumber_SetsItToBe0]' started.
+2014-03-06 11:58:51.275 ShopKeep Register[56358:70b] + 'SK, SKMigration158, -upWithCompletionBlock:failureBlock:, when the existent SKRegisterCardSignatureThreshold is not a string or number, sets it to be '0'' [PASSED]
+Test Case '-[SKMigration158Spec SK_SKMigration158_upWithCompletionBlockfailureBlock_WhenTheExistentSKRegisterCardSignatureThresholdIsNotAStringOrNumber_SetsItToBe0]' passed (0.004 seconds).
+Test Suite 'SKMigration158Spec' finished at 2014-03-06 16:58:51 +0000.
+Executed 18 tests, with 0 failures (0 unexpected) in 0.070 (0.084) seconds
+Test Suite 'SKMigration160Spec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationAnThereIsInternet_UpdatesTheRegister]' started.
+2014-03-06 11:58:51.280 ShopKeep Register[56358:70b] + 'SK, SKMigration160, when running the migration an there is internet, updates the register' [PASSED]
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationAnThereIsInternet_UpdatesTheRegister]' passed (0.004 seconds).
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationAnThereIsInternet_WhenThereIsAWalkinCustomer_DeletesTheWalkinCustomer]' started.
+2014-03-06 11:58:51.285 ShopKeep Register[56358:70b] + 'SK, SKMigration160, when running the migration an there is internet, when there is a Walk-in customer, deletes the Walk-in customer' [PASSED]
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationAnThereIsInternet_WhenThereIsAWalkinCustomer_DeletesTheWalkinCustomer]' passed (0.005 seconds).
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationAnThereIsInternet_ExecutesTheCompletionBlock]' started.
+2014-03-06 11:58:51.290 ShopKeep Register[56358:70b] + 'SK, SKMigration160, when running the migration an there is internet, executes the completion block' [PASSED]
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationAnThereIsInternet_ExecutesTheCompletionBlock]' passed (0.004 seconds).
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationsWhenThereIsNoInternet_ExecutesTheFailureBlock]' started.
+2014-03-06 11:58:51.295 ShopKeep Register[56358:70b] + 'SK, SKMigration160, when running the migrations when there is no internet, executes the failure block' [PASSED]
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationsWhenThereIsNoInternet_ExecutesTheFailureBlock]' passed (0.004 seconds).
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnError]' started.
+2014-03-06 11:58:51.299 ShopKeep Register[56358:70b] + 'SK, SKMigration160, when running the migrations when there is no internet, returns an error' [PASSED]
+Test Case '-[SKMigration160Spec SK_SKMigration160_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnError]' passed (0.004 seconds).
+Test Suite 'SKMigration160Spec' finished at 2014-03-06 16:58:51 +0000.
+Executed 5 tests, with 0 failures (0 unexpected) in 0.022 (0.024) seconds
+Test Suite 'SKMigration162Spec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_UpdatesTheRegister]' started.
+2014-03-06 11:58:51.305 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, updates the register' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_UpdatesTheRegister]' passed (0.005 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingCashTenders]' started.
+2014-03-06 11:58:51.311 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, sets the tender types for existing cash tenders' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingCashTenders]' passed (0.006 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingCreditTenders]' started.
+2014-03-06 11:58:51.318 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, sets the tender types for existing credit tenders' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingCreditTenders]' passed (0.007 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingPaypalTenders]' started.
+2014-03-06 11:58:51.325 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, sets the tender types for existing paypal tenders' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingPaypalTenders]' passed (0.007 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingLevelupTenders]' started.
+2014-03-06 11:58:51.332 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, sets the tender types for existing levelup tenders' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingLevelupTenders]' passed (0.006 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingOtherTenders]' started.
+2014-03-06 11:58:51.338 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, sets the tender types for existing other tenders' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_SetsTheTenderTypesForExistingOtherTenders]' passed (0.006 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_ExecutesTheCompletionBlock]' started.
+2014-03-06 11:58:51.344 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, executes the completion block' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_ExecutesTheCompletionBlock]' passed (0.005 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_MigratesTheReceiptPrinterToANewPrinterSetting]' started.
+2014-03-06 11:58:51.351 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, when there are configured receipt and ticket printers, migrates the receipt printer to a new printer setting' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_MigratesTheReceiptPrinterToANewPrinterSetting]' passed (0.008 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_AddsTheTicketPrinter]' started.
+2014-03-06 11:58:51.358 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, when there are configured receipt and ticket printers, adds the ticket printer' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_AddsTheTicketPrinter]' passed (0.006 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_WhenThereIsStockItemIDSavedInSKVersion55MigrationUserDefaultsKeyRemotePrinterInfoBackup_AddsTheTicketPrintableStockItemToTheNewPrinterSetting]' started.
+2014-03-06 11:58:51.365 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, when there are configured receipt and ticket printers, when there is stock item ID saved in SKVersion55MigrationUserDefaultsKeyRemotePrinterInfoBackup, adds the ticket printable stock item to the new printer setting' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_WhenThereIsStockItemIDSavedInSKVersion55MigrationUserDefaultsKeyRemotePrinterInfoBackup_AddsTheTicketPrintableStockItemToTheNewPrinterSetting]' passed (0.007 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_WhenThereIsNoStockItemIDSavedInSKVersion55MigrationUserDefaultsKeyRemotePrinterInfoBackup_WhenThereIsAStockItemIDSavedInSK58To59StockItemMigrationPolicyPrintableStockItemIDsKey_AddsTheTicketPrintableStockItemToTheNewPrinterSetting]' started.
+2014-03-06 11:58:51.372 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, when there are configured receipt and ticket printers, when there is no stock item ID saved in SKVersion55MigrationUserDefaultsKeyRemotePrinterInfoBackup, when there is a stock item ID saved in SK58To59StockItemMigrationPolicyPrintableStockItemIDsKey, adds the ticket printable stock item to the new printer setting' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_WhenThereIsNoStockItemIDSavedInSKVersion55MigrationUserDefaultsKeyRemotePrinterInfoBackup_WhenThereIsAStockItemIDSavedInSK58To59StockItemMigrationPolicyPrintableStockItemIDsKey_AddsTheTicketPrintableStockItemToTheNewPrinterSetting]' passed (0.006 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_WhenThereIsNoStockItemIDSavedInSKVersion55MigrationUserDefaultsKeyRemotePrinterInfoBackup_WhenThereIsNoStockItemIDSavedInSK58To59StockItemMigrationPolicyPrintableStockItemIDsKey_AddsNoStockItemToTheNewPrinterSetting]' started.
+2014-03-06 11:58:51.379 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, when there are configured receipt and ticket printers, when there is no stock item ID saved in SKVersion55MigrationUserDefaultsKeyRemotePrinterInfoBackup, when there is no stock item ID saved in SK58To59StockItemMigrationPolicyPrintableStockItemIDsKey, adds no stock item to the new printer setting' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_WhenThereIsNoStockItemIDSavedInSKVersion55MigrationUserDefaultsKeyRemotePrinterInfoBackup_WhenThereIsNoStockItemIDSavedInSK58To59StockItemMigrationPolicyPrintableStockItemIDsKey_AddsNoStockItemToTheNewPrinterSetting]' passed (0.006 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_WhenMigratingConfiguredPrintersFails_DisplaysAnAlert]' started.
+2014-03-06 11:58:51.385 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migration and there is internet, when there are configured receipt and ticket printers, when migrating configured printers fails, displays an alert' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationAndThereIsInternet_WhenThereAreConfiguredReceiptAndTicketPrinters_WhenMigratingConfiguredPrintersFails_DisplaysAnAlert]' passed (0.005 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationsWhenThereIsNoInternet_ExecutesTheFailureBlock]' started.
+2014-03-06 11:58:51.390 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migrations when there is no internet, executes the failure block' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationsWhenThereIsNoInternet_ExecutesTheFailureBlock]' passed (0.004 seconds).
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnError]' started.
+2014-03-06 11:58:51.394 ShopKeep Register[56358:70b] + 'SK, SKMigration162, when running the migrations when there is no internet, returns an error' [PASSED]
+Test Case '-[SKMigration162Spec SK_SKMigration162_WhenRunningTheMigrationsWhenThereIsNoInternet_ReturnsAnError]' passed (0.004 seconds).
+Test Suite 'SKMigration162Spec' finished at 2014-03-06 16:58:51 +0000.
+Executed 15 tests, with 0 failures (0 unexpected) in 0.087 (0.095) seconds
+Test Suite 'SKMigration164Spec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKMigration164Spec SK_SKMigration164_WhenThereIsAnEmployeeOnRegister_UpdatesTheMiscDrawerAccessesEmployee]' started.
+2014-03-06 11:58:51.400 ShopKeep Register[56358:70b] + 'SK, SKMigration164, when there is an employee on register, updates the misc drawer accesses' employee' [PASSED]
+Test Case '-[SKMigration164Spec SK_SKMigration164_WhenThereIsAnEmployeeOnRegister_UpdatesTheMiscDrawerAccessesEmployee]' passed (0.006 seconds).
+Test Case '-[SKMigration164Spec SK_SKMigration164_WhenThereIsAnEmployeeOnRegister_WhenTheEmployeeOnMiscDrawerAccessIsSK58To59MiscDrawerAccessMigrationPolicyTemporaryEmployeeUUID_DeletesTheMiscDrawerAccessesOldEmployee]' started.
+2014-03-06 11:58:51.405 ShopKeep Register[56358:70b] + 'SK, SKMigration164, when there is an employee on register, when the employee on miscDrawerAccess is SK58To59MiscDrawerAccessMigrationPolicyTemporaryEmployeeUUID, deletes the misc drawer accesses' old employee' [PASSED]
+Test Case '-[SKMigration164Spec SK_SKMigration164_WhenThereIsAnEmployeeOnRegister_WhenTheEmployeeOnMiscDrawerAccessIsSK58To59MiscDrawerAccessMigrationPolicyTemporaryEmployeeUUID_DeletesTheMiscDrawerAccessesOldEmployee]' passed (0.005 seconds).
+Test Case '-[SKMigration164Spec SK_SKMigration164_WhenThereIsAnEmployeeOnRegister_WhenTheEmployeeOnMiscDrawerAccessIsNotSK58To59MiscDrawerAccessMigrationPolicyTemporaryEmployeeUUID_LeavesTheMiscDrawerAccessesOldEmployee]' started.
+2014-03-06 11:58:51.411 ShopKeep Register[56358:70b] + 'SK, SKMigration164, when there is an employee on register, when the employee on miscDrawerAccess is not SK58To59MiscDrawerAccessMigrationPolicyTemporaryEmployeeUUID, leaves the misc drawer accesses' old employee' [PASSED]
+Test Case '-[SKMigration164Spec SK_SKMigration164_WhenThereIsAnEmployeeOnRegister_WhenTheEmployeeOnMiscDrawerAccessIsNotSK58To59MiscDrawerAccessMigrationPolicyTemporaryEmployeeUUID_LeavesTheMiscDrawerAccessesOldEmployee]' passed (0.005 seconds).
+Test Case '-[SKMigration164Spec SK_SKMigration164_WhenThereIsNoEmployeeOnRegister_KeepsTheMiscDrawerAccessesEmployee]' started.
+2014-03-06 11:58:51.416 ShopKeep Register[56358:70b] + 'SK, SKMigration164, when there is no employee on register, keeps the misc drawer accesses' employee' [PASSED]
+Test Case '-[SKMigration164Spec SK_SKMigration164_WhenThereIsNoEmployeeOnRegister_KeepsTheMiscDrawerAccessesEmployee]' passed (0.004 seconds).
+Test Case '-[SKMigration164Spec SK_SKMigration164_ExecutesTheCompletionBlock]' started.
+2014-03-06 11:58:51.420 ShopKeep Register[56358:70b] + 'SK, SKMigration164, executes the completion block' [PASSED]
+Test Case '-[SKMigration164Spec SK_SKMigration164_ExecutesTheCompletionBlock]' passed (0.004 seconds).
+Test Suite 'SKMigration164Spec' finished at 2014-03-06 16:58:51 +0000.
+Executed 5 tests, with 0 failures (0 unexpected) in 0.023 (0.026) seconds
+Test Suite 'SKMigration167Spec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKMigration167Spec SK_SKMigration167_WhenTheRegisterHasALastUpdateDate_DoesNotChangeIt]' started.
+2014-03-06 11:58:51.424 ShopKeep Register[56358:70b] + 'SK, SKMigration167, when the register has a lastUpdateDate, does not change it' [PASSED]
+Test Case '-[SKMigration167Spec SK_SKMigration167_WhenTheRegisterHasALastUpdateDate_DoesNotChangeIt]' passed (0.004 seconds).
+Test Case '-[SKMigration167Spec SK_SKMigration167_WhenTheRegisterHasALastUpdateDate_CallsTheSuccessBlock]' started.
+2014-03-06 11:58:51.428 ShopKeep Register[56358:70b] + 'SK, SKMigration167, when the register has a lastUpdateDate, calls the success block' [PASSED]
+Test Case '-[SKMigration167Spec SK_SKMigration167_WhenTheRegisterHasALastUpdateDate_CallsTheSuccessBlock]' passed (0.004 seconds).
+Test Case '-[SKMigration167Spec SK_SKMigration167_WhenTheRegisterDoesNotHaveALastUpdateDate_SetsItToTheCurrentDate]' started.
+2014-03-06 11:58:51.433 ShopKeep Register[56358:70b] + 'SK, SKMigration167, when the register does not have a lastUpdateDate, sets it to the current date' [PASSED]
+Test Case '-[SKMigration167Spec SK_SKMigration167_WhenTheRegisterDoesNotHaveALastUpdateDate_SetsItToTheCurrentDate]' passed (0.004 seconds).
+Test Case '-[SKMigration167Spec SK_SKMigration167_WhenTheRegisterDoesNotHaveALastUpdateDate_CallsTheSuccessBlock]' started.
+2014-03-06 11:58:51.437 ShopKeep Register[56358:70b] + 'SK, SKMigration167, when the register does not have a lastUpdateDate, calls the success block' [PASSED]
+Test Case '-[SKMigration167Spec SK_SKMigration167_WhenTheRegisterDoesNotHaveALastUpdateDate_CallsTheSuccessBlock]' passed (0.004 seconds).
+Test Suite 'SKMigration167Spec' finished at 2014-03-06 16:58:51 +0000.
+Executed 4 tests, with 0 failures (0 unexpected) in 0.016 (0.017) seconds
+Test Suite 'SKMigrationSpec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_ExecutesAllTheMigrationsForHigherVersionThanTheCurrent]' started.
+2014-03-06 11:58:51.442 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, executes all the migrations for higher version than the current' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_ExecutesAllTheMigrationsForHigherVersionThanTheCurrent]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_CallsTheMigrationsInOrder]' started.
+2014-03-06 11:58:51.447 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, calls the migrations in order' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_CallsTheMigrationsInOrder]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_ReturnsYES]' started.
+2014-03-06 11:58:51.452 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, returns YES' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_ReturnsYES]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationRunsAnException_DoesntSwallowTheException]' started.
+2014-03-06 11:58:51.457 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, when a migration runs an exception, doesn't swallow the exception' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationRunsAnException_DoesntSwallowTheException]' passed (0.005 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationRunsAnException_DoesNotRunTheMigrationsForHigherVersionsThanTheMigrationThatRaisedAnd]' started.
+2014-03-06 11:58:51.462 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, when a migration runs an exception, does not run the migrations for higher versions than the migration that raised and ' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationRunsAnException_DoesNotRunTheMigrationsForHigherVersionsThanTheMigrationThatRaisedAnd]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationReturnsAnError_ReturnsTheSameError]' started.
+2014-03-06 11:58:51.467 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, when a migration returns an error, returns the same error' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationReturnsAnError_ReturnsTheSameError]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationReturnsAnError_ShouldReturnFalse]' started.
+2014-03-06 11:58:51.471 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, when a migration returns an error, should return false' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationReturnsAnError_ShouldReturnFalse]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationReturnsAnError_UpdatesTheLAST_MIGRATION_RANToTheLastMigrationThatRanSuccessfully]' started.
+2014-03-06 11:58:51.476 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, when a migration returns an error, updates the LAST_MIGRATION_RAN to the last migration that ran successfully' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenAMigrationReturnsAnError_UpdatesTheLAST_MIGRATION_RANToTheLastMigrationThatRanSuccessfully]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenTheCurrentVersionIsAValidVersion_RunsAllTheMigrationsForHigherVersionsThanTheCurrentVersion]' started.
+2014-03-06 11:58:51.481 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, when the current version is a valid version, runs all the migrations for higher versions than the current version' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_WhenTheCurrentVersionIsAValidVersion_RunsAllTheMigrationsForHigherVersionsThanTheCurrentVersion]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_SetsTheLAST_MIGRATION_RANUserDefaultToVersionOfTheHigherMigrationRan]' started.
+2014-03-06 11:58:51.486 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, sets the LAST_MIGRATION_RAN user default to version of the higher migration ran' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_SetsTheLAST_MIGRATION_RANUserDefaultToVersionOfTheHigherMigrationRan]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_RunsTheMigrationsJustTheFirstTimeThatTheNewVersionRuns]' started.
+2014-03-06 11:58:51.491 ShopKeep Register[56358:70b] + 'SK, SKMigration, running migrations, runs the migrations just the first time that the new version runs' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_RunningMigrations_RunsTheMigrationsJustTheFirstTimeThatTheNewVersionRuns]' passed (0.005 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_UnregisteringAllMigrations_WhenThereAreMigrationsRegistered_WhenUnregisteringAllTheMigrations_DoesNotRunAnyMigrations]' started.
+2014-03-06 11:58:51.495 ShopKeep Register[56358:70b] + 'SK, SKMigration, unregistering all migrations, when there are migrations registered, when unregistering all the migrations, does not run any migrations' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_UnregisteringAllMigrations_WhenThereAreMigrationsRegistered_WhenUnregisteringAllTheMigrations_DoesNotRunAnyMigrations]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_CheckingIfThereArePendingMigrations_WhenThereArePendingMigrations_ShouldRunAllTheMigrationsForHigherVersionsThanTheCurrentVersion]' started.
+2014-03-06 11:58:51.500 ShopKeep Register[56358:70b] + 'SK, SKMigration, checking if there are pending migrations, when there are pending migrations, should run all the migrations for higher versions than the current version' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_CheckingIfThereArePendingMigrations_WhenThereArePendingMigrations_ShouldRunAllTheMigrationsForHigherVersionsThanTheCurrentVersion]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_CheckingIfThereArePendingMigrations_WhenThereAreNoPendingMigrations_ShouldRunAllTheMigrationsForHigherVersionsThanTheCurrentVersion]' started.
+2014-03-06 11:58:51.505 ShopKeep Register[56358:70b] + 'SK, SKMigration, checking if there are pending migrations, when there are no pending migrations, should run all the migrations for higher versions than the current version' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_CheckingIfThereArePendingMigrations_WhenThereAreNoPendingMigrations_ShouldRunAllTheMigrationsForHigherVersionsThanTheCurrentVersion]' passed (0.004 seconds).
+Test Case '-[SKMigrationSpec SK_SKMigration_CheckingIfThereArePendingMigrations_WhenThereAreNoPendingMigrations_WhenTheLastVersionRunIsDifferentThanTheCurrentVersionOfTheApp_ShouldUpdateTheLastVersionRunToTheCurrentVersionOfTheApp]' started.
+2014-03-06 11:58:51.509 ShopKeep Register[56358:70b] + 'SK, SKMigration, checking if there are pending migrations, when there are no pending migrations, when the last version run is different than the current version of the app, should update the last version run to the current version of the app' [PASSED]
+Test Case '-[SKMigrationSpec SK_SKMigration_CheckingIfThereArePendingMigrations_WhenThereAreNoPendingMigrations_WhenTheLastVersionRunIsDifferentThanTheCurrentVersionOfTheApp_ShouldUpdateTheLastVersionRunToTheCurrentVersionOfTheApp]' passed (0.004 seconds).
+Test Suite 'SKMigrationSpec' finished at 2014-03-06 16:58:51 +0000.
+Executed 15 tests, with 0 failures (0 unexpected) in 0.065 (0.072) seconds
+Test Suite 'SKRegisterPrintManagerSpec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKRegisterPrintManagerSpec SKRegisterPrintManager_printReceiptpromptingForSetupOn_WhenThereIsAnActiveReceiptPrinter_CallsPrintReceiptonSuccessonFailureOnThePrintManager]' started.
+2014-03-06 11:58:51.511 ShopKeep Register[56358:70b] + 'SKRegisterPrintManager, -printReceipt:promptingForSetupOn:, when there is an active receipt printer, calls printReceipt:onSuccess:onFailure: on the printManager' [PASSED]
+Test Case '-[SKRegisterPrintManagerSpec SKRegisterPrintManager_printReceiptpromptingForSetupOn_WhenThereIsAnActiveReceiptPrinter_CallsPrintReceiptonSuccessonFailureOnThePrintManager]' passed (0.001 seconds).
+Test Case '-[SKRegisterPrintManagerSpec SKRegisterPrintManager_printReceiptpromptingForSetupOn_WhenThereIsNoActiveReceiptPrinter_AndAViewControllerIsPassedIn_PromptsForSetup]' started.
+2014-03-06 11:58:51.513 ShopKeep Register[56358:70b] + 'SKRegisterPrintManager, -printReceipt:promptingForSetupOn:, when there is no active receipt printer, and a view controller is passed in, prompts for setup' [PASSED]
+Test Case '-[SKRegisterPrintManagerSpec SKRegisterPrintManager_printReceiptpromptingForSetupOn_WhenThereIsNoActiveReceiptPrinter_AndAViewControllerIsPassedIn_PromptsForSetup]' passed (0.001 seconds).
+Test Suite 'SKRegisterPrintManagerSpec' finished at 2014-03-06 16:58:51 +0000.
+Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'SKSaleHistoryTableViewControllerSpec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKSaleHistoryTableViewControllerSpec SK_SKSaleHistoryTableViewController_viewWillAppear_SetsSalesToWhateverTheShiftReturns]' started.
+2014-03-06 11:58:51.518 ShopKeep Register[56358:70b] + 'SK, SKSaleHistoryTableViewController, -viewWillAppear:, sets sales to whatever the shift returns' [PASSED]
+Test Case '-[SKSaleHistoryTableViewControllerSpec SK_SKSaleHistoryTableViewController_viewWillAppear_SetsSalesToWhateverTheShiftReturns]' passed (0.005 seconds).
+Test Case '-[SKSaleHistoryTableViewControllerSpec SK_SKSaleHistoryTableViewController_tableViewcellForRowAtIndexPath_WithANonnilSale_SetsCellsTextLabelWithFormattedDateString]' started.
+2014-03-06 11:58:51.524 ShopKeep Register[56358:70b] + 'SK, SKSaleHistoryTableViewController, -tableView:cellForRowAtIndexPath:, with a non-nil sale, sets cell's textLabel with formatted date string' [PASSED]
+Test Case '-[SKSaleHistoryTableViewControllerSpec SK_SKSaleHistoryTableViewController_tableViewcellForRowAtIndexPath_WithANonnilSale_SetsCellsTextLabelWithFormattedDateString]' passed (0.006 seconds).
+Test Case '-[SKSaleHistoryTableViewControllerSpec SK_SKSaleHistoryTableViewController_tableViewcellForRowAtIndexPath_WithANonnilSale_SetsCellsDetailTextLabelToTheSalesTotal]' started.
+2014-03-06 11:58:51.529 ShopKeep Register[56358:70b] + 'SK, SKSaleHistoryTableViewController, -tableView:cellForRowAtIndexPath:, with a non-nil sale, sets cell's detailTextLabel to the sale's total' [PASSED]
+Test Case '-[SKSaleHistoryTableViewControllerSpec SK_SKSaleHistoryTableViewController_tableViewcellForRowAtIndexPath_WithANonnilSale_SetsCellsDetailTextLabelToTheSalesTotal]' passed (0.005 seconds).
+Test Case '-[SKSaleHistoryTableViewControllerSpec SK_SKSaleHistoryTableViewController_tableViewcellForRowAtIndexPath_WithANilSale_ThrowsException]' started.
+2014-03-06 11:58:51.536 ShopKeep Register[56358:70b] + 'SK, SKSaleHistoryTableViewController, -tableView:cellForRowAtIndexPath:, with a nil sale, throws exception' [PASSED]
+Test Case '-[SKSaleHistoryTableViewControllerSpec SK_SKSaleHistoryTableViewController_tableViewcellForRowAtIndexPath_WithANilSale_ThrowsException]' passed (0.006 seconds).
+Test Suite 'SKSaleHistoryTableViewControllerSpec' finished at 2014-03-06 16:58:51 +0000.
+Executed 4 tests, with 0 failures (0 unexpected) in 0.021 (0.023) seconds
+Test Suite 'SKTransactionViewControllerSpec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_insertANewSale_SetsViewControllerSale]' started.
+2014-03-06 11:58:51.544 ShopKeep Register[56358:70b] Could not load the "trans-tax-off.png" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.545 ShopKeep Register[56358:70b] Could not load the "nav-customer" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.545 ShopKeep Register[56358:70b] Could not load the "button-edit-discount-over" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.557 ShopKeep Register[56358:70b] + 'SK, SKTransactionViewController, -insertANewSale, sets view controller sale' [PASSED]
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_insertANewSale_SetsViewControllerSale]' passed (0.021 seconds).
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_insertANewSale_InsertsASaleInTheDefaultManagedObjectContext]' started.
+2014-03-06 11:58:51.565 ShopKeep Register[56358:70b] Could not load the "trans-tax-off.png" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.565 ShopKeep Register[56358:70b] Could not load the "nav-customer" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.566 ShopKeep Register[56358:70b] Could not load the "button-edit-discount-over" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.575 ShopKeep Register[56358:70b] + 'SK, SKTransactionViewController, -insertANewSale, inserts a sale in the default managed object context' [PASSED]
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_insertANewSale_InsertsASaleInTheDefaultManagedObjectContext]' passed (0.018 seconds).
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_nextTransaction_WhenWeHaveATransactionViewControllerWithATransaction_WhenTheSaleIsFinalized_DoesNotDeleteTheOldSaleObject]' started.
+2014-03-06 11:58:51.583 ShopKeep Register[56358:70b] Could not load the "trans-tax-off.png" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.583 ShopKeep Register[56358:70b] Could not load the "nav-customer" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.584 ShopKeep Register[56358:70b] Could not load the "button-edit-discount-over" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.594 ShopKeep Register[56358:70b] + 'SK, SKTransactionViewController, -nextTransaction, when we have a TransactionViewController with a transaction, when the sale is finalized, does not delete the old sale object' [PASSED]
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_nextTransaction_WhenWeHaveATransactionViewControllerWithATransaction_WhenTheSaleIsFinalized_DoesNotDeleteTheOldSaleObject]' passed (0.019 seconds).
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_nextTransaction_WhenWeHaveATransactionViewControllerWithATransaction_WhenTheSaleNotFinalized_DeletesTheOldSaleObject]' started.
+2014-03-06 11:58:51.601 ShopKeep Register[56358:70b] Could not load the "trans-tax-off.png" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.601 ShopKeep Register[56358:70b] Could not load the "nav-customer" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.602 ShopKeep Register[56358:70b] Could not load the "button-edit-discount-over" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.612 ShopKeep Register[56358:70b] + 'SK, SKTransactionViewController, -nextTransaction, when we have a TransactionViewController with a transaction, when the sale not finalized, deletes the old sale object' [PASSED]
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_nextTransaction_WhenWeHaveATransactionViewControllerWithATransaction_WhenTheSaleNotFinalized_DeletesTheOldSaleObject]' passed (0.017 seconds).
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_deleteTransaction_WhenTheTXVCHasASale_DeletesTheSaleObject]' started.
+2014-03-06 11:58:51.621 ShopKeep Register[56358:70b] Could not load the "trans-tax-off.png" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.621 ShopKeep Register[56358:70b] Could not load the "nav-customer" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.622 ShopKeep Register[56358:70b] Could not load the "button-edit-discount-over" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.630 ShopKeep Register[56358:70b] Could not load the "trans-tax-off.png" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.631 ShopKeep Register[56358:70b] Could not load the "nav-customer" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.631 ShopKeep Register[56358:70b] Could not load the "button-edit-discount-over" image referenced from a nib in the bundle with identifier "com.shopkeep.register"
+2014-03-06 11:58:51.637 ShopKeep Register[56358:70b] + 'SK, SKTransactionViewController, -deleteTransaction, when the TXVC has a sale, deletes the sale object' [PASSED]
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_deleteTransaction_WhenTheTXVCHasASale_DeletesTheSaleObject]' passed (0.025 seconds).
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_deleteTransaction_WhenTheTXVCDoesNotHaveASale_LeavesTheManagedObjectContextWithZeroSaleObjects]' started.
+2014-03-06 11:58:51.644 ShopKeep Register[56358:70b] + 'SK, SKTransactionViewController, -deleteTransaction, when the TXVC does not have a sale, leaves the managed object context with zero sale objects' [PASSED]
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_deleteTransaction_WhenTheTXVCDoesNotHaveASale_LeavesTheManagedObjectContextWithZeroSaleObjects]' passed (0.006 seconds).
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_deleteTransaction_SetsTheTransactionViewControllersSaleToNil]' started.
+2014-03-06 11:58:51.651 ShopKeep Register[56358:70b] + 'SK, SKTransactionViewController, -deleteTransaction, sets the TransactionViewController's sale to nil' [PASSED]
+Test Case '-[SKTransactionViewControllerSpec SK_SKTransactionViewController_deleteTransaction_SetsTheTransactionViewControllersSaleToNil]' passed (0.006 seconds).
+Test Suite 'SKTransactionViewControllerSpec' finished at 2014-03-06 16:58:51 +0000.
+Executed 7 tests, with 0 failures (0 unexpected) in 0.112 (0.116) seconds
+Test Suite 'SKVersionSpec' started at 2014-03-06 16:58:51 +0000
+Test Case '-[SKVersionSpec SKVersion_ComparingVersions_WhenPassingValidStringVersions_ShouldReturnTheRightResults]' started.
+2014-03-06 11:58:51.655 ShopKeep Register[56358:70b] + 'SKVersion, comparing versions, when passing valid string versions, should return the right results' [PASSED]
+Test Case '-[SKVersionSpec SKVersion_ComparingVersions_WhenPassingValidStringVersions_ShouldReturnTheRightResults]' passed (0.004 seconds).
+Test Case '-[SKVersionSpec SKVersion_greaterThan_ForAGreaterThanVersion_ShouldReturnTrue]' started.
+2014-03-06 11:58:51.657 ShopKeep Register[56358:70b] + 'SKVersion, #greaterThan:, for a greater than version, should return true' [PASSED]
+Test Case '-[SKVersionSpec SKVersion_greaterThan_ForAGreaterThanVersion_ShouldReturnTrue]' passed (0.001 seconds).
+Test Case '-[SKVersionSpec SKVersion_greaterThan_ForASameVersion_ShouldReturnFalse]' started.
+2014-03-06 11:58:51.658 ShopKeep Register[56358:70b] + 'SKVersion, #greaterThan:, for a same version, should return false' [PASSED]
+Test Case '-[SKVersionSpec SKVersion_greaterThan_ForASameVersion_ShouldReturnFalse]' passed (0.001 seconds).
+Test Case '-[SKVersionSpec SKVersion_greaterThan_ForALessThanVersion_ShouldReturnFalse]' started.
+2014-03-06 11:58:51.660 ShopKeep Register[56358:70b] + 'SKVersion, #greaterThan:, for a less than version, should return false' [PASSED]
+Test Case '-[SKVersionSpec SKVersion_greaterThan_ForALessThanVersion_ShouldReturnFalse]' passed (0.001 seconds).
+Test Case '-[SKVersionSpec SKVersion_description_ShouldReturnTheStringRepresentationOfTheVersion]' started.
+2014-03-06 11:58:51.660 ShopKeep Register[56358:70b] + 'SKVersion, #description, should return the string representation of the version' [PASSED]
+Test Case '-[SKVersionSpec SKVersion_description_ShouldReturnTheStringRepresentationOfTheVersion]' passed (0.001 seconds).
+Test Suite 'SKVersionSpec' finished at 2014-03-06 16:58:51 +0000.
+Executed 5 tests, with 0 failures (0 unexpected) in 0.007 (0.009) seconds
+Test Suite 'RegisterAppTests.xctest' finished at 2014-03-06 16:58:51 +0000.
+Executed 176 tests, with 0 failures (0 unexpected) in 2.027 (2.123) seconds
+Test Suite 'All tests' finished at 2014-03-06 16:58:51 +0000.
+Executed 176 tests, with 0 failures (0 unexpected) in 2.027 (2.124) seconds
+** TEST SUCCEEDED **
+
