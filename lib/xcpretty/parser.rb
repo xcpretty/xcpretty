@@ -281,7 +281,7 @@ module XCPretty
       @parsed_failing_tests
     end
 
-    def parsed_valid_build?
+    def parsed_valid_test_build?
       parsed_passing_tests? && !parsed_failing_tests? && all_test_runs_complete?
     end
 

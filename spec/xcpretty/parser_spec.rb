@@ -460,17 +460,17 @@ module XCPretty
 
       it "detects that a build is valid when one test passed" do
         @parser.parse(SAMPLE_OCUNIT_TEST)
-        @parser.parsed_valid_build?.should be_true
+        @parser.parsed_valid_test_build?.should be_true
       end
 
       it "detects that a build is invalid when one test failed" do
         @parser.parse(SAMPLE_KIWI_TEST)
         @parser.parse(SAMPLE_KIWI_FAILURE)
-        @parser.parsed_valid_build?.should be_false
+        @parser.parsed_valid_test_build?.should be_false
       end
 
       it "detects that a build is invalid when no tests are run" do
-        @parser.parsed_valid_build?.should be_false
+        @parser.parsed_valid_test_build?.should be_false
       end
 
       it "detects that a build is invalid when a test run starts and does not finish" do
@@ -478,14 +478,14 @@ module XCPretty
         @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_TEST)
         @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
-        @parser.parsed_valid_build?.should be_false
+        @parser.parsed_valid_test_build?.should be_false
       end
 
       it "detects that a build is invalid when a test suite starts and does not finish" do
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_TEST)
-        @parser.parsed_valid_build?.should be_false
+        @parser.parsed_valid_test_build?.should be_false
       end
 
       it "detects that a build is valid when a test run starts, finish and passed tests" do
@@ -494,7 +494,7 @@ module XCPretty
         @parser.parse(SAMPLE_SPECTA_TEST)
         @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
-        @parser.parsed_valid_build?.should be_true
+        @parser.parsed_valid_test_build?.should be_true
       end
 
     end
