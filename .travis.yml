@@ -3,6 +3,7 @@ language: ruby
 #travis workaround for bundler failing on 1.8.7
 before_install:
   - gem update --system 2.1.11
+  - gem install json_pure
   - gem --version
 
 install:
