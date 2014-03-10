@@ -33,6 +33,7 @@ $ xcodebuild [flags] | xcpretty -c; exit ${PIPESTATUS[0]}
 
 - `--test`, `-t` (RSpec style)
 ![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
+- `--knock`, `-k` (a [simplified version](https://github.com/chneukirchen/knock) of the Test Anything Protocol)
 
 
 ## Reporters

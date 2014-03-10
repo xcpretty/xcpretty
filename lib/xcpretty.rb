@@ -4,6 +4,7 @@ require "xcpretty/syntax"
 require "xcpretty/formatters/formatter"
 require "xcpretty/formatters/simple"
 require "xcpretty/formatters/rspec"
+require "xcpretty/formatters/knock"
 require "xcpretty/reporters/junit"
 require "xcpretty/reporters/html"
 

@@ -92,6 +92,14 @@ Given(/^I have a file to touch$/) do
   add_run_input SAMPLE_TOUCH
 end
 
+Then(/^I should see text beginning with "(.*?)"$/) do |text|
+  run_output.should start_with(text)
+end
+
+Then(/^I should (green|red) text beginning with "(.*?)"$/) do |color, text|
+  run_output.should start_with(send(color.to_sym, text))
+end
+
 Then(/^I should see a successful tiff validation message$/) do
   run_output.should start_with("▸ Validating")
 end
