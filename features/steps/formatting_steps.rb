@@ -256,5 +256,9 @@ Then(/^I should see the test time in yellow$/) do
 end
 
 Then(/^I should see the test time in red$/) do
-  run_output.should include("#{red("0.101")}") end
+  run_output.should include("#{red("0.101")}")
+end
 
+Then(/^I should see text matching "(.*?)"$/) do |text|
+  run_output.lines.to_a.detect {|line| line == text}.should_not be_nil
+end
