@@ -93,7 +93,11 @@ Given(/^I have a file to touch$/) do
 end
 
 Then(/^I should see text beginning with "(.*?)"$/) do |text|
-  run_output.should start_with(text)
+  run_output.lines.to_a.detect {|line| line.start_with? text }.should_not be_nil
+end
+
+Then(/^I should see text containing "(.*?)" and beginning with "(.*?)"$/) do |inner, start|
+  run_output.lines.to_a.detect {|line| line.start_with?(start) && line.include?(inner)}.should_not be_nil
 end
 
 Then(/^I should (green|red) text beginning with "(.*?)"$/) do |color, text|
@@ -256,5 +260,9 @@ Then(/^I should see the test time in yellow$/) do
 end
 
 Then(/^I should see the test time in red$/) do
-  run_output.should include("#{red("0.101")}") end
+  run_output.should include("#{red("0.101")}")
+end
 
+Then(/^I should see text matching "(.*?)"$/) do |text|
+  run_output.lines.to_a.last.strip.should == text
+end

@@ -27,12 +27,15 @@ $ xcodebuild [flags] | xcpretty -c; exit ${PIPESTATUS[0]}
 
 ## Formats
 
-- `--color`, `-c` (you can add it to any format)
+- `--color`, `-c` (you can add it to `--simple` or `--test` format)
+- `--no-utf` (use only ASCII characters in output)
+
 - `--simple`, `-s` (default)
 ![xcpretty --simple](http://i.imgur.com/LdmozBS.gif)
 
 - `--test`, `-t` (RSpec style)
 ![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
+- `--tap` ([Test Anything Protocol](http://testanything.org)-compatible output)
 - `--knock`, `-k` (a [simplified version](https://github.com/chneukirchen/knock) of the Test Anything Protocol)
 
 

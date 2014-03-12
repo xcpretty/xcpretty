@@ -31,8 +31,11 @@ OptionParser.new do |opts|
   opts.on('-s', '--simple', 'Use simple output (default)') do
     printer_opts[:formatter] = XCPretty::Simple
   end
-  opts.on('-k', '--knock', 'Use knock output (does not support --color)') do
+  opts.on('-k', '--knock', 'Use knock output') do
     printer_opts[:formatter] = XCPretty::Knock
+  end
+  opts.on('--tap', 'Use TAP output') do
+    printer_opts[:formatter] = XCPretty::TestAnything
   end
   opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
     printer_opts[:formatter] = XCPretty.load_custom_formatter(path)
