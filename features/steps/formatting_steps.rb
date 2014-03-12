@@ -20,7 +20,7 @@ Given(/^I have a file to shallow analyze$/) do
 end
 
 Given(/^I have a failing test in my suite$/) do
-  add_run_input SAMPLE_SPECTA_FAILURE
+  add_run_input SAMPLE_OLD_SPECTA_FAILURE
 end
 
 Given(/^all of my tests will pass in my suite$/) do
