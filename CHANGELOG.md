@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.4
+
+###### Enhancements
+
+* New logo
+* New output format: tap
+* New output format: knock
+* Updated parser to support Specta 0.2.1
+  | [Josh Vickery](https://github.com/vickeryj)
+  | [#64](https://github.com/supermarin/xcpretty/pull/64)
+* Support additional file extensions
+  | [Boris Bügling](https://github.com/neonichu)
+  | [#64](https://github.com/supermarin/xcpretty/pull/59)
+
 ## 0.1.3
 
 ###### Enhancements
