@@ -5,6 +5,9 @@ before_install:
   - gem update --system 2.1.11
   - gem --version
 
+install:
+  - gem install
+
 rvm:
   - 2.1.0
   - 2.0.0
