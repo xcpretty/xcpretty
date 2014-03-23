@@ -6,7 +6,7 @@ before_install:
   - gem --version
 
 install:
-  - gem install
+  - bundle install
 
 rvm:
   - 2.1.0
