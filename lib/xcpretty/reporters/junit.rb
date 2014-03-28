@@ -62,7 +62,10 @@ module XCPretty
       FileUtils.mkdir_p(File.dirname(@filepath))
       formatter = REXML::Formatters::Pretty.new(2)
       formatter.compact = true
-      formatter.write(@document, File.open(@filepath, 'w+'))
+      output_file = File.open(@filepath, 'w+')
+      result = formatter.write(@document, output_file)
+      output_file.close
+      result
     end
 
     def suite(classname)
