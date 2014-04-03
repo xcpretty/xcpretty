@@ -20,6 +20,10 @@ When /^I run xpretty -t over a file with a test suite that completed$/ do
   @output = `cat features/fixtures/xcodebuild_good.log | bin/xcpretty -t`
 end
 
+Then(/^I should see the last started test's name "(.*)"$/) do |test_name|
+  run_output.should include(test_name)
+end
+
 Then(/^I should see the help banner$/) do
   run_output.should include("Usage: xcodebuild [options] | xcpretty")
 end

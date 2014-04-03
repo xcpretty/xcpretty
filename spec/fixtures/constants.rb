@@ -3,6 +3,7 @@
 KIWI = 'kiwi'
 OCUNIT = 'ocunit'
 SAMPLE_OCUNIT_TEST_RUN_BEGINNING = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' started at 2013-12-10 07:04:33 +0000"
+SAMPLE_KIWI_TEST_CASE_STARTING = "Test Case '-[SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen]' started."
 SAMPLE_KIWI_TEST_RUN_BEGINNING = "Test Suite 'ObjectiveRecordTests.xctest' started at 2013-12-10 06:15:39 +0000"
 SAMPLE_SPECTA_TEST_RUN_BEGINNING = "    Test Suite 'KIFTests.xctest' started at 2014-02-28 15:43:42 +0000"
 SAMPLE_OCUNIT_TEST_RUN_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-10 07:03:03 +0000."
@@ -536,4 +537,3 @@ SAMPLE_LD_SYMBOLS_ERROR = 'ld: symbol(s) not found for architecture x86_64'
 SAMPLE_LD_LIBRARY_ERROR = 'ld: library not found for -lPods-Yammer'
 
 SAMPLE_CLANG_ERROR = 'clang: error: linker command failed with exit code 1 (use -v to see invocation)'
-

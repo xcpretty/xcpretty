@@ -151,6 +151,23 @@ module XCPretty
       @parser.parse(SAMPLE_PENDING_KIWI_TEST)
     end
 
+    it "parses test case starting" do
+      @parser.parse(SAMPLE_KIWI_TEST_CASE_STARTING)
+      @parser.current_test.should eq 'SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen'
+    end
+
+    it "parses test case passing" do
+      @parser.parse(SAMPLE_KIWI_TEST_CASE_STARTING)
+      @parser.parse(SAMPLE_KIWI_TEST)
+      @parser.current_test.should be_nil
+    end
+
+    it "parses test case failing" do
+      @parser.parse(SAMPLE_KIWI_TEST_CASE_STARTING)
+      @parser.parse(SAMPLE_KIWI_FAILURE)
+      @parser.current_test.should be_nil
+    end
+
     it "parses PhaseScriptExecution" do
       @formatter.should receive(:format_phase_script_execution).with('Check Pods Manifest.lock')
       @parser.parse(SAMPLE_RUN_SCRIPT)

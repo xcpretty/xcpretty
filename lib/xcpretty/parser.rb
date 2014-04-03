@@ -165,6 +165,10 @@ module XCPretty
     TESTS_SUITE_START_MATCHER = /^\s*Test Suite '(.*)' started at/
 
     # @regex Captured groups
+    # $1 test case name
+    TESTS_CASE_START_MATCHER = /^\s*Test Case '-\[(.*)\]' started/
+
+    # @regex Captured groups
     # $1 file_name
     TIFFUTIL_MATCHER = /^TiffUtil\s(.*)/
 
@@ -287,6 +291,10 @@ module XCPretty
       parsed_passing_tests? && !parsed_failing_tests? && all_test_runs_complete?
     end
 
+    def current_test
+      @current_test
+    end
+
     private
 
     def update_test_state(text)
@@ -306,8 +314,12 @@ module XCPretty
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
         @parsed_failing_tests = true
+        @current_test = nil
       when PASSING_TEST_MATCHER
         @parsed_passing_tests = true
+        @current_test = nil
+      when TESTS_CASE_START_MATCHER
+        @current_test = $1
       end
     end
 
@@ -405,4 +417,3 @@ module XCPretty
 
   end
 end
-
