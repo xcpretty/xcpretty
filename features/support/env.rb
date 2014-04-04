@@ -10,6 +10,7 @@ require 'rexml/document'
 require 'lib/xcpretty/formatters/formatter'
 require 'lib/xcpretty/reporters/junit'
 require 'lib/xcpretty/reporters/html'
+require 'lib/xcpretty/reporters/json_compilation_database'
 begin
   require 'json'
 rescue LoadError
@@ -103,4 +104,5 @@ After do
   @json = nil
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
   FileUtils.rm_rf(XCPretty::HTML::FILEPATH)
+  FileUtils.rm_rf(XCPretty::JSONCompilationDatabase::FILEPATH)
 end
