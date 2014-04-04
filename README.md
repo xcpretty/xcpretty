@@ -3,8 +3,9 @@
 __`xcpretty` is a fast and flexible formatter for `xcodebuild`__.<br/>
 It does one thing, and it should do it well.
 
-[![Build Status](https://travis-ci.org/supermarin/xcpretty.png?branch=master)](https://travis-ci.org/supermarin/xcpretty)
-[![Code Climate](https://codeclimate.com/github/supermarin/xcpretty.png)](https://codeclimate.com/github/supermarin/xcpretty)
+[![Gem version](http://img.shields.io/gem/v/xcpretty.svg)](http://rubygems.org/gems/xcpretty)
+[![Build Status](https://travis-ci.org/supermarin/xcpretty.svg?branch=master)](https://travis-ci.org/supermarin/xcpretty)
+[![Code Climate](http://img.shields.io/codeclimate/github/supermarin/xcpretty.svg)](https://codeclimate.com/github/supermarin/xcpretty)
 
 ## Installation
 ``` bash
@@ -23,9 +24,9 @@ CI uses the status code to determine if build has failed.
 
 ``` bash
 $ set -o pipefail && xcodebuild [flags] | xcpretty -c
-```
-or
-``` bash
+#
+# OR
+#
 $ xcodebuild [flags] | xcpretty -c && exit ${PIPESTATUS[0]}
 ```
 
