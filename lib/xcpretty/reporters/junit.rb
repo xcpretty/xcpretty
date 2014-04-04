@@ -38,6 +38,14 @@ module XCPretty
       @test_count += 1
     end
 
+    def format_pending_test(classname, test_case)
+      test_node = suite(classname).add_element('testcase')
+      test_node.attributes['classname'] = classname
+      test_node.attributes['name']      = test_case
+      test_node.add_element('skipped')
+      @test_count += 1
+    end
+
     def format_failing_test(classname, test_case, reason, file)
       test_node = suite(classname).add_element('testcase')
       test_node.attributes['classname'] = classname

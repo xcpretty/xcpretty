@@ -11,6 +11,12 @@ Then(/^I should see a passing test node in my report$/) do
   end.should_not be_nil
 end
 
+Then(/^I should see a pending test node in my report$/) do
+  junit_report_root.elements.to_a.detect do |node|
+    node.elements.to_a.detect {|child| child.name == 'skipped'}
+  end.should_not be_nil
+end
+
 Then(/^I should see a test suite node$/) do
   junit_report_root.elements.to_a.first.should_not be_nil
 end

@@ -8,6 +8,11 @@ Feature: Creating a JUnit test report
         When I pipe to xcpretty with "--report junit"
         Then I should see a test suite node
 
+    Scenario: Showing pending test output
+        Given I have a pending test in my suite
+        When I pipe to xcpretty with "--report junit"
+        Then I should see a pending test node in my report
+
     Scenario: Showing failed tests
         Given I have a failing test in my suite
         When I pipe to xcpretty with "--report junit"
