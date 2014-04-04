@@ -10,6 +10,11 @@ require 'rexml/document'
 require 'lib/xcpretty/formatters/formatter'
 require 'lib/xcpretty/reporters/junit'
 require 'lib/xcpretty/reporters/html'
+begin
+  require 'json'
+rescue LoadError
+  require 'vendor/json_pure/parser'
+end
 
 include XCPretty::ANSI
 

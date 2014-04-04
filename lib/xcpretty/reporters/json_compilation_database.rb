@@ -2,25 +2,19 @@ module XCPretty
   class JSONCompilationDatabase
 
     include XCPretty::FormatMethods
-    FILEPATH = 'build/reports/compilation-db.json'
+    FILEPATH = 'build/reports/compilation_db.json'
 
     def load_dependencies
       unless @@loaded ||= false
         require 'fileutils'
         require 'pathname'
-        
         unless Object.const_defined?(:JSON)
-            begin
-                require 'json'
-                rescue LoadError
-                begin
-                    require 'rubygems'
-                    require 'json/pure'
-                    rescue LoadError
-                end
-            end
+          begin
+            require 'json'
+          rescue LoadError
+            require File.expand_path('vendor/json_pure/generator')
+          end
         end
-        
         @@loaded = true
       end
     end
@@ -57,7 +51,7 @@ module XCPretty
 
     def write_report
       File.open(@filepath, 'w') do |f|
-        f.write(JSON.pretty_generate(@compilation_units))
+        f.write(@compilation_units.to_json)
       end
     end
   end
