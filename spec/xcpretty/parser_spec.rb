@@ -58,6 +58,12 @@ module XCPretty
       @parser.parse(SAMPLE_CODESIGN_FRAMEWORK)
     end
 
+    it "parses compiler commands" do
+      compile_statement = SAMPLE_ANOTHER_COMPILE.lines().to_a.last()
+      @formatter.should receive(:format_compile_command).with(compile_statement.strip())
+      @parser.parse(compile_statement)
+    end
+
     it "parses compiling categories" do
       @formatter.should receive(:format_compile).with("NSMutableArray+ObjectiveSugar.m", "/Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m")
       @parser.parse(SAMPLE_COMPILE)
