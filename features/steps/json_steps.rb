@@ -1,3 +1,7 @@
+Given(/^some big input$/) do
+  add_run_input File.open('features/fixtures/xcodebuild.log', 'r').read
+end
+
 Then(/^I should have a JSON compilation database in a custom path$/) do
   step("I should have a JSON compilation database at \"#{custom_report_path}\"")
 end
@@ -27,16 +31,7 @@ Then(/^the JSON compilation database should contain an entry with a directory$/)
   json_db[0]["directory"].should == "/Users/musalj/code/OSS/ObjectiveSugar/Classes"
 end
 
-Given(/^some big input$/) do
-  add_run_input File.open('features/fixtures/xcodebuild.log', 'r').read
-end
-
 Then(/^the JSON compilation database should be complete$/) do
-  json_db.length.should == JSON_DB_FIXTURE_COMMAND_COUNT
-  
-  for entry in json_db do
-    entry['command'].should_not be_nil
-    entry['file'].should_not be_nil
-    entry['directory'].should_not be_nil
-  end
+  entries = json_db.select {|entry| entry['command'] && entry['file'] && entry['directory']}
+  entries.length.should == JSON_DB_FIXTURE_COMMAND_COUNT
 end
