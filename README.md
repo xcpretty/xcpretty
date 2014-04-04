@@ -22,7 +22,11 @@ __Important:__ If you're running `xcpretty` on a CI like Travis or Jenkins, you 
 CI uses the status code to determine if build has failed.
 
 ``` bash
-$ xcodebuild [flags] | xcpretty -c; exit ${PIPESTATUS[0]}
+$ set -o pipefail && xcodebuild [flags] | xcpretty -c
+```
+or
+``` bash
+$ xcodebuild [flags] | xcpretty -c && exit ${PIPESTATUS[0]}
 ```
 
 ## Formats
