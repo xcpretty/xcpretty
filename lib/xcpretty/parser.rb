@@ -182,6 +182,7 @@ module XCPretty
 
     include Matchers
     attr_reader :formatter
+    attr_reader :current_test
 
     def initialize(formatter)
       @formatter = formatter
@@ -289,10 +290,6 @@ module XCPretty
 
     def parsed_valid_test_build?
       parsed_passing_tests? && !parsed_failing_tests? && all_test_runs_complete?
-    end
-
-    def current_test
-      @current_test
     end
 
     private
