@@ -182,12 +182,12 @@ module XCPretty
 
     include Matchers
     attr_reader :formatter
-    attr_reader :current_test
 
     def initialize(formatter)
       @formatter = formatter
       @test_suites_parsed = {}
       @test_runs_parsed = {}
+      @test_stack = []
     end
 
     def parse(text)
@@ -292,6 +292,10 @@ module XCPretty
       parsed_passing_tests? && !parsed_failing_tests? && all_test_runs_complete?
     end
 
+    def current_test
+      @test_stack[-1]
+    end
+
     private
 
     def update_test_state(text)
@@ -311,12 +315,12 @@ module XCPretty
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
         @parsed_failing_tests = true
-        @current_test = nil
+        @test_stack.pop
       when PASSING_TEST_MATCHER
         @parsed_passing_tests = true
-        @current_test = nil
+        @test_stack.pop
       when TESTS_CASE_START_MATCHER
-        @current_test = $1
+        @test_stack.push $1
       end
     end
 
