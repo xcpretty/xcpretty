@@ -81,7 +81,7 @@ if (printer_opts[:formatter] == XCPretty::RSpec)
   if (!parsed_valid_build)
     parser = printer.formatter.parser
     if (!parser.all_test_runs_complete? and parser.current_test)
-      STDOUT.print("\n\nTest run failed to complete. Last attempted test: #{parser.current_test}\n\n")
+      STDOUT.print("\n\nTest run failed to complete. Test stack:\n#{parser.formatted_test_stack}\n\n")
     end
   end
   exit(parsed_valid_build ? 0 : 1)

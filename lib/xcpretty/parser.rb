@@ -296,6 +296,10 @@ module XCPretty
       @test_stack[-1]
     end
 
+    def formatted_test_stack
+      @test_stack.join "\n"
+    end
+
     private
 
     def update_test_state(text)
@@ -305,13 +309,17 @@ module XCPretty
         @formatted_summary = false
         @failures = {}
         @test_runs_parsed[$1] = false
+        @test_stack.push $1
       when TESTS_SUITE_START_MATCHER
         @test_suites_parsed[$1] = false
+        @test_stack.push $1
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
         @test_runs_parsed[$1] = true
+        @test_stack.pop
       when TESTS_SUITE_COMPLETION_MATCHER
         @test_suites_parsed[$1] = true
+        @test_stack.pop
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
         @parsed_failing_tests = true
