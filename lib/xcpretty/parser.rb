@@ -185,7 +185,6 @@ module XCPretty
 
     def initialize(formatter)
       @formatter = formatter
-      @test_suites_parsed = {}
       @test_runs_parsed = {}
       @test_stack = []
     end
@@ -270,9 +269,8 @@ module XCPretty
       end
     end
 
-    def all_test_runs_complete?
-      @test_runs_parsed.count > 0 &&
-        @test_runs_parsed.values.all?{ |is_complete| is_complete }
+    def all_tests_complete?
+      @test_stack.count == 0
     end
 
     def all_test_suites_complete?
@@ -289,7 +287,7 @@ module XCPretty
     end
 
     def parsed_valid_test_build?
-      parsed_passing_tests? && !parsed_failing_tests? && all_test_runs_complete?
+      parsed_passing_tests? && !parsed_failing_tests? && all_tests_complete?
     end
 
     def current_test
@@ -308,17 +306,13 @@ module XCPretty
         @tests_done = false
         @formatted_summary = false
         @failures = {}
-        @test_runs_parsed[$1] = false
         @test_stack.push $1
       when TESTS_SUITE_START_MATCHER
-        @test_suites_parsed[$1] = false
         @test_stack.push $1
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
-        @test_runs_parsed[$1] = true
         @test_stack.pop
       when TESTS_SUITE_COMPLETION_MATCHER
-        @test_suites_parsed[$1] = true
         @test_stack.pop
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
