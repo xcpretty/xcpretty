@@ -10,6 +10,12 @@ require 'rexml/document'
 require 'lib/xcpretty/formatters/formatter'
 require 'lib/xcpretty/reporters/junit'
 require 'lib/xcpretty/reporters/html'
+require 'lib/xcpretty/reporters/json_compilation_database'
+begin
+  require 'json'
+rescue LoadError
+  require 'vendor/json_pure/parser'
+end
 
 include XCPretty::ANSI
 
@@ -20,6 +26,8 @@ TEST_PATH_MATCHER = %r{[\w/\-\s]+:\d+}
 PASSING_TEST_NAME_MATCHER = %r{\w+\s\(\d+\.\d+\sseconds\)}
 PENDING_TEST_NAME_MATCHER = %r{\w+\s\[PENDING\]}
 FAILING_TEST_NAME_MATCHER = %r{\w+, expected:}
+
+JSON_DB_FIXTURE_COMMAND_COUNT = 557
 
 def run_xcpretty(flags)
   input_file = Tempfile.new('xcpretty_input')
@@ -57,6 +65,10 @@ def html_test_suites
   end
 end
 
+def json_db
+  @json ||= JSON.parse(File.open(custom_report_path, 'r').read)
+end
+
 def junit_report
   REXML::Document.new(File.open(XCPretty::JUnit::FILEPATH, 'r').read)
 end
@@ -89,6 +101,8 @@ After do
   @custom_report_file1.unlink if @custom_report_file1
   @custom_report_file2.unlink if @custom_report_file2
   @html_report = nil
+  @json = nil
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
   FileUtils.rm_rf(XCPretty::HTML::FILEPATH)
+  FileUtils.rm_rf(XCPretty::JSONCompilationDatabase::FILEPATH)
 end
