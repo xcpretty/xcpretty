@@ -54,8 +54,7 @@ module XCPretty
     it "formats linker duplicate symbols by default" do
       @formatter.format_duplicate_symbols("duplicate symbol _OBJC_IVAR_$ClassName._ivarName in",
         ['/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Intermediates/App.build/Debug-iphonesimulator/App.build/Objects-normal/i386/ClassName.o',
-         '/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Products/Debug-iphonesimulator/libPods.a(DuplicateClassName.o)'])
-      .should == %Q(
+         '/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Products/Debug-iphonesimulator/libPods.a(DuplicateClassName.o)']).should == %Q(
 #{@formatter.red("⌦ duplicate symbol _OBJC_IVAR_$ClassName._ivarName in")}
 > ClassName.o
 > libPods.a(DuplicateClassName.o)
