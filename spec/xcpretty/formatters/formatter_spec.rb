@@ -41,9 +41,9 @@ module XCPretty
     end
 
     it "formats linker failures by default" do
-      @formatter.format_linker_failure("Undefined symbols for architecture x86_64",
-                                       '_OBJC_CLASS_$_CABasicAnimation',
-                                       'objc-class-ref in ATZRadialProgressControl.o').should == %Q(
+      @formatter.format_undefined_symbols("Undefined symbols for architecture x86_64",
+                                          '_OBJC_CLASS_$_CABasicAnimation',
+                                          'objc-class-ref in ATZRadialProgressControl.o').should == %Q(
 #{@formatter.red("⌦ Undefined symbols for architecture x86_64")}
 > Symbol: _OBJC_CLASS_$_CABasicAnimation
 > Referenced from: objc-class-ref in ATZRadialProgressControl.o

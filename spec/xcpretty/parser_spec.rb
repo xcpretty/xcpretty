@@ -190,14 +190,28 @@ module XCPretty
     end
 
     it "parses undefined symbols" do
-      @formatter.should receive(:format_linker_failure).with("Undefined symbols for architecture x86_64",
-                                                             '_OBJC_CLASS_$_CABasicAnimation',
-                                                             'objc-class-ref in ATZRadialProgressControl.o')
-
+      @formatter.should receive(:format_undefined_symbols).with("Undefined symbols for architecture x86_64",
+                                                                '_OBJC_CLASS_$_CABasicAnimation',
+                                                                'objc-class-ref in ATZRadialProgressControl.o')
       SAMPLE_UNDEFINED_SYMBOLS.each_line do |line|
         @parser.parse(line)
       end
     end
+
+    it "parses duplicate symbols" do
+      @formatter.should receive(:format_duplicate_symbols).with(
+        "duplicate symbol _OBJC_IVAR_$ClassName._ivarName in",
+        [
+          '/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Intermediates/App.build/Debug-iphonesimulator/App.build/Objects-normal/i386/ClassName.o',
+          '/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Products/Debug-iphonesimulator/libPods.a(DuplicateClassName.o)'
+        ]
+      )
+      SAMPLE_DUPLICATE_SYMBOLS.each_line do |line|
+        @parser.parse(line)
+      end
+    end
+
+
 
     it "parses ocunit test run finished" do
       @formatter.should receive(:format_test_run_finished).with('ReactiveCocoaTests.octest(Tests)', '2013-12-10 07:03:03 +0000.')
