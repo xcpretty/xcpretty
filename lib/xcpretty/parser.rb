@@ -16,10 +16,6 @@ module XCPretty
     # @regex Nothing returned here for now
     CHECK_DEPENDENCIES_MATCHER = /^Check dependencies/
 
-    # @regex Captured groups
-    # $1 = whole error
-    CLANG_ERROR_MATCHER = /^(clang: error:.*)$/
-
     # @regex Nothing returned here for now
     CLEAN_REMOVE_MATCHER = /^Clean.Remove/
 
@@ -38,10 +34,6 @@ module XCPretty
     CODESIGN_FRAMEWORK_MATCHER = /^CodeSign\s((?:\\ |[^ ])*.framework)\/Versions/
 
     # @regex Captured groups
-    # $1 = whole error
-    CODESIGN_ERROR_MATCHER = /^(Code\s?Sign error:.*)$/
-
-    # @regex Captured groups
     # $1 file_path
     # $2 file_name (e.g. KWNull.m)
     COMPILE_MATCHER = /^CompileC\s.*\s(.*\/(.*\.(?:m|mm|c|cc|cpp|cxx)))\s.*/
@@ -49,12 +41,6 @@ module XCPretty
     # @regex Captured groups
     # $1 compiler_command
     COMPILE_COMMAND_MATCHER = /^\s*(.*\/usr\/bin\/clang\s.*\.o)$/
-
-    # @regex Captured groups
-    # $1 = file_path
-    # $2 = file_name
-    # $3 = reason
-    COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):.*:.*):(?:\sfatal)?\serror:\s(.*)$/
 
     # @regex Captured groups
     # $1 file_path
@@ -70,10 +56,6 @@ module XCPretty
     CPRESOURCE_MATCHER = /^CpResource\s(.*)\s\//
 
     # @regex Captured groups
-    # $1 cursor (with whitespaces and tildes)
-    CURSOR_MATCHER = /^([\s~]*\^[\s~]*)$/
-
-    # @regex Captured groups
     #
     EXECUTED_MATCHER = /^\s*Executed/
 
@@ -85,25 +67,12 @@ module XCPretty
     FAILING_TEST_MATCHER = /^\s*(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
     # @regex Captured groups
-    # $1 = whole error.
-    #      it varies a lot, not sure if it makes sense to catch everything separately
-    FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
-
-    # @regex Captured groups
     # $1 = dsym
     GENERATE_DSYM_MATCHER = /^GenerateDSYMFile \/.*\/(.*\.dSYM)/
 
     # @regex Captured groups
     # $1 = library
     LIBTOOL_MATCHER = /^Libtool.*\/(.*\.a)/
-
-    # @regex Captured groups
-    # $1 = whole error
-    LD_ERROR_MATCHER = /^(ld:.*not found for.*)/
-
-    # @regex Captured groups
-    # $1 reason
-    LINKER_FAILURE_MATCHER = /^(Undefined symbols for architecture .*):$/
 
     # @regex Captured groups
     # $1 = target
@@ -127,9 +96,6 @@ module XCPretty
     PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)\s\//
 
     # @regex Captured groups
-    PODS_ERROR_MATCHER = /^error:\s(.*)/
-
-    # @regex Captured groups
     # $1 = file
     PROCESS_PCH_MATCHER = /^ProcessPCH\s.*\s(.*.pch)/
 
@@ -144,10 +110,6 @@ module XCPretty
     # @regex Captured groups
     # $1 = file
     PROCESS_INFO_PLIST_MATCHER = /^ProcessInfoPlistFile\s.*\.plist\s(.*\/+(.*\.plist))/
-
-    # @regex Captured groups
-    # $1 = reference
-    SYMBOL_REFERENCED_FROM_MATCHER = /\s+"(.*)", referenced from:$/
 
     # @regex Captured groups
     # $1 = suite
@@ -171,11 +133,65 @@ module XCPretty
     # $1 file_path
     # $2 file_name
     TOUCH_MATCHER = /^Touch\s(.*\/([\w+\.]+))/
+
+    module Errors
+      # @regex Captured groups
+      # $1 = whole error
+      CLANG_ERROR_MATCHER = /^(clang: error:.*)$/
+
+      # @regex Captured groups
+      # $1 = whole error
+      CODESIGN_ERROR_MATCHER = /^(Code\s?Sign error:.*)$/
+
+      # @regex Captured groups
+      # $1 = file_path
+      # $2 = file_name
+      # $3 = reason
+      COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):.*:.*):(?:\sfatal)?\serror:\s(.*)$/
+
+      # @regex Captured groups
+      # $1 cursor (with whitespaces and tildes)
+      CURSOR_MATCHER = /^([\s~]*\^[\s~]*)$/
+
+      # @regex Captured groups
+      # $1 = whole error.
+      #      it varies a lot, not sure if it makes sense to catch everything separately
+      FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
+
+      # @regex Captured groups
+      # $1 = whole error
+      LD_ERROR_MATCHER = /^(ld:.*not found for.*)/
+
+      # @regex Captured groups
+      # $1 file path
+      LINKER_DUPLICATE_SYMBOLS_LOCATION_MATCHER = /^\s+(\/.*\.o[\)]?)$/
+
+      # @regex Captured groups
+      # $1 reason
+      LINKER_DUPLICATE_SYMBOLS_MATCHER = /^(duplicate symbol .*):$/
+
+      # @regex Captured groups
+      # $1 symbol location
+      LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER = /^(.* in .*\.o)$/
+
+      # @regex Captured groups
+      # $1 reason
+      LINKER_UNDEFINED_SYMBOLS_MATCHER = /^(Undefined symbols for architecture .*):$/
+
+      # @regex Captured groups
+      PODS_ERROR_MATCHER = /^error:\s(.*)/
+
+      # @regex Captured groups
+      # $1 = reference
+      SYMBOL_REFERENCED_FROM_MATCHER = /\s+"(.*)", referenced from:$/
+    end
   end
 
   class Parser
 
     include Matchers
+    include Matchers::Errors
+
     attr_reader :formatter
 
     def initialize(formatter)
@@ -188,7 +204,8 @@ module XCPretty
       update_linker_failure_state(text)
 
       return format_compile_error if should_format_error?
-      return format_linker_failure if should_format_linker_failure?
+      return format_undefined_symbols if should_format_undefined_symbols?
+      return format_duplicate_symbols if should_format_duplicate_symbols?
 
       case text
       when ANALYZE_MATCHER
@@ -295,14 +312,21 @@ module XCPretty
     end
 
     def update_linker_failure_state(text)
-      if text =~ LINKER_FAILURE_MATCHER
-        @formatting_linker_error = true
+      if text =~ LINKER_UNDEFINED_SYMBOLS_MATCHER ||
+         text =~ LINKER_DUPLICATE_SYMBOLS_MATCHER
+
         current_linker_failure[:message] = $1
-      elsif text =~ SYMBOL_REFERENCED_FROM_MATCHER
+        @formatting_linker_failure = true
+      end
+      return unless @formatting_linker_failure
+
+      case text
+      when SYMBOL_REFERENCED_FROM_MATCHER
         current_linker_failure[:symbol] = $1
-      elsif @formatting_linker_error
+      when LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER
         current_linker_failure[:reference] = text.strip
-        @formatting_linker_error = false
+      when LINKER_DUPLICATE_SYMBOLS_LOCATION_MATCHER
+        current_linker_failure[:files] << $1
       end
     end
 
@@ -311,10 +335,15 @@ module XCPretty
       current_error[:reason] && current_error[:cursor] && current_error[:line]
     end
 
-    def should_format_linker_failure?
+    def should_format_undefined_symbols?
       current_linker_failure[:message]     &&
       current_linker_failure[:symbol]      &&
       current_linker_failure[:reference]
+    end
+
+    def should_format_duplicate_symbols?
+      current_linker_failure[:message]     &&
+      current_linker_failure[:files].count > 1
     end
 
     def current_error
@@ -322,7 +351,7 @@ module XCPretty
     end
 
     def current_linker_failure
-      @linker_failure ||= {}
+      @linker_failure ||= { :files => [] }
     end
 
     def format_compile_error
@@ -335,12 +364,28 @@ module XCPretty
                                      error[:cursor])
     end
 
-    def format_linker_failure
-      failure = current_linker_failure.dup
-      @linker_failure = {}
-      formatter.format_linker_failure(failure[:message],
-                                      failure[:symbol],
-                                      failure[:reference])
+    def format_undefined_symbols
+      result = formatter.format_undefined_symbols(
+        current_linker_failure[:message],
+        current_linker_failure[:symbol],
+        current_linker_failure[:reference]
+      )
+      reset_linker_format_state
+      result
+    end
+
+    def format_duplicate_symbols
+      result = formatter.format_duplicate_symbols(
+        current_linker_failure[:message],
+        current_linker_failure[:files]
+      )
+      reset_linker_format_state
+      result
+    end
+
+    def reset_linker_format_state
+      @linker_failure = nil
+      @formatting_linker_failure = false
     end
 
     def store_failure(file, test_suite, test_case, reason)

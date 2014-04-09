@@ -531,6 +531,14 @@ Undefined symbols for architecture x86_64:
 ld: symbol(s) not found for architecture x86_64
 )
 
+SAMPLE_DUPLICATE_SYMBOLS = %Q(
+duplicate symbol _OBJC_IVAR_$ClassName._ivarName in:
+    /Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Intermediates/App.build/Debug-iphonesimulator/App.build/Objects-normal/i386/ClassName.o
+    /Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Products/Debug-iphonesimulator/libPods.a(DuplicateClassName.o)
+ld: 1 duplicate symbol for architecture i386
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+)
+
 SAMPLE_LD_SYMBOLS_ERROR = 'ld: symbol(s) not found for architecture x86_64'
 SAMPLE_LD_LIBRARY_ERROR = 'ld: library not found for -lPods-Yammer'
 

@@ -40,16 +40,27 @@ module XCPretty
 )
     end
 
-    it "formats linker failures by default" do
-      @formatter.format_linker_failure("Undefined symbols for architecture x86_64",
-                                       '_OBJC_CLASS_$_CABasicAnimation',
-                                       'objc-class-ref in ATZRadialProgressControl.o').should == %Q(
+    it "formats linker undefined symbols by default" do
+      @formatter.format_undefined_symbols("Undefined symbols for architecture x86_64",
+                                          '_OBJC_CLASS_$_CABasicAnimation',
+                                          'objc-class-ref in ATZRadialProgressControl.o').should == %Q(
 #{@formatter.red("⌦ Undefined symbols for architecture x86_64")}
 > Symbol: _OBJC_CLASS_$_CABasicAnimation
 > Referenced from: objc-class-ref in ATZRadialProgressControl.o
 
 )
     end
+
+    it "formats linker duplicate symbols by default" do
+      @formatter.format_duplicate_symbols("duplicate symbol _OBJC_IVAR_$ClassName._ivarName in",
+        ['/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Intermediates/App.build/Debug-iphonesimulator/App.build/Objects-normal/i386/ClassName.o',
+         '/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Products/Debug-iphonesimulator/libPods.a(DuplicateClassName.o)']).should == %Q(
+#{@formatter.red("⌦ duplicate symbol _OBJC_IVAR_$ClassName._ivarName in")}
+> ClassName.o
+> libPods.a(DuplicateClassName.o)
+)
+    end
+
 
     if RUBY_VERSION > '1.8.7'
       it "formats failures per suite" do
