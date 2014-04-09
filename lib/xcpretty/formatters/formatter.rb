@@ -91,11 +91,19 @@ module XCPretty
     end
 
     def format_compile_error(file, file_path, reason, line, cursor)
-      "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n#{line}\n#{cyan(cursor)}\n\n"
+      "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n" +
+      "#{line}\n#{cyan(cursor)}\n\n"
     end
 
     def format_undefined_symbols(message, symbol, reference)
-      "\n#{red(error_symbol + " " + message)}\n> Symbol: #{symbol}\n> Referenced from: #{reference}\n\n"
+      "\n#{red(error_symbol + " " + message)}\n" +
+      "> Symbol: #{symbol}\n" +
+      "> Referenced from: #{reference}\n\n"
+    end
+
+    def format_duplicate_symbols(message, file_paths)
+      "\n#{red(error_symbol + " " + message)}\n" +
+      "> #{file_paths.map { |path| path.split('/').last }.join("\n> ")}\n"
     end
 
 
