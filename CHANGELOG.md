@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.5
+
+###### Enhancements
+
+* Json-compilation-databse report!
+  | [Boris Bügling](https://github.com/neonichu)
+  | [#77](https://github.com/supermarin/xcpretty/pull/77)
+* Parsing duplicate symbols
+  | [#78](https://github.com/supermarin/xcpretty/pull/78)
+* Improved performance (nobody cares)
+
+###### Bug Fixes
+
+* Fix closing files when used from another proccess
+  | [Jonas Witt](https://github.com/jonaswitt)
+  | [#75](http://github.com/supermarin/xcpretty/pull/75)
+
+
 ## 0.1.4
 
 ###### Enhancements
@@ -13,6 +31,7 @@
 * Support additional file extensions
   | [Boris Bügling](https://github.com/neonichu)
   | [#59](https://github.com/supermarin/xcpretty/pull/59)
+
 
 ## 0.1.3
 
