@@ -24,7 +24,7 @@ module XCPretty
       @parser    = Parser.new(self)
       @total_tests = 0
       @total_fails = 0
-      @target = ""
+      @target = ''
     end
 
     def handle(line)
@@ -32,7 +32,7 @@ module XCPretty
     end
 
     def format_build_target(target, project, configuration)
-      @target = target;
+      @target = target
     end
 
     def format_passing_test(classname, test_case, time)
