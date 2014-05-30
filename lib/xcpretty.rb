@@ -1,6 +1,7 @@
 require "xcpretty/version"
 require "xcpretty/printer"
 require "xcpretty/syntax"
+require "xcpretty/snippet"
 require "xcpretty/formatters/formatter"
 require "xcpretty/formatters/simple"
 require "xcpretty/formatters/rspec"

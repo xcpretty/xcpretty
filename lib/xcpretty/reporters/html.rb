@@ -44,15 +44,12 @@ module XCPretty
     private
 
     def formatted_snippet(filepath)
-      file, line = filepath.split(':')
-      f = File.open(file)
-      line.to_i.times { f.gets }
-      text = $_.strip
-      f.close
-      Syntax.highlight(text, "-f html -O style=colorful -O noclasses")
+      snippet = Snippet.from_filepath(filepath)
+      Syntax.highlight(snippet, "-f html -O style=colorful -O noclasses")
     rescue
       nil
     end
+
 
     def add_test(suite_name, data)
       @test_count += 1
@@ -66,6 +63,7 @@ module XCPretty
 
     def write_report
       File.open(@filepath, 'w') do |f|
+        # WAT: get rid of these locals. BTW Cucumber fails if you remove them
         test_suites = @test_suites
         fail_count  = @fail_count
         test_count  = @test_count
