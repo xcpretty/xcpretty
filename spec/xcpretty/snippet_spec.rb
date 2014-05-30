@@ -20,6 +20,11 @@ EOS
       Snippet.from_filepath(path).should == "\nSPEC_END"
     end
 
+    it "doesn't crash if file path is invalid" do
+      path = 'invalid-path'
+      Snippet.from_filepath(path).should == nil
+    end
+
   end
 end
 

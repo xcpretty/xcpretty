@@ -1,14 +1,16 @@
 module XCPretty
   class Snippet
 
-    def self.from_filepath(file_path)
-      path, line = file_path.split(':')
+    def self.from_filepath(filepath)
+      path, line = filepath.split(':')
       file = File.open(path)
 
       text = read_snippet(file, line)
 
       file.close
       text
+    rescue
+      nil
     end
 
 

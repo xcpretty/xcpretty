@@ -46,8 +46,6 @@ module XCPretty
     def formatted_snippet(filepath)
       snippet = Snippet.from_filepath(filepath)
       Syntax.highlight(snippet, "-f html -O style=colorful -O noclasses")
-    rescue
-      nil
     end
 
 
