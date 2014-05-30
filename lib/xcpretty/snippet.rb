@@ -10,7 +10,7 @@ module XCPretty
       file.close
       text
     rescue
-      ""
+      ''
     end
 
 
@@ -26,7 +26,7 @@ module XCPretty
 
     def self.readline(file)
       file.gets
-      $_ || ""
+      $_ || ''
     end
 
   end
