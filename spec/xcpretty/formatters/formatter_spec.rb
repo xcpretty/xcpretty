@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'xcpretty'
+require 'fixtures/constants'
 
 module XCPretty
 
@@ -64,16 +65,21 @@ module XCPretty
 
     if RUBY_VERSION > '1.8.7'
       it "formats failures per suite" do
+        Syntax.stub(:highlight) { |text| text }
+
+        first_path = File.expand_path('spec/fixtures/NSStringTests.m:46')
+        second_path = File.expand_path('spec/fixtures/NSStringTests.m:57')
+
         failures = {
           'CarSpec' => [
             {
-              :file => 'path/to/file2',
+              :file_path => first_path,
               :reason => "just doesn't work",
               :test_case => 'Starting the car'
             }],
             'StringSpec' => [
               {
-                :file => 'path/to/file1',
+                :file_path => second_path,
                 :reason => "doesn't split",
                 :test_case => 'Splitting the string'
               }]
@@ -82,15 +88,24 @@ module XCPretty
 
 CarSpec
   Starting the car, #{@formatter.red("just doesn't work")}
-  #{@formatter.cyan("path/to/file2")}
+  #{@formatter.cyan(first_path)}
+  ```
+        it(@"converts snake_cased to CamelCased", ^{
+            [[[@"snake_case" camelCase] should] equal:@"SnakeCase"];
+        });
+  ```
 
 StringSpec
   Splitting the string, #{@formatter.red("doesn't split")}
-  #{@formatter.cyan("path/to/file1")}
+  #{@formatter.cyan(second_path)}
+  ```
+    it(@"-strip strips whitespaces and newlines from both ends", ^{
+        [[[@"  Look mo, no empties!   " strip] should] equal:@"Look mo, no empties!"];
+    });
+  ```
 
 
 #{@formatter.red(SAMPLE_EXECUTED_TESTS)})
-
       end
     end # only ruby 1.9 above because of ordered hashes
 

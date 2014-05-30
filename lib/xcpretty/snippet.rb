@@ -10,7 +10,7 @@ module XCPretty
       file.close
       text
     rescue
-      nil
+      ""
     end
 
 

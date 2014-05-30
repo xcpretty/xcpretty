@@ -111,12 +111,19 @@ module XCPretty
 
     def format_failures(failures_per_suite)
       failures_per_suite.map do |suite, failures|
-        formatted_failures = failures.map do |f|
-          "  #{f[:test_case]}, #{red(f[:reason])}\n  #{cyan(f[:file])}"
+        formatted_failures = failures.map do |failure|
+          format_failure(failure)
         end.join("\n\n")
 
         "\n#{suite}\n#{formatted_failures}"
       end.join("\n")
+    end
+
+    def format_failure(f)
+      "  #{f[:test_case]}, #{red(f[:reason])}\n  #{cyan(f[:file_path])}\n" +
+      "  ```\n" +
+      Syntax.highlight(Snippet.from_filepath(f[:file_path])) +
+      "  ```"
     end
 
     def error_symbol

@@ -17,12 +17,12 @@ EOS
 
     it "doesn't crash when there's nothing to read" do
       path = File.expand_path('spec/fixtures/NSStringTests.m:64')
-      Snippet.from_filepath(path).should == "\nSPEC_END"
+      Snippet.from_filepath(path).should == "\nSPEC_END\n"
     end
 
     it "doesn't crash if file path is invalid" do
       path = 'invalid-path'
-      Snippet.from_filepath(path).should == nil
+      Snippet.from_filepath(path).should == ""
     end
 
   end
