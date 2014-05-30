@@ -22,7 +22,7 @@ EOS
 
     it "doesn't crash if file path is invalid" do
       path = 'invalid-path'
-      Snippet.from_filepath(path).should == ""
+      Snippet.from_filepath(path).should == ''
     end
 
   end
