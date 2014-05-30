@@ -43,7 +43,7 @@ module XCPretty
 
     private
 
-    def formatted_snippet filepath
+    def formatted_snippet(filepath)
       file, line = filepath.split(':')
       f = File.open(file)
       line.to_i.times { f.gets }
