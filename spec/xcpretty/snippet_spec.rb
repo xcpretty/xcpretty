@@ -4,9 +4,8 @@ module XCPretty
 
   describe Snippet do
 
-    let(:path) { File.expand_path('spec/fixtures/NSStringTests.m:36') }
-
     it "gets the snippet out of the file path" do
+      path = File.expand_path('spec/fixtures/NSStringTests.m:36')
       Snippet.from_filepath(path).should ==
 <<-EOS
     it(@"-split: splits with delimiter string, not just a char", ^{
@@ -23,6 +22,16 @@ EOS
     it "doesn't crash if file path is invalid" do
       path = 'invalid-path'
       Snippet.from_filepath(path).should == ''
+    end
+
+    it "doesn't crash if a failure is on the first line" do
+      path = File.expand_path('spec/fixtures/NSStringTests.m:0')
+      Snippet.from_filepath(path).should == "//\n//  NSStringTests.m\n//  SampleProject\n"
+    end
+
+    it "doesn't crash if the file has only 1 line" do
+      path = File.expand_path('spec/fixtures/oneliner.m:0')
+      Snippet.from_filepath(path).should == "[[[@1 should] equal] @3];\n"
     end
 
   end
