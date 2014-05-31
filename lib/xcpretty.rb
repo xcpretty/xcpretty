@@ -1,14 +1,15 @@
-require "xcpretty/version"
-require "xcpretty/printer"
-require "xcpretty/syntax"
-require "xcpretty/formatters/formatter"
-require "xcpretty/formatters/simple"
-require "xcpretty/formatters/rspec"
-require "xcpretty/formatters/knock"
-require "xcpretty/formatters/tap"
-require "xcpretty/reporters/junit"
-require "xcpretty/reporters/html"
-require "xcpretty/reporters/json_compilation_database"
+require 'xcpretty/version'
+require 'xcpretty/printer'
+require 'xcpretty/syntax'
+require 'xcpretty/snippet'
+require 'xcpretty/formatters/formatter'
+require 'xcpretty/formatters/simple'
+require 'xcpretty/formatters/rspec'
+require 'xcpretty/formatters/knock'
+require 'xcpretty/formatters/tap'
+require 'xcpretty/reporters/junit'
+require 'xcpretty/reporters/html'
+require 'xcpretty/reporters/json_compilation_database'
 
 module XCPretty
 

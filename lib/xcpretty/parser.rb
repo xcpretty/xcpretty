@@ -391,7 +391,7 @@ module XCPretty
     def store_failure(file, test_suite, test_case, reason)
       failures_per_suite[test_suite] ||= []
       failures_per_suite[test_suite] << {
-        :file => file,
+        :file_path => file,
         :reason => reason,
         :test_case => test_case
       }
