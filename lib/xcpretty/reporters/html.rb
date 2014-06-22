@@ -81,7 +81,7 @@ module XCPretty
 
     def load_screenshots
       Dir.foreach(SCREENSHOT_DIR) do |item|
-        next if item == '.' or item == '..' or File.extname(item) != ".png"
+        next if item == '.' || item == '..' || File.extname(item) != '.png'
 
         suite_name = find_test_suite(item)
         next if suite_name.nil?
@@ -95,6 +95,5 @@ module XCPretty
         return key if image_name.start_with?(key)
       end
     end
-
   end
 end
