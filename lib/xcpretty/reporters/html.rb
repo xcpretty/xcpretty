@@ -4,7 +4,7 @@ module XCPretty
     include XCPretty::FormatMethods
     FILEPATH = 'build/reports/tests.html'
     TEMPLATE = File.expand_path('../../../../assets/report.html.erb', __FILE__)
-    KIF_SCREENSHOTS = 'build/reports'
+    SCREENSHOT_DIR = 'build/reports'
 
     def load_dependencies
       unless @@loaded ||= false
@@ -81,7 +81,7 @@ module XCPretty
     end
 
     def load_screenshots
-      Dir.foreach(KIF_SCREENSHOTS) do |item|
+      Dir.foreach(SCREENSHOT_DIR) do |item|
         next if item == '.' or item == '..' or File.extname(item) != ".png"
 
         suite_name = find_test_suite(item)
