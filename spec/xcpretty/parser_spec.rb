@@ -429,47 +429,47 @@ module XCPretty
       it "detects when a test run completes" do
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
-        @parser.all_tests_complete?.should be_true
+        @parser.all_tests_complete?.should be true
       end
 
       it "detects when a test run does not complete" do
         @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
-        @parser.all_tests_complete?.should be_false
+        @parser.all_tests_complete?.should be false
       end
 
       it "detects when a test suite completes" do
         @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
-        @parser.all_tests_complete?.should be_true
+        @parser.all_tests_complete?.should be true
       end
 
       it "detects when a test suite does not complete" do
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
-        @parser.all_tests_complete?.should be_false
+        @parser.all_tests_complete?.should be false
       end
 
       it "detects when a failing test is run" do
         @parser.parse(SAMPLE_SPECTA_FAILURE)
-        @parser.parsed_failing_tests?.should be_true
+        @parser.parsed_failing_tests?.should be true
       end
 
       it "detects when a passing test is run" do
         @parser.parse(SAMPLE_OCUNIT_TEST)
-        @parser.parsed_passing_tests?.should be_true
+        @parser.parsed_passing_tests?.should be true
       end
 
       it "detects when no passing tests are run" do
         @parser.parse(SAMPLE_SPECTA_FAILURE)
-        @parser.parsed_passing_tests?.should be_false
+        @parser.parsed_passing_tests?.should be false
       end
 
       it "detects when no failing tests are run" do
         @parser.parse(SAMPLE_OCUNIT_TEST)
-        @parser.parsed_failing_tests?.should be_false
+        @parser.parsed_failing_tests?.should be false
       end
 
     end
@@ -477,7 +477,7 @@ module XCPretty
     context "valid build detection" do
 
       it "detects that a build is invalid when no tests are run" do
-        @parser.parsed_valid_test_build?.should be_false
+        @parser.parsed_valid_test_build?.should be false
       end
 
       it "detects that a build is invalid when a test run starts and does not finish" do
@@ -485,14 +485,14 @@ module XCPretty
         @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
         @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
-        @parser.parsed_valid_test_build?.should be_false
+        @parser.parsed_valid_test_build?.should be false
       end
 
       it "detects that a build is invalid when a test suite starts and does not finish" do
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_TEST_PASSED)
-        @parser.parsed_valid_test_build?.should be_false
+        @parser.parsed_valid_test_build?.should be false
       end
 
       it "detects that a build is valid when a test run starts, finishes and passes tests" do
@@ -501,7 +501,7 @@ module XCPretty
         @parser.parse(SAMPLE_SPECTA_TEST_PASSED)
         @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
-        @parser.parsed_valid_test_build?.should be_true
+        @parser.parsed_valid_test_build?.should be true
       end
 
       it "detects that a build is invalid when a test fails" do
@@ -511,7 +511,7 @@ module XCPretty
         @parser.parse(SAMPLE_SPECTA_FAILURE)
         @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
-        @parser.parsed_valid_test_build?.should be_false
+        @parser.parsed_valid_test_build?.should be false
       end
 
     end
