@@ -98,7 +98,7 @@
       }
       var toggleScreenshot = function(suiteName, index) {
         var screenshot = document.getElementById("screenshot-" + suiteName + "-" + index);
-        (screenshot && isSelected(screenshot)) ? deselect(screenshot) : select(screenshot);
+        isSelected(screenshot) ? deselect(screenshot) : select(screenshot);
       }
     </script>
   </head>
