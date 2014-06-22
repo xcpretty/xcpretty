@@ -131,7 +131,7 @@
           <div class="screenshots <%= info[:failing] ? 'failing' : 'passing'%>">
             <% info[:screenshots].each_with_index do |screenshot, index| %>
                 <a href="javascript:toggleScreenshot('<%=name %>', <%=index %>)">
-                  <img class="screenshot" id="screenshot-<%=name %>-<%=index %>" src="<%=screenshot %>">
+                  <img class="screenshot" id="screenshot-<%=name %>-<%=index %>" src="<%=screenshot %>" />
                 </a>
             <% end %>
           </div>

@@ -544,3 +544,4 @@ SAMPLE_LD_LIBRARY_ERROR = 'ld: library not found for -lPods-Yammer'
 
 SAMPLE_CLANG_ERROR = 'clang: error: linker command failed with exit code 1 (use -v to see invocation)'
 
+SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec, line 80, hello xcpretty.png'

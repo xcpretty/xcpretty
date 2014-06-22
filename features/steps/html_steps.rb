@@ -21,3 +21,7 @@ end
 Then(/^I should see (\d+) test suite sections? in HTML$/) do |section_count|
   html_test_suites.size.should == section_count.to_i
 end
+
+Then(/^I should see a screenshot in HTML$/) do
+  html_report_body.get_elements("//*[contains(@class, 'screenshot')]/").to_a.size.should_not == 0
+end
