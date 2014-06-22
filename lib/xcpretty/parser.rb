@@ -307,31 +307,69 @@ module XCPretty
         @tests_done = false
         @formatted_summary = false
         @failures = {}
-        @test_stack.push $1
+        record_start_of_test_run $1
       when TESTS_SUITE_START_MATCHER
-        @test_stack.push $1
+        record_start_of_test_suite $1
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
-        if @test_stack.last == $1
-          @test_stack.pop
-        end
+        record_end_of_test_run $1
       when TESTS_SUITE_COMPLETION_MATCHER
-        if @test_stack.last == $1
-          @test_stack.pop
-        end
+        record_end_of_test_suite $1
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
         @parsed_failing_tests = true
-        if @test_stack.last == $3
-          @test_stack.pop
-        end
+        record_end_of_test_case $3
       when PASSING_TEST_MATCHER
         @parsed_passing_tests = true
-        if @test_stack.last == $2
-          @test_stack.pop
-        end
+        record_end_of_test_case $2
       when TESTS_CASE_START_MATCHER
-        @test_stack.push $2
+        record_start_of_test_case $2
+      end
+    end
+
+    def record_start_of_test_run(test_run)
+      if @test_stack.length == 1
+        store_failure("-", @test_stack.last, "-", "Test run #{@test_stack.last} did not complete")
+        @test_stack.pop
+      end
+      @test_stack.push test_run
+    end
+
+    def record_start_of_test_suite(test_suite)
+      if @test_stack.length == 2
+        store_failure("-", @test_stack.last, "-", "Test suite #{@test_stack.last} did not complete")
+        @test_stack.pop
+      end
+      @test_stack.push test_suite
+    end
+
+    def record_start_of_test_case(test_case)
+      if @test_stack.length == 3
+        store_failure("-", @test_stack.last, "-", "Test case #{@test_stack.last} did not complete")
+        @test_stack.pop
+      end
+      @test_stack.push test_case
+
+    end
+
+    def record_end_of_test_case(test_case)
+      if @test_stack.last == test_case
+        @test_stack.pop
+      end
+    end
+
+    def record_end_of_test_suite(test_suite)
+      if @test_stack.last == test_suite
+        @test_stack.pop
+      # else
+      #   #def store_failure(file, test_suite, test_case, reason)
+      #   store_failure("-", @test_stack.last, "-", "Test suite failed to complete")
+      end
+    end
+
+    def record_end_of_test_run(test_run)
+      if @test_stack.last == test_run
+        @test_stack.pop
       end
     end
 
