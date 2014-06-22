@@ -16,7 +16,6 @@ module XCPretty
     end
 
     def initialize(options)
-      puts options
       load_dependencies
       @test_suites = {}
       @filepath    = options[:path] || FILEPATH
