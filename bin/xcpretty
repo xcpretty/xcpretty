@@ -54,9 +54,15 @@ OptionParser.new do |opts|
   end
   opts.on('-o', '--output PATH', 'Write report output to PATH') do |path|
     unless opts = report_options.last
-      XCPretty.exit_with_error('Expected report format to be specified before before output path')
+      XCPretty.exit_with_error('Expected report format to be specified before output path')
     end
     opts[:path] = path
+  end
+  opts.on('--screenshots', 'Collect screenshots in the HTML report') do
+    unless opts = report_options.last
+      XCPretty.exit_with_error('Expected screenshot argument to be specified after report format')
+    end
+    opts[:screenshots] = true
   end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
