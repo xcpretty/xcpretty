@@ -166,7 +166,8 @@ module XCPretty
 
     # @regex Captured groups
     # $1 test case name
-    TESTS_CASE_START_MATCHER = /^\s*Test Case '-\[(.*)\]' started/
+    # $2 test suite name
+    TESTS_CASE_START_MATCHER = /^\s*Test Case '-\[(.*)\s(.*)\]' started/
 
     # @regex Captured groups
     # $1 file_name
@@ -311,18 +312,26 @@ module XCPretty
         @test_stack.push $1
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
-        @test_stack.pop
+        if @test_stack.last == $1
+          @test_stack.pop
+        end
       when TESTS_SUITE_COMPLETION_MATCHER
-        @test_stack.pop
+        if @test_stack.last == $1
+          @test_stack.pop
+        end
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
         @parsed_failing_tests = true
-        @test_stack.pop
+        if @test_stack.last == $3
+          @test_stack.pop
+        end
       when PASSING_TEST_MATCHER
         @parsed_passing_tests = true
-        @test_stack.pop
+        if @test_stack.last == $2
+          @test_stack.pop
+        end
       when TESTS_CASE_START_MATCHER
-        @test_stack.push $1
+        @test_stack.push $2
       end
     end
 
