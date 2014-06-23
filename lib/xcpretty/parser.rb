@@ -296,7 +296,7 @@ module XCPretty
     end
 
     def formatted_test_stack
-      @test_stack.join "\n"
+      @test_stack.join "\n -> "
     end
 
     private
@@ -305,6 +305,7 @@ module XCPretty
       case text
       when TESTS_RUN_START_MATCHER
         @tests_done = false
+        @tests_started = true
         @formatted_summary = false
         @failures = {}
         record_start_of_test_run $1
@@ -328,28 +329,33 @@ module XCPretty
     end
 
     def record_start_of_test_run(test_run)
-      if @test_stack.length == 1
+      if @test_stack.length > 0
         store_failure("-", @test_stack.last, "-", "Test run #{@test_stack.last} did not complete")
         @test_stack.pop
+        @parsed_failing_tests = true
       end
       @test_stack.push test_run
     end
 
     def record_start_of_test_suite(test_suite)
-      if @test_stack.length == 2
+      if @test_stack.length > 1
         store_failure("-", @test_stack.last, "-", "Test suite #{@test_stack.last} did not complete")
         @test_stack.pop
+        @parsed_failing_tests = true
       end
-      @test_stack.push test_suite
+
+      if @tests_started
+        @test_stack.push test_suite
+      end
     end
 
     def record_start_of_test_case(test_case)
-      if @test_stack.length == 3
+      if @test_stack.length > 2
         store_failure("-", @test_stack.last, "-", "Test case #{@test_stack.last} did not complete")
         @test_stack.pop
+        @parsed_failing_tests = true
       end
       @test_stack.push test_case
-
     end
 
     def record_end_of_test_case(test_case)
@@ -361,9 +367,6 @@ module XCPretty
     def record_end_of_test_suite(test_suite)
       if @test_stack.last == test_suite
         @test_stack.pop
-      # else
-      #   #def store_failure(file, test_suite, test_case, reason)
-      #   store_failure("-", @test_stack.last, "-", "Test suite failed to complete")
       end
     end
 

@@ -472,6 +472,13 @@ module XCPretty
         @parser.parsed_failing_tests?.should be false
       end
 
+      it "detects when a test case does not complete" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parsed_failing_tests?.should be true
+      end
     end
 
     context "valid build detection" do
