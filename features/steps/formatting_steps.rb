@@ -96,6 +96,10 @@ Given(/^I have a screenshot in the output folder/) do
   copy_file_to_screenshot_dir(SAMPLE_SCREENSHOT_FILE)
 end
 
+Given(/^I have an unrelated image in the output folder/) do
+  copy_file_to_screenshot_dir(SAMPLE_UNRELATED_IMAGE_FILE)
+end
+
 Then(/^I should see text beginning with "(.*?)"$/) do |text|
   run_output.lines.to_a.detect {|line| line.start_with? text }.should_not be_nil
 end

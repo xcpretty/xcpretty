@@ -94,6 +94,7 @@ module XCPretty
       @test_suites.each do |key, value|
         return key if image_name.start_with?(key)
       end
+      nil
     end
   end
 end

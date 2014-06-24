@@ -45,3 +45,10 @@ Feature: Creating a HTML test report
         And I have a screenshot in the output folder
         When I pipe to xcpretty with "--report html --screenshots"
         Then I should see a screenshot in HTML
+
+  Scenario: Preventing unrelated images to be included in final report
+        Given I have a passing test in my suite
+        And the test suite has finished
+        And I have an unrelated image in the output folder
+        When I pipe to xcpretty with "--report html --screenshots"
+        Then I should not see a screenshot in HTML
