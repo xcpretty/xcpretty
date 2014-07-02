@@ -1,0 +1,52 @@
+Build settings from command line:
+    SDKROOT = iphonesimulator7.1
+
+sent 410453 bytes  received 1004 bytes  822914.00 bytes/sec
+total size is 406943  speedup is 0.99
+/* com.apple.actool.compilation-results */
+/Users/mkelly/Library/Developer/Xcode/DerivedData/Register-cusagdqcdgzpjochxmgmjxpusijm/Build/Products/Test-iphonesimulator/RegisterAppTests.xctest/Assets.car
+
+
+Test Suite 'All tests' started at 2014-07-01 15:18:48 +0000
+Test Suite 'KIFTests1.xctest' started at 2014-07-01 15:18:48 +0000
+Test Suite 'ActivationSpec' started at 2014-07-01 15:18:48 +0000
+Test Case '-[ActivationSpec S_K_P_AllowsTheUserToGoBackToTheWelcomeScreen]' started.
+2014-07-01 16:18:48.349 ShopKeep Register[17264:60b] + 'S_K, P, allows the user to go back to the welcome screen' [PASSED]
+Test Case '-[ActivationSpec S_K_P_AllowsTheUserToGoBackToTheWelcomeScreen]' passed (0.136 seconds).
+Test Case '-[ActivationSpec S_K_P_ManualActivation_WhenUserEntersAStoreDomainWithADot_WhenItsPointingToGetshopkeepcom_SetsUpTheAppAgainstStaging]' started.
+2014-07-01 16:18:48.351 ShopKeep Register[17264:60b] + 'S_K, P, manual activation, when user enters a store domain with a dot, when it's pointing to getshopkeep.com, sets up the app against staging' [PASSED]
+Test Case '-[ActivationSpec S_K_P_ManualActivation_WhenUserEntersAStoreDomainWithADot_WhenItsPointingToGetshopkeepcom_SetsUpTheAppAgainstStaging]' passed (0.001 seconds).
+Test Suite 'ActivationSpec' finished at 2014-07-01 15:18:48 +0000.
+Executed 10 tests, with 0 failures (0 unexpected) in 0.148 (0.155) seconds
+
+
+Test Suite 'AuthenticationSpec' started at 2014-07-01 15:18:48 +0000
+Test Case '-[AuthenticationSpec S_K_P_WhenAStoreHasBeenSetup_HasAButtonToTakeYouToTheKnowledgeBaseInSafari]' started.
+2014-07-01 16:18:49.046 ShopKeep Register[17264:60b] + 'S_K, P, when a store has been setup, has a button to take you to the knowledge base in Safari' [PASSED]
+Test Case '-[AuthenticationSpec S_K_P_WhenAStoreHasBeenSetup_HasAButtonToTakeYouToTheKnowledgeBaseInSafari]' passed (0.679 seconds).
+Test Case '-[AuthenticationSpec S_K_P_WhenAStoreHasBeenSetup_WhenNoDigitIsEntered_HasZeroDotsSelected]' started.
+2014-07-01 16:18:49.052 ShopKeep Register[17264:60b] + 'S_K, P, when a store has been setup, when no digit is entered, has zero dots selected' [PASSED]
+Test Case '-[AuthenticationSpec S_K_P_WhenAStoreHasBeenSetup_WhenNoDigitIsEntered_HasZeroDotsSelected]' passed (0.002 seconds).
+Test Suite 'AuthenticationSpec' finished at 2014-07-01 15:20:04 +0000.
+Executed 54 tests, with 0 failures (0 unexpected) in 75.805 (75.849) seconds
+
+
+
+Test Suite 'KIFTests1.xctest' finished at 2014-07-01 15:28:00 +0000.
+Executed 259 tests, with 38 failures (38 unexpected) in 552.367 (552.749) seconds
+Test Suite 'All tests' finished at 2014-07-01 15:28:00 +0000.
+Executed 259 tests, with 38 failures (38 unexpected) in 552.367 (552.750) seconds
+
+Test Suite 'All tests' started at 2014-07-01 15:28:05 +0000
+Test Suite 'RegisterAppTests.xctest' started at 2014-07-01 15:28:05 +0000
+Test Suite 'AppDelegateSpec' started at 2014-07-01 15:28:05 +0000
+Test Case '-[AppDelegateSpec SK_AppDelegate_applicationdidFinishLaunchingWithOptions_TagsTheApplicationLaunchedEvent]' started.
+2014-07-01 16:28:05.847 ShopKeep Register[17802:60b] + 'SK, AppDelegate, -application:didFinishLaunchingWithOptions:, tags the Application Launched event' [PASSED]
+Test Case '-[AppDelegateSpec SK_AppDelegate_applicationdidFinishLaunchingWithOptions_TagsTheApplicationLaunchedEvent]' passed (0.802 seconds).
+Test Suite 'AppDelegateSpec' finished at 2014-07-01 15:28:05 +0000.
+Executed 3 tests, with 0 failures (0 unexpected) in 0.832 (0.833) seconds
+
+Test Suite 'RegisterAppTests.xctest' finished at 2014-07-01 15:28:13 +0000.
+Executed 202 tests, with 0 failures (0 unexpected) in 8.238 (8.394) seconds
+Test Suite 'All tests' finished at 2014-07-01 15:28:13 +0000.
+Executed 202 tests, with 0 failures (0 unexpected) in 8.238 (8.398) seconds

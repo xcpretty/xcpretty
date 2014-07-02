@@ -18,5 +18,10 @@ Feature: CLI behavior
         And I should see the last started test's name "SK_AuthenticationViewController"
 
     Scenario: Rspec test suite completes
-       When I run xpretty -t over a file with a test suite that completed
-       Then the exit status code should be 0
+        When I run xpretty -t over a file with a test suite that completed
+        Then the exit status code should be 0
+
+    Scenario: Handles multiple test suites
+        When I run xcpretty -t over a file containing multiple test suites
+        Then the exit status code should be 0
+        And I should see 2 sets of test results

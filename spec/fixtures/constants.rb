@@ -10,12 +10,13 @@ SAMPLE_OCUNIT_TEST_RUN_COMPLETION = "Test Suite '/Users/musalj/Library/Developer
 SAMPLE_KIWI_TEST_RUN_COMPLETION = "Test Suite 'ObjectiveRecordTests.xctest' finished at 2013-12-10 06:15:42 +0000."
 SAMPLE_SPECTA_TEST_RUN_COMPLETION = "     Test Suite 'KIFTests.xctest' finished at 2014-02-28 15:44:32 +0000."
 
-SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite 'RACKVOWrapperSpec' started at 2013-12-10 21:06:10 +0000"
 SAMPLE_SPECTA_SUITE_BEGINNING = "   Test Suite 'All tests' started at 2014-02-28 19:07:41 +0000"
-SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000."
-SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
-SAMPLE_XCTEST_SUITE_COMPLETION = "Test Suite 'ObjectiveSugarTests.xctest' finished at 2013-12-09 04:42:13 +0000."
 SAMPLE_SPECTA_SUITE_COMPLETION = "   Test Suite 'All tests' finished at 2014-02-28 19:08:23 +0000"
+SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000."
+SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite 'RACKVOWrapperSpec' started at 2013-12-10 21:06:10 +0000"
+SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
+SAMPLE_XCTEST_SUITE_BEGINNING = "Test Suite 'RACKVOWrapperSpec' started at 2013-12-10 21:06:10 +0000"
+SAMPLE_XCTEST_SUITE_COMPLETION = "Test Suite 'RACKVOWrapperSpec' finished at 2013-12-09 04:42:13 +0000."
 
 SAMPLE_OLD_KIWI_FAILURE = "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49: error: -[NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes] : 'Iterators, times： iterates the exact number of times' [FAILED], expected subject to equal 4, got 5"
 SAMPLE_KIWI_FAILURE = "/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11: error: -[SKWelcomeViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen] : The step timed out after 2.00 seconds: Failed to find accessibility element with the label \"The asimplest way to make smarter business decisions\""

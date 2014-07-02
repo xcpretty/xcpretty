@@ -20,6 +20,10 @@ When /^I run xpretty -t over a file with a test suite that completed$/ do
   @output = `cat features/fixtures/xcodebuild_good.log | bin/xcpretty -t`
 end
 
+When(/^I run xcpretty \-t over a file containing multiple test suites$/) do
+  @output = `cat features/fixtures/xcodebuild_multiple_runs.log | bin/xcpretty -t`
+end
+
 Then(/^I should see the last started test's name "(.*)"$/) do |test_name|
   run_output.should include(test_name)
 end
@@ -39,4 +43,8 @@ end
 Then(/^the performance should be way faster than running cat$/) do
   puts "XCPretty run time: #{@xcpretty_run_time}"
   @xcpretty_run_time.should < 2
+end
+
+Then(/^I should see (\d+) sets of test results$/) do |count|
+  run_output.scan(/Executed/).count.should == count.to_i
 end

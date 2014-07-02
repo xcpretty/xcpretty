@@ -169,6 +169,10 @@ module XCPretty
     # $2 test suite name
     TESTS_CASE_START_MATCHER = /^\s*Test Case '-\[(.*)\s(.*)\]' started/
 
+    ALL_TESTS_START_MATCHER = /^\s*Test Suite 'All tests' started at/
+
+    ALL_TESTS_COMPLETION_MATCHER = /^\s*Test Suite 'All tests' finished at/
+
     # @regex Captured groups
     # $1 file_name
     TIFFUTIL_MATCHER = /^TiffUtil\s(.*)/
@@ -303,6 +307,10 @@ module XCPretty
 
     def update_test_state(text)
       case text
+      when ALL_TESTS_START_MATCHER
+        # ignore the "All tests" suite starting
+      when ALL_TESTS_COMPLETION_MATCHER
+        # ignore the "All tests" suite completing
       when TESTS_RUN_START_MATCHER
         @tests_done = false
         @tests_started = true

@@ -440,14 +440,16 @@ module XCPretty
       end
 
       it "detects when a test suite completes" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
         @parser.all_tests_complete?.should be true
       end
 
       it "detects when a test suite does not complete" do
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
-        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
         @parser.all_tests_complete?.should be false
       end
@@ -474,7 +476,7 @@ module XCPretty
 
       it "detects when a test case does not complete" do
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
-        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
         @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
         @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
         @parser.parsed_failing_tests?.should be true
@@ -519,6 +521,29 @@ module XCPretty
         @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
         @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
         @parser.parsed_valid_test_build?.should be false
+      end
+
+      it "detects that a build is valid when multiple test runs start and finish" do
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_XCTEST_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parse(SAMPLE_SPECTA_TEST_PASSED)
+        @parser.parse(SAMPLE_XCTEST_SUITE_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_XCTEST_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parse(SAMPLE_SPECTA_TEST_PASSED)
+        @parser.parse(SAMPLE_XCTEST_SUITE_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+
+        @parser.parsed_valid_test_build?.should be true
+        @parser.parsed_failing_tests?.should be false
       end
 
     end
