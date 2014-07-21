@@ -148,13 +148,30 @@ module XCPretty
       @formatter.should receive(:format_passing_test).with('SKWelcomeActivationViewControllerSpecSpec',
                                                            'SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code',
                                                            '0.725')
-      @parser.parse(SAMPLE_SPECTA_TEST)
+      @parser.parse(SAMPLE_SPECTA_TEST_PASSED)
     end
 
     it "parses pending tests" do
       @formatter.should receive(:format_pending_test).with('TAPIConversationSpec',
                                                            'TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpoint')
       @parser.parse(SAMPLE_PENDING_KIWI_TEST)
+    end
+
+    it "parses test case starting" do
+      @parser.parse(SAMPLE_KIWI_TEST_CASE_STARTING)
+      @parser.current_test.should eq 'SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen'
+    end
+
+    it "parses test case passing" do
+      @parser.parse(SAMPLE_KIWI_TEST_CASE_STARTING)
+      @parser.parse(SAMPLE_KIWI_TEST)
+      @parser.current_test.should be_nil
+    end
+
+    it "parses test case failing" do
+      @parser.parse(SAMPLE_KIWI_TEST_CASE_STARTING)
+      @parser.parse(SAMPLE_KIWI_FAILURE)
+      @parser.current_test.should be_nil
     end
 
     it "parses PhaseScriptExecution" do
@@ -240,6 +257,16 @@ module XCPretty
 
     it "parses specta test suite started" do
       @formatter.should receive(:format_test_suite_started).with('All tests')
+      @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+    end
+
+    it "does not treat a test run start as a test suite start" do
+      @formatter.should_not receive(:format_test_suite_started)
+      @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+    end
+
+    it "does not treat a test suite start as a test run start" do
+      @formatter.should_not receive(:format_test_run_started)
       @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
     end
 
@@ -417,5 +444,130 @@ module XCPretty
 
     end
 
+    context "test running detection" do
+
+      it "detects when a test run completes" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.all_tests_complete?.should be true
+      end
+
+      it "detects when a test run does not complete" do
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.all_tests_complete?.should be false
+      end
+
+      it "detects when a test suite completes" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.all_tests_complete?.should be true
+      end
+
+      it "detects when a test suite does not complete" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.all_tests_complete?.should be false
+      end
+
+      it "detects when a failing test is run" do
+        @parser.parse(SAMPLE_SPECTA_FAILURE)
+        @parser.parsed_failing_tests?.should be true
+      end
+
+      it "detects when a passing test is run" do
+        @parser.parse(SAMPLE_OCUNIT_TEST)
+        @parser.parsed_passing_tests?.should be true
+      end
+
+      it "detects when no passing tests are run" do
+        @parser.parse(SAMPLE_SPECTA_FAILURE)
+        @parser.parsed_passing_tests?.should be false
+      end
+
+      it "detects when no failing tests are run" do
+        @parser.parse(SAMPLE_OCUNIT_TEST)
+        @parser.parsed_failing_tests?.should be false
+      end
+
+      it "detects when a test case does not complete" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parsed_failing_tests?.should be true
+      end
+    end
+
+    context "valid build detection" do
+
+      it "detects that a build is invalid when no tests are run" do
+        @parser.parsed_valid_test_build?.should be false
+      end
+
+      it "detects that a build is invalid when a test run starts and does not finish" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.parsed_valid_test_build?.should be false
+      end
+
+      it "detects that a build is invalid when a test suite starts and does not finish" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_PASSED)
+        @parser.parsed_valid_test_build?.should be false
+      end
+
+      it "detects that a build is valid when a test run starts, finishes and passes tests" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_PASSED)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.parsed_valid_test_build?.should be true
+      end
+
+      it "detects that a build is invalid when a test fails" do
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parse(SAMPLE_SPECTA_FAILURE)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.parsed_valid_test_build?.should be false
+      end
+
+      it "detects that a build is valid when multiple test runs start and finish" do
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_XCTEST_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parse(SAMPLE_SPECTA_TEST_PASSED)
+        @parser.parse(SAMPLE_XCTEST_SUITE_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+
+        @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_XCTEST_SUITE_BEGINNING)
+        @parser.parse(SAMPLE_SPECTA_TEST_CASE_STARTING)
+        @parser.parse(SAMPLE_SPECTA_TEST_PASSED)
+        @parser.parse(SAMPLE_XCTEST_SUITE_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
+        @parser.parse(SAMPLE_SPECTA_SUITE_COMPLETION)
+
+        @parser.parsed_valid_test_build?.should be true
+        @parser.parsed_failing_tests?.should be false
+      end
+
+    end
+
   end
+
 end

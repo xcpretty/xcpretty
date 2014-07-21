@@ -3,19 +3,23 @@
 KIWI = 'kiwi'
 OCUNIT = 'ocunit'
 SAMPLE_OCUNIT_TEST_RUN_BEGINNING = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' started at 2013-12-10 07:04:33 +0000"
+SAMPLE_KIWI_TEST_CASE_STARTING = "Test Case '-[SKWelcomeActivationViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen]' started."
 SAMPLE_KIWI_TEST_RUN_BEGINNING = "Test Suite 'ObjectiveRecordTests.xctest' started at 2013-12-10 06:15:39 +0000"
 SAMPLE_SPECTA_TEST_RUN_BEGINNING = "    Test Suite 'KIFTests.xctest' started at 2014-02-28 15:43:42 +0000"
 SAMPLE_OCUNIT_TEST_RUN_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-10 07:03:03 +0000."
 SAMPLE_KIWI_TEST_RUN_COMPLETION = "Test Suite 'ObjectiveRecordTests.xctest' finished at 2013-12-10 06:15:42 +0000."
 SAMPLE_SPECTA_TEST_RUN_COMPLETION = "     Test Suite 'KIFTests.xctest' finished at 2014-02-28 15:44:32 +0000."
 
-SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite 'RACKVOWrapperSpec' started at 2013-12-10 21:06:10 +0000"
 SAMPLE_SPECTA_SUITE_BEGINNING = "   Test Suite 'All tests' started at 2014-02-28 19:07:41 +0000"
+SAMPLE_SPECTA_SUITE_COMPLETION = "   Test Suite 'All tests' finished at 2014-02-28 19:08:23 +0000"
 SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000."
+SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite 'RACKVOWrapperSpec' started at 2013-12-10 21:06:10 +0000"
 SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
-SAMPLE_XCTEST_SUITE_COMPLETION = "Test Suite 'ObjectiveSugarTests.xctest' finished at 2013-12-09 04:42:13 +0000."
+SAMPLE_XCTEST_SUITE_BEGINNING = "Test Suite 'RACKVOWrapperSpec' started at 2013-12-10 21:06:10 +0000"
+SAMPLE_XCTEST_SUITE_COMPLETION = "Test Suite 'RACKVOWrapperSpec' finished at 2013-12-09 04:42:13 +0000."
 
-SAMPLE_KIWI_FAILURE = "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49: error: -[NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes] : 'Iterators, times： iterates the exact number of times' [FAILED], expected subject to equal 4, got 5"
+SAMPLE_OLD_KIWI_FAILURE = "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49: error: -[NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes] : 'Iterators, times： iterates the exact number of times' [FAILED], expected subject to equal 4, got 5"
+SAMPLE_KIWI_FAILURE = "/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11: error: -[SKWelcomeViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen] : The step timed out after 2.00 seconds: Failed to find accessibility element with the label \"The asimplest way to make smarter business decisions\""
 SAMPLE_OLD_SPECTA_FAILURE = "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458: error: -[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES] : expected: 1, got: 0"
 SAMPLE_SPECTA_FAILURE = "         Test Case '-[SKWelcomeViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen]' started. \n/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11: error: -[SKWelcomeViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen] : The step timed out after 2.00 seconds: Failed to find accessibility element with the label \"The asimplest way to make smarter business decisions\""
 
@@ -29,10 +33,11 @@ Clean.Remove clean /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSu
 SAMPLE_EXECUTED_TESTS = "Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
 SAMPLE_SPECTA_EXECUTED_TESTS = "       Executed 4 tests, with 0 failures (0 unexpected) in 10.192 (10.193) seconds"
 SAMPLE_OCUNIT_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.001 seconds)."
-SAMPLE_SPECTA_TEST = "         Test Case '-[SKWelcomeActivationViewControllerSpecSpec SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code]' passed (0.725 seconds)."
+SAMPLE_SPECTA_TEST_CASE_STARTING = "        Test Case '-[SKWelcomeActivationViewControllerSpecSpec SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code]' started."
+SAMPLE_SPECTA_TEST_PASSED = "         Test Case '-[SKWelcomeActivationViewControllerSpecSpec SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code]' passed (0.725 seconds)."
 SAMPLE_SLOWISH_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.026 seconds)."
 SAMPLE_SLOW_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.101 seconds)."
-SAMPLE_KIWI_TEST = "Test Case '-[MappingsTests Mappings_SupportsCreatingAParentObjectUsingJustIDFromTheServer]' passed (0.004 seconds)."
+SAMPLE_KIWI_TEST = "Test Case '-[SKWelcomeActivationViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen]' passed (0.004 seconds)."
 SAMPLE_PENDING_KIWI_TEST = "Test Case '-[TAPIConversationSpec TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpointPENDING]' passed (0.001 seconds)."
 SAMPLE_COMPILE = %Q(
 CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-ObjectiveSugar.build/Objects-normal/i386/NSMutableArray+ObjectiveSugar.o /Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
@@ -543,4 +548,3 @@ SAMPLE_LD_SYMBOLS_ERROR = 'ld: symbol(s) not found for architecture x86_64'
 SAMPLE_LD_LIBRARY_ERROR = 'ld: library not found for -lPods-Yammer'
 
 SAMPLE_CLANG_ERROR = 'clang: error: linker command failed with exit code 1 (use -v to see invocation)'
-
