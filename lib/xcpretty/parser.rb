@@ -165,6 +165,15 @@ module XCPretty
     TESTS_SUITE_START_MATCHER = /^\s*Test Suite '(.*)' started at/
 
     # @regex Captured groups
+    # $1 test case name
+    # $2 test suite name
+    TESTS_CASE_START_MATCHER = /^\s*Test Case '-\[(.*)\s(.*)\]' started/
+
+    ALL_TESTS_START_MATCHER = /^\s*Test Suite 'All tests' started at/
+
+    ALL_TESTS_COMPLETION_MATCHER = /^\s*Test Suite 'All tests' finished at/
+
+    # @regex Captured groups
     # $1 file_name
     TIFFUTIL_MATCHER = /^TiffUtil\s(.*)/
 
@@ -181,8 +190,8 @@ module XCPretty
 
     def initialize(formatter)
       @formatter = formatter
-      @test_suites_parsed = {}
       @test_runs_parsed = {}
+      @test_stack = []
     end
 
     def parse(text)
@@ -265,9 +274,8 @@ module XCPretty
       end
     end
 
-    def all_test_runs_complete?
-      @test_runs_parsed.count > 0 &&
-        @test_runs_parsed.values.all?{ |is_complete| is_complete }
+    def all_tests_complete?
+      @test_stack.count == 0
     end
 
     def all_test_suites_complete?
@@ -284,30 +292,95 @@ module XCPretty
     end
 
     def parsed_valid_test_build?
-      parsed_passing_tests? && !parsed_failing_tests? && all_test_runs_complete?
+      parsed_passing_tests? && !parsed_failing_tests? && all_tests_complete?
+    end
+
+    def current_test
+      @test_stack[-1]
+    end
+
+    def formatted_test_stack
+      @test_stack.join "\n -> "
     end
 
     private
 
     def update_test_state(text)
       case text
+      when ALL_TESTS_START_MATCHER
+        # ignore the "All tests" suite starting
+      when ALL_TESTS_COMPLETION_MATCHER
+        # ignore the "All tests" suite completing
       when TESTS_RUN_START_MATCHER
         @tests_done = false
+        @tests_started = true
         @formatted_summary = false
         @failures = {}
-        @test_runs_parsed[$1] = false
+        record_start_of_test_run $1
       when TESTS_SUITE_START_MATCHER
-        @test_suites_parsed[$1] = false
+        record_start_of_test_suite $1
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
-        @test_runs_parsed[$1] = true
+        record_end_of_test_run $1
       when TESTS_SUITE_COMPLETION_MATCHER
-        @test_suites_parsed[$1] = true
+        record_end_of_test_suite $1
       when FAILING_TEST_MATCHER
         store_failure($1, $2, $3, $4)
         @parsed_failing_tests = true
+        record_end_of_test_case $3
       when PASSING_TEST_MATCHER
         @parsed_passing_tests = true
+        record_end_of_test_case $2
+      when TESTS_CASE_START_MATCHER
+        record_start_of_test_case $2
+      end
+    end
+
+    def record_start_of_test_run(test_run)
+      if @test_stack.length > 0
+        store_failure("-", @test_stack.last, "-", "Test run #{@test_stack.last} did not complete")
+        @test_stack.pop
+        @parsed_failing_tests = true
+      end
+      @test_stack.push test_run
+    end
+
+    def record_start_of_test_suite(test_suite)
+      if @test_stack.length > 1
+        store_failure("-", @test_stack.last, "-", "Test suite #{@test_stack.last} did not complete")
+        @test_stack.pop
+        @parsed_failing_tests = true
+      end
+
+      if @tests_started
+        @test_stack.push test_suite
+      end
+    end
+
+    def record_start_of_test_case(test_case)
+      if @test_stack.length > 2
+        store_failure("-", @test_stack.last, "-", "Test case #{@test_stack.last} did not complete")
+        @test_stack.pop
+        @parsed_failing_tests = true
+      end
+      @test_stack.push test_case
+    end
+
+    def record_end_of_test_case(test_case)
+      if @test_stack.last == test_case
+        @test_stack.pop
+      end
+    end
+
+    def record_end_of_test_suite(test_suite)
+      if @test_stack.last == test_suite
+        @test_stack.pop
+      end
+    end
+
+    def record_end_of_test_run(test_run)
+      if @test_stack.last == test_run
+        @test_stack.pop
       end
     end
 
@@ -405,4 +478,3 @@ module XCPretty
 
   end
 end
-

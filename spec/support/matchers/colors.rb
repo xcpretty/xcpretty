@@ -1,3 +1,5 @@
+require 'rspec' unless Object.const_defined? :RSpec
+
 RSpec::Matchers.define :be_colored do |expected|
 
   def effects_string(actual)
