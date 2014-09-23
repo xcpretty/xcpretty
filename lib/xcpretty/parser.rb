@@ -114,7 +114,7 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TESTS_RUN_COMPLETION_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' finished at (.*)/
+    TESTS_RUN_COMPLETION_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' passed at (.*)/
 
     # @regex Captured groups
     # $1 = suite
