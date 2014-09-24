@@ -114,7 +114,7 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TESTS_RUN_COMPLETION_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' finished at (.*)/
+    TESTS_RUN_COMPLETION_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' (finished|passed|failed) at (.*)/
 
     # @regex Captured groups
     # $1 = suite
@@ -267,7 +267,7 @@ module XCPretty
       when PBXCP_MATCHER
         formatter.format_pbxcp($1)
       when TESTS_RUN_COMPLETION_MATCHER
-        formatter.format_test_run_finished($1, $2)
+        formatter.format_test_run_finished($1, $3)
       when TESTS_RUN_START_MATCHER
         formatter.format_test_run_started($1)
       when TEST_SUITE_START_MATCHER
