@@ -211,11 +211,19 @@ module XCPretty
       end
     end
 
-
-
     it "parses ocunit test run finished" do
       @formatter.should receive(:format_test_run_finished).with('ReactiveCocoaTests.octest(Tests)', '2013-12-10 07:03:03 +0000.')
       @parser.parse(SAMPLE_OCUNIT_TEST_RUN_COMPLETION)
+    end
+
+    it "parses ocunit test run passed" do
+      @formatter.should receive(:format_test_run_finished).with('Hazelnuts.xctest', '2014-09-24 23:09:20 +0000.')
+      @parser.parse(SAMPLE_OCUNIT_PASSED_TEST_RUN_COMPLETION)
+    end
+
+    it "parses ocunit test run failed" do
+      @formatter.should receive(:format_test_run_finished).with('Macadamia.octest', '2014-09-24 23:09:20 +0000.')
+      @parser.parse(SAMPLE_OCUNIT_FAILED_TEST_RUN_COMPLETION)
     end
 
     it "parses specta test run finished" do
