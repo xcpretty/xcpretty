@@ -4,6 +4,7 @@ module XCPretty
     include XCPretty::FormatMethods
     FILEPATH = 'build/reports/tests.html'
     TEMPLATE = File.expand_path('../../../../assets/report.html.erb', __FILE__)
+    SCREENSHOT_DIR = 'build/reports'
 
     def load_dependencies
       unless @@loaded ||= false
@@ -21,6 +22,7 @@ module XCPretty
       @parser      = Parser.new(self)
       @test_count  = 0
       @fail_count  = 0
+      @collect_screenshots = options[:screenshots]
     end
 
     def handle(line)
@@ -51,7 +53,7 @@ module XCPretty
 
     def add_test(suite_name, data)
       @test_count += 1
-      @test_suites[suite_name] ||= {:tests => []}
+      @test_suites[suite_name] ||= {:tests => [], :screenshots => []}
       @test_suites[suite_name][:tests] << data
       if data[:failing]
         @test_suites[suite_name][:failing] = true
@@ -60,6 +62,9 @@ module XCPretty
     end
 
     def write_report
+      if @collect_screenshots
+        load_screenshots
+      end
       File.open(@filepath, 'w') do |f|
         # WAT: get rid of these locals. BTW Cucumber fails if you remove them
         test_suites = @test_suites
@@ -68,6 +73,24 @@ module XCPretty
         erb = ERB.new(File.open(TEMPLATE, 'r').read)
         f.write erb.result(binding)
       end
+    end
+
+    def load_screenshots
+      Dir.foreach(SCREENSHOT_DIR) do |item|
+        next if item == '.' || item == '..' || File.extname(item) != '.png'
+
+        suite_name = find_test_suite(item)
+        next if suite_name.nil?
+
+        @test_suites[suite_name][:screenshots] << item
+      end
+    end
+
+    def find_test_suite(image_name)
+      @test_suites.each do |key, value|
+        return key if image_name.start_with?(key)
+      end
+      nil
     end
   end
 end

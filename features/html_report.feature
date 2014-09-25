@@ -38,3 +38,17 @@ Feature: Creating a HTML test report
     Scenario: Writing to multiple custom file paths
         When I pipe to xcpretty with two custom "html" report paths
         Then I should have test reports in two custom paths
+
+    Scenario: Showing screenshots
+        Given I have a passing test in my suite
+        And the test suite has finished
+        And I have a screenshot in the output folder
+        When I pipe to xcpretty with "--report html --screenshots"
+        Then I should see a screenshot in HTML
+
+  Scenario: Preventing unrelated images to be included in final report
+        Given I have a passing test in my suite
+        And the test suite has finished
+        And I have an unrelated image in the output folder
+        When I pipe to xcpretty with "--report html --screenshots"
+        Then I should not see a screenshot in HTML
