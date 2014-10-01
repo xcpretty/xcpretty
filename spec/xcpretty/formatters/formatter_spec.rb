@@ -12,11 +12,11 @@ module XCPretty
     end
 
     it "initializes with unicode" do
-      @formatter.use_unicode?.should be_true
+      @formatter.use_unicode?.should be_truthy
     end
 
     it "initializes with color" do
-      @formatter.colorize?.should be_true
+      @formatter.colorize?.should be_truthy
     end
 
     it "outputs to new lines by default" do
