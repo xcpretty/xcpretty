@@ -76,7 +76,7 @@ end
 printer = XCPretty::Printer.new(printer_opts)
 reporters = report_classes.compact.each_with_index.map {|k,i| k.new(report_options[i])}
 
-ARGF.each_line do |line|
+STDIN.each_line do |line|
   printer.pretty_print(line)
   reporters.each { |r| r.handle(line) }
 end
