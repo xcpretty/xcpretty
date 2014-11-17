@@ -5,6 +5,10 @@ If you're planning to contribute, please do write tests.
 
 Here's an example workflow for a contribution:
 
+#### 0. Fork the project and create a branch
+
+- Make separate branches for unrelated changes, like `my-awesome-feature` or `fix-terrible-bug`
+
 #### 1. Write a failing feature
 
 - These are a full-stack end to end tests
