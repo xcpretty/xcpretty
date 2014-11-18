@@ -38,6 +38,10 @@ module XCPretty
       ansi_parse(text, :green, :bold)
     end
 
+    def blue(text)
+      ansi_parse(text, :blue)
+    end
+
     def cyan(text)
       ansi_parse(text, :cyan)
     end
