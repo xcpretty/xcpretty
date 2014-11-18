@@ -16,6 +16,11 @@ module XCPretty
     # @regex Nothing returned here for now
     CHECK_DEPENDENCIES_MATCHER = /^Check dependencies/
 
+    # @regex Captured groups
+    # $1 command path
+    # $2 arguments
+    SHELL_COMMAND_MATCHER = /^\s{4}(cd|setenv|(?:[\w\/:\\\s\-.]+\/)?[\w\-]+)\s(.*)$/
+
     # @regex Nothing returned here for now
     CLEAN_REMOVE_MATCHER = /^Clean.Remove/
 
@@ -48,12 +53,26 @@ module XCPretty
     COMPILE_XIB_MATCHER = /^CompileXIB\s(.*\/(.*\.xib))/
 
     # @regex Captured groups
+    # $1 source file
+    # $2 target file
+    COPY_HEADER_MATCHER = /^CpHeader\s(.*\.h)\s(.*\.h)/
+
+    # @regex Captured groups
+    # $1 source file
+    # $2 target file
+    COPY_PLIST_MATCHER = /^CopyPlistFile\s(.*)\s(.*)/
+
+    # @regex Captured groups
     # $1 file
     COPY_STRINGS_MATCHER = /^CopyStringsFile.*\/(.*.strings)/
 
     # @regex Captured groups
     # $1 resource
     CPRESOURCE_MATCHER = /^CpResource\s(.*)\s\//
+
+    # @regex Captured groups
+    # $1 whitespace
+    EMPTY_LINE_MATCHER = /^([\n\s]+)$/
 
     # @regex Captured groups
     #
@@ -71,6 +90,19 @@ module XCPretty
     GENERATE_DSYM_MATCHER = /^GenerateDSYMFile \/.*\/(.*\.dSYM)/
 
     # @regex Captured groups
+    # $1 = log message
+    GENERIC_SYSTEM_LOG_MATCHER = /^(Build settings from command line:|Create product structure|.* \.\.\. done|\/\*.*\*\/|sent \d+ bytes.*|total size is \d+.*)$/
+
+    # @regex Captured groups
+    # $1 = test framework output
+    KIWI_OUTPUT_MATCHER = /^(Test (?:Case|Suite).*(?:started|finished|passed|failed).*)/
+
+    # @regex Captured groups
+    # $1 = test output
+    # $2 status
+    KIWI_TEST_SUMMARY_MATCHER = /^\s*(.*\[(?:PASSED|FAILED)\])/
+
+    # @regex Captured groups
     # $1 = library
     LIBTOOL_MATCHER = /^Libtool.*\/(.*\.a)/
 
@@ -79,6 +111,16 @@ module XCPretty
     # $2 = build_variants (normal, profile, debug)
     # $3 = architecture
     LINKING_MATCHER = /^Ld \/.*\/(.*) (.*) (.*)$/
+
+    # @regex Captured groups
+    # $1 timestamp
+    # $2 app
+    # $3 log message
+    LOG_STATEMENT_MATCHER = /^(\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:[\d.]+)\s(.*\[[0-9a-f:]+\])\s(.*)/
+
+    # @regex Captured groups
+    # $1 created directory
+    MKDIR_MATCHER = /^(?:[\/\w.:\s]+\/)?mkdir\s(?:-p\s)?(.*)$/
 
     # @regex Captured groups
     # $1 = suite
@@ -110,6 +152,11 @@ module XCPretty
     # @regex Captured groups
     # $1 = file
     PROCESS_INFO_PLIST_MATCHER = /^ProcessInfoPlistFile\s.*\.plist\s(.*\/+(.*\.plist))/
+
+    # @regex Captured groups
+    # $1 stage
+    # $2 status
+    STAGE_COMPLETE_MATCHER = /\*\* (BUILD|CLEAN|TEST) (SUCCEEDED|FAILED) \*\*/
 
     # @regex Captured groups
     # $1 = suite
@@ -157,6 +204,10 @@ module XCPretty
       # $1 = whole error.
       #      it varies a lot, not sure if it makes sense to catch everything separately
       FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
+
+      # @regex Captured groups
+      # $1 = whole warning
+      GENERIC_WARNING_MATCHER = /^(warning:.*)$/
 
       # @regex Captured groups
       # $1 = whole error
