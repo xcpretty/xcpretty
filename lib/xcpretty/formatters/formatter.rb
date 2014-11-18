@@ -54,7 +54,7 @@ module XCPretty
     def format_error(message);                                EMPTY; end
     def format_undefined_symbols(message, symbol, reference); EMPTY; end
     def format_duplicate_symbols(message, file_paths);        EMPTY; end
-    def format_warning(message);                              EMPTY; end
+    def format_warning(message);                            message; end
 
     # OTHER OUTPUT
     def format_other_output(text);                             text; end
