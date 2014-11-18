@@ -15,7 +15,9 @@ module XCPretty
     ASCII_PENDING = "P"
     ASCII_COMPLETION = ">"
 
-    INDENT = "    "
+    INDENT = '    '.freeze    
+    HEADING_INDENT = '  '.freeze
+    SEPARATOR = "\n"
 
     def format_analyze(file_name, file_path)
       format("Analyzing", file_name)
@@ -37,6 +39,14 @@ module XCPretty
       format("Compiling", file_name)
     end
 
+    def format_copy_header_file(source, target)
+      format("Copying", File.basename(source))
+    end
+
+    def format_copy_plist_file(source, target)
+      format("Copying", File.basename(source))
+    end
+
     def format_copy_strings_file(file)
       format("Copying", file)
     end
@@ -55,6 +65,18 @@ module XCPretty
 
     def format_linking(target, build_variants, arch)
       format("Linking", target)
+    end
+
+    def format_log(timestamp, app, message)
+      INDENT + INDENT + blue("#{timestamp} #{message}")
+    end
+
+    def format_mkdir(directory)
+      format("mkdir", File.basename(directory))
+    end
+
+    def format_other_output(text)
+      blue(text)
     end
 
     def format_failing_test(suite, test_case, reason, file)
@@ -94,11 +116,11 @@ module XCPretty
     end
 
     def format_test_run_started(name)
-      heading("Test Suite", name, "started")
+      HEADING_INDENT + heading("Test Suite", name, "started")
     end
 
     def format_test_suite_started(name)
-      heading("", name, "")
+      SEPARATOR + HEADING_INDENT + heading("", name, "")
     end
 
     def format_touch(file_path, file_name)
@@ -107,6 +129,10 @@ module XCPretty
 
     def format_tiffutil(file_name)
       format("Validating", file_name)
+    end
+
+    def format_warning(message)
+      INDENT + yellow(message)
     end
 
     private
