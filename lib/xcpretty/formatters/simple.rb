@@ -141,6 +141,10 @@ module XCPretty
       [prefix, white(text), description].join(" ").strip
     end
 
+    def separator(title="")
+      title + ('-' * (`tput cols`.strip.to_i - title.length) + SEPARATOR)
+    end
+
     def format(command, argument_text="", success=true)
       [status_symbol(success ? :completion : :fail), white(command), argument_text].join(" ").strip
     end
