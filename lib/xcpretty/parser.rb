@@ -48,6 +48,10 @@ module XCPretty
     COMPILE_XIB_MATCHER = /^CompileXIB\s(.*\/(.*\.xib))/
 
     # @regex Captured groups
+    # $1 source file
+    # $2 target file
+    COPY_HEADER_MATCHER = /^CpHeader\s(.*\.h)\s(.*\.h)/
+
     # $1 file
     COPY_STRINGS_MATCHER = /^CopyStringsFile.*\/(.*.strings)/
 
@@ -234,6 +238,8 @@ module XCPretty
         formatter.format_compile_command($1)
       when COMPILE_XIB_MATCHER
         formatter.format_compile_xib($2, $1)
+      when COPY_HEADER_MATCHER
+        formatter.format_copy_header_file($1, $2)
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
       when EXECUTED_MATCHER

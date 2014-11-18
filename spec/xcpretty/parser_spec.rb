@@ -96,6 +96,12 @@ module XCPretty
       @parser.parse(SAMPLE_COPYSTRINGS)
     end
 
+    it "parses CpHeader" do
+      @formatter.should receive(:format_copy_header_file).with(
+        '/path/to/Header.h','/some other/path/Header.h')
+      @parser.parse('CpHeader /path/to/Header.h /some other/path/Header.h')
+    end
+
     it "parses CpResource" do
       @formatter.should receive(:format_cpresource).with('ObjectiveSugar/Default-568h@2x.png')
       @parser.parse(SAMPLE_CPRESOURCE)

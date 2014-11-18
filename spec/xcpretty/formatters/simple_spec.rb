@@ -35,6 +35,11 @@ module XCPretty
         "> Compiling MainMenu.xib"
       end
 
+      it 'formats copying header files' do
+        @formatter.format_copy_header_file('Source.h',
+          'dir/Destination.h').should == '> Copying Source.h'
+      end
+
       it "formats copy resource" do
         @formatter.format_cpresource("ObjectiveSugar/Default-568h@2x.png").should ==
         "> Copying ObjectiveSugar/Default-568h@2x.png"
