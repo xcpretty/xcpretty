@@ -5,15 +5,15 @@ module XCPretty
 
   class Simple < Formatter
 
-    PASS = "✓"
-    FAIL = "✗"
-    PENDING = "⧖"
+    PASS = '✓'
+    FAIL = '✗'
+    PENDING = '⧖'
 
-    ASCII_PASS = "."
-    ASCII_FAIL = "x"
-    COMPLETION = "▸"
-    ASCII_PENDING = "P"
-    ASCII_COMPLETION = ">"
+    ASCII_PASS = '.'
+    ASCII_FAIL = 'x'
+    COMPLETION = '▸'
+    ASCII_PENDING = 'P'
+    ASCII_COMPLETION = '>'
 
     INDENT = '    '.freeze    
     HEADING_INDENT = '  '.freeze
