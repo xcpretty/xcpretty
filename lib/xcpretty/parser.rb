@@ -328,7 +328,7 @@ module XCPretty
       when TOUCH_MATCHER
         formatter.format_touch($1, $2)
       else
-        ""
+        formatter.format_other_output(text)
       end
     end
 
