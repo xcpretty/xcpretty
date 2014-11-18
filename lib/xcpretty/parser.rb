@@ -285,8 +285,14 @@ module XCPretty
         formatter.format_compile_command($1)
       when COMPILE_XIB_MATCHER
         formatter.format_compile_xib($2, $1)
+      when COPY_HEADER_MATCHER
+        formatter.format_copy_header_file($1, $2)
+      when COPY_PLIST_MATCHER
+        formatter.format_copy_plist_file($1, $2)
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
+      when EMPTY_LINE_MATCHER
+        formatter.format_empty_line($1)
       when EXECUTED_MATCHER
         format_summary_if_needed(text)
       when FAILING_TEST_MATCHER
@@ -295,12 +301,16 @@ module XCPretty
         formatter.format_error($1)
       when GENERATE_DSYM_MATCHER
         formatter.format_generate_dsym($1)
+      when GENERIC_WARNING_MATCHER
+        formatter.format_warning($1)
       when LD_ERROR_MATCHER
         formatter.format_error($1)
       when LIBTOOL_MATCHER
         formatter.format_libtool($1)
       when LINKING_MATCHER
         formatter.format_linking($1, $2, $3)
+      when MKDIR_MATCHER
+        formatter.format_mkdir($1)
       when PENDING_TEST_MATCHER
         formatter.format_pending_test($1, $2)
       when PASSING_TEST_MATCHER
@@ -317,6 +327,8 @@ module XCPretty
         formatter.format_preprocess($1)
       when PBXCP_MATCHER
         formatter.format_pbxcp($1)
+      when STAGE_COMPLETE_MATCHER
+        formatter.format_stage_complete($1, $2)
       when TESTS_RUN_COMPLETION_MATCHER
         formatter.format_test_run_finished($1, $3)
       when TESTS_RUN_START_MATCHER
@@ -327,6 +339,16 @@ module XCPretty
         formatter.format_tiffutil($1)
       when TOUCH_MATCHER
         formatter.format_touch($1, $2)
+
+      # extraneous types
+      when KIWI_OUTPUT_MATCHER, KIWI_TEST_SUMMARY_MATCHER
+        formatter.format_test_framework_output($1)
+      when LOG_STATEMENT_MATCHER
+        formatter.format_log($1, $2, $3)
+      when SHELL_COMMAND_MATCHER
+        formatter.format_shell_command($1, $2)
+      when GENERIC_SYSTEM_LOG_MATCHER
+        formatter.format_system_log($1)
       else
         formatter.format_other_output(text)
       end

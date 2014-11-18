@@ -18,11 +18,16 @@ module XCPretty
     def format_compile(file_name, file_path);                 EMPTY; end
     def format_compile_command(compiler_command);             EMPTY; end
     def format_compile_xib(file_name, file_path);             EMPTY; end
+    def format_copy_header_file(source, target);              EMPTY; end
+    def format_copy_plist_file(source, target);               EMPTY; end
     def format_copy_strings_file(file_name);                  EMPTY; end
     def format_cpresource(file);                              EMPTY; end
+    def format_empty_line(text);                              EMPTY; end
     def format_generate_dsym(dsym);                           EMPTY; end
     def format_linking(file, build_variant, arch);            EMPTY; end
     def format_libtool(library);                              EMPTY; end
+    def format_log(timestamp, app, message);                  EMPTY; end
+    def format_mkdir(directory);                              EMPTY; end
     def format_passing_test(suite, test, time);               EMPTY; end
     def format_pending_test(suite, test);                     EMPTY; end
     def format_failing_test(suite, test, time, file_path);    EMPTY; end
@@ -32,6 +37,10 @@ module XCPretty
     def format_codesign(file);                                EMPTY; end
     def format_preprocess(file);                              EMPTY; end
     def format_pbxcp(file);                                   EMPTY; end
+    def format_shell_command(command, arguments);             EMPTY; end
+    def format_stage_complete(stage, state);                  EMPTY; end
+    def format_system_log(message);                           EMPTY; end
+    def format_test_framework_output(text)                    EMPTY; end
     def format_test_run_started(name);                        EMPTY; end
     def format_test_run_finished(name, time);                 EMPTY; end
     def format_test_suite_started(name);                      EMPTY; end
@@ -45,6 +54,8 @@ module XCPretty
     def format_error(message);                                EMPTY; end
     def format_undefined_symbols(message, symbol, reference); EMPTY; end
     def format_duplicate_symbols(message, file_paths);        EMPTY; end
+    def format_warning(message);                              EMPTY; end
+
     # OTHER OUTPUT
     def format_other_output(text);                             text; end
   end
