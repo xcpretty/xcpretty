@@ -353,7 +353,7 @@ module XCPretty
       when GENERIC_WARNING_MATCHER
         formatter.format_warning($1)
       else
-        ""
+        formatter.format_other_output(text)
       end
     end
 

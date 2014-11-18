@@ -75,6 +75,10 @@ module XCPretty
       INDENT + format_test("#{test_case}, #{reason}", :fail)
     end
 
+    def format_other_output(text)
+      text
+    end
+
     def format_passing_test(suite, test_case, time)
       INDENT + format_test("#{test_case} (#{colored_time(time)} seconds)", :pass)
     end

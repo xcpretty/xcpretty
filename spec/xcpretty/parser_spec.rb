@@ -268,6 +268,12 @@ module XCPretty
       end
     end
 
+    it 'parses unknown text patterns' do
+      text = 'This is just some text?'
+      @formatter.should receive(:format_other_output).with(text)
+      @parser.parse(text)
+    end
+
     it "parses duplicate symbols" do
       @formatter.should receive(:format_duplicate_symbols).with(
         "duplicate symbol _OBJC_IVAR_$ClassName._ivarName in",

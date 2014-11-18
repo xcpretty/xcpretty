@@ -150,5 +150,8 @@ module XCPretty
         "> Validating unbelievable.tiff"
       end
 
+      it 'formats unknown output types' do
+        @formatter.format_other_output('some text?').should == 'some text?'
+      end
     end
 end

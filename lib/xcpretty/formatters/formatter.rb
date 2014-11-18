@@ -59,6 +59,8 @@ module XCPretty
     #       the same for warnings
     def format_compile_warning(file_name, file_path, reason,
                                line, cursor);                  EMPTY; end
+    # OTHER OUTPUT
+    def format_other_output(text);                             EMPTY; end
   end
 
   class Formatter
