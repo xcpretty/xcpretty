@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "xcpretty"
   spec.version       = XCPretty::VERSION
   spec.authors       = ["Marin Usalj", "Delisa Mason"]
-  spec.email         = ["mneorr@gmail.com", "iskanamagus@gmail.com"]
+  spec.email         = ["marin2211@gmail.com", "iskanamagus@gmail.com"]
   spec.required_ruby_version = '>= 1.8.7'
   spec.description   =
   %q{
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   and it can also mine Bitcoins.
   }
   spec.summary       = %q{xcodebuild formatter done right}
-  spec.homepage      = "https://github.com/mneorr/xcpretty"
+  spec.homepage      = "https://github.com/supermarin/xcpretty"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

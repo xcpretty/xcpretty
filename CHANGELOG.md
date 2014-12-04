@@ -59,7 +59,7 @@
 ###### Enhancements
 
 * Parse more fatal errors, and CodeSign errors that were printed to STDOUT |
-  [#51](https://github.com/mneorr/XCPretty/issues/51)
+  [#51](https://github.com/supermarin/xcpretty/issues/51)
 
 
 ## 0.1.0
@@ -67,9 +67,9 @@
 ###### Enhancements
 
 * Color semi-slow tests in yellow, slow tests in red |
-  [#46](https://github.com/mneorr/xcpretty/pull/46)
+  [#46](https://github.com/supermarin/xcpretty/pull/46)
 * Add option to specify a custom location for report generation |
-  [#43](https://github.com/mneorr/XCPretty/pull/43)
+  [#43](https://github.com/supermarin/xcpretty/pull/43)
 
 
 ## 0.0.9
@@ -85,7 +85,7 @@
 ###### Bug Fixes
 
 * show version if not piped |
-  [#39](https://github.com/mneorr/XCPretty/issues/39)
+  [#39](https://github.com/supermarin/xcpretty/issues/39)
 
 ###### Enhancements
 
@@ -101,10 +101,10 @@
   and Pods-not-installed errors. Missing mach-o-linker failures
 * Added support for loading arbitrary custom printers (experimental) |
   [Eloy Durán](https://github.com/alloy) |
-  [#29](https://github.com/mneorr/xcpretty/pulls/29)
+  [#29](https://github.com/supermarin/xcpretty/pulls/29)
 * Show help banner in case no data is piped in |
   [Eloy Durán](https://github.com/alloy) |
-  [#29](https://github.com/mneorr/xcpretty/pulls/29)
+  [#29](https://github.com/supermarin/xcpretty/pulls/29)
 
 
 ## 0.0.6

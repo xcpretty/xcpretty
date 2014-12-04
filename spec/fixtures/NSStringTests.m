@@ -3,7 +3,7 @@
 //  SampleProject
 //
 //  Created by Neil on 05/12/2012.
-//  Copyright (c) 2012 @mneorr | mneorr.com. All rights reserved.
+//  Copyright (c) 2012 @supermarin | supermar.in | All rights reserved.
 //
 
 #import "Kiwi.h"
