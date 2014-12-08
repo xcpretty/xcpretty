@@ -17,7 +17,8 @@ module XCPretty
 
       it "highlights code" do
         Syntax.stub(:system).and_return(true)
-        Syntax.highlight('int a = 5;').should include("\e[36mint\e[39;49;00m")
+        Syntax.highlight('int a = 5;').should ==
+          "\e[38;5;125mint\e[39m a \e[38;5;241m=\e[39m \e[38;5;241m5\e[39m;\n"
       end
 
     end
