@@ -14,7 +14,7 @@ module XCPretty
     end
 
     def self.pygmentize(code, options)
-      `echo "#{code}" | pygmentize -l objc #{options}`
+      `echo '#{code}' | pygmentize -f 256 -l objc #{options}`
     end
   end
 end
