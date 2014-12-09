@@ -2,7 +2,7 @@ module XCPretty
   class Syntax
 
     CPP = 'c++'
-    CPP_EXTENSIONS = ['.cpp', '.hpp', '.c++', '.cxx']
+    CPP_EXTENSIONS = ['.cpp', '.hpp', '.c++', '.cxx', '.cc']
 
     OBJC = 'objc'
     OBJC_EXTENSIONS = ['.m', '.h']
