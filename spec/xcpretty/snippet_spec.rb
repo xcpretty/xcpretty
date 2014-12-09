@@ -31,12 +31,14 @@ EOS
 
     it "doesn't crash if a failure is on the first line" do
       path = File.expand_path('spec/fixtures/NSStringTests.m:0')
-      Snippet.from_filepath(path).contents.should == "//\n//  NSStringTests.m\n//  SampleProject\n"
+      Snippet.from_filepath(path).contents.should ==
+        "//\n//  NSStringTests.m\n//  SampleProject\n"
     end
 
     it "doesn't crash if the file has only 1 line" do
       path = File.expand_path('spec/fixtures/oneliner.m:0')
-      Snippet.from_filepath(path).contents.should == "[[[@1 should] equal] @3];\n"
+      Snippet.from_filepath(path).contents.should ==
+         "[[[@1 should] equal] @3];\n"
     end
 
   end
