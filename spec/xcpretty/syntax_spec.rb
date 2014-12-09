@@ -15,12 +15,32 @@ module XCPretty
 
     context "pygments are installed" do
 
-      it "highlights code" do
+      before(:each) do
         Syntax.stub(:system).and_return(true)
+      end
+
+      it 'highlights objective-c code by default' do
         Syntax.highlight(Snippet.new('int a = 5;')).should ==
           "\e[38;5;125mint\e[39m a \e[38;5;241m=\e[39m \e[38;5;241m5\e[39m;\n"
       end
 
+      it 'highlights objective-c code by filename' do
+      end
+
+      it 'highlights swift code by filename' do
+      end
+
+      it 'highlights c++ code by filename' do
+      end
+
+      it 'highlights objective-c++ code by filename' do
+      end
+
+      it 'highlights dylan code by filename' do
+      end
+
+      it 'highlights ruby code by filename' do
+      end
     end
 
     context "pygments are not installed" do
