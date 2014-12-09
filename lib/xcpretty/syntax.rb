@@ -13,8 +13,13 @@ module XCPretty
     RUBY = 'ruby'
     RUBY_EXTENSIONS = ['.ruby','.rb']
 
-    def self.highlight(code, options="", filename="")
-      pygments_available? ? pygmentize(code, options, file_language(filename)) : code
+    def self.highlight(snippet, options="")
+      if pygments_available?
+        language = file_language(File.basename(snippet.file_path))
+        pygmentize(snippet.contents, options, language)
+      else
+        snippet.contents
+      end
     end
 
 

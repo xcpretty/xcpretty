@@ -65,7 +65,7 @@ module XCPretty
 
     if RUBY_VERSION > '1.8.7'
       it "formats failures per suite" do
-        Syntax.stub(:highlight) { |text| text }
+        Syntax.stub(:highlight) { |snippet| snippet.contents }
 
         first_path = File.expand_path('spec/fixtures/NSStringTests.m:46')
         second_path = File.expand_path('spec/fixtures/NSStringTests.m:57')
