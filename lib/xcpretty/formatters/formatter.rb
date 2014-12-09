@@ -122,7 +122,7 @@ module XCPretty
     def format_failure(f)
       "  #{f[:test_case]}, #{red(f[:reason])}\n  #{cyan(f[:file_path])}\n" +
       "  ```\n" +
-      Syntax.highlight(Snippet.from_filepath(f[:file_path])) +
+      Syntax.highlight(Snippet.from_filepath(f[:file_path]), nil, File.basename(f[:file_path])) +
       "  ```"
     end
 
