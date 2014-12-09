@@ -1,17 +1,23 @@
 module XCPretty
   class Syntax
 
+    CPP = 'c++'
+    CPP_EXTENSIONS = ['.cpp', '.hpp', '.c++', '.cxx']
+
     OBJC = 'objc'
-    OBJC_EXTENSIONS = ['.m','.h']
+    OBJC_EXTENSIONS = ['.m', '.h']
+
+    OBJCPP = 'objc++'
+    OBJCPP_EXTENSIONS = ['.mm', '.hh']
 
     SWIFT = 'swift'
     SWIFT_EXTENSIONS = ['.swift']
 
     DYLAN = 'dylan'
-    DYLAN_EXTENSIONS = ['.dyl','.dylan']
+    DYLAN_EXTENSIONS = ['.dyl', '.dylan']
 
     RUBY = 'ruby'
-    RUBY_EXTENSIONS = ['.ruby','.rb']
+    RUBY_EXTENSIONS = ['.ruby', '.rb']
 
     def self.highlight(snippet, options="")
       if pygments_available?
@@ -40,6 +46,10 @@ module XCPretty
         OBJC
       when *SWIFT_EXTENSIONS
         SWIFT
+      when *OBJCPP_EXTENSIONS
+        OBJCPP
+      when *CPP_EXTENSIONS
+        CPP
       when *DYLAN_EXTENSIONS
         DYLAN
       when *RUBY_EXTENSIONS
