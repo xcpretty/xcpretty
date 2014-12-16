@@ -1,23 +1,19 @@
+require 'xcpretty/snippet'
+
 module XCPretty
   class Syntax
 
-    CPP = 'c++'
-    CPP_EXTENSIONS = ['.cpp', '.hpp', '.c++', '.cxx', '.cc']
+    def self.register_filetype(type, extensions)
+      @filetypes ||= {}
+      extensions.each { |ext| @filetypes[ext] = type }
+    end
 
-    OBJC = 'objc'
-    OBJC_EXTENSIONS = ['.m', '.h']
-
-    OBJCPP = 'objc++'
-    OBJCPP_EXTENSIONS = ['.mm', '.hh']
-
-    SWIFT = 'swift'
-    SWIFT_EXTENSIONS = ['.swift']
-
-    DYLAN = 'dylan'
-    DYLAN_EXTENSIONS = ['.dyl', '.dylan']
-
-    RUBY = 'ruby'
-    RUBY_EXTENSIONS = ['.ruby', '.rb']
+    register_filetype 'c++',    ['.cpp', '.hpp', '.c++', '.cxx', '.cc']
+    register_filetype 'objc',   ['.m', '.h']
+    register_filetype 'objc++', ['.mm', '.hh']
+    register_filetype 'swift',  ['.swift']
+    register_filetype 'dylan',  ['.dyl', '.dylan']
+    register_filetype 'ruby',   ['.ruby', '.rb']
 
     def self.highlight(snippet, options = '')
       if pygments_available?
@@ -27,7 +23,6 @@ module XCPretty
         snippet.contents
       end
     end
-
 
     private
 
@@ -41,22 +36,9 @@ module XCPretty
     end
 
     def self.file_language(filename)
-      case File.extname(filename)
-      when *OBJC_EXTENSIONS
-        OBJC
-      when *SWIFT_EXTENSIONS
-        SWIFT
-      when *OBJCPP_EXTENSIONS
-        OBJCPP
-      when *CPP_EXTENSIONS
-        CPP
-      when *DYLAN_EXTENSIONS
-        DYLAN
-      when *RUBY_EXTENSIONS
-        RUBY
-      else
-        OBJC
-      end
+      ext = File.extname(filename)
+      @filetypes[ext] || 'objc'
     end
+
   end
 end

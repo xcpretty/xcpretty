@@ -76,6 +76,7 @@ module XCPretty
           " \e[38;5;18malpha\e[39m:\e[38;5;241m1\e[39m\e[38;5;241m.\e[39m" +
           "\e[38;5;241m0\e[39m)\n"
       end
+
     end
 
     context "pygments are not installed" do
