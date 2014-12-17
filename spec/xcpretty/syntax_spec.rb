@@ -4,7 +4,7 @@ module XCPretty
 
   describe Syntax do
 
-    let(:snippet) { Snippet.new('self.color = [UIColor redColor];', 'test.m')}
+    let(:snippet) { Snippet.new('self.color = [UIColor redColor];', 'test.m') }
     let(:code) { snippet.contents }
 
     it "caches the pygments availability" do
