@@ -20,7 +20,7 @@ module XCPretty
 
       it 'supports highlighting with options' do
         Pygments.should_receive(:pygmentize).with(code, 'objc', '-f html')
-        Syntax.highlight(snippet, '-f html').should
+        Syntax.highlight(snippet, '-f html')
       end
 
 
