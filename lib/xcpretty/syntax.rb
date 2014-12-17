@@ -2,7 +2,6 @@ require 'xcpretty/snippet'
 
 module XCPretty
   class Syntax
-
     def self.register_filetype(type, extensions)
       @filetypes ||= {}
       extensions.each { |ext| @filetypes[ext] = type }
@@ -16,9 +15,9 @@ module XCPretty
     register_filetype 'ruby',   ['.ruby', '.rb']
 
     def self.highlight(snippet, options = '')
-      if pygments_available?
+      if Pygments.available?
         language = file_language(File.basename(snippet.file_path))
-        pygmentize(snippet.contents, options, language)
+        Pygments.pygmentize(snippet.contents, language, options)
       else
         snippet.contents
       end
@@ -26,20 +25,21 @@ module XCPretty
 
     private
 
-    def self.pygments_available?
-      @available = system('which pygmentize > /dev/null') if @available.nil?
-      @available
-    end
-
-    def self.pygmentize(code, options, language)
-      `echo '#{code}' | pygmentize -f 256 -l #{language} #{options}`
-    end
-
     def self.file_language(filename)
       ext = File.extname(filename)
       @filetypes[ext] || 'objc'
     end
+  end
 
+  class Pygments
+    def self.pygmentize(code, language, options)
+      `echo '#{code}' | pygmentize -f 256 -l #{language} #{options if options}`
+    end
+
+    def self.available?
+      @available = system('which pygmentize > /dev/null') if @available.nil?
+      @available
+    end
   end
 end
 
