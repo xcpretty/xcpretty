@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.8
+
+###### Enhancements
+
+* Better syntax highlighting
+* Support for other languages than Objc (Swift, C++, Objc++, Dylan, Ruby)
+  | [#110](https://github.com/supermarin/xcpretty/pull/110)
+
+
 ## 0.1.5
 
 ###### Enhancements
