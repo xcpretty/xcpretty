@@ -1,6 +1,5 @@
 module XCPretty
   class Snippet
-
     attr_reader :contents, :file_path
 
     def initialize(contents = '', file_path = '')
