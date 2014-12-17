@@ -23,7 +23,6 @@ module XCPretty
         Syntax.highlight(snippet, '-f html')
       end
 
-
       it 'highlights objective-c code by filename' do
         Pygments.should_receive(:pygmentize).with(code, 'objc', '')
         Syntax.highlight(snippet)
