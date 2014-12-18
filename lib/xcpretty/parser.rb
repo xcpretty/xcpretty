@@ -27,7 +27,8 @@ module XCPretty
     # @regex Captured groups
     # $1 command path
     # $2 arguments
-    SHELL_COMMAND_MATCHER = /^\s{4}(cd|setenv|(?:[\w\/:\\\s\-.]+?\/)?[\w\-]+)\s(.*)$/
+    SHELL_COMMAND_MATCHER =
+     /^(?:\s{4})?(cd|setenv|mkdir|(?:[\w\/:\\\s\-.]+?bin\/)[\w\-]+)\s(.*)$/
 
     # @regex Nothing returned here for now
     CLEAN_REMOVE_MATCHER = /^Clean.Remove/
