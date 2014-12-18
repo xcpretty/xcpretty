@@ -34,6 +34,7 @@ module XCPretty
     def format_codesign(file);                                EMPTY; end
     def format_preprocess(file);                              EMPTY; end
     def format_pbxcp(file);                                   EMPTY; end
+    def format_shell_command(command, arguments);             EMPTY; end
     def format_test_run_started(name);                        EMPTY; end
     def format_test_run_finished(name, time);                 EMPTY; end
     def format_test_suite_started(name);                      EMPTY; end

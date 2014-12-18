@@ -195,6 +195,18 @@ module XCPretty
       @parser.parse(SAMPLE_PBXCP)
     end
 
+    it 'parses changing directories' do
+      @formatter.should receive(:format_shell_command).with('cd',
+        '/some/place/out\ there')
+      @parser.parse('    cd /some/place/out\ there')
+    end
+
+    it 'parses any indented command' do
+      @formatter.should receive(:format_shell_command).with(
+        '/bin/rm', '-rf /bin /usr /Users')
+      @parser.parse('    /bin/rm -rf /bin /usr /Users')
+    end
+
     it "parses Touch" do
       @formatter.should receive(:format_touch).with(
         '/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/AlcatrazTests.octest',

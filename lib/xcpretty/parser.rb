@@ -16,6 +16,11 @@ module XCPretty
     # @regex Nothing returned here for now
     CHECK_DEPENDENCIES_MATCHER = /^Check dependencies/
 
+    # @regex Captured groups
+    # $1 command path
+    # $2 arguments
+    SHELL_COMMAND_MATCHER = /^\s{4}(cd|setenv|(?:[\w\/:\\\s\-.]+?\/)?[\w\-]+)\s(.*)$/
+
     # @regex Nothing returned here for now
     CLEAN_REMOVE_MATCHER = /^Clean.Remove/
 
@@ -292,6 +297,8 @@ module XCPretty
         formatter.format_tiffutil($1)
       when TOUCH_MATCHER
         formatter.format_touch($1, $2)
+      when SHELL_COMMAND_MATCHER
+        formatter.format_shell_command($1, $2)
       when GENERIC_WARNING_MATCHER
         formatter.format_warning($1)
       else
