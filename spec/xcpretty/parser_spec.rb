@@ -91,6 +91,12 @@ module XCPretty
       @parser.parse(SAMPLE_COMPILE_XIB)
     end
 
+    it 'parses CopyPlistFile' do
+      @formatter.should receive(:format_copy_plist_file).with(
+        '/path/to/Some.plist', '/some other/File.plist')
+      @parser.parse('CopyPlistFile /path/to/Some.plist /some other/File.plist')
+    end
+
     it "parses CopyStringsFile" do
       @formatter.should receive(:format_copy_strings_file).with('InfoPlist.strings')
       @parser.parse(SAMPLE_COPYSTRINGS)

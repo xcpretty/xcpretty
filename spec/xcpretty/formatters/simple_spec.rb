@@ -40,6 +40,11 @@ module XCPretty
           'dir/Destination.h').should == '> Copying Source.h'
       end
 
+      it 'formats copying plist files' do
+        @formatter.format_copy_plist_file("Source.plist",
+          'dir/Destination.plist').should == '> Copying Source.plist'
+      end
+
       it "formats copy resource" do
         @formatter.format_cpresource("ObjectiveSugar/Default-568h@2x.png").should ==
         "> Copying ObjectiveSugar/Default-568h@2x.png"

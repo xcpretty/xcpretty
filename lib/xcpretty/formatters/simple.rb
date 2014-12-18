@@ -41,6 +41,10 @@ module XCPretty
       format("Copying", File.basename(source))
     end
 
+    def format_copy_plist_file(source, target)
+      format("Copying", File.basename(source))
+    end
+
     def format_copy_strings_file(file)
       format("Copying", file)
     end
