@@ -64,6 +64,12 @@ module XCPretty
       @parser.parse(compile_statement)
     end
 
+    it 'parses compiler warnings' do
+      warning = 'warning: this is dank'
+      @formatter.should receive(:format_warning).with(warning)
+      @parser.parse(warning)
+    end
+
     it "parses compiling categories" do
       @formatter.should receive(:format_compile).with("NSMutableArray+ObjectiveSugar.m", "/Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m")
       @parser.parse(SAMPLE_COMPILE)

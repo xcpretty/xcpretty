@@ -168,6 +168,9 @@ module XCPretty
       FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
 
       # @regex Captured groups
+      # $1 = whole warning
+      GENERIC_WARNING_MATCHER = /^(warning:.*)$/
+
       # $1 = whole error
       LD_ERROR_MATCHER = /^(ld:.*not found for.*)/
 
@@ -289,6 +292,8 @@ module XCPretty
         formatter.format_tiffutil($1)
       when TOUCH_MATCHER
         formatter.format_touch($1, $2)
+      when GENERIC_WARNING_MATCHER
+        formatter.format_warning($1)
       else
         ""
       end

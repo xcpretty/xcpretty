@@ -41,12 +41,13 @@ module XCPretty
     def format_touch(file_path, file_name);                   EMPTY; end
     def format_tiffutil(file);                                EMPTY; end
 
-    # COMPILER / LINKER ERRORS
+    # COMPILER / LINKER ERRORS AND WARNINGS
     def format_compile_error(file_name, file_path, reason,
                              line, cursor);                   EMPTY; end
     def format_error(message);                                EMPTY; end
     def format_undefined_symbols(message, symbol, reference); EMPTY; end
     def format_duplicate_symbols(message, file_paths);        EMPTY; end
+    def format_warning(message);                            message; end
   end
 
   class Formatter

@@ -25,6 +25,11 @@ module XCPretty
         "> Cleaning Pods/Pods-ObjectiveSugar [Debug]"
       end
 
+      it 'formats compiler warnings' do
+        warning = 'warning: stuff is broken'
+        @formatter.format_warning(warning).should == '    ' + warning
+      end
+
       it "formats compiling output" do
         @formatter.format_compile("NSMutableArray+ObjectiveSugar.m", 'path/to/file').should ==
         "> Compiling NSMutableArray+ObjectiveSugar.m"

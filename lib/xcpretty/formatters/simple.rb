@@ -117,6 +117,10 @@ module XCPretty
       format("Validating", file_name)
     end
 
+    def format_warning(message)
+      INDENT + yellow(message)
+    end
+
     private
 
     def heading(prefix, text, description)
