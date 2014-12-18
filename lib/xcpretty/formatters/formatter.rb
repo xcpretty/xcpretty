@@ -23,6 +23,7 @@ module XCPretty
     def format_copy_plist_file(source, target);                EMPTY; end
     def format_copy_strings_file(file_name);                   EMPTY; end
     def format_cpresource(file);                               EMPTY; end
+    def format_empty_line(text);                               EMPTY; end
     def format_generate_dsym(dsym);                            EMPTY; end
     def format_linking(file, build_variant, arch);             EMPTY; end
     def format_libtool(library);                               EMPTY; end

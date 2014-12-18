@@ -153,5 +153,9 @@ module XCPretty
       it 'formats unknown output types' do
         @formatter.format_other_output('some text?').should == 'some text?'
       end
+
+      it 'formats whitespace-only lines' do
+        @formatter.format_empty_line("\n \t\t").should == ''
+      end
     end
 end

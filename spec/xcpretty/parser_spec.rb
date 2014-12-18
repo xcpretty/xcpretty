@@ -274,6 +274,11 @@ module XCPretty
       @parser.parse(text)
     end
 
+    it 'parses whitespace-only lines' do
+      @formatter.should receive(:format_empty_line).with("\t\t  ")
+      @parser.parse("\t\t  ")
+    end
+
     it "parses duplicate symbols" do
       @formatter.should receive(:format_duplicate_symbols).with(
         "duplicate symbol _OBJC_IVAR_$ClassName._ivarName in",
