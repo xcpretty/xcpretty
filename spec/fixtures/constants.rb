@@ -548,3 +548,17 @@ SAMPLE_CLANG_ERROR = 'clang: error: linker command failed with exit code 1 (use 
 
 SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec, line 80, hello xcpretty.png'
 SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'
+
+
+
+################################################################################
+# ERRORS
+################################################################################
+
+SAMPLE_FORMAT_WARNING = %Q(
+/Users/supermarin/code/oss/ObjectiveSugar/Example/ObjectiveSugar/AppDelegate.m:19:31: warning: format specifies type 'id' but the argument has type 'int' [-Wformat]
+    NSLog(@"I HAZ %@ CATS", 1);
+                         ~~   ^
+                         %d
+1 warning generated.
+)
