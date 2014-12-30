@@ -53,6 +53,11 @@ module XCPretty
     def format_undefined_symbols(message, symbol, reference); EMPTY; end
     def format_duplicate_symbols(message, file_paths);        EMPTY; end
     def format_warning(message);                            message; end
+
+    # TODO: see how we can unify format_error and format_compile_error,
+    #       the same for warnings
+    def format_compile_warning(file_name, file_path, reason,
+                               line, cursor);                 EMPTY; end
   end
 
   class Formatter
@@ -91,8 +96,11 @@ module XCPretty
       "\n\n#{text}"
     end
 
-    ERROR = "⌦ "
-    ASCII_ERROR = "[x]"
+    ERROR = '⌦ '
+    ASCII_ERROR = '[x]'
+
+    WARNING = '⚠️ '
+    ASCII_WARNING = '[!]'
 
     def format_error(message)
       "\n#{red(error_symbol + " " + message)}\n\n"
@@ -100,6 +108,11 @@ module XCPretty
 
     def format_compile_error(file, file_path, reason, line, cursor)
       "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n" +
+      "#{line}\n#{cyan(cursor)}\n\n"
+    end
+
+    def format_compile_warning(file, file_path, reason, line, cursor)
+      "\n#{yellow(warning_symbol + " ")}#{file_path}: #{yellow(reason)}\n\n" +
       "#{line}\n#{cyan(cursor)}\n\n"
     end
 
@@ -136,6 +149,10 @@ module XCPretty
 
     def error_symbol
       use_unicode? ? ERROR : ASCII_ERROR
+    end
+
+    def warning_symbol
+      use_unicode? ? WARNING : ASCII_WARNING
     end
 
   end
