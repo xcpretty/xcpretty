@@ -76,6 +76,10 @@ Given(/^there was a syntax error$/) do
   add_run_input SAMPLE_COMPILE_ERROR
 end
 
+Given(/^there were warnings in the code$/) do
+  add_run_input SAMPLE_FORMAT_WARNING
+end
+
 Given(/^the linker has failed with undefined symbols$/) do
   add_run_input SAMPLE_UNDEFINED_SYMBOLS
 end
@@ -248,6 +252,10 @@ end
 
 Then(/^I should see a red error message$/) do
   run_output.should include(red("⌦  " + SAMPLE_PODS_ERROR.gsub('error: ', '')))
+end
+
+Then(/^I should see a yellow warning message$/) do
+  run_output.should include(yellow("⚠️  " + SAMPLE_PODS_ERROR.gsub('warning: ', '')))
 end
 
 Then(/^I should see a red compilation error$/) do
