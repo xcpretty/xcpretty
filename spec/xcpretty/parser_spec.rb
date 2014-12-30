@@ -70,9 +70,9 @@ module XCPretty
     end
 
     it 'parses compiler warnings' do
-      warning = 'warning: this is dank'
-      @formatter.should receive(:format_warning).with(warning)
-      @parser.parse(warning)
+      @formatter.should receive(:format_warning)
+      #@formatter.should receive(:format_warning).with("TEST 123")
+      @parser.parse(SAMPLE_FORMAT_WARNING)
     end
 
     it "parses compiling categories" do

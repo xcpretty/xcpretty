@@ -166,6 +166,17 @@ module XCPretty
     # @regex Captured groups
     WRITE_AUXILIARY_FILES = /^Write auxiliary files/
 
+    module Warnings
+      # $1 = file_path
+      # $2 = file_name
+      # $3 = reason
+      COMPILE_WARNING_MATCHER = /^(\/.+\/(.*):.*:.*):\swarning:\s(.*)$/
+
+      # @regex Captured groups
+      # $1 = whole warning
+      GENERIC_WARNING_MATCHER = /^(warning:.*)$/
+    end
+
     module Errors
       # @regex Captured groups
       # $1 = whole error
@@ -179,7 +190,7 @@ module XCPretty
       # $1 = file_path
       # $2 = file_name
       # $3 = reason
-      COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):.*:.*):(?:\sfatal)?\serror:\s(.*)$/
+      COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):.*:.*):\s(?:fatal\s)?error:\s(.*)$/
 
       # @regex Captured groups
       # $1 cursor (with whitespaces and tildes)
@@ -189,10 +200,6 @@ module XCPretty
       # $1 = whole error.
       #      it varies a lot, not sure if it makes sense to catch everything separately
       FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
-
-      # @regex Captured groups
-      # $1 = whole warning
-      GENERIC_WARNING_MATCHER = /^(warning:.*)$/
 
       # $1 = whole error
       LD_ERROR_MATCHER = /^(ld:.*not found for.*)/
@@ -226,6 +233,7 @@ module XCPretty
 
     include Matchers
     include Matchers::Errors
+    include Matchers::Warnings
 
     attr_reader :formatter
 
