@@ -87,8 +87,8 @@ module XCPretty
       "\n\n#{text}"
     end
 
-    ERROR = "⌦"
-    ASCII_ERROR = "[!]"
+    ERROR = "⌦ "
+    ASCII_ERROR = "[x]"
 
     def format_error(message)
       "\n#{red(error_symbol + " " + message)}\n\n"

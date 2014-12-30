@@ -235,7 +235,7 @@ Then(/^I should not see the name of the test group$/) do
 end
 
 Then(/^I should see a red error message$/) do
-  run_output.should include(red("⌦ " + SAMPLE_PODS_ERROR.gsub('error: ', '')))
+  run_output.should include(red("⌦  " + SAMPLE_PODS_ERROR.gsub('error: ', '')))
 end
 
 Then(/^I should see a red compilation error$/) do
@@ -251,7 +251,7 @@ Then(/^I should see a cyan cursor$/) do
 end
 
 Then(/^I should see the undefined symbold message$/) do
-  run_output.should include(red("⌦ Undefined symbols for architecture x86_64"))
+  run_output.should include(red("⌦  Undefined symbols for architecture x86_64"))
 end
 
 Then(/^I should see the symbol and reference that caused failure$/) do
