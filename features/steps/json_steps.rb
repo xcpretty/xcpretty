@@ -18,17 +18,16 @@ end
 
 Then(/^the JSON compilation database should contain an entry with a command$/) do
   json_db.length.should == 1
-
-  json_db[0]["command"].should start_with("/Applications/Xcode.app/Contents/Developer")
-  json_db[0]["command"].should end_with(".o")
+  json_db[0]['command'].should start_with('/Applications/Xcode.app/Contents/Developer')
+  json_db[0]['command'].should end_with('.o')
 end
 
 Then(/^the JSON compilation database should contain an entry with a file$/) do
-  json_db[0]["file"].should == "NSMutableArray+ObjectiveSugar.m"
+  json_db[0]['file'].should == '/Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m'
 end
 
 Then(/^the JSON compilation database should contain an entry with a directory$/) do
-  json_db[0]["directory"].should == "/Users/musalj/code/OSS/ObjectiveSugar/Classes"
+  json_db[0]['directory'].should == '/'
 end
 
 Then(/^the JSON compilation database should be complete$/) do

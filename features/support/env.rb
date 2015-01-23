@@ -110,6 +110,6 @@ After do
   @json = nil
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
   FileUtils.rm_rf(XCPretty::HTML::FILEPATH)
-  FileUtils.rm_rf(XCPretty::JSONCompilationDatabase::FILEPATH)
+  FileUtils.rm_rf(XCPretty::JSONCompilationDatabase::FILE_PATH)
   File.delete(@screenshot_file_path) if @screenshot_file_path
 end

@@ -41,11 +41,12 @@ module XCPretty
     # @regex Captured groups
     # $1 file_path
     # $2 file_name (e.g. KWNull.m)
-    COMPILE_MATCHER = /^CompileC\s.*\s(.*\/(.*\.(?:m|mm|c|cc|cpp|cxx)))\s.*/
+    COMPILE_MATCHER = /^CompileC\s.*(?<!\\)\s(.*\/(.*\.(?:m|mm|c|cc|cpp|cxx)))\s.*/
 
     # @regex Captured groups
     # $1 compiler_command
-    COMPILE_COMMAND_MATCHER = /^\s*(.*\/usr\/bin\/clang\s.*\.o)$/
+    # $2 file_path
+    COMPILE_COMMAND_MATCHER = /^\s*(.*\/usr\/bin\/clang\s.*\s\-c\s(.*\.(?:m|mm|c|cc|cpp|cxx))\s.*\.o)$/
 
     # @regex Captured groups
     # $1 file_path
@@ -112,6 +113,10 @@ module XCPretty
     # @regex Captured groups
     # $1 = file
     PROCESS_PCH_MATCHER = /^ProcessPCH\s.*\s(.*.pch)/
+
+    # @regex Captured groups
+    # $1 file_path
+    PROCESS_PCH_COMMAND_MATCHER = /^\s*.*\/usr\/bin\/clang\s.*\s\-c\s(.*(?<!\.pch)\.(?:pch))\s.*\.dia$/
 
     # @regex Captured groups
     # $1 = file
@@ -248,7 +253,7 @@ module XCPretty
       when COMPILE_MATCHER
         formatter.format_compile($2, $1)
       when COMPILE_COMMAND_MATCHER
-        formatter.format_compile_command($1)
+        formatter.format_compile_command($1, $2)
       when COMPILE_XIB_MATCHER
         formatter.format_compile_xib($2, $1)
       when COPY_HEADER_MATCHER
@@ -283,6 +288,8 @@ module XCPretty
         formatter.format_phase_script_execution(*unescaped($1))
       when PROCESS_PCH_MATCHER
         formatter.format_process_pch($1)
+        when PROCESS_PCH_COMMAND_MATCHER
+          formatter.format_process_pch_command($1)
       when PREPROCESS_MATCHER
         formatter.format_preprocess($1)
       when PBXCP_MATCHER
