@@ -58,6 +58,11 @@ module XCPretty
       @parser.parse(SAMPLE_CODESIGN_FRAMEWORK)
     end
 
+    it 'parses compiler_space_in_path' do
+      @formatter.should receive(:format_compile).with('SASellableItem.m', "SACore/App/Models/Core\\ Data/human/SASellableItem.m")
+      @parser.parse(SAMPLE_COMPILE_SPACE_IN_PATH)
+    end
+
     it "parses compiler commands" do
       compile_statement = SAMPLE_ANOTHER_COMPILE.lines().to_a.last()
       @formatter.should receive(:format_compile_command).with(compile_statement.strip(), "/Users/musalj/code/OSS/Kiwi/Classes/Core/KWNull.m")
@@ -183,6 +188,12 @@ module XCPretty
     it "parses process PCH" do
       @formatter.should receive(:format_process_pch).with("Pods-CocoaLumberjack-prefix.pch")
       @parser.parse(SAMPLE_PRECOMPILE)
+    end
+
+    it 'parses process PCH command' do
+      compile_statement = SAMPLE_PRECOMPILE.lines.to_a.last
+      @formatter.should receive(:format_process_pch_command).with("/Users/musalj/code/OSS/ObjectiveRecord/Pods/Pods-CocoaLumberjack-prefix.pch")
+      @parser.parse(compile_statement)
     end
 
     it "parses preprocessing" do

@@ -41,7 +41,7 @@ module XCPretty
     # @regex Captured groups
     # $1 file_path
     # $2 file_name (e.g. KWNull.m)
-    COMPILE_MATCHER = /^CompileC\s.*(?<!\\)\s(.*\/(.*\.(?:m|mm|c|cc|cpp|cxx)))\s.*/
+    COMPILE_MATCHER = /^CompileC\s.+?\s((?:\\.|[^ ])+\/((?:\\.|[^ ])+\.(?:m|mm|c|cc|cpp|cxx)))\s.*/
 
     # @regex Captured groups
     # $1 compiler_command
@@ -116,7 +116,7 @@ module XCPretty
 
     # @regex Captured groups
     # $1 file_path
-    PROCESS_PCH_COMMAND_MATCHER = /^\s*.*\/usr\/bin\/clang\s.*\s\-c\s(.*(?<!\.pch)\.(?:pch))\s.*\.dia$/
+    PROCESS_PCH_COMMAND_MATCHER = /^\s*.*\/usr\/bin\/clang\s.*\s\-c\s(.*)\s\-o\s.*/
 
     # @regex Captured groups
     # $1 = file
