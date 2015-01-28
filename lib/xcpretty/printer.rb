@@ -15,7 +15,7 @@ module XCPretty
       formatted_text = formatter.pretty_format(text)
       unless formatted_text.empty?
         STDOUT.print(formatted_text + formatter.optional_newline)
-        STDOUT.flush()
+        STDOUT.flush
       end
     end
 
