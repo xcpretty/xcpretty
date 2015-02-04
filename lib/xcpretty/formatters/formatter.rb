@@ -16,7 +16,7 @@ module XCPretty
     def format_clean_target(target, project, configuration);  EMPTY; end
     def format_clean_remove;                                  EMPTY; end
     def format_compile(file_name, file_path);                 EMPTY; end
-    def format_compile_command(compiler_command);             EMPTY; end
+    def format_compile_command(compiler_command, file_path);  EMPTY; end
     def format_compile_xib(file_name, file_path);             EMPTY; end
     def format_copy_header_file(source, target);              EMPTY; end
     def format_copy_plist_file(source, target);               EMPTY; end
@@ -29,6 +29,7 @@ module XCPretty
     def format_pending_test(suite, test);                     EMPTY; end
     def format_failing_test(suite, test, time, file_path);    EMPTY; end
     def format_process_pch(file);                             EMPTY; end
+    def format_process_pch_command(file_path);                EMPTY; end
     def format_phase_script_execution(script_name);           EMPTY; end
     def format_process_info_plist(file_name, file_path);      EMPTY; end
     def format_codesign(file);                                EMPTY; end
