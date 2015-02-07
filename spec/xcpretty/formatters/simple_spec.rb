@@ -95,6 +95,11 @@ module XCPretty
         "    P _tupleByAddingObject__should_add_a_non_nil_object [PENDING]"
       end
 
+      it "formats measuring tests" do
+        @formatter.format_measuring_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", "0.001").should ==
+        "    T _tupleByAddingObject__should_add_a_non_nil_object measured (0.001 seconds)"
+      end
+
       it "formats Phase Script Execution" do
         @formatter.format_phase_script_execution("Check Pods Manifest.lock").should ==
         "> Running script 'Check Pods Manifest.lock'"

@@ -8,12 +8,14 @@ module XCPretty
     PASS = "✓"
     FAIL = "✗"
     PENDING = "⧖"
+    MEASURE = "⧗"
 
     ASCII_PASS = "."
     ASCII_FAIL = "x"
     COMPLETION = "▸"
     ASCII_PENDING = "P"
     ASCII_COMPLETION = ">"
+    ASCII_MEASURE = "T"
 
     INDENT = "    "
 
@@ -75,6 +77,10 @@ module XCPretty
 
     def format_pending_test(suite, test_case)
       INDENT + format_test("#{test_case} [PENDING]", :pending)
+    end
+
+    def format_measuring_test(suite, test_case, time)
+      INDENT + format_test("#{test_case} measured (#{colored_time(time)} seconds)", :measure)
     end
 
     def format_phase_script_execution(script_name)
@@ -147,6 +153,8 @@ module XCPretty
         red(use_unicode? ? ERROR : ASCII_ERROR)
       when :completion
         yellow(use_unicode? ? COMPLETION : ASCII_COMPLETION)
+      when :measure
+        yellow(use_unicode? ? MEASURE : ASCII_MEASURE)
       else
         ""
       end
