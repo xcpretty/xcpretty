@@ -151,7 +151,7 @@ module XCPretty
     # @regex Captured groups
     # $1 file_path
     # $2 file_name
-    TOUCH_MATCHER = /^Touch\s(.*\/([\w+\.]+))/
+    TOUCH_MATCHER = /^Touch\s(.*\/(.*))/
 
     module Errors
       # @regex Captured groups
