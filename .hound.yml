@@ -1,2 +1,6 @@
 StringLiterals:
   EnforcedStyle: single_quotes
+
+Lint/UnusedMethodArgument:
+  Description: 'Checks for unused method arguments.'
+  Enabled: true
