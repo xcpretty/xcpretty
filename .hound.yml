@@ -3,4 +3,4 @@ StringLiterals:
 
 Lint/UnusedMethodArgument:
   Description: 'Checks for unused method arguments.'
-  Enabled: true
+  Enabled: false
