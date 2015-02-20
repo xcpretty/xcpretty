@@ -114,6 +114,11 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple"
         Then I should see the name of a pending test
 
+    Scenario: Showing measuring test output
+        Given I have a measuring test in my suite
+        When I pipe to xcpretty with "--simple"
+        Then I should see the name of a measuring test
+
     Scenario: Showing failed test output with color
         Given I have a failing test in my suite
         And the test suite has finished
@@ -169,4 +174,3 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple --color"
         Then I should see the undefined symbold message
         And I should see the symbol and reference that caused failure
-

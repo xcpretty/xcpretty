@@ -27,6 +27,7 @@ TEST_PATH_MATCHER = %r{[\w/\-\s]+:\d+}
 PASSING_TEST_NAME_MATCHER = %r{\w+\s\(\d+\.\d+\sseconds\)}
 PENDING_TEST_NAME_MATCHER = %r{\w+\s\[PENDING\]}
 FAILING_TEST_NAME_MATCHER = %r{\w+, expected:}
+MEASURING_TEST_NAME_MATCHER = %r{\w+\smeasured\s\(\d+\.\d+\sseconds\)}
 
 JSON_DB_FIXTURE_COMMAND_COUNT = 557
 
