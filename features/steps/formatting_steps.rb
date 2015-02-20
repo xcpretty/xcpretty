@@ -84,6 +84,10 @@ Given(/^I have a pending test in my suite$/) do
   add_run_input SAMPLE_PENDING_KIWI_TEST
 end
 
+Given(/^I have a measuring test in my suite$/) do
+  add_run_input SAMPLE_MEASURING_TEST
+end
+
 Given(/^I have a tiff file to validate$/) do
   add_run_input SAMPLE_TIFFUTIL
 end
@@ -181,6 +185,14 @@ Then(/^I should see a yellow pending test icon$/) do
   run_output.should start_with(yellow("P"))
 end
 
+Then(/^I should see a measuring test icon in ASCII$/) do
+  run_output.should start_with('T')
+end
+
+Then(/^I should see a yellow measuring test icon$/) do
+  run_output.should start_with(yellow('T'))
+end
+
 Then(/^the final execution message should be (red|green)$/) do |color|
   last_line = run_output.lines.to_a.last
   last_line.should be_colored(color.to_sym)
@@ -261,6 +273,10 @@ end
 
 Then(/^I should see the name of a pending test$/) do
   run_output.should =~ PENDING_TEST_NAME_MATCHER
+end
+
+Then(/^I should see the name of a measuring test$/) do
+  run_output.should =~ MEASURING_TEST_NAME_MATCHER
 end
 
 Then(/^I should see the test time in yellow$/) do

@@ -15,6 +15,11 @@ Feature: Showing RSpec-style test output
         When I pipe to xcpretty with "--test"
         Then I should see a pending test icon in ASCII
 
+    Scenario: Showing measuring tests
+        Given I have a measuring test in my suite
+        When I pipe to xcpretty with "--test"
+        Then I should see a measuring test icon in ASCII
+
     Scenario: Showing some tests failed with color
         Given I have a failing test in my suite
         And the test suite has finished
@@ -32,6 +37,11 @@ Feature: Showing RSpec-style test output
         Given I have a pending test in my suite
         When I pipe to xcpretty with "--test --color"
         Then I should see a yellow pending test icon
+
+    Scenario: Showing measuring tests with color
+        Given I have a measuring test in my suite
+        When I pipe to xcpretty with "--test --color"
+        Then I should see a yellow measuring test icon
 
     Scenario: Showing that all tests passed with color
         Given all of my tests will pass in my suite

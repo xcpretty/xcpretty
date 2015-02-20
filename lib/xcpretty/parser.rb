@@ -107,6 +107,12 @@ module XCPretty
     PENDING_TEST_MATCHER = /^Test Case\s'-\[(.*)\s(.*)PENDING\]'\spassed/
 
     # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    # $3 = time
+    MEASURING_TEST_MATCHER = /^[^:]*:[^:]*:\sTest Case\s'-\[(.*)\s(.*)\]'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
+
+    # @regex Captured groups
     # $1 = script_name
     PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)\s\//
 
@@ -276,6 +282,8 @@ module XCPretty
         formatter.format_libtool($1)
       when LINKING_MATCHER
         formatter.format_linking($1, $2, $3)
+      when MEASURING_TEST_MATCHER
+        formatter.format_measuring_test($1, $2, $3)
       when PENDING_TEST_MATCHER
         formatter.format_pending_test($1, $2)
       when PASSING_TEST_MATCHER
@@ -450,4 +458,3 @@ module XCPretty
 
   end
 end
-
