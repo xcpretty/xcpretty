@@ -186,7 +186,7 @@ module XCPretty
     WRITE_FILE_MATCHER = /^write-file\s(.*)/
 
     # @regex Captured groups
-    WRITE_AUXILIARY_FILE = /^Write auxiliary files/
+    WRITE_AUXILIARY_FILES = /^Write auxiliary files/
 
     module Errors
       # @regex Captured groups
@@ -348,8 +348,8 @@ module XCPretty
         formatter.format_touch($1, $2)
       when WRITE_FILE_MATCHER
         formatter.format_write_file($1)
-      when WRITE_AUXILIARY_FILE
-        formatter.format_write_auxiliary_file
+      when WRITE_AUXILIARY_FILES
+        formatter.format_write_auxiliary_files
 
       # extraneous types
       when KIWI_OUTPUT_MATCHER, KIWI_TEST_SUMMARY_MATCHER

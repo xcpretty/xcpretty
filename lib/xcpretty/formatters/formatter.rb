@@ -48,7 +48,7 @@ module XCPretty
     def format_touch(file_path, file_name);                   EMPTY; end
     def format_tiffutil(file);                                EMPTY; end
     def format_write_file(file);                              EMPTY; end
-    def format_write_auxiliary_file;                          EMPTY; end
+    def format_write_auxiliary_files;                         EMPTY; end
 
     # COMPILER / LINKER ERRORS
     def format_compile_error(file_name, file_path, reason,
