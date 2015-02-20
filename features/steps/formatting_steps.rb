@@ -186,11 +186,11 @@ Then(/^I should see a yellow pending test icon$/) do
 end
 
 Then(/^I should see a measuring test icon in ASCII$/) do
-  run_output.should start_with("T")
+  run_output.should start_with('T')
 end
 
 Then(/^I should see a yellow measuring test icon$/) do
-  run_output.should start_with(yellow("T"))
+  run_output.should start_with(yellow('T'))
 end
 
 Then(/^the final execution message should be (red|green)$/) do |color|
