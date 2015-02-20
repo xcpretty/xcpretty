@@ -5,7 +5,7 @@ module XCPretty
     FAIL = "F"
     PASS = "."
     PENDING = "P"
-    MEASURING = "T"
+    MEASURING = 'T'
 
     def optional_newline
       ''
