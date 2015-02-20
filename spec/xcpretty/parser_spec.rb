@@ -182,8 +182,8 @@ module XCPretty
 
     it "parses measuring tests" do
       @formatter.should receive(:format_measuring_test).with('SecEncodeTransformTests.SecEncodeTransformTests',
-                                                           'test_RFC4648_Decode_UsingBase32',
-                                                           '0.013')
+                                                             'test_RFC4648_Decode_UsingBase32',
+                                                             '0.013')
       @parser.parse(SAMPLE_MEASURING_TEST)
     end
 
