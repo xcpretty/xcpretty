@@ -153,6 +153,13 @@ module XCPretty
     # $2 file_name
     TOUCH_MATCHER = /^Touch\s(.*\/([\w+\.]+))/
 
+    # @regex Captured groups
+    # $1 file_path
+    WRITE_FILE_MATCHER = /^write-file\s(.*)/
+
+    # @regex Captured groups
+    WRITE_AUXILIARY_FILES = /^Write auxiliary files/
+
     module Errors
       # @regex Captured groups
       # $1 = whole error
@@ -304,6 +311,10 @@ module XCPretty
         formatter.format_tiffutil($1)
       when TOUCH_MATCHER
         formatter.format_touch($1, $2)
+      when WRITE_FILE_MATCHER
+        formatter.format_write_file($1)
+      when WRITE_AUXILIARY_FILES
+        formatter.format_write_auxiliary_files
       when SHELL_COMMAND_MATCHER
         formatter.format_shell_command($1, $2)
       when GENERIC_WARNING_MATCHER

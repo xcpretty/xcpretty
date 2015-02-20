@@ -225,6 +225,17 @@ module XCPretty
       @parser.parse(SAMPLE_TOUCH)
     end
 
+    it "parses write file" do
+      @formatter.should receive(:format_write_file).with(
+        '/Users/me/myproject/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-AFNetworking.build/Objects-normal/x86_64/Pods-AFNetworking.LinkFileList')
+      @parser.parse(SAMPLE_WRITE_FILE)
+    end
+
+    it "parses write auxiliary files" do
+      @formatter.should receive(:format_write_auxiliary_files)
+      @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES)
+    end
+
     it "parses TiffUtil" do
       @formatter.should receive(:format_tiffutil).with('eye_icon.tiff')
       @parser.parse(SAMPLE_TIFFUTIL)
