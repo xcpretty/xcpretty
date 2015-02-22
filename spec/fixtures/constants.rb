@@ -107,6 +107,13 @@ Touch /Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjug
     cd /Users/musalj/code/OSS/Alcatraz
     /usr/bin/touch -c /Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/AlcatrazTests.octest
 )
+
+SAMPLE_WRITE_FILE = %Q(
+write-file /Users/me/myproject/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-AFNetworking.build/Objects-normal/x86_64/Pods-AFNetworking.LinkFileList
+)
+
+SAMPLE_WRITE_AUXILIARY_FILES = %Q(Write auxiliary files)
+
 SAMPLE_TIFFUTIL = %Q(
 TiffUtil eye_icon.tiff
     cd /Users/musalj/code/OSS/Alcatraz
