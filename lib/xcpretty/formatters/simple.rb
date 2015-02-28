@@ -125,8 +125,12 @@ module XCPretty
       format("Validating", file_name)
     end
 
-    def format_warning(message)
-      INDENT + yellow(message)
+    def format_warning(message, file, line, reason)
+      [status_symbol(:completion),
+       yellow('Warning:', :bold),
+       yellow(reason),
+       yellow("[#{file}:#{line}]"),
+       yellow("\n#{message}")].join(' ').strip
     end
 
     private

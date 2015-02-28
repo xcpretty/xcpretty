@@ -571,9 +571,5 @@ SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'
 ################################################################################
 
 SAMPLE_FORMAT_WARNING = %Q(
-/Users/supermarin/code/oss/ObjectiveSugar/Example/ObjectiveSugar/AppDelegate.m:19:31: warning: format specifies type 'id' but the argument has type 'int' [-Wformat]
-    NSLog(@"I HAZ %@ CATS", 1);
-                         ~~   ^
-                         %d
-1 warning generated.
+/Users/supermarin/code/oss/ObjectiveSugar/Example/Pods/BPXLUUIDHandler/BPXLUUIDHandler.m:105:35: warning: instance method '-uniqueIdentifier' not found (return type defaults to 'id') [-Wobjc-method-access]
 )
