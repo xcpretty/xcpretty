@@ -42,8 +42,8 @@ module XCPretty
       ansi_parse(text, :cyan)
     end
 
-    def yellow(text)
-      ansi_parse(text, :yellow)
+    def yellow(text, effect=nil)
+      ansi_parse(text, :yellow, effect)
     end
 
     def applied_effects(text)

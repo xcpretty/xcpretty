@@ -167,6 +167,7 @@ module XCPretty
     WRITE_AUXILIARY_FILES = /^Write auxiliary files/
 
     module Errors
+
       # @regex Captured groups
       # $1 = whole error
       CLANG_ERROR_MATCHER = /^(clang: error:.*)$/
@@ -192,7 +193,10 @@ module XCPretty
 
       # @regex Captured groups
       # $1 = whole warning
-      GENERIC_WARNING_MATCHER = /^(warning:.*)$/
+      # $2 = file_name
+      # $3 = line
+      # $4 = warning message
+      GENERIC_WARNING_MATCHER = /^(.*\/(.+\.(?:m|mm|c|cc|cpp|cxx)):(\d+):\d+:\swarning:\s(.*)\s\[\-W.+\])$/
 
       # $1 = whole error
       LD_ERROR_MATCHER = /^(ld:.*not found for.*)/
@@ -243,92 +247,92 @@ module XCPretty
       return format_duplicate_symbols if should_format_duplicate_symbols?
 
       case text
-      when ANALYZE_MATCHER
-        formatter.format_analyze($2, $1)
-      when BUILD_TARGET_MATCHER
-        formatter.format_build_target($1, $2, $3)
-      when CLEAN_REMOVE_MATCHER
-        formatter.format_clean_remove
-      when CLEAN_TARGET_MATCHER
-        formatter.format_clean_target($1, $2, $3)
-      when COPY_STRINGS_MATCHER
-        formatter.format_copy_strings_file($1)
-      when CHECK_DEPENDENCIES_MATCHER
-        formatter.format_check_dependencies
-      when CLANG_ERROR_MATCHER
-        formatter.format_error($1)
-      when CODESIGN_FRAMEWORK_MATCHER
-        formatter.format_codesign($1)
-      when CODESIGN_MATCHER
-        formatter.format_codesign($1)
-      when CODESIGN_ERROR_MATCHER
-        formatter.format_error($1)
-      when COMPILE_MATCHER
-        formatter.format_compile($2, $1)
-      when COMPILE_COMMAND_MATCHER
-        formatter.format_compile_command($1, $2)
-      when COMPILE_XIB_MATCHER
-        formatter.format_compile_xib($2, $1)
-      when COPY_HEADER_MATCHER
-        formatter.format_copy_header_file($1, $2)
-      when COPY_PLIST_MATCHER
-        formatter.format_copy_plist_file($1, $2)
-      when CPRESOURCE_MATCHER
-        formatter.format_cpresource($1)
-      when EXECUTED_MATCHER
-        format_summary_if_needed(text)
-      when FAILING_TEST_MATCHER
-        formatter.format_failing_test($2, $3, $4, $1)
-      when FATAL_ERROR_MATCHER
-        formatter.format_error($1)
-      when GENERATE_DSYM_MATCHER
-        formatter.format_generate_dsym($1)
-      when LD_ERROR_MATCHER
-        formatter.format_error($1)
-      when LIBTOOL_MATCHER
-        formatter.format_libtool($1)
-      when LINKING_MATCHER
-        formatter.format_linking($1, $2, $3)
-      when MEASURING_TEST_MATCHER
-        formatter.format_measuring_test($1, $2, $3)
-      when PENDING_TEST_MATCHER
-        formatter.format_pending_test($1, $2)
-      when PASSING_TEST_MATCHER
-        formatter.format_passing_test($1, $2, $3)
-      when PODS_ERROR_MATCHER
-        formatter.format_error($1)
-      when PROCESS_INFO_PLIST_MATCHER
-        formatter.format_process_info_plist(*unescaped($2, $1))
-      when PHASE_SCRIPT_EXECUTION_MATCHER
-        formatter.format_phase_script_execution(*unescaped($1))
-      when PROCESS_PCH_MATCHER
-        formatter.format_process_pch($1)
+        when ANALYZE_MATCHER
+          formatter.format_analyze($2, $1)
+        when BUILD_TARGET_MATCHER
+          formatter.format_build_target($1, $2, $3)
+        when CLEAN_REMOVE_MATCHER
+          formatter.format_clean_remove
+        when CLEAN_TARGET_MATCHER
+          formatter.format_clean_target($1, $2, $3)
+        when COPY_STRINGS_MATCHER
+          formatter.format_copy_strings_file($1)
+        when CHECK_DEPENDENCIES_MATCHER
+          formatter.format_check_dependencies
+        when CLANG_ERROR_MATCHER
+          formatter.format_error($1)
+        when CODESIGN_FRAMEWORK_MATCHER
+          formatter.format_codesign($1)
+        when CODESIGN_MATCHER
+          formatter.format_codesign($1)
+        when CODESIGN_ERROR_MATCHER
+          formatter.format_error($1)
+        when COMPILE_MATCHER
+          formatter.format_compile($2, $1)
+        when COMPILE_COMMAND_MATCHER
+          formatter.format_compile_command($1, $2)
+        when COMPILE_XIB_MATCHER
+          formatter.format_compile_xib($2, $1)
+        when COPY_HEADER_MATCHER
+          formatter.format_copy_header_file($1, $2)
+        when COPY_PLIST_MATCHER
+          formatter.format_copy_plist_file($1, $2)
+        when CPRESOURCE_MATCHER
+          formatter.format_cpresource($1)
+        when EXECUTED_MATCHER
+          format_summary_if_needed(text)
+        when FAILING_TEST_MATCHER
+          formatter.format_failing_test($2, $3, $4, $1)
+        when FATAL_ERROR_MATCHER
+          formatter.format_error($1)
+        when GENERATE_DSYM_MATCHER
+          formatter.format_generate_dsym($1)
+        when LD_ERROR_MATCHER
+          formatter.format_error($1)
+        when LIBTOOL_MATCHER
+          formatter.format_libtool($1)
+        when LINKING_MATCHER
+          formatter.format_linking($1, $2, $3)
+        when MEASURING_TEST_MATCHER
+          formatter.format_measuring_test($1, $2, $3)
+        when PENDING_TEST_MATCHER
+          formatter.format_pending_test($1, $2)
+        when PASSING_TEST_MATCHER
+          formatter.format_passing_test($1, $2, $3)
+        when PODS_ERROR_MATCHER
+          formatter.format_error($1)
+        when PROCESS_INFO_PLIST_MATCHER
+          formatter.format_process_info_plist(*unescaped($2, $1))
+        when PHASE_SCRIPT_EXECUTION_MATCHER
+          formatter.format_phase_script_execution(*unescaped($1))
+        when PROCESS_PCH_MATCHER
+          formatter.format_process_pch($1)
         when PROCESS_PCH_COMMAND_MATCHER
           formatter.format_process_pch_command($1)
-      when PREPROCESS_MATCHER
-        formatter.format_preprocess($1)
-      when PBXCP_MATCHER
-        formatter.format_pbxcp($1)
-      when TESTS_RUN_COMPLETION_MATCHER
-        formatter.format_test_run_finished($1, $3)
-      when TESTS_RUN_START_MATCHER
-        formatter.format_test_run_started($1)
-      when TEST_SUITE_START_MATCHER
-        formatter.format_test_suite_started($1)
-      when TIFFUTIL_MATCHER
-        formatter.format_tiffutil($1)
-      when TOUCH_MATCHER
-        formatter.format_touch($1, $2)
-      when WRITE_FILE_MATCHER
-        formatter.format_write_file($1)
-      when WRITE_AUXILIARY_FILES
-        formatter.format_write_auxiliary_files
-      when SHELL_COMMAND_MATCHER
-        formatter.format_shell_command($1, $2)
-      when GENERIC_WARNING_MATCHER
-        formatter.format_warning($1)
-      else
-        ""
+        when PREPROCESS_MATCHER
+          formatter.format_preprocess($1)
+        when PBXCP_MATCHER
+          formatter.format_pbxcp($1)
+        when TESTS_RUN_COMPLETION_MATCHER
+          formatter.format_test_run_finished($1, $3)
+        when TESTS_RUN_START_MATCHER
+          formatter.format_test_run_started($1)
+        when TEST_SUITE_START_MATCHER
+          formatter.format_test_suite_started($1)
+        when TIFFUTIL_MATCHER
+          formatter.format_tiffutil($1)
+        when TOUCH_MATCHER
+          formatter.format_touch($1, $2)
+        when WRITE_FILE_MATCHER
+          formatter.format_write_file($1)
+        when WRITE_AUXILIARY_FILES
+          formatter.format_write_auxiliary_files
+        when SHELL_COMMAND_MATCHER
+          formatter.format_shell_command($1, $2)
+        when GENERIC_WARNING_MATCHER
+          formatter.format_warning($1, $2, $3, $4)
+        else
+          ''
       end
     end
 
