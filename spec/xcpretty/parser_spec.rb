@@ -70,9 +70,8 @@ module XCPretty
     end
 
     it 'parses compiler warnings' do
-      warning = 'warning: this is dank'
-      @formatter.should receive(:format_warning).with(warning)
-      @parser.parse(warning)
+      @formatter.should receive(:format_warning).with(SAMPLE_FORMAT_WARNING.strip, 'BPXLUUIDHandler.m', '105', "instance method '-uniqueIdentifier' not found (return type defaults to 'id')")
+      @parser.parse(SAMPLE_FORMAT_WARNING)
     end
 
     it "parses compiling categories" do
@@ -487,4 +486,5 @@ module XCPretty
     end
 
   end
+
 end

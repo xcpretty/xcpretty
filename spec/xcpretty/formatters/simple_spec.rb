@@ -26,8 +26,11 @@ module XCPretty
       end
 
       it 'formats compiler warnings' do
-        warning = 'warning: stuff is broken'
-        @formatter.format_warning(warning).should == '    ' + warning
+        message = SAMPLE_FORMAT_WARNING.strip
+        file = 'BPXLUUIDHandler.m'
+        line = '105'
+        reason = "instance method '-uniqueIdentifier' not found (return type defaults to 'id')"
+        @formatter.format_warning(message, file, line, reason).should == '> Warning: ' + reason + " [#{file}:#{line}] \n#{message}"
       end
 
       it "formats compiling output" do
