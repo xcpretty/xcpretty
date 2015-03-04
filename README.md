@@ -55,6 +55,22 @@ $ xcodebuild [flags] | xcpretty -c && exit ${PIPESTATUS[0]}
 
 Writing a report to a custom path can be specified using `--output PATH`.
 
+## Extensions
+
+`xcpretty` supports custom formatters through the use of the
+`--formatter` flag, which takes a path to a file as an argument. The
+file must contain a Ruby subclass of `XCPretty::Formatter`, and
+return that class at the end of te file. The class
+can override the `format_*` methods to hook into output parsing
+events.
+
+### Known extensions
+
+* [xcpretty-travis-formatter](https://github.com/kattrali/xcpretty-travis-formatter): support for cleaner output in TravisCI using code folding
+
+The recommended format is a gem containing the formatter and named
+with an `xcpretty-` prefix, for easier discovery.
+
 ## Did you just clone xctool?
 
 Unlike [xctool](https://github.com/facebook/xctool), `xcpretty` isn't a build tool.
