@@ -497,6 +497,8 @@ PBXCp build/Release/CocoaChipCore.framework build/Release/CocoaChip.app/Contents
 warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework/Versions/A/CocoaChipCore
 )
 
+SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec, line 80, hello xcpretty.png'
+SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'
 
 ################################################################################
 # ERRORS
@@ -535,12 +537,6 @@ SAMPLE_FATAL_HEADER_ERROR = %Q(
 fatal error: malformed or corrupted AST file: 'could not find file '/Users/mpv/dev/project/Crashlytics.framework/Headers/Crashlytics.h' referenced by AST file' note: after modifying system headers, please delete the module cache at '/Users/mpv/Library/Developer/Xcode/DerivedData/ModuleCache/M5WJ0FYE7N06'
 )
 
-SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
-/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSSetTests.m:93:16: error: no visible @interface for 'NSArray' declares the selector 'shoulds'
-            }] shoulds] equal:@[ @"F458 Italia", @"Testarossa" ]];
-            ~~ ^~~~~~~
-)
-
 SAMPLE_UNDEFINED_SYMBOLS = %Q(
 Undefined symbols for architecture x86_64:
   "_OBJC_CLASS_$_CABasicAnimation", referenced from:
@@ -561,9 +557,11 @@ SAMPLE_LD_LIBRARY_ERROR = 'ld: library not found for -lPods-Yammer'
 
 SAMPLE_CLANG_ERROR = 'clang: error: linker command failed with exit code 1 (use -v to see invocation)'
 
-SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec, line 80, hello xcpretty.png'
-SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'
-
+SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
+/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSSetTests.m:93:16: error: no visible @interface for 'NSArray' declares the selector 'shoulds'
+            }] shoulds] equal:@[ @"F458 Italia", @"Testarossa" ]];
+            ~~ ^~~~~~~
+)
 
 
 ################################################################################

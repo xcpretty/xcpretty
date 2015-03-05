@@ -255,7 +255,8 @@ Then(/^I should see a red error message$/) do
 end
 
 Then(/^I should see a yellow warning message$/) do
-  run_output.should include(yellow("⚠️  " + SAMPLE_PODS_ERROR.gsub('warning: ', '')))
+  run_output.should include("#{yellow('⚠️  ')}/Users/supermarin/code/oss/ObjectiveSugar/Example/ObjectiveSugar/AppDelegate.m:19:31:")
+  run_output.should include(yellow("format specifies type 'id' but the argument has type 'int' [-Wformat]"))
 end
 
 Then(/^I should see a red compilation error$/) do
