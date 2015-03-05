@@ -64,8 +64,8 @@ module XCPretty
     end
 
     it "parses compiler commands" do
-      compile_statement = SAMPLE_ANOTHER_COMPILE.lines().to_a.last()
-      @formatter.should receive(:format_compile_command).with(compile_statement.strip(), "/Users/musalj/code/OSS/Kiwi/Classes/Core/KWNull.m")
+      compile_statement = SAMPLE_ANOTHER_COMPILE.lines.to_a.last
+      @formatter.should receive(:format_compile_command).with(compile_statement.strip, "/Users/musalj/code/OSS/Kiwi/Classes/Core/KWNull.m")
       @parser.parse(compile_statement)
     end
 

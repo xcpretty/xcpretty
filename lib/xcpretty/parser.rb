@@ -365,10 +365,10 @@ module XCPretty
       }
       if text =~ COMPILE_ERROR_MATCHER
         @formatting_error = true
-        update_error.call()
+        update_error.call
       elsif text =~ COMPILE_WARNING_MATCHER
         @formatting_warning = true
-        update_error.call()
+        update_error.call
       elsif text =~ CURSOR_MATCHER
         current_issue[:cursor]    = $1.chomp
       elsif @formatting_error || @formatting_warning
