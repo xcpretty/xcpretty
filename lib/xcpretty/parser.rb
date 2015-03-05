@@ -439,14 +439,14 @@ module XCPretty
     end
 
     def format_compile_warning
-      error = current_issue.dup
+      warning = current_issue.dup
       @current_issue = {}
       @formatting_warning = false
-      formatter.format_compile_warning(error[:file_name],
-                                       error[:file_path],
-                                       error[:reason],
-                                       error[:line],
-                                       error[:cursor])
+      formatter.format_compile_warning(warning[:file_name],
+                                       warning[:file_path],
+                                       warning[:reason],
+                                       warning[:line],
+                                       warning[:cursor])
     end
 
     def format_undefined_symbols
