@@ -4,8 +4,18 @@
 
 ###### Enhancements
 
-* Better syntax highlighting
-* Support for other languages than Objc (Swift, C++, Objc++, Dylan, Ruby)
+* Added support for build warnings (even multiline with snippets)
+  | [#131](https://github.com/supermarin/xcpretty/pull/131)
+* Support for measuring test runtimes
+  | [Norio Nomura](https://github.com/norio-nomura)
+  | [#124](https://github.com/supermarin/xcpretty/pull/124)
+* Support for `write file` and `Write auxiliary files`
+  | [Piet Brauer](https://github.com/pietbrauer)
+  | [#128](https://github.com/supermarin/xcpretty/pull/128)
+* Support for `oclint v0.9dev` json-compilation-database
+  | [KiKi](https://github.com/iKiKi)
+  | [#121](https://github.com/supermarin/xcpretty/pull/121)
+* Syntax highlighting for other languages than Objc (Swift, C++, Objc++, Dylan, Ruby)
   | [#110](https://github.com/supermarin/xcpretty/pull/110)
 
 
