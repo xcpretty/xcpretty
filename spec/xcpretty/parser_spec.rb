@@ -64,15 +64,9 @@ module XCPretty
     end
 
     it "parses compiler commands" do
-      compile_statement = SAMPLE_ANOTHER_COMPILE.lines().to_a.last()
-      @formatter.should receive(:format_compile_command).with(compile_statement.strip(), "/Users/musalj/code/OSS/Kiwi/Classes/Core/KWNull.m")
+      compile_statement = SAMPLE_ANOTHER_COMPILE.lines.to_a.last
+      @formatter.should receive(:format_compile_command).with(compile_statement.strip, "/Users/musalj/code/OSS/Kiwi/Classes/Core/KWNull.m")
       @parser.parse(compile_statement)
-    end
-
-    it 'parses compiler warnings' do
-      warning = 'warning: this is dank'
-      @formatter.should receive(:format_warning).with(warning)
-      @parser.parse(warning)
     end
 
     it "parses compiling categories" do
@@ -91,7 +85,7 @@ module XCPretty
     end
 
     it "parses compiling C and C++ files" do
-      for file_extension in ['.c', '.cc', '.cpp', '.cxx'] do
+      ['.c', '.cc', '.cpp', '.cxx'].each do |file_extension|
         @formatter.should receive(:format_compile).with("KWNull" + file_extension, "Classes/Core/KWNull" + file_extension)
         @parser.parse(SAMPLE_ANOTHER_COMPILE.sub('.m', file_extension))
       end
@@ -313,7 +307,6 @@ module XCPretty
     end
 
     context "errors" do
-
       it "parses clang errors" do
         @formatter.should receive(:format_error).with(SAMPLE_CLANG_ERROR)
         @parser.parse(SAMPLE_CLANG_ERROR)
@@ -417,12 +410,28 @@ module XCPretty
         @formatter.should_not receive(:format_compile_error)
         @parser.parse("hohohoooo")
       end
-
     end
 
+    context "warnings" do
+      it 'parses compiler warnings' do
+        @formatter.should receive(:format_warning).with("TEST 123")
+        @parser.parse("warning: TEST 123")
+      end
+
+      it "parses compiling warnings" do
+        @formatter.should receive(:format_compile_warning).with(
+          "AppDelegate.m",
+          "/Users/supermarin/code/oss/ObjectiveSugar/Example/ObjectiveSugar/AppDelegate.m:19:31",
+          "format specifies type 'id' but the argument has type 'int' [-Wformat]",
+          "    NSLog(@\"I HAZ %@ CATS\", 1);",
+          "                         ~~   ^")
+        SAMPLE_FORMAT_WARNING.each_line do |line|
+          @parser.parse(line)
+        end
+      end
+    end
 
     context "summary" do
-
       def given_tests_have_started(reporter = SAMPLE_OCUNIT_TEST_RUN_BEGINNING)
         @parser.parse(reporter)
       end
@@ -483,7 +492,6 @@ module XCPretty
           given_kiwi_tests_are_done
         }
       end
-
     end
 
   end

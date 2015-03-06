@@ -174,3 +174,9 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple --color"
         Then I should see the undefined symbold message
         And I should see the symbol and reference that caused failure
+
+    Scenario: There are build warnings
+        Given there were warnings in the code
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a yellow warning message
+

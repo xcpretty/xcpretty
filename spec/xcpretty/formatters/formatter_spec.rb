@@ -41,6 +41,22 @@ module XCPretty
 )
     end
 
+    it "formats compiling warnings" do
+      reason = "format specifies type 'id' but the argument has type 'int' [-Wformat]"
+
+      @formatter.format_compile_warning( "file", "path/to/file", reason,
+%Q(    NSLog(@"alsdkflsakdj %@", 1);),
+%Q(                         ~~   ^)).should ==
+
+%Q(
+#{@formatter.yellow('⚠️  ')}path/to/file: #{@formatter.yellow(reason)}
+
+    NSLog(@"alsdkflsakdj %@", 1);
+#{@formatter.cyan("                         ~~   ^")}
+
+)
+    end
+
     it "formats linker undefined symbols by default" do
       @formatter.format_undefined_symbols("Undefined symbols for architecture x86_64",
                                           '_OBJC_CLASS_$_CABasicAnimation',

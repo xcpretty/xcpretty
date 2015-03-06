@@ -166,6 +166,17 @@ module XCPretty
     # @regex Captured groups
     WRITE_AUXILIARY_FILES = /^Write auxiliary files/
 
+    module Warnings
+      # $1 = file_path
+      # $2 = file_name
+      # $3 = reason
+      COMPILE_WARNING_MATCHER = /^(\/.+\/(.*):.*:.*):\swarning:\s(.*)$/
+
+      # @regex Captured groups
+      # $1 = whole warning
+      GENERIC_WARNING_MATCHER = /^warning:\s(.*)$/
+    end
+
     module Errors
       # @regex Captured groups
       # $1 = whole error
@@ -179,7 +190,7 @@ module XCPretty
       # $1 = file_path
       # $2 = file_name
       # $3 = reason
-      COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):.*:.*):(?:\sfatal)?\serror:\s(.*)$/
+      COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):.*:.*):\s(?:fatal\s)?error:\s(.*)$/
 
       # @regex Captured groups
       # $1 cursor (with whitespaces and tildes)
@@ -189,10 +200,6 @@ module XCPretty
       # $1 = whole error.
       #      it varies a lot, not sure if it makes sense to catch everything separately
       FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
-
-      # @regex Captured groups
-      # $1 = whole warning
-      GENERIC_WARNING_MATCHER = /^(warning:.*)$/
 
       # $1 = whole error
       LD_ERROR_MATCHER = /^(ld:.*not found for.*)/
@@ -226,6 +233,7 @@ module XCPretty
 
     include Matchers
     include Matchers::Errors
+    include Matchers::Warnings
 
     attr_reader :formatter
 
@@ -239,6 +247,7 @@ module XCPretty
       update_linker_failure_state(text)
 
       return format_compile_error if should_format_error?
+      return format_compile_warning if should_format_warning?
       return format_undefined_symbols if should_format_undefined_symbols?
       return format_duplicate_symbols if should_format_duplicate_symbols?
 
@@ -349,16 +358,21 @@ module XCPretty
 
     # @ return Hash { :file_name, :file_path, :reason, :line }
     def update_error_state(text)
+      update_error = lambda {
+        current_issue[:reason]    = $3
+        current_issue[:file_path] = $1
+        current_issue[:file_name] = $2
+      }
       if text =~ COMPILE_ERROR_MATCHER
         @formatting_error = true
-        current_error[:reason]    = $3
-        current_error[:file_path] = $1
-        current_error[:file_name] = $2
+        update_error.call
+      elsif text =~ COMPILE_WARNING_MATCHER
+        @formatting_warning = true
+        update_error.call
       elsif text =~ CURSOR_MATCHER
-        @formatting_error = false
-        current_error[:cursor]    = $1.chomp
-      elsif @formatting_error
-        current_error[:line]      = text.chomp
+        current_issue[:cursor]    = $1.chomp
+      elsif @formatting_error || @formatting_warning
+        current_issue[:line]      = text.chomp
       end
     end
 
@@ -383,7 +397,15 @@ module XCPretty
 
     # TODO: clean up the mess around all this
     def should_format_error?
-      current_error[:reason] && current_error[:cursor] && current_error[:line]
+      @formatting_error && error_or_warning_is_present
+    end
+
+    def should_format_warning?
+      @formatting_warning && error_or_warning_is_present
+    end
+
+    def error_or_warning_is_present
+      current_issue[:reason] && current_issue[:cursor] && current_issue[:line]
     end
 
     def should_format_undefined_symbols?
@@ -397,8 +419,8 @@ module XCPretty
       current_linker_failure[:files].count > 1
     end
 
-    def current_error
-      @current_error ||= {}
+    def current_issue
+      @current_issue ||= {}
     end
 
     def current_linker_failure
@@ -406,13 +428,25 @@ module XCPretty
     end
 
     def format_compile_error
-      error = current_error.dup
-      @current_error = {}
+      error = current_issue.dup
+      @current_issue = {}
+      @formatting_error = false
       formatter.format_compile_error(error[:file_name],
                                      error[:file_path],
                                      error[:reason],
                                      error[:line],
                                      error[:cursor])
+    end
+
+    def format_compile_warning
+      warning = current_issue.dup
+      @current_issue = {}
+      @formatting_warning = false
+      formatter.format_compile_warning(warning[:file_name],
+                                       warning[:file_path],
+                                       warning[:reason],
+                                       warning[:line],
+                                       warning[:cursor])
     end
 
     def format_undefined_symbols
