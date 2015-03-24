@@ -20,7 +20,7 @@ $ xcodebuild [flags] | xcpretty -c
 It's even a bit faster than `xcodebuild` only, since it saves your terminal some prints.
 
 __Important:__ If you're running `xcpretty` on a CI like Travis or Jenkins, you may want to exit with same status code as `xcodebuild`.
-CI uses the status code to determine if build has failed.
+CI systems usually use status codes to determine if the build has failed.
 
 ``` bash
 $ set -o pipefail && xcodebuild [flags] | xcpretty -c
