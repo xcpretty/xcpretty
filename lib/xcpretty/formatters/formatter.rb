@@ -54,6 +54,8 @@ module XCPretty
     def format_duplicate_symbols(message, file_paths);        EMPTY; end
     def format_warning(message);                            message; end
 
+    def format_info(message);                                 EMPTY; end
+
     # TODO: see how we can unify format_error and format_compile_error,
     #       the same for warnings
     def format_compile_warning(file_name, file_path, reason,

@@ -494,5 +494,17 @@ module XCPretty
       end
     end
 
+    context "informative" do
+      it 'parses plugin loading info' do
+        @formatter.should receive(:format_info).with(SAMPLE_PLUGIN_INFO_TRIMMED)
+        @parser.parse(SAMPLE_PLUGIN_INFO)
+      end
+
+      it 'parses iphone simulator info' do
+        @formatter.should receive(:format_info).with(SAMPLE_IPHONE_SIMULATOR_INFO_TRIMMED)
+        @parser.parse(SAMPLE_IPHONE_SIMULATOR_INFO)
+      end
+    end
+
   end
 end
