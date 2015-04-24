@@ -505,6 +505,5 @@ module XCPretty
         @parser.parse(SAMPLE_IPHONE_SIMULATOR_INFO)
       end
     end
-
   end
 end
