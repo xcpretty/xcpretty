@@ -1,42 +1,32 @@
+require 'rouge'
 require 'xcpretty/snippet'
 
 module XCPretty
-  class Syntax
-    def self.register_filetype(type, extensions)
-      @filetypes ||= {}
-      extensions.each { |ext| @filetypes[ext] = type }
-    end
+  module Syntax
+    def self.highlight(snippet)
+      if snippet.file_path.include?(':')
+        filename = snippet.file_path.rpartition(':').first
+      else
+        filename = snippet.file_path
+      end
 
-    register_filetype 'c++',    ['.cpp', '.hpp', '.c++', '.cxx', '.cc']
-    register_filetype 'objc',   ['.m', '.h']
-    register_filetype 'objc++', ['.mm', '.hh']
-    register_filetype 'swift',  ['.swift']
-    register_filetype 'dylan',  ['.dyl', '.dylan']
-    register_filetype 'ruby',   ['.ruby', '.rb']
+      options = {
+        :filename => File.basename(filename),
+        :source => snippet.contents,
+      }
+      lexer = Rouge::Lexer.guesses(options).first
 
-    def self.highlight(snippet, options = '')
-      if Pygments.available?
-        language = file_language(File.basename(snippet.file_path))
-        Pygments.pygmentize(snippet.contents, language, options)
+      if !lexer && File.extname(filename) == '.m'
+        # Objective-C is hard to guess when you use BDD style frameworks like Kiwi and Specta
+        lexer = Rouge::Lexers::ObjectiveC
+      end
+
+      if lexer
+        formatter = Rouge::Formatters::Terminal256.new
+        formatter.format(lexer.lex(snippet.contents))
       else
         snippet.contents
       end
-    end
-
-    def self.file_language(filename)
-      ext = File.extname(filename)
-      @filetypes[ext] || 'objc'
-    end
-  end
-
-  class Pygments
-    def self.pygmentize(code, language, options)
-      `echo '#{code}' | pygmentize -f 256 -l #{language} #{options if options}`
-    end
-
-    def self.available?
-      @available = system('which pygmentize > /dev/null') if @available.nil?
-      @available
     end
   end
 end

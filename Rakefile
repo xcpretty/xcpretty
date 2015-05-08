@@ -17,12 +17,7 @@ RuboCop::RakeTask.new(:lint) do |task|
   task.fail_on_error = false
 end
 
-task :install_tools do
-  sh 'sudo pip install Pygments'
-end
-
 task :ci do
-  Rake::Task[:install_tools].invoke
   Rake::Task[:spec].invoke
   Rake::Task[:cucumber].invoke
   Rake::Task[:lint].invoke
