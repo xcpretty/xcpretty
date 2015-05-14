@@ -101,6 +101,11 @@ module XCPretty
       @parser.parse(SAMPLE_COMPILE_XIB)
     end
 
+    it "parses compiling storyboards" do
+      @formatter.should receive(:format_compile_storyboard).with("Main.storyboard", "sample/Main.storyboard")
+      @parser.parse(SAMPLE_COMPILE_STORYBOARD)
+    end
+
     it 'parses CopyPlistFile' do
       @formatter.should receive(:format_copy_plist_file).with(
         '/path/to/Some.plist', '/some other/File.plist')

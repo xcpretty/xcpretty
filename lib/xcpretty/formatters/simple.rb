@@ -39,6 +39,10 @@ module XCPretty
       format("Compiling", file_name)
     end
 
+    def format_compile_storyboard(file_name, file_path)
+      format("Compiling", file_name)
+    end
+
     def format_copy_header_file(source, target)
       format("Copying", File.basename(source))
     end

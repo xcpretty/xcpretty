@@ -40,6 +40,11 @@ module XCPretty
         "> Compiling MainMenu.xib"
       end
 
+      it "formats compiling storyboard output" do
+        @formatter.format_compile_xib("Main.storyboard", 'path/to/file').should ==
+        "> Compiling Main.storyboard"
+      end
+
       it 'formats copying header files' do
         @formatter.format_copy_header_file('Source.h',
           'dir/Destination.h').should == '> Copying Source.h'
