@@ -4,3 +4,7 @@ StringLiterals:
 Lint/UnusedMethodArgument:
   Description: 'Checks for unused method arguments.'
   Enabled: false
+
+Style/HashSyntax:
+  Description: 'Prefer Ruby 1.9 hash syntax { a: 1, b: 2 } over 1.8 syntax { :a => 1, :b => 2 }.'
+  Enabled: false
