@@ -84,6 +84,11 @@ module XCPretty
       @parser.parse(SAMPLE_ANOTHER_COMPILE.sub('.m', '.mm'))
     end
 
+    it 'parses compiling Swift source files' do
+      @formatter.should receive(:format_compile).with("KWNull.swift", "Classes/Core/KWNull.swift")
+      @parser.parse(SAMPLE_ANOTHER_COMPILE.sub('.m', '.swift'))
+    end
+
     it "parses compiling C and C++ files" do
       ['.c', '.cc', '.cpp', '.cxx'].each do |file_extension|
         @formatter.should receive(:format_compile).with("KWNull" + file_extension, "Classes/Core/KWNull" + file_extension)

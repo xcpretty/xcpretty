@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.10
+
+###### Enhancements
+
+* Fixed buffering issues. Output looks realtime now
+  | [mtauraso](https://github.com/mtauraso)
+  | [#123](https://github.com/supermarin/xcpretty/pull/123)
+
+
 ## 0.1.8
 
 ###### Enhancements
@@ -168,4 +177,3 @@
 ## 0.0.1
 
 * initial version
-
