@@ -5,58 +5,58 @@ module XCPretty
 
   class Simple < Formatter
 
-    PASS = "✓"
-    FAIL = "✗"
-    PENDING = "⧖"
+    PASS = '✓'
+    FAIL = '✗'
+    PENDING = '⧖'
     MEASURE = '◷'
 
-    ASCII_PASS = "."
-    ASCII_FAIL = "x"
-    COMPLETION = "▸"
-    ASCII_PENDING = "P"
-    ASCII_COMPLETION = ">"
+    ASCII_PASS = '.'
+    ASCII_FAIL = 'x'
+    COMPLETION = '▸'
+    ASCII_PENDING = 'P'
+    ASCII_COMPLETION = '>'
     ASCII_MEASURE = 'T'
 
-    INDENT = "    "
+    INDENT = '    '
 
     def format_analyze(file_name, file_path)
-      format("Analyzing", file_name)
+      format('Analyzing', file_name)
     end
 
     def format_build_target(target, project, configuration)
-      format("Building", "#{project}/#{target} [#{configuration}]")
+      format('Building', "#{project}/#{target} [#{configuration}]")
     end
 
     def format_clean_target(target, project, configuration)
-      format("Cleaning", "#{project}/#{target} [#{configuration}]")
+      format('Cleaning', "#{project}/#{target} [#{configuration}]")
     end
 
     def format_compile(file_name, file_path)
-      format("Compiling", file_name)
+      format('Compiling', file_name)
     end
 
     def format_compile_xib(file_name, file_path)
-      format("Compiling", file_name)
+      format('Compiling', file_name)
     end
 
     def format_compile_storyboard(file_name, file_path)
-      format("Compiling", file_name)
+      format('Compiling', file_name)
     end
 
     def format_copy_header_file(source, target)
-      format("Copying", File.basename(source))
+      format('Copying', File.basename(source))
     end
 
     def format_copy_plist_file(source, target)
-      format("Copying", File.basename(source))
+      format('Copying', File.basename(source))
     end
 
     def format_copy_strings_file(file)
-      format("Copying", file)
+      format('Copying', file)
     end
 
     def format_cpresource(resource)
-      format("Copying", resource)
+      format('Copying', resource)
     end
 
     def format_generate_dsym(dsym)
@@ -64,11 +64,11 @@ module XCPretty
     end
 
     def format_libtool(library)
-      format("Building library", library)
+      format('Building library', library)
     end
 
     def format_linking(target, build_variants, arch)
-      format("Linking", target)
+      format('Linking', target)
     end
 
     def format_failing_test(suite, test_case, reason, file)
@@ -90,43 +90,43 @@ module XCPretty
     end
 
     def format_phase_script_execution(script_name)
-      format("Running script", "'#{script_name}'")
+      format('Running script', "'#{script_name}'")
     end
 
     def format_process_info_plist(file_name, file_path)
-      format("Processing", file_name)
+      format('Processing', file_name)
     end
 
     def format_process_pch(file)
-      format("Precompiling", file)
+      format('Precompiling', file)
     end
 
     def format_codesign(file)
-      format("Signing", file)
+      format('Signing', file)
     end
 
     def format_preprocess(file)
-      format("Preprocessing", file)
+      format('Preprocessing', file)
     end
 
     def format_pbxcp(file)
-      format("Copying", file)
+      format('Copying', file)
     end
 
     def format_test_run_started(name)
-      heading("Test Suite", name, "started")
+      heading('Test Suite', name, 'started')
     end
 
     def format_test_suite_started(name)
-      heading("", name, "")
+      heading('', name, '')
     end
 
     def format_touch(file_path, file_name)
-      format("Touching", file_name)
+      format('Touching', file_name)
     end
 
     def format_tiffutil(file_name)
-      format("Validating", file_name)
+      format('Validating', file_name)
     end
 
     def format_warning(message)
@@ -136,15 +136,15 @@ module XCPretty
     private
 
     def heading(prefix, text, description)
-      [prefix, white(text), description].join(" ").strip
+      [prefix, white(text), description].join(' ').strip
     end
 
-    def format(command, argument_text="", success=true)
-      [status_symbol(success ? :completion : :fail), white(command), argument_text].join(" ").strip
+    def format(command, argument_text='', success=true)
+      [status_symbol(success ? :completion : :fail), white(command), argument_text].join(' ').strip
     end
 
     def format_test(test_case, status)
-      [status_symbol(status), test_case].join(" ").strip
+      [status_symbol(status), test_case].join(' ').strip
     end
 
     def status_symbol(status)
@@ -162,7 +162,7 @@ module XCPretty
       when :measure
         yellow(use_unicode? ? MEASURE : ASCII_MEASURE)
       else
-        ""
+        ''
       end
     end
 

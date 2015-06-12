@@ -13,48 +13,48 @@ module XCPretty
       @parser = Parser.new(@formatter)
     end
 
-    it "parses analyze" do
-      @formatter.should receive(:format_analyze).with("CCChip8DisplayView.m", "CocoaChip/CCChip8DisplayView.m")
+    it 'parses analyze' do
+      @formatter.should receive(:format_analyze).with('CCChip8DisplayView.m', 'CocoaChip/CCChip8DisplayView.m')
       @parser.parse(SAMPLE_ANALYZE)
     end
 
-    it "parses analyze shallow" do
-      @formatter.should receive(:format_analyze).with("CCChip8DisplayView.m", "CocoaChip/CCChip8DisplayView.m")
+    it 'parses analyze shallow' do
+      @formatter.should receive(:format_analyze).with('CCChip8DisplayView.m', 'CocoaChip/CCChip8DisplayView.m')
       @parser.parse(SAMPLE_ANALYZE_SHALLOW)
     end
 
-    it "parses build target" do
-      @formatter.should receive(:format_build_target).with("The Spacer", "Pods", "Debug")
+    it 'parses build target' do
+      @formatter.should receive(:format_build_target).with('The Spacer', 'Pods', 'Debug')
       @parser.parse(SAMPLE_BUILD)
     end
 
-    it "parses clean remove" do
+    it 'parses clean remove' do
       @formatter.should receive(:format_clean_remove)
       @parser.parse(SAMPLE_CLEAN_REMOVE)
     end
 
-    it "parses clean target" do
-      @formatter.should receive(:format_clean_target).with("Pods-ObjectiveSugar", "Pods", "Debug")
+    it 'parses clean target' do
+      @formatter.should receive(:format_clean_target).with('Pods-ObjectiveSugar', 'Pods', 'Debug')
       @parser.parse(SAMPLE_CLEAN)
     end
 
-    it "parses clean target withut dash in target name" do
-      @formatter.should receive(:format_clean_target).with("Pods", "Pods", "Debug")
+    it 'parses clean target withut dash in target name' do
+      @formatter.should receive(:format_clean_target).with('Pods', 'Pods', 'Debug')
       @parser.parse(SAMPLE_ANOTHER_CLEAN)
     end
 
-    it "parses check dependencies" do
+    it 'parses check dependencies' do
       @formatter.should receive(:format_check_dependencies)
-      @parser.parse("Check dependencies")
+      @parser.parse('Check dependencies')
     end
 
-    it "parses code signing" do
-      @formatter.should receive(:format_codesign).with("build/Release/CocoaChip.app")
+    it 'parses code signing' do
+      @formatter.should receive(:format_codesign).with('build/Release/CocoaChip.app')
       @parser.parse(SAMPLE_CODESIGN)
     end
 
-    it "parses code signing a framework" do
-      @formatter.should receive(:format_codesign).with("build/Release/CocoaChipCore.framework")
+    it 'parses code signing a framework' do
+      @formatter.should receive(:format_codesign).with('build/Release/CocoaChipCore.framework')
       @parser.parse(SAMPLE_CODESIGN_FRAMEWORK)
     end
 
@@ -63,46 +63,46 @@ module XCPretty
       @parser.parse(SAMPLE_COMPILE_SPACE_IN_PATH)
     end
 
-    it "parses compiler commands" do
+    it 'parses compiler commands' do
       compile_statement = SAMPLE_ANOTHER_COMPILE.lines.to_a.last
-      @formatter.should receive(:format_compile_command).with(compile_statement.strip, "/Users/musalj/code/OSS/Kiwi/Classes/Core/KWNull.m")
+      @formatter.should receive(:format_compile_command).with(compile_statement.strip, '/Users/musalj/code/OSS/Kiwi/Classes/Core/KWNull.m')
       @parser.parse(compile_statement)
     end
 
-    it "parses compiling categories" do
-      @formatter.should receive(:format_compile).with("NSMutableArray+ObjectiveSugar.m", "/Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m")
+    it 'parses compiling categories' do
+      @formatter.should receive(:format_compile).with('NSMutableArray+ObjectiveSugar.m', '/Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m')
       @parser.parse(SAMPLE_COMPILE)
     end
 
-    it "parses compiling classes" do
-      @formatter.should receive(:format_compile).with("KWNull.m", "Classes/Core/KWNull.m")
+    it 'parses compiling classes' do
+      @formatter.should receive(:format_compile).with('KWNull.m', 'Classes/Core/KWNull.m')
       @parser.parse(SAMPLE_ANOTHER_COMPILE)
     end
 
-    it "parses compiling Objective-C++ classes" do
-      @formatter.should receive(:format_compile).with("KWNull.mm", "Classes/Core/KWNull.mm")
+    it 'parses compiling Objective-C++ classes' do
+      @formatter.should receive(:format_compile).with('KWNull.mm', 'Classes/Core/KWNull.mm')
       @parser.parse(SAMPLE_ANOTHER_COMPILE.sub('.m', '.mm'))
     end
 
     it 'parses compiling Swift source files' do
-      @formatter.should receive(:format_compile).with("KWNull.swift", "Classes/Core/KWNull.swift")
+      @formatter.should receive(:format_compile).with('KWNull.swift', 'Classes/Core/KWNull.swift')
       @parser.parse(SAMPLE_ANOTHER_COMPILE.sub('.m', '.swift'))
     end
 
-    it "parses compiling C and C++ files" do
+    it 'parses compiling C and C++ files' do
       ['.c', '.cc', '.cpp', '.cxx'].each do |file_extension|
-        @formatter.should receive(:format_compile).with("KWNull" + file_extension, "Classes/Core/KWNull" + file_extension)
+        @formatter.should receive(:format_compile).with('KWNull' + file_extension, 'Classes/Core/KWNull' + file_extension)
         @parser.parse(SAMPLE_ANOTHER_COMPILE.sub('.m', file_extension))
       end
     end
 
-    it "parses compiling XIBs" do
-      @formatter.should receive(:format_compile_xib).with("MainMenu.xib", "CocoaChip/en.lproj/MainMenu.xib")
+    it 'parses compiling XIBs' do
+      @formatter.should receive(:format_compile_xib).with('MainMenu.xib', 'CocoaChip/en.lproj/MainMenu.xib')
       @parser.parse(SAMPLE_COMPILE_XIB)
     end
 
-    it "parses compiling storyboards" do
-      @formatter.should receive(:format_compile_storyboard).with("Main.storyboard", "sample/Main.storyboard")
+    it 'parses compiling storyboards' do
+      @formatter.should receive(:format_compile_storyboard).with('Main.storyboard', 'sample/Main.storyboard')
       @parser.parse(SAMPLE_COMPILE_STORYBOARD)
     end
 
@@ -112,73 +112,73 @@ module XCPretty
       @parser.parse('CopyPlistFile /path/to/Some.plist /some other/File.plist')
     end
 
-    it "parses CopyStringsFile" do
+    it 'parses CopyStringsFile' do
       @formatter.should receive(:format_copy_strings_file).with('InfoPlist.strings')
       @parser.parse(SAMPLE_COPYSTRINGS)
     end
 
-    it "parses CpHeader" do
+    it 'parses CpHeader' do
       @formatter.should receive(:format_copy_header_file).with(
         '/path/to/Header.h','/some other/path/Header.h')
       @parser.parse('CpHeader /path/to/Header.h /some other/path/Header.h')
     end
 
-    it "parses CpResource" do
+    it 'parses CpResource' do
       @formatter.should receive(:format_cpresource).with('ObjectiveSugar/Default-568h@2x.png')
       @parser.parse(SAMPLE_CPRESOURCE)
     end
 
-    it "parses GenerateDSYMFile" do
+    it 'parses GenerateDSYMFile' do
       @formatter.should receive(:format_generate_dsym).with('ObjectiveSugarTests.octest.dSYM')
       @parser.parse(SAMPLE_DSYM)
     end
 
-    it "parses info.plist processing" do
+    it 'parses info.plist processing' do
       @formatter.should receive(:format_process_info_plist).with('The Spacer-Info.plist', 'The Spacer/The Spacer-Info.plist')
       @parser.parse(SAMPLE_PROCESS_INFOPLIST)
     end
 
-    it "parses Ld" do
+    it 'parses Ld' do
       @formatter.should receive(:format_linking).with('ObjectiveSugar', 'normal', 'i386')
       @parser.parse(SAMPLE_LD)
     end
 
-    it "parses Libtool" do
+    it 'parses Libtool' do
       @formatter.should receive(:format_libtool).with('libPods-ObjectiveSugarTests-Kiwi.a')
       @parser.parse(SAMPLE_LIBTOOL)
     end
 
-    it "parses specta failing tests" do
-      @formatter.should receive(:format_failing_test).with("SKWelcomeViewControllerSpecSpec",
-                                                           "SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen",
+    it 'parses specta failing tests' do
+      @formatter.should receive(:format_failing_test).with('SKWelcomeViewControllerSpecSpec',
+                                                           'SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen',
                                                            "The step timed out after 2.00 seconds: Failed to find accessibility element with the label \"The asimplest way to make smarter business decisions\"",
-                                                           "/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11")
+                                                           '/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11')
       @parser.parse(SAMPLE_SPECTA_FAILURE)
     end
 
-    it "parses old specta failing tests" do
-      @formatter.should receive(:format_failing_test).with("RACCommandSpec",
-                                                           "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES",
-                                                           "expected: 1, got: 0",
-                                                           "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458")
+    it 'parses old specta failing tests' do
+      @formatter.should receive(:format_failing_test).with('RACCommandSpec',
+                                                           'enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES',
+                                                           'expected: 1, got: 0',
+                                                           '/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458')
       @parser.parse(SAMPLE_OLD_SPECTA_FAILURE)
     end
 
-    it "parses passing ocunit tests" do
+    it 'parses passing ocunit tests' do
       @formatter.should receive(:format_passing_test).with('RACCommandSpec',
                                                            'enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES',
                                                            '0.001')
       @parser.parse(SAMPLE_OCUNIT_TEST)
     end
 
-    it "parses passing specta tests" do
+    it 'parses passing specta tests' do
       @formatter.should receive(:format_passing_test).with('SKWelcomeActivationViewControllerSpecSpec',
                                                            'SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code',
                                                            '0.725')
       @parser.parse(SAMPLE_SPECTA_TEST)
     end
 
-    it "parses pending tests" do
+    it 'parses pending tests' do
       @formatter.should receive(:format_pending_test).with('TAPIConversationSpec',
                                                            'TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpoint')
       @parser.parse(SAMPLE_PENDING_KIWI_TEST)
@@ -193,29 +193,29 @@ module XCPretty
       @parser.parse(SAMPLE_MEASURING_TEST)
     end
 
-    it "parses PhaseScriptExecution" do
+    it 'parses PhaseScriptExecution' do
       @formatter.should receive(:format_phase_script_execution).with('Check Pods Manifest.lock')
       @parser.parse(SAMPLE_RUN_SCRIPT)
     end
 
-    it "parses process PCH" do
-      @formatter.should receive(:format_process_pch).with("Pods-CocoaLumberjack-prefix.pch")
+    it 'parses process PCH' do
+      @formatter.should receive(:format_process_pch).with('Pods-CocoaLumberjack-prefix.pch')
       @parser.parse(SAMPLE_PRECOMPILE)
     end
 
     it 'parses process PCH command' do
       compile_statement = SAMPLE_PRECOMPILE.lines.to_a.last
-      @formatter.should receive(:format_process_pch_command).with("/Users/musalj/code/OSS/ObjectiveRecord/Pods/Pods-CocoaLumberjack-prefix.pch")
+      @formatter.should receive(:format_process_pch_command).with('/Users/musalj/code/OSS/ObjectiveRecord/Pods/Pods-CocoaLumberjack-prefix.pch')
       @parser.parse(compile_statement)
     end
 
-    it "parses preprocessing" do
-      @formatter.should receive(:format_preprocess).with("CocoaChip/CocoaChip-Info.plist")
+    it 'parses preprocessing' do
+      @formatter.should receive(:format_preprocess).with('CocoaChip/CocoaChip-Info.plist')
       @parser.parse(SAMPLE_PREPROCESS)
     end
 
-    it "parses PBXCp" do
-      @formatter.should receive(:format_pbxcp).with("build/Release/CocoaChipCore.framework")
+    it 'parses PBXCp' do
+      @formatter.should receive(:format_pbxcp).with('build/Release/CocoaChipCore.framework')
       @parser.parse(SAMPLE_PBXCP)
     end
 
@@ -231,31 +231,31 @@ module XCPretty
       @parser.parse('    /bin/rm -rf /bin /usr /Users')
     end
 
-    it "parses Touch" do
+    it 'parses Touch' do
       @formatter.should receive(:format_touch).with(
         '/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/AlcatrazTests.octest',
         'AlcatrazTests.octest')
       @parser.parse(SAMPLE_TOUCH)
     end
 
-    it "parses write file" do
+    it 'parses write file' do
       @formatter.should receive(:format_write_file).with(
         '/Users/me/myproject/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-AFNetworking.build/Objects-normal/x86_64/Pods-AFNetworking.LinkFileList')
       @parser.parse(SAMPLE_WRITE_FILE)
     end
 
-    it "parses write auxiliary files" do
+    it 'parses write auxiliary files' do
       @formatter.should receive(:format_write_auxiliary_files)
       @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES)
     end
 
-    it "parses TiffUtil" do
+    it 'parses TiffUtil' do
       @formatter.should receive(:format_tiffutil).with('eye_icon.tiff')
       @parser.parse(SAMPLE_TIFFUTIL)
     end
 
-    it "parses undefined symbols" do
-      @formatter.should receive(:format_undefined_symbols).with("Undefined symbols for architecture x86_64",
+    it 'parses undefined symbols' do
+      @formatter.should receive(:format_undefined_symbols).with('Undefined symbols for architecture x86_64',
                                                                 '_OBJC_CLASS_$_CABasicAnimation',
                                                                 'objc-class-ref in ATZRadialProgressControl.o')
       SAMPLE_UNDEFINED_SYMBOLS.each_line do |line|
@@ -263,9 +263,9 @@ module XCPretty
       end
     end
 
-    it "parses duplicate symbols" do
+    it 'parses duplicate symbols' do
       @formatter.should receive(:format_duplicate_symbols).with(
-        "duplicate symbol _OBJC_IVAR_$ClassName._ivarName in",
+        'duplicate symbol _OBJC_IVAR_$ClassName._ivarName in',
         [
           '/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Intermediates/App.build/Debug-iphonesimulator/App.build/Objects-normal/i386/ClassName.o',
           '/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Products/Debug-iphonesimulator/libPods.a(DuplicateClassName.o)'
@@ -276,64 +276,64 @@ module XCPretty
       end
     end
 
-    it "parses ocunit test run finished" do
+    it 'parses ocunit test run finished' do
       @formatter.should receive(:format_test_run_finished).with('ReactiveCocoaTests.octest(Tests)', '2013-12-10 07:03:03 +0000.')
       @parser.parse(SAMPLE_OCUNIT_TEST_RUN_COMPLETION)
     end
 
-    it "parses ocunit test run passed" do
+    it 'parses ocunit test run passed' do
       @formatter.should receive(:format_test_run_finished).with('Hazelnuts.xctest', '2014-09-24 23:09:20 +0000.')
       @parser.parse(SAMPLE_OCUNIT_PASSED_TEST_RUN_COMPLETION)
     end
 
-    it "parses ocunit test run failed" do
+    it 'parses ocunit test run failed' do
       @formatter.should receive(:format_test_run_finished).with('Macadamia.octest', '2014-09-24 23:09:20 +0000.')
       @parser.parse(SAMPLE_OCUNIT_FAILED_TEST_RUN_COMPLETION)
     end
 
-    it "parses specta test run finished" do
+    it 'parses specta test run finished' do
       @formatter.should receive(:format_test_run_finished).with('KIFTests.xctest', '2014-02-28 15:44:32 +0000.')
       @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
     end
 
-    it "parses ocunit test run started" do
+    it 'parses ocunit test run started' do
       @formatter.should receive(:format_test_run_started).with('ReactiveCocoaTests.octest(Tests)')
       @parser.parse(SAMPLE_OCUNIT_TEST_RUN_BEGINNING)
     end
 
-    it "parses specta test run started" do
+    it 'parses specta test run started' do
       @formatter.should receive(:format_test_run_started).with('KIFTests.xctest')
       @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
     end
 
-    it "parses ocunit test suite started" do
+    it 'parses ocunit test suite started' do
       @formatter.should receive(:format_test_suite_started).with('RACKVOWrapperSpec')
       @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
     end
 
-    it "parses specta test suite started" do
+    it 'parses specta test suite started' do
       @formatter.should receive(:format_test_suite_started).with('All tests')
       @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
     end
 
-    context "errors" do
-      it "parses clang errors" do
+    context 'errors' do
+      it 'parses clang errors' do
         @formatter.should receive(:format_error).with(SAMPLE_CLANG_ERROR)
         @parser.parse(SAMPLE_CLANG_ERROR)
       end
 
-      it "parses cocoapods errors" do
+      it 'parses cocoapods errors' do
         @formatter.should receive(:format_error).with("The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.")
         @parser.parse(SAMPLE_PODS_ERROR)
       end
 
-      it "parses compiling errors" do
+      it 'parses compiling errors' do
         @formatter.should receive(:format_compile_error).with(
-          "SampleTest.m",
-          "/Users/musalj/code/OSS/SampleApp/SampleTest.m:12:59",
-          "expected identifier",
-          "                [[thread.lastMessage should] equal:thread.];",
-          "                                                          ^")
+          'SampleTest.m',
+          '/Users/musalj/code/OSS/SampleApp/SampleTest.m:12:59',
+          'expected identifier',
+          '                [[thread.lastMessage should] equal:thread.];',
+          '                                                          ^')
         SAMPLE_COMPILE_ERROR.each_line do |line|
           @parser.parse(line)
         end
@@ -373,7 +373,7 @@ module XCPretty
 
 
 
-      it "parses compiling errors with tildes" do
+      it 'parses compiling errors with tildes' do
         @formatter.should receive(:format_compile_error).with(
           'NSSetTests.m',
           '/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSSetTests.m:93:16',
@@ -385,21 +385,21 @@ module XCPretty
         end
       end
 
-      it "parses code sign error:" do
+      it 'parses code sign error:' do
         @formatter.should receive(:format_error).with(
           'Code Sign error: No code signing identites found: No valid signing identities (i.e. certificate and private key pair) matching the team ID ‚ÄúCAT6HF57NJ‚Äù were found.'
         )
         @parser.parse(SAMPLE_CODESIGN_ERROR)
       end
 
-      it "parses CodeSign error: (no spaces)" do
+      it 'parses CodeSign error: (no spaces)' do
         @formatter.should receive(:format_error).with(
           "CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 7.0'"
         )
         @parser.parse(SAMPLE_CODESIGN_ERROR_NO_SPACES)
       end
 
-      it "parses ld library errors" do
+      it 'parses ld library errors' do
         @formatter.should receive(:format_error).with(
           SAMPLE_LD_LIBRARY_ERROR
         )
@@ -418,30 +418,30 @@ module XCPretty
           @parser.parse(line)
         end
         @formatter.should_not receive(:format_compile_error)
-        @parser.parse("hohohoooo")
+        @parser.parse('hohohoooo')
       end
     end
 
-    context "warnings" do
+    context 'warnings' do
       it 'parses compiler warnings' do
-        @formatter.should receive(:format_warning).with("TEST 123")
-        @parser.parse("warning: TEST 123")
+        @formatter.should receive(:format_warning).with('TEST 123')
+        @parser.parse('warning: TEST 123')
       end
 
-      it "parses compiling warnings" do
+      it 'parses compiling warnings' do
         @formatter.should receive(:format_compile_warning).with(
-          "AppDelegate.m",
-          "/Users/supermarin/code/oss/ObjectiveSugar/Example/ObjectiveSugar/AppDelegate.m:19:31",
+          'AppDelegate.m',
+          '/Users/supermarin/code/oss/ObjectiveSugar/Example/ObjectiveSugar/AppDelegate.m:19:31',
           "format specifies type 'id' but the argument has type 'int' [-Wformat]",
           "    NSLog(@\"I HAZ %@ CATS\", 1);",
-          "                         ~~   ^")
+          '                         ~~   ^')
         SAMPLE_FORMAT_WARNING.each_line do |line|
           @parser.parse(line)
         end
       end
     end
 
-    context "summary" do
+    context 'summary' do
       def given_tests_have_started(reporter = SAMPLE_OCUNIT_TEST_RUN_BEGINNING)
         @parser.parse(reporter)
       end
@@ -456,17 +456,17 @@ module XCPretty
         @parser.parse(SAMPLE_KIWI_SUITE_COMPLETION)
       end
 
-      it "returns empty string if the suite is not done" do
-        @parser.parse(SAMPLE_EXECUTED_TESTS).should == ""
+      it 'returns empty string if the suite is not done' do
+        @parser.parse(SAMPLE_EXECUTED_TESTS).should == ''
       end
 
-      it "knows when the test suite is done for OCunit" do
+      it 'knows when the test suite is done for OCunit' do
         given_tests_are_done
         @formatter.should receive(:format_test_summary)
         @parser.parse(SAMPLE_EXECUTED_TESTS)
       end
 
-      it "knows when the test suite is done for Specta" do
+      it 'knows when the test suite is done for Specta' do
         given_tests_are_done
         @formatter.should receive(:format_test_summary)
         @parser.parse(SAMPLE_SPECTA_EXECUTED_TESTS)
@@ -478,7 +478,7 @@ module XCPretty
         given_kiwi_tests_are_done
       end
 
-      it "knows when the test suite is done for XCtest" do
+      it 'knows when the test suite is done for XCtest' do
         @formatter.should_receive(:format_test_summary).once
         2.times {
           given_tests_are_done(SAMPLE_KIWI_TEST_RUN_COMPLETION)
@@ -486,7 +486,7 @@ module XCPretty
         }
       end
 
-      it "prints OCunit / XCTest summary twice if tests executed twice" do
+      it 'prints OCunit / XCTest summary twice if tests executed twice' do
         @formatter.should_receive(:format_test_summary).twice
         2.times {
           given_tests_have_started
@@ -495,7 +495,7 @@ module XCPretty
         }
       end
 
-      it "prints Kiwi summary twice if tests executed twice" do
+      it 'prints Kiwi summary twice if tests executed twice' do
         @formatter.should_receive(:format_test_summary).twice
         2.times {
           given_tests_have_started(SAMPLE_KIWI_TEST_RUN_BEGINNING)
