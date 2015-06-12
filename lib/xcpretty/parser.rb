@@ -56,6 +56,11 @@ module XCPretty
     COMPILE_XIB_MATCHER = /^CompileXIB\s(.*\/(.*\.xib))/
 
     # @regex Captured groups
+    # $1 file_path
+    # $2 file_name (e.g. Main.storyboard)
+    COMPILE_STORYBOARD_MATCHER = /^CompileStoryboard\s(.*\/(.*\.storyboard))/
+
+    # @regex Captured groups
     # $1 source file
     # $2 target file
     COPY_HEADER_MATCHER = /^CpHeader\s(.*\.h)\s(.*\.h)/
@@ -280,6 +285,8 @@ module XCPretty
         formatter.format_compile_command($1, $2)
       when COMPILE_XIB_MATCHER
         formatter.format_compile_xib($2, $1)
+      when COMPILE_STORYBOARD_MATCHER
+        formatter.format_compile_storyboard($2, $1)
       when COPY_HEADER_MATCHER
         formatter.format_copy_header_file($1, $2)
       when COPY_PLIST_MATCHER
