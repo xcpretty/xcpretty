@@ -28,7 +28,7 @@ module XCPretty
     end
 
     def format_analyze_target(target, project, configuration)
-      format("Building and Analyzing", "#{project}/#{target} [#{configuration}]")
+      format("Analyzing", "#{project}/#{target} [#{configuration}]")
     end
 
     def format_clean_target(target, project, configuration)

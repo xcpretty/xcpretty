@@ -22,7 +22,7 @@ module XCPretty
 
       it "formats analyze target/project/configuration with target" do
         @formatter.format_analyze_target("The Spacer", "Pods", "Debug").should ==
-        "> Building and Analyzing Pods/The Spacer [Debug]"
+        "> Analyzing Pods/The Spacer [Debug]"
       end
 
       it "formats clean target/project/configuration" do
