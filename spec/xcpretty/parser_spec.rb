@@ -29,7 +29,7 @@ module XCPretty
     end
 
     it "parses analyze target" do
-      @formatter.should receive(:format_build_target).with("The Spacer", "Pods", "Debug")
+      @formatter.should receive(:format_analyze_target).with("The Spacer", "Pods", "Debug")
       @parser.parse(SAMPLE_ANALYZE_TARGET)
     end
 

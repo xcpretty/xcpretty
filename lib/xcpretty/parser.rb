@@ -10,11 +10,16 @@ module XCPretty
     ANALYZE_MATCHER = /^Analyze(?:Shallow)?\s(.*\/(.*\.m))*/
 
     # @regex Captured groups
-    # $1 action
-    # $2 target
-    # $3 project
-    # $4 configuration
-    BUILD_TARGET_MATCHER = /^=== (BUILD|ANALYZE) TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH.*CONFIGURATION\s(.*)\s===/
+    # $1 target
+    # $2 project
+    # $3 configuration
+    BUILD_TARGET_MATCHER = /^=== BUILD TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH.*CONFIGURATION\s(.*)\s===/
+
+    # @regex Captured groups
+    # $1 target
+    # $2 project
+    # $3 configuration
+    ANALYZE_TARGET_MATCHER = /^=== ANALYZE TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH.*CONFIGURATION\s(.*)\s===/
 
     # @regex Nothing returned here for now
     CHECK_DEPENDENCIES_MATCHER = /^Check dependencies/
@@ -258,7 +263,9 @@ module XCPretty
       when ANALYZE_MATCHER
         formatter.format_analyze($2, $1)
       when BUILD_TARGET_MATCHER
-        formatter.format_build_target($2, $3, $4)
+        formatter.format_build_target($1, $2, $3)
+      when ANALYZE_TARGET_MATCHER
+        formatter.format_analyze_target($1, $2, $3)
       when CLEAN_REMOVE_MATCHER
         formatter.format_clean_remove
       when CLEAN_TARGET_MATCHER
