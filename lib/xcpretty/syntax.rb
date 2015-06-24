@@ -1,9 +1,16 @@
-require 'rouge'
+begin
+  require 'rouge'
+rescue LoadError
+  Rouge = nil
+end
+
 require 'xcpretty/snippet'
 
 module XCPretty
   module Syntax
     def self.highlight(snippet)
+      return snippet.contents unless Rouge
+
       if snippet.file_path.include?(':')
         filename = snippet.file_path.rpartition(':').first
       else
