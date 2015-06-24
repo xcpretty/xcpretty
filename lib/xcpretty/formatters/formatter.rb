@@ -46,9 +46,9 @@ module XCPretty
     def format_tiffutil(file);                                 EMPTY; end
     def format_write_file(file);                               EMPTY; end
     def format_write_auxiliary_files;                          EMPTY; end
-                                                               
-    # COMPILER / LINKER ERRORS AND WARNINGS                    
-    def format_compile_error(file_name, file_path, reason,     
+
+    # COMPILER / LINKER ERRORS AND WARNINGS
+    def format_compile_error(file_name, file_path, reason,
                              line, cursor);                    EMPTY; end
     def format_error(message);                                 EMPTY; end
     def format_undefined_symbols(message, symbol, reference);  EMPTY; end
