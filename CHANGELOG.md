@@ -1,5 +1,13 @@
 # Changelog
 
+## master
+
+###### Enhancements
+
+* Fixed buffering issues. Output looks realtime now
+  | [Cédric Luthi](https://github.com/0xced)
+  | [#146](https://github.com/supermarin/xcpretty/pull/146)
+
 ## 0.1.10
 
 ###### Enhancements
