@@ -28,6 +28,11 @@ module XCPretty
       @parser.parse(SAMPLE_BUILD)
     end
 
+    it "parses analyze target" do
+      @formatter.should receive(:format_analyze_target).with("The Spacer", "Pods", "Debug")
+      @parser.parse(SAMPLE_ANALYZE_TARGET)
+    end
+
     it "parses clean remove" do
       @formatter.should receive(:format_clean_remove)
       @parser.parse(SAMPLE_CLEAN_REMOVE)
