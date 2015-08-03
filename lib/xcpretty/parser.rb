@@ -210,7 +210,7 @@ module XCPretty
       FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
 
       # $1 = whole error
-      LD_ERROR_MATCHER = /^(ld:.*not found for.*)/
+      LD_ERROR_MATCHER = /^(ld:.*)/
 
       # @regex Captured groups
       # $1 file path
