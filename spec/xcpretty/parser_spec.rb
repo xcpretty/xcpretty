@@ -164,6 +164,14 @@ module XCPretty
       @parser.parse(SAMPLE_OLD_SPECTA_FAILURE)
     end
 
+    it "parses ld bitcode errors" do
+      @formatter.should receive(:format_error).with(SAMPLE_BITCODE_LD.split("\n")[1])
+      @formatter.should receive(:format_error).with(SAMPLE_BITCODE_LD.split("\n")[2])
+      SAMPLE_BITCODE_LD.each_line do |line|
+        @parser.parse(line)
+      end
+    end
+
     it "parses passing ocunit tests" do
       @formatter.should receive(:format_passing_test).with('RACCommandSpec',
                                                            'enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES',
