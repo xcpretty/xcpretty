@@ -553,6 +553,10 @@ ld: 1 duplicate symbol for architecture i386
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 )
 
+SAMPLE_BITCODE_LD = %Q(
+ld: '/Users/.../GoogleAnalytics-iOS-SDK/libGoogleAnalyticsServices.a(TAGHit.o)' does not contain bitcode. You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE), obtain an updated library from the vendor, or disable bitcode for this target. for architecture armv7
+)
+
 SAMPLE_LD_SYMBOLS_ERROR = 'ld: symbol(s) not found for architecture x86_64'
 SAMPLE_LD_LIBRARY_ERROR = 'ld: library not found for -lPods-Yammer'
 
