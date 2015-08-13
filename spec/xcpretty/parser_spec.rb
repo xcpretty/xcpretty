@@ -165,11 +165,8 @@ module XCPretty
     end
 
     it "parses ld bitcode errors" do
-      @formatter.should receive(:format_error).with(SAMPLE_BITCODE_LD.split("\n")[1])
-      @formatter.should receive(:format_error).with(SAMPLE_BITCODE_LD.split("\n")[2])
-      SAMPLE_BITCODE_LD.each_line do |line|
-        @parser.parse(line)
-      end
+      @formatter.should receive(:format_error).with(SAMPLE_BITCODE_LD.strip)
+      @parser.parse(SAMPLE_BITCODE_LD)
     end
 
     it "parses passing ocunit tests" do
