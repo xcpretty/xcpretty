@@ -8,6 +8,10 @@
   | [Cédric Luthi](https://github.com/0xced)
   | [#146](https://github.com/supermarin/xcpretty/pull/146)
 
+* Improved logging of `ld` error messages
+  | [Felix Krause](https://github.com/KrauseFx)
+  | [#153](https://github.com/supermarin/xcpretty/pull/153)
+
 ## 0.1.10
 
 ###### Enhancements
