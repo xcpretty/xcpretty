@@ -586,6 +586,8 @@ SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
             ~~ ^~~~~~~
 )
 
+LONG_FAILURE_PATH = File.expand_path('../long_failure.txt', __FILE__)
+LONG_FAILURE_ERROR = File.read(LONG_FAILURE_PATH)
 
 ################################################################################
 # WARNINGS

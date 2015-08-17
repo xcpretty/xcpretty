@@ -341,6 +341,10 @@ module XCPretty
       @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
     end
 
+    it 'parses huge failure messages in a timely manner' do
+      @parser.parse(LONG_FAILURE_ERROR)
+    end
+
     context "errors" do
       it "parses clang errors" do
         @formatter.should receive(:format_error).with(SAMPLE_CLANG_ERROR)
