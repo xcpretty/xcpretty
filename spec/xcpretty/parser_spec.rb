@@ -90,8 +90,8 @@ module XCPretty
     end
 
     it 'parses compiling Swift source files' do
-      @formatter.should receive(:format_compile).with("KWNull.swift", "Classes/Core/KWNull.swift")
-      @parser.parse(SAMPLE_ANOTHER_COMPILE.sub('.m', '.swift'))
+      @formatter.should receive(:format_compile).with("Resource.swift", "/Users/paul/foo/bar/siesta/Source/Resource.swift")
+      @parser.parse(SAMPLE_SWIFT_COMPILE)
     end
 
     it "parses compiling C and C++ files" do
