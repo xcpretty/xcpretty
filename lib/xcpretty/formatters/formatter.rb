@@ -97,7 +97,7 @@ module XCPretty
       "\n\n#{text}"
     end
 
-    ERROR = '⌦ '
+    ERROR = '❌ '
     ASCII_ERROR = '[x]'
 
     WARNING = '⚠️ '
