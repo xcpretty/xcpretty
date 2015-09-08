@@ -444,6 +444,11 @@ module XCPretty
           @parser.parse(line)
         end
       end
+
+      it "parses ld warnings" do
+        @formatter.should receive(:format_ld_warning).with("ld: embedded dylibs/frameworks only run on iOS 8 or later")
+        @parser.parse("ld: warning: embedded dylibs/frameworks only run on iOS 8 or later")
+      end
     end
 
     context "summary" do

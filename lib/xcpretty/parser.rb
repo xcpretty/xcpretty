@@ -209,6 +209,10 @@ module XCPretty
       #      it varies a lot, not sure if it makes sense to catch everything separately
       FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
 
+      # $1 = ld prefix
+      # $2 = warning message
+      LD_WARNING_MATCHER = /^(ld: )warning: (.*)/
+
       # $1 = whole error
       LD_ERROR_MATCHER = /^(ld:.*)/
 
@@ -302,6 +306,8 @@ module XCPretty
         formatter.format_error($1)
       when GENERATE_DSYM_MATCHER
         formatter.format_generate_dsym($1)
+      when LD_WARNING_MATCHER
+        formatter.format_ld_warning($1 + $2)
       when LD_ERROR_MATCHER
         formatter.format_error($1)
       when LIBTOOL_MATCHER
