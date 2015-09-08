@@ -1,6 +1,15 @@
 # Changelog
 
-## master
+## 0.1.12
+
+###### Bug fixes
+
+* Fixed COMPILE_MATCHER to match all languages
+  | [Paul Cantrell](https://github.com/pcantrell)
+  | [#158](https://github.com/supermarin/xcpretty/pull/158)
+
+
+## 0.1.11
 
 ###### Enhancements
 
