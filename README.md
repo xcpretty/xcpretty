@@ -16,10 +16,12 @@ $ gem install xcpretty
 ``` bash
 $ xcodebuild [flags] | xcpretty -c
 ```
-`xcpretty` is designed to be piped with `xcodebuild` and thus keeping 100% compatibility with it.
-It's even a bit faster than `xcodebuild` only, since it saves your terminal some prints.
+`xcpretty` is designed to be piped with `xcodebuild` and thus keeping 100%
+compatibility with it. It's even a bit faster than `xcodebuild` itself, since
+it saves your terminal some prints.
 
-__Important:__ If you're running `xcpretty` on a CI like Travis or Jenkins, you may want to exit with same status code as `xcodebuild`.
+__Important:__ If you're running `xcpretty` on a CI like Travis or Jenkins, you
+may want to exit with same status code as `xcodebuild`.
 CI systems usually use status codes to determine if the build has failed.
 
 ``` bash
@@ -28,6 +30,17 @@ $ set -o pipefail && xcodebuild [flags] | xcpretty -c
 # OR
 #
 $ xcodebuild [flags] | xcpretty -c && exit ${PIPESTATUS[0]}
+```
+
+## Raw xcodebuild output
+You might want to use `xcpretty` together with `tee` to store the raw log in a
+file, and get the pretty output in the terminal. This might be useful if you
+want to inspect a failure in detail and aren't able to tell from the pretty
+output.
+
+Here's a way of doing it:
+``` bash
+$ xcodebuild [flags] | tee xcodebuild.log | xcpretty -c
 ```
 
 ## Formats
@@ -71,76 +84,8 @@ events.
 The recommended format is a gem containing the formatter and named
 with an `xcpretty-` prefix, for easier discovery.
 
-## Did you just clone xctool?
 
-Unlike [xctool](https://github.com/facebook/xctool), `xcpretty` isn't a build tool.
-It relies on `xcodebuild` to do the build process, and it formats the output.
+## Team
 
-By the time when [xctool](https://github.com/facebook/xctool) was made, `xcodebuild`
-wasn't aware of the `test` command, thus running tests in general via CLI was a pain.
-At this point `xcodebuild` has been improved significantly, and is ready to be used directly.
-
-
-## Benchmark
-
-A smaller project ([ObjectiveSugar](https://github.com/supermarin/objectivesugar)) with a fast suite
-
-#### xcpretty
-```
-$ time xcodebuild -workspace ObjectiveSugar.xcworkspace -scheme ObjectiveSugar -sdk iphonesimulator test | xcpretty -tc
-....................................................................................
-
-Executed 84 tests, with 0 failures (0 unexpected) in 0.070 (0.094) seconds
-        4.08 real         5.82 user         2.08 sys
-```
-#### xcodebuild
-```
-$ time xcodebuild -workspace ObjectiveSugar.xcworkspace -scheme ObjectiveSugar -sdk iphonesimulator test
-... ommitted output ...
-Executed 84 tests, with 0 failures (0 unexpected) in 0.103 (0.129) seconds
-** TEST SUCCEEDED **
-
-        4.35 real         6.07 user         2.21 sys
-```
-#### xctool
-```
-$ time xctool -workspace ObjectiveSugar.xcworkspace -scheme ObjectiveSugar -sdk iphonesimulator test
-... ommitted output ...
-** TEST SUCCEEDED: 84 passed, 0 failed, 0 errored, 84 total ** (26964 ms)
-
-28.05 real         6.59 user         2.24 sys
-```
-
-A bit bigger project, without CocoaPods ([ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa))
-
-#### xcpretty
-```
-$ time xcodebuild -project ReactiveCocoa.xcodeproj -scheme ReactiveCocoa test | xcpretty -tc
-..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
-
-Executed 922 tests, with 0 failures (0 unexpected) in 6.437 (6.761) seconds
-        8.72 real         5.73 user         0.81 sys
-```
-#### xcodebuild
-```
-$ time xcodebuild -project ReactiveCocoa.xcodeproj -scheme ReactiveCocoa test
-... ommitted output ...
-Executed 922 tests, with 0 failures (0 unexpected) in 6.542 (6.913) seconds
-** TEST SUCCEEDED **
-
-        8.82 real         5.65 user         0.75 sys
-```
-#### xctool
-```
-$ time xctool -project ReactiveCocoa.xcodeproj -scheme ReactiveCocoa test
-... ommitted output ...
-** TEST SUCCEEDED: 922 passed, 0 failed, 0 errored, 922 total ** (9584 ms)
-
-       10.80 real         6.72 user         0.76 sys
-```
-
-
-## Thanks
-
-- [Delisa Mason](http://github.com/kattrali) - for being a part of this
-- [Fred Potter](http://github.com/fpotter) for making xctool and inspiring us
+- [Marin Usalj](http://github.com/supermarin) http://supermar.in
+- [Delisa Mason](http://github.com/kattrali) http://delisa.me
