@@ -198,6 +198,16 @@ module XCPretty
       @parser.parse(SAMPLE_MEASURING_TEST)
     end
 
+    it "parses build success indicator" do
+      @formatter.should receive(:format_phase_success).with('BUILD')
+      @parser.parse(SAMPLE_BUILD_SUCCEEDED)
+    end
+
+    it "parses clean success indicator" do
+      @formatter.should receive(:format_phase_success).with('CLEAN')
+      @parser.parse(SAMPLE_CLEAN_SUCCEEDED)
+    end
+
     it "parses PhaseScriptExecution" do
       @formatter.should receive(:format_phase_script_execution).with('Check Pods Manifest.lock')
       @parser.parse(SAMPLE_RUN_SCRIPT)

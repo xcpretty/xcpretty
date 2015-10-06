@@ -120,6 +120,8 @@ module XCPretty
     # $3 = time
     MEASURING_TEST_MATCHER = /^[^:]*:[^:]*:\sTest Case\s'-\[(.*)\s(.*)\]'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
 
+    PHASE_SUCCESS_MATCHER = /^\*\*\s(.*)\sSUCCEEDED\s\*\*/
+
     # @regex Captured groups
     # $1 = script_name
     PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)\s\//
@@ -320,6 +322,8 @@ module XCPretty
         formatter.format_process_info_plist(*unescaped($2, $1))
       when PHASE_SCRIPT_EXECUTION_MATCHER
         formatter.format_phase_script_execution(*unescaped($1))
+      when PHASE_SUCCESS_MATCHER
+        formatter.format_phase_success($1)
       when PROCESS_PCH_MATCHER
         formatter.format_process_pch($1)
         when PROCESS_PCH_COMMAND_MATCHER
