@@ -180,6 +180,10 @@ module XCPretty
       # $3 = reason
       COMPILE_WARNING_MATCHER = /^(\/.+\/(.*):.*:.*):\swarning:\s(.*)$/
 
+      # $1 = ld prefix
+      # $2 = warning message
+      LD_WARNING_MATCHER = /^(ld: )warning: (.*)/
+
       # @regex Captured groups
       # $1 = whole warning
       GENERIC_WARNING_MATCHER = /^warning:\s(.*)$/
@@ -302,6 +306,8 @@ module XCPretty
         formatter.format_error($1)
       when GENERATE_DSYM_MATCHER
         formatter.format_generate_dsym($1)
+      when LD_WARNING_MATCHER
+        formatter.format_ld_warning($1 + $2)
       when LD_ERROR_MATCHER
         formatter.format_error($1)
       when LIBTOOL_MATCHER

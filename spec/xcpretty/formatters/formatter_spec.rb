@@ -57,6 +57,11 @@ module XCPretty
 )
     end
 
+    it "formats linker warnings" do
+      @formatter.format_ld_warning("ld: embedded dylibs/frameworks only run on iOS 8 or later").should ==
+      "#{@formatter.yellow("⚠️  ld: embedded dylibs/frameworks only run on iOS 8 or later")}"
+    end
+
     it "formats linker undefined symbols by default" do
       @formatter.format_undefined_symbols("Undefined symbols for architecture x86_64",
                                           '_OBJC_CLASS_$_CABasicAnimation',

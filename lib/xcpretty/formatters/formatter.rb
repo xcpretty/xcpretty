@@ -117,6 +117,10 @@ module XCPretty
         "#{line}\n#{cyan(cursor)}\n\n"
     end
 
+    def format_ld_warning(reason)
+      "#{yellow(warning_symbol + ' ' + reason)}"
+    end
+
     def format_undefined_symbols(message, symbol, reference)
       "\n#{red(error_symbol + " " + message)}\n" +
         "> Symbol: #{symbol}\n" +
