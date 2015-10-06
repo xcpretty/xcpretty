@@ -17,22 +17,31 @@ module XCPretty
         filename = snippet.file_path
       end
 
-      options = {
-        :filename => File.basename(filename),
-        :source => snippet.contents,
-      }
-      lexer = Rouge::Lexer.guesses(options).first
-
-      if !lexer && File.extname(filename) == '.m'
-        # Objective-C is hard to guess when you use BDD style frameworks like Kiwi and Specta
-        lexer = Rouge::Lexers::ObjectiveC
-      end
-
+      lexer = find_lexer(filename, snippet.contents)
       if lexer
         formatter = Rouge::Formatters::Terminal256.new
         formatter.format(lexer.lex(snippet.contents))
       else
         snippet.contents
+      end
+    end
+
+    # @param [String] filename The filename
+    # @param [String] contents The contents of the file
+    # @return [Rouge::Lexer]
+    def self.find_lexer(filename, contents)
+      case File.extname(filename)
+      when '.cpp', '.cc', '.c++', '.cxx', '.hpp', '.h++', '.hxx'
+        Rouge::Lexers::Cpp
+      when '.m', '.h' then Rouge::Lexers::ObjectiveC
+      when '.swift' then Rouge::Lexers::Swift
+      when '.ruby', '.rb' then Rouge::Lexers::Ruby
+      else
+        options = {
+          filename: File.basename(filename),
+          source: contents
+        }
+        Rouge::Lexer.guesses(options).first
       end
     end
   end
