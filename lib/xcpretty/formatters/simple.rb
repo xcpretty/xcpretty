@@ -8,11 +8,11 @@ module XCPretty
     PASS = "✓"
     FAIL = "✗"
     PENDING = "⧖"
+    COMPLETION = "▸"
     MEASURE = '◷'
 
     ASCII_PASS = "."
     ASCII_FAIL = "x"
-    COMPLETION = "▸"
     ASCII_PENDING = "P"
     ASCII_COMPLETION = ">"
     ASCII_MEASURE = 'T'
@@ -87,6 +87,10 @@ module XCPretty
       INDENT + format_test(
         "#{test_case} measured (#{colored_time(time)} seconds)", :measure
       )
+    end
+
+    def format_phase_success(phase_name)
+      format(phase_name.capitalize, "Succeeded")
     end
 
     def format_phase_script_execution(script_name)

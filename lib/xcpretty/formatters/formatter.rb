@@ -32,6 +32,7 @@ module XCPretty
     def format_failing_test(suite, test, time, file_path);     EMPTY; end
     def format_process_pch(file);                              EMPTY; end
     def format_process_pch_command(file_path);                 EMPTY; end
+    def format_phase_success(phase_name);                      EMPTY; end
     def format_phase_script_execution(script_name);            EMPTY; end
     def format_process_info_plist(file_name, file_path);       EMPTY; end
     def format_codesign(file);                                 EMPTY; end
