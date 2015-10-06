@@ -119,7 +119,7 @@ module XCPretty
 
     it "parses CpHeader" do
       @formatter.should receive(:format_copy_header_file).with(
-        '/path/to/Header.h','/some other/path/Header.h')
+        '/path/to/Header.h', '/some other/path/Header.h')
       @parser.parse('CpHeader /path/to/Header.h /some other/path/Header.h')
     end
 
@@ -236,7 +236,7 @@ module XCPretty
 
     it 'parses changing directories' do
       @formatter.should receive(:format_shell_command).with('cd',
-        '/some/place/out\ there')
+                                                            '/some/place/out\ there')
       @parser.parse('    cd /some/place/out\ there')
     end
 
@@ -361,11 +361,11 @@ module XCPretty
           "'SomeRandomHeader.h' file not found",
           '#import "SomeRandomHeader.h"',
           '        ^'
-          # For now, it's probably not worth to provide the import stack
-          # It'd require more state, and not sure if it'd be any useful
-#%Q(In file included from /Users/musalj/code/OSS/SampleApp/Pods/SuperCoolPod/SuperAwesomeClass.m:12:
-#In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/LessCoolClass.h:9:
-#In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/EvenLessCoolClass.h:10:)
+        # For now, it's probably not worth to provide the import stack
+        # It'd require more state, and not sure if it'd be any useful
+        # %Q(In file included from /Users/musalj/code/OSS/SampleApp/Pods/SuperCoolPod/SuperAwesomeClass.m:12:
+        # In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/LessCoolClass.h:9:
+        # In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/EvenLessCoolClass.h:10:)
         )
         SAMPLE_FATAL_COMPILE_ERROR.each_line do |line|
           @parser.parse(line)
@@ -526,3 +526,4 @@ module XCPretty
 
   end
 end
+

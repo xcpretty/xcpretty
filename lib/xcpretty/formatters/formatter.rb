@@ -92,7 +92,11 @@ module XCPretty
     # Will be printed by default. Override with '' if you don't want summary
     def format_test_summary(executed_message, failures_per_suite)
       failures = format_failures(failures_per_suite)
-      final_message = failures.empty? ? green(executed_message) : red(executed_message)
+      if failures.empty?
+        final_message = green(executed_message)
+      else
+        final_message = red(executed_message)
+      end
 
       text = [failures, final_message].join("\n\n\n").strip
       "\n\n#{text}"
@@ -109,12 +113,12 @@ module XCPretty
     end
 
     def format_compile_error(file, file_path, reason, line, cursor)
-      "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n" +
+      "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n" \
         "#{line}\n#{cyan(cursor)}\n\n"
     end
 
     def format_compile_warning(file, file_path, reason, line, cursor)
-      "\n#{yellow(warning_symbol + ' ')}#{file_path}: #{yellow(reason)}\n\n" +
+      "\n#{yellow(warning_symbol + ' ')}#{file_path}: #{yellow(reason)}\n\n" \
         "#{line}\n#{cyan(cursor)}\n\n"
     end
 
@@ -123,13 +127,13 @@ module XCPretty
     end
 
     def format_undefined_symbols(message, symbol, reference)
-      "\n#{red(error_symbol + " " + message)}\n" +
-        "> Symbol: #{symbol}\n" +
+      "\n#{red(error_symbol + " " + message)}\n" \
+        "> Symbol: #{symbol}\n" \
         "> Referenced from: #{reference}\n\n"
     end
 
     def format_duplicate_symbols(message, file_paths)
-      "\n#{red(error_symbol + " " + message)}\n" +
+      "\n#{red(error_symbol + " " + message)}\n" \
         "> #{file_paths.map { |path| path.split('/').last }.join("\n> ")}\n"
     end
 
@@ -147,7 +151,7 @@ module XCPretty
     end
 
     def format_failure(f)
-      "  #{f[:test_case]}, #{red(f[:reason])}\n  #{cyan(f[:file_path])}\n" +
+      "  #{f[:test_case]}, #{red(f[:reason])}\n  #{cyan(f[:file_path])}\n" \
       "  ```\n" +
       Syntax.highlight(Snippet.from_filepath(f[:file_path])) +
       "  ```"
@@ -163,3 +167,4 @@ module XCPretty
 
   end
 end
+

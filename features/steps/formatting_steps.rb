@@ -121,11 +121,11 @@ Then(/^I should see a "(\w+)" completion message$/) do |phase|
 end
 
 Then(/^I should see text beginning with "(.*?)"$/) do |text|
-  run_output.lines.to_a.detect {|line| line.start_with? text }.should_not be_nil
+  run_output.lines.to_a.detect { |line| line.start_with? text }.should_not be_nil
 end
 
 Then(/^I should see text containing "(.*?)" and beginning with "(.*?)"$/) do |inner, start|
-  run_output.lines.to_a.detect {|line| line.start_with?(start) && line.include?(inner)}.should_not be_nil
+  run_output.lines.to_a.detect { |line| line.start_with?(start) && line.include?(inner) }.should_not be_nil
 end
 
 Then(/^I should (green|red) text beginning with "(.*?)"$/) do |color, text|
@@ -311,3 +311,4 @@ end
 Then(/^I should see text matching "(.*?)"$/) do |text|
   run_output.lines.to_a.last.strip.should == text
 end
+

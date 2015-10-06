@@ -44,7 +44,7 @@ module XCPretty
     it "formats compiling warnings" do
       reason = "format specifies type 'id' but the argument has type 'int' [-Wformat]"
 
-      @formatter.format_compile_warning( "file", "path/to/file", reason,
+      @formatter.format_compile_warning("file", "path/to/file", reason,
 %Q(    NSLog(@"alsdkflsakdj %@", 1);),
 %Q(                         ~~   ^)).should ==
 
@@ -84,8 +84,7 @@ module XCPretty
     end
 
 
-    if RUBY_VERSION > '1.8.7'
-      it "formats failures per suite" do
+    it "formats failures per suite" do
         Syntax.stub(:highlight) { |snippet| snippet.contents }
 
         first_path = File.expand_path('spec/fixtures/NSStringTests.m:46')
@@ -94,15 +93,15 @@ module XCPretty
         failures = {
           'CarSpec' => [
             {
-              :file_path => first_path,
-              :reason => "just doesn't work",
-              :test_case => 'Starting the car'
+              file_path: first_path,
+              reason: "just doesn't work",
+              test_case: 'Starting the car'
             }],
             'StringSpec' => [
               {
-                :file_path => second_path,
-                :reason => "doesn't split",
-                :test_case => 'Splitting the string'
+                file_path: second_path,
+                reason: "doesn't split",
+                test_case: 'Splitting the string'
               }]
         }
         @formatter.format_test_summary(SAMPLE_EXECUTED_TESTS, failures).should == %Q(
@@ -127,8 +126,7 @@ StringSpec
 
 
 #{@formatter.red(SAMPLE_EXECUTED_TESTS)})
-      end
-    end # only ruby 1.9 above because of ordered hashes
-
+    end
   end
 end
+

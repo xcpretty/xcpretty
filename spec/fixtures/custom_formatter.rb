@@ -15,3 +15,4 @@ class EmojiFormatter < XCPretty::Formatter
 end
 
 EmojiFormatter
+

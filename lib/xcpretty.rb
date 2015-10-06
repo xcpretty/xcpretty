@@ -21,12 +21,10 @@ module XCPretty
   end
 
   def self.load_custom_formatter(path)
-    begin
-      $:.unshift File.dirname(path)
-      class_from_path(path)
-    rescue SyntaxError => e
-      exit_with_error("Expected formatter source file to return a class. #{e}")
-    end
+    $LOAD_PATH.unshift File.dirname(path)
+    class_from_path(path)
+  rescue SyntaxError => e
+    exit_with_error("Expected formatter source file to return a class. #{e}")
   end
 
   def self.exit_with_error(message)

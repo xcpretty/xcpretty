@@ -7,7 +7,7 @@ module XCPretty
 
     before(:each) do
       STDOUT.stub(:print) { |text| text }
-      @printer = Printer.new(:colorize => true, :unicode => true, :formatter => DummyFormatter)
+      @printer = Printer.new(colorize: true, unicode: true, formatter: DummyFormatter)
     end
 
     it "prints to stdout" do
@@ -22,7 +22,7 @@ module XCPretty
 
     it "prints with newlines only when needed" do
       @printer.formatter.stub(:optional_newline).and_return("")
-      
+
       STDOUT.should receive(:print).with("hey ho let's go")
       @printer.pretty_print("hey ho let's go")
     end
@@ -35,19 +35,21 @@ module XCPretty
   end
 end
 
-module XCPretty; class DummyFormatter < Formatter
+module XCPretty
+  class DummyFormatter < Formatter
 
-  def initialize(unicode, colorize)
-    @use_unicode = unicode
-    @colorize = colorize
+    def initialize(unicode, colorize)
+      @use_unicode = unicode
+      @colorize = colorize
+    end
+
+    def pretty_format(text)
+      text
+    end
+
+    def optional_newline
+      "\n"
+    end
   end
+end
 
-  def pretty_format(text)
-    text
-  end
-
-  def optional_newline
-    "\n"
-  end
-
-end; end

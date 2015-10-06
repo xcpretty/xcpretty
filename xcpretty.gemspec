@@ -8,26 +8,28 @@ Gem::Specification.new do |spec|
   spec.version       = XCPretty::VERSION
   spec.authors       = ["Marin Usalj", "Delisa Mason"]
   spec.email         = ["marin2211@gmail.com", "iskanamagus@gmail.com"]
-  spec.required_ruby_version = '>= 1.8.7'
-  spec.description   =
-  %q{
-  Xcodebuild formatter designed to be piped with `xcodebuild`,
-  and thus keeping 100% compatibility.
+  spec.required_ruby_version = '>= 2.0.0'
+  spec.description =
+    %q{
+    Xcodebuild formatter designed to be piped with `xcodebuild`,
+    and thus keeping 100% compatibility.
 
-  It has modes for CI, running tests (RSpec dot-style),
-  and it can also mine Bitcoins.
-  }
-  spec.summary       = %q{xcodebuild formatter done right}
+    It has modes for CI, running tests (RSpec dot-style),
+    and it can also mine Bitcoins.
+    }
+  spec.summary       = %q(xcodebuild formatter done right)
   spec.homepage      = "https://github.com/supermarin/xcpretty"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files`.split($/)
+  spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rubocop", "~> 0.34.0"
   spec.add_development_dependency "rspec", "~> 2.0"
   spec.add_development_dependency "cucumber", "~> 1.0"
 end
+

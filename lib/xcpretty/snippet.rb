@@ -20,8 +20,6 @@ module XCPretty
     end
 
 
-    private
-
     def self.read_snippet(file, around_line)
       text = ''
       starting_position = around_line.to_i - 2

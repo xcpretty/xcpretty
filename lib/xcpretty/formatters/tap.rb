@@ -4,7 +4,7 @@ module XCPretty
 
     attr_reader :counter
 
-    def initialize unicode, color
+    def initialize(unicode, color)
       super
       @counter = 0
     end
@@ -37,3 +37,4 @@ module XCPretty
   end
 
 end
+

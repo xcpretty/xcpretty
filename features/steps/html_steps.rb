@@ -29,3 +29,4 @@ end
 Then(/^I should not see a screenshot in HTML$/) do
   html_report_body.get_elements("//*[contains(@class, 'screenshot')]/").to_a.size.should == 0
 end
+

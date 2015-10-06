@@ -23,8 +23,6 @@ module XCPretty
       end
     end
 
-    private
-
     def self.file_language(filename)
       ext = File.extname(filename)
       @filetypes[ext] || 'objc'
@@ -42,3 +40,4 @@ module XCPretty
     end
   end
 end
+

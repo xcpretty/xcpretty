@@ -1,4 +1,4 @@
-$:.unshift File.expand_path('../../..', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../../..', __FILE__)
 
 require 'tempfile'
 require 'spec/fixtures/constants'
@@ -20,7 +20,7 @@ end
 
 include XCPretty::ANSI
 
-TEST_RUN_START_MATCHER  = /Test Suite .+ started/
+TEST_RUN_START_MATCHER = /Test Suite .+ started/
 TEST_SUITE_COMPLETION_MATCHER = /Executed \d+ tests, with \d+ failures \(\d+ unexpected\) in \d+\.\d+ \(\d+\.\d+\) seconds/
 TEST_SUITE_START_MATCHER = /[\w]*(Spec|Tests)$/
 TEST_PATH_MATCHER = %r{[\w/\-\s]+:\d+}
@@ -53,7 +53,7 @@ def run_output
 end
 
 def html_report
-  @html_report ||= REXML::Document.new(File.open(XCPretty::HTML::FILEPATH, 'r').read.sub("<!DOCTYPE html>",""))
+  @html_report ||= REXML::Document.new(File.open(XCPretty::HTML::FILEPATH, 'r').read.sub("<!DOCTYPE html>", ""))
 end
 
 def html_report_body
@@ -114,3 +114,4 @@ After do
   FileUtils.rm_rf(XCPretty::JSONCompilationDatabase::FILE_PATH)
   File.delete(@screenshot_file_path) if @screenshot_file_path
 end
+

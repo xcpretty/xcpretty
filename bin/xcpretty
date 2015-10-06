@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
-if RUBY_VERSION < '1.8.7'
-  abort "error: XCPretty requires Ruby 1.8.7 or higher."
+if RUBY_VERSION < '2.0.0'
+  abort "error: XCPretty requires Ruby 2.0.0 or higher."
 end
 
-if $0 == __FILE__
-  $:.unshift File.expand_path('../../lib', __FILE__)
+if $PROGRAM_NAME == __FILE__
+  $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 end
 require 'xcpretty'
 require 'optparse'
@@ -15,13 +15,13 @@ report_classes = []
 report_formats = {
   "junit"                     => XCPretty::JUnit,
   "html"                      => XCPretty::HTML,
-  "json-compilation-database" => XCPretty::JSONCompilationDatabase,
+  "json-compilation-database" => XCPretty::JSONCompilationDatabase
 }
 
 printer_opts = {
-  :unicode => true,
-  :colorize => false,
-  :formatter => XCPretty::Simple
+  unicode: true,
+  colorize: false,
+  formatter: XCPretty::Simple
 }
 
 OptionParser.new do |opts|
@@ -48,7 +48,7 @@ OptionParser.new do |opts|
     printer_opts[:unicode] = false
   end
   opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
-                "  Choices: #{report_formats.keys.join(', ')}") do |format|
+          "  Choices: #{report_formats.keys.join(', ')}") do |format|
     report_classes << report_formats[format]
     report_options << {}
   end
@@ -74,7 +74,7 @@ OptionParser.new do |opts|
 end
 
 printer = XCPretty::Printer.new(printer_opts)
-reporters = report_classes.compact.each_with_index.map {|k,i| k.new(report_options[i])}
+reporters = report_classes.compact.each_with_index.map { |k, i| k.new(report_options[i]) }
 
 STDIN.each_line do |line|
   printer.pretty_print(line)
