@@ -1,42 +1,50 @@
+begin
+  require 'rouge'
+rescue LoadError
+  # rubocop:disable Style/ConstantName
+  Rouge = nil
+  # rubocop:enable Style/ConstantName
+end
+
 require 'xcpretty/snippet'
 
 module XCPretty
-  class Syntax
-    def self.register_filetype(type, extensions)
-      @filetypes ||= {}
-      extensions.each { |ext| @filetypes[ext] = type }
-    end
+  module Syntax
+    def self.highlight(snippet)
+      return snippet.contents unless Rouge
 
-    register_filetype 'c++',    ['.cpp', '.hpp', '.c++', '.cxx', '.cc']
-    register_filetype 'objc',   ['.m', '.h']
-    register_filetype 'objc++', ['.mm', '.hh']
-    register_filetype 'swift',  ['.swift']
-    register_filetype 'dylan',  ['.dyl', '.dylan']
-    register_filetype 'ruby',   ['.ruby', '.rb']
+      if snippet.file_path.include?(':')
+        filename = snippet.file_path.rpartition(':').first
+      else
+        filename = snippet.file_path
+      end
 
-    def self.highlight(snippet, options = '')
-      if Pygments.available?
-        language = file_language(File.basename(snippet.file_path))
-        Pygments.pygmentize(snippet.contents, language, options)
+      lexer = find_lexer(filename, snippet.contents)
+      if lexer
+        formatter = Rouge::Formatters::Terminal256.new
+        formatter.format(lexer.lex(snippet.contents))
       else
         snippet.contents
       end
     end
 
-    def self.file_language(filename)
-      ext = File.extname(filename)
-      @filetypes[ext] || 'objc'
-    end
-  end
-
-  class Pygments
-    def self.pygmentize(code, language, options)
-      `echo '#{code}' | pygmentize -f 256 -l #{language} #{options if options}`
-    end
-
-    def self.available?
-      @available = system('which pygmentize > /dev/null') if @available.nil?
-      @available
+    # @param [String] filename The filename
+    # @param [String] contents The contents of the file
+    # @return [Rouge::Lexer]
+    def self.find_lexer(filename, contents)
+      case File.extname(filename)
+      when '.cpp', '.cc', '.c++', '.cxx', '.hpp', '.h++', '.hxx'
+        Rouge::Lexers::Cpp
+      when '.m', '.h' then Rouge::Lexers::ObjectiveC
+      when '.swift' then Rouge::Lexers::Swift
+      when '.ruby', '.rb' then Rouge::Lexers::Ruby
+      else
+        options = {
+          filename: File.basename(filename),
+          source: contents
+        }
+        Rouge::Lexer.guesses(options).first
+      end
     end
   end
 end
