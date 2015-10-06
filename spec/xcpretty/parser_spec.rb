@@ -248,8 +248,8 @@ module XCPretty
 
     it "parses Touch" do
       @formatter.should receive(:format_touch).with(
-        '/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/AlcatrazTests.octest',
-        'AlcatrazTests.octest')
+        '/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz Tests.octest',
+        'Alcatraz Tests.octest')
       @parser.parse(SAMPLE_TOUCH)
     end
 
