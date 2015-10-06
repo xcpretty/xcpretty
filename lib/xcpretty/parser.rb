@@ -180,6 +180,10 @@ module XCPretty
       # $3 = reason
       COMPILE_WARNING_MATCHER = /^(\/.+\/(.*):.*:.*):\swarning:\s(.*)$/
 
+      # $1 = ld prefix
+      # $2 = warning message
+      LD_WARNING_MATCHER = /^(ld: )warning: (.*)/
+
       # @regex Captured groups
       # $1 = whole warning
       GENERIC_WARNING_MATCHER = /^warning:\s(.*)$/
@@ -208,10 +212,6 @@ module XCPretty
       # $1 = whole error.
       #      it varies a lot, not sure if it makes sense to catch everything separately
       FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
-
-      # $1 = ld prefix
-      # $2 = warning message
-      LD_WARNING_MATCHER = /^(ld: )warning: (.*)/
 
       # $1 = whole error
       LD_ERROR_MATCHER = /^(ld:.*)/
