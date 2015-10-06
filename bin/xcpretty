@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-if RUBY_VERSION < '1.8.7'
-  abort "error: XCPretty requires Ruby 1.8.7 or higher."
+if RUBY_VERSION < '2.0.0'
+  abort "error: XCPretty requires Ruby 2.0.0 or higher."
 end
 
 if $0 == __FILE__

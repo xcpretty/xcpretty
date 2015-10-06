@@ -84,8 +84,7 @@ module XCPretty
     end
 
 
-    if RUBY_VERSION > '1.8.7'
-      it "formats failures per suite" do
+    it "formats failures per suite" do
         Syntax.stub(:highlight) { |snippet| snippet.contents }
 
         first_path = File.expand_path('spec/fixtures/NSStringTests.m:46')
@@ -127,8 +126,6 @@ StringSpec
 
 
 #{@formatter.red(SAMPLE_EXECUTED_TESTS)})
-      end
-    end # only ruby 1.9 above because of ordered hashes
-
+    end
   end
 end

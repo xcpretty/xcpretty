@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = XCPretty::VERSION
   spec.authors       = ["Marin Usalj", "Delisa Mason"]
   spec.email         = ["marin2211@gmail.com", "iskanamagus@gmail.com"]
-  spec.required_ruby_version = '>= 1.8.7'
+  spec.required_ruby_version = '>= 2.0.0'
   spec.description   =
   %q{
   Xcodebuild formatter designed to be piped with `xcodebuild`,
