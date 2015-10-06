@@ -8,11 +8,11 @@ module XCPretty
     PASS = "✓"
     FAIL = "✗"
     PENDING = "⧖"
+    COMPLETION = "▸"
     MEASURE = '◷'
 
     ASCII_PASS = "."
     ASCII_FAIL = "x"
-    COMPLETION = "▸"
     ASCII_PENDING = "P"
     ASCII_COMPLETION = ">"
     ASCII_MEASURE = 'T'
