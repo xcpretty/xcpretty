@@ -105,6 +105,14 @@ module XCPretty
         "    T _tupleByAddingObject__should_add_a_non_nil_object measured (0.001 seconds)"
       end
 
+      it "formats build success output" do
+        @formatter.format_phase_success("BUILD").should == "> Build Succeeded"
+      end
+
+      it "formats clean success output" do
+        @formatter.format_phase_success("CLEAN").should == "> Clean Succeeded"
+      end
+
       it "formats Phase Script Execution" do
         @formatter.format_phase_script_execution("Check Pods Manifest.lock").should ==
         "> Running script 'Check Pods Manifest.lock'"

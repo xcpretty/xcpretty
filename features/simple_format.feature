@@ -15,6 +15,11 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple"
         Then I should see a successful precompilation message
 
+    Scenario: Showing phase success
+        Given I have completed a build
+        When I pipe to xcpretty with "--simple"
+        Then I should see a "build" completion message
+
     Scenario: Showing file compilation with color
         Given I have a file to compile
         When I pipe to xcpretty with "--simple --color"

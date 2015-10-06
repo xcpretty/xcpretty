@@ -108,6 +108,18 @@ Given(/^I have an unrelated image in the output folder/) do
   copy_file_to_screenshot_dir(SAMPLE_UNRELATED_IMAGE_FILE)
 end
 
+Given(/^I have completed a build$/) do
+  add_run_input SAMPLE_BUILD_SUCCEEDED
+end
+
+Given(/^I have completed a clean$/) do
+  add_run_input SAMPLE_CLEAN_SUCCEEDED
+end
+
+Then(/^I should see a "(\w+)" completion message$/) do |phase|
+  run_output.should start_with("▸ #{phase.capitalize} Succeeded")
+end
+
 Then(/^I should see text beginning with "(.*?)"$/) do |text|
   run_output.lines.to_a.detect {|line| line.start_with? text }.should_not be_nil
 end

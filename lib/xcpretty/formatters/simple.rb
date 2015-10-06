@@ -89,6 +89,10 @@ module XCPretty
       )
     end
 
+    def format_phase_success(phase_name)
+      format(phase_name.capitalize, "Succeeded")
+    end
+
     def format_phase_script_execution(script_name)
       format("Running script", "'#{script_name}'")
     end
