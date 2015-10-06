@@ -30,12 +30,13 @@ module XCPretty
     end
 
     def format_failing_test(suite, test_case, reason, file)
-      add_test(suite, {:name => test_case, :failing => true,
-        :reason => reason, :file => file, :snippet => formatted_snippet(file)})
+      add_test(suite, name: test_case, failing: true,
+                      reason: reason, file: file,
+                      snippet: formatted_snippet(file))
     end
 
     def format_passing_test(suite, test_case, time)
-      add_test(suite, {:name => test_case, :time => time})
+      add_test(suite, name: test_case, time: time)
     end
 
     def finish
@@ -53,7 +54,7 @@ module XCPretty
 
     def add_test(suite_name, data)
       @test_count += 1
-      @test_suites[suite_name] ||= {:tests => [], :screenshots => []}
+      @test_suites[suite_name] ||= {tests: [], screenshots: []}
       @test_suites[suite_name][:tests] << data
       if data[:failing]
         @test_suites[suite_name][:failing] = true
@@ -94,3 +95,4 @@ module XCPretty
     end
   end
 end
+

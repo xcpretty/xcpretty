@@ -47,12 +47,12 @@ module XCPretty
 
       it 'formats copying header files' do
         @formatter.format_copy_header_file('Source.h',
-          'dir/Destination.h').should == '> Copying Source.h'
+                                           'dir/Destination.h').should == '> Copying Source.h'
       end
 
       it 'formats copying plist files' do
         @formatter.format_copy_plist_file("Source.plist",
-          'dir/Destination.plist').should == '> Copying Source.plist'
+                                          'dir/Destination.plist').should == '> Copying Source.plist'
       end
 
       it "formats copy resource" do
@@ -149,7 +149,7 @@ module XCPretty
       end
 
       it "formats Touch" do
-        @formatter.format_touch("/path/to/SomeFile.txt","SomeFile.txt").should ==
+        @formatter.format_touch("/path/to/SomeFile.txt", "SomeFile.txt").should ==
         "> Touching SomeFile.txt"
       end
 
@@ -160,3 +160,4 @@ module XCPretty
 
     end
 end
+

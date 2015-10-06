@@ -587,3 +587,4 @@ SAMPLE_FORMAT_WARNING = %Q(
                          %d
 1 warning generated.
 )
+

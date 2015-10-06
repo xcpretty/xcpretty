@@ -332,8 +332,8 @@ module XCPretty
         formatter.format_phase_success($1)
       when PROCESS_PCH_MATCHER
         formatter.format_process_pch($1)
-        when PROCESS_PCH_COMMAND_MATCHER
-          formatter.format_process_pch_command($1)
+      when PROCESS_PCH_COMMAND_MATCHER
+        formatter.format_process_pch_command($1)
       when PREPROCESS_MATCHER
         formatter.format_preprocess($1)
       when PBXCP_MATCHER
@@ -429,14 +429,11 @@ module XCPretty
     end
 
     def should_format_undefined_symbols?
-      current_linker_failure[:message]     &&
-      current_linker_failure[:symbol]      &&
-      current_linker_failure[:reference]
+      current_linker_failure[:message] && current_linker_failure[:symbol] && current_linker_failure[:reference]
     end
 
     def should_format_duplicate_symbols?
-      current_linker_failure[:message]     &&
-      current_linker_failure[:files].count > 1
+      current_linker_failure[:message] && current_linker_failure[:files].count > 1
     end
 
     def current_issue
@@ -444,7 +441,7 @@ module XCPretty
     end
 
     def current_linker_failure
-      @linker_failure ||= { :files => [] }
+      @linker_failure ||= {files: []}
     end
 
     def format_compile_error
@@ -496,9 +493,9 @@ module XCPretty
     def store_failure(file, test_suite, test_case, reason)
       failures_per_suite[test_suite] ||= []
       failures_per_suite[test_suite] << {
-        :file_path => file,
-        :reason => reason,
-        :test_case => test_case
+        file_path: file,
+        reason: reason,
+        test_case: test_case
       }
     end
 
@@ -518,8 +515,9 @@ module XCPretty
     end
 
     def unescaped(*escaped_values)
-      escaped_values.map { |v| v.gsub('\\', '') }
+      escaped_values.map { |v| v.delete('\\') }
     end
 
   end
 end
+

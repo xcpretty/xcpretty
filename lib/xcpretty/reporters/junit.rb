@@ -19,9 +19,9 @@ module XCPretty
       @filepath  = options[:path] || FILEPATH
       @directory = `pwd`.strip
       @document  = REXML::Document.new
-      @document << REXML::XMLDecl.new('1.0','UTF-8')
+      @document << REXML::XMLDecl.new('1.0', 'UTF-8')
       @document.add_element('testsuites')
-      @parser    = Parser.new(self)
+      @parser = Parser.new(self)
       @total_tests = 0
       @total_fails = 0
     end
@@ -77,7 +77,9 @@ module XCPretty
     end
 
     def suite(classname)
-      return @last_suite if @last_suite && @last_suite.attributes['name'] == classname
+      if @last_suite && @last_suite.attributes['name'] == classname
+        return @last_suite
+      end
 
       set_test_counters
       @last_suite = @document.root.add_element('testsuite')
@@ -97,3 +99,4 @@ module XCPretty
     end
   end
 end
+

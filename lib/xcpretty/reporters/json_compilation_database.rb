@@ -8,13 +8,7 @@ module XCPretty
       unless @@loaded ||= false
         require 'fileutils'
         require 'pathname'
-        unless Object.const_defined?(:JSON)
-          begin
-            require 'json'
-          rescue LoadError
-            require File.expand_path(File.join(File.dirname(__FILE__), '../../../vendor/json_pure/generator'))
-          end
-        end
+        require 'json'
         @@loaded = true
       end
     end
@@ -45,9 +39,10 @@ module XCPretty
     def format_compile_command(compiler_command, file_path)
       directory = file_path.gsub("#{@current_path}", '').gsub(/\/$/, '')
       directory = '/' if directory.empty?
-      @compilation_units << {:command => compiler_command.gsub(/(\-include)\s.*\.pch/, "\\1 #{@pch_path}"),
-                             :file => @current_path,
-                             :directory => directory}
+      cmd = compiler_command.gsub(/(\-include)\s.*\.pch/, "\\1 #{@pch_path}")
+      @compilation_units << {command: cmd,
+                             file: @current_path,
+                             directory: directory}
     end
 
     def finish
@@ -64,3 +59,4 @@ module XCPretty
     end
   end
 end
+

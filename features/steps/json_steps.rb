@@ -31,6 +31,7 @@ Then(/^the JSON compilation database should contain an entry with a directory$/)
 end
 
 Then(/^the JSON compilation database should be complete$/) do
-  entries = json_db.select {|entry| entry['command'] && entry['file'] && entry['directory']}
+  entries = json_db.select { |entry| entry['command'] && entry['file'] && entry['directory'] }
   entries.length.should == JSON_DB_FIXTURE_COMMAND_COUNT
 end
+

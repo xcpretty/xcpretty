@@ -19,3 +19,4 @@ end
 Then(/^I should have a test report in a custom path$/) do
   step("I should have a test report at \"#{custom_report_path}\"")
 end
+

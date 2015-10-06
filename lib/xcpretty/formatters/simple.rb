@@ -76,7 +76,8 @@ module XCPretty
     end
 
     def format_passing_test(suite, test_case, time)
-      INDENT + format_test("#{test_case} (#{colored_time(time)} seconds)", :pass)
+      INDENT + format_test("#{test_case} (#{colored_time(time)} seconds)",
+                           :pass)
     end
 
     def format_pending_test(suite, test_case)
@@ -144,7 +145,8 @@ module XCPretty
     end
 
     def format(command, argument_text="", success=true)
-      [status_symbol(success ? :completion : :fail), white(command), argument_text].join(" ").strip
+      symbol = status_symbol(success ? :completion : :fail)
+      [symbol, white(command), argument_text].join(" ").strip
     end
 
     def format_test(test_case, status)
@@ -183,3 +185,4 @@ module XCPretty
 
   end
 end
+
