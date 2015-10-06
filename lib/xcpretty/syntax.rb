@@ -1,7 +1,9 @@
 begin
   require 'rouge'
 rescue LoadError
+  # rubocop:disable Style/ConstantName
   Rouge = nil
+  # rubocop:enable Style/ConstantName
 end
 
 require 'xcpretty/snippet'
