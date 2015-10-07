@@ -143,9 +143,9 @@ module XCPretty
         "> #{file_paths.map { |path| path.split('/').last }.join("\n> ")}\n"
     end
 
-    def format_uncaught_exception(message, reason, call_stack)
-      "\n#{red(crash_symbol + " " + message)}\n" \
-        "#{reason}\n\n" +
+    def format_uncaught_exception(test_case, name, reason, call_stack)
+      "\n#{red(crash_symbol + " " + test_case)}\n" \
+        "#{name}: #{reason}\n\n" +
         call_stack.join("\n") + "\n"
     end
 

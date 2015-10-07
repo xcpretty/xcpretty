@@ -407,7 +407,8 @@ module XCPretty
 
       it "parses uncaught exception errors" do
         @formatter.should receive(:format_uncaught_exception).with(
-          "Terminating app due to uncaught exception 'NSInvalidArgumentException'",
+          'testRaisingUncaughtException',
+          'NSInvalidArgumentException',
           '-[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[0]',
           ['	0   CoreFoundation                      0x0000000109479a75 __exceptionPreprocess + 165',
            '	1   libobjc.A.dylib                     0x0000000109112bb7 objc_exception_throw + 45',

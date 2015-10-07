@@ -84,14 +84,15 @@ module XCPretty
     end
 
     it "formats uncaught exceptions" do
-      @formatter.format_uncaught_exception("Terminating app due to uncaught exception 'NSInvalidArgumentException'",
+      @formatter.format_uncaught_exception("testRaisingUncaughtException",
+      'NSInvalidArgumentException',
       '-[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[0]',
       ['	0   CoreFoundation                      0x0000000109479a75 __exceptionPreprocess + 165',
        '	1   libobjc.A.dylib                     0x0000000109112bb7 objc_exception_throw + 45',
        '	2   CoreFoundation                      0x000000010938503f -[__NSPlaceholderDictionary initWithObjects:forKeys:count:] + 383',
        '	3   CoreFoundation                      0x0000000109397d8b +[NSDictionary dictionaryWithObjects:forKeys:count:] + 59']).should == %Q(
-#{@formatter.red("💥  Terminating app due to uncaught exception 'NSInvalidArgumentException'")}
--[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[0]
+#{@formatter.red("💥  testRaisingUncaughtException")}
+NSInvalidArgumentException: -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[0]
 
 \t0   CoreFoundation                      0x0000000109479a75 __exceptionPreprocess + 165
 \t1   libobjc.A.dylib                     0x0000000109112bb7 objc_exception_throw + 45

@@ -166,6 +166,10 @@ module XCPretty
     TEST_SUITE_START_MATCHER = /^\s*Test Suite '(.*)' started at/
 
     # @regex Captured groups
+    # $1 test case name
+    TEST_CASE_START_MATCHER = /Test Case '-\[.* (.*)\]' started/
+
+    # @regex Captured groups
     # $1 file_name
     TIFFUTIL_MATCHER = /^TiffUtil\s(.*)/
 
@@ -247,9 +251,9 @@ module XCPretty
       SYMBOL_REFERENCED_FROM_MATCHER = /\s+"(.*)", referenced from:$/
 
       # @regex Captured groups
-      # $1 = message
-      # $2 = reason
-      UNCAUGHT_EXCEPTION_MATCHER = /(Terminating app due to uncaught exception.*), reason: '(?:\*\*\* )?(.*)'/
+      # $1 = exception name
+      # $2 = exception reason
+      UNCAUGHT_EXCEPTION_MATCHER = /Terminating app due to uncaught exception '(.*)', reason: '(?:\*\*\* )?(.*)'/
     end
   end
 
@@ -411,12 +415,14 @@ module XCPretty
     end
 
     def update_exception_state(text)
-      if text =~ UNCAUGHT_EXCEPTION_MATCHER
-        current_exception[:message] = $1
+      if text =~ TEST_CASE_START_MATCHER
+        current_exception[:test_case] = $1
+      elsif text =~ UNCAUGHT_EXCEPTION_MATCHER
+        current_exception[:name] = $1
         current_exception[:reason] = $2
-      elsif text =~ /\($/ && current_exception[:message]
+      elsif text =~ /\($/ && current_exception[:name]
         @gathering_exception_call_stack = true
-      elsif text =~ /\)$/ && current_exception[:message]
+      elsif text =~ /\)$/ && current_exception[:name]
         @gathering_exception_call_stack = false
         current_exception[:complete] = true
       elsif @gathering_exception_call_stack
@@ -528,7 +534,8 @@ module XCPretty
 
     def format_uncaught_exception
       result = formatter.format_uncaught_exception(
-        current_exception[:message],
+        current_exception[:test_case],
+        current_exception[:name],
         current_exception[:reason],
         current_exception[:call_stack]
       )
