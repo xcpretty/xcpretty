@@ -88,6 +88,10 @@ Given(/^the linker has failed with undefined symbols$/) do
   add_run_input SAMPLE_UNDEFINED_SYMBOLS
 end
 
+Given(/^tests fail with an uncaught exception$/) do
+  add_run_input SAMPLE_UNCAUGHT_EXCEPTION
+end
+
 Given(/^I have a pending test in my suite$/) do
   add_run_input SAMPLE_PENDING_KIWI_TEST
 end
@@ -294,6 +298,21 @@ end
 Then(/^I should see the symbol and reference that caused failure$/) do
   run_output.should include("_OBJC_CLASS_$_CABasicAnimation")
   run_output.should include("objc-class-ref in ATZRadialProgressControl.o")
+end
+
+Then(/^I should see a crash symbol and the test case in red$/) do
+  run_output.should include(red("💥  testRaisingUncaughtException"))
+end
+
+Then(/^I should see the exception name and reason$/) do
+  run_output.should include("NSInvalidArgumentException: -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[0]")
+end
+
+Then(/^I should see the call stack that led to the exception$/) do
+  run_output.should include("\t0   CoreFoundation                      0x0000000109479a75 __exceptionPreprocess + 165")
+  run_output.should include("\t1   libobjc.A.dylib                     0x0000000109112bb7 objc_exception_throw + 45")
+  run_output.should include("\t2   CoreFoundation                      0x000000010938503f -[__NSPlaceholderDictionary initWithObjects:forKeys:count:] + 383")
+  run_output.should include("\t3   CoreFoundation                      0x0000000109397d8b +[NSDictionary dictionaryWithObjects:forKeys:count:] + 59")
 end
 
 Then(/^I should see the name of a pending test$/) do
