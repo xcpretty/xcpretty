@@ -245,6 +245,11 @@ module XCPretty
       # @regex Captured groups
       # $1 = reference
       SYMBOL_REFERENCED_FROM_MATCHER = /\s+"(.*)", referenced from:$/
+
+      # @regex Captured groups
+      # $1 = message
+      # $2 = reason
+      UNCAUGHT_EXCEPTION_MATCHER = /(Terminating app due to uncaught exception.*), reason: '(?:\*\*\* )?(.*)'/
     end
   end
 
@@ -263,12 +268,14 @@ module XCPretty
     def parse(text)
       update_test_state(text)
       update_error_state(text)
+      update_exception_state(text)
       update_linker_failure_state(text)
 
       return format_compile_error if should_format_error?
       return format_compile_warning if should_format_warning?
       return format_undefined_symbols if should_format_undefined_symbols?
       return format_duplicate_symbols if should_format_duplicate_symbols?
+      return format_uncaught_exception if should_format_uncaught_exception?
 
       case text
       when ANALYZE_MATCHER
@@ -403,6 +410,20 @@ module XCPretty
       end
     end
 
+    def update_exception_state(text)
+      if text =~ UNCAUGHT_EXCEPTION_MATCHER
+        current_exception[:message] = $1
+        current_exception[:reason] = $2
+      elsif text =~ /\($/ && current_exception[:message]
+        @gathering_exception_call_stack = true
+      elsif text =~ /\)$/ && current_exception[:message]
+        @gathering_exception_call_stack = false
+        current_exception[:complete] = true
+      elsif @gathering_exception_call_stack
+        current_exception[:call_stack] << text.chomp
+      end
+    end
+
     def update_linker_failure_state(text)
       if text =~ LINKER_UNDEFINED_SYMBOLS_MATCHER ||
          text =~ LINKER_DUPLICATE_SYMBOLS_MATCHER
@@ -443,8 +464,16 @@ module XCPretty
       current_linker_failure[:message] && current_linker_failure[:files].count > 1
     end
 
+    def should_format_uncaught_exception?
+      current_exception[:complete]
+    end
+
     def current_issue
       @current_issue ||= {}
+    end
+
+    def current_exception
+      @uncaught_exception ||= {call_stack: [], complete: false}
     end
 
     def current_linker_failure
@@ -495,6 +524,20 @@ module XCPretty
     def reset_linker_format_state
       @linker_failure = nil
       @formatting_linker_failure = false
+    end
+
+    def format_uncaught_exception
+      result = formatter.format_uncaught_exception(
+        current_exception[:message],
+        current_exception[:reason],
+        current_exception[:call_stack]
+      )
+      reset_uncaught_exception_state
+      result
+    end
+
+    def reset_uncaught_exception_state
+      @uncaught_exception = nil
     end
 
     def store_failure(file, test_suite, test_case, reason)

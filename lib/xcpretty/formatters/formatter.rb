@@ -55,6 +55,8 @@ module XCPretty
     def format_error(message);                                 EMPTY; end
     def format_undefined_symbols(message, symbol, reference);  EMPTY; end
     def format_duplicate_symbols(message, file_paths);         EMPTY; end
+    def format_uncaught_exception(test_case, name, reason,
+                                  call_stack);                 EMPTY; end
     def format_warning(message);                             message; end
 
     # TODO: see how we can unify format_error and format_compile_error,
@@ -106,6 +108,9 @@ module XCPretty
     ERROR = '❌ '
     ASCII_ERROR = '[x]'
 
+    CRASH = '💥 '
+    ASCII_CRASH = '***'
+
     WARNING = '⚠️ '
     ASCII_WARNING = '[!]'
 
@@ -138,6 +143,12 @@ module XCPretty
         "> #{file_paths.map { |path| path.split('/').last }.join("\n> ")}\n"
     end
 
+    def format_uncaught_exception(message, reason, call_stack)
+      "\n#{red(crash_symbol + " " + message)}\n" \
+        "#{reason}\n\n" +
+        call_stack.join("\n") + "\n"
+    end
+
 
     private
 
@@ -160,6 +171,10 @@ module XCPretty
 
     def error_symbol
       use_unicode? ? ERROR : ASCII_ERROR
+    end
+
+    def crash_symbol
+      use_unicode? ? CRASH : ASCII_CRASH
     end
 
     def warning_symbol

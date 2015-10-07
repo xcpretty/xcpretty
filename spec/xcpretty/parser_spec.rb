@@ -405,6 +405,19 @@ module XCPretty
         end
       end
 
+      it "parses uncaught exception errors" do
+        @formatter.should receive(:format_uncaught_exception).with(
+          "Terminating app due to uncaught exception 'NSInvalidArgumentException'",
+          '-[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[0]',
+          ['	0   CoreFoundation                      0x0000000109479a75 __exceptionPreprocess + 165',
+           '	1   libobjc.A.dylib                     0x0000000109112bb7 objc_exception_throw + 45',
+           '	2   CoreFoundation                      0x000000010938503f -[__NSPlaceholderDictionary initWithObjects:forKeys:count:] + 383',
+           '	3   CoreFoundation                      0x0000000109397d8b +[NSDictionary dictionaryWithObjects:forKeys:count:] + 59'])
+        SAMPLE_UNCAUGHT_EXCEPTION.each_line do |line|
+          @parser.parse(line)
+        end
+      end
+
       it "parses code sign error:" do
         @formatter.should receive(:format_error).with(
           'Code Sign error: No code signing identites found: No valid signing identities (i.e. certificate and private key pair) matching the team ID ‚ÄúCAT6HF57NJ‚Äù were found.'
