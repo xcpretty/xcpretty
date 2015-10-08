@@ -7,6 +7,10 @@ Given(/^I have a xib to compile$/) do
   add_run_input SAMPLE_COMPILE_XIB
 end
 
+Given(/^I have a storyboard to compile$/) do
+  add_run_input SAMPLE_COMPILE_STORYBOARD
+end
+
 Given(/^I have a precompiled header$/) do
   add_run_input SAMPLE_PRECOMPILE
 end

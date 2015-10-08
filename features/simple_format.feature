@@ -10,6 +10,11 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple"
         Then I should see a successful compilation message
 
+    Scenario: Showing storyboard compilation
+        Given I have a storyboard to compile
+        When I pipe to xcpretty with "--simple"
+        Then I should see a successful compilation message
+
     Scenario: Showing precompilation
         Given I have a precompiled header
         When I pipe to xcpretty with "--simple"
@@ -27,6 +32,11 @@ Feature: Showing build output in simple format
 
     Scenario: Showing xib compilation with color
         Given I have a xib to compile
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a yellow completion icon
+
+    Scenario: Showing storyboard compilation with color
+        Given I have a storyboard to compile
         When I pipe to xcpretty with "--simple --color"
         Then I should see a yellow completion icon
 

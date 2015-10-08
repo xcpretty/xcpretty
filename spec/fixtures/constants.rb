@@ -479,6 +479,12 @@ CompileXIB CocoaChip/en.lproj/MainMenu.xib
     setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..
     /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 10.7 --output-format human-readable-text --compile /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app/Contents/Resources/en.lproj/MainMenu.nib /Users/dustin/Source/CocoaChip/CocoaChip/en.lproj/MainMenu.xib
 )
+SAMPLE_COMPILE_STORYBOARD = %Q(
+CompileStoryboard sample/Main.storyboard
+    cd /Users/chipp/Developer/sample
+    export XCODE_DEVELOPER_USR_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin/..
+    /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --target-device iphone --target-device ipad --errors --warnings --notices --module sample --minimum-deployment-target 7.0 --output-partial-info-plist /Users/chipp/Library/Developer/Xcode/DerivedData/sample-etjztiverddwaddrudeteewjzfxw/Build/Intermediates/ArchiveIntermediates/sample/IntermediateBuildFilesPath/sample.build/Release-iphoneos/sample.build/SJMetroPickerStoryboard-SBPartialInfo.plist --auto-activate-custom-fonts --output-format human-readable-text --compilation-directory /Users/chipp/Library/Developer/Xcode/DerivedData/sample-etjztiverddwaddrudeteewjzfxw/Build/Intermediates/ArchiveIntermediates/sample/InstallationBuildProductsLocation/Applications/sample.app /Users/chipp/Developer/sample/sample/Main.storyboard
+)
 SAMPLE_CODESIGN = %Q(
 CodeSign build/Release/CocoaChip.app
     cd /Users/dustin/Source/CocoaChip
