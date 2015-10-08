@@ -2,22 +2,22 @@ Feature: Showing RSpec-style test output
 
     Scenario: Showing failed tests
         Given I have a failing test in my suite
-        When I pipe to xcpretty with "--test"
+        When I pipe to xcpretty with "--test --no-color"
         Then I should see a failed test icon
 
     Scenario: Showing passing tests
         Given I have a passing test in my suite
-        When I pipe to xcpretty with "--test"
+        When I pipe to xcpretty with "--test --no-color"
         Then I should see a passing test icon in ASCII
 
     Scenario: Showing pending tests
         Given I have a pending test in my suite
-        When I pipe to xcpretty with "--test"
+        When I pipe to xcpretty with "--test --no-color"
         Then I should see a pending test icon in ASCII
 
     Scenario: Showing measuring tests
         Given I have a measuring test in my suite
-        When I pipe to xcpretty with "--test"
+        When I pipe to xcpretty with "--test --no-color"
         Then I should see a measuring test icon in ASCII
 
     Scenario: Showing some tests failed with color

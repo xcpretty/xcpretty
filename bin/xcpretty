@@ -19,8 +19,8 @@ report_formats = {
 }
 
 printer_opts = {
-  unicode: true,
-  colorize: false,
+  unicode: XCPretty::Term.unicode?,
+  colorize: XCPretty::Term.color?,
   formatter: XCPretty::Simple
 }
 
@@ -41,11 +41,11 @@ OptionParser.new do |opts|
   opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
     printer_opts[:formatter] = XCPretty.load_custom_formatter(path)
   end
-  opts.on('-c', '--color', 'Use colorized output') do
-    printer_opts[:colorize] = true
+  opts.on('--[no-]color', 'Use colorized output. Defaults is auto') do |value|
+    printer_opts[:colorize] = value
   end
-  opts.on('--no-utf', 'Disable unicode characters in output') do
-    printer_opts[:unicode] = false
+  opts.on('--[no-]utf', 'Use unicode characters in output. Default is auto.') do |value|
+    printer_opts[:unicode] = value
   end
   opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
           "  Choices: #{report_formats.keys.join(', ')}") do |format|

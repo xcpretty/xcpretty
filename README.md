@@ -45,8 +45,10 @@ $ xcodebuild [flags] | tee xcodebuild.log | xcpretty -c
 
 ## Formats
 
-- `--color`, `-c` (you can add it to `--simple` or `--test` format)
-- `--no-utf` (use only ASCII characters in output)
+- `--[no-]color`: Show build icons in color. (you can add it to `--simple` or `--test` format).
+  Defaults to auto-detecting color availability.
+- `--[no-]utf`: Use unicode characters in build output or only ASCII.
+  Defaults to auto-detecting the current locale
 
 - `--simple`, `-s` (default)
 ![xcpretty --simple](http://i.imgur.com/LdmozBS.gif)
