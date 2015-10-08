@@ -1,16 +1,17 @@
 require "bundler/gem_tasks"
 require 'rubocop/rake_task'
+require 'rspec/core/rake_task'
+require 'cucumber/rake/task'
 
 task :kick do
-  sh 'kicker -r ruby'
+  sh 'bundle exec kicker -r ruby'
 end
 
-task :spec do
-  sh 'rspec spec --color --format=doc'
+Cucumber::Rake::Task.new(:cucumber) do |task|
 end
 
-task :cucumber do
-  sh 'cucumber'
+RSpec::Core::RakeTask.new(:spec) do |task|
+  task.rspec_opts = %w(--color --format=doc)
 end
 
 RuboCop::RakeTask.new(:lint) do |task|
