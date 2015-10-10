@@ -142,6 +142,10 @@ module XCPretty
       INDENT + yellow(message)
     end
 
+    def format_check_dependencies
+      format('Check Dependencies')
+    end
+
     private
 
     def heading(prefix, text, description)

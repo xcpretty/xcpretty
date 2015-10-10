@@ -163,6 +163,11 @@ module XCPretty
         "> Validating unbelievable.tiff"
       end
 
+      it 'formats Check Dependencies' do
+        @formatter.format_check_dependencies.should ==
+          '> Check Dependencies'
+      end
+
     end
 end
 
