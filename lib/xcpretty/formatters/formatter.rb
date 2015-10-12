@@ -24,6 +24,7 @@ module XCPretty
     def format_copy_plist_file(source, target);                EMPTY; end
     def format_copy_strings_file(file_name);                   EMPTY; end
     def format_cpresource(file);                               EMPTY; end
+    def format_empty_line(text);                               EMPTY; end
     def format_generate_dsym(dsym);                            EMPTY; end
     def format_linking(file, build_variant, arch);             EMPTY; end
     def format_libtool(library);                               EMPTY; end
@@ -61,6 +62,8 @@ module XCPretty
     #       the same for warnings
     def format_compile_warning(file_name, file_path, reason,
                                line, cursor);                  EMPTY; end
+    # OTHER OUTPUT
+    def format_other_output(text);                             EMPTY; end
   end
 
   class Formatter

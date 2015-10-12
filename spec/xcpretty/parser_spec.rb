@@ -153,6 +153,12 @@ module XCPretty
       @parser.parse(SAMPLE_LIBTOOL)
     end
 
+    it 'parses mkdir invocations' do
+      @formatter.should receive(:format_shell_command).with(
+        '/bin/mkdir', '-p build/some stuff/here')
+      @parser.parse('/bin/mkdir -p build/some stuff/here')
+    end
+
     it "parses specta failing tests" do
       @formatter.should receive(:format_failing_test).with("SKWelcomeViewControllerSpecSpec",
                                                            "SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen",
@@ -245,10 +251,15 @@ module XCPretty
       @parser.parse('    cd /some/place/out\ there')
     end
 
-    it 'parses any indented command' do
+    it 'parses any indented command in a bin dir' do
       @formatter.should receive(:format_shell_command).with(
         '/bin/rm', '-rf /bin /usr /Users')
       @parser.parse('    /bin/rm -rf /bin /usr /Users')
+    end
+
+    it 'does not filter an indented path not in a bin dir' do
+      @formatter.should_not receive(:format_shell_command)
+      @parser.parse('    /some/path/to/a/file -flags arg1 arg2')
     end
 
     it "parses Touch" do
@@ -281,6 +292,17 @@ module XCPretty
       SAMPLE_UNDEFINED_SYMBOLS.each_line do |line|
         @parser.parse(line)
       end
+    end
+
+    it 'parses unknown text patterns' do
+      text = 'This is just some text?'
+      @formatter.should receive(:format_other_output).with(text)
+      @parser.parse(text)
+    end
+
+    it 'parses whitespace-only lines' do
+      @formatter.should receive(:format_empty_line).with("\t\t  ")
+      @parser.parse("\t\t  ")
     end
 
     it "parses duplicate symbols" do

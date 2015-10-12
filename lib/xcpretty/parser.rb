@@ -27,7 +27,8 @@ module XCPretty
     # @regex Captured groups
     # $1 command path
     # $2 arguments
-    SHELL_COMMAND_MATCHER = /^\s{4}(cd|setenv|(?:[\w\/:\\\s\-.]+?\/)?[\w\-]+)\s(.*)$/
+    SHELL_COMMAND_MATCHER =
+     /^(?:\s{4})?(cd|setenv|mkdir|(?:[\w\/:\\\s\-.]+?bin\/)[\w\-]+)\s(.*)$/
 
     # @regex Nothing returned here for now
     CLEAN_REMOVE_MATCHER = /^Clean.Remove/
@@ -84,6 +85,9 @@ module XCPretty
     CPRESOURCE_MATCHER = /^CpResource\s(.*)\s\//
 
     # @regex Captured groups
+    # $1 whitespace
+    EMPTY_LINE_MATCHER = /^([\n\s]+)$/
+
     #
     EXECUTED_MATCHER = /^\s*Executed/
 
@@ -307,6 +311,8 @@ module XCPretty
         formatter.format_copy_plist_file($1, $2)
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
+      when EMPTY_LINE_MATCHER
+        formatter.format_empty_line($1)
       when EXECUTED_MATCHER
         format_summary_if_needed(text)
       when FAILING_TEST_MATCHER
@@ -364,7 +370,7 @@ module XCPretty
       when GENERIC_WARNING_MATCHER
         formatter.format_warning($1)
       else
-        ""
+        formatter.format_other_output(text)
       end
     end
 
