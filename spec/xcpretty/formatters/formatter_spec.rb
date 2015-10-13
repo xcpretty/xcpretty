@@ -41,6 +41,14 @@ module XCPretty
 )
     end
 
+    it "formats file missing errors" do
+      @formatter.format_file_missing_error("error: no such file or directory:",
+                                           "/path/to/file.swift").should ==
+        "\n#{@formatter.red(
+          '❌  error: no such file or directory:'
+        )} /path/to/file.swift\n\n"
+    end
+
     it "formats compiling warnings" do
       reason = "format specifies type 'id' but the argument has type 'int' [-Wformat]"
 

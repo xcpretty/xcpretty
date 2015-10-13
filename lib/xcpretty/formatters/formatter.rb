@@ -53,6 +53,7 @@ module XCPretty
     def format_compile_error(file_name, file_path, reason,
                              line, cursor);                    EMPTY; end
     def format_error(message);                                 EMPTY; end
+    def format_file_missing_error(error, file_path);           EMPTY; end
     def format_undefined_symbols(message, symbol, reference);  EMPTY; end
     def format_duplicate_symbols(message, file_paths);         EMPTY; end
     def format_warning(message);                             message; end
@@ -116,6 +117,10 @@ module XCPretty
     def format_compile_error(file, file_path, reason, line, cursor)
       "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n" \
         "#{line}\n#{cyan(cursor)}\n\n"
+    end
+
+    def format_file_missing_error(reason, file_path)
+      "\n#{red(error_symbol + " " + reason)} #{file_path}\n\n"
     end
 
     def format_compile_warning(file, file_path, reason, line, cursor)
