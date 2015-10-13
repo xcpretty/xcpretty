@@ -7,9 +7,8 @@ module XCPretty
       snippet = Snippet.new(code, 'test.m')
       output = Syntax.highlight(snippet)
 
-      stripped_output = output.gsub(/(?:(?:\u001b\[)|\u009b)(?:(?:[0-9]{1,3})?(?:(?:;[0-9]{0,3})*)?[A-M|f-m])|\u001b[A-M]/, '')
+      stripped_output = output.gsub(/(?:(?:\u001b\[)|\u009b)(?:(?:[0-9]{1,3})?(?:;[0-9]{0,3})*?[A-M|f-m])|\u001b[A-M]/, '')
       stripped_output.should == code
-      stripped_output.should_not == output
     end
 
     it 'uses Objective-C lexer for Objective-C' do
