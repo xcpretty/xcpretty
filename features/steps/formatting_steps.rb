@@ -279,7 +279,7 @@ Then(/^I should see that sandbox is not in sync with Podfile.lock$/) do
 end
 
 Then(/^I should see which file is missing$/) do
-  run_output.should include(SAMPLE_FILE_MISSING_ERROR.split('directory: ')[1].gsub("''", ""))
+  run_output.should include(SAMPLE_FILE_MISSING_ERROR.split('directory: ')[1].gsub("'", ""))
 end
 
 Then(/^I should see a yellow warning message$/) do

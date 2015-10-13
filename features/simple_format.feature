@@ -182,7 +182,7 @@ Feature: Showing build output in simple format
         Given there was a missing file
         When I pipe to xcpretty with "--simple --color"
         Then I should see a red error message
-        #And I should see which file is missing
+        And I should see which file is missing
 
     Scenario: Compilation fails because of syntax errors
         Given there was a syntax error
