@@ -377,6 +377,13 @@ module XCPretty
         end
       end
 
+      it 'parses file missing errors' do
+        @formatter.should receive(:format_file_missing_error).with(
+          'error: no such file or directory:',
+          '/Users/travis/build/supermarin/project/Classes/Class + Category/Two Words/MissingViewController.swift'
+        )
+        @parser.parse(SAMPLE_FILE_MISSING_ERROR)
+      end
       it 'parses fatal error: on the beginning of the line for corrupted AST files' do
         @formatter.should receive(:format_error).with(
           "fatal error: malformed or corrupted AST file: 'could not find file '/Users/mpv/dev/project/Crashlytics.framework/Headers/Crashlytics.h' referenced by AST file' note: after modifying system headers, please delete the module cache at '/Users/mpv/Library/Developer/Xcode/DerivedData/ModuleCache/M5WJ0FYE7N06'"

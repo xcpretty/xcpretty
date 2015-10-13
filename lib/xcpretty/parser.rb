@@ -217,8 +217,13 @@ module XCPretty
 
       # @regex Captured groups
       # $1 = whole error.
-      #      it varies a lot, not sure if it makes sense to catch everything separately
+      # it varies a lot, not sure if it makes sense to catch everything separately
       FATAL_ERROR_MATCHER = /^(fatal error:.*)$/
+
+      # @regex Captured groups
+      # $1 = whole error.
+      # $2 = file path
+      FILE_MISSING_ERROR_MATCHER = /^<unknown>:0:\s(error:\s.*)\s'(\/.+\/.*\..*)'$/
 
       # $1 = whole error
       LD_ERROR_MATCHER = /^(ld:.*)/
@@ -313,6 +318,8 @@ module XCPretty
         formatter.format_failing_test($2, $3, $4, $1)
       when FATAL_ERROR_MATCHER
         formatter.format_error($1)
+      when FILE_MISSING_ERROR_MATCHER
+        formatter.format_file_missing_error($1, $2)
       when GENERATE_DSYM_MATCHER
         formatter.format_generate_dsym($1)
       when LD_WARNING_MATCHER
