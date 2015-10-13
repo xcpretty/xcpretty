@@ -343,7 +343,7 @@ module XCPretty
       end
 
       it "parses cocoapods errors" do
-        @formatter.should receive(:format_error).with("The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.")
+        @formatter.should receive(:format_error).with("error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.")
         @parser.parse(SAMPLE_PODS_ERROR)
       end
 
@@ -384,6 +384,7 @@ module XCPretty
         )
         @parser.parse(SAMPLE_FILE_MISSING_ERROR)
       end
+
       it 'parses fatal error: on the beginning of the line for corrupted AST files' do
         @formatter.should receive(:format_error).with(
           "fatal error: malformed or corrupted AST file: 'could not find file '/Users/mpv/dev/project/Crashlytics.framework/Headers/Crashlytics.h' referenced by AST file' note: after modifying system headers, please delete the module cache at '/Users/mpv/Library/Developer/Xcode/DerivedData/ModuleCache/M5WJ0FYE7N06'"

@@ -245,7 +245,8 @@ module XCPretty
       LINKER_UNDEFINED_SYMBOLS_MATCHER = /^(Undefined symbols for architecture .*):$/
 
       # @regex Captured groups
-      PODS_ERROR_MATCHER = /^error:\s(.*)/
+      # $1 reason
+      PODS_ERROR_MATCHER = /^(error:\s.*)/
 
       # @regex Captured groups
       # $1 = reference

@@ -80,6 +80,10 @@ Given(/^there was a syntax error$/) do
   add_run_input SAMPLE_COMPILE_ERROR
 end
 
+Given(/^there was a missing file$/) do
+  add_run_input SAMPLE_FILE_MISSING_ERROR
+end
+
 Given(/^there were warnings in the code$/) do
   add_run_input SAMPLE_FORMAT_WARNING
 end
@@ -267,7 +271,15 @@ Then(/^I should not see the name of the test group$/) do
 end
 
 Then(/^I should see a red error message$/) do
-  run_output.should include(red("❌  " + SAMPLE_PODS_ERROR.gsub('error: ', '')))
+  run_output.should include(red("❌  error: ")[0..-5]) # trim \e[0m
+end
+
+Then(/^I should see that sandbox is not in sync with Podfile.lock$/) do
+  run_output.should include("The sandbox is not in sync with the Podfile.lock")
+end
+
+Then(/^I should see which file is missing$/) do
+  run_output.should include(SAMPLE_FILE_MISSING_ERROR.split('directory: ')[1].gsub("''", ""))
 end
 
 Then(/^I should see a yellow warning message$/) do
