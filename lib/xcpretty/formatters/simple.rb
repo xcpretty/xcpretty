@@ -98,8 +98,8 @@ module XCPretty
       format(phase_name.capitalize, "Succeeded")
     end
 
-    def format_phase_script_execution(script_name)
-      format("Running script", "'#{script_name}'")
+    def format_phase_script_execution(phase_name)
+      format("Running phase", "'#{phase_name}'")
     end
 
     def format_process_info_plist(file_name, file_path)

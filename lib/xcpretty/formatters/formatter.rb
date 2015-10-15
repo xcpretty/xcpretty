@@ -19,6 +19,7 @@ module XCPretty
     def format_compile(file_name, file_path);                  EMPTY; end
     def format_compile_command(compiler_command, file_path);   EMPTY; end
     def format_compile_storyboard(file_name, file_path);       EMPTY; end
+    def format_compile_storyboard_error(file_name, error);     EMPTY; end
     def format_compile_xib(file_name, file_path);              EMPTY; end
     def format_copy_header_file(source, target);               EMPTY; end
     def format_copy_plist_file(source, target);                EMPTY; end
@@ -34,7 +35,8 @@ module XCPretty
     def format_process_pch(file);                              EMPTY; end
     def format_process_pch_command(file_path);                 EMPTY; end
     def format_phase_success(phase_name);                      EMPTY; end
-    def format_phase_script_execution(script_name);            EMPTY; end
+    def format_phase_script_execution(phase_name);             EMPTY; end
+    def format_phase_script_error(error, output)               EMPTY; end
     def format_process_info_plist(file_name, file_path);       EMPTY; end
     def format_codesign(file);                                 EMPTY; end
     def format_preprocess(file);                               EMPTY; end
@@ -114,9 +116,18 @@ module XCPretty
       "\n#{red(error_symbol + " " + message)}\n\n"
     end
 
+    def format_phase_script_error(error, output)
+      indentedOutput = output.join("    ");
+      "\n#{red(error_symbol + " ")}#{error}: #{red(indentedOutput)}\n\n"
+    end
+
     def format_compile_error(file, file_path, reason, line, cursor)
       "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n" \
         "#{line}\n#{cyan(cursor)}\n\n"
+    end
+
+    def format_compile_storyboard_error(file_name, error)
+      format_error(file_name + ": " + error);
     end
 
     def format_file_missing_error(reason, file_path)
