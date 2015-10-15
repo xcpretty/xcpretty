@@ -120,7 +120,7 @@ module XCPretty
 
       it "formats Phase Script Execution" do
         @formatter.format_phase_script_execution("Check Pods Manifest.lock").should ==
-        "> Running script 'Check Pods Manifest.lock'"
+        "> Running phase 'Check Pods Manifest.lock'"
       end
 
       it "formats precompiling output" do

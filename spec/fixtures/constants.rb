@@ -127,6 +127,12 @@ TiffUtil eye_icon.tiff
     cd /Users/musalj/code/OSS/Alcatraz
     /usr/bin/tiffutil -cathidpicheck /Users/musalj/code/OSS/Alcatraz/Alcatraz/eye_icon@2x.png /Users/musalj/code/OSS/Alcatraz/Alcatraz/eye_icon.png -out /Users/musalj/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/Alcatraz.xcplugin/Contents/Resources/eye_icon.tiff
 )
+SAMPLE_RUN_SCRIPT_ERROR = %Q(
+PhaseScriptExecution Run\\ Script DerivedData/Build/Intermediates/Blah.build/Debug-iphonesimulator/Blah.build/Script-F07128051BCF177900851764.sh
+cd /Users/blah/iosapps/test/iOS
+/bin/sh -c /Users/blah/iosapps/test/iOS/DerivedData/Build/Intermediates/Blah.build/Debug-iphonesimulator/Blah.build/Script-F07128051BCF177900851764.sh
+/bin/sh: blah: No such file or directory
+)
 SAMPLE_RUN_SCRIPT = %Q(
 PhaseScriptExecution Check\\ Pods\\ Manifest.lock /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example
@@ -461,6 +467,7 @@ PhaseScriptExecution Check\\ Pods\\ Manifest.lock /Users/musalj/Library/Develope
     setenv variant normal
     /bin/sh -c /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh
 )
+
 SAMPLE_ANALYZE = %Q(
 Analyze CocoaChip/CCChip8DisplayView.m
     cd /Users/dustin/Source/CocoaChip
@@ -484,6 +491,9 @@ CompileStoryboard sample/Main.storyboard
     cd /Users/chipp/Developer/sample
     export XCODE_DEVELOPER_USR_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin/..
     /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --target-device iphone --target-device ipad --errors --warnings --notices --module sample --minimum-deployment-target 7.0 --output-partial-info-plist /Users/chipp/Library/Developer/Xcode/DerivedData/sample-etjztiverddwaddrudeteewjzfxw/Build/Intermediates/ArchiveIntermediates/sample/IntermediateBuildFilesPath/sample.build/Release-iphoneos/sample.build/SJMetroPickerStoryboard-SBPartialInfo.plist --auto-activate-custom-fonts --output-format human-readable-text --compilation-directory /Users/chipp/Library/Developer/Xcode/DerivedData/sample-etjztiverddwaddrudeteewjzfxw/Build/Intermediates/ArchiveIntermediates/sample/InstallationBuildProductsLocation/Applications/sample.app /Users/chipp/Developer/sample/sample/Main.storyboard
+)
+SAMPLE_COMPILE_STORYBOARD_ERROR = %Q(
+/Users/blah/iosapps/test/blah-Blah-ios/Blah/Resources/Views/LaunchScreen.storyboard: error: Line 11: error parsing attribute name
 )
 SAMPLE_CODESIGN = %Q(
 CodeSign build/Release/CocoaChip.app

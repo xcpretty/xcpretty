@@ -111,6 +111,11 @@ module XCPretty
       @parser.parse(SAMPLE_COMPILE_STORYBOARD)
     end
 
+    it "parses compiling storyboard errors" do
+      @formatter.should receive(:format_compile_storyboard_error).with("LaunchScreen.storyboard", "Line 11: error parsing attribute name")
+      @parser.parse(SAMPLE_COMPILE_STORYBOARD_ERROR)
+    end
+
     it 'parses CopyPlistFile' do
       @formatter.should receive(:format_copy_plist_file).with(
         '/path/to/Some.plist', '/some other/File.plist')
@@ -214,8 +219,21 @@ module XCPretty
     end
 
     it "parses PhaseScriptExecution" do
-      @formatter.should receive(:format_phase_script_execution).with('Check Pods Manifest.lock')
+      @formatter.should receive(:format_phase_script_execution).with('Check Pods Manifest.lock /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh')
       @parser.parse(SAMPLE_RUN_SCRIPT)
+    end
+
+    it "parses PhaseScriptExecution Error" do
+      @formatter.should receive(:format_phase_script_execution).with('Run Script DerivedData/Build/Intermediates/Blah.build/Debug-iphonesimulator/Blah.build/Script-F07128051BCF177900851764.sh')
+      @formatter.should receive(:format_phase_script_error).with('/bin/sh: blah: No such file or directory',
+                                                                 ['PhaseScriptExecution Run\\ Script DerivedData/Build/Intermediates/Blah.build/Debug-iphonesimulator/Blah.build/Script-F07128051BCF177900851764.sh',
+                                                                  'cd /Users/blah/iosapps/test/iOS',
+                                                                  '/bin/sh -c /Users/blah/iosapps/test/iOS/DerivedData/Build/Intermediates/Blah.build/Debug-iphonesimulator/Blah.build/Script-F07128051BCF177900851764.sh',
+                                                                  '/bin/sh: blah: No such file or directory'])
+
+      SAMPLE_RUN_SCRIPT_ERROR.each_line do |line|
+        @parser.parse(line.chomp)
+      end
     end
 
     it "parses process PCH" do
@@ -447,6 +465,11 @@ module XCPretty
         end
         @formatter.should_not receive(:format_compile_error)
         @parser.parse("hohohoooo")
+      end
+
+      it 'parses generic errors' do
+        @formatter.should receive(:format_error).with("Hi there. I'm a really nasty error. Can you fix me")
+        @parser.parse("   error: Hi there. I'm a really nasty error. Can you fix me")
       end
     end
 

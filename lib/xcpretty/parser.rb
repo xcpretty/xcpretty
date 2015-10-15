@@ -128,10 +128,6 @@ module XCPretty
     PHASE_SUCCESS_MATCHER = /^\*\*\s(.*)\sSUCCEEDED\s\*\*/
 
     # @regex Captured groups
-    # $1 = script_name
-    PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)\s\//
-
-    # @regex Captured groups
     # $1 = file
     PROCESS_PCH_MATCHER = /^ProcessPCH\s.*\s(.*.pch)/
 
@@ -180,6 +176,21 @@ module XCPretty
 
     # @regex Captured groups
     WRITE_AUXILIARY_FILES = /^Write auxiliary files/
+
+    module PhaseScript
+      # @regex Captured groups
+      # $1 = phase_details
+      PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)/
+
+      # @regex Captured groups
+      # $1 = file not found
+      PHASE_SCRIPT_NO_SUCH_FILE_OR_DIRECTORY_MATCHER = /: (.*): (No such file or directory)$/
+
+      # @regex Captured groups
+      # $1 = command
+      # $2 = exit code
+      PHASE_SCRIPT_COMMAND_FAILED_MATCHER = /^Command (.*) failed with exit code (\d+)/
+    end
 
     module Warnings
       # $1 = file_path
@@ -245,18 +256,27 @@ module XCPretty
       LINKER_UNDEFINED_SYMBOLS_MATCHER = /^(Undefined symbols for architecture .*):$/
 
       # @regex Captured groups
+      # $1 storyboard
+      # $2 error
+      COMPILE_STORYBOARD_ERROR_MATCHER = /([^\/]*\.storyboard).*:\serror:\s(.*)$/
+
+      # @regex Captured groups
       # $1 reason
       PODS_ERROR_MATCHER = /^(error:\s.*)/
 
       # @regex Captured groups
       # $1 = reference
       SYMBOL_REFERENCED_FROM_MATCHER = /\s+"(.*)", referenced from:$/
+
+      # @regex Captured groups
+      GENERIC_ERROR_MATCHER = /error:\s(.*)$/
     end
   end
 
   class Parser
 
     include Matchers
+    include Matchers::PhaseScript
     include Matchers::Errors
     include Matchers::Warnings
 
@@ -270,11 +290,13 @@ module XCPretty
       update_test_state(text)
       update_error_state(text)
       update_linker_failure_state(text)
+      update_phase_script_state(text)
 
       return format_compile_error if should_format_error?
       return format_compile_warning if should_format_warning?
       return format_undefined_symbols if should_format_undefined_symbols?
       return format_duplicate_symbols if should_format_duplicate_symbols?
+      return format_phase_script_error if should_format_phase_script_error?
 
       case text
       when ANALYZE_MATCHER
@@ -307,6 +329,8 @@ module XCPretty
         formatter.format_compile_xib($2, $1)
       when COMPILE_STORYBOARD_MATCHER
         formatter.format_compile_storyboard($2, $1)
+      when COMPILE_STORYBOARD_ERROR_MATCHER
+        formatter.format_compile_storyboard_error($1, $2)
       when COPY_HEADER_MATCHER
         formatter.format_copy_header_file($1, $2)
       when COPY_PLIST_MATCHER
@@ -371,12 +395,31 @@ module XCPretty
         formatter.format_shell_command($1, $2)
       when GENERIC_WARNING_MATCHER
         formatter.format_warning($1)
+      when GENERIC_ERROR_MATCHER
+        formatter.format_error($1)
       else
         ""
       end
     end
 
     private
+
+    def update_phase_script_state(text)
+      case text
+      when PHASE_SCRIPT_EXECUTION_MATCHER
+        @current_phase_script_output = [text]
+      when PHASE_SCRIPT_COMMAND_FAILED_MATCHER, PHASE_SCRIPT_NO_SUCH_FILE_OR_DIRECTORY_MATCHER
+        unless @current_phase_script_output.nil?
+          @current_phase_script_output << text
+          current_phase_script_failure[:output] = @current_phase_script_output
+          current_phase_script_failure[:error] = text
+        end
+      else
+        unless @current_phase_script_output.nil?
+          @current_phase_script_output << text
+        end
+      end
+    end
 
     def update_test_state(text)
       case text
@@ -451,12 +494,20 @@ module XCPretty
       current_linker_failure[:message] && current_linker_failure[:files].count > 1
     end
 
+    def should_format_phase_script_error?
+      current_phase_script_failure[:error] && current_phase_script_failure[:output]
+    end
+
     def current_issue
       @current_issue ||= {}
     end
 
     def current_linker_failure
       @linker_failure ||= {files: []}
+    end
+
+    def current_phase_script_failure
+      @phase_script_failure ||= {}
     end
 
     def format_compile_error
@@ -498,6 +549,20 @@ module XCPretty
       )
       reset_linker_format_state
       result
+    end
+
+    def format_phase_script_error
+      result = formatter.format_phase_script_error(current_phase_script_failure[:error],
+                                                   current_phase_script_failure[:output]
+      )
+
+      reset_phase_script_state
+      result
+    end
+
+    def reset_phase_script_state
+      @phase_script_failure = nil
+      @current_phase_script_output = nil
     end
 
     def reset_linker_format_state
