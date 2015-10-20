@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.2.0
+
+###### Enhancements
+
+* Format `ld` warnings as warnings instead of errors
+  | [Cédric Luthi](https://github.com/0xced)
+  | [#160](https://github.com/supermarin/xcpretty/pull/160)
+
+* Use `rouge` instead of `pygments` for syntax highlighting
+  | [Kyle Fuller](https://github.com/kylef)
+  | [#141](https://github.com/supermarin/xcpretty/pull/141)
+
+* Output phase success messages in simple formatter
+  | [Delisa Mason](https://github.com/kattrali)
+  | [#167](https://github.com/supermarin/xcpretty/pull/167)
+
+* Automatically detect terminal color, and make `-c --color` flag redundant
+  | [Delisa Mason](https://github.com/kattrali)
+  | [#136](https://github.com/supermarin/xcpretty/pull/136)
+  <br>You can still use `--no-color` or force `--color`.
+
+* Show check dependencies phase
+  | [Vladimir Burdukov](https://github.com/chipp)
+  | [#176](https://github.com/supermarin/xcpretty/pull/176)
+
+
+* Show compile storyboard outputs
+* Show compilation errors for missing files
+
+###### Misc
+
+* Use the CROSS MARK (U+274C) symbol for errors
+  | [Cédric Luthi](https://github.com/0xced)
+  | [#159](https://github.com/supermarin/xcpretty/pull/159)
+
 ## 0.1.12
 
 ###### Bug fixes
