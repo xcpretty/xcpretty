@@ -530,6 +530,15 @@ SAMPLE_FILE_MISSING_ERROR = %Q(
 <unknown>:0: error: no such file or directory: '/Users/travis/build/supermarin/project/Classes/Class + Category/Two Words/MissingViewController.swift'
 )
 
+SAMPLE_CODESIGN_WARNING = %Q(
+Code Sign warning: Specified PROVISIONING_PROFILE (blah) not found and no CODE_SIGN_IDENTITY specified. Ignoring PROVISIONING_PROFILE for now. This will become an error in the future.
+)
+
+SAMPLE_CODESIGN_WARNING_NO_SPACES = %Q(
+CodeSign warning: Specified PROVISIONING_PROFILE (blah) not found and no CODE_SIGN_IDENTITY specified. Ignoring PROVISIONING_PROFILE for now. This will become an error in the future.
+)
+
+
 SAMPLE_CODESIGN_ERROR = %Q(
 Code Sign error: No code signing identites found: No valid signing identities (i.e. certificate and private key pair) matching the team ID ‚ÄúCAT6HF57NJ‚Äù were found.
 )

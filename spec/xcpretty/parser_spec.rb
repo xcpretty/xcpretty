@@ -420,6 +420,21 @@ module XCPretty
         @parser.parse(SAMPLE_CODESIGN_ERROR)
       end
 
+
+      it "parses code sign warning:" do
+        @formatter.should receive(:format_warning).with(
+          'Code Sign warning: Specified PROVISIONING_PROFILE (blah) not found and no CODE_SIGN_IDENTITY specified. Ignoring PROVISIONING_PROFILE for now. This will become an error in the future.'
+        )
+        @parser.parse(SAMPLE_CODESIGN_WARNING)
+      end
+
+      it "parses code sign warning: (no spaces)" do
+      @formatter.should receive(:format_warning).with(
+        'CodeSign warning: Specified PROVISIONING_PROFILE (blah) not found and no CODE_SIGN_IDENTITY specified. Ignoring PROVISIONING_PROFILE for now. This will become an error in the future.'
+      )
+      @parser.parse(SAMPLE_CODESIGN_WARNING_NO_SPACES)
+      end
+
       it "parses CodeSign error: (no spaces)" do
         @formatter.should receive(:format_error).with(
           "CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 7.0'"

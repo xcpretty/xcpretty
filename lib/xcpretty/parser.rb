@@ -193,7 +193,7 @@ module XCPretty
 
       # @regex Captured groups
       # $1 = whole warning
-      GENERIC_WARNING_MATCHER = /^warning:\s(.*)$/
+      GENERIC_WARNING_MATCHER = /warning:\s(.*)$/
     end
 
     module Errors
@@ -204,6 +204,10 @@ module XCPretty
       # @regex Captured groups
       # $1 = whole error
       CODESIGN_ERROR_MATCHER = /^(Code\s?Sign error:.*)$/
+
+      # @regex Captured groups
+      # $1 = whole error
+      CODESIGN_WARNING_MATCHER = /^(Code\s?Sign warning:.*)$/
 
       # @regex Captured groups
       # $1 = file_path
@@ -299,6 +303,8 @@ module XCPretty
         formatter.format_codesign($1)
       when CODESIGN_ERROR_MATCHER
         formatter.format_error($1)
+      when CODESIGN_WARNING_MATCHER
+        formatter.format_warning($1)
       when COMPILE_MATCHER
         formatter.format_compile($2, $1)
       when COMPILE_COMMAND_MATCHER
