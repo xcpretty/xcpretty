@@ -54,6 +54,7 @@ module XCPretty
                              line, cursor);                    EMPTY; end
     def format_error(message);                                 EMPTY; end
     def format_file_missing_error(error, file_path);           EMPTY; end
+    def format_ld_warning(message);                            EMPTY; end
     def format_undefined_symbols(message, symbol, reference);  EMPTY; end
     def format_duplicate_symbols(message, file_paths);         EMPTY; end
     def format_warning(message);                             message; end
