@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1
+
+###### Bug fixes
+
+* Fix reporers crash by default ld warning implementation
+  | [iKiKi](https://github.com/iKiKi)
+  | [#187](https://github.com/supermarin/xcpretty/pull/187)
+
+
 ## 0.2.0
 
 ###### Enhancements
@@ -78,7 +87,7 @@
   | [Piet Brauer](https://github.com/pietbrauer)
   | [#128](https://github.com/supermarin/xcpretty/pull/128)
 * Support for `oclint v0.9dev` json-compilation-database
-  | [KiKi](https://github.com/iKiKi)
+  | [iKiKi](https://github.com/iKiKi)
   | [#121](https://github.com/supermarin/xcpretty/pull/121)
 * Syntax highlighting for other languages than Objc (Swift, C++, Objc++, Dylan, Ruby)
   | [#110](https://github.com/supermarin/xcpretty/pull/110)
