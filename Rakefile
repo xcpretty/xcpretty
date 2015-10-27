@@ -23,4 +23,3 @@ task :ci do
   Rake::Task[:cucumber].invoke
   Rake::Task[:lint].invoke
 end
-
