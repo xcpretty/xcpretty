@@ -14,7 +14,7 @@ $ gem install xcpretty
 
 ## Usage
 ``` bash
-$ xcodebuild [flags] | xcpretty -c
+$ xcodebuild [flags] | xcpretty
 ```
 `xcpretty` is designed to be piped with `xcodebuild` and thus keeping 100%
 compatibility with it. It's even a bit faster than `xcodebuild` itself, since
@@ -25,11 +25,11 @@ may want to exit with same status code as `xcodebuild`.
 CI systems usually use status codes to determine if the build has failed.
 
 ``` bash
-$ set -o pipefail && xcodebuild [flags] | xcpretty -c
+$ set -o pipefail && xcodebuild [flags] | xcpretty
 #
 # OR
 #
-$ xcodebuild [flags] | xcpretty -c && exit ${PIPESTATUS[0]}
+$ xcodebuild [flags] | xcpretty && exit ${PIPESTATUS[0]}
 ```
 
 ## Raw xcodebuild output
@@ -40,15 +40,10 @@ output.
 
 Here's a way of doing it:
 ``` bash
-$ xcodebuild [flags] | tee xcodebuild.log | xcpretty -c
+$ xcodebuild [flags] | tee xcodebuild.log | xcpretty
 ```
 
 ## Formats
-
-- `--[no-]color`: Show build icons in color. (you can add it to `--simple` or `--test` format).
-  Defaults to auto-detecting color availability.
-- `--[no-]utf`: Use unicode characters in build output or only ASCII.
-  Defaults to auto-detecting the current locale
 
 - `--simple`, `-s` (default)
 ![xcpretty --simple](http://i.imgur.com/LdmozBS.gif)
@@ -58,6 +53,12 @@ $ xcodebuild [flags] | tee xcodebuild.log | xcpretty -c
 - `--tap` ([Test Anything Protocol](http://testanything.org)-compatible output)
 - `--knock`, `-k` (a [simplified version](https://github.com/chneukirchen/knock) of the Test Anything Protocol)
 
+## ANSI / UTF-8
+
+- `--[no-]color`: Show build icons in color. (you can add it to `--simple` or `--test` format).
+  Defaults to auto-detecting color availability.
+- `--[no-]utf`: Use unicode characters in build output or only ASCII.
+  Defaults to auto-detecting the current locale.
 
 ## Reporters
 
