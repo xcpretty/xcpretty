@@ -39,7 +39,10 @@ module XCPretty
     def format_compile_command(compiler_command, file_path)
       directory = file_path.gsub("#{@current_path}", '').gsub(/\/$/, '')
       directory = '/' if directory.empty?
-      cmd = compiler_command.gsub(/(\-include)\s.*\.pch/, "\\1 #{@pch_path}")
+
+      cmd = compiler_command
+      cmd = compiler_command.gsub(/(\-include)\s.*\.pch/, "\\1 #{@pch_path}") if @pch_path
+
       @compilation_units << {command: cmd,
                              file: @current_path,
                              directory: directory}

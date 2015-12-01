@@ -35,3 +35,7 @@ Then(/^the JSON compilation database should be complete$/) do
   entries.length.should == JSON_DB_FIXTURE_COMMAND_COUNT
 end
 
+Then(/^entries with a command shouldn't have malformed "-include" directives$/) do
+  entries = json_db.select { |entry| entry['command'].match(/-include\s+-/) }
+  entries.length.should == 0
+end
