@@ -41,7 +41,7 @@ module XCPretty
       directory = '/' if directory.empty?
 
       cmd = compiler_command
-      cmd = compiler_command.gsub(/(\-include)\s.*\.pch/, "\\1 #{@pch_path}") if @pch_path
+      cmd = cmd.gsub(/(\-include)\s.*\.pch/, "\\1 #{@pch_path}") if @pch_path
 
       @compilation_units << {command: cmd,
                              file: @current_path,
