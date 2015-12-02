@@ -19,3 +19,8 @@ Feature: Create a JSON compilation database
     Scenario: Writing to multiple custom file paths
         When I pipe to xcpretty with two custom "json-compilation-database" report paths
         Then I should have JSON compilation databases in two custom paths
+
+    Scenario: A project with dependencies with no .pch file
+        Given some big input
+        When I pipe to xcpretty with "--report json-compilation-database" and specify a custom path
+        Then entries with a command shouldn't have malformed "-include" directives
