@@ -7,7 +7,7 @@ module XCPretty
     # @regex Captured groups
     # $1 file_path
     # $2 file_name
-    ANALYZE_MATCHER = /^Analyze(?:Shallow)?\s(.*\/(.*\.m))*/
+    ANALYZE_MATCHER = /^Analyze(?:Shallow)?\s(.*\/(.*\.(?:m|mm|cc|cpp|c|cxx)))\s*/
 
     # @regex Captured groups
     # $1 target
