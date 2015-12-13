@@ -81,5 +81,6 @@ STDIN.each_line do |line|
   reporters.each { |r| r.handle(line) }
 end
 
+printer.finish
 reporters.each(&:finish)
 
