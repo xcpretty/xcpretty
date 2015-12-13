@@ -112,7 +112,7 @@ module XCPretty
     # $1 = target
     # $2 = build_variants (normal, profile, debug)
     # $3 = architecture
-    LINKING_MATCHER = /^Ld \/.*\/(.*) (.*) (.*)$/
+    LINKING_MATCHER = /^Ld (.*) (.*) (.*)$/
 
     # @regex Captured groups
     # $1 = suite
