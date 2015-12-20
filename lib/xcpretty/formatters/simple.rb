@@ -150,6 +150,10 @@ module XCPretty
       format('Check Dependencies')
     end
 
+    def format_external_build_tool(target)
+      format('External Build Tool', target)
+    end
+
     private
 
     def heading(prefix, text, description)

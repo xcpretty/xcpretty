@@ -244,6 +244,11 @@ module XCPretty
       @parser.parse(SAMPLE_PBXCP)
     end
 
+    it "parses ExternalBuildToolExecution" do
+      @formatter.should receive(:format_external_build_tool).with('MyTargetName')
+      @parser.parse(SAMPLE_EXTERNAL_BUILD_TOOL)
+    end
+
     it 'parses changing directories' do
       @formatter.should receive(:format_shell_command).with('cd',
                                                             '/some/place/out\ there')
