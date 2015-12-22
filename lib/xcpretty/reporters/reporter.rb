@@ -2,11 +2,13 @@ module XCPretty
 
 	class Reporter < Formatter
 
+		attr_reader :tests
+
 		def initialize(options)
-	    @parser = Parser.new(self)
+	    super(true, true)
 	    @filepath  = options[:path] || FILEPATH
-	    @total_tests = 0
-	    @total_fails = 0
+	    @test_count = 0
+	    @fail_count = 0
 	    @tests = []
 	  end
 
@@ -22,24 +24,24 @@ module XCPretty
 		def format_failing_test(suite, test_case, reason, file)
       @test_count += 1
       @fail_count += 1
-      @tests.append("#{test_case} in #{file} FAILED: #{reason}")
+      @tests.push("#{test_case} in #{file} FAILED: #{reason}")
     end
 
     def format_passing_test(suite, test_case, time)
       @test_count += 1
-      @tests.append("#{test_case} PASSED")
+      @tests.push("#{test_case} PASSED")
     end
 
     def format_pending_test(classname, test_case)
       @test_count += 1
-      @tests.append("#{test_case} in #{file} IS PENDING")
+      @tests.push("#{test_case} IS PENDING")
     end    
 
     def write_report
       File.open(@filepath, 'w') do |f|
         # WAT: get rid of these locals. BTW Cucumber fails if you remove them
         output_string = @tests.join("\n")
-        output_string += "\n FINISHED RUNNING #{@total_tests} TESTS WITH #{@total_fails} FAILURES"
+        output_string += "\nFINISHED RUNNING #{@test_count} TESTS WITH #{@fail_count} FAILURES"
         f.write output_string
       end
     end
