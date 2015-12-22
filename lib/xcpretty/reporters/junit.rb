@@ -1,7 +1,6 @@
 module XCPretty
   class JUnit
 
-    include XCPretty::FormatMethods
     FILEPATH = 'build/reports/junit.xml'
 
     def load_dependencies
@@ -15,15 +14,12 @@ module XCPretty
     end
 
     def initialize(options)
+      super(options)
       load_dependencies
-      @filepath  = options[:path] || FILEPATH
       @directory = `pwd`.strip
       @document  = REXML::Document.new
       @document << REXML::XMLDecl.new('1.0', 'UTF-8')
       @document.add_element('testsuites')
-      @parser = Parser.new(self)
-      @total_tests = 0
-      @total_fails = 0
     end
 
     def handle(line)
@@ -61,12 +57,12 @@ module XCPretty
       set_test_counters
       @document.root.attributes['tests'] = @total_tests
       @document.root.attributes['failures'] = @total_fails
-      write_report_file
+      write_report
     end
 
     private
 
-    def write_report_file
+    def write_report
       FileUtils.mkdir_p(File.dirname(@filepath))
       formatter = REXML::Formatters::Pretty.new(2)
       formatter.compact = true

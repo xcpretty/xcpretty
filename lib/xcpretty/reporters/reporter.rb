@@ -1,6 +1,7 @@
 module XCPretty
 
 	class Reporter < Formatter
+		FILEPATH = 'build/reports/tests.txt'
 
 		attr_reader :tests
 
