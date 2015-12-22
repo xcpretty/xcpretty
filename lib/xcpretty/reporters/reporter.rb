@@ -7,7 +7,7 @@ module XCPretty
 
 		def initialize(options)
 	    super(true, true)
-	    @filepath  = options[:path] || FILEPATH
+	    @filepath  = options[:path] || self.class::FILEPATH
 	    @test_count = 0
 	    @fail_count = 0
 	    @tests = []
