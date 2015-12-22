@@ -1,5 +1,5 @@
 module XCPretty
-  class JUnit
+  class JUnit < Reporter
 
     FILEPATH = 'build/reports/junit.xml'
 
