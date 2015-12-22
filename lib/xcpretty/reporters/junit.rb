@@ -15,7 +15,6 @@ module XCPretty
 
     def initialize(options)
       super(options)
-      load_dependencies
       @directory = `pwd`.strip
       @document  = REXML::Document.new
       @document << REXML::XMLDecl.new('1.0', 'UTF-8')

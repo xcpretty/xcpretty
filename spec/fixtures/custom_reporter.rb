@@ -1,6 +1,4 @@
 # encoding: utf-8
-require 'FileUtils'
-
 class DogeReporter < XCPretty::Reporter
 
   def format_failing_test(suite, test_case, reason, file)

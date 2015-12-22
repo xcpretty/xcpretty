@@ -16,7 +16,6 @@ module XCPretty
 
     def initialize(options)
       super(options)
-      load_dependencies
       @test_suites = {}
       @collect_screenshots = options[:screenshots]
     end

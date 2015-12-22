@@ -5,8 +5,16 @@ module XCPretty
 
     attr_reader :tests
 
+    def load_dependencies
+      unless @@loaded ||= false
+        require 'fileutils'
+        @@loaded = true
+      end
+    end
+
     def initialize(options)
       super(true, true)
+      load_dependencies
       @filepath = options[:path] || self.class::FILEPATH
       @test_count = 0
       @fail_count = 0
