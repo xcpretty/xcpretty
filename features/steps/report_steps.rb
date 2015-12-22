@@ -20,3 +20,8 @@ Then(/^I should have a test report in a custom path$/) do
   step("I should have a test report at \"#{custom_report_path}\"")
 end
 
+When(/^I pipe to xcpretty with a custom reporter$/) do
+  reporter_path = File.expand_path('../../../spec/fixtures/custom_reporter.rb', __FILE__)
+  run_xcpretty("-r #{reporter_path}")
+end
+

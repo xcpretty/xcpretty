@@ -39,7 +39,7 @@ OptionParser.new do |opts|
     printer_opts[:formatter] = XCPretty::TestAnything
   end
   opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
-    printer_opts[:formatter] = XCPretty.load_custom_formatter(path)
+    printer_opts[:formatter] = XCPretty.load_custom_class(path)
   end
   opts.on('--[no-]color', 'Use colorized output. Defaults is auto') do |value|
     printer_opts[:colorize] = value
@@ -47,9 +47,13 @@ OptionParser.new do |opts|
   opts.on('--[no-]utf', 'Use unicode characters in output. Default is auto.') do |value|
     printer_opts[:unicode] = value
   end
-  opts.on("-r", "--report FORMAT", "Run FORMAT reporter",
+  opts.on("-r", "--report FORMAT or PATH", "Run FORMAT or PATH reporter",
           "  Choices: #{report_formats.keys.join(', ')}") do |format|
-    report_classes << report_formats[format]
+    if report_formats.key?(format)
+      report_classes << report_formats[format]
+    else
+      report_classes << XCPretty.load_custom_class(format)
+    end
     report_options << {}
   end
   opts.on('-o', '--output PATH', 'Write report output to PATH') do |path|

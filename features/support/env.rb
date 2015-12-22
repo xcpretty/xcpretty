@@ -80,6 +80,10 @@ def junit_report_root
   junit_report.root.elements.to_a.first
 end
 
+def custom_report
+  @custom_report ||= File.open(XCPretty::Reporter::FILEPATH, 'r').read
+end
+
 def custom_report_path
   @custom_report_path ||= begin
     @custom_report_file1 = Tempfile.new('custom_report_path')
@@ -113,6 +117,7 @@ After do
   FileUtils.rm_rf(XCPretty::JUnit::FILEPATH)
   FileUtils.rm_rf(XCPretty::HTML::FILEPATH)
   FileUtils.rm_rf(XCPretty::JSONCompilationDatabase::FILEPATH)
+  FileUtils.rm_rf(XCPretty::Reporter::FILEPATH)
   File.delete(@screenshot_file_path) if @screenshot_file_path
 end
 
