@@ -1,28 +1,28 @@
 module XCPretty
 
-	class Reporter < Formatter
-		FILEPATH = 'build/reports/tests.txt'
+  class Reporter < Formatter
+    FILEPATH = 'build/reports/tests.txt'
 
-		attr_reader :tests
+    attr_reader :tests
 
-		def initialize(options)
-	    super(true, true)
-	    @filepath  = options[:path] || self.class::FILEPATH
-	    @test_count = 0
-	    @fail_count = 0
-	    @tests = []
-	  end
+    def initialize(options)
+      super(true, true)
+      @filepath = options[:path] || self.class::FILEPATH
+      @test_count = 0
+      @fail_count = 0
+      @tests = []
+    end
 
-	  def handle(line)
+    def handle(line)
       @parser.parse(line)
     end
 
-	  def finish
+    def finish
       FileUtils.mkdir_p(File.dirname(@filepath))
       write_report
     end
 
-		def format_failing_test(suite, test_case, reason, file)
+    def format_failing_test(suite, test_case, reason, file)
       @test_count += 1
       @fail_count += 1
       @tests.push("#{test_case} in #{file} FAILED: #{reason}")
@@ -36,7 +36,7 @@ module XCPretty
     def format_pending_test(classname, test_case)
       @test_count += 1
       @tests.push("#{test_case} IS PENDING")
-    end    
+    end
 
     def write_report
       File.open(@filepath, 'w') do |f|
@@ -47,6 +47,7 @@ module XCPretty
       end
     end
 
-	end
+  end
 
 end
+
