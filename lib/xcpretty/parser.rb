@@ -129,7 +129,7 @@ module XCPretty
 
     # @regex Captured groups
     # $1 = script_name
-    PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s(.*)\s\//
+    PHASE_SCRIPT_EXECUTION_MATCHER = /^PhaseScriptExecution\s((\\\ |\S)*)\s/
 
     # @regex Captured groups
     # $1 = file
