@@ -24,15 +24,20 @@ module XCPretty
       @parser = Parser.new(self)
       @total_tests = 0
       @total_fails = 0
+      @target = ''
     end
 
     def handle(line)
       @parser.parse(line)
     end
 
+    def format_build_target(target, project, configuration)
+      @target = target
+    end
+
     def format_passing_test(classname, test_case, time)
       test_node = suite(classname).add_element('testcase')
-      test_node.attributes['classname'] = classname
+      test_node.attributes['classname'] = "#{@target}.#{classname}"
       test_node.attributes['name']      = test_case
       test_node.attributes['time']      = time
       @test_count += 1
@@ -40,7 +45,7 @@ module XCPretty
 
     def format_pending_test(classname, test_case)
       test_node = suite(classname).add_element('testcase')
-      test_node.attributes['classname'] = classname
+      test_node.attributes['classname'] = "#{@target}.#{classname}"
       test_node.attributes['name']      = test_case
       test_node.add_element('skipped')
       @test_count += 1
@@ -48,7 +53,7 @@ module XCPretty
 
     def format_failing_test(classname, test_case, reason, file)
       test_node = suite(classname).add_element('testcase')
-      test_node.attributes['classname'] = classname
+      test_node.attributes['classname'] = "#{@target}.#{classname}"
       test_node.attributes['name']      = test_case
       fail_node = test_node.add_element('failure')
       fail_node.attributes['message'] = reason
