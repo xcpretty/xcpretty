@@ -30,6 +30,10 @@ module XCPretty
       @parser.parse(line)
     end
 
+    def format_test_run_started(name)
+      @document.root.add_attribute('name', name)
+    end
+
     def format_passing_test(classname, test_case, time)
       test_node = suite(classname).add_element('testcase')
       test_node.attributes['classname'] = classname
