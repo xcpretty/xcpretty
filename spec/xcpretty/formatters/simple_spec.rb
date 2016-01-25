@@ -20,6 +20,11 @@ module XCPretty
         "> Building Pods/The Spacer [Debug]"
       end
 
+      it "formats build target/project/configuration with target" do
+        @formatter.format_aggregate_target("Be Aggro", "AggregateExample", "Debug").should ==
+        "> Aggregate AggregateExample/Be Aggro [Debug]"
+      end
+
       it "formats analyze target/project/configuration with target" do
         @formatter.format_analyze_target("The Spacer", "Pods", "Debug").should ==
         "> Analyzing Pods/The Spacer [Debug]"
