@@ -19,6 +19,12 @@ module XCPretty
     # $1 target
     # $2 project
     # $3 configuration
+    AGGREGATE_TARGET_MATCHER = /^=== BUILD AGGREGATE TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH.*CONFIGURATION\s(.*)\s===/
+
+    # @regex Captured groups
+    # $1 target
+    # $2 project
+    # $3 configuration
     ANALYZE_TARGET_MATCHER = /^=== ANALYZE TARGET\s(.*)\sOF PROJECT\s(.*)\sWITH.*CONFIGURATION\s(.*)\s===/
 
     # @regex Nothing returned here for now
@@ -281,6 +287,8 @@ module XCPretty
         formatter.format_analyze($2, $1)
       when BUILD_TARGET_MATCHER
         formatter.format_build_target($1, $2, $3)
+      when AGGREGATE_TARGET_MATCHER
+        formatter.format_aggregate_target($1, $2, $3)
       when ANALYZE_TARGET_MATCHER
         formatter.format_analyze_target($1, $2, $3)
       when CLEAN_REMOVE_MATCHER

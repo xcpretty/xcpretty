@@ -27,6 +27,10 @@ module XCPretty
       format("Building", "#{project}/#{target} [#{configuration}]")
     end
 
+    def format_aggregate_target(target, project, configuration)
+      format("Aggregate", "#{project}/#{target} [#{configuration}]")
+    end
+
     def format_analyze_target(target, project, configuration)
       format("Analyzing", "#{project}/#{target} [#{configuration}]")
     end

@@ -28,6 +28,11 @@ module XCPretty
       @parser.parse(SAMPLE_BUILD)
     end
 
+    it "parses aggregate target" do
+      @formatter.should receive(:format_aggregate_target).with("Be Aggro", "AggregateExample", "Debug")
+      @parser.parse(SAMPLE_AGGREGATE_TARGET)
+    end
+
     it "parses analyze target" do
       @formatter.should receive(:format_analyze_target).with("The Spacer", "Pods", "Debug")
       @parser.parse(SAMPLE_ANALYZE_TARGET)

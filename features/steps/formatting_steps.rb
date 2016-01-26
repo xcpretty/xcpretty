@@ -15,6 +15,10 @@ Given(/^I have a precompiled header$/) do
   add_run_input SAMPLE_PRECOMPILE
 end
 
+Given(/^I have an aggregate target to build$/) do
+  add_run_input SAMPLE_AGGREGATE_TARGET
+end
+
 Given(/^I have a file to analyze$/) do
   add_run_input SAMPLE_ANALYZE
 end
@@ -167,6 +171,10 @@ end
 
 Then(/^I should see a successful precompilation message$/) do
   run_output.should start_with("▸ Precompiling")
+end
+
+Then(/^I should see an aggregate target message$/) do
+  run_output.should start_with("▸ Aggregate")
 end
 
 Then(/^I should see a successful analyze message$/) do
