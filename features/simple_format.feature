@@ -45,20 +45,10 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple --color"
         Then I should see a yellow completion icon
 
-    Scenario: Showing build target
-        Given I have a target to build
-        When I pipe to xcpretty with "--simple --no-color"
-        Then I should see a build target message
-
     Scenario: Showing aggregate target
         Given I have an aggregate target to build
         When I pipe to xcpretty with "--simple --no-color"
         Then I should see an aggregate target message
-
-    Scenario: Showing analyze target
-        Given I have a target to analyze
-        When I pipe to xcpretty with "--simple --no-color"
-        Then I should see an analyze target message
 
     Scenario: Showing analyze
         Given I have a file to analyze
