@@ -1,7 +1,7 @@
 Then(/^I should see a failed test node in my report$/) do
   junit_report_root.elements.to_a.detect do |node|
     element = node.elements.to_a.first
-    element && element.name == "failure"
+    element && element.name == "failure" && node.attributes["time"] != nil
   end.should_not be_nil
 end
 
