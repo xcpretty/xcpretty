@@ -6,6 +6,7 @@ It does one thing, and it should do it well.
 [![Gem version](http://img.shields.io/gem/v/xcpretty.svg)](http://rubygems.org/gems/xcpretty)
 [![Build Status](https://travis-ci.org/supermarin/xcpretty.svg?branch=master)](https://travis-ci.org/supermarin/xcpretty)
 [![Code Climate](http://img.shields.io/codeclimate/github/supermarin/xcpretty.svg)](https://codeclimate.com/github/supermarin/xcpretty)
+[![codebeat](https://codebeat.co/badges/b9441fbf-77dc-4159-8cf5-0442ba7ac3ba)](https://codebeat.co/projects/github-com-supermarin-xcpretty)
 
 ## Installation
 ``` bash
