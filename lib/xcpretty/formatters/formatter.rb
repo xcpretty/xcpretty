@@ -79,6 +79,9 @@ module XCPretty
       @parser = Parser.new(self)
     end
 
+    def finish
+    end
+
     # Override if you want to catch something specific with your regex
     def pretty_format(text)
       parser.parse(text)

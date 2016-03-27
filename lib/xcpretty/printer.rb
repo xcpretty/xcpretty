@@ -11,6 +11,10 @@ module XCPretty
       @formatter = klass.new(params[:unicode], params[:colorize])
     end
 
+    def finish
+      @formatter.finish
+    end
+
     def pretty_print(text)
       formatted_text = formatter.pretty_format(text)
       unless formatted_text.empty?
