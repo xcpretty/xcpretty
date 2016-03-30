@@ -1,8 +1,7 @@
 module XCPretty
-  class JSONCompilationDatabase
+  class JSONCompilationDatabase < Reporter
 
-    include XCPretty::FormatMethods
-    FILE_PATH = 'build/reports/compilation_db.json'
+    FILEPATH = 'build/reports/compilation_db.json'
 
     def load_dependencies
       unless @@loaded ||= false
@@ -14,17 +13,11 @@ module XCPretty
     end
 
     def initialize(options)
-      load_dependencies
-      @file_path = options[:path] || FILE_PATH
-      @parser = Parser.new(self)
+      super(options)
       @compilation_units = []
       @pch_path = nil
       @current_file = nil
       @current_path = nil
-    end
-
-    def handle(line)
-      @parser.parse(line)
     end
 
     def format_process_pch_command(file_path)
@@ -48,15 +41,8 @@ module XCPretty
                              directory: directory}
     end
 
-    def finish
-      FileUtils.mkdir_p(File.dirname(@file_path))
-      write_report
-    end
-
-    private
-
     def write_report
-      File.open(@file_path, 'w') do |f|
+      File.open(@filepath, 'w') do |f|
         f.write(@compilation_units.to_json)
       end
     end

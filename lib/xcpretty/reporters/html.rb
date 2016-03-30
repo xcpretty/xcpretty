@@ -1,7 +1,6 @@
 module XCPretty
-  class HTML
+  class HTML < Reporter
 
-    include XCPretty::FormatMethods
     FILEPATH = 'build/reports/tests.html'
     TEMPLATE = File.expand_path('../../../../assets/report.html.erb', __FILE__)
     SCREENSHOT_DIR = 'build/reports'
@@ -16,12 +15,8 @@ module XCPretty
     end
 
     def initialize(options)
-      load_dependencies
+      super(options)
       @test_suites = {}
-      @filepath    = options[:path] || FILEPATH
-      @parser      = Parser.new(self)
-      @test_count  = 0
-      @fail_count  = 0
       @collect_screenshots = options[:screenshots]
     end
 
@@ -37,11 +32,6 @@ module XCPretty
 
     def format_passing_test(suite, test_case, time)
       add_test(suite, name: test_case, time: time)
-    end
-
-    def finish
-      FileUtils.mkdir_p(File.dirname(@filepath))
-      write_report
     end
 
     private

@@ -8,6 +8,7 @@ require 'xcpretty/formatters/simple'
 require 'xcpretty/formatters/rspec'
 require 'xcpretty/formatters/knock'
 require 'xcpretty/formatters/tap'
+require 'xcpretty/reporters/reporter'
 require 'xcpretty/reporters/junit'
 require 'xcpretty/reporters/html'
 require 'xcpretty/reporters/json_compilation_database'
@@ -21,11 +22,11 @@ module XCPretty
     klass
   end
 
-  def self.load_custom_formatter(path)
+  def self.load_custom_class(path)
     $LOAD_PATH.unshift File.dirname(path)
     class_from_path(path)
   rescue SyntaxError => e
-    exit_with_error("Expected formatter source file to return a class. #{e}")
+    exit_with_error("Expected custom source file to return a class. #{e}")
   end
 
   def self.exit_with_error(message)
