@@ -30,6 +30,7 @@ module XCPretty
 
     def format_test_run_started(name)
       @document.root.add_attribute('name', name)
+    end
 
     def format_build_target(target, project, configuration)
       @target = target
