@@ -63,6 +63,8 @@ module XCPretty
     #       the same for warnings
     def format_compile_warning(file_name, file_path, reason,
                                line, cursor);                  EMPTY; end
+
+    def format_unmatched(message);                           message; end
   end
 
   class Formatter
@@ -142,6 +144,11 @@ module XCPretty
     def format_duplicate_symbols(message, file_paths)
       "\n#{red(error_symbol + " " + message)}\n" \
         "> #{file_paths.map { |path| path.split('/').last }.join("\n> ")}\n"
+    end
+
+    def format_unmatched(message)
+      # Do nothing. This function is meant to be overloaded.
+      ""
     end
 
 
