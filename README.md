@@ -76,7 +76,7 @@ Writing a report to a custom path can be specified using `--output PATH`.
 `xcpretty` supports custom formatters through the use of the
 `--formatter` flag, which takes a path to a file as an argument. The
 file must contain a Ruby subclass of `XCPretty::Formatter`, and
-return that class at the end of te file. The class
+return that class at the end of the file. The class
 can override the `format_*` methods to hook into output parsing
 events.
 
