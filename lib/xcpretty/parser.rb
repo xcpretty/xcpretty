@@ -380,7 +380,7 @@ module XCPretty
       when GENERIC_WARNING_MATCHER
         formatter.format_warning($1)
       else
-        ""
+        formatter.format_unmatched(text)
       end
     end
 
