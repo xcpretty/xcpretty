@@ -23,6 +23,11 @@ module XCPretty
       @parser.parse(SAMPLE_ANALYZE_SHALLOW)
     end
 
+    it "parses analyze for a C++ target" do
+      @formatter.should receive(:format_analyze).with("CCChip8DisplayView.cpp", "CocoaChip/CCChip8DisplayView.cpp")
+      @parser.parse(SAMPLE_ANALYZE_CPP)
+    end
+
     it "parses build target" do
       @formatter.should receive(:format_build_target).with("The Spacer", "Pods", "Debug")
       @parser.parse(SAMPLE_BUILD)
@@ -151,6 +156,11 @@ module XCPretty
     it "parses Ld" do
       @formatter.should receive(:format_linking).with('ObjectiveSugar', 'normal', 'i386')
       @parser.parse(SAMPLE_LD)
+    end
+
+    it "parses Ld with relative path" do
+      @formatter.should receive(:format_linking).with('ObjectiveSugar', 'normal', 'i386')
+      @parser.parse(SAMPLE_LD_RELATIVE)
     end
 
     it "parses Libtool" do
