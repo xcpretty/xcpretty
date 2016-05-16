@@ -429,7 +429,7 @@ module XCPretty
 
       case text
       when SYMBOL_REFERENCED_FROM_MATCHER
-        info = { symbol: $1 , references: []}
+        info = {symbol: $1 , references: []}
         current_linker_failure[:infos] << info
       when LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER
         current_linker_failure[:infos][-1][:references] << text.strip
@@ -494,7 +494,7 @@ module XCPretty
         current_linker_failure[:message],
         current_linker_failure[:infos]
       )
-      result = result + formatter.format_error(ld_error)
+      result += formatter.format_error(ld_error)
       reset_linker_format_state
       result
     end
