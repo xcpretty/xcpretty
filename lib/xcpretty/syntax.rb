@@ -12,12 +12,12 @@ module XCPretty
   module Syntax
     def self.highlight(snippet)
       return snippet.contents unless Rouge
-      self.highlight_with_formatter(snippet, Rouge::Formatters::Terminal256.new)
+      highlight_with_formatter(snippet, Rouge::Formatters::Terminal256.new)
     end
 
     def self.highlight_html(snippet)
       return snippet.contents unless Rouge
-      self.highlight_with_formatter(snippet, Rouge::Formatters::HTML.new)
+      highlight_with_formatter(snippet, Rouge::Formatters::HTML.new)
     end
 
     def self.highlight_with_formatter(snippet, formatter)
