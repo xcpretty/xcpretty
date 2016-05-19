@@ -38,7 +38,7 @@ module XCPretty
 
     def formatted_snippet(filepath)
       snippet = Snippet.from_filepath(filepath)
-      Syntax.highlight(snippet)
+      Syntax.highlight_html(snippet)
     end
 
 
