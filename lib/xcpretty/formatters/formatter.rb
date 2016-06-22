@@ -162,10 +162,19 @@ module XCPretty
     end
 
     def format_failure(f)
-      "  #{f[:test_case]}, #{red(f[:reason])}\n  #{cyan(f[:file_path])}\n" \
-      "  ```\n" +
-      Syntax.highlight(Snippet.from_filepath(f[:file_path])) +
-      "  ```"
+      snippet = Snippet.from_filepath(f[:file_path])
+
+      output = "  #{f[:test_case]}, #{red(f[:reason])}\n  " \
+      "#{cyan(f[:file_path])}\n  ```\n"
+
+      if @colorize
+        output += Syntax.highlight(snippet)
+      else
+        output += snippet.contents
+      end
+
+      output += "  ```"
+      output
     end
 
     def error_symbol
