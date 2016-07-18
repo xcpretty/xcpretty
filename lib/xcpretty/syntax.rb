@@ -12,7 +12,15 @@ module XCPretty
   module Syntax
     def self.highlight(snippet)
       return snippet.contents unless Rouge
+      highlight_with_formatter(snippet, Rouge::Formatters::Terminal256.new)
+    end
 
+    def self.highlight_html(snippet)
+      return snippet.contents unless Rouge
+      highlight_with_formatter(snippet, Rouge::Formatters::HTML.new)
+    end
+
+    def self.highlight_with_formatter(snippet, formatter)
       if snippet.file_path.include?(':')
         filename = snippet.file_path.rpartition(':').first
       else
@@ -21,7 +29,6 @@ module XCPretty
 
       lexer = find_lexer(filename, snippet.contents)
       if lexer
-        formatter = Rouge::Formatters::Terminal256.new
         formatter.format(lexer.lex(snippet.contents))
       else
         snippet.contents
