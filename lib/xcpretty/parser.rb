@@ -98,7 +98,12 @@ module XCPretty
     # $2 = test_suite
     # $3 = test_case
     # $4 = reason
-    FAILING_TEST_MATCHER = /^\s*(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
+    TEST_FAILURE_MATCHER = /^\s*(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
+
+    # @regex Captured groups
+    # $1 = file
+    # $2 = reason
+    TEST_UI_FAILURE_MATCHER = /Assertion\sFailure:\s(.+:\d+):\s(.*)/
 
     # @regex Captured groups
     # $1 = dsym
@@ -113,6 +118,12 @@ module XCPretty
     # $2 = build_variants (normal, profile, debug)
     # $3 = architecture
     LINKING_MATCHER = /^Ld \/?.*\/(.*?) (.*) (.*)$/
+
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    # $3 = time
+    FAILING_TEST_MATCHER = /^\s*Test Case\s'-\[(.*)\s(.*)\]'\sfailed\s\((\d*\.\d{3})\sseconds\)/
 
     # @regex Captured groups
     # $1 = suite
@@ -323,7 +334,7 @@ module XCPretty
         formatter.format_cpresource($1)
       when EXECUTED_MATCHER
         format_summary_if_needed(text)
-      when FAILING_TEST_MATCHER
+      when TEST_FAILURE_MATCHER
         formatter.format_failing_test($2, $3, $4, $1)
       when FATAL_ERROR_MATCHER
         formatter.format_error($1)
@@ -343,6 +354,12 @@ module XCPretty
         formatter.format_measuring_test($1, $2, $3)
       when PENDING_TEST_MATCHER
         formatter.format_pending_test($1, $2)
+      when FAILING_TEST_MATCHER
+        if @current_assertion_failure
+          formatter.format_failing_test($1, $2, @current_assertion_failure[:reason], @current_assertion_failure[:file])
+        else
+          formatter.format_failing_test($1, $2, '', '')
+        end
       when PASSING_TEST_MATCHER
         formatter.format_passing_test($1, $2, $3)
       when PODS_ERROR_MATCHER
@@ -392,9 +409,22 @@ module XCPretty
         @tests_done = false
         @formatted_summary = false
         @failures = {}
+        @assertion_failure = []
+        @current_assertion_failure = {}
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
+      when TEST_UI_FAILURE_MATCHER
+        @current_assertion_failure = {
+          file: $1,
+          reason: $2
+        }
       when FAILING_TEST_MATCHER
+        if @current_assertion_failure
+          store_failure(@current_assertion_failure[:file], $1, $2, @current_assertion_failure[:reason])
+        else
+          store_failure(nil, $1, $2, '')
+        end
+      when TEST_FAILURE_MATCHER
         store_failure($1, $2, $3, $4)
       end
     end
@@ -543,4 +573,3 @@ module XCPretty
 
   end
 end
-
