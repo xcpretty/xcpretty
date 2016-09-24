@@ -1,0 +1,388 @@
+User defaults from command line:
+    IDETestRunOnlyIdentifiers = (
+    "viewUITests/vmtAboutWindow/testConnectToDesktop"
+)
+    IDETestRunSpecificationPath = /Users/viewci/jenkins/workspace/d2/view_macosx10.12-x86_64.xctestrun
+
+Build settings from command line:
+    arch = x86_64
+
+2016-08-18 09:07:17.632 XCTRunner[21009:1710602] Running tests...
+Test Suite 'Selected tests' started at 2016-08-18 09:07:17.820
+Test Suite 'viewUITests.xctest' started at 2016-08-18 09:07:17.821
+Test Suite 'vmtAboutWindow' started at 2016-08-18 09:07:17.821
+Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' started.
+    t =     0.00s     Start Test at 2016-08-18 09:07:17.822
+    t =     0.00s     Set Up
+    t =     0.00s         Launch com.vmware.horizon
+    t =     1.38s             Wait for app to idle
+    t =     1.79s     Type '' into Grid
+    t =     1.79s         Wait for app to idle
+    t =     1.87s         Find the Grid
+    t =     1.87s             Snapshot accessibility hierarchy for com.vmware.horizon
+    t =     2.44s             Find: Descendants matching type Window
+    t =     2.44s             Find: Elements matching predicate '"VMware Horizon Client" IN identifiers'
+    t =     2.44s             Find: Descendants matching type ScrollView
+    t =     2.44s             Find: Children matching type Grid
+    t =     2.45s         Synthesize event
+    t =     2.75s         Wait for app to idle
+    t =     3.09s     Click SecureTextField
+    t =     3.09s         Wait for app to idle
+    t =     3.80s         Find the SecureTextField
+    t =     3.80s             Snapshot accessibility hierarchy for com.vmware.horizon
+    t =     4.03s             Find: Descendants matching type Group
+    t =     4.03s             Find: Elements containing elements matching type Image with identifier 'security error'
+    t =     5.04s             Find the SecureTextField (retry 1)
+    t =     5.04s                 Snapshot accessibility hierarchy for com.vmware.horizon
+    t =     5.13s                 Find: Descendants matching type Group
+    t =     5.13s                 Find: Elements containing elements matching type Image with identifier 'security error'
+    t =     5.13s                 Find: Children matching type SecureTextField
+    t =     5.14s         Synthesize event
+    t =     5.45s         Wait for app to idle
+    t =     5.53s     Type 'ca$hc0w' into SecureTextField
+    t =     5.53s         Wait for app to idle
+    t =     5.61s         Find the SecureTextField
+    t =     5.61s             Snapshot accessibility hierarchy for com.vmware.horizon
+    t =     5.70s             Find: Descendants matching type Group
+    t =     5.70s             Find: Elements containing elements matching type Image with identifier 'security error'
+    t =     5.70s             Find: Children matching type SecureTextField
+    t =     5.71s         Synthesize event
+    t =     5.95s         Wait for app to idle
+    t =     6.04s     Click "Login" Button
+    t =     6.04s         Wait for app to idle
+    t =     6.12s         Find the "Login" Button
+    t =     6.12s             Snapshot accessibility hierarchy for com.vmware.horizon
+    t =     6.22s             Find: Descendants matching type Button
+    t =     6.22s             Find: Elements matching predicate '"Login" IN identifiers'
+    t =     6.22s         Synthesize event
+    t =     6.54s         Wait for app to idle
+    t =     6.63s     Type 'rdsh1' into Grid
+    t =     6.63s         Wait for app to idle
+    t =     6.71s         Find the Grid
+    t =     6.71s             Snapshot accessibility hierarchy for com.vmware.horizon
+    t =     6.82s             Find: Descendants matching type Window
+    t =     6.83s             Find: Elements matching predicate '"VMware Horizon Client" IN identifiers'
+    t =     6.83s             Find: Children matching type Group
+    t =     6.83s             Find: Descendants matching type ScrollView
+    t =     7.83s             Find the Grid (retry 1)
+    t =     7.83s                 Snapshot accessibility hierarchy for com.vmware.horizon
+    t =     7.95s                 Find: Descendants matching type Window
+    t =     7.96s                 Find: Elements matching predicate '"VMware Horizon Client" IN identifiers'
+    t =     7.96s                 Find: Children matching type Group
+    t =     7.96s                 Find: Descendants matching type ScrollView
+    t =     8.97s             Find the Grid (retry 2)
+    t =     8.97s                 Snapshot accessibility hierarchy for com.vmware.horizon
+    t =     9.24s                 Find: Descendants matching type Window
+    t =     9.24s                 Find: Elements matching predicate '"VMware Horizon Client" IN identifiers'
+    t =     9.25s                 Find: Children matching type Group
+    t =     9.25s                 Find: Descendants matching type ScrollView
+    t =     9.25s                 Find: Children matching type Grid
+    t =     9.26s         Synthesize event
+    t =     9.44s         Wait for app to idle
+    t =    10.03s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    10.24s     Find: Descendants matching type Window
+    t =    10.24s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    10.25s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    10.33s     Find: Descendants matching type Window
+    t =    10.33s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    10.33s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    10.41s     Find: Descendants matching type Window
+    t =    10.42s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    10.42s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    10.50s     Find: Descendants matching type Window
+    t =    10.50s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    10.50s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    10.58s     Find: Descendants matching type Window
+    t =    10.59s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    10.59s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    10.67s     Find: Descendants matching type Window
+    t =    10.67s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    10.67s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    10.76s     Find: Descendants matching type Window
+    t =    10.76s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    10.76s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    10.84s     Find: Descendants matching type Window
+    t =    10.84s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    10.84s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    10.93s     Find: Descendants matching type Window
+    t =    10.93s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    10.93s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    11.02s     Find: Descendants matching type Window
+    t =    11.02s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    11.02s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    11.49s     Find: Descendants matching type Window
+    t =    11.49s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    11.49s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    11.83s     Find: Descendants matching type Window
+    t =    11.83s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    11.83s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    11.94s     Find: Descendants matching type Window
+    t =    11.94s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    11.95s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    12.71s     Find: Descendants matching type Window
+    t =    12.71s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    12.72s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    13.03s     Find: Descendants matching type Window
+    t =    13.03s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    13.03s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    13.13s     Find: Descendants matching type Window
+    t =    13.13s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    13.13s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    13.56s     Find: Descendants matching type Window
+    t =    13.56s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    13.56s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    13.64s     Find: Descendants matching type Window
+    t =    13.64s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    13.65s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    13.75s     Find: Descendants matching type Window
+    t =    13.75s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    13.75s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    13.83s     Find: Descendants matching type Window
+    t =    13.84s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    13.84s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    13.92s     Find: Descendants matching type Window
+    t =    13.92s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    13.92s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.01s     Find: Descendants matching type Window
+    t =    14.02s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.02s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.10s     Find: Descendants matching type Window
+    t =    14.11s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.11s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.19s     Find: Descendants matching type Window
+    t =    14.19s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.19s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.28s     Find: Descendants matching type Window
+    t =    14.28s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.28s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.37s     Find: Descendants matching type Window
+    t =    14.37s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.37s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.59s     Find: Descendants matching type Window
+    t =    14.59s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.59s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.68s     Find: Descendants matching type Window
+    t =    14.68s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.68s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.78s     Find: Descendants matching type Window
+    t =    14.78s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.79s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.87s     Find: Descendants matching type Window
+    t =    14.88s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.88s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    14.96s     Find: Descendants matching type Window
+    t =    14.96s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    14.96s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    15.04s     Find: Descendants matching type Window
+    t =    15.05s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    15.05s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    15.13s     Find: Descendants matching type Window
+    t =    15.14s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    15.14s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    15.23s     Find: Descendants matching type Window
+    t =    15.24s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    15.24s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    15.33s     Find: Descendants matching type Window
+    t =    15.33s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    15.33s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    15.41s     Find: Descendants matching type Window
+    t =    15.42s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    15.42s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    15.64s     Find: Descendants matching type Window
+    t =    15.64s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    15.64s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    15.72s     Find: Descendants matching type Window
+    t =    15.73s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    15.73s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    15.83s     Find: Descendants matching type Window
+    t =    15.83s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    15.83s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    15.92s     Find: Descendants matching type Window
+    t =    15.92s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    15.92s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.00s     Find: Descendants matching type Window
+    t =    16.00s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.00s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.08s     Find: Descendants matching type Window
+    t =    16.09s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.09s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.17s     Find: Descendants matching type Window
+    t =    16.17s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.17s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.26s     Find: Descendants matching type Window
+    t =    16.26s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.26s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.34s     Find: Descendants matching type Window
+    t =    16.35s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.35s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.43s     Find: Descendants matching type Window
+    t =    16.44s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.44s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.66s     Find: Descendants matching type Window
+    t =    16.66s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.66s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.75s     Find: Descendants matching type Window
+    t =    16.75s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.75s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.85s     Find: Descendants matching type Window
+    t =    16.85s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.85s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    16.94s     Find: Descendants matching type Window
+    t =    16.94s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    16.94s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.02s     Find: Descendants matching type Window
+    t =    17.02s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.03s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.11s     Find: Descendants matching type Window
+    t =    17.11s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.11s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.20s     Find: Descendants matching type Window
+    t =    17.20s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.20s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.29s     Find: Descendants matching type Window
+    t =    17.29s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.29s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.38s     Find: Descendants matching type Window
+    t =    17.38s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.38s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.46s     Find: Descendants matching type Window
+    t =    17.46s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.47s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.69s     Find: Descendants matching type Window
+    t =    17.70s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.70s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.78s     Find: Descendants matching type Window
+    t =    17.78s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.78s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.89s     Find: Descendants matching type Window
+    t =    17.89s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.89s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    17.98s     Find: Descendants matching type Window
+    t =    17.98s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    17.98s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    18.07s     Find: Descendants matching type Window
+    t =    18.07s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    18.07s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    18.16s     Find: Descendants matching type Window
+    t =    18.16s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    18.16s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    18.24s     Find: Descendants matching type Window
+    t =    18.25s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    18.25s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    18.33s     Find: Descendants matching type Window
+    t =    18.34s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    18.34s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    18.43s     Find: Descendants matching type Window
+    t =    18.43s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    18.43s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    18.52s     Find: Descendants matching type Window
+    t =    18.52s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    18.52s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    18.75s     Find: Descendants matching type Window
+    t =    18.75s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    18.76s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    18.84s     Find: Descendants matching type Window
+    t =    18.84s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    18.84s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    18.96s     Find: Descendants matching type Window
+    t =    18.97s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    18.97s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    19.05s     Find: Descendants matching type Window
+    t =    19.06s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Wait for connect to desktop done
+    t =    19.06s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    20.31s     Find: Descendants matching type Window
+    t =    20.32s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Connect to desktop done
+    t =    20.32s     Click "Disconnect" Button
+    t =    20.32s         Wait for app to idle
+    t =    20.39s         Find the "Disconnect" Button
+    t =    20.39s             Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    20.53s             Find: Descendants matching type Window
+    t =    20.53s             Find: Elements matching predicate '"rdsh1" IN identifiers'
+    t =    21.54s             Find the "Disconnect" Button (retry 1)
+    t =    21.54s                 Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    21.80s                 Find: Descendants matching type Window
+    t =    21.80s                 Find: Elements matching predicate '"rdsh1" IN identifiers'
+    t =    21.81s                 Find: Descendants matching type Toolbar
+    t =    21.81s                 Find: Descendants matching type Button
+    t =    21.81s                 Find: Elements matching predicate '"Disconnect" IN identifiers'
+    t =    21.81s         Synthesize event
+    t =    22.27s             Assertion Failure: <unknown>:0: UI Testing Failure - Unable to find hit point for element Button 0x608001165880: {{74.0, -54.0}, {44.0, 38.0}}, label: 'Disconnect'
+    t =    22.29s     Tear Down
+Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' failed (22.490 seconds).
+Test Suite 'vmtAboutWindow' failed at 2016-08-18 09:07:40.331.
+	 Executed 1 test, with 1 failure (0 unexpected) in 22.490 (22.510) seconds
+Test Suite 'viewUITests.xctest' failed at 2016-08-18 09:07:40.332.
+	 Executed 1 test, with 1 failure (0 unexpected) in 22.490 (22.511) seconds
+Test Suite 'Selected tests' failed at 2016-08-18 09:07:40.332.
+	 Executed 1 test, with 1 failure (0 unexpected) in 22.490 (22.513) seconds
