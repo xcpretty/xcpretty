@@ -58,11 +58,11 @@ describe 'Parser' do
   end
 
 
-  xit 'shuts up `setenv` in compile body' do
-    [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
+  it 'shuts up `export` in compile body' do
+    [SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
       @parser.parse(source.lines[1])
       @formatter.flush
-      @parser.parse(SAMPLE_COMPILE_SWIFT_SOURCES.lines[2])
+      @parser.parse(source.lines.select { |l| l =~ /^    export/}[0])
       @formatter.flush.should == []
       @parser.parse("\n")
     end
@@ -81,10 +81,10 @@ describe 'Parser' do
   it 'shuts up setenv' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @formatter.flush
-    @parser.parse(SAMPLE_COMPILE.lines[3])
-    @formatter.flush.should == []
-    @parser.parse(SAMPLE_COMPILE.lines[4])
-    @formatter.flush.should == []
+    SAMPLE_COMPILE.lines.select { |l| l =~ /^    setenv/}.each do |line|
+      @parser.parse(line)
+      @formatter.flush.should == []
+    end
   end
 
   it 'outputs unrecognized text' do

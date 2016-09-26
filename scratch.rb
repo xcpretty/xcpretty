@@ -86,6 +86,7 @@ PATH              = /[ \w\/:\\\-+.]+\/?/
 SOURCE_EXTENSIONS = /m|mm|c|cc|cpp|cxx|swift/
 SHELL_CD          = /^\s{4}cd\s(#{PATH})$/
 SHELL_SETENV      = /^\s{4}setenv(?:#{PATH})?[\w\-]+\s(.*)$/
+SHELL_EXPORT      = /^\s{4}export \w+=.*$/
 
 Parser.add "Compiling" do |c|
   c.line /^CompileC (?:#{PATH}\.o) (#{PATH}\.(?:#{SOURCE_EXTENSIONS})) .*$/ do |formatter, match|
@@ -94,6 +95,7 @@ Parser.add "Compiling" do |c|
 
   c.line SHELL_CD
   c.line SHELL_SETENV
+  c.line SHELL_EXPORT
   # Suppress giant clang output
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/clang .*$/
 end
@@ -114,7 +116,7 @@ Parser.add "Compile a pile of swift files" do |c|
   end
 
   c.line SHELL_CD
-
+  c.line SHELL_EXPORT
   # Suppress giant swiftc output
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc .*$/
 end
