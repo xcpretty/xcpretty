@@ -10,10 +10,7 @@ class Chunk
   end
 
   def line(regex, &block)
-    handler = []
-    handler << regex
-    handler << block if block_given?
-    @line_handlers << handler
+    @line_handlers << [regex, (block if block_given?)]
   end
 
   def exit(regex)
@@ -31,6 +28,9 @@ class Chunk
     end
   end
 
+  # Handles a given line from the parser, and tries to recognize it.  If the
+  # line was recognized, it will either be printed (block given) or ignored (no
+  # block given).  If the line was not recognized, it will be printed as it is.
   def handle(line, formatter)
     @line_handlers.each do |handler|
       matches = line.match(handler.first)
@@ -55,10 +55,21 @@ class Parser
     @chunks = []
   end
 
+  # Parses a line of a log file.
+  #
+  # It asks the current chunk to process line, or if there's no chunk, it finds
+  # the responsible one. If no responsible chunk is found, it'll just print out
+  # the line and move on.
+  #
+  # If there was a responsible chunk, it'll try to recognize the line and
+  # format it. If the line wasn't recognized by a chunk it'll just print it
+  # out and keep waiting for it's own input.
+  #
+  # When a chunk sees it's end (empty newline by default), it de-registers
+  # itself and parser tries to find a new one for the next line.
   def parse(line)
     if @current_chunk
       @current_chunk = @current_chunk.handle(line, @formatter)
-      return
     else
       @@chunks.each do |chunk|
         @current_chunk = chunk.enter(line, @formatter)
