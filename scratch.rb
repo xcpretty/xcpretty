@@ -79,6 +79,7 @@ class Formatter
   def format_compile(path); end
   def format_unknown(line); end
   def format_compile_swift_sources(); end
+  def format_merge_swift_module(); end
 end
 
 
@@ -100,7 +101,6 @@ Parser.add "Compiling" do |c|
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/clang .*$/
 end
 
-
 Parser.add "Compiling Swift" do |c|
   c.line /^CompileSwift (?:[\w]+\s)*(#{PATH}\.swift)$/ do |formatter, match|
     formatter.format_compile(Pathname.new(match[1]))
@@ -121,6 +121,15 @@ Parser.add "Compile a pile of swift files" do |c|
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc .*$/
 end
 
+Parser.add "Merging swift modules" do |c|
+  c.line /^MergeSwiftModule (?:[\w]+\s)*(#{PATH}\.swiftmodule)$/ do |formatter, match|
+    formatter.format_merge_swift_module(Pathname.new(match[1]))
+  end
+  c.line SHELL_CD
+  # Suppress giant swift output
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift .*$/
+end
+
 Parser.add "Code sign" do |c|
   c.line /^CodeSign\s(#{PATH})$/ do |f, m|
     f.format_codesign(Pathname.new(m[1]))
@@ -139,6 +148,9 @@ class DummyFormatter < Formatter
   end
   def format_compile_swift_sources()
     puts "Compiling a bunch of swift"
+  end
+  def format_merge_swift_module(file)
+    puts "Merging Swift module #{file.basename}"
   end
 end
 

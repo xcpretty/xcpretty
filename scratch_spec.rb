@@ -57,6 +57,12 @@ describe 'Parser' do
     end
   end
 
+  it 'handles MergeSwiftModule' do
+    @parser.parse(SAMPLE_MERGE_SWIFT_MODULE.lines[1])
+    @formatter.flush.should == [
+      :format_merge_swift_module,
+      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit.swiftmodule")]
+  end
 
   it 'shuts up `export` in compile body' do
     [SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
