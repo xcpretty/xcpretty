@@ -74,6 +74,25 @@ describe 'Parser' do
     end
   end
 
+  it 'handles writing auxiliary files' do
+    @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
+    @formatter.flush.should == [:format_write_auxiliary_files]
+  end
+
+  it 'handles write-file' do
+    @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
+    @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[2])
+    @formatter.flush.should == [:format_write_file, Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/module.modulemap")]
+  end
+
+  it 'suppresses mkdir' do
+    @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
+    @formatter.flush
+    @parser.parse(
+      SAMPLE_WRITE_AUXILIARY_FILES.lines.select { |l| l =~ /^\/bin\/mkdir/}[0])
+    @formatter.flush.should == []
+  end
+
   it 'shuts up `cd` in compile body' do
     [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
       @parser.parse(source.lines[1])

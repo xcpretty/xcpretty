@@ -86,19 +86,13 @@ class Parser
 end
 
 
-class Formatter
-  def format_compile(path); end
-  def format_unknown(line); end
-  def format_compile_swift_sources(); end
-  def format_merge_swift_module(); end
-end
-
 
 PATH              = /[ \w\/:\\\-+.]+\/?/
 SOURCE_EXTENSIONS = /m|mm|c|cc|cpp|cxx|swift/
 SHELL_CD          = /^\s{4}cd\s(#{PATH})$/
 SHELL_SETENV      = /^\s{4}setenv(?:#{PATH})?[\w\-]+\s(.*)$/
 SHELL_EXPORT      = /^\s{4}export \w+=.*$/
+SHELL_MKDIR       = /^\/bin\/mkdir -p/
 
 Parser.add "Compiling" do |c|
   c.line /^CompileC (?:#{PATH}\.o) (#{PATH}\.(?:#{SOURCE_EXTENSIONS})) .*$/ do |formatter, match|
@@ -108,36 +102,34 @@ Parser.add "Compiling" do |c|
   c.line SHELL_CD
   c.line SHELL_SETENV
   c.line SHELL_EXPORT
-  # Suppress giant clang output
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/clang .*$/
 end
 
 Parser.add "Compiling Swift" do |c|
-  c.line /^CompileSwift (?:[\w]+\s)*(#{PATH}\.swift)$/ do |formatter, match|
-    formatter.format_compile(Pathname.new(match[1]))
+  c.line /^CompileSwift (?:[\w]+\s)*(#{PATH}\.swift)$/ do |f, m|
+    f.format_compile(Pathname.new(m[1]))
   end
+
   c.line SHELL_CD
-  # Suppress giant swift output
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift .*$/
 end
 
 Parser.add "Compile a pile of swift files" do |c|
-  c.line /^CompileSwiftSources/ do |formatter, match|
-    formatter.format_compile_swift_sources
+  c.line /^CompileSwiftSources/ do |f, m|
+    f.format_compile_swift_sources
   end
 
   c.line SHELL_CD
   c.line SHELL_EXPORT
-  # Suppress giant swiftc output
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc .*$/
 end
 
 Parser.add "Merging swift modules" do |c|
-  c.line /^MergeSwiftModule (?:[\w]+\s)*(#{PATH}\.swiftmodule)$/ do |formatter, match|
-    formatter.format_merge_swift_module(Pathname.new(match[1]))
+  c.line /^MergeSwiftModule (?:[\w]+\s)*(#{PATH}\.swiftmodule)$/ do |f, m|
+    f.format_merge_swift_module(Pathname.new(m[1]))
   end
+
   c.line SHELL_CD
-  # Suppress giant swift output
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift .*$/
 end
 
@@ -149,6 +141,25 @@ Parser.add "Code sign" do |c|
   c.line SHELL_CD
 end
 
+Parser.add "Write auxilliary files" do |c|
+  c.line /^Write auxiliary files$/ do |f, m|
+    f.format_write_auxiliary_files()
+  end
+
+  c.line SHELL_MKDIR
+  c.line /^write-file (#{PATH})$/ do |f,m|
+    f.format_write_file(Pathname.new(m[1]))
+  end
+end
+
+class Formatter
+  def format_compile(path); end
+  def format_unknown(line); end
+  def format_compile_swift_sources(); end
+  def format_merge_swift_module(); end
+  def format_write_auxiliary_files(); end
+  def format_write_file(file); end
+end
 
 class DummyFormatter < Formatter
   def format_compile(path)
@@ -162,6 +173,12 @@ class DummyFormatter < Formatter
   end
   def format_merge_swift_module(file)
     puts "Merging Swift module #{file.basename}"
+  end
+  def format_write_auxiliary_files()
+    puts "Writing auxiliary files"
+  end
+  def format_write_file(file)
+    puts "Write file #{file.basename}"
   end
 end
 
