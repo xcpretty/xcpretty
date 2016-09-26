@@ -28,18 +28,54 @@ describe 'Parser' do
     @parser = Parser.new(@formatter)
   end
 
-  it 'parses compile commands' do
+  it 'parses CompileC' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
-      Pathname.new("/Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m")]
+      Pathname.new("/Users/musalj/code/OSS/Objective\\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
+  end
+
+  it 'handles CompileSwift' do
+    @parser.parse(SAMPLE_SWIFT_COMPILE.lines[1])
+    @formatter.flush.should == [
+      :format_compile,
+      Pathname.new("/Users/paul/foo/bar/siesta/Source/Resource.swift")]
+  end
+
+  it 'handles CompileSwiftSources' do
+    @parser.parse(SAMPLE_COMPILE_SWIFT_SOURCES.lines[1])
+    @formatter.flush.should == [:format_compile_swift_sources]
+  end
+
+  it 'supresses the giant compiler (swift, swiftc, clang) output' do
+    [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
+      @parser.parse(source.lines[1])
+      @formatter.flush
+      @parser.parse(source.lines.select { |l| l =~ /^    \/Applications/}[0])
+      @formatter.flush.should == []
+      @parser.parse("\n")
+    end
+  end
+
+
+  xit 'shuts up `setenv` in compile body' do
+    [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
+      @parser.parse(source.lines[1])
+      @formatter.flush
+      @parser.parse(SAMPLE_COMPILE_SWIFT_SOURCES.lines[2])
+      @formatter.flush.should == []
+      @parser.parse("\n")
+    end
   end
 
   it 'shuts up `cd` in compile body' do
-    @parser.parse(SAMPLE_COMPILE.lines[1])
-    @formatter.flush
-    @parser.parse(SAMPLE_COMPILE.lines[2])
-    @formatter.flush.should == []
+    [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
+      @parser.parse(source.lines[1])
+      @formatter.flush
+      @parser.parse(SAMPLE_COMPILE_SWIFT_SOURCES.lines[2])
+      @formatter.flush.should == []
+      @parser.parse("\n")
+    end
   end
 
   it 'shuts up setenv' do
@@ -64,7 +100,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
-      Pathname.new("/Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m")]
+      Pathname.new("/Users/musalj/code/OSS/Objective\\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
   end
 
   it 'doesnt switch chunks before finishing' do
@@ -95,5 +131,6 @@ describe 'Parser' do
     @parser.parse("YOLO")
     @formatter.flush.should == [:format_unknown, "YOLO"]
   end
+
 end
 

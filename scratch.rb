@@ -58,6 +58,7 @@ class Parser
   def parse(line)
     if @current_chunk
       @current_chunk = @current_chunk.handle(line, @formatter)
+      return
     else
       @@chunks.each do |chunk|
         @current_chunk = chunk.enter(line, @formatter)
@@ -77,29 +78,49 @@ end
 class Formatter
   def format_compile(path); end
   def format_unknown(line); end
+  def format_compile_swift_sources(); end
 end
 
 
-PATH = /([ \w\/:\\\-.]+\/?)/
+PATH              = /[ \w\/:\\\-+.]+\/?/
 SOURCE_EXTENSIONS = /m|mm|c|cc|cpp|cxx|swift/
-SHELL_CD     = /^\s{4}cd\s#{PATH}$/
-SHELL_SETENV = /^\s{4}setenv(?:#{PATH})?[\w\-]+\s(.*)$/
+SHELL_CD          = /^\s{4}cd\s(#{PATH})$/
+SHELL_SETENV      = /^\s{4}setenv(?:#{PATH})?[\w\-]+\s(.*)$/
 
 Parser.add "Compiling" do |c|
-  c.line /^Compile\w*\s.+?\s((?:\\.|[^ ])+\/(?:\\.|[^ ])+\.(?:#{SOURCE_EXTENSIONS}))\s.*/ do |formatter, match|
+  c.line /^CompileC (?:#{PATH}\.o) (#{PATH}\.(?:#{SOURCE_EXTENSIONS})) .*$/ do |formatter, match|
     formatter.format_compile(Pathname.new(match[1]))
   end
 
-  # For now we don't care about these.
-  # We just shut them up
   c.line SHELL_CD
   c.line SHELL_SETENV
+  # Suppress giant clang output
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/clang .*$/
+end
 
-  c.line /^\s*(.*\/usr\/bin\/clang\s.*\s\-c\s(.*\.(?:m|mm|c|cc|cpp|cxx))\s.*\.o)$/
+
+Parser.add "Compiling Swift" do |c|
+  c.line /^CompileSwift (?:[\w]+\s)*(#{PATH}\.swift)$/ do |formatter, match|
+    formatter.format_compile(Pathname.new(match[1]))
+  end
+  c.line SHELL_CD
+  # Suppress giant swift output
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift .*$/
+end
+
+Parser.add "Compile a pile of swift files" do |c|
+  c.line /^CompileSwiftSources/ do |formatter, match|
+    formatter.format_compile_swift_sources
+  end
+
+  c.line SHELL_CD
+
+  # Suppress giant swiftc output
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc .*$/
 end
 
 Parser.add "Code sign" do |c|
-  c.line /^CodeSign\s#{PATH}$/ do |f, m|
+  c.line /^CodeSign\s(#{PATH})$/ do |f, m|
     f.format_codesign(Pathname.new(m[1]))
   end
 
@@ -113,6 +134,9 @@ class DummyFormatter < Formatter
   end
   def format_unknown(line)
     puts "WAT: #{line}"
+  end
+  def format_compile_swift_sources()
+    puts "Compiling a bunch of swift"
   end
 end
 
