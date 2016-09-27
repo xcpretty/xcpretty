@@ -146,17 +146,24 @@ write-file /Users/me/myproject/Build/Intermediates/Pods.build/Debug-iphonesimula
 
 SAMPLE_WRITE_AUXILIARY_FILES = %Q(
 Write auxiliary files
-write-file /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/module.modulemap
-write-file /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/zipzap-project-headers.hmap
-write-file /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/zipzap.hmap
-write-file /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/zipzap-all-target-headers.hmap
-write-file /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/zipzap-all-non-framework-target-headers.hmap
-write-file /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/zipzap-own-target-headers.hmap
-write-file /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/zipzap-generated-files.hmap
-/bin/mkdir -p /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/DerivedSources
-write-file /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/DerivedSources/zipzap_vers.c
-/bin/mkdir -p /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/Objects-normal/x86_64
-write-file /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/Objects-normal/x86_64/zipzap.LinkFileList
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-49C486D7B8EF179A4C22BBA8.sh
+chmod 0755 /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-49C486D7B8EF179A4C22BBA8.sh
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/module.modulemap
+/bin/mkdir -p /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Objects-normal/x86_64
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Objects-normal/x86_64/Models.LinkFileList
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/swift-overrides.hmap
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Models-own-target-headers.hmap
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Models.hmap
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/all-product-headers.yaml
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Models-project-headers.hmap
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Models-all-non-framework-target-headers.hmap
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Models-generated-files.hmap
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Objects-normal/x86_64/WatchModels-OutputFileMap.json
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-E44F85D54F22A5EEFE0DDBE1.sh
+chmod 0755 /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-E44F85D54F22A5EEFE0DDBE1.sh
+/bin/mkdir -p /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/DerivedSources
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/DerivedSources/Models_vers.c
+write-file /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Models-all-target-headers.hmap
 )
 
 SAMPLE_TIFFUTIL = %Q(

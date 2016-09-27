@@ -97,6 +97,7 @@ SHELL_SETENV      = /^\s{4}setenv(?:#{PATH})?[\w\-]+\s(.*)$/
 SHELL_EXPORT      = /^\s{4}export \w+=.*$/
 SHELL_MKDIR       = /^\/bin\/mkdir -p/
 SHELL_BUILTIN     = /^\s{4}builtin-/
+SHELL_CHMOD       = /^chmod/
 
 chunk "Compiling" do |c|
   c.line /^CompileC (?:#{PATH}\.o) (#{PATH}\.(?:#{SOURCE_EXTENSIONS})) .*$/ do |f, m|
@@ -154,6 +155,7 @@ chunk "Write auxilliary files" do |c|
     f.format_write_auxiliary_files()
   end
   c.line SHELL_MKDIR
+  c.line SHELL_CHMOD
   c.line /^write-file (#{PATH})$/ do |f,m|
     f.format_write_file(Pathname.new(m[1]))
   end
@@ -164,6 +166,12 @@ chunk "Create product structure" do |c|
     f.format_create_product_structure()
   end
   c.line SHELL_MKDIR
+end
+
+chunk "Check Dependencies" do |c|
+  c.line /^Check dependencies$/ do |f|
+    f.format_check_dependencies()
+  end
 end
 
 chunk "Process info.plist" do |c|
@@ -177,6 +185,7 @@ end
 
 class Formatter
   def format_compile(path); end
+  def format_check_dependencies; end
   def format_ditto(path); end
   def format_unknown(line); end
   def format_compile_swift_sources(); end
@@ -190,6 +199,9 @@ end
 class DummyFormatter < Formatter
   def format_compile(path)
     puts "Compile #{path.basename}"
+  end
+  def format_check_dependencies
+    puts "Check dependencies"
   end
   def format_ditto(path)
     puts "Ditto #{path.basename}"

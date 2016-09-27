@@ -104,6 +104,10 @@ describe 'Parser' do
     it 'surpresses /usr/bin/ditto invocation' do
       test_chunks([SAMPLE_DITTO], /^    \/usr\/bin\/ditto/)
     end
+
+    it 'surpresses chmod invocation' do
+      test_chunks([SAMPLE_WRITE_AUXILIARY_FILES], /^chmod/)
+    end
   end
 
 
@@ -129,7 +133,7 @@ describe 'Parser' do
   it 'handles write-file' do
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[2])
-    @formatter.flush.should == [:format_write_file, Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/module.modulemap")]
+    @formatter.flush.should == [:format_write_file, Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-49C486D7B8EF179A4C22BBA8.sh")]
   end
 
   it 'recovers after printing unrecognized text' do
@@ -182,6 +186,11 @@ describe 'Parser' do
       :format_process_info_plist,
       Pathname.new("Target\\ Support\\ Files/LambdaKit-iOS/Info.plist")
     ]
+  end
+
+  it 'check dependencies' do
+    @parser.parse('Check dependencies')
+    @formatter.flush.should == [:format_check_dependencies]
   end
 
 end
