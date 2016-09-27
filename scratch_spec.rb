@@ -57,7 +57,7 @@ describe 'Parser' do
 
   context 'Suppressing' do
 
-    def test_chunks(chunks, regex)
+    def surpress(regex, chunks)
       chunks.each do |chunk|
         @parser.parse(chunk.lines[1])
         @formatter.flush
@@ -68,45 +68,45 @@ describe 'Parser' do
     end
 
     it 'supresses the giant compiler (swift, swiftc, clang) output' do
-      test_chunks(
-        [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES],
-         /^    \/Applications/)
+      surpress(/^    \/Applications/, [
+        SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE,
+        SAMPLE_COMPILE_SWIFT_SOURCES])
     end
 
     it 'shuts up `export` in compile body' do
-      test_chunks([SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
-         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO],
-         /^    export/)
+      surpress(/^    export/, [
+        SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
+        SAMPLE_DITTO])
     end
 
     it 'suppresses mkdir' do
-      test_chunks([SAMPLE_WRITE_AUXILIARY_FILES,
-                   SAMPLE_CREATE_PRODUCT_STRUCTURE],
-                   /^\/bin\/mkdir/)
+      surpress(/^\/bin\/mkdir/, [
+        SAMPLE_WRITE_AUXILIARY_FILES,
+        SAMPLE_CREATE_PRODUCT_STRUCTURE
+      ])
     end
 
     it 'shuts up `cd` in compile body' do
-      test_chunks(
-        [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
-         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO],
-         /^    cd/)
+      surpress(/^    cd/, [
+        SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
+        SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO])
     end
 
     it 'suppresses builtin-' do
-      test_chunks([SAMPLE_PROCESS_INFOPLIST], /^    builtin-/)
+      surpress(/^    builtin-/, [SAMPLE_PROCESS_INFOPLIST])
     end
 
 
     it 'shuts up setenv' do
-      test_chunks([SAMPLE_COMPILE], /^    setenv/)
+      surpress(/^    setenv/, [SAMPLE_COMPILE])
     end
 
     it 'surpresses /usr/bin/ditto invocation' do
-      test_chunks([SAMPLE_DITTO], /^    \/usr\/bin\/ditto/)
+      surpress(/^    \/usr\/bin\/ditto/, [SAMPLE_DITTO])
     end
 
     it 'surpresses chmod invocation' do
-      test_chunks([SAMPLE_WRITE_AUXILIARY_FILES], /^chmod/)
+      surpress(/^chmod/,[SAMPLE_WRITE_AUXILIARY_FILES])
     end
   end
 
