@@ -75,6 +75,12 @@ MergeSwiftModule normal x86_64 /Users/marinusalj/code/lyft/lyft-temp/build/Pods.
     cd /Users/marinusalj/code/lyft/lyft-temp/Pods
     /Applications/Xcode.app/Contents/Developer/Toolchains/Swift_2.3.xctoolchain/usr/bin/swift -frontend -emit-module /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/D
 )
+SAMPLE_DITTO = %Q(
+Ditto /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/DerivedSources/SnapKit-Swift.h /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h
+    cd /Users/marinusalj/code/lyft/lyft-temp/Pods
+    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/marinusalj/.bin:/Users/marinusalj/code/go/bin:/Users/marinusalj/.gem/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/marinusalj/.fzf/bin"
+    /usr/bin/ditto -rsrc /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/DerivedSources/SnapKit-Swift.h
+)
 SAMPLE_PRECOMPILE = %Q(
 ProcessPCH /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveRecord-gxwwuvyzqubnbfaesalfplrycxpe/Build/Intermediates/PrecompiledHeaders/Pods-CocoaLumberjack-prefix-aklsecopvqdctoeroyamrkgktpei/Pods-CocoaLumberjack-prefix.pch.pch Pods-CocoaLumberjack-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
     cd /Users/musalj/code/OSS/ObjectiveRecord/Pods

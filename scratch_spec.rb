@@ -42,13 +42,20 @@ describe 'Parser' do
       Pathname.new("/Users/paul/foo/bar/siesta/Source/Resource.swift")]
   end
 
+  it 'handles Ditto' do
+    @parser.parse(SAMPLE_DITTO.lines[1])
+    @formatter.flush.should == [
+      :format_ditto,
+      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h")]
+  end
+
   it 'handles CompileSwiftSources' do
     @parser.parse(SAMPLE_COMPILE_SWIFT_SOURCES.lines[1])
     @formatter.flush.should == [:format_compile_swift_sources]
   end
 
 
-  context 'Suppressing common lines' do
+  context 'Suppressing' do
 
     def test_chunks(chunks, regex)
       chunks.each do |chunk|
@@ -68,7 +75,7 @@ describe 'Parser' do
 
     it 'shuts up `export` in compile body' do
       test_chunks([SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
-         SAMPLE_PROCESS_INFOPLIST],
+         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO],
          /^    export/)
     end
 
@@ -81,7 +88,7 @@ describe 'Parser' do
     it 'shuts up `cd` in compile body' do
       test_chunks(
         [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
-         SAMPLE_PROCESS_INFOPLIST],
+         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO],
          /^    cd/)
     end
 
@@ -94,6 +101,9 @@ describe 'Parser' do
       test_chunks([SAMPLE_COMPILE], /^    setenv/)
     end
 
+    it 'surpresses /usr/bin/ditto invocation' do
+      test_chunks([SAMPLE_DITTO], /^    \/usr\/bin\/ditto/)
+    end
   end
 
 

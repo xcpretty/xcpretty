@@ -125,12 +125,21 @@ chunk "Compile a pile of swift files" do |c|
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc .*$/
 end
 
-chunk "Merging swift modules" do |c|
+chunk "Merge swift modules" do |c|
   c.line /^MergeSwiftModule (?:[\w]+\s)*(#{PATH}\.swiftmodule)$/ do |f, m|
     f.format_merge_swift_module(Pathname.new(m[1]))
   end
   c.line SHELL_CD
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift .*$/
+end
+
+chunk "Ditto" do |c|
+  c.line /^Ditto (?:#{PATH}.h) (#{PATH}.h)$/ do |f,m|
+    f.format_ditto(Pathname.new(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /^    \/usr\/bin\/ditto/
 end
 
 chunk "Code sign" do |c|
@@ -168,6 +177,7 @@ end
 
 class Formatter
   def format_compile(path); end
+  def format_ditto(path); end
   def format_unknown(line); end
   def format_compile_swift_sources(); end
   def format_merge_swift_module(); end
@@ -180,6 +190,9 @@ end
 class DummyFormatter < Formatter
   def format_compile(path)
     puts "Compile #{path.basename}"
+  end
+  def format_ditto(path)
+    puts "Ditto #{path.basename}"
   end
   def format_unknown(line)
     puts "WAT: #{line}"
