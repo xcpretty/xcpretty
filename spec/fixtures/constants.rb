@@ -171,6 +171,14 @@ TiffUtil eye_icon.tiff
     cd /Users/musalj/code/OSS/Alcatraz
     /usr/bin/tiffutil -cathidpicheck /Users/musalj/code/OSS/Alcatraz/Alcatraz/eye_icon@2x.png /Users/musalj/code/OSS/Alcatraz/Alcatraz/eye_icon.png -out /Users/musalj/Library/Application\\ Support/Developer/Shared/Xcode/Plug-ins/Alcatraz.xcplugin/Contents/Resources/eye_icon.tiff
 )
+
+SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL = %Q(
+PhaseScriptExecution [CP]\\ Check\\ Pods\\ Manifest.lock build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-E44F85D54F22A5EEFE0DDBE1.sh
+    cd /Users/marinusalj/code/lyft/lyft-temp
+    /bin/sh -c /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-E44F85D54F22A5EEFE0DDBE1.sh
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+)
+
 SAMPLE_RUN_SCRIPT = %Q(
 PhaseScriptExecution Check\\ Pods\\ Manifest.lock /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example

@@ -57,7 +57,7 @@ describe 'Parser' do
 
   context 'Suppressing' do
 
-    def surpress(regex, chunks)
+    def suppress(regex, chunks)
       chunks.each do |chunk|
         @parser.parse(chunk.lines[1])
         @formatter.flush
@@ -68,45 +68,49 @@ describe 'Parser' do
     end
 
     it 'supresses the giant compiler (swift, swiftc, clang) output' do
-      surpress(/^    \/Applications/, [
+      suppress(/^\s{4}\/Applications/, [
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE,
         SAMPLE_COMPILE_SWIFT_SOURCES])
     end
 
     it 'shuts up `export` in compile body' do
-      surpress(/^    export/, [
+      suppress(/^\s{4}export/, [
         SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
         SAMPLE_DITTO])
     end
 
     it 'suppresses mkdir' do
-      surpress(/^\/bin\/mkdir/, [
+      suppress(/^\/bin\/mkdir/, [
         SAMPLE_WRITE_AUXILIARY_FILES,
         SAMPLE_CREATE_PRODUCT_STRUCTURE
       ])
     end
 
     it 'shuts up `cd` in compile body' do
-      surpress(/^    cd/, [
+      suppress(/^\s{4}cd/, [
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
-        SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO])
+        SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL])
     end
 
     it 'suppresses builtin-' do
-      surpress(/^    builtin-/, [SAMPLE_PROCESS_INFOPLIST])
+      suppress(/^\s{4}builtin-/, [SAMPLE_PROCESS_INFOPLIST])
     end
 
 
     it 'shuts up setenv' do
-      surpress(/^    setenv/, [SAMPLE_COMPILE])
+      suppress(/^\s{4}setenv/, [SAMPLE_COMPILE])
     end
 
-    it 'surpresses /usr/bin/ditto invocation' do
-      surpress(/^    \/usr\/bin\/ditto/, [SAMPLE_DITTO])
+    it 'suppresses /usr/bin/ditto invocation' do
+      suppress(/^\s{4}\/usr\/bin\/ditto/, [SAMPLE_DITTO])
     end
 
-    it 'surpresses chmod invocation' do
-      surpress(/^chmod/,[SAMPLE_WRITE_AUXILIARY_FILES])
+    it 'suppresses chmod invocation' do
+      suppress(/^chmod/,[SAMPLE_WRITE_AUXILIARY_FILES])
+    end
+
+    it 'suppresses shell invocations' do
+      suppress(/^\s{4}\/bin\/sh -c/, [SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL])
     end
   end
 
@@ -191,6 +195,14 @@ describe 'Parser' do
   it 'check dependencies' do
     @parser.parse('Check dependencies')
     @formatter.flush.should == [:format_check_dependencies]
+  end
+
+  it 'handles phase script execution' do
+    @parser.parse(SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL.lines[1])
+    @formatter.flush.should == [
+      :format_phase_script_execution,
+      "[CP] Check Pods Manifest.lock"
+    ]
   end
 
 end

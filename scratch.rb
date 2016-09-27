@@ -92,11 +92,12 @@ end
 
 PATH              = /[ \w\/:\\\-+.]+\/?/
 SOURCE_EXTENSIONS = /m|mm|c|cc|cpp|cxx|swift/
-SHELL_CD          = /^\s{4}cd\s(#{PATH})$/
-SHELL_SETENV      = /^\s{4}setenv(?:#{PATH})?[\w\-]+\s(.*)$/
-SHELL_EXPORT      = /^\s{4}export \w+=.*$/
-SHELL_MKDIR       = /^\/bin\/mkdir -p/
 SHELL_BUILTIN     = /^\s{4}builtin-/
+SHELL_CD          = /^\s{4}cd\s(#{PATH})$/
+SHELL_EXPORT      = /^\s{4}export \w+=.*$/
+SHELL_SETENV      = /^\s{4}setenv(?:#{PATH})?[\w\-]+\s(.*)$/
+SHELL_SUBSHELL    = /^\s{4}\/bin\/sh -c/
+SHELL_MKDIR       = /^\/bin\/mkdir -p/
 SHELL_CHMOD       = /^chmod/
 
 chunk "Compiling" do |c|
@@ -183,6 +184,16 @@ chunk "Process info.plist" do |c|
   c.line SHELL_BUILTIN
 end
 
+chunk "PhaseScriptExecution" do |c|
+  c.line /^PhaseScriptExecution\s((\\\ |\S)*)\s/ do |f,m|
+    f.format_phase_script_execution(m[1].delete("\\"))
+  end
+  c.line SHELL_CD
+  c.line SHELL_SUBSHELL
+end
+
+
+
 class Formatter
   def format_compile(path); end
   def format_check_dependencies; end
@@ -194,6 +205,7 @@ class Formatter
   def format_write_file(path); end
   def format_create_product_structure; end
   def format_process_info_plist(path); end
+  def format_phase_script_execution; end
 end
 
 class DummyFormatter < Formatter
@@ -226,6 +238,9 @@ class DummyFormatter < Formatter
   end
   def format_process_info_plist(path)
     puts "Process #{path.basename}"
+  end
+  def format_phase_script_execution(name)
+    puts "Executing script #{name}"
   end
 end
 
