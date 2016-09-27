@@ -47,14 +47,60 @@ describe 'Parser' do
     @formatter.flush.should == [:format_compile_swift_sources]
   end
 
-  it 'supresses the giant compiler (swift, swiftc, clang) output' do
-    [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
-      @parser.parse(source.lines[1])
-      @formatter.flush
-      @parser.parse(source.lines.select { |l| l =~ /^    \/Applications/}[0])
-      @formatter.flush.should == []
-      @parser.parse("\n")
+
+  context 'Suppressing common lines' do
+
+    def test_chunks(chunks, regex)
+      chunks.each do |chunk|
+        @parser.parse(chunk.lines[1])
+        @formatter.flush
+        @parser.parse(chunk.lines.find { |l| l =~ regex })
+        @formatter.flush.should == []
+        @parser.parse("\n")
+      end
     end
+
+    it 'supresses the giant compiler (swift, swiftc, clang) output' do
+      test_chunks(
+        [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES],
+         /^    \/Applications/)
+    end
+
+    it 'shuts up `export` in compile body' do
+      test_chunks([SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
+         SAMPLE_PROCESS_INFOPLIST],
+         /^    export/)
+    end
+
+    it 'suppresses mkdir' do
+      test_chunks([SAMPLE_WRITE_AUXILIARY_FILES,
+                   SAMPLE_CREATE_PRODUCT_STRUCTURE],
+                   /^\/bin\/mkdir/)
+    end
+
+    it 'shuts up `cd` in compile body' do
+      test_chunks(
+        [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
+         SAMPLE_PROCESS_INFOPLIST],
+         /^    cd/)
+    end
+
+    it 'suppresses builtin-' do
+      test_chunks([SAMPLE_PROCESS_INFOPLIST], /^    builtin-/)
+    end
+
+
+    it 'shuts up setenv' do
+      test_chunks([SAMPLE_COMPILE], /^    setenv/)
+    end
+
+  end
+
+
+  it 'outputs unrecognized text' do
+    @parser.parse(SAMPLE_COMPILE.lines[1])
+    @parser.parse("YOLO 123")
+    @formatter.flush.should == [:format_unknown, "YOLO 123"]
   end
 
   it 'handles MergeSwiftModule' do
@@ -64,15 +110,6 @@ describe 'Parser' do
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit.swiftmodule")]
   end
 
-  it 'shuts up `export` in compile body' do
-    [SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
-      @parser.parse(source.lines[1])
-      @formatter.flush
-      @parser.parse(source.lines.select { |l| l =~ /^    export/}[0])
-      @formatter.flush.should == []
-      @parser.parse("\n")
-    end
-  end
 
   it 'handles writing auxiliary files' do
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
@@ -83,39 +120,6 @@ describe 'Parser' do
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[2])
     @formatter.flush.should == [:format_write_file, Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/zipzap-iOS.build/module.modulemap")]
-  end
-
-  it 'suppresses mkdir' do
-    @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
-    @formatter.flush
-    @parser.parse(
-      SAMPLE_WRITE_AUXILIARY_FILES.lines.select { |l| l =~ /^\/bin\/mkdir/}[0])
-    @formatter.flush.should == []
-  end
-
-  it 'shuts up `cd` in compile body' do
-    [SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES].each do |source|
-      @parser.parse(source.lines[1])
-      @formatter.flush
-      @parser.parse(SAMPLE_COMPILE_SWIFT_SOURCES.lines[2])
-      @formatter.flush.should == []
-      @parser.parse("\n")
-    end
-  end
-
-  it 'shuts up setenv' do
-    @parser.parse(SAMPLE_COMPILE.lines[1])
-    @formatter.flush
-    SAMPLE_COMPILE.lines.select { |l| l =~ /^    setenv/}.each do |line|
-      @parser.parse(line)
-      @formatter.flush.should == []
-    end
-  end
-
-  it 'outputs unrecognized text' do
-    @parser.parse(SAMPLE_COMPILE.lines[1])
-    @parser.parse("YOLO 123")
-    @formatter.flush.should == [:format_unknown, "YOLO 123"]
   end
 
   it 'recovers after printing unrecognized text' do
@@ -155,6 +159,19 @@ describe 'Parser' do
   it 'prints unrecognized text if there is no chunk' do
     @parser.parse("YOLO")
     @formatter.flush.should == [:format_unknown, "YOLO"]
+  end
+
+  it 'handles create project structure' do
+    @parser.parse(SAMPLE_CREATE_PRODUCT_STRUCTURE.lines[1])
+    @formatter.flush.should == [:format_create_product_structure]
+  end
+
+  it 'handles process info.plist' do
+    @parser.parse(SAMPLE_PROCESS_INFOPLIST.lines[1])
+    @formatter.flush.should == [
+      :format_process_info_plist,
+      Pathname.new("Target\\ Support\\ Files/LambdaKit-iOS/Info.plist")
+    ]
   end
 
 end
