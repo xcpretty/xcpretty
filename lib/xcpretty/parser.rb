@@ -269,6 +269,19 @@ module XCPretty
       # $1 = reference
       SYMBOL_REFERENCED_FROM_MATCHER = /\s+"(.*)", referenced from:$/
     end
+
+    module Informative
+      # @regex Captured groups
+      # $1 = whole info
+      # $2 = message
+      # $3 = plugin name
+      PLUGIN_LOADING_MATCHER = /^.+(\[MT\] PluginLoading: (.*?(?:([\w]+)\.xcplugin).*))$/
+
+      # @regex Captured groups
+      # $1 = whole info
+      # $2 = message
+      IPHONE_SIMULATOR_MATCHER = /^.+(\[MT\] iPhoneSimulator: (.*))$/
+    end
   end
 
   class Parser
@@ -276,6 +289,7 @@ module XCPretty
     include Matchers
     include Matchers::Errors
     include Matchers::Warnings
+    include Matchers::Informative
 
     attr_reader :formatter
 
@@ -396,6 +410,10 @@ module XCPretty
         formatter.format_shell_command($1, $2)
       when GENERIC_WARNING_MATCHER
         formatter.format_warning($1)
+      when PLUGIN_LOADING_MATCHER
+        formatter.format_info($1)
+      when IPHONE_SIMULATOR_MATCHER
+        formatter.format_info($1)
       else
         ""
       end

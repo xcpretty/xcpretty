@@ -615,3 +615,16 @@ SAMPLE_FORMAT_WARNING = %Q(
                          %d
 1 warning generated.
 )
+
+
+################################################################################
+# INFORMATIVE
+################################################################################
+
+SAMPLE_PLUGIN_INFO = %q(2015-04-23 10:20:09.018 xcodebuild[77828:9774464] [MT] PluginLoading: Required plug-in compatibility UUID 9F75337B-21B4-4ADC-B558-F9CADF7073A7 for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/AllMissingXcodeFeatures.xcplugin' not present in DVTPlugInCompatibilityUUIDs)
+
+SAMPLE_PLUGIN_INFO_TRIMMED = %q([MT] PluginLoading: Required plug-in compatibility UUID 9F75337B-21B4-4ADC-B558-F9CADF7073A7 for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/AllMissingXcodeFeatures.xcplugin' not present in DVTPlugInCompatibilityUUIDs)
+
+SAMPLE_IPHONE_SIMULATOR_INFO = %q(2015-04-23 10:20:09.161 xcodebuild[77828:9774464] [MT] iPhoneSimulator: SimVerifier returned: Error Domain=NSPOSIXErrorDomain Code=53 "Simulator verification failed." UserInfo=0x7f81829c2240 {NSLocalizedFailureReason=A connection to the simulator verification service could not be established., NSLocalizedRecoverySuggestion=Ensure that Xcode.app is installed on a volume with ownership enabled., NSLocalizedDescription=Simulator verification failed.})
+
+SAMPLE_IPHONE_SIMULATOR_INFO_TRIMMED = %q([MT] iPhoneSimulator: SimVerifier returned: Error Domain=NSPOSIXErrorDomain Code=53 "Simulator verification failed." UserInfo=0x7f81829c2240 {NSLocalizedFailureReason=A connection to the simulator verification service could not be established., NSLocalizedRecoverySuggestion=Ensure that Xcode.app is installed on a volume with ownership enabled., NSLocalizedDescription=Simulator verification failed.})
