@@ -41,7 +41,7 @@ OptionParser.new do |opts|
   opts.on('-f', '--formatter PATH', 'Use formatter returned from evaluating the specified Ruby file') do |path|
     printer_opts[:formatter] = XCPretty.load_custom_class(path)
   end
-  opts.on('--[no-]color', 'Use colorized output. Defaults is auto') do |value|
+  opts.on('-c', '--[no-]color', 'Use colorized output. Default is auto') do |value|
     printer_opts[:colorize] = value
   end
   opts.on('--[no-]utf', 'Use unicode characters in output. Default is auto.') do |value|
