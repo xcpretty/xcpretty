@@ -1,17 +1,18 @@
 require 'xcpretty/formatters/formatter'
 require "xcpretty/formatters/simple"
 require "fixtures/constants"
+require 'pathname'
 
 module XCPretty
 
     describe Simple do
 
       before(:each) do
-        @formatter = Simple.new(false, false)
+        @formatter = Simple.new({colorize: false, use_unicode: false})
       end
 
       it "formats analyzing" do
-        @formatter.format_analyze("CCChip8DisplayView.m", 'path/to/file').should ==
+        @formatter.format_analyze(Pathname.new("/path/to/CCChip8DisplayView.m")).should ==
         "> Analyzing CCChip8DisplayView.m"
       end
 
@@ -41,17 +42,17 @@ module XCPretty
       end
 
       it "formats compiling output" do
-        @formatter.format_compile("NSMutableArray+ObjectiveSugar.m", 'path/to/file').should ==
+        @formatter.format_compile(Pathname.new("/path/to/NSMutableArray+ObjectiveSugar.m")).should ==
         "> Compiling NSMutableArray+ObjectiveSugar.m"
       end
 
       it "formats compiling xib output" do
-        @formatter.format_compile_xib("MainMenu.xib", 'path/to/file').should ==
+        @formatter.format_compile_xib(Pathname.new("/path/to/MainMenu.xib")).should ==
         "> Compiling MainMenu.xib"
       end
 
       it "formats compiling storyboard output" do
-        @formatter.format_compile_xib("Main.storyboard", 'path/to/file').should ==
+        @formatter.format_compile_xib(Pathname.new("/path/to/Main.storyboard")).should ==
         "> Compiling Main.storyboard"
       end
 
@@ -71,7 +72,7 @@ module XCPretty
       end
 
       it "formats Copy strings file" do
-        @formatter.format_copy_strings_file("InfoPlist.strings").should ==
+        @formatter.format_copy_strings_file(Pathname.new("/path/to/InfoPlist.strings")).should ==
         "> Copying InfoPlist.strings"
       end
 
@@ -81,7 +82,7 @@ module XCPretty
       end
 
       it "formats info.plist processing" do
-        @formatter.format_process_info_plist("The Spacer-Info.plist", "The Spacer/The Spacer-Info.plist").should ==
+        @formatter.format_process_info_plist(Pathname.new("/paht/to/The Spacer-Info.plist")).should ==
         "> Processing The Spacer-Info.plist"
       end
 
@@ -129,23 +130,23 @@ module XCPretty
       end
 
       it "formats precompiling output" do
-        @formatter.format_process_pch("Pods-CocoaLumberjack-prefix.pch").should ==
+        @formatter.format_process_pch(Pathname.new("/path/to/Pods-CocoaLumberjack-prefix.pch")).should ==
         "> Precompiling Pods-CocoaLumberjack-prefix.pch"
       end
 
       it "formats code signing" do
-        @formatter.format_codesign("build/Release/CocoaChip.app").should ==
-        "> Signing build/Release/CocoaChip.app"
+        @formatter.format_codesign(Pathname.new("/path/to/build/Release/CocoaChip.app")).should ==
+        "> Signing CocoaChip.app"
       end
 
       it "formats preprocessing a file" do
-        @formatter.format_preprocess("CocoaChip/CocoaChip-Info.plist").should ==
-        "> Preprocessing CocoaChip/CocoaChip-Info.plist"
+        @formatter.format_preprocess(Pathname.new("CocoaChip/CocoaChip-Info.plist")).should ==
+        "> Preprocessing CocoaChip-Info.plist"
       end
 
       it "formats PBXCp" do
-        @formatter.format_pbxcp("build/Release/CocoaChipCore.framework").should ==
-        "> Copying build/Release/CocoaChipCore.framework"
+        @formatter.format_pbxcp(Pathname.new("build/Release/CocoaChipCore.framework")).should ==
+        "> Copying CocoaChipCore.framework"
       end
 
       it "formats test run start" do
@@ -159,12 +160,12 @@ module XCPretty
       end
 
       it "formats Touch" do
-        @formatter.format_touch("/path/to/SomeFile.txt", "SomeFile.txt").should ==
+        @formatter.format_touch(Pathname.new("/path/to/SomeFile.txt")).should ==
         "> Touching SomeFile.txt"
       end
 
       it "formats TiffUtil" do
-        @formatter.format_tiffutil("unbelievable.tiff").should ==
+        @formatter.format_tiffutil(Pathname.new("/path/to/unbelievable.tiff")).should ==
         "> Validating unbelievable.tiff"
       end
 
@@ -173,6 +174,10 @@ module XCPretty
           '> Check Dependencies'
       end
 
+      it 'formats Merge Swift module' do
+        @formatter.format_merge_swift_module(Pathname.new("~/foo/wat.swiftmodule")).should ==
+          '> Merge Swift module wat.swiftmodule'
+      end
     end
 end
 

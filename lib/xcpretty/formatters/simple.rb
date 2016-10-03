@@ -19,8 +19,8 @@ module XCPretty
 
     INDENT = "    "
 
-    def format_analyze(file_name, file_path)
-      format("Analyzing", file_name)
+    def format_analyze(path)
+      format("Analyzing", path.basename)
     end
 
     def format_build_target(target, project, configuration)
@@ -39,16 +39,16 @@ module XCPretty
       format("Cleaning", "#{project}/#{target} [#{configuration}]")
     end
 
-    def format_compile(file_name, file_path)
-      format("Compiling", file_name)
+    def format_compile(path)
+      format("Compiling", path.basename)
     end
 
-    def format_compile_xib(file_name, file_path)
-      format("Compiling", file_name)
+    def format_compile_xib(path)
+      format("Compiling", path.basename)
     end
 
-    def format_compile_storyboard(file_name, file_path)
-      format("Compiling", file_name)
+    def format_compile_storyboard(path)
+      format("Compiling", path.basename)
     end
 
     def format_copy_header_file(source, target)
@@ -59,8 +59,8 @@ module XCPretty
       format("Copying", File.basename(source))
     end
 
-    def format_copy_strings_file(file)
-      format("Copying", file)
+    def format_copy_strings_file(path)
+      format("Copying", path.basename)
     end
 
     def format_cpresource(resource)
@@ -79,7 +79,7 @@ module XCPretty
       format("Linking", target)
     end
 
-    def format_failing_test(suite, test_case, reason, file)
+    def format_failing_test(suite, test_case, reason, path)
       INDENT + format_test("#{test_case}, #{reason}", :fail)
     end
 
@@ -106,24 +106,24 @@ module XCPretty
       format("Running script", "'#{script_name}'")
     end
 
-    def format_process_info_plist(file_name, file_path)
-      format("Processing", file_name)
+    def format_process_info_plist(path)
+      format("Processing", path.basename)
     end
 
-    def format_process_pch(file)
-      format("Precompiling", file)
+    def format_process_pch(path)
+      format("Precompiling", path.basename)
     end
 
-    def format_codesign(file)
-      format("Signing", file)
+    def format_codesign(path)
+      format("Signing", path.basename)
     end
 
-    def format_preprocess(file)
-      format("Preprocessing", file)
+    def format_preprocess(path)
+      format("Preprocessing", path.basename)
     end
 
-    def format_pbxcp(file)
-      format("Copying", file)
+    def format_pbxcp(path)
+      format("Copying", path.basename)
     end
 
     def format_test_run_started(name)
@@ -134,13 +134,18 @@ module XCPretty
       heading("", name, "")
     end
 
-    def format_touch(file_path, file_name)
-      format("Touching", file_name)
+    def format_touch(path)
+      format("Touching", path.basename)
     end
 
-    def format_tiffutil(file_name)
-      format("Validating", file_name)
+    def format_tiffutil(path)
+      format("Validating", path.basename)
     end
+
+    def format_merge_swift_module(path)
+      format("Merge Swift module", path.basename)
+    end
+
 
     def format_warning(message)
       INDENT + yellow(message)
