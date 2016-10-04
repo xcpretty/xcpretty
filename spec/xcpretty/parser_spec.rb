@@ -87,7 +87,7 @@ describe 'Parser' do
     end
 
     it 'suppresses builtin-' do
-      suppress(/^\s{4}builtin-/, [SAMPLE_PROCESS_INFOPLIST])
+      suppress(/^\s{4}builtin-/, [SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO])
     end
 
 

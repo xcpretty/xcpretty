@@ -79,6 +79,7 @@ SAMPLE_DITTO = %Q(
 Ditto /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/DerivedSources/SnapKit-Swift.h /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h
     cd /Users/marinusalj/code/lyft/lyft-temp/Pods
     export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/marinusalj/.bin:/Users/marinusalj/code/go/bin:/Users/marinusalj/.gem/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/marinusalj/.fzf/bin"
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/Alamofire.build/module.modulemap /Users/marinusalj/code/lyft/lyft-temp/build/Alamofire.framework/Modules
     /usr/bin/ditto -rsrc /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/DerivedSources/SnapKit-Swift.h
 )
 SAMPLE_PRECOMPILE = %Q(

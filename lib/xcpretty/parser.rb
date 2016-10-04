@@ -158,6 +158,7 @@ chunk "Ditto" do |c|
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
+  c.line SHELL_BUILTIN
   c.line /^    \/usr\/bin\/ditto/
 end
 
