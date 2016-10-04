@@ -269,4 +269,10 @@ chunk "Libtool" do |c|
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/libtool /
 end
 
+chunk "CopyPNGFile" do |c|
+  c.line /^CopyPNGFile (#{PATH}) (#{PATH})/ do |f,m|
+    f.format_copy_png_file(Pathname.new(m[2]), Pathname.new(m[1]))
+  end
+end
+
 end # XCPretty

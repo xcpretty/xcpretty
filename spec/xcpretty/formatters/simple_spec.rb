@@ -76,6 +76,12 @@ module XCPretty
         result.should == '> Copy Source.h'
       end
 
+      it 'formats copying header files' do
+        @formatter.format_copy_png_file('/path/to/Default-568h@2x.png',
+                                        'build/Example.app/Default-568h@2x.png')
+        result.should == '> Copy Default-568h@2x.png'
+      end
+
       it 'formats copying plist files' do
         @formatter.format_copy_plist_file("Source.plist",
                                           'dir/Destination.plist')

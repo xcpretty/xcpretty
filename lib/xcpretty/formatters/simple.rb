@@ -55,6 +55,10 @@ module XCPretty
       format("Copy", File.basename(source))
     end
 
+    def format_copy_png_file(source, target)
+      format("Copy", File.basename(source))
+    end
+
     def format_copy_plist_file(source, target)
       format("Copy", File.basename(source))
     end

@@ -21,7 +21,8 @@ module XCPretty
     def format_compile_storyboard(path);                               end
     def format_compile_swift_sources();                                end
     def format_compile_xib(path);                                      end
-    def format_copy_header_file(source, target);                       end
+    def format_copy_header_file(source, destination);                  end
+    def format_copy_png_file(source, destination);                     end
     def format_copy_plist_file(source, target);                        end
     def format_copy_strings_file(file_name);                           end
     def format_create_product_structure();                             end

@@ -244,6 +244,15 @@ describe 'Parser' do
     ]
   end
 
+  it 'parses CopyPNGFile' do
+    @parser.parse(SAMPLE_COPYPNGFILE.lines[1])
+    @formatter.flush.should == [
+      :format_copy_png_file,
+      Pathname.new("Default-568h@2x.png"),
+      Pathname.new("build/Example.app/Default-568h@2x.png")
+    ]
+  end
+
   it 'parses CompileXIB' do
     @parser.parse(SAMPLE_COMPILE_XIB.lines[1])
     @formatter.flush.should == [

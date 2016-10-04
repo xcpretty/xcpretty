@@ -114,6 +114,12 @@ CopyStringsFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar
     setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/en.lproj -- ObjectiveSugar/en.lproj/InfoPlist.strings
 )
+SAMPLE_COPYPNGFILE = %Q(
+CopyPNGFile build/Example.app/Default-568h@2x.png Default-568h@2x.png
+cd /Users/distiller/LyftKit/Example
+export PATH="/Applications/Xcode-8.0.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode-8.0.app/Contents/Developer/usr/bin:/usr/local/bin:/usr/local/lib/ruby/gems/2.3.0/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+/Applications/Xcode-8.0.app/Contents/Developer/usr/bin/copypng -compress -strip-PNG-text /Users/distiller/LyftKit/Example/Default-568h@2x.png /Users/distiller/LyftKit/Example/build/Example.app/Default-568h@2x.png
+)
 SAMPLE_PROCESS_INFOPLIST = %Q(
 ProcessInfoPlistFile /Users/marinusalj/code/lyft/lyft-temp/build/LambdaKit.framework/Info.plist Target\\ Support\\ Files/LambdaKit-iOS/Info.plist
     cd /Users/marinusalj/code/lyft/lyft-temp/Pods
