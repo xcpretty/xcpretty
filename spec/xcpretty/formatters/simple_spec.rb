@@ -76,6 +76,11 @@ module XCPretty
         "> Copying InfoPlist.strings"
       end
 
+      it "formats Ditto" do
+        @formatter.format_ditto(Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h")).should ==
+        "> Ditto SnapKit-Swift.h"
+      end
+
       it "formats GenerateDSYMFile" do
         @formatter.format_generate_dsym("ObjectiveSugarTests.octest.dSYM").should ==
         "> Generating 'ObjectiveSugarTests.octest.dSYM'"

@@ -146,6 +146,9 @@ module XCPretty
       format("Merge Swift module", path.basename)
     end
 
+    def format_ditto(path)
+      format("Ditto", path.basename)
+    end
 
     def format_warning(message)
       INDENT + yellow(message)
