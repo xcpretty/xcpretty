@@ -52,7 +52,7 @@ module XCPretty
 
       it 'formats write file' do
         @formatter.format_write_file(Pathname.new("/foo/bar/baz.swift"))
-        result.should == "> Write file /foo/bar/baz.swift"
+        result.should == "> Write file baz.swift"
       end
 
       it "formats compiling output" do

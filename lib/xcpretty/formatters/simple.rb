@@ -148,7 +148,7 @@ module XCPretty
     end
 
     def format_write_file(path)
-      format("Write file", path)
+      format("Write file", path.basename)
     end
 
     def format_failing_test(suite, test_case, reason, path)
