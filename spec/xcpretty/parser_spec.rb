@@ -28,21 +28,21 @@ describe 'Parser' do
       Pathname.new("/Users/musalj/code/OSS/Objective\\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
   end
 
-  it 'handles CompileSwift' do
+  it 'parses CompileSwift' do
     @parser.parse(SAMPLE_SWIFT_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
       Pathname.new("/Users/marinusalj/code/foo/bar-temp/baz/Classes/yolo\\ +\\ Common/Common/Helpers\\ \\&\\ Managers/Poller.swift")]
   end
 
-  it 'handles Ditto' do
+  it 'parses Ditto' do
     @parser.parse(SAMPLE_DITTO.lines[1])
     @formatter.flush.should == [
       :format_ditto,
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h")]
   end
 
-  it 'handles CompileSwiftSources' do
+  it 'parses CompileSwiftSources' do
     @parser.parse(SAMPLE_COMPILE_SWIFT_SOURCES.lines[1])
     @formatter.flush.should == [:format_compile_swift_sources]
   end
@@ -63,13 +63,13 @@ describe 'Parser' do
     it 'supresses the giant compiler (swift, swiftc, clang) output' do
       suppress(/^\s{4}\/Applications/, [
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE,
-        SAMPLE_COMPILE_SWIFT_SOURCES])
+        SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_LD])
     end
 
     it 'shuts up `export`' do
       suppress(/^\s{4}export/, [
         SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
-        SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT])
+        SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD])
     end
 
     it 'suppresses mkdir' do
@@ -83,7 +83,7 @@ describe 'Parser' do
       suppress(/^\s{4}cd/, [
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_TOUCH,
-        SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL])
+        SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD])
     end
 
     it 'suppresses builtin-' do
@@ -119,24 +119,24 @@ describe 'Parser' do
     @formatter.flush.should == [:format_unknown, "YOLO 123"]
   end
 
-  it 'handles MergeSwiftModule' do
+  it 'parses MergeSwiftModule' do
     @parser.parse(SAMPLE_MERGE_SWIFT_MODULE.lines[1])
     @formatter.flush.should == [
       :format_merge_swift_module,
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit.swiftmodule")]
   end
 
-  it 'handles Touch' do
+  it 'parses Touch' do
     @parser.parse(SAMPLE_TOUCH.lines[1])
     @formatter.flush.should == [:format_touch, Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz\\ Tests.octest")]
   end
 
-  it 'handles writing auxiliary files' do
+  it 'parses writing auxiliary files' do
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
     @formatter.flush.should == [:format_write_auxiliary_files]
   end
 
-  it 'handles write-file' do
+  it 'parses write-file' do
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[2])
     @formatter.flush.should == [:format_write_file, Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-49C486D7B8EF179A4C22BBA8.sh")]
@@ -181,12 +181,12 @@ describe 'Parser' do
     @formatter.flush.should == [:format_unknown, "YOLO"]
   end
 
-  it 'handles create project structure' do
+  it 'parses create project structure' do
     @parser.parse(SAMPLE_CREATE_PRODUCT_STRUCTURE.lines[1])
     @formatter.flush.should == [:format_create_product_structure]
   end
 
-  it 'handles process info.plist' do
+  it 'parses process info.plist' do
     @parser.parse(SAMPLE_PROCESS_INFOPLIST.lines[1])
     @formatter.flush.should == [
       :format_process_info_plist,
@@ -199,11 +199,21 @@ describe 'Parser' do
     @formatter.flush.should == [:format_check_dependencies]
   end
 
-  it 'handles phase script execution' do
+  it 'parses phase script execution' do
     @parser.parse(SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL.lines[1])
     @formatter.flush.should == [
       :format_phase_script_execution,
       "[CP] Check Pods Manifest.lock"
+    ]
+  end
+
+  it 'parses Ld' do
+    @parser.parse(SAMPLE_LD.lines[1])
+    @formatter.flush.should == [
+      :format_ld,
+      Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/ObjectiveSugar"),
+      'normal',
+      'i386'
     ]
   end
 

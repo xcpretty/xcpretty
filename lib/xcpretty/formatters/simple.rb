@@ -75,8 +75,8 @@ module XCPretty
       format("Build library", library)
     end
 
-    def format_linking(target, build_variants, arch)
-      format("Link", target)
+    def format_ld(path, build_variants, arch)
+      format("Link", path.basename)
     end
 
     def format_phase_success(phase_name)

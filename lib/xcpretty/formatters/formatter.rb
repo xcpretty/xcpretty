@@ -30,7 +30,7 @@ module XCPretty
     def format_failing_test(suite, test, time, path);                  end
     def format_generate_dsym(dsym);                                    end
     def format_libtool(library);                                       end
-    def format_linking(file, build_variant, arch);                     end
+    def format_linking(path, build_variant, arch);                     end
     def format_measuring_test(suite, test, time);                      end
     def format_merge_swift_module(path);                               end
     def format_passing_test(suite, test, time);                        end

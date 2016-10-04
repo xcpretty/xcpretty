@@ -108,7 +108,7 @@ module XCPretty
       end
 
       it "formats Linking" do
-        @formatter.format_linking("ObjectiveSugar", 'normal', 'i386')
+        @formatter.format_ld(Pathname.new("/path/to/ObjectiveSugar.app/ObjectiveSugar"), 'normal', 'i386')
         result.should == "> Link ObjectiveSugar"
       end
 

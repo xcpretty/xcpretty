@@ -105,6 +105,10 @@ end
 
 
 PATH              = /[ \w\/:\\\-+.&]+\/?/
+WORD              = /[\w]+/
+CLANG             = /^\s{4}(?:#{PATH})\/usr\/bin\/clang .*$/
+SWIFT             = /^\s{4}(?:#{PATH})\/usr\/bin\/swift .*$/
+SWIFTC            = /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc .*$/
 SHELL_BUILTIN     = /^\s{4}builtin-/
 SHELL_CD          = /^\s{4}cd\s(#{PATH})$/
 SHELL_EXPORT      = /^\s{4}export \w+=.*$/
@@ -120,15 +124,15 @@ chunk "Compiling" do |c|
   c.line SHELL_CD
   c.line SHELL_SETENV
   c.line SHELL_EXPORT
-  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/clang .*$/
+  c.line CLANG
 end
 
-chunk "Compiling Swift" do |c|
-  c.line /^CompileSwift (?:[\w]+\s)*(#{PATH}\.swift)$/ do |f, m|
+chunk "Comp[\w]+\siling Swift" do |c|
+  c.line /^CompileSwift (?:#{WORD}\s)*(#{PATH}\.swift)$/ do |f, m|
     f.format_compile(Pathname.new(m[1]))
   end
   c.line SHELL_CD
-  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift .*$/
+  c.line SWIFT
 end
 
 chunk "Compile a pile of swift files" do |c|
@@ -137,7 +141,7 @@ chunk "Compile a pile of swift files" do |c|
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
-  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc .*$/
+  c.line SWIFTC
 end
 
 chunk "Merge swift modules" do |c|
@@ -145,7 +149,7 @@ chunk "Merge swift modules" do |c|
     f.format_merge_swift_module(Pathname.new(m[1]))
   end
   c.line SHELL_CD
-  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift .*$/
+  c.line SWIFT
 end
 
 chunk "Ditto" do |c|
@@ -213,6 +217,15 @@ chunk "Touch" do |c|
   c.line SHELL_CD
   c.line SHELL_EXPORT
   c.line /^\s{4}\/usr\/bin\/touch -c/
+end
+
+chunk "Ld" do |c|
+  c.line /^Ld (#{PATH}) (#{WORD})\s(#{WORD})$/ do |f,m|
+    f.format_ld(Pathname.new(m[1]), m[2], m[3])
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line CLANG
 end
 
 end # XCPretty
