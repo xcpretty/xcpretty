@@ -71,8 +71,8 @@ module XCPretty
       format("Generate '#{dsym}'")
     end
 
-    def format_libtool(library)
-      format("Build library", library)
+    def format_libtool(path)
+      format("Build library", path.basename)
     end
 
     def format_ld(path, build_variants, arch)

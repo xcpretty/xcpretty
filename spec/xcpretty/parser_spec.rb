@@ -77,7 +77,7 @@ describe 'Parser' do
       suppress(/^\s{4}export/, [
         SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
         SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD,
-        SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB])
+        SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL])
     end
 
     it 'shuts up `cd`' do
@@ -85,7 +85,7 @@ describe 'Parser' do
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_TOUCH,
         SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER,
-        SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB])
+        SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL])
     end
 
     it 'suppresses builtin-' do
@@ -114,6 +114,10 @@ describe 'Parser' do
 
     it 'suppresses ibtool invocation' do
       suppress(/^\s{4}(?:#{PATH})ibtool /, [SAMPLE_COMPILE_XIB])
+    end
+
+    it 'suppresses libtool invocation' do
+      suppress(/^\s{4}(?:#{PATH})libtool /, [SAMPLE_LIBTOOL])
     end
   end
 
@@ -245,6 +249,14 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_compile_xib,
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/XIBs/AlertController.xib")
+    ]
+  end
+
+  it 'parses Libtool' do
+    @parser.parse(SAMPLE_LIBTOOL.lines[1])
+    @formatter.flush.should == [
+      :format_libtool,
+      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Models.framework/Pods_Models"),
     ]
   end
 end

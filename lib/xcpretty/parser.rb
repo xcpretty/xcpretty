@@ -104,7 +104,11 @@ def self.chunk(name, &block)
 end
 
 
-PATH              = /[ \w\/:\\\-+.&@]+\/?/
+# PATH is a generic path matcher. It needs to end wither with / in case of a
+# directory match, or a word character in case of a file (or directory without
+# a trailing slash).
+PATH              = /[ \w\/:\\\-+.&@]+[\w\/]/
+# WORD is used mostly for configuration options
 WORD              = /[\w]+/
 CLANG             = /^\s{4}(?:#{PATH})\/usr\/bin\/(?:clang|clang\+\+)/
 SWIFT             = /^\s{4}(?:#{PATH})\/usr\/bin\/swift/
@@ -254,6 +258,15 @@ chunk "CompileXIB" do |c|
   c.line SHELL_CD
   c.line SHELL_EXPORT
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/ibtool /
+end
+
+chunk "Libtool" do |c|
+  c.line /^Libtool (#{PATH}) (#{WORD}) (#{WORD})$/ do |f,m|
+    f.format_libtool(Pathname.new(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/libtool /
 end
 
 end # XCPretty

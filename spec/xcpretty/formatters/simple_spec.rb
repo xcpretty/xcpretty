@@ -114,9 +114,9 @@ module XCPretty
       end
 
       it "formats Libtool" do
-        @formatter.format_libtool("libPods-ObjectiveSugarTests-Kiwi.a")
+        @formatter.format_libtool(Pathname.new("/path/to/ObjectiveSugarTests.a"))
         result.should ==
-        "> Build library libPods-ObjectiveSugarTests-Kiwi.a"
+        "> Build library ObjectiveSugarTests.a"
       end
 
       it "formats failing tests" do
