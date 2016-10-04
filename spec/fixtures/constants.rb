@@ -57,7 +57,7 @@ CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaan
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=178 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Intermediates/Kiwi.build/Debug-iphonesimulator/Kiwi.build/Kiwi-generated-files.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Intermediates/Kiwi.build/Debug-iphonesimulator/Kiwi.build/Kiwi-own-target-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Intermediates/Kiwi.build/Debug-iphonesimulator/Kiwi.build/Kiwi-all-target-headers.hmap -iquote /Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Intermediates/Kiwi.build/Debug-iphonesimulator/Kiwi.build/Kiwi-project-headers.hmap -I/Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Intermediates/Kiwi.build/Debug-iphonesimulator/Kiwi.build/DerivedSources/i386 -I/Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Intermediates/Kiwi.build/Debug-iphonesimulator/Kiwi.build/DerivedSources -Wall -F/Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/Developer/Library/Frameworks -F/Applications/Xcode.app/Contents/Developer/Library/Frameworks -include /Users/musalj/code/OSS/Kiwi/Supporting\\ Files/Kiwi-Prefix.pch -MMD -MT dependencies -MF /Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Intermediates/Kiwi.build/Debug-iphonesimulator/Kiwi.build/Objects-normal/i386/KWNull.d --serialize-diagnostics /Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Intermediates/Kiwi.build/Debug-iphonesimulator/Kiwi.build/Objects-normal/i386/KWNull.dia -c /Users/musalj/code/OSS/Kiwi/Classes/Core/KWNull.m -o /Users/musalj/Library/Developer/Xcode/DerivedData/Kiwi-guimpeiqlepzeaankpygesetdzsx/Build/Intermediates/Kiwi.build/Debug-iphonesimulator/Kiwi.build/Objects-normal/i386/KWNull.o
 )
 SAMPLE_SWIFT_COMPILE = %Q(
-CompileSwift normal arm64 /Users/paul/foo/bar/siesta/Source/Resource.swift
+CompileSwift normal x86_64 /Users/marinusalj/code/foo/bar-temp/baz/Classes/yolo\\ +\\ Common/Common/Helpers\\ \\&\\ Managers/Poller.swift
     cd /Users/paul/foo/bar/siesta
     /Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift -frontend -c /Users/paul/foo/bar/siesta/Source/Networking-Alamofire.swift /Users/paul/foo/bar/siesta/Source/Networking.swift /Users/paul/foo/bar/siesta/Source/ARC+Siesta.swift /Users/paul/foo/bar/siesta/Source/DebugFormatting.swift /Users/paul/foo/bar/siesta/Source/Configuration.swift /Users/paul/foo/bar/siesta/Source/Networking-NSURLSession.swift /Users/paul/foo/bar/siesta/Source/Collection+Siesta.swift /Users/paul/foo/bar/siesta/Source/Logging.swift /Users/paul/foo/bar/siesta/Source/GCD+Siesta.swift /Users/paul/foo/bar/siesta/Source/Regex.swift /Users/paul/foo/bar/siesta/Source/ResourceObserver.swift /Users/paul/foo/bar/siesta/Source/Service.swift /Users/paul/foo/bar/siesta/Source/Request.swift /Users/paul/foo/bar/siesta/Source/NSURL+Siesta.swift /Users/paul/foo/bar/siesta/Source/ResourceStatusOverlay.swift /Users/paul/foo/bar/siesta/Source/WeakCache.swift -primary-file /Users/paul/foo/bar/siesta/Source/Resource.swift /Users/paul/foo/bar/siesta/Source/ResponseTransformer.swift /Users/paul/foo/bar/siesta/Source/RemoteImageView.swift /Users/paul/foo/bar/siesta/Source/Error.swift /Users/paul/foo/bar/siesta/Source/Entity.swift /Users/paul/foo/bar/siesta/Source/Siesta-ObjC.swift /Users/paul/foo/bar/siesta/Source/String+Siesta.swift /Users/paul/foo/bar/siesta/Source/PersistentCache.swift -target arm64-apple-ios8.0 -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk -I /tmp/xcode-build/Release-iphoneos -F /tmp/xcode-build/Release-iphoneos -F /Users/paul/foo/bar/siesta/Carthage/Build/iOS -g -import-underlying-module -serialize-debugging-options -Xcc -I/tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/swift-overrides.hmap -Xcc -iquote -Xcc /tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Siesta-generated-files.hmap -Xcc -I/tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Siesta-own-target-headers.hmap -Xcc -I/tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Siesta-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /tmp/xcode-build/Siesta.build/all-product-headers.yaml -Xcc -iquote -Xcc /tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Siesta-project-headers.hmap -Xcc -I/tmp/xcode-build/Release-iphoneos/include -Xcc -I/tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/DerivedSources/arm64 -Xcc -I/tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/DerivedSources -Xcc -ivfsoverlay -Xcc /tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/unextended-module-overlay.yaml -Xcc -working-directory/Users/paul/foo/bar/siesta -emit-module-doc-path /tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Objects-normal/arm64/Resource~partial.swiftdoc -O -module-name Siesta -emit-module-path /tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Objects-normal/arm64/Resource~partial.swiftmodule -serialize-diagnostics-path /tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Objects-normal/arm64/Resource.dia -emit-dependencies-path /tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Objects-normal/arm64/Resource.d -emit-reference-dependencies-path /tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Objects-normal/arm64/Resource.swiftdeps -o /tmp/xcode-build/Siesta.build/Release-iphoneos/Siesta.build/Objects-normal/arm64/Resource.o -embed-bitcode-marker
 )
@@ -137,6 +137,7 @@ GenerateDSYMFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSuga
 SAMPLE_TOUCH = %Q(
 Touch /Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz\\ Tests.octest
     cd /Users/musalj/code/OSS/Alcatraz
+    export PATH="/Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode7.app/Contents/Developer/usr/bin:/Users/marinusalj/.bin:/Users/marinusalj/code/go/bin:/Users/marinusalj/.gem/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/marinusalj/.fzf/bin"
     /usr/bin/touch -c /Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz\\ Tests.octest
 )
 
@@ -179,6 +180,63 @@ PhaseScriptExecution [CP]\\ Check\\ Pods\\ Manifest.lock build/Lyft.build/Debug-
 error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
 )
 
+SAMPLE_NEW_RUN_SCRIPT = %Q(
+PhaseScriptExecution Generate\ View\ Controller\ Factory build/Lyft.build/Debug-iphonesimulator/Lyft.build/Script-679D9DF81B72DA39003A5532.sh
+    cd /Users/marinusalj/code/lyft/lyft-temp
+    export ACTION=build
+    export AD_HOC_CODE_SIGNING_ALLOWED=NO
+    export ALTERNATE_GROUP=staff
+    export ALTERNATE_MODE=u+w,go-w,a+rX
+    export ALTERNATE_OWNER=marinusalj
+    export ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=YES
+    export ALWAYS_SEARCH_USER_PATHS=NO
+    export ALWAYS_USE_SEPARATE_HEADERMAPS=NO
+    export INFOPLIST_EXPAND_BUILD_SETTINGS=YES
+    export INFOPLIST_FILE="Lyft/Supporting Files/Info.plist"
+    export INFOPLIST_OUTPUT_FORMAT=binary
+    export INFOPLIST_PATH=Lyft.app/Info.plist
+    export INFOPLIST_PREPROCESS=NO
+    export INFOSTRINGS_PATH=Lyft.app/English.lproj/InfoPlist.strings
+    export INSTALL_DIR=/tmp/Lyft.dst/Applications
+    export INSTALL_GROUP=staff
+    export INSTALL_MODE_FLAG=u+w,go-w,a+rX
+    /bin/sh -c /Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/Lyft.build/Script-679D9DF81B72DA39003A5532.sh
+storyboarder version 0.1-internal
+collecting viewcontrollers...
+  eowifalwekfjalwkej: 6 controllers collected
+  eowifalwekfjalwkej: 5 controllers collected
+  eowifalwekfjalwkej: 5 controllers collected
+  eowifalwekfjalwkej: 2 controllers collected
+  eowifalwekfjalwkej: 12 controllers collected
+  eowifalwekfjalwkej: 7 controllers collected
+  eowifalwekfjalwkej: 2 controllers collected
+  eowifalwekfjalwkej: 4 controllers collected
+  eowifalwekfjalwkej: 3 controllers collected
+  eowifalwekfjalwkej: 3 controllers collected
+  eowifalwekfjalwkej: 11 controllers collected
+  eowifalwekfjalwkej: 1 controllers collected
+  eowifalwekfjalwkej: 5 controllers collected
+  eowifalwekfjalwkej: 1 controllers collected
+  eowifalwekfjalwkej: 13 controllers collected
+  eowifalwekfjalwkej: 7 controllers collected
+  eowifalwekfjalwkej: 5 controllers collected
+  eowifalwekfjalwkej: 4 controllers collected
+  eowifalwekfjalwkej: 4 controllers collected
+  eowifalwekfjalwkej: 1 controllers collected
+  eowifalwekfjalwkej: 2 controllers collected
+  eowifalwekfjalwkej: 3 controllers collected
+  eowifalwekfjalwkej: 15 controllers collected
+  eowifalwekfjalwkej: 2 controllers collected
+  eowifalwekfjalwkej: 2 controllers collected
+  eowifalwekfjalwkej: 2 controllers collected
+  eowifalwekfjalwkej: 8 controllers collected
+  eowifalwekfjalwkej: 8 controllers collected
+  eowifalwekfjalwkej: 2 controllers collected
+  eowifalwekfjalwkej: 4 controllers collected
+149 viewcontrollers in 30 storyboards
+assembling...
+done!
+)
 SAMPLE_RUN_SCRIPT = %Q(
 PhaseScriptExecution Check\\ Pods\\ Manifest.lock /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugar.build/Script-468DABF301EC4EC1A00CC4C2.sh
     cd /Users/musalj/code/OSS/ObjectiveSugar/Example

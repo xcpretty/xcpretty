@@ -202,6 +202,17 @@ chunk "PhaseScriptExecution" do |c|
     f.format_phase_script_execution(m[1].delete("\\"))
   end
   c.line SHELL_CD
+  c.line SHELL_EXPORT
   c.line SHELL_SUBSHELL
 end
+
+chunk "Touch" do |c|
+  c.line /^Touch (#{PATH})/ do |f,m|
+    f.format_touch(Pathname.new(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /^\s{4}\/usr\/bin\/touch -c/
+end
+
 end # XCPretty

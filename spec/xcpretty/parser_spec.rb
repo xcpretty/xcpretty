@@ -66,10 +66,10 @@ describe 'Parser' do
         SAMPLE_COMPILE_SWIFT_SOURCES])
     end
 
-    it 'shuts up `export` in compile body' do
+    it 'shuts up `export`' do
       suppress(/^\s{4}export/, [
         SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
-        SAMPLE_DITTO])
+        SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT])
     end
 
     it 'suppresses mkdir' do
@@ -79,10 +79,11 @@ describe 'Parser' do
       ])
     end
 
-    it 'shuts up `cd` in compile body' do
+    it 'shuts up `cd`' do
       suppress(/^\s{4}cd/, [
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
-        SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL])
+        SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_TOUCH,
+        SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL])
     end
 
     it 'suppresses builtin-' do
@@ -105,6 +106,10 @@ describe 'Parser' do
     it 'suppresses shell invocations' do
       suppress(/^\s{4}\/bin\/sh -c/, [SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL])
     end
+
+    it 'suppresses touch invocation' do
+      suppress(/^\s{4}\/usr\/bin\/touch -c/,[SAMPLE_TOUCH])
+    end
   end
 
 
@@ -121,6 +126,10 @@ describe 'Parser' do
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit.swiftmodule")]
   end
 
+  it 'handles Touch' do
+    @parser.parse(SAMPLE_TOUCH.lines[1])
+    @formatter.flush.should == [:format_touch, Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz\\ Tests.octest")]
+  end
 
   it 'handles writing auxiliary files' do
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
