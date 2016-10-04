@@ -79,25 +79,6 @@ module XCPretty
       format("Linking", target)
     end
 
-    def format_failing_test(suite, test_case, reason, path)
-      output.puts format_test("#{test_case}, #{reason}", :fail)
-    end
-
-    def format_passing_test(suite, test_case, time)
-      output.puts format_test("#{test_case} (#{colored_time(time)} seconds)",
-                           :pass)
-    end
-
-    def format_pending_test(suite, test_case)
-      output.puts format_test("#{test_case} [PENDING]", :pending)
-    end
-
-    def format_measuring_test(suite, test_case, time)
-      output.puts format_test(
-        "#{test_case} measured (#{colored_time(time)} seconds)", :measure
-      )
-    end
-
     def format_phase_success(phase_name)
       format(phase_name.capitalize, "Succeeded")
     end
@@ -126,6 +107,10 @@ module XCPretty
       format("Copying", path.basename)
     end
 
+    def format_check_dependencies
+      format('Check Dependencies')
+    end
+
     def format_test_run_started(name)
       heading("Test Suite", name, "started")
     end
@@ -150,12 +135,27 @@ module XCPretty
       format("Ditto", path.basename)
     end
 
-    def format_warning(message)
-      output.puts INDENT + yellow(message)
+    def format_failing_test(suite, test_case, reason, path)
+      output.puts format_test("#{test_case}, #{reason}", :fail)
     end
 
-    def format_check_dependencies
-      format('Check Dependencies')
+    def format_passing_test(suite, test_case, time)
+      output.puts format_test("#{test_case} (#{colored_time(time)} seconds)",
+                           :pass)
+    end
+
+    def format_pending_test(suite, test_case)
+      output.puts format_test("#{test_case} [PENDING]", :pending)
+    end
+
+    def format_measuring_test(suite, test_case, time)
+      output.puts format_test(
+        "#{test_case} measured (#{colored_time(time)} seconds)", :measure
+      )
+    end
+
+    def format_warning(message)
+      output.puts INDENT + yellow(message)
     end
 
     private
