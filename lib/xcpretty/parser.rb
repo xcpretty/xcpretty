@@ -247,4 +247,13 @@ chunk "CpResource" do |c|
   c.line SHELL_BUILTIN
 end
 
+chunk "CompileXIB" do |c|
+  c.line /^CompileXIB (#{PATH})/ do |f,m|
+    f.format_compile_xib(Pathname.new(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/ibtool /
+end
+
 end # XCPretty

@@ -66,12 +66,6 @@ describe 'Parser' do
         SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_LD])
     end
 
-    it 'shuts up `export`' do
-      suppress(/^\s{4}export/, [
-        SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
-        SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD, SAMPLE_CPHEADER, SAMPLE_CPRESOURCE])
-    end
-
     it 'suppresses mkdir' do
       suppress(/^\/bin\/mkdir/, [
         SAMPLE_WRITE_AUXILIARY_FILES,
@@ -79,11 +73,19 @@ describe 'Parser' do
       ])
     end
 
+    it 'shuts up `export`' do
+      suppress(/^\s{4}export/, [
+        SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
+        SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD,
+        SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB])
+    end
+
     it 'shuts up `cd`' do
       suppress(/^\s{4}cd/, [
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_TOUCH,
-        SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER, SAMPLE_CPRESOURCE])
+        SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER,
+        SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB])
     end
 
     it 'suppresses builtin-' do
@@ -108,6 +110,10 @@ describe 'Parser' do
 
     it 'suppresses touch invocation' do
       suppress(/^\s{4}\/usr\/bin\/touch -c/,[SAMPLE_TOUCH])
+    end
+
+    it 'suppresses ibtool invocation' do
+      suppress(/^\s{4}(?:#{PATH})ibtool /, [SAMPLE_COMPILE_XIB])
     end
   end
 
@@ -231,6 +237,14 @@ describe 'Parser' do
       :format_cpresource,
       Pathname.new("ObjectiveSugar/Default-568h@2x.png"),
       Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/Default-568h@2x.png")
+    ]
+  end
+
+  it 'parses CompileXIB' do
+    @parser.parse(SAMPLE_COMPILE_XIB.lines[1])
+    @formatter.flush.should == [
+      :format_compile_xib,
+      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/XIBs/AlertController.xib")
     ]
   end
 end
