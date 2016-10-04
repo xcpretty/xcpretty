@@ -275,4 +275,13 @@ chunk "CopyPNGFile" do |c|
   end
 end
 
+chunk "CopySwiftLibs" do |c|
+  c.line /^CopySwiftLibs (#{PATH})$/ do |f,m|
+    f.format_copy_swift_libs(Pathname.new(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift-stdlib-tool /
+end
+
 end # XCPretty

@@ -88,6 +88,11 @@ module XCPretty
         result.should == '> Copy Source.plist'
       end
 
+      it 'formats copying swift libs' do
+        @formatter.format_copy_swift_libs(Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework"))
+        result.should == '> Copy Swift lib Pods_Lyft.framework'
+      end
+
       it "formats copy resource" do
         @formatter.format_cpresource(Pathname.new("ObjectiveSugar/Default-568h@2x.png"),
                                      Pathname.new("/path/to/wat/Default-568h@2x.png"))

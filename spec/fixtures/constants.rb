@@ -120,6 +120,16 @@ cd /Users/distiller/LyftKit/Example
 export PATH="/Applications/Xcode-8.0.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode-8.0.app/Contents/Developer/usr/bin:/usr/local/bin:/usr/local/lib/ruby/gems/2.3.0/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 /Applications/Xcode-8.0.app/Contents/Developer/usr/bin/copypng -compress -strip-PNG-text /Users/distiller/LyftKit/Example/Default-568h@2x.png /Users/distiller/LyftKit/Example/build/Example.app/Default-568h@2x.png
 )
+SAMPLE_COPYSWIFTLIBS = %Q(
+CopySwiftLibs /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework
+    cd /Users/marinusalj/code/lyft/lyft-temp/Pods
+    export CODESIGN_ALLOCATE=/Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+    export DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer
+    export PATH="/Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode7.app/Contents/Developer/usr/bin:/Users/marinusalj/.bin:/Users/marinusalj/code/go/bin:/Users/marinusalj/.gem/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/marinusalj/.fzf/bin"
+    export SDKROOT=/Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator9.3.sdk
+    export TOOLCHAINS=com.apple.dt.toolchain.iOS9_3
+    /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-stdlib-tool --copy --verbose --scan-executable /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework/Pods_Lyft --scan-folder /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework/Frameworks --scan-folder /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework/PlugIns --scan-folder /Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework --platform iphonesimulator --destination /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework/Frameworks --strip-bitcode
+)
 SAMPLE_PROCESS_INFOPLIST = %Q(
 ProcessInfoPlistFile /Users/marinusalj/code/lyft/lyft-temp/build/LambdaKit.framework/Info.plist Target\\ Support\\ Files/LambdaKit-iOS/Info.plist
     cd /Users/marinusalj/code/lyft/lyft-temp/Pods

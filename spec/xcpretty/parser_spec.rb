@@ -77,7 +77,7 @@ describe 'Parser' do
       suppress(/^\s{4}export/, [
         SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
         SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD,
-        SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL])
+        SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL, SAMPLE_COPYSWIFTLIBS])
     end
 
     it 'shuts up `cd`' do
@@ -85,7 +85,7 @@ describe 'Parser' do
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_TOUCH,
         SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER,
-        SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL])
+        SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL, SAMPLE_COPYSWIFTLIBS])
     end
 
     it 'suppresses builtin-' do
@@ -118,6 +118,10 @@ describe 'Parser' do
 
     it 'suppresses libtool invocation' do
       suppress(/^\s{4}(?:#{PATH})libtool /, [SAMPLE_LIBTOOL])
+    end
+
+    it 'suppresses swift-stdlib-tool' do
+      suppress(/^\s{4}(?:#{PATH})swift-stdlib-tool /, [SAMPLE_COPYSWIFTLIBS])
     end
   end
 
@@ -250,6 +254,14 @@ describe 'Parser' do
       :format_copy_png_file,
       Pathname.new("Default-568h@2x.png"),
       Pathname.new("build/Example.app/Default-568h@2x.png")
+    ]
+  end
+
+  it 'parses CopySwiftLibs' do
+    @parser.parse(SAMPLE_COPYSWIFTLIBS.lines[1])
+    @formatter.flush.should == [
+      :format_copy_swift_libs,
+      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework")
     ]
   end
 

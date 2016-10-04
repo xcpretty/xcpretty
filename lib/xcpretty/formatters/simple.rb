@@ -67,6 +67,10 @@ module XCPretty
       format("Copy", path.basename)
     end
 
+    def format_copy_swift_libs(path)
+      format("Copy Swift lib", path.basename)
+    end
+
     def format_cpresource(source, destination)
       format("Copy", source.basename)
     end
