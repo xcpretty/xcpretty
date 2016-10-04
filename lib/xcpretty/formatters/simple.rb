@@ -80,20 +80,20 @@ module XCPretty
     end
 
     def format_failing_test(suite, test_case, reason, path)
-      INDENT + format_test("#{test_case}, #{reason}", :fail)
+      output.puts format_test("#{test_case}, #{reason}", :fail)
     end
 
     def format_passing_test(suite, test_case, time)
-      INDENT + format_test("#{test_case} (#{colored_time(time)} seconds)",
+      output.puts format_test("#{test_case} (#{colored_time(time)} seconds)",
                            :pass)
     end
 
     def format_pending_test(suite, test_case)
-      INDENT + format_test("#{test_case} [PENDING]", :pending)
+      output.puts format_test("#{test_case} [PENDING]", :pending)
     end
 
     def format_measuring_test(suite, test_case, time)
-      INDENT + format_test(
+      output.puts format_test(
         "#{test_case} measured (#{colored_time(time)} seconds)", :measure
       )
     end
@@ -151,7 +151,7 @@ module XCPretty
     end
 
     def format_warning(message)
-      INDENT + yellow(message)
+      output.puts INDENT + yellow(message)
     end
 
     def format_check_dependencies
@@ -161,16 +161,16 @@ module XCPretty
     private
 
     def heading(prefix, text, description)
-      [prefix, white(text), description].join(" ").strip
+      output.puts [prefix, white(text), description].join(" ").strip
     end
 
     def format(command, argument_text="", success=true)
       symbol = status_symbol(success ? :completion : :fail)
-      [symbol, white(command), argument_text].join(" ").strip
+      output.puts [symbol, white(command), argument_text].join(" ").strip
     end
 
     def format_test(test_case, status)
-      [status_symbol(status), test_case].join(" ").strip
+      output.puts INDENT + [status_symbol(status), test_case].join(" ").strip
     end
 
     def status_symbol(status)

@@ -1,5 +1,12 @@
 require 'pathname'
 module XCPretty
+module Log
+  def self.debug(*args)
+    if ENV["XCPRETTY_DEBUG"]
+      puts "DEBUG: #{args}"
+    end
+  end
+end
 
 # Chunk represents a segment of xcodebuild's output, usually # grouped by the
 # task (e.g. Compile, Analyze, ...).
@@ -25,6 +32,7 @@ class Chunk
   def enter(line, formatter)
     entry_regex, handler = @line_handlers.first
     if match = line.match(entry_regex)
+      Log.debug "Entered #{line}"
       handler.call(formatter, match)
       return self
     end
@@ -37,13 +45,17 @@ class Chunk
     @line_handlers.each do |handler|
       matches = line.match(handler.first)
       if matches
+        Log.debug "Handling #{line}"
         handler[1].call(formatter, matches) if handler[1]
         return self
       end
     end
-    return nil if line.match(@exit)
+    if line.match(@exit)
+      Log.debug("Exiting")
+      return nil
+    end
 
-    formatter.format_unknown(line.strip)
+    formatter.format_unknown(line.chomp)
     return self
   end
 end
@@ -78,7 +90,7 @@ class Parser
         return if @current_chunk
       end
       # Nobody recognizes this
-      formatter.format_unknown(line.strip)
+      formatter.format_unknown(line.chomp)
     end
   end
 
@@ -137,7 +149,7 @@ chunk "Merge swift modules" do |c|
 end
 
 chunk "Ditto" do |c|
-  c.line /^Ditto (?:#{PATH}.h) (#{PATH}.h)$/ do |f,m|
+  c.line /^Ditto (?:#{PATH}) (#{PATH})$/ do |f,m|
     f.format_ditto(Pathname.new(m[1]))
   end
   c.line SHELL_CD

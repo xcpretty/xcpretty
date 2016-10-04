@@ -77,14 +77,22 @@ OptionParser.new do |opts|
   end
 end
 
-printer = XCPretty::Printer.new(printer_opts)
-reporters = report_classes.compact.each_with_index.map { |k, i| k.new(report_options[i]) }
+#printer = XCPretty::Printer.new(printer_opts)
+#reporters = report_classes.compact.each_with_index.map { |k, i| k.new(report_options[i]) }
+
+formatter = printer_opts[:formatter].new(STDOUT, printer_opts)
+parser = XCPretty::Parser.new(formatter)
 
 STDIN.each_line do |line|
-  printer.pretty_print(line)
-  reporters.each { |r| r.handle(line) }
+  parser.parse(line)
+  #formatters.each do |formatter|
+    #result.call(formatter) if result
+  #end
+
+  #printer.pretty_print(line)
+  #reporters.each { |r| r.handle(line) }
 end
 
-printer.finish
-reporters.each(&:finish)
+#printer.finish
+#reporters.each(&:finish)
 

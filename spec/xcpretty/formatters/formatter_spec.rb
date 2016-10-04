@@ -8,7 +8,8 @@ module XCPretty
   describe Formatter do
 
     before(:each) do
-      @formatter = Formatter.new(true, true)
+      @out = StringIO.new
+      @formatter = Formatter.new(@out, colorize: true, use_unicode: true)
     end
 
     it "initializes with unicode" do
@@ -19,19 +20,17 @@ module XCPretty
       @formatter.colorize?.should be_truthy
     end
 
-    it "outputs to new lines by default" do
-      @formatter.optional_newline.should == "\n"
-    end
-
     it "formats cocoapods errors" do
-      @formatter.format_error("The sandbox is not in sync...").should ==
-      "\n#{@formatter.red("❌  The sandbox is not in sync...")}\n\n"
+      @formatter.format_error("The sandbox is not in sync...")
+      @out.string.should ==
+        "\n#{@formatter.red("❌  The sandbox is not in sync...")}\n\n"
     end
 
     it "formats compiling errors" do
       @formatter.format_compile_error("file", "path/to/file", "expected valid syntax",
                                       "[a should",
-                                      "         ^").should ==
+                                      "         ^")
+      @out.string.should ==
 %Q(
 #{@formatter.red('❌  ')}path/to/file: #{@formatter.red("expected valid syntax")}
 
@@ -43,7 +42,8 @@ module XCPretty
 
     it "formats file missing errors" do
       @formatter.format_file_missing_error("error: no such file or directory:",
-                                           "/path/to/file.swift").should ==
+                                           "/path/to/file.swift")
+      @out.string.should ==
         "\n#{@formatter.red(
           '❌  error: no such file or directory:'
         )} /path/to/file.swift\n\n"
@@ -54,7 +54,8 @@ module XCPretty
 
       @formatter.format_compile_warning("file", "path/to/file", reason,
 %Q(    NSLog(@"alsdkflsakdj %@", 1);),
-%Q(                         ~~   ^)).should ==
+%Q(                         ~~   ^))
+      @out.string.should ==
 
 %Q(
 #{@formatter.yellow('⚠️  ')}path/to/file: #{@formatter.yellow(reason)}
@@ -66,14 +67,16 @@ module XCPretty
     end
 
     it "formats linker warnings" do
-      @formatter.format_ld_warning("ld: embedded dylibs/frameworks only run on iOS 8 or later").should ==
-      "#{@formatter.yellow("⚠️  ld: embedded dylibs/frameworks only run on iOS 8 or later")}"
+      @formatter.format_ld_warning("ld: embedded dylibs/frameworks only run on iOS 8 or later")
+      @out.string.should ==
+      "#{@formatter.yellow("⚠️  ld: embedded dylibs/frameworks only run on iOS 8 or later")}\n"
     end
 
     it "formats linker undefined symbols by default" do
       @formatter.format_undefined_symbols("Undefined symbols for architecture x86_64",
                                           '_OBJC_CLASS_$_CABasicAnimation',
-                                          'objc-class-ref in ATZRadialProgressControl.o').should == %Q(
+                                          'objc-class-ref in ATZRadialProgressControl.o')
+      @out.string.should == %Q(
 #{@formatter.red("❌  Undefined symbols for architecture x86_64")}
 > Symbol: _OBJC_CLASS_$_CABasicAnimation
 > Referenced from: objc-class-ref in ATZRadialProgressControl.o
@@ -84,7 +87,8 @@ module XCPretty
     it "formats linker duplicate symbols by default" do
       @formatter.format_duplicate_symbols("duplicate symbol _OBJC_IVAR_$ClassName._ivarName in",
         ['/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Intermediates/App.build/Debug-iphonesimulator/App.build/Objects-normal/i386/ClassName.o',
-         '/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Products/Debug-iphonesimulator/libPods.a(DuplicateClassName.o)']).should == %Q(
+         '/Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Products/Debug-iphonesimulator/libPods.a(DuplicateClassName.o)'])
+      @out.string.should == %Q(
 #{@formatter.red("❌  duplicate symbol _OBJC_IVAR_$ClassName._ivarName in")}
 > ClassName.o
 > libPods.a(DuplicateClassName.o)
@@ -112,7 +116,8 @@ module XCPretty
                 test_case: 'Splitting the string'
               }]
         }
-        @formatter.format_test_summary(SAMPLE_EXECUTED_TESTS, failures).should == %Q(
+        @formatter.format_test_summary(SAMPLE_EXECUTED_TESTS, failures)
+        @out.string.should == %Q(
 
 CarSpec
   Starting the car, #{@formatter.red("just doesn't work")}
@@ -133,7 +138,8 @@ StringSpec
   ```
 
 
-#{@formatter.red(SAMPLE_EXECUTED_TESTS)})
+#{@formatter.red(SAMPLE_EXECUTED_TESTS)}
+)
     end
   end
 end

@@ -13,7 +13,7 @@ module XCPretty
     end
 
     def initialize(options)
-      super(true, true)
+      super(colorize: true, use_unicode: true)
       load_dependencies
       @filepath = options[:path] || self.class::FILEPATH
       @test_count = 0

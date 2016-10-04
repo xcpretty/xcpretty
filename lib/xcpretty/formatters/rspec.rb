@@ -7,24 +7,20 @@ module XCPretty
     PENDING = "P"
     MEASURING = 'T'
 
-    def optional_newline
-      ''
-    end
-
     def format_passing_test(suite, test_case, time)
-      green(PASS)
+      output.puts green(PASS)
     end
 
     def format_failing_test(test_suite, test_case, reason, file)
-      red(FAIL)
+      output.puts red(FAIL)
     end
 
     def format_pending_test(suite, test_case)
-      yellow(PENDING)
+      output.puts yellow(PENDING)
     end
 
     def format_measuring_test(suite, test_case, time)
-      yellow(MEASURING)
+      output.puts yellow(MEASURING)
     end
 
   end
