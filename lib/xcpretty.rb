@@ -1,5 +1,4 @@
 require 'xcpretty/version'
-require 'xcpretty/printer'
 require 'xcpretty/syntax'
 require 'xcpretty/snippet'
 require 'xcpretty/term'
