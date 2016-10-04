@@ -106,9 +106,9 @@ end
 
 PATH              = /[ \w\/:\\\-+.&]+\/?/
 WORD              = /[\w]+/
-CLANG             = /^\s{4}(?:#{PATH})\/usr\/bin\/clang .*$/
-SWIFT             = /^\s{4}(?:#{PATH})\/usr\/bin\/swift .*$/
-SWIFTC            = /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc .*$/
+CLANG             = /^\s{4}(?:#{PATH})\/usr\/bin\/(?:clang|clang\+\+)/
+SWIFT             = /^\s{4}(?:#{PATH})\/usr\/bin\/swift/
+SWIFTC            = /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc/
 SHELL_BUILTIN     = /^\s{4}builtin-/
 SHELL_CD          = /^\s{4}cd\s(#{PATH})$/
 SHELL_EXPORT      = /^\s{4}export \w+=.*$/
