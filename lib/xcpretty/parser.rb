@@ -104,7 +104,7 @@ def self.chunk(name, &block)
 end
 
 
-PATH              = /[ \w\/:\\\-+.]+\/?/
+PATH              = /[ \w\/:\\\-+.&]+\/?/
 SHELL_BUILTIN     = /^\s{4}builtin-/
 SHELL_CD          = /^\s{4}cd\s(#{PATH})$/
 SHELL_EXPORT      = /^\s{4}export \w+=.*$/

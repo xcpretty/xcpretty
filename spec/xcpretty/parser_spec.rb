@@ -32,7 +32,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_SWIFT_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
-      Pathname.new("/Users/paul/foo/bar/siesta/Source/Resource.swift")]
+      Pathname.new("/Users/marinusalj/code/foo/bar-temp/baz/Classes/yolo\\ +\\ Common/Common/Helpers\\ \\&\\ Managers/Poller.swift")]
   end
 
   it 'handles Ditto' do
