@@ -16,12 +16,12 @@ module XCPretty
 
       it "formats analyzing" do
         @formatter.format_analyze(Pathname.new("/path/to/CCChip8DisplayView.m"))
-        result.should == "> Analyzing CCChip8DisplayView.m"
+        result.should == "> Analyze CCChip8DisplayView.m"
       end
 
       it "formats build target/project/configuration with target" do
         @formatter.format_build_target("The Spacer", "Pods", "Debug")
-        result.should == "> Building Pods/The Spacer [Debug]"
+        result.should == "> Build Pods/The Spacer [Debug]"
       end
 
       it "formats build target/project/configuration with target" do
@@ -31,12 +31,12 @@ module XCPretty
 
       it "formats analyze target/project/configuration with target" do
         @formatter.format_analyze_target("The Spacer", "Pods", "Debug")
-        result.should == "> Analyzing Pods/The Spacer [Debug]"
+        result.should == "> Analyze Pods/The Spacer [Debug]"
       end
 
       it "formats clean target/project/configuration" do
         @formatter.format_clean_target("Pods-ObjectiveSugar", "Pods", "Debug")
-        result.should == "> Cleaning Pods/Pods-ObjectiveSugar [Debug]"
+        result.should == "> Clean Pods/Pods-ObjectiveSugar [Debug]"
       end
 
       it 'formats compiler warnings' do
@@ -45,41 +45,51 @@ module XCPretty
         result.should == '    ' + warning
       end
 
+      it 'formats write auxiliary files' do
+        @formatter.format_write_auxiliary_files()
+        result.should == "> Write auxiliary files"
+      end
+
+      it 'formats write file' do
+        @formatter.format_write_file(Pathname.new("/foo/bar/baz.swift"))
+        result.should == "> Write file /foo/bar/baz.swift"
+      end
+
       it "formats compiling output" do
         @formatter.format_compile(Pathname.new("/path/to/NSMutableArray+ObjectiveSugar.m"))
-        result.should == "> Compiling NSMutableArray+ObjectiveSugar.m"
+        result.should == "> Compile NSMutableArray+ObjectiveSugar.m"
       end
 
       it "formats compiling xib output" do
         @formatter.format_compile_xib(Pathname.new("/path/to/MainMenu.xib"))
-        result.should == "> Compiling MainMenu.xib"
+        result.should == "> Compile MainMenu.xib"
       end
 
       it "formats compiling storyboard output" do
         @formatter.format_compile_xib(Pathname.new("/path/to/Main.storyboard"))
-        result.should == "> Compiling Main.storyboard"
+        result.should == "> Compile Main.storyboard"
       end
 
       it 'formats copying header files' do
         @formatter.format_copy_header_file('Source.h',
                                            'dir/Destination.h')
-        result.should == '> Copying Source.h'
+        result.should == '> Copy Source.h'
       end
 
       it 'formats copying plist files' do
         @formatter.format_copy_plist_file("Source.plist",
                                           'dir/Destination.plist')
-        result.should == '> Copying Source.plist'
+        result.should == '> Copy Source.plist'
       end
 
       it "formats copy resource" do
         @formatter.format_cpresource("ObjectiveSugar/Default-568h@2x.png")
-        result.should == "> Copying ObjectiveSugar/Default-568h@2x.png"
+        result.should == "> Copy ObjectiveSugar/Default-568h@2x.png"
       end
 
       it "formats Copy strings file" do
         @formatter.format_copy_strings_file(Pathname.new("/path/to/InfoPlist.strings"))
-        result.should == "> Copying InfoPlist.strings"
+        result.should == "> Copy InfoPlist.strings"
       end
 
       it "formats Ditto" do
@@ -89,23 +99,23 @@ module XCPretty
 
       it "formats GenerateDSYMFile" do
         @formatter.format_generate_dsym("ObjectiveSugarTests.octest.dSYM")
-        result.should == "> Generating 'ObjectiveSugarTests.octest.dSYM'"
+        result.should == "> Generate 'ObjectiveSugarTests.octest.dSYM'"
       end
 
       it "formats info.plist processing" do
         @formatter.format_process_info_plist(Pathname.new("/paht/to/The Spacer-Info.plist"))
-        result.should == "> Processing The Spacer-Info.plist"
+        result.should == "> Process The Spacer-Info.plist"
       end
 
       it "formats Linking" do
         @formatter.format_linking("ObjectiveSugar", 'normal', 'i386')
-        result.should == "> Linking ObjectiveSugar"
+        result.should == "> Link ObjectiveSugar"
       end
 
       it "formats Libtool" do
         @formatter.format_libtool("libPods-ObjectiveSugarTests-Kiwi.a")
         result.should ==
-        "> Building library libPods-ObjectiveSugarTests-Kiwi.a"
+        "> Build library libPods-ObjectiveSugarTests-Kiwi.a"
       end
 
       it "formats failing tests" do
@@ -145,31 +155,31 @@ module XCPretty
       it "formats Phase Script Execution" do
         @formatter.format_phase_script_execution("Check Pods Manifest.lock")
         result.should ==
-        "> Running script 'Check Pods Manifest.lock'"
+        "> Run script 'Check Pods Manifest.lock'"
       end
 
       it "formats precompiling output" do
         @formatter.format_process_pch(Pathname.new("/path/to/Pods-CocoaLumberjack-prefix.pch"))
         result.should ==
-        "> Precompiling Pods-CocoaLumberjack-prefix.pch"
+        "> Precompile Pods-CocoaLumberjack-prefix.pch"
       end
 
       it "formats code signing" do
         @formatter.format_codesign(Pathname.new("/path/to/build/Release/CocoaChip.app"))
         result.should ==
-        "> Signing CocoaChip.app"
+        "> Sign CocoaChip.app"
       end
 
       it "formats preprocessing a file" do
         @formatter.format_preprocess(Pathname.new("CocoaChip/CocoaChip-Info.plist"))
         result.should ==
-        "> Preprocessing CocoaChip-Info.plist"
+        "> Preprocess CocoaChip-Info.plist"
       end
 
       it "formats PBXCp" do
         @formatter.format_pbxcp(Pathname.new("build/Release/CocoaChipCore.framework"))
         result.should ==
-        "> Copying CocoaChipCore.framework"
+        "> Copy CocoaChipCore.framework"
       end
 
       it "formats test run start" do
@@ -187,13 +197,13 @@ module XCPretty
       it "formats Touch" do
         @formatter.format_touch(Pathname.new("/path/to/SomeFile.txt"))
         result.should ==
-        "> Touching SomeFile.txt"
+        "> Touch SomeFile.txt"
       end
 
       it "formats TiffUtil" do
         @formatter.format_tiffutil(Pathname.new("/path/to/unbelievable.tiff"))
         result.should ==
-        "> Validating unbelievable.tiff"
+        "> Validate unbelievable.tiff"
       end
 
       it 'formats Check Dependencies' do

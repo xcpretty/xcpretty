@@ -20,11 +20,11 @@ module XCPretty
     INDENT = "    "
 
     def format_analyze(path)
-      format("Analyzing", path.basename)
+      format("Analyze", path.basename)
     end
 
     def format_build_target(target, project, configuration)
-      format("Building", "#{project}/#{target} [#{configuration}]")
+      format("Build", "#{project}/#{target} [#{configuration}]")
     end
 
     def format_aggregate_target(target, project, configuration)
@@ -32,51 +32,51 @@ module XCPretty
     end
 
     def format_analyze_target(target, project, configuration)
-      format("Analyzing", "#{project}/#{target} [#{configuration}]")
+      format("Analyze", "#{project}/#{target} [#{configuration}]")
     end
 
     def format_clean_target(target, project, configuration)
-      format("Cleaning", "#{project}/#{target} [#{configuration}]")
+      format("Clean", "#{project}/#{target} [#{configuration}]")
     end
 
     def format_compile(path)
-      format("Compiling", path.basename)
+      format("Compile", path.basename)
     end
 
     def format_compile_xib(path)
-      format("Compiling", path.basename)
+      format("Compile", path.basename)
     end
 
     def format_compile_storyboard(path)
-      format("Compiling", path.basename)
+      format("Compile", path.basename)
     end
 
     def format_copy_header_file(source, target)
-      format("Copying", File.basename(source))
+      format("Copy", File.basename(source))
     end
 
     def format_copy_plist_file(source, target)
-      format("Copying", File.basename(source))
+      format("Copy", File.basename(source))
     end
 
     def format_copy_strings_file(path)
-      format("Copying", path.basename)
+      format("Copy", path.basename)
     end
 
     def format_cpresource(resource)
-      format("Copying", resource)
+      format("Copy", resource)
     end
 
     def format_generate_dsym(dsym)
-      format("Generating '#{dsym}'")
+      format("Generate '#{dsym}'")
     end
 
     def format_libtool(library)
-      format("Building library", library)
+      format("Build library", library)
     end
 
     def format_linking(target, build_variants, arch)
-      format("Linking", target)
+      format("Link", target)
     end
 
     def format_phase_success(phase_name)
@@ -84,27 +84,27 @@ module XCPretty
     end
 
     def format_phase_script_execution(script_name)
-      format("Running script", "'#{script_name}'")
+      format("Run script", "'#{script_name}'")
     end
 
     def format_process_info_plist(path)
-      format("Processing", path.basename)
+      format("Process", path.basename)
     end
 
     def format_process_pch(path)
-      format("Precompiling", path.basename)
+      format("Precompile", path.basename)
     end
 
     def format_codesign(path)
-      format("Signing", path.basename)
+      format("Sign", path.basename)
     end
 
     def format_preprocess(path)
-      format("Preprocessing", path.basename)
+      format("Preprocess", path.basename)
     end
 
     def format_pbxcp(path)
-      format("Copying", path.basename)
+      format("Copy", path.basename)
     end
 
     def format_check_dependencies
@@ -120,11 +120,11 @@ module XCPretty
     end
 
     def format_touch(path)
-      format("Touching", path.basename)
+      format("Touch", path.basename)
     end
 
     def format_tiffutil(path)
-      format("Validating", path.basename)
+      format("Validate", path.basename)
     end
 
     def format_merge_swift_module(path)
@@ -133,6 +133,14 @@ module XCPretty
 
     def format_ditto(path)
       format("Ditto", path.basename)
+    end
+
+    def format_write_auxiliary_files()
+      format("Write auxiliary files")
+    end
+
+    def format_write_file(path)
+      format("Write file", path)
     end
 
     def format_failing_test(suite, test_case, reason, path)
