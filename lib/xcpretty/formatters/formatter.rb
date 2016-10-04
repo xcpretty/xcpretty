@@ -25,7 +25,7 @@ module XCPretty
     def format_copy_plist_file(source, target);                        end
     def format_copy_strings_file(file_name);                           end
     def format_create_product_structure();                             end
-    def format_cpresource(file);                                       end
+    def format_cpresource(source, destination);                        end
     def format_ditto(path);                                            end
     def format_failing_test(suite, test, time, path);                  end
     def format_generate_dsym(dsym);                                    end

@@ -63,8 +63,8 @@ module XCPretty
       format("Copy", path.basename)
     end
 
-    def format_cpresource(resource)
-      format("Copy", resource)
+    def format_cpresource(source, destination)
+      format("Copy", source.basename)
     end
 
     def format_generate_dsym(dsym)

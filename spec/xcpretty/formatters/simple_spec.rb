@@ -83,8 +83,8 @@ module XCPretty
       end
 
       it "formats copy resource" do
-        @formatter.format_cpresource("ObjectiveSugar/Default-568h@2x.png")
-        result.should == "> Copy ObjectiveSugar/Default-568h@2x.png"
+        @formatter.format_cpresource(Pathname.new("ObjectiveSugar/Default-568h@2x.png"), Pathname.new("/path/to/wat/Default-568h@2x.png"))
+        result.should == "> Copy Default-568h@2x.png"
       end
 
       it "formats Copy strings file" do
