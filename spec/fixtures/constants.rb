@@ -75,6 +75,12 @@ MergeSwiftModule normal x86_64 /Users/marinusalj/code/lyft/lyft-temp/build/Pods.
     cd /Users/marinusalj/code/lyft/lyft-temp/Pods
     /Applications/Xcode.app/Contents/Developer/Toolchains/Swift_2.3.xctoolchain/usr/bin/swift -frontend -emit-module /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/D
 )
+SAMPLE_CPHEADER = %Q(
+CpHeader Target\\ Support\\ Files/Alamofire/Alamofire-umbrella.h /Users/marinusalj/code/lyft/lyft-temp/build/Alamofire.framework/Headers/Alamofire-umbrella.h
+    cd /Users/marinusalj/code/lyft/lyft-temp/Pods
+    export PATH="/Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode7.app/Contents/Developer/usr/bin:/Users/marinusalj/.bin:/Users/marinusalj/code/go/bin:/Users/marinusalj/.gem/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/marinusalj/.fzf/bin"
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/marinusalj/code/lyft/lyft-temp/Pods/Target\ Support\ Files/Alamofire/Alamofire-umbrella.h /Users/marinusalj/code/lyft/lyft-temp/build/Alamofire.framework/Headers
+)
 SAMPLE_DITTO = %Q(
 Ditto /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/DerivedSources/SnapKit-Swift.h /Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h
     cd /Users/marinusalj/code/lyft/lyft-temp/Pods

@@ -229,4 +229,13 @@ chunk "Ld" do |c|
   c.line CLANG
 end
 
+chunk "CPHeader" do |c|
+  c.line /^CpHeader (#{PATH}) (#{PATH})$/ do |f,m|
+    f.format_copy_header_file(Pathname.new(m[1]), Pathname.new(m[2]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line SHELL_BUILTIN
+end
+
 end # XCPretty

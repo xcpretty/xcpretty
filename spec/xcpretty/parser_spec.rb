@@ -69,7 +69,7 @@ describe 'Parser' do
     it 'shuts up `export`' do
       suppress(/^\s{4}export/, [
         SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
-        SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD])
+        SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD, SAMPLE_CPHEADER])
     end
 
     it 'suppresses mkdir' do
@@ -83,13 +83,12 @@ describe 'Parser' do
       suppress(/^\s{4}cd/, [
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_TOUCH,
-        SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD])
+        SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER])
     end
 
     it 'suppresses builtin-' do
-      suppress(/^\s{4}builtin-/, [SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO])
+      suppress(/^\s{4}builtin-/, [SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_CPHEADER])
     end
-
 
     it 'shuts up setenv' do
       suppress(/^\s{4}setenv/, [SAMPLE_COMPILE])
@@ -217,5 +216,13 @@ describe 'Parser' do
     ]
   end
 
+  it 'parses cpheader' do
+    @parser.parse(SAMPLE_CPHEADER.lines[1])
+    @formatter.flush.should == [
+      :format_copy_header_file,
+      Pathname.new("Target\\ Support\\ Files/Alamofire/Alamofire-umbrella.h"),
+      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Alamofire.framework/Headers/Alamofire-umbrella.h")
+    ]
+  end
 end
 end #XCPretty
