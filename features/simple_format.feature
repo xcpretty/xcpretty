@@ -207,3 +207,9 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple --color"
         Then I should see a yellow warning message
 
+    Scenario: Running tests crash because of an uncaught exception
+        Given tests fail with an uncaught exception
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a crash symbol and the test case in red
+        And I should see the exception name and reason
+        And I should see the call stack that led to the exception

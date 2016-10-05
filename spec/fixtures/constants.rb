@@ -603,6 +603,19 @@ SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
             ~~ ^~~~~~~
 )
 
+SAMPLE_UNCAUGHT_EXCEPTION = %Q(
+Test Case '-[TestCase testRaisingUncaughtException]' started.
+2015-10-07 00:08:20.151 xctest[25555:6492261] *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '*** -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[0]'
+*** First throw call stack:
+(
+\t0   CoreFoundation                      0x0000000109479a75 __exceptionPreprocess + 165
+\t1   libobjc.A.dylib                     0x0000000109112bb7 objc_exception_throw + 45
+\t2   CoreFoundation                      0x000000010938503f -[__NSPlaceholderDictionary initWithObjects:forKeys:count:] + 383
+\t3   CoreFoundation                      0x0000000109397d8b +[NSDictionary dictionaryWithObjects:forKeys:count:] + 59
+)
+libc++abi.dylib: terminating with uncaught exception of type NSException
+)
+
 
 ################################################################################
 # WARNINGS
