@@ -107,7 +107,8 @@ end
 # PATH is a generic path matcher. It needs to end wither with / in case of a
 # directory match, or a word character in case of a file (or directory without
 # a trailing slash).
-PATH              = /[ \w\/:\\\-+.&@]+[\w\/]/
+PATH              = /(?:[\w\/:\-+.@]|\\ |\\&)+[\w\/]/
+
 # WORD is used mostly for configuration options
 WORD              = /[\w]+/
 CLANG             = /^\s{4}(?:#{PATH})\/usr\/bin\/(?:clang|clang\+\+)/
@@ -116,7 +117,7 @@ SWIFTC            = /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc/
 SHELL_BUILTIN     = /^\s{4}builtin-/
 SHELL_CD          = /^\s{4}cd\s(#{PATH})$/
 SHELL_EXPORT      = /^\s{4}export \w+=.*$/
-SHELL_SETENV      = /^\s{4}setenv(?:#{PATH})?[\w\-]+\s(.*)$/
+SHELL_SETENV      = /^\s{4}setenv (?:#{WORD}) (?:#{PATH})?[\w\-]+\s(.*)$/
 SHELL_SUBSHELL    = /^\s{4}\/bin\/sh -c/
 SHELL_MKDIR       = /^\/bin\/mkdir -p/
 SHELL_CHMOD       = /^chmod/

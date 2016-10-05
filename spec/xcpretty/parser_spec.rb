@@ -21,6 +21,11 @@ describe 'Parser' do
     @parser = Parser.new(@formatter)
   end
 
+  it 'knows what makes a path' do
+    path = "/tmp/supermarin/lost\\ \\&\\ found/a\\ +\\ b/e@mail/foo.bar/\\ 123_4"
+    "#{path} word".match(/(#{PATH})/)[1].should == path
+  end
+
   it 'parses CompileC' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @formatter.flush.should == [
