@@ -290,5 +290,27 @@ describe 'Parser' do
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Models.framework/Pods_Models"),
     ]
   end
+
+  it 'parses === BUILD target' do
+    [SAMPLE_BUILD_TARGET, SAMPLE_BUILD_AGGREGATE_TARGET].each do |target|
+      @parser.parse(target)
+      @formatter.flush.should ==
+        [:format_build_target, 'The Spacer', 'Git app', 'Debug']
+      @parser.parse("\n")
+    end
+  end
+
+  it 'parses === CLEAN target' do
+    @parser.parse(SAMPLE_CLEAN_TARGET)
+    @formatter.flush.should ==
+      [:format_clean_target, 'The Spacer', 'Git app', 'Debug']
+  end
+
+  it 'parses === ANALYZE target' do
+    @parser.parse(SAMPLE_ANALYZE_TARGET)
+    @formatter.flush.should ==
+      [:format_analyze_target, 'The Spacer', 'Git app', 'Debug']
+  end
+
 end
 end #XCPretty
