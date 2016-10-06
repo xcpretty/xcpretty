@@ -103,11 +103,21 @@ def self.chunk(name, &block)
   Parser.add(name, &block)
 end
 
+def self.path(string)
+  Pathname.new(string.delete('\\'))
+end
 
 # PATH is a generic path matcher. It needs to end wither with / in case of a
 # directory match, or a word character in case of a file (or directory without
 # a trailing slash).
 PATH              = /(?:[\w\/:\-+.@]|\\ |\\&)+[\w\/]/
+
+# Some outputs include unescaped paths (like SwiftC). Unfortunately, PATH won't
+# match them, so we're forced to use something like this.
+#
+# Caution: when using, make sure you end the path if possible with known
+# extensions or patterns. For example, a SwiftC command will end in .swift
+UNESCAPED_PATH    = /[ \w\/:\-+.@&\\]+[\w\/]/
 
 # WORD is used mostly for configuration options
 WORD              = /[\w]+/
@@ -124,7 +134,7 @@ SHELL_CHMOD       = /^chmod/
 
 chunk "Compiling" do |c|
   c.line /^CompileC (?:#{PATH}\.o) (#{PATH}\.(?:m|mm|c|cc|cpp|cxx)) / do |f, m|
-    f.format_compile(Pathname.new(m[1]))
+    f.format_compile(path(m[1]))
   end
   c.line SHELL_CD
   c.line SHELL_SETENV
@@ -133,8 +143,8 @@ chunk "Compiling" do |c|
 end
 
 chunk "Comp[\w]+\siling Swift" do |c|
-  c.line /^CompileSwift (?:#{WORD}\s)*(#{PATH}\.swift)$/ do |f, m|
-    f.format_compile(Pathname.new(m[1]))
+  c.line /^CompileSwift (?:#{WORD}\s)*(#{UNESCAPED_PATH}\.swift)$/ do |f, m|
+    f.format_compile(path(m[1]))
   end
   c.line SHELL_CD
   c.line SWIFT
@@ -151,7 +161,7 @@ end
 
 chunk "Merge swift modules" do |c|
   c.line /^MergeSwiftModule (?:[\w]+\s)*(#{PATH}\.swiftmodule)$/ do |f, m|
-    f.format_merge_swift_module(Pathname.new(m[1]))
+    f.format_merge_swift_module(path(m[1]))
   end
   c.line SHELL_CD
   c.line SWIFT
@@ -159,7 +169,7 @@ end
 
 chunk "Ditto" do |c|
   c.line /^Ditto (?:#{PATH}) (#{PATH})$/ do |f,m|
-    f.format_ditto(Pathname.new(m[1]))
+    f.format_ditto(path(m[1]))
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
@@ -169,7 +179,7 @@ end
 
 chunk "Code sign" do |c|
   c.line /^CodeSign\s(#{PATH})$/ do |f, m|
-    f.format_codesign(Pathname.new(m[1]))
+    f.format_codesign(path(m[1]))
   end
   c.line SHELL_CD
 end
@@ -181,7 +191,7 @@ chunk "Write auxilliary files" do |c|
   c.line SHELL_MKDIR
   c.line SHELL_CHMOD
   c.line /^write-file (#{PATH})$/ do |f,m|
-    f.format_write_file(Pathname.new(m[1]))
+    f.format_write_file(path(m[1]))
   end
 end
 
@@ -200,7 +210,7 @@ end
 
 chunk "Process info.plist" do |c|
   c.line /^ProcessInfoPlistFile (?:#{PATH}.plist) (#{PATH}.plist)$/ do |f,m|
-    f.format_process_info_plist(Pathname.new(m[1]))
+    f.format_process_info_plist(path(m[1]))
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
@@ -218,7 +228,7 @@ end
 
 chunk "Touch" do |c|
   c.line /^Touch (#{PATH})/ do |f,m|
-    f.format_touch(Pathname.new(m[1]))
+    f.format_touch(path(m[1]))
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
@@ -227,7 +237,7 @@ end
 
 chunk "Ld" do |c|
   c.line /^Ld (#{PATH}) (#{WORD})\s(#{WORD})$/ do |f,m|
-    f.format_ld(Pathname.new(m[1]), m[2], m[3])
+    f.format_ld(path(m[1]), m[2], m[3])
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
@@ -236,7 +246,7 @@ end
 
 chunk "CpHeader" do |c|
   c.line /^CpHeader (#{PATH}) (#{PATH})$/ do |f,m|
-    f.format_copy_header_file(Pathname.new(m[1]), Pathname.new(m[2]))
+    f.format_copy_header_file(path(m[1]), path(m[2]))
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
@@ -245,7 +255,7 @@ end
 
 chunk "CpResource" do |c|
   c.line /^CpResource (#{PATH}) (#{PATH})$/ do |f,m|
-    f.format_cpresource(Pathname.new(m[1]), Pathname.new(m[2]))
+    f.format_cpresource(path(m[1]), path(m[2]))
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
@@ -254,7 +264,7 @@ end
 
 chunk "CompileXIB" do |c|
   c.line /^CompileXIB (#{PATH})/ do |f,m|
-    f.format_compile_xib(Pathname.new(m[1]))
+    f.format_compile_xib(path(m[1]))
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
@@ -263,7 +273,7 @@ end
 
 chunk "Libtool" do |c|
   c.line /^Libtool (#{PATH}) (#{WORD}) (#{WORD})$/ do |f,m|
-    f.format_libtool(Pathname.new(m[1]))
+    f.format_libtool(path(m[1]))
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
@@ -272,13 +282,13 @@ end
 
 chunk "CopyPNGFile" do |c|
   c.line /^CopyPNGFile (#{PATH}) (#{PATH})/ do |f,m|
-    f.format_copy_png_file(Pathname.new(m[2]), Pathname.new(m[1]))
+    f.format_copy_png_file(path(m[2]), path(m[1]))
   end
 end
 
 chunk "CopySwiftLibs" do |c|
   c.line /^CopySwiftLibs (#{PATH})$/ do |f,m|
-    f.format_copy_swift_libs(Pathname.new(m[1]))
+    f.format_copy_swift_libs(path(m[1]))
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT

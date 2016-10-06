@@ -26,18 +26,23 @@ describe 'Parser' do
     "#{path} word".match(/(#{PATH})/)[1].should == path
   end
 
+  it 'handles unescaped compileswift paths' do
+    path = "/foo/bar + baz/yolo"
+    path.match(/(#{UNESCAPED_PATH})/)[1].should == path
+  end
+
   it 'parses CompileC' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
-      Pathname.new("/Users/musalj/code/OSS/Objective\\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
+      Pathname.new("/Users/musalj/code/OSS/Objective\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
   end
 
   it 'parses CompileSwift' do
     @parser.parse(SAMPLE_SWIFT_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
-      Pathname.new("/Users/marinusalj/code/foo/bar-temp/baz/Classes/yolo\\ +\\ Common/Common/Helpers\\ \\&\\ Managers/Poller.swift")]
+      Pathname.new("/Users/marinusalj/code/foo/bar-temp/baz/Classes/yolo\ +\ Common/Common/Helpers\ \&\ Managers/Poller.swift")]
   end
 
   it 'parses Ditto' do
@@ -146,7 +151,7 @@ describe 'Parser' do
 
   it 'parses Touch' do
     @parser.parse(SAMPLE_TOUCH.lines[1])
-    @formatter.flush.should == [:format_touch, Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz\\ Tests.octest")]
+    @formatter.flush.should == [:format_touch, Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz\ Tests.octest")]
   end
 
   it 'parses writing auxiliary files' do
@@ -167,7 +172,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
-      Pathname.new("/Users/musalj/code/OSS/Objective\\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
+      Pathname.new("/Users/musalj/code/OSS/Objective\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
   end
 
   it 'doesnt switch chunks before finishing' do
@@ -208,7 +213,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_PROCESS_INFOPLIST.lines[1])
     @formatter.flush.should == [
       :format_process_info_plist,
-      Pathname.new("Target\\ Support\\ Files/LambdaKit-iOS/Info.plist")
+      Pathname.new("Target\ Support\ Files/LambdaKit-iOS/Info.plist")
     ]
   end
 
@@ -239,7 +244,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_CPHEADER.lines[1])
     @formatter.flush.should == [
       :format_copy_header_file,
-      Pathname.new("Target\\ Support\\ Files/Alamofire/Alamofire-umbrella.h"),
+      Pathname.new("Target\ Support\ Files/Alamofire/Alamofire-umbrella.h"),
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Alamofire.framework/Headers/Alamofire-umbrella.h")
     ]
   end
