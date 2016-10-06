@@ -71,6 +71,10 @@ module XCPretty
       format("Copy Swift lib", path.basename)
     end
 
+    def format_compile_swift_sources()
+      format("Compile Swift sources")
+    end
+
     def format_cpresource(source, destination)
       format("Copy", source.basename)
     end
@@ -115,7 +119,7 @@ module XCPretty
       format("Copy", path.basename)
     end
 
-    def format_check_dependencies
+    def format_check_dependencies()
       format('Check Dependencies')
     end
 
