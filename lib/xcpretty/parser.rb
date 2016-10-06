@@ -271,6 +271,17 @@ chunk "CompileXIB" do |c|
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/ibtool /
 end
 
+chunk "CompileStoryboard" do |c|
+  # Currently there's a bug in CompileStoryboard where it escapes only
+  # spaces, but not & signs.
+  c.line /^CompileStoryboard (#{UNESCAPED_PATH}\.storyboard)$/ do |f,m|
+    f.format_compile_storyboard(path(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/ibtool /
+end
+
 chunk "Libtool" do |c|
   c.line /^Libtool (#{PATH}) (#{WORD}) (#{WORD})$/ do |f,m|
     f.format_libtool(path(m[1]))
@@ -284,6 +295,8 @@ chunk "CopyPNGFile" do |c|
   c.line /^CopyPNGFile (#{PATH}) (#{PATH})/ do |f,m|
     f.format_copy_png_file(path(m[2]), path(m[1]))
   end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
 end
 
 chunk "CopySwiftLibs" do |c|

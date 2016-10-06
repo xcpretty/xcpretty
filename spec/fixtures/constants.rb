@@ -143,9 +143,9 @@ CopyStringsFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar
 
 SAMPLE_COPYPNGFILE = %Q(
 CopyPNGFile build/Example.app/Default-568h@2x.png Default-568h@2x.png
-cd /Users/distiller/LyftKit/Example
-export PATH="/Applications/Xcode-8.0.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode-8.0.app/Contents/Developer/usr/bin:/usr/local/bin:/usr/local/lib/ruby/gems/2.3.0/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-/Applications/Xcode-8.0.app/Contents/Developer/usr/bin/copypng -compress -strip-PNG-text /Users/distiller/LyftKit/Example/Default-568h@2x.png /Users/distiller/LyftKit/Example/build/Example.app/Default-568h@2x.png
+    cd /Users/distiller/LyftKit/Example
+    export PATH="/Applications/Xcode-8.0.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode-8.0.app/Contents/Developer/usr/bin:/usr/local/bin:/usr/local/lib/ruby/gems/2.3.0/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /Applications/Xcode-8.0.app/Contents/Developer/usr/bin/copypng -compress -strip-PNG-text /Users/distiller/LyftKit/Example/Default-568h@2x.png /Users/distiller/LyftKit/Example/build/Example.app/Default-568h@2x.png
 )
 
 SAMPLE_COPYSWIFTLIBS = %Q(
@@ -656,10 +656,11 @@ CompileXIB /Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/XIBs/A
 )
 
 SAMPLE_COMPILE_STORYBOARD = %Q(
-CompileStoryboard sample/Main.storyboard
-    cd /Users/chipp/Developer/sample
+CompileStoryboard Lyft/Resources/Storyboards\\ \\&\\ XIBs/Driver/DriverDestination.storyboard
+    cd /Users/marinusalj/code/lyft/lyft-ios
+    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/marinusalj/.bin:/Users/marinusalj/code/go/bin:/Users/marinusalj/.gem/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/marinusalj/.fzf/bin"
     export XCODE_DEVELOPER_USR_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin/..
-    /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --target-device iphone --target-device ipad --errors --warnings --notices --module sample --minimum-deployment-target 7.0 --output-partial-info-plist /Users/chipp/Library/Developer/Xcode/DerivedData/sample-etjztiverddwaddrudeteewjzfxw/Build/Intermediates/ArchiveIntermediates/sample/IntermediateBuildFilesPath/sample.build/Release-iphoneos/sample.build/SJMetroPickerStoryboard-SBPartialInfo.plist --auto-activate-custom-fonts --output-format human-readable-text --compilation-directory /Users/chipp/Library/Developer/Xcode/DerivedData/sample-etjztiverddwaddrudeteewjzfxw/Build/Intermediates/ArchiveIntermediates/sample/InstallationBuildProductsLocation/Applications/sample.app /Users/chipp/Developer/sample/sample/Main.storyboard
+    /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --errors --warnings --notices --module Lyft --output-partial-info-plist /Users/marinusalj/code/lyft/lyft-ios/build/Intermediates/Lyft.build/Debug-iphonesimulator/Lyft.build/DriverDestination-SBPartialInfo.plist --auto-activate-custom-fonts --target-device iphone --minimum-deployment-target 8.0 --output-format human-readable-text --compilation-directory /Users/marinusalj/code/lyft/lyft-ios/build/Intermediates/Lyft.build/Debug-iphonesimulator/Lyft.build /Users/marinusalj/code/lyft/lyft-ios/Lyft/Resources/Storyboards\ &\ XIBs/Driver/DriverDestination.storyboard
 )
 
 SAMPLE_CODESIGN = %Q(

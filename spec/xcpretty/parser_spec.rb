@@ -57,7 +57,6 @@ describe 'Parser' do
     @formatter.flush.should == [:format_compile_swift_sources]
   end
 
-
   context 'Suppressing' do
 
     def suppress(regex, chunks)
@@ -88,7 +87,8 @@ describe 'Parser' do
         SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
         SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD,
         SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
-        SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG])
+        SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
+        SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE])
     end
 
     it 'shuts up `cd`' do
@@ -97,7 +97,8 @@ describe 'Parser' do
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_TOUCH,
         SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER,
         SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
-        SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG])
+        SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
+        SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE])
     end
 
     it 'suppresses builtin-' do
@@ -127,7 +128,8 @@ describe 'Parser' do
     end
 
     it 'suppresses ibtool invocation' do
-      suppress(/^\s{4}(?:#{PATH})ibtool /, [SAMPLE_COMPILE_XIB])
+      suppress(/^\s{4}(?:#{PATH})ibtool /,
+               [SAMPLE_COMPILE_XIB, SAMPLE_COMPILE_STORYBOARD])
     end
 
     it 'suppresses libtool invocation' do
@@ -291,6 +293,14 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_compile_xib,
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/XIBs/AlertController.xib")
+    ]
+  end
+
+  it 'parses CompileStoryboard' do
+    @parser.parse(SAMPLE_COMPILE_STORYBOARD.lines[1])
+    @formatter.flush.should == [
+      :format_compile_storyboard,
+      Pathname.new("Lyft/Resources/Storyboards\ &\ XIBs/Driver/DriverDestination.storyboard")
     ]
   end
 
