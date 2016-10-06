@@ -295,20 +295,27 @@ chunk "CopySwiftLibs" do |c|
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift-stdlib-tool /
 end
 
+def self.action_regex(action)
+  target = /^=== #{action}(?: AGGREGATE)? TARGET (.*)/
+  project = /OF PROJECT (.*)/
+  configuration = /WITH(?: THE DEFAULT)? CONFIGURATION (.*) ===$/
+  return /#{target} #{project} #{configuration}/
+end
+
 chunk "=== BUILD target" do |c|
-  c.line /^=== BUILD(?: AGGREGATE)? TARGET (.*) OF PROJECT (.*) WITH(?: THE DEFAULT)? CONFIGURATION (.*) ===$/ do |f,m|
+  c.line action_regex("BUILD") do |f,m|
     f.format_build_target(m[1], m[2], m[3])
   end
 end
 
 chunk "=== CLEAN target" do |c|
-  c.line /^=== CLEAN(?: AGGREGATE)? TARGET (.*) OF PROJECT (.*) WITH(?: THE DEFAULT)? CONFIGURATION (.*) ===$/ do |f,m|
+  c.line action_regex("CLEAN") do |f,m|
     f.format_clean_target(m[1], m[2], m[3])
   end
 end
 
 chunk "=== ANALYZE target" do |c|
-  c.line /^=== ANALYZE(?: AGGREGATE)? TARGET (.*) OF PROJECT (.*) WITH(?: THE DEFAULT)? CONFIGURATION (.*) ===$/ do |f,m|
+  c.line action_regex("ANALYZE") do |f,m|
     f.format_analyze_target(m[1], m[2], m[3])
   end
 end
