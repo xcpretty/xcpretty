@@ -71,6 +71,10 @@ module XCPretty
       format("Copy Swift lib", path.basename)
     end
 
+    def format_compile_asset_catalog(path)
+      format("Compile Asset catalog", path.basename)
+    end
+
     def format_compile_swift_sources()
       format("Compile Swift sources")
     end

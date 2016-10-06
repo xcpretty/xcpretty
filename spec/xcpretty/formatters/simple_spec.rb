@@ -93,6 +93,11 @@ module XCPretty
         result.should == '> Copy Swift lib Pods_Lyft.framework'
       end
 
+      it 'formats compile asset catalog' do
+        @formatter.format_compile_asset_catalog(Pathname.new("foo/Images.xcassets"))
+        result.should == '> Compile Asset catalog Images.xcassets'
+      end
+
       it 'formats compile swift sources' do
         @formatter.format_compile_swift_sources()
         result.should == '> Compile Swift sources'

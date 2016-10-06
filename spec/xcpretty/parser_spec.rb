@@ -87,7 +87,8 @@ describe 'Parser' do
       suppress(/^\s{4}export/, [
         SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
         SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD,
-        SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL, SAMPLE_COPYSWIFTLIBS])
+        SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
+        SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG])
     end
 
     it 'shuts up `cd`' do
@@ -95,11 +96,14 @@ describe 'Parser' do
         SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_TOUCH,
         SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER,
-        SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL, SAMPLE_COPYSWIFTLIBS])
+        SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
+        SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG])
     end
 
     it 'suppresses builtin-' do
-      suppress(/^\s{4}builtin-/, [SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_CPHEADER, SAMPLE_CPRESOURCE])
+      suppress(/^\s{4}builtin-/, [
+        SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_CPHEADER,
+        SAMPLE_CPRESOURCE])
     end
 
     it 'shuts up setenv' do
@@ -132,6 +136,13 @@ describe 'Parser' do
 
     it 'suppresses swift-stdlib-tool' do
       suppress(/^\s{4}(?:#{PATH})swift-stdlib-tool /, [SAMPLE_COPYSWIFTLIBS])
+    end
+
+    it 'suppresses actool' do
+      suppress(/^\s{4}(?:#{PATH})actool /, [SAMPLE_COMPILE_ASSET_CATALOG])
+      suppress(/^#{PATH}$/, [SAMPLE_COMPILE_ASSET_CATALOG])
+      suppress(/\* com\.apple\.actool\.compilation-results \*/,
+               [SAMPLE_COMPILE_ASSET_CATALOG])
     end
   end
 
@@ -288,6 +299,14 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_libtool,
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Models.framework/Pods_Models"),
+    ]
+  end
+
+  it 'parses CompileAssetCatalog' do
+    @parser.parse(SAMPLE_COMPILE_ASSET_CATALOG)
+    @formatter.flush.should == [
+      :format_compile_asset_catalog,
+      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/Images.xcassets"),
     ]
   end
 

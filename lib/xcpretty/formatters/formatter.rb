@@ -53,6 +53,7 @@ module XCPretty
     def format_touch(path);                                            end
     def format_write_auxiliary_files();                                end
     def format_write_file(path);                                       end
+    def format_compile_asset_catalog(path)                             end
 
     # COMPILER / LINKER ERRORS AND WARNINGS
     def format_compile_error(path, reason, line, cursor);              end

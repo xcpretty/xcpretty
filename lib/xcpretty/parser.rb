@@ -295,6 +295,17 @@ chunk "CopySwiftLibs" do |c|
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift-stdlib-tool /
 end
 
+chunk "CompileAssetCatalog" do |c|
+  c.line /^CompileAssetCatalog (?:#{PATH}) (#{PATH})/ do |f,m|
+    f.format_compile_asset_catalog(path(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/actool /
+  c.line /\* com\.apple\.actool\.compilation-results \*/
+  c.line /^#{PATH}$/
+end
+
 def self.action_regex(action)
   target = /^=== #{action}(?: AGGREGATE)? TARGET (.*)/
   project = /OF PROJECT (.*)/
