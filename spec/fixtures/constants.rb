@@ -157,6 +157,29 @@ CopySwiftLibs /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework
     export SDKROOT=/Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator9.3.sdk
     export TOOLCHAINS=com.apple.dt.toolchain.iOS9_3
     /Applications/Xcode7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-stdlib-tool --copy --verbose --scan-executable /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework/Pods_Lyft --scan-folder /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework/Frameworks --scan-folder /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework/PlugIns --scan-folder /Applications/Xcode7.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework --platform iphonesimulator --destination /Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework/Frameworks --strip-bitcode
+    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/yolo --scan-folder /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks --scan-folder /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/PlugIns --scan-folder /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator10.0.sdk/System/Library/Frameworks/AddressBook.framework --scan-folder /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/Models.framework --scan-folder /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/API.framework --scan-folder /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/Pods_yolo.framework --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/Swift_2.3.xctoolchain --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/Swift_2.3.xctoolchain --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks --strip-bitcode --resource-destination /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app --resource-library libswiftRemoteMirror.dylib
+Requested Swift ABI version based on scanned binaries: 3
+libswiftCore.dylib is up to date at /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib
+libswiftCoreGraphics.dylib is up to date at /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCoreGraphics.dylib
+Probing signature of /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib
+  /usr/bin/codesign '-r-' '--display' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib'
+Codesigning /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib
+  /usr/bin/codesign '--force' '--sign' '-' '--verbose' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib'
+Probing signature of /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib
+  /usr/bin/codesign '-r-' '--display' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib'
+Code signature of /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib is unchanged; keeping original
+Probing signature of /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCoreAudio.dylib
+  /usr/bin/codesign '-r-' '--display' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCoreImage.dylib'
+  /usr/bin/codesign '-r-' '--display' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftPassKit.dylib'
+  /usr/bin/codesign '-r-' '--display' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftObjectiveC.dylib'
+Codesigning /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftPassKit.dylib
+Codesigning /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCoreImage.dylib
+Codesigning /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftAVFoundation.dylib
+  /usr/bin/codesign '--force' '--sign' '-' '--verbose' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftDispatch.dylib'
+  /usr/bin/codesign '--force' '--sign' '-' '--verbose' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftObjectiveC.dylib'
+Code signature of /Users/marinusalj/code/lyft/lyft-ios/build/Products/Debug-iphonesimulator/Lyft.app/Frameworks/libswiftFoundation.dylib is unchanged; keeping original
+Codesigning /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftUIKit.dylib
+  /usr/bin/codesign '--force' '--sign' '-' '--verbose' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftPassKit.dylib'
 )
 
 SAMPLE_PROCESS_INFOPLIST = %Q(

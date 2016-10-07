@@ -138,6 +138,7 @@ describe 'Parser' do
 
     it 'suppresses swift-stdlib-tool' do
       suppress(/^\s{4}(?:#{PATH})swift-stdlib-tool /, [SAMPLE_COPYSWIFTLIBS])
+      suppress(/^\s{4}builtin-swiftStdLibTool /, [SAMPLE_COPYSWIFTLIBS])
     end
 
     it 'suppresses actool' do
@@ -146,8 +147,23 @@ describe 'Parser' do
       suppress(/\* com\.apple\.actool\.compilation-results \*/,
                [SAMPLE_COMPILE_ASSET_CATALOG])
     end
+
+    it 'suppresses codesign tool' do
+      suppress(/^\s{2}\/usr\/bin\/codesign /, [SAMPLE_COPYSWIFTLIBS])
+    end
+
   end
 
+  context 'Simplifying' do
+    it 'simplifies "Code signature of ... is unchanged"' do
+      @parser.parse(SAMPLE_COPYSWIFTLIBS.lines[1])
+      @parser.parse(SAMPLE_COPYSWIFTLIBS.lines.find { |l| l =~ /^Code signature of/ })
+      @formatter.flush.should == [
+        :format_code_signature_unchanged,
+        Pathname.new("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib"),
+      ]
+    end
+  end
 
   it 'outputs unrecognized text' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
@@ -285,6 +301,24 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_copy_swift_libs,
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework")
+    ]
+  end
+
+  it 'parses Codesigning swift libs' do
+    @parser.parse(SAMPLE_COPYSWIFTLIBS.lines[1])
+    @parser.parse(SAMPLE_COPYSWIFTLIBS.lines.find { |l| l =~ /^Codesigning/ })
+    @formatter.flush.should == [
+      :format_codesigning_swift_lib,
+      Pathname.new("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib")
+    ]
+  end
+
+  it 'parses Probing swift libs' do
+    @parser.parse(SAMPLE_COPYSWIFTLIBS.lines[1])
+    @parser.parse(SAMPLE_COPYSWIFTLIBS.lines.find { |l| l =~ /^Probing/ })
+    @formatter.flush.should == [
+      :format_probing_swift_lib,
+      Pathname.new("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib")
     ]
   end
 

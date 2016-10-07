@@ -192,6 +192,24 @@ module XCPretty
         "> Sign CocoaChip.app"
       end
 
+      it "formats code signature unchanged" do
+        @formatter.format_code_signature_unchanged(Pathname.new("/foo/bar.dylib"))
+        result.should ==
+          "> Code signature of bar.dylib is unchanged; keeping original"
+      end
+
+      it "formats codesigning swift lib" do
+        @formatter.format_codesigning_swift_lib(Pathname.new("/foo/bar.dylib"))
+        result.should ==
+          "> Sign bar.dylib"
+      end
+
+      it "formats probing swift lib" do
+        @formatter.format_probing_swift_lib(Pathname.new("/foo/bar.dylib"))
+        result.should ==
+          "> Probe signature of bar.dylib"
+      end
+
       it "formats preprocessing a file" do
         @formatter.format_preprocess(Pathname.new("CocoaChip/CocoaChip-Info.plist"))
         result.should ==

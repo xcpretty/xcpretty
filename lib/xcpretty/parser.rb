@@ -306,6 +306,17 @@ chunk "CopySwiftLibs" do |c|
   c.line SHELL_CD
   c.line SHELL_EXPORT
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift-stdlib-tool /
+  c.line /^\s{4}builtin-swiftStdLibTool /
+  c.line /^Codesigning (#{PATH})$/ do |f,m|
+    f.format_codesigning_swift_lib(path(m[1]))
+  end
+  c.line /^Probing signature of (#{PATH})$/ do |f,m|
+    f.format_probing_swift_lib(path(m[1]))
+  end
+  c.line /^\s{2}\/usr\/bin\/codesign /
+  c.line /^Code signature of (#{PATH}) is unchanged; keeping original$/ do |f,m|
+    f.format_code_signature_unchanged(path(m[1]))
+  end
 end
 
 chunk "CompileAssetCatalog" do |c|

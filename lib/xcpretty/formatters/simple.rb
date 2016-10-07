@@ -39,6 +39,18 @@ module XCPretty
       format("Clean", "#{project}/#{target} [#{configuration}]")
     end
 
+    def format_codesign(path)
+      format("Sign", path.basename)
+    end
+
+    def format_code_signature_unchanged(path)
+      format("Code signature of #{path.basename} is unchanged; keeping original")
+    end
+
+    def format_codesigning_swift_lib(path)
+      format("Sign", path.basename)
+    end
+
     def format_compile(path)
       format("Compile", path.basename)
     end
@@ -103,16 +115,16 @@ module XCPretty
       format("Run script", "'#{script_name}'")
     end
 
+    def format_probing_swift_lib(path)
+      format("Probe signature of", path.basename)
+    end
+
     def format_process_info_plist(path)
       format("Process", path.basename)
     end
 
     def format_process_pch(path)
       format("Precompile", path.basename)
-    end
-
-    def format_codesign(path)
-      format("Sign", path.basename)
     end
 
     def format_preprocess(path)

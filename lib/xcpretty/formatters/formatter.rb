@@ -15,7 +15,9 @@ module XCPretty
     def format_clean(project, target, configuration)                   end
     def format_clean_remove()                                          end
     def format_clean_target(target, project, configuration)            end
+    def format_code_signature_unchanged(path)                          end
     def format_codesign(path)                                          end
+    def format_codesigning_swift_lib(path)                             end
     def format_compile(path)                                           end
     def format_compile_asset_catalog(path)                             end
     def format_compile_command(compiler_command, file_path)            end
@@ -42,6 +44,7 @@ module XCPretty
     def format_phase_script_execution(script_name)                     end
     def format_phase_success(phase_name)                               end
     def format_preprocess(file)                                        end
+    def format_probing_swift_lib(path)                                 end
     def format_process_info_plist(path)                                end
     def format_process_pch(file)                                       end
     def format_process_pch_command(path)                               end
