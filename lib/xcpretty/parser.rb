@@ -182,6 +182,7 @@ chunk "Code sign" do |c|
     f.format_codesign(path(m[1]))
   end
   c.line SHELL_CD
+  c.line SHELL_EXPORT
 end
 
 chunk "Write auxilliary files" do |c|

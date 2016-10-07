@@ -177,7 +177,6 @@ Codesigning /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimu
 Codesigning /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftAVFoundation.dylib
   /usr/bin/codesign '--force' '--sign' '-' '--verbose' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftDispatch.dylib'
   /usr/bin/codesign '--force' '--sign' '-' '--verbose' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftObjectiveC.dylib'
-Code signature of /Users/marinusalj/code/lyft/lyft-ios/build/Products/Debug-iphonesimulator/Lyft.app/Frameworks/libswiftFoundation.dylib is unchanged; keeping original
 Codesigning /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftUIKit.dylib
   /usr/bin/codesign '--force' '--sign' '-' '--verbose' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftPassKit.dylib'
 )
@@ -689,7 +688,7 @@ CompileStoryboard Lyft/Resources/Storyboards\\ \\&\\ XIBs/Driver/DriverDestinati
 SAMPLE_CODESIGN = %Q(
 CodeSign build/Release/CocoaChip.app
     cd /Users/dustin/Source/CocoaChip
-    setenv CODESIGN_ALLOCATE /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+    export CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
     Using code signing identity \"Mac Developer: John Smith (0123456789)\"
     /usr/bin/codesign --force --sign 0123456789ABCDEF0123456789ABCDEF01234567 /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app
 )
