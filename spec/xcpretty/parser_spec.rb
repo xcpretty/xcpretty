@@ -492,6 +492,11 @@ module XCPretty
         @formatter.should receive(:format_ld_warning).with("ld: embedded dylibs/frameworks only run on iOS 8 or later")
         @parser.parse("ld: warning: embedded dylibs/frameworks only run on iOS 8 or later")
       end
+
+      it "parses will not be code signed warnings" do
+        @formatter.should receive(:format_will_not_be_code_signed).with(SAMPLE_WILL_NOT_BE_CODE_SIGNED)
+        @parser.parse(SAMPLE_WILL_NOT_BE_CODE_SIGNED)
+      end
     end
 
     context "summary" do

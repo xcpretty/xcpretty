@@ -68,6 +68,10 @@ Given(/^I have a framework to code sign$/) do
   add_run_input SAMPLE_CODESIGN_FRAMEWORK
 end
 
+Given(/^I have a target which will not be code signed$/) do
+  add_run_input SAMPLE_WILL_NOT_BE_CODE_SIGNED
+end
+
 Given(/^I have a file to preprocess$/) do
   add_run_input SAMPLE_PREPROCESS
 end
@@ -183,6 +187,10 @@ end
 
 Then(/^I should see a successful code signing message$/) do
   run_output.should start_with("▸ Signing")
+end
+
+Then(/^I should see a target will not be code signed warning$/) do
+  run_output.should include(yellow("⚠️  FrameworkName will not be code signed because its settings don't specify a development team."))
 end
 
 Then(/^I should see a successful preprocessing message$/) do
@@ -335,4 +343,3 @@ end
 Then(/^I should see text matching "(.*?)"$/) do |text|
   run_output.lines.to_a.last.strip.should == text
 end
-

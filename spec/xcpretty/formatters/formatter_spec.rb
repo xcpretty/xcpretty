@@ -91,6 +91,10 @@ module XCPretty
 )
     end
 
+    it "formats will not be code signed warnings" do
+      @formatter.format_will_not_be_code_signed(SAMPLE_WILL_NOT_BE_CODE_SIGNED).should == "#{@formatter.yellow("⚠️  FrameworkName will not be code signed because its settings don't specify a development team.")}"
+    end
+
 
     it "formats failures per suite" do
         Syntax.stub(:highlight) { |snippet| snippet.contents }
@@ -137,4 +141,3 @@ StringSpec
     end
   end
 end
-

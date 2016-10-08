@@ -211,6 +211,10 @@ module XCPretty
       # @regex Captured groups
       # $1 = whole warning
       GENERIC_WARNING_MATCHER = /^warning:\s(.*)$/
+
+      # @regex Captured groups
+      # $1 = whole warning
+      WILL_NOT_BE_CODE_SIGNED_MATCHER = /^(.* will not be code signed because .*)$/
     end
 
     module Errors
@@ -396,6 +400,8 @@ module XCPretty
         formatter.format_shell_command($1, $2)
       when GENERIC_WARNING_MATCHER
         formatter.format_warning($1)
+      when WILL_NOT_BE_CODE_SIGNED_MATCHER
+        formatter.format_will_not_be_code_signed($1)
       else
         ""
       end

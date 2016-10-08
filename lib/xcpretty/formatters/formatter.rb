@@ -148,6 +148,10 @@ module XCPretty
         "> #{file_paths.map { |path| path.split('/').last }.join("\n> ")}\n"
     end
 
+    def format_will_not_be_code_signed(message)
+      "#{yellow(warning_symbol + " " + message)}"
+    end
+
 
     private
 
