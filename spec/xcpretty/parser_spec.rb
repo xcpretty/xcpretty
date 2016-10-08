@@ -468,6 +468,21 @@ module XCPretty
         @formatter.should_not receive(:format_compile_error)
         @parser.parse("hohohoooo")
       end
+
+      it "parses provisioning profile doesn't support capability error" do
+        @formatter.should receive(:format_error)
+        @parser.parse(SAMPLE_PROFILE_DOESNT_SUPPORT_CAPABILITY_ERROR)
+      end
+
+      it "parses provisioning profile doesn't include entitlement error" do
+        @formatter.should receive(:format_error)
+        @parser.parse(SAMPLE_PROFILE_DOESNT_INCLUDE_ENTITLEMENT_ERROR)
+      end
+
+      it "parses code signing is required error" do
+        @formatter.should receive(:format_error)
+        @parser.parse(SAMPLE_CODE_SIGNING_IS_REQUIRED_ERROR)
+      end
     end
 
     context "warnings" do

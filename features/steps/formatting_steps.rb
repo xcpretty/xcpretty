@@ -132,6 +132,18 @@ Given(/^I have completed a clean$/) do
   add_run_input SAMPLE_CLEAN_SUCCEEDED
 end
 
+Given(/^the provisioning profile doesn't support capability$/) do
+  add_run_input SAMPLE_PROFILE_DOESNT_SUPPORT_CAPABILITY_ERROR
+end
+
+Given(/^the provisioning profile doesn't include entitlement$/) do
+  add_run_input SAMPLE_PROFILE_DOESNT_INCLUDE_ENTITLEMENT_ERROR
+end
+
+Given(/^the target requires code signing$/) do
+  add_run_input SAMPLE_CODE_SIGNING_IS_REQUIRED_ERROR
+end
+
 Then(/^I should see a "(\w+)" completion message$/) do |phase|
   run_output.should start_with("▸ #{phase.capitalize} Succeeded")
 end
@@ -342,4 +354,16 @@ end
 
 Then(/^I should see text matching "(.*?)"$/) do |text|
   run_output.lines.to_a.last.strip.should == text
+end
+
+Then(/^I should see the profile doesn't support capability message$/) do
+  run_output.should include("Provisioning profile \"Profile Name\" doesn't support the Push Notifications capability.")
+end
+
+Then(/^I should see the profile doesn't include entitlement message$/) do
+  run_output.should include("Provisioning profile \"Profile Name\" doesn't include the aps-environment entitlement.")
+end
+
+Then(/^I should see the code signing is requried message$/) do
+  run_output.should include("Code signing is required for product type 'Application' in SDK 'iOS 10.0'")
 end
