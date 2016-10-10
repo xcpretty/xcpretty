@@ -227,6 +227,10 @@ module XCPretty
       CODESIGN_ERROR_MATCHER = /^(Code\s?Sign error:.*)$/
 
       # @regex Captured groups
+      # $1 = whole error
+      CODE_SIGNING_REQUIRED_MATCHER = /^(Code signing is required for product type .* in SDK .*)$/
+
+      # @regex Captured groups
       # $1 = file_path
       # $2 = file_name
       # $3 = reason
@@ -235,6 +239,10 @@ module XCPretty
       # @regex Captured groups
       # $1 cursor (with whitespaces and tildes)
       CURSOR_MATCHER = /^([\s~]*\^[\s~]*)$/
+
+      # @regex Captured groups
+      # $1 = whole message
+      PROFILE_DOESNT_SUPPORT_OR_INCLUDE = /^(Provisioning profile .* doesn't .*)$/
 
       # @regex Captured groups
       # $1 = whole error.
@@ -322,6 +330,8 @@ module XCPretty
         formatter.format_codesign($1)
       when CODESIGN_ERROR_MATCHER
         formatter.format_error($1)
+      when CODE_SIGNING_REQUIRED_MATCHER
+        formatter.format_error($1)
       when COMPILE_MATCHER
         formatter.format_compile($2, $1)
       when COMPILE_COMMAND_MATCHER
@@ -336,6 +346,8 @@ module XCPretty
         formatter.format_copy_plist_file($1, $2)
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
+      when PROFILE_DOESNT_SUPPORT_OR_INCLUDE
+        formatter.format_error($1)
       when EXECUTED_MATCHER
         format_summary_if_needed(text)
       when TEST_FAILURE_MATCHER

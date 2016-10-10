@@ -603,6 +603,17 @@ SAMPLE_COMPILE_ERROR_WITH_TILDES = %Q(
             ~~ ^~~~~~~
 )
 
+SAMPLE_PROFILE_DOESNT_SUPPORT_CAPABILITY_ERROR = %Q(
+Provisioning profile "Profile Name" doesn't support the Push Notifications capability.
+)
+
+SAMPLE_PROFILE_DOESNT_INCLUDE_ENTITLEMENT_ERROR = %Q(
+Provisioning profile "Profile Name" doesn't include the aps-environment entitlement.
+)
+
+SAMPLE_CODE_SIGNING_IS_REQUIRED_ERROR = %Q(
+Code signing is required for product type 'Application' in SDK 'iOS 10.0'
+)
 
 ################################################################################
 # WARNINGS

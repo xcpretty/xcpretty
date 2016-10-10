@@ -211,3 +211,18 @@ Feature: Showing build output in simple format
         Given there were warnings in the code
         When I pipe to xcpretty with "--simple --color"
         Then I should see a yellow warning message
+
+    Scenario: Showing provisioning profile doesn't support capability
+        Given the provisioning profile doesn't support capability
+        When I pipe to xcpretty with "--simple --no-color"
+        Then I should see the profile doesn't support capability message
+
+    Scenario: Showing provisioning profile doesn't include entitlement
+        Given the provisioning profile doesn't include entitlement
+        When I pipe to xcpretty with "--simple --no-color"
+        Then I should see the profile doesn't include entitlement message
+
+    Scenario: Showing code signing is required error
+        Given the target requires code signing
+        When I pipe to xcpretty with "--simple --no-color"
+        Then I should see the code signing is requried message
