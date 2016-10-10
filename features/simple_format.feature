@@ -167,6 +167,11 @@ Feature: Showing build output in simple format
         When I pipe to xcpretty with "--simple --no-color"
         Then I should see a successful code signing message
 
+    Scenario: Showing target will not be code signed warning
+        Given I have a target which will not be code signed
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see a target will not be code signed warning
+
     Scenario: Showing preprocess
         Given I have a file to preprocess
         When I pipe to xcpretty with "--simple --no-color"
@@ -206,4 +211,3 @@ Feature: Showing build output in simple format
         Given there were warnings in the code
         When I pipe to xcpretty with "--simple --color"
         Then I should see a yellow warning message
-
