@@ -6,15 +6,12 @@ SAMPLE_OCUNIT_TEST_RUN_BEGINNING = "Test Suite '/Users/musalj/Library/Developer/
 SAMPLE_KIWI_TEST_RUN_BEGINNING = "Test Suite 'ObjectiveRecordTests.xctest' started at 2013-12-10 06:15:39 +0000"
 SAMPLE_SPECTA_TEST_RUN_BEGINNING = "    Test Suite 'KIFTests.xctest' started at 2014-02-28 15:43:42 +0000"
 SAMPLE_OCUNIT_TEST_RUN_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-10 07:03:03 +0000."
-SAMPLE_OCUNIT_TEST_ASSERTION_FAILURE = "    t =    22.27s             Assertion Failure: <unknown>:0: UI Testing Failure - Unable to find hit point for element Button 0x608001165880: {{74.0, -54.0}, {44.0, 38.0}}, label: 'Disconnect'"
 SAMPLE_OCUNIT_FAILED_TEST_RUN_COMPLETION = "Test Suite '/Users/dm/someplace/Macadamia.octest' failed at 2014-09-24 23:09:20 +0000."
 SAMPLE_OCUNIT_PASSED_TEST_RUN_COMPLETION = "Test Suite 'Hazelnuts.xctest' passed at 2014-09-24 23:09:20 +0000."
 SAMPLE_KIWI_TEST_RUN_COMPLETION = "Test Suite 'ObjectiveRecordTests.xctest' finished at 2013-12-10 06:15:42 +0000."
 SAMPLE_SPECTA_TEST_RUN_COMPLETION = "     Test Suite 'KIFTests.xctest' finished at 2014-02-28 15:44:32 +0000."
 
 SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite 'RACKVOWrapperSpec' started at 2013-12-10 21:06:10 +0000"
-SAMPLE_OCUNIT_CASE_BEGINNING = "Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' started."
-SAMPLE_OCUNIT_CASE_FAILURE = "Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' failed (22.490 seconds)."
 SAMPLE_SPECTA_SUITE_BEGINNING = "   Test Suite 'All tests' started at 2014-02-28 19:07:41 +0000"
 SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000."
 SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
@@ -36,7 +33,6 @@ Clean.Remove clean /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSu
     builtin-rm -rf /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugarTests.build
 )
 SAMPLE_EXECUTED_TESTS = "Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
-SAMPLE_EXECUTED_TESTS_WITH_FAILURE = "Executed 1 test, with 1 failure (0 unexpected) in 22.490 (22.513) seconds"
 SAMPLE_SPECTA_EXECUTED_TESTS = "       Executed 4 tests, with 0 failures (0 unexpected) in 10.192 (10.193) seconds"
 SAMPLE_OCUNIT_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.001 seconds)."
 SAMPLE_SPECTA_TEST = "         Test Case '-[SKWelcomeActivationViewControllerSpecSpec SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code]' passed (0.725 seconds)."
@@ -615,3 +611,4 @@ SAMPLE_FORMAT_WARNING = %Q(
                          %d
 1 warning generated.
 )
+
