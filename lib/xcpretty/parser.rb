@@ -60,7 +60,7 @@ module XCPretty
     # @regex Captured groups
     # $1 compiler_command
     # $2 file_path
-    COMPILE_COMMAND_MATCHER = /^\s*(.*\/usr\/bin\/clang\s.*\s\-c\s(.*\.(?:m|mm|c|cc|cpp|cxx))\s.*\.o)$/
+    COMPILE_COMMAND_MATCHER = /^\s*(.*\/bin\/clang\s.*\s\-c\s(.*\.(?:m|mm|c|cc|cpp|cxx))\s.*\.o)$/
 
     # @regex Captured groups
     # $1 file_path
