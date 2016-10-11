@@ -6,7 +6,7 @@ rvm:
   - 2.0.0
 
 script:
-  - make spec
-  - make cucumber
-  - make lint
+  - rake spec
+  - rake cucumber
+  - rake lint
 
