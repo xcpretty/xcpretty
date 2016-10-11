@@ -123,7 +123,7 @@ module XCPretty
     # $1 = suite
     # $2 = test_case
     # $3 = time
-    PASSING_TEST_MATCHER = /^\s*Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+    TEST_CASE_PASSED_MATCHER = /^\s*Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
 
 
     # @regex Captured groups
@@ -134,13 +134,13 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = test_case
-    PENDING_TEST_MATCHER = /^Test Case\s'-\[(.*)\s(.*)PENDING\]'\spassed/
+    TEST_CASE_PENDING_MATCHER = /^Test Case\s'-\[(.*)\s(.*)PENDING\]'\spassed/
 
     # @regex Captured groups
     # $1 = suite
     # $2 = test_case
     # $3 = time
-    MEASURING_TEST_MATCHER = /^[^:]*:[^:]*:\sTest Case\s'-\[(.*)\s(.*)\]'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
+    TEST_CASE_MEASURED_MATCHER = /^[^:]*:[^:]*:\sTest Case\s'-\[(.*)\s(.*)\]'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
 
     PHASE_SUCCESS_MATCHER = /^\*\*\s(.*)\sSUCCEEDED\s\*\*/
 
@@ -368,11 +368,11 @@ module XCPretty
         formatter.format_libtool($1)
       when LINKING_MATCHER
         formatter.format_linking($1, $2, $3)
-      when MEASURING_TEST_MATCHER
+      when TEST_CASE_MEASURED_MATCHER
         formatter.format_measuring_test($1, $2, $3)
-      when PENDING_TEST_MATCHER
+      when TEST_CASE_PENDING_MATCHER
         formatter.format_pending_test($1, $2)
-      when PASSING_TEST_MATCHER
+      when TEST_CASE_PASSED_MATCHER
         formatter.format_passing_test($1, $2, $3)
       when PODS_ERROR_MATCHER
         formatter.format_error($1)
@@ -419,13 +419,13 @@ module XCPretty
 
     def update_test_state(text)
       case text
-      when TEST_CASE_STARTED_MATCHER
-        @test_suite = $1
-        @test_case = $2
       when TEST_SUITE_STARTED_MATCHER
         @tests_done = false
         @formatted_summary = false
         @failures = {}
+      when TEST_CASE_STARTED_MATCHER
+        @test_suite = $1
+        @test_case = $2
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
       when FAILING_TEST_MATCHER
