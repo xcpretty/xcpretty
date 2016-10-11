@@ -1,11 +1,12 @@
 language: ruby
 sudo: false
-install:
-  - bundle install
 
 rvm:
   - 2.1.1
   - 2.0.0
 
-script: rake ci
+script:
+  - make spec
+  - make cucumber
+  - make lint
 

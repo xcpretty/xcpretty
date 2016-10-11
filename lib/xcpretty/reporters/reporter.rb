@@ -50,7 +50,8 @@ module XCPretty
       File.open(@filepath, 'w') do |f|
         # WAT: get rid of these locals. BTW Cucumber fails if you remove them
         output_string = @tests.join("\n")
-        output_string += "\nFINISHED RUNNING #{@test_count} TESTS WITH #{@fail_count} FAILURES"
+        output_string +=
+          "\nFINISHED RUNNING #{@test_count} TESTS WITH #{@fail_count} FAILURES"
         f.write output_string
       end
     end
