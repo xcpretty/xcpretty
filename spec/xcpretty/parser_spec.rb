@@ -168,6 +168,16 @@ module XCPretty
       @parser.parse(SAMPLE_LIBTOOL)
     end
 
+    it "parses uitest failing tests" do
+      @formatter.should receive(:format_failing_test).with(
+        "viewUITests.vmtAboutWindow",
+        "testConnectToDesktop",
+        "UI Testing Failure - Unable to find hit point for element Button 0x608001165880: {{74.0, -54.0}, {44.0, 38.0}}, label: 'Disconnect'",
+        "<unknown>:0"
+      )
+      @parser.parse(SAMPLE_UITEST_CASE_WITH_FAILURE)
+    end
+
     it "parses specta failing tests" do
       @formatter.should receive(:format_failing_test).with("SKWelcomeViewControllerSpecSpec",
                                                            "SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen",
