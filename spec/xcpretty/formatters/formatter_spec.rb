@@ -12,11 +12,11 @@ module XCPretty
     end
 
     it "initializes with unicode" do
-      @formatter.use_unicode?.should be_truthy
+      @formatter.use_unicode?.should == true
     end
 
     it "initializes with color" do
-      @formatter.colorize?.should be_truthy
+      @formatter.colorize?.should == true
     end
 
     it "outputs to new lines by default" do
@@ -141,3 +141,4 @@ StringSpec
     end
   end
 end
+

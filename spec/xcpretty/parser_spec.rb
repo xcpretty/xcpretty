@@ -7,6 +7,7 @@ require 'fixtures/constants'
 module XCPretty
 
   describe Parser do
+
     before(:each) do
       @formatter = Formatter.new(false, false)
       @parser = Parser.new(@formatter)
@@ -167,6 +168,16 @@ module XCPretty
       @parser.parse(SAMPLE_LIBTOOL)
     end
 
+    it "parses uitest failing tests" do
+      @formatter.should receive(:format_failing_test).with(
+        "viewUITests.vmtAboutWindow",
+        "testConnectToDesktop",
+        "UI Testing Failure - Unable to find hit point for element Button 0x608001165880: {{74.0, -54.0}, {44.0, 38.0}}, label: 'Disconnect'",
+        "<unknown>:0"
+      )
+      @parser.parse(SAMPLE_UITEST_CASE_WITH_FAILURE)
+    end
+
     it "parses specta failing tests" do
       @formatter.should receive(:format_failing_test).with("SKWelcomeViewControllerSpecSpec",
                                                            "SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen",
@@ -318,12 +329,6 @@ module XCPretty
     it "parses ocunit test run passed" do
       @formatter.should receive(:format_test_run_finished).with('Hazelnuts.xctest', '2014-09-24 23:09:20 +0000.')
       @parser.parse(SAMPLE_OCUNIT_PASSED_TEST_RUN_COMPLETION)
-    end
-
-    it "parses ocunit test assertion failure" do
-      @formatter.should receive(:format_failing_test).with('viewUITests.vmtAboutWindow', 'testConnectToDesktop', "UI Testing Failure - Unable to find hit point for element Button 0x608001165880: {{74.0, -54.0}, {44.0, 38.0}}, label: 'Disconnect'", '<unknown>:0')
-      @parser.parse(SAMPLE_OCUNIT_TEST_ASSERTION_FAILURE)
-      @parser.parse(SAMPLE_OCUNIT_CASE_FAILURE)
     end
 
     it "parses ocunit test run failed" do
@@ -519,10 +524,6 @@ module XCPretty
         @parser.parse(reporter)
       end
 
-      def given_a_test_failed(reporter = SAMPLE_OCUNIT_CASE_FAILURE)
-        @parser.parse(reporter)
-      end
-
       def given_tests_are_done(reporter = SAMPLE_OCUNIT_TEST_RUN_COMPLETION)
         @parser.parse(reporter)
       end
@@ -563,14 +564,6 @@ module XCPretty
         }
       end
 
-      it "knows when tests fail for XCTest" do
-        @formatter.should_receive(:format_test_summary).once
-        given_tests_have_started
-        given_a_test_failed
-        given_tests_are_done
-        @parser.parse(SAMPLE_EXECUTED_TESTS_WITH_FAILURE)
-      end
-
       it "prints OCunit / XCTest summary twice if tests executed twice" do
         @formatter.should_receive(:format_test_summary).twice
         2.times {
@@ -591,3 +584,4 @@ module XCPretty
 
   end
 end
+

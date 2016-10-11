@@ -367,3 +367,4 @@ end
 Then(/^I should see the code signing is requried message$/) do
   run_output.should include("Code signing is required for product type 'Application' in SDK 'iOS 10.0'")
 end
+

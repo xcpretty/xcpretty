@@ -6,20 +6,47 @@ SAMPLE_OCUNIT_TEST_RUN_BEGINNING = "Test Suite '/Users/musalj/Library/Developer/
 SAMPLE_KIWI_TEST_RUN_BEGINNING = "Test Suite 'ObjectiveRecordTests.xctest' started at 2013-12-10 06:15:39 +0000"
 SAMPLE_SPECTA_TEST_RUN_BEGINNING = "    Test Suite 'KIFTests.xctest' started at 2014-02-28 15:43:42 +0000"
 SAMPLE_OCUNIT_TEST_RUN_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-10 07:03:03 +0000."
-SAMPLE_OCUNIT_TEST_ASSERTION_FAILURE = "    t =    22.27s             Assertion Failure: <unknown>:0: UI Testing Failure - Unable to find hit point for element Button 0x608001165880: {{74.0, -54.0}, {44.0, 38.0}}, label: 'Disconnect'"
 SAMPLE_OCUNIT_FAILED_TEST_RUN_COMPLETION = "Test Suite '/Users/dm/someplace/Macadamia.octest' failed at 2014-09-24 23:09:20 +0000."
 SAMPLE_OCUNIT_PASSED_TEST_RUN_COMPLETION = "Test Suite 'Hazelnuts.xctest' passed at 2014-09-24 23:09:20 +0000."
 SAMPLE_KIWI_TEST_RUN_COMPLETION = "Test Suite 'ObjectiveRecordTests.xctest' finished at 2013-12-10 06:15:42 +0000."
 SAMPLE_SPECTA_TEST_RUN_COMPLETION = "     Test Suite 'KIFTests.xctest' finished at 2014-02-28 15:44:32 +0000."
 
 SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite 'RACKVOWrapperSpec' started at 2013-12-10 21:06:10 +0000"
-SAMPLE_OCUNIT_CASE_BEGINNING = "Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' started."
-SAMPLE_OCUNIT_CASE_FAILURE = "Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' failed (22.490 seconds)."
 SAMPLE_SPECTA_SUITE_BEGINNING = "   Test Suite 'All tests' started at 2014-02-28 19:07:41 +0000"
 SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000."
 SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
 SAMPLE_XCTEST_SUITE_COMPLETION = "Test Suite 'ObjectiveSugarTests.xctest' finished at 2013-12-09 04:42:13 +0000."
 
+SAMPLE_UITEST_CASE_WITH_FAILURE = %Q(\
+Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' started.
+    t =     0.00s     Start Test at 2016-08-18 09:07:17.822
+    t =     0.00s     Set Up
+    t =     0.00s         Launch com.vmware.horizon
+    t =     1.38s             Wait for app to idle
+Wait for connect to desktop done
+    t =    19.06s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    20.31s     Find: Descendants matching type Window
+    t =    20.32s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+Connect to desktop done
+    t =    20.32s     Click "Disconnect" Button
+    t =    20.32s         Wait for app to idle
+    t =    20.39s         Find the "Disconnect" Button
+    t =    20.39s             Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    20.53s             Find: Descendants matching type Window
+    t =    20.53s             Find: Elements matching predicate '"rdsh1" IN identifiers'
+    t =    21.54s             Find the "Disconnect" Button (retry 1)
+    t =    21.54s                 Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    21.80s                 Find: Descendants matching type Window
+    t =    21.80s                 Find: Elements matching predicate '"rdsh1" IN identifiers'
+    t =    21.81s                 Find: Descendants matching type Toolbar
+    t =    21.81s                 Find: Descendants matching type Button
+    t =    21.81s                 Find: Elements matching predicate '"Disconnect" IN identifiers'
+    t =    21.81s         Synthesize event
+    t =    22.27s             Assertion Failure: <unknown>:0: UI Testing Failure - Unable to find hit point for element Button 0x608001165880: {{74.0, -54.0}, {44.0, 38.0}}, label: 'Disconnect'
+    t =    22.29s     Tear Down
+Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' failed (22.490 seconds).
+)
+SAMPLE_XCTEST_FAILURE = ""
 SAMPLE_KIWI_FAILURE = "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49: error: -[NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes] : 'Iterators, times： iterates the exact number of times' [FAILED], expected subject to equal 4, got 5"
 SAMPLE_OLD_SPECTA_FAILURE = "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458: error: -[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES] : expected: 1, got: 0"
 SAMPLE_SPECTA_FAILURE = "         Test Case '-[SKWelcomeViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen]' started. \n/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11: error: -[SKWelcomeViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen] : The step timed out after 2.00 seconds: Failed to find accessibility element with the label \"The asimplest way to make smarter business decisions\""
@@ -36,7 +63,6 @@ Clean.Remove clean /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSu
     builtin-rm -rf /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/ObjectiveSugar.build/Debug-iphonesimulator/ObjectiveSugarTests.build
 )
 SAMPLE_EXECUTED_TESTS = "Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds"
-SAMPLE_EXECUTED_TESTS_WITH_FAILURE = "Executed 1 test, with 1 failure (0 unexpected) in 22.490 (22.513) seconds"
 SAMPLE_SPECTA_EXECUTED_TESTS = "       Executed 4 tests, with 0 failures (0 unexpected) in 10.192 (10.193) seconds"
 SAMPLE_OCUNIT_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.001 seconds)."
 SAMPLE_SPECTA_TEST = "         Test Case '-[SKWelcomeActivationViewControllerSpecSpec SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code]' passed (0.725 seconds)."
@@ -628,3 +654,4 @@ SAMPLE_FORMAT_WARNING = %Q(
 )
 
 SAMPLE_WILL_NOT_BE_CODE_SIGNED = "FrameworkName will not be code signed because its settings don't specify a development team."
+
