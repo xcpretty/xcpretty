@@ -103,18 +103,21 @@ module XCPretty
         second_path = File.expand_path('spec/fixtures/NSStringTests.m:57')
 
         failures = {
-          'CarSpec' => [
-            {
-              file_path: first_path,
-              reason: "just doesn't work",
-              test_case: 'Starting the car'
-            }],
-            'StringSpec' => [
-              {
-                file_path: second_path,
-                reason: "doesn't split",
-                test_case: 'Splitting the string'
-              }]
+          'CarSpec' => [{
+            file_path: first_path,
+            reason: "just doesn't work",
+            test_case: 'Starting the car'
+          }],
+          'StringSpec' => [{
+            file_path: second_path,
+            reason: "doesn't split",
+            test_case: 'Splitting the string'
+          }],
+          'UI spec' => [{
+            file_path: "<unknown.m>:0",
+            reason: "ui test failed",
+            test_case: 'yolo'
+          }]
         }
         @formatter.format_test_summary(SAMPLE_EXECUTED_TESTS, failures).should == %Q(
 
@@ -135,6 +138,9 @@ StringSpec
         [[[@"  Look mo, no empties!   " strip] should] equal:@"Look mo, no empties!"];
     });
   ```
+
+UI spec
+  yolo, #{@formatter.red("ui test failed")}
 
 
 #{@formatter.red(SAMPLE_EXECUTED_TESTS)})
