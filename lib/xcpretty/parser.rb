@@ -549,7 +549,7 @@ module XCPretty
       @formatting_linker_failure = false
     end
 
-    def store_failure(file = nil, test_suite = nil, test_case = nil, reason = nil)
+    def store_failure(file: nil, test_suite: nil, test_case: nil, reason: nil)
       failures_per_suite[test_suite] ||= []
       failures_per_suite[test_suite] << {
         file_path: file,
