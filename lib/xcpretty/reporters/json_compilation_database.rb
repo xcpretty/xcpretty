@@ -20,6 +20,10 @@ module XCPretty
       @current_path = nil
     end
 
+    def format_build_target(target, project, configuration)
+      @pch_path = nil
+    end
+
     def format_process_pch_command(file_path)
       @pch_path = file_path
     end
