@@ -1,4 +1,4 @@
-Copyright (c) 2013 Marin Usalj
+Copyright (c) 2013-2016 Marin Usalj
 
 MIT License
 
