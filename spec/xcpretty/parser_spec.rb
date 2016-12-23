@@ -8,6 +8,7 @@ class MockFormatter
   def method_missing(*args)
     @args = args
   end
+
   def flush
     a = @args
     @args = []
@@ -116,7 +117,7 @@ describe 'Parser' do
     end
 
     it 'suppresses chmod invocation' do
-      suppress(/^chmod/,[SAMPLE_WRITE_AUXILIARY_FILES])
+      suppress(/^chmod/, [SAMPLE_WRITE_AUXILIARY_FILES])
     end
 
     it 'suppresses shell invocations' do
@@ -124,7 +125,7 @@ describe 'Parser' do
     end
 
     it 'suppresses touch invocation' do
-      suppress(/^\s{4}\/usr\/bin\/touch -c/,[SAMPLE_TOUCH])
+      suppress(/^\s{4}\/usr\/bin\/touch -c/, [SAMPLE_TOUCH])
     end
 
     it 'suppresses ibtool invocation' do
@@ -160,7 +161,7 @@ describe 'Parser' do
       @parser.parse(SAMPLE_COPYSWIFTLIBS.lines.find { |l| l =~ /^Code signature of/ })
       @formatter.flush.should == [
         :format_code_signature_unchanged,
-        Pathname.new("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib"),
+        Pathname.new("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib")
       ]
     end
   end
@@ -342,7 +343,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_LIBTOOL.lines[1])
     @formatter.flush.should == [
       :format_libtool,
-      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Models.framework/Pods_Models"),
+      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Models.framework/Pods_Models")
     ]
   end
 
@@ -350,7 +351,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COMPILE_ASSET_CATALOG)
     @formatter.flush.should == [
       :format_compile_asset_catalog,
-      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/Images.xcassets"),
+      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/Images.xcassets")
     ]
   end
 
@@ -376,4 +377,4 @@ describe 'Parser' do
   end
 
 end
-end #XCPretty
+end # XCPretty
