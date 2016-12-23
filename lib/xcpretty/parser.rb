@@ -131,6 +131,7 @@ SHELL_SETENV      = /^\s{4}setenv (?:#{WORD}) (?:#{PATH})?[\w\-]+\s(.*)$/
 SHELL_SUBSHELL    = /^\s{4}\/bin\/sh -c/
 SHELL_MKDIR       = /^\/bin\/mkdir -p/
 SHELL_CHMOD       = /^chmod/
+SHELL_IBTOOL      = /^\s{4}(?:#{PATH})\/usr\/bin\/ibtool /
 
 chunk "Compiling" do |c|
   c.line /^CompileC (?:#{PATH}\.o) (#{PATH}\.(?:m|mm|c|cc|cpp|cxx)) / do |f, m|
@@ -269,7 +270,7 @@ chunk "CompileXIB" do |c|
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
-  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/ibtool /
+  c.line SHELL_IBTOOL
 end
 
 chunk "CompileStoryboard" do |c|
@@ -280,7 +281,7 @@ chunk "CompileStoryboard" do |c|
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
-  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/ibtool /
+  c.line SHELL_IBTOOL
 end
 
 chunk "Libtool" do |c|
@@ -340,6 +341,17 @@ chunk "CompileAssetCatalog" do |c|
   c.line /^#{PATH}$/
 end
 
+chunk "LinkStoryboards" do |c|
+  c.line /^LinkStoryboards/ do |f,m|
+    f.format_link_storyboards
+  end
+
+  c.line SHELL_IBTOOL
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+end
+
+# TODO: move
 def self.action_regex(action)
   target = /^=== #{action}(?: AGGREGATE)? TARGET (.*)/
   project = /OF PROJECT (.*)/

@@ -91,7 +91,7 @@ describe 'Parser' do
         SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_CODESIGN,
-        SAMPLE_COPYSTRINGS])
+        SAMPLE_COPYSTRINGS, SAMPLE_LINK_STORYBOARDS])
     end
 
     it 'shuts up `cd`' do
@@ -101,7 +101,8 @@ describe 'Parser' do
         SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER,
         SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
-        SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS])
+        SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS,
+        SAMPLE_LINK_STORYBOARDS])
     end
 
     it 'suppresses builtin-' do
@@ -132,7 +133,8 @@ describe 'Parser' do
 
     it 'suppresses ibtool invocation' do
       suppress(/^\s{4}(?:#{PATH})ibtool /,
-               [SAMPLE_COMPILE_XIB, SAMPLE_COMPILE_STORYBOARD])
+               [SAMPLE_COMPILE_XIB, SAMPLE_COMPILE_STORYBOARD,
+                SAMPLE_LINK_STORYBOARDS])
     end
 
     it 'suppresses libtool invocation' do
@@ -347,6 +349,11 @@ describe 'Parser' do
       :format_compile_storyboard,
       Pathname.new("Lyft/Resources/Storyboards\ &\ XIBs/Driver/DriverDestination.storyboard")
     ]
+  end
+
+  it 'parses LinkStoryboards' do
+    @parser.parse(SAMPLE_LINK_STORYBOARDS.lines[1])
+    @formatter.flush.should == [:format_link_storyboards]
   end
 
   it 'parses Libtool' do

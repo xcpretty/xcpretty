@@ -723,6 +723,13 @@ Create product structure
 /bin/mkdir -p /Users/marinusalj/code/lyft/lyft-temp/build/LambdaKit.framework/Headers
 )
 
+SAMPLE_LINK_STORYBOARDS = %Q(
+LinkStoryboards
+    cd /Users/marinusalj/code/lyft/lyft-ios
+    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/marinusalj/code/go/bin:/Users/marinusalj/.gem/bin:/Users/marinusalj/.linuxbrew/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    export XCODE_DEVELOPER_USR_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin/..
+    /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --errors --warnings --notices --module SiriUI --target-device iphone --target-device ipad --minimum-deployment-target 10.0 --output-format human-readable-text --link /Users/marinusalj/code/lyft/lyft-ios/build/Products/Debug-iphonesimulator/SiriUI.appex /Users/marinusalj/code/lyft/lyft-ios/build/Intermediates/Lyft.build/Debug-iphonesimulator/SiriUI.build/SiriUI.storyboardc
+)
 
 ################################################################################
 # ERRORS
