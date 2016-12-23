@@ -65,6 +65,11 @@ module XCPretty
         result.should == "> Compile MainMenu.xib"
       end
 
+      it 'formats Link Storyboards' do
+        @formatter.format_link_storyboards
+        result.should == "> Link Storyboards"
+      end
+
       it "formats compiling storyboard output" do
         @formatter.format_compile_xib(Pathname.new("/path/to/Main.storyboard"))
         result.should == "> Compile Main.storyboard"

@@ -103,6 +103,10 @@ module XCPretty
       format("Build library", path.basename)
     end
 
+    def format_link_storyboards()
+      format("Link Storyboards")
+    end
+
     def format_ld(path, build_variants, arch)
       format("Link", path.basename)
     end
