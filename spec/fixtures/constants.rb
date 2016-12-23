@@ -135,10 +135,10 @@ CpResource ObjectiveSugar/Default-568h@2x.png /Users/musalj/Library/Developer/Xc
 )
 
 SAMPLE_COPYSTRINGS = %Q(
-CopyStringsFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/en.lproj/InfoPlist.strings ObjectiveSugar/en.lproj/InfoPlist.strings
-    cd /Users/musalj/code/OSS/ObjectiveSugar/Example
-    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/en.lproj -- ObjectiveSugar/en.lproj/InfoPlist.strings
+CopyStringsFile build/Products/Debug-iphonesimulator/Models.framework/en.lproj/Localizable.strings Lyft/Models/Resources/en.lproj/Localizable.strings
+    cd /Users/marinusalj/code/lyft/lyft-ios
+    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/marinusalj/code/go/bin:/Users/marinusalj/.gem/bin:/Users/marinusalj/.linuxbrew/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/marinusalj/code/lyft/lyft-ios/build/Products/Debug-iphonesimulator/Models.framework/en.lproj -- Lyft/Models/Resources/en.lproj/Localizable.strings
 )
 
 SAMPLE_COPYPNGFILE = %Q(

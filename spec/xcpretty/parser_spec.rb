@@ -2,6 +2,7 @@ require 'xcpretty'
 require 'xcpretty/parser'
 require 'fixtures/constants'
 require 'spec_helper'
+
 module XCPretty
 
 class MockFormatter
@@ -89,7 +90,8 @@ describe 'Parser' do
         SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD,
         SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
-        SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_CODESIGN])
+        SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_CODESIGN,
+        SAMPLE_COPYSTRINGS])
     end
 
     it 'shuts up `cd`' do
@@ -99,13 +101,13 @@ describe 'Parser' do
         SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER,
         SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
-        SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE])
+        SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS])
     end
 
     it 'suppresses builtin-' do
       suppress(/^\s{4}builtin-/, [
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_CPHEADER,
-        SAMPLE_CPRESOURCE])
+        SAMPLE_CPRESOURCE, SAMPLE_COPYSTRINGS])
     end
 
     it 'shuts up setenv' do
@@ -302,6 +304,14 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_copy_swift_libs,
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework")
+    ]
+  end
+
+  it 'parses CopyStringsFile' do
+    @parser.parse(SAMPLE_COPYSTRINGS.lines[1])
+    @formatter.flush.should == [
+      :format_copy_strings_file,
+      Pathname.new("Lyft/Models/Resources/en.lproj/Localizable.strings")
     ]
   end
 

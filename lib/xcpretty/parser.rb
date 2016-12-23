@@ -300,6 +300,15 @@ chunk "CopyPNGFile" do |c|
   c.line SHELL_EXPORT
 end
 
+chunk "CopyStringsFile" do |c|
+  c.line /^CopyStringsFile (#{PATH}) (#{PATH})/ do |f,m|
+    f.format_copy_strings_file(path(m[2]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line SHELL_BUILTIN
+end
+
 chunk "CopySwiftLibs" do |c|
   c.line /^CopySwiftLibs (#{PATH})$/ do |f,m|
     f.format_copy_swift_libs(path(m[1]))
