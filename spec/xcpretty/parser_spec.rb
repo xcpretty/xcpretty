@@ -91,7 +91,7 @@ describe 'Parser' do
         SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_CODESIGN,
-        SAMPLE_COPYSTRINGS, SAMPLE_LINK_STORYBOARDS])
+        SAMPLE_COPYSTRINGS, SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP])
     end
 
     it 'shuts up `cd`' do
@@ -102,13 +102,13 @@ describe 'Parser' do
         SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS,
-        SAMPLE_LINK_STORYBOARDS])
+        SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP])
     end
 
     it 'suppresses builtin-' do
       suppress(/^\s{4}builtin-/, [
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_CPHEADER,
-        SAMPLE_CPRESOURCE, SAMPLE_COPYSTRINGS])
+        SAMPLE_CPRESOURCE, SAMPLE_COPYSTRINGS, SAMPLE_PBXCP])
     end
 
     it 'shuts up setenv' do
@@ -369,6 +369,14 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_compile_asset_catalog,
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/Images.xcassets")
+    ]
+  end
+
+  it 'parses PBXCp' do
+    @parser.parse(SAMPLE_PBXCP)
+    @formatter.flush.should == [
+      :format_pbxcp,
+      Pathname.new("build/Products/Debug-watchsimulator/API.framework")
     ]
   end
 

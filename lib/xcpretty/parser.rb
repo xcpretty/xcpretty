@@ -351,6 +351,15 @@ chunk "LinkStoryboards" do |c|
   c.line SHELL_EXPORT
 end
 
+chunk "PBXCp" do |c|
+  c.line /^PBXCp (#{PATH}) (?:#{PATH})$/ do |f,m|
+    f.format_pbxcp(path(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line SHELL_BUILTIN
+end
+
 # TODO: move
 def self.action_regex(action)
   target = /^=== #{action}(?: AGGREGATE)? TARGET (.*)/

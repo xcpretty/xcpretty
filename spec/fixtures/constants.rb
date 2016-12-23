@@ -708,10 +708,10 @@ Preprocess build/CocoaChip.build/Release/CocoaChip.build/Preprocessed-Info.plist
 )
 
 SAMPLE_PBXCP = %Q(
-PBXCp build/Release/CocoaChipCore.framework build/Release/CocoaChip.app/Contents/Frameworks/CocoaChipCore.framework
-    cd /Users/dustin/Source/CocoaChip
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app/Contents/Frameworks
-warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework/Versions/A/CocoaChipCore
+PBXCp build/Products/Debug-watchsimulator/API.framework build/Products/Debug-watchsimulator/WatchExtension.appex/Frameworks/API.framework
+    cd /Users/marinusalj/code/lyft/lyft-ios
+    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/WatchSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/marinusalj/code/go/bin:/Users/marinusalj/.gem/bin:/Users/marinusalj/.linuxbrew/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -resolve-src-symlinks /Users/marinusalj/code/lyft/lyft-ios/build/Products/Debug-watchsimulator/API.framework /Users/marinusalj/code/lyft/lyft-ios/build/Products/Debug-watchsimulator/WatchExtension.appex/Frameworks
 )
 
 SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec, line 80, hello xcpretty.png'
