@@ -231,6 +231,10 @@ module XCPretty
       CODE_SIGNING_REQUIRED_MATCHER = /^(Code signing is required for product type .* in SDK .*)$/
 
       # @regex Captured groups
+      # #1 = whole error
+      NO_PROFILE_MATCHING_MATCHER = /^(No profile matching .* found:.*)$/
+
+      # @regex Captured groups
       # $1 = file_path
       # $2 = file_name
       # $3 = reason
@@ -331,6 +335,8 @@ module XCPretty
       when CODESIGN_ERROR_MATCHER
         formatter.format_error($1)
       when CODE_SIGNING_REQUIRED_MATCHER
+        formatter.format_error($1)
+      when NO_PROFILE_MATCHING_MATCHER
         formatter.format_error($1)
       when COMPILE_MATCHER
         formatter.format_compile($2, $1)
