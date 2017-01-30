@@ -7,6 +7,13 @@ It does one thing, and it should do it well.
 [![Build Status](https://travis-ci.org/supermarin/xcpretty.svg?branch=master)](https://travis-ci.org/supermarin/xcpretty)
 [![Code Climate](http://img.shields.io/codeclimate/github/supermarin/xcpretty.svg)](https://codeclimate.com/github/supermarin/xcpretty)
 
+## Requirements
+```
+bash
+ruby >= 2.0
+default ruby version starting at OSX Yosemite. 
+```
+
 ## Installation
 ``` bash
 $ gem install xcpretty
