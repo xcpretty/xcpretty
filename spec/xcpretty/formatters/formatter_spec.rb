@@ -141,6 +141,7 @@ StringSpec
 
 UI spec
   yolo, #{@formatter.red("ui test failed")}
+  #{@formatter.cyan("<unknown.m>:0")}
 
 
 #{@formatter.red(SAMPLE_EXECUTED_TESTS)})
