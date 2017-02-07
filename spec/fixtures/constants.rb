@@ -641,6 +641,10 @@ SAMPLE_CODE_SIGNING_IS_REQUIRED_ERROR = %Q(
 Code signing is required for product type 'Application' in SDK 'iOS 10.0'
 )
 
+SAMPLE_NO_PROFILE_MATCHING_ERROR = %Q(
+No profile matching 'TargetName' found:  Xcode couldn't find a profile matching 'TargetName'. Install the profile (by dragging and dropping it onto Xcode's dock item) or select a different one in the General tab of the target editor.
+)
+
 ################################################################################
 # WARNINGS
 ################################################################################

@@ -452,6 +452,13 @@ module XCPretty
         @parser.parse(SAMPLE_CODESIGN_ERROR_NO_SPACES)
       end
 
+      it "parses No profile matching error:" do
+        @formatter.should receive(:format_error).with(
+          "No profile matching 'TargetName' found:  Xcode couldn't find a profile matching 'TargetName'. Install the profile (by dragging and dropping it onto Xcode's dock item) or select a different one in the General tab of the target editor."
+        )
+        @parser.parse(SAMPLE_NO_PROFILE_MATCHING_ERROR)
+      end
+
       it "parses ld library errors" do
         @formatter.should receive(:format_error).with(
           SAMPLE_LD_LIBRARY_ERROR

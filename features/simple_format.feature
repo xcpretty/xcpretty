@@ -226,3 +226,8 @@ Feature: Showing build output in simple format
         Given the target requires code signing
         When I pipe to xcpretty with "--simple --no-color"
         Then I should see the code signing is requried message
+
+    Scenario: Showing no profile matching error
+        Given the matching profile is missing
+        When I pipe to xcpretty with "--simple --no-color"
+        Then I should see the no profile matching message

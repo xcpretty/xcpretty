@@ -144,6 +144,10 @@ Given(/^the target requires code signing$/) do
   add_run_input SAMPLE_CODE_SIGNING_IS_REQUIRED_ERROR
 end
 
+Given(/^the matching profile is missing$/) do
+  add_run_input SAMPLE_NO_PROFILE_MATCHING_ERROR
+end
+
 Then(/^I should see a "(\w+)" completion message$/) do |phase|
   run_output.should start_with("▸ #{phase.capitalize} Succeeded")
 end
@@ -366,5 +370,9 @@ end
 
 Then(/^I should see the code signing is requried message$/) do
   run_output.should include("Code signing is required for product type 'Application' in SDK 'iOS 10.0'")
+end
+
+Then(/^I should see the no profile matching message$/) do
+  run_output.should include("No profile matching 'TargetName' found:  Xcode couldn't find a profile matching 'TargetName'. Install the profile (by dragging and dropping it onto Xcode's dock item) or select a different one in the General tab of the target editor.")
 end
 
