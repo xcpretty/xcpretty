@@ -582,6 +582,14 @@ SAMPLE_CODESIGN_ERROR_NO_SPACES = %Q(
 CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 7.0'
 )
 
+SAMPLE_REQUIRES_PROVISION = %Q(
+PROJECT_NAME requires a provisioning profile. Select a provisioning profile for the "Debug" build configuration in the project editor.
+)
+
+SAMPLE_NO_CERTIFICATE = %Q(
+No certificate matching 'iPhone Distribution: Name (B89SBB0AV9)' for team 'B89SBB0AV9':  Select a different signing certificate for CODE_SIGN_IDENTITY, a team that matches your selected certificate, or switch to automatic provisioning.
+)
+
 SAMPLE_FATAL_COMPILE_ERROR = %Q(
 In file included from /Users/musalj/code/OSS/SampleApp/Pods/SuperCoolPod/SuperAwesomeClass.m:12:
 In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/LessCoolClass.h:9:

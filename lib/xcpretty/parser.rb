@@ -235,6 +235,14 @@ module XCPretty
       NO_PROFILE_MATCHING_MATCHER = /^(No profile matching .* found:.*)$/
 
       # @regex Captured groups
+      # $1 = whole error
+      PROVISIONING_PROFILE_REQUIRED_MATCHER = /^(.*requires a provisioning profile.*)$/
+
+      # @regex Captured groups
+      # $1 = whole error
+      NO_CERTIFICATE_MATCHER = /^(No certificate matching.*)$/
+
+      # @regex Captured groups
       # $1 = file_path
       # $2 = file_name
       # $3 = reason
@@ -337,6 +345,10 @@ module XCPretty
       when CODE_SIGNING_REQUIRED_MATCHER
         formatter.format_error($1)
       when NO_PROFILE_MATCHING_MATCHER
+        formatter.format_error($1)
+      when PROVISIONING_PROFILE_REQUIRED_MATCHER
+        formatter.format_error($1)
+      when NO_CERTIFICATE_MATCHER
         formatter.format_error($1)
       when COMPILE_MATCHER
         formatter.format_compile($2, $1)
