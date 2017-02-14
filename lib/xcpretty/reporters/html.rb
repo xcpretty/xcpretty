@@ -75,7 +75,7 @@ module XCPretty
         
         suite_name = find_test_suite(suite[0])
         next if suite_name.nil?
-
+        
         @test_suites[suite_name][:screenshots] << item
       end
     end
