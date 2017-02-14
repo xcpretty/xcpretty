@@ -70,7 +70,10 @@ module XCPretty
       Dir.foreach(SCREENSHOT_DIR) do |item|
         next if item == '.' || item == '..' || File.extname(item) != '.png'
 
-        suite_name = find_test_suite(item)
+        suite = item.split(".")
+        next if suite.empty?
+
+        suite_name = find_test_suite(suite[0])
         next if suite_name.nil?
 
         @test_suites[suite_name][:screenshots] << item
