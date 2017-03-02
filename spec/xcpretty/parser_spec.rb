@@ -18,6 +18,11 @@ class MockFormatter
 end
 
 describe 'Parser' do
+
+  def path(string)
+    Pathname.new(string)
+  end
+
   before do
     @formatter = MockFormatter.new
     @parser = Parser.new(@formatter)
@@ -43,8 +48,8 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_compile_swift_with_module_optimization,
       [
-        Pathname.new("/foo/bar/baz.swift"),
-        Pathname.new("/bar/bang/f.swift")
+        path("/foo/bar/baz.swift"),
+        path("/bar/bang/f.swift")
       ]
     ]
     FileUtils.rm(path)
@@ -64,10 +69,10 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_compile_swift_with_module_optimization,
       [
-        Pathname.new("/a/b/Lyft/API/Passenger/LyftAPI+EditPartySize.swift"),
-        Pathname.new("/a/b/Lyft/API/Passenger/LyftAPI+Payments.swift"),
-        Pathname.new("/a/b/Lyft/API/Passenger/RideHistoryRoute.swift"),
-        Pathname.new("/a/b/Lyft/API/Common/LyftAPI+Location.swift")
+        path("/a/b/Lyft/API/Passenger/LyftAPI+EditPartySize.swift"),
+        path("/a/b/Lyft/API/Passenger/LyftAPI+Payments.swift"),
+        path("/a/b/Lyft/API/Passenger/RideHistoryRoute.swift"),
+        path("/a/b/Lyft/API/Common/LyftAPI+Location.swift")
       ]
     ]
   end
@@ -76,21 +81,21 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
-      Pathname.new("/Users/musalj/code/OSS/Objective\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
+      path("/Users/musalj/code/OSS/Objective\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
   end
 
   it 'parses CompileSwift' do
     @parser.parse(SAMPLE_SWIFT_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
-      Pathname.new("/Users/marinusalj/code/foo/bar-temp/baz/Classes/yolo\ +\ Common/Common/Helpers\ \&\ Managers/Poller.swift")]
+      path("/Users/marinusalj/code/foo/bar-temp/baz/Classes/yolo\ +\ Common/Common/Helpers\ \&\ Managers/Poller.swift")]
   end
 
   it 'parses Ditto' do
     @parser.parse(SAMPLE_DITTO.lines[1])
     @formatter.flush.should == [
       :format_ditto,
-      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h")]
+      path("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit-Swift.h")]
   end
 
   it 'parses CompileSwiftSources' do
@@ -212,7 +217,7 @@ describe 'Parser' do
       @parser.parse(SAMPLE_COPYSWIFTLIBS.lines.find { |l| l =~ /^Code signature of/ })
       @formatter.flush.should == [
         :format_code_signature_unchanged,
-        Pathname.new("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib")
+        path("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib")
       ]
     end
   end
@@ -227,14 +232,14 @@ describe 'Parser' do
     @parser.parse(SAMPLE_MERGE_SWIFT_MODULE.lines[1])
     @formatter.flush.should == [
       :format_merge_swift_module,
-      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit.swiftmodule")]
+      path("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit.swiftmodule")]
   end
 
   it 'parses swift code generation' do
     @parser.parse(SAMPLE_SWIFT_CODE_GENERATION.lines[1])
     @formatter.flush.should == [
       :format_swift_code_generation,
-      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/Pods.build/Beta-iphoneos/SnapKit.build/Objects-normal/arm64/ConstraintMakerPriortizable.bc")
+      path("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/Pods.build/Beta-iphoneos/SnapKit.build/Objects-normal/arm64/ConstraintMakerPriortizable.bc")
     ]
   end
 
@@ -242,7 +247,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_STRIP.lines[1])
     @formatter.flush.should == [
       :format_strip,
-      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework/libPhoneNumber_iOS")
+      path("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework/libPhoneNumber_iOS")
     ]
   end
 
@@ -251,7 +256,7 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_set_owner_and_group,
       "distiller:staff",
-      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/watchos/LambdaKit.framework")
+      path("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/watchos/LambdaKit.framework")
     ]
   end
 
@@ -260,13 +265,13 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_set_mode,
       "u+w,go-w,a+rX",
-      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/FBSDKCoreKit.framework")
+      path("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/FBSDKCoreKit.framework")
     ]
   end
 
   it 'parses Touch' do
     @parser.parse(SAMPLE_TOUCH.lines[1])
-    @formatter.flush.should == [:format_touch, Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz\ Tests.octest")]
+    @formatter.flush.should == [:format_touch, path("/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz\ Tests.octest")]
   end
 
   it 'parses writing auxiliary files' do
@@ -277,7 +282,7 @@ describe 'Parser' do
   it 'parses write-file' do
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[1])
     @parser.parse(SAMPLE_WRITE_AUXILIARY_FILES.lines[2])
-    @formatter.flush.should == [:format_write_file, Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-49C486D7B8EF179A4C22BBA8.sh")]
+    @formatter.flush.should == [:format_write_file, path("/Users/marinusalj/code/lyft/lyft-temp/build/Lyft.build/Debug-iphonesimulator/WatchModels.build/Script-49C486D7B8EF179A4C22BBA8.sh")]
   end
 
   it 'recovers after printing unrecognized text' do
@@ -287,7 +292,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @formatter.flush.should == [
       :format_compile,
-      Pathname.new("/Users/musalj/code/OSS/Objective\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
+      path("/Users/musalj/code/OSS/Objective\ Sugar/Classes/NSMutableArray+ObjectiveSugar.m")]
   end
 
   it 'doesnt switch chunks before finishing' do
@@ -298,14 +303,14 @@ describe 'Parser' do
 
   it 'recognizes codesign' do
     @parser.parse(SAMPLE_CODESIGN.lines[1])
-    @formatter.flush.should == [:format_codesign, Pathname.new("build/Release/CocoaChip.app")]
+    @formatter.flush.should == [:format_codesign, path("build/Release/CocoaChip.app")]
   end
 
   it 'knows how to exit' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @parser.parse("\n")
     @parser.parse(SAMPLE_CODESIGN.lines[1])
-    @formatter.flush.should == [:format_codesign, Pathname.new("build/Release/CocoaChip.app")]
+    @formatter.flush.should == [:format_codesign, path("build/Release/CocoaChip.app")]
   end
 
   it 'exits only if the line is empty' do
@@ -323,8 +328,8 @@ describe 'Parser' do
     @parser.parse(SAMPLE_SYMLINK.lines[1])
     @formatter.flush.should == [
       :format_symlink,
-      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/BuildProductsPath/Beta-iphoneos/libPhoneNumber-iOS/libPhoneNumber_iOS.framework"),
-      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework")
+      path("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/BuildProductsPath/Beta-iphoneos/libPhoneNumber-iOS/libPhoneNumber_iOS.framework"),
+      path("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework")
     ]
   end
 
@@ -337,7 +342,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_PROCESS_INFOPLIST.lines[1])
     @formatter.flush.should == [
       :format_process_info_plist,
-      Pathname.new("Target\ Support\ Files/LambdaKit-iOS/Info.plist")
+      path("Target\ Support\ Files/LambdaKit-iOS/Info.plist")
     ]
   end
 
@@ -358,7 +363,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_LD.lines[1])
     @formatter.flush.should == [
       :format_ld,
-      Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/ObjectiveSugar"),
+      path("/Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/ObjectiveSugar"),
       'normal',
       'i386'
     ]
@@ -368,8 +373,8 @@ describe 'Parser' do
     @parser.parse(SAMPLE_CPHEADER.lines[1])
     @formatter.flush.should == [
       :format_copy_header_file,
-      Pathname.new("Target\ Support\ Files/Alamofire/Alamofire-umbrella.h"),
-      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Alamofire.framework/Headers/Alamofire-umbrella.h")
+      path("Target\ Support\ Files/Alamofire/Alamofire-umbrella.h"),
+      path("/Users/marinusalj/code/lyft/lyft-temp/build/Alamofire.framework/Headers/Alamofire-umbrella.h")
     ]
   end
 
@@ -377,7 +382,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_GENERATE_DSYM.lines[1])
     @formatter.flush.should == [
       :format_generate_dsym,
-      Pathname.new("/a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework.dSYM")
+      path("/a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework.dSYM")
     ]
   end
 
@@ -385,8 +390,8 @@ describe 'Parser' do
     @parser.parse(SAMPLE_CPRESOURCE.lines[1])
     @formatter.flush.should == [
       :format_cpresource,
-      Pathname.new("ObjectiveSugar/Default-568h@2x.png"),
-      Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/Default-568h@2x.png")
+      path("ObjectiveSugar/Default-568h@2x.png"),
+      path("/Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/Default-568h@2x.png")
     ]
   end
 
@@ -394,8 +399,8 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COPYPNGFILE.lines[1])
     @formatter.flush.should == [
       :format_copy_png_file,
-      Pathname.new("Default-568h@2x.png"),
-      Pathname.new("build/Example.app/Default-568h@2x.png")
+      path("Default-568h@2x.png"),
+      path("build/Example.app/Default-568h@2x.png")
     ]
   end
 
@@ -403,7 +408,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COPYSWIFTLIBS.lines[1])
     @formatter.flush.should == [
       :format_copy_swift_libs,
-      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework")
+      path("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Lyft.framework")
     ]
   end
 
@@ -411,7 +416,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COPYSTRINGS.lines[1])
     @formatter.flush.should == [
       :format_copy_strings_file,
-      Pathname.new("Lyft/Models/Resources/en.lproj/Localizable.strings")
+      path("Lyft/Models/Resources/en.lproj/Localizable.strings")
     ]
   end
 
@@ -420,7 +425,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COPYSWIFTLIBS.lines.find { |l| l =~ /^Codesigning/ })
     @formatter.flush.should == [
       :format_codesigning_swift_lib,
-      Pathname.new("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib")
+      path("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib")
     ]
   end
 
@@ -429,7 +434,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COPYSWIFTLIBS.lines.find { |l| l =~ /^Probing/ })
     @formatter.flush.should == [
       :format_probing_swift_lib,
-      Pathname.new("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib")
+      path("/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftCore.dylib")
     ]
   end
 
@@ -437,7 +442,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COMPILE_XIB.lines[1])
     @formatter.flush.should == [
       :format_compile_xib,
-      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/XIBs/AlertController.xib")
+      path("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/XIBs/AlertController.xib")
     ]
   end
 
@@ -445,7 +450,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COMPILE_STORYBOARD.lines[1])
     @formatter.flush.should == [
       :format_compile_storyboard,
-      Pathname.new("Lyft/Resources/Storyboards\ &\ XIBs/Driver/DriverDestination.storyboard")
+      path("Lyft/Resources/Storyboards\ &\ XIBs/Driver/DriverDestination.storyboard")
     ]
   end
 
@@ -453,7 +458,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_CREATE_UNIVERSAL_BINARY.lines[1])
     @formatter.flush.should == [
       :format_create_universal_binary,
-      Pathname.new("/a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit")
+      path("/a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit")
     ]
   end
   it 'parses LinkStoryboards' do
@@ -465,7 +470,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_LIBTOOL.lines[1])
     @formatter.flush.should == [
       :format_libtool,
-      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Models.framework/Pods_Models")
+      path("/Users/marinusalj/code/lyft/lyft-temp/build/Pods_Models.framework/Pods_Models")
     ]
   end
 
@@ -473,7 +478,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_COMPILE_ASSET_CATALOG)
     @formatter.flush.should == [
       :format_compile_asset_catalog,
-      Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/Images.xcassets")
+      path("/Users/marinusalj/code/lyft/lyft-temp/LyftKit/Resources/LyftUI/Images.xcassets")
     ]
   end
 
@@ -481,7 +486,7 @@ describe 'Parser' do
     @parser.parse(SAMPLE_PBXCP)
     @formatter.flush.should == [
       :format_pbxcp,
-      Pathname.new("build/Products/Debug-watchsimulator/API.framework")
+      path("build/Products/Debug-watchsimulator/API.framework")
     ]
   end
 
