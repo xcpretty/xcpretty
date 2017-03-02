@@ -225,10 +225,10 @@ Ld ../Build/Products/Debug-iphonesimulator/ObjectiveSugar.app/ObjectiveSugar nor
 ).freeze
 
 SAMPLE_DSYM = %Q(
-GenerateDSYMFile /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest.dSYM /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest/ObjectiveSugarTests
-    cd /Users/musalj/code/OSS/ObjectiveSugar/Example
-    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/musalj/code/go/bin:/Users/musalj/.rbenv/shims:/Users/musalj/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/bin:/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest/ObjectiveSugarTests -o /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Products/Debug-iphonesimulator/ObjectiveSugarTests.octest.dSYM
+GenerateDSYMFile /a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework.dSYM /a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit
+    cd /a/b/Pods
+    export PATH="/Applications/Xcode-8.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode-8.1.app/Contents/Developer/usr/bin:/usr/local/bin:/usr/local/lib/ruby/gems/2.3.0/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /Applications/Xcode-8.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit -o /a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework.dSYM
 )
 
 SAMPLE_TOUCH = %Q(
