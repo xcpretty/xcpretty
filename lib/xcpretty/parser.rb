@@ -375,9 +375,14 @@ chunk "CreateUniversalBinary" do |c|
   c.line SHELL_CD
 end
 
-#chunk "GenerateDSYMFile" do |c|
-  #c.line
-#end
+chunk "GenerateDSYMFile" do |c|
+  c.line /^GenerateDSYMFile (#{PATH})/ do |f, m|
+    f.format_generate_dsym(path(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/dsymutil /
+end
 
 chunk "LinkStoryboards" do |c|
   c.line /^LinkStoryboards/ do |f, m|

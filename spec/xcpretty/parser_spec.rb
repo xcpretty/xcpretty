@@ -133,7 +133,7 @@ describe 'Parser' do
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_CODESIGN,
         SAMPLE_COPYSTRINGS, SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP,
-        SAMPLE_CREATE_UNIVERSAL_BINARY])
+        SAMPLE_CREATE_UNIVERSAL_BINARY, SAMPLE_GENERATE_DSYM])
     end
 
     it 'shuts up `cd`' do
@@ -145,7 +145,8 @@ describe 'Parser' do
         SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS,
-        SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP, SAMPLE_CREATE_UNIVERSAL_BINARY])
+        SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP, SAMPLE_CREATE_UNIVERSAL_BINARY,
+        SAMPLE_GENERATE_DSYM])
     end
 
     it 'suppresses builtin-' do
@@ -323,6 +324,14 @@ describe 'Parser' do
       :format_copy_header_file,
       Pathname.new("Target\ Support\ Files/Alamofire/Alamofire-umbrella.h"),
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Alamofire.framework/Headers/Alamofire-umbrella.h")
+    ]
+  end
+
+  it 'parses GenerateDSYMFile' do
+    @parser.parse(SAMPLE_GENERATE_DSYM.lines[1])
+    @formatter.flush.should == [
+      :format_generate_dsym,
+      Pathname.new("/a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework.dSYM")
     ]
   end
 

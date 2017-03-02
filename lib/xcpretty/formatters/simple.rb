@@ -104,8 +104,8 @@ module XCPretty
       format("Create Universal Binary", path.basename)
     end
 
-    def format_generate_dsym(dsym)
-      format("Generate '#{dsym}'")
+    def format_generate_dsym(path)
+      format("Generate #{path.basename}")
     end
 
     def format_libtool(path)

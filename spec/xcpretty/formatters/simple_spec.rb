@@ -143,8 +143,8 @@ module XCPretty
       end
 
       it "formats GenerateDSYMFile" do
-        @formatter.format_generate_dsym("ObjectiveSugarTests.octest.dSYM")
-        result.should == "> Generate 'ObjectiveSugarTests.octest.dSYM'"
+        @formatter.format_generate_dsym(Pathname.new("/a/b/ObjectiveSugarTests.octest.dSYM"))
+        result.should == "> Generate ObjectiveSugarTests.octest.dSYM"
       end
 
       it "formats info.plist processing" do
