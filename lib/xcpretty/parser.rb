@@ -444,6 +444,9 @@ chunk "SetMode" do |c|
   c.line /^SetMode ([\w\+\-,]+) (#{PATH})$/ do |f, m|
     f.format_set_mode(m[1], path(m[2]))
   end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /\s{4}\/bin\/chmod /
 end
 
 # TODO: move

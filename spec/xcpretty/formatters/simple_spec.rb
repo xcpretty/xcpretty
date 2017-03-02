@@ -149,7 +149,7 @@ module XCPretty
 
       it "formats SymLink" do
         @formatter.format_symlink(Pathname.new("/foo/bar"), Pathname.new("/foo/baz"))
-        result.should == "> SymLink '/foo/bar' '/foo/baz'"
+        result.should == "> SymLink bar"
       end
 
       it 'formats swift code generation' do
@@ -164,12 +164,12 @@ module XCPretty
 
       it 'formats set owner and group' do
         @formatter.format_set_owner_and_group("marin:staff", Pathname.new("/foo/bar/yolo.mirakul"))
-        result.should == "> Set owner and group (marin:staff) on yolo.mirakul"
+        result.should == "> Set Owner And Group (marin:staff) on yolo.mirakul"
       end
 
       it 'formats set mode' do
         @formatter.format_set_mode("u+w,go-w,a+rX", Pathname.new("/foo/bar/baz"))
-        result.should == "> Set Mode (u+w,go-w,a+rX) baz"
+        result.should == "> Set Mode (u+w,go-w,a+rX) on baz"
       end
 
       it "formats info.plist processing" do

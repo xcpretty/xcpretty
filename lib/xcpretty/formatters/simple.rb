@@ -157,7 +157,7 @@ module XCPretty
     end
 
     def format_set_mode(mode, path)
-      format("Set Mode", "(#{mode}) #{path.basename}")
+      format("Set Mode", "(#{mode}) on #{path.basename}")
     end
 
     def format_symlink(from_path, to_path)
