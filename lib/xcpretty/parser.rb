@@ -324,6 +324,7 @@ chunk "CopyPNGFile" do |c|
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/copypng /
 end
 
 chunk "CopyStringsFile" do |c|
