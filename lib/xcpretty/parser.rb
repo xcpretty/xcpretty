@@ -371,7 +371,14 @@ chunk "CreateUniversalBinary" do |c|
   c.line /^CreateUniversalBinary (#{PATH})/ do |f, m|
     f.format_create_universal_binary(path(m[1]))
   end
+  c.line SHELL_EXPORT
+  c.line SHELL_CD
 end
+
+#chunk "GenerateDSYMFile" do |c|
+  #c.line
+#end
+
 chunk "LinkStoryboards" do |c|
   c.line /^LinkStoryboards/ do |f, m|
     f.format_link_storyboards
