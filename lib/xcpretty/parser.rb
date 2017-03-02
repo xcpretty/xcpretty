@@ -33,7 +33,7 @@ class Chunk
     entry_regex, handler = @line_handlers.first
     if match = line.match(entry_regex)
       Log.debug "Entered #{line}"
-      handler.call(formatter, match)
+      handler.call(formatter, match) if handler
       return self
     end
   end
@@ -44,11 +44,11 @@ class Chunk
   def handle(line, formatter)
     @line_handlers.each do |handler|
       matches = line.match(handler.first)
-      if matches
-        Log.debug "Handling #{line}"
-        handler[1].call(formatter, matches) if handler[1]
-        return self
-      end
+      next unless matches
+
+      Log.debug "Handling #{line}"
+      handler[1].call(formatter, matches) if handler[1]
+      return self
     end
     if line.match(@exit)
       Log.debug("Exiting")
@@ -121,6 +121,7 @@ UNESCAPED_PATH    = /[ \w\/:\-+.@&\\]+[\w\/]/
 
 # WORD is used mostly for configuration options
 WORD              = /[\w]+/
+FLAG              = /(?:(-\w+)+)/
 CLANG             = /^\s{4}(?:#{PATH})\/usr\/bin\/(?:clang|clang\+\+)/
 SWIFT             = /^\s{4}(?:#{PATH})\/usr\/bin\/swift/
 SWIFTC            = /^\s{4}(?:#{PATH})\/usr\/bin\/swiftc/
@@ -149,6 +150,19 @@ chunk "Compiling Swift files" do |c|
   end
   c.line SHELL_CD
   c.line SWIFT
+end
+
+chunk "Compiling bunch of Swift files with whole module optimization" do |c|
+  # TODO: stop sucking at regex and implement the words properly
+  c.line /^CompileSwift (#{WORD})( #{WORD})?( #{WORD})?$/
+
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+
+  c.line /#{SWIFT} (?:#{FLAG} )*(.*#{PATH}\.swift) .*$/ do |f, m|
+    paths = m[2].split.map { |p| path(p) }
+    f.format_compile_swift_with_module_optimization(paths)
+  end
 end
 
 chunk "Compile a pile of swift files" do |c|

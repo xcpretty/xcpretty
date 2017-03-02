@@ -33,6 +33,20 @@ describe 'Parser' do
     path.match(/(#{UNESCAPED_PATH})/)[1].should == path
   end
 
+  it 'parses CompileSwift with whole module optimization' do
+    @parser.parse(SAMPLE_SWIFT_COMPILE_WITH_MODULE_OPTIMIZATION.lines[1])
+    @parser.parse(SAMPLE_SWIFT_COMPILE_WITH_MODULE_OPTIMIZATION.lines[4])
+    @formatter.flush.should == [
+      :format_compile_swift_with_module_optimization,
+      [
+        Pathname.new("/Users/distiller/Lyft-iOS/Lyft/API/Passenger/LyftAPI+EditPartySize.swift"),
+        Pathname.new("/Users/distiller/Lyft-iOS/Lyft/API/Passenger/LyftAPI+Payments.swift"),
+        Pathname.new("/Users/distiller/Lyft-iOS/Lyft/API/Passenger/RideHistoryRoute.swift"),
+        Pathname.new("/Users/distiller/Lyft-iOS/Lyft/API/Common/LyftAPI+Location.swift")
+      ]
+    ]
+  end
+
   it 'parses CompileC' do
     @parser.parse(SAMPLE_COMPILE.lines[1])
     @formatter.flush.should == [
@@ -86,9 +100,11 @@ describe 'Parser' do
 
     it 'shuts up `export`' do
       suppress(/^\s{4}export/, [
-        SAMPLE_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST,
-        SAMPLE_DITTO, SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD,
-        SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
+        SAMPLE_COMPILE,
+        SAMPLE_SWIFT_COMPILE_WITH_MODULE_OPTIMIZATION,
+        SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO,
+        SAMPLE_TOUCH, SAMPLE_NEW_RUN_SCRIPT, SAMPLE_LD, SAMPLE_CPHEADER,
+        SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_CODESIGN,
         SAMPLE_COPYSTRINGS, SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP])
@@ -96,10 +112,11 @@ describe 'Parser' do
 
     it 'shuts up `cd`' do
       suppress(/^\s{4}cd/, [
-        SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE, SAMPLE_COMPILE_SWIFT_SOURCES,
-        SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_TOUCH,
-        SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD, SAMPLE_CPHEADER,
-        SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
+        SAMPLE_COMPILE, SAMPLE_SWIFT_COMPILE,
+        SAMPLE_SWIFT_COMPILE_WITH_MODULE_OPTIMIZATION,
+        SAMPLE_COMPILE_SWIFT_SOURCES, SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO,
+        SAMPLE_TOUCH, SAMPLE_PHASE_SCRIPT_EXECUTION_FAIL, SAMPLE_LD,
+        SAMPLE_CPHEADER, SAMPLE_CPRESOURCE, SAMPLE_COMPILE_XIB, SAMPLE_LIBTOOL,
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS,
         SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP])
