@@ -431,6 +431,15 @@ chunk "Strip" do |c|
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/strip /
 end
 
+chunk "SetOwnerAndGroup" do |c|
+  c.line /^SetOwnerAndGroup (\w+:\w+) (#{PATH})/ do |f, m|
+    f.format_set_owner_and_group(m[1], path(m[2]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /\s{4}\/usr\/sbin\/chown /
+end
+
 # TODO: move
 def self.action_regex(action)
   target = /^=== #{action}(?: AGGREGATE)? TARGET (.*)/

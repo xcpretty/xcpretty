@@ -134,7 +134,7 @@ describe 'Parser' do
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_CODESIGN,
         SAMPLE_COPYSTRINGS, SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP,
         SAMPLE_CREATE_UNIVERSAL_BINARY, SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK,
-        SAMPLE_SWIFT_CODE_GENERATION, SAMPLE_STRIP])
+        SAMPLE_SWIFT_CODE_GENERATION, SAMPLE_STRIP, SAMPLE_SET_OWNER_AND_GROUP])
     end
 
     it 'shuts up `cd`' do
@@ -148,7 +148,7 @@ describe 'Parser' do
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS,
         SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP, SAMPLE_CREATE_UNIVERSAL_BINARY,
         SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK, SAMPLE_SWIFT_CODE_GENERATION,
-        SAMPLE_STRIP])
+        SAMPLE_STRIP, SAMPLE_SET_OWNER_AND_GROUP])
     end
 
     it 'suppresses builtin-' do
@@ -242,6 +242,15 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_strip,
       Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework/libPhoneNumber_iOS")
+    ]
+  end
+
+  it 'parses SetOwnerAndGroup' do
+    @parser.parse(SAMPLE_SET_OWNER_AND_GROUP.lines[1])
+    @formatter.flush.should == [
+      :format_set_owner_and_group,
+      "distiller:staff",
+      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/watchos/LambdaKit.framework")
     ]
   end
 

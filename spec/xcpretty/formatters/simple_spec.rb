@@ -162,6 +162,11 @@ module XCPretty
         result.should == "> Strip asdf"
       end
 
+      it 'formats set owner and group' do
+        @formatter.format_set_owner_and_group("marin:staff", Pathname.new("/foo/bar/yolo.mirakul"))
+        result.should == "> Set owner and group (marin:staff) on yolo.mirakul"
+      end
+
       it "formats info.plist processing" do
         @formatter.format_process_info_plist(Pathname.new("/paht/to/The Spacer-Info.plist"))
         result.should == "> Process The Spacer-Info.plist"
