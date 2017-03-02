@@ -91,6 +91,11 @@ module XCPretty
       format("Compile Swift sources")
     end
 
+    def format_compile_swift_with_module_optimization(paths)
+      format("Compile Swift files (with module optimization):\n  " \
+             "#{paths.map(&:basename).join("\n  ")}")
+    end
+
     def format_cpresource(source, destination)
       format("Copy", source.basename)
     end

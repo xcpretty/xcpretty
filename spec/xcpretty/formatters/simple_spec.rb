@@ -103,6 +103,19 @@ module XCPretty
         result.should == '> Compile Asset catalog Images.xcassets'
       end
 
+      it 'formats compile swift sources with module optimization' do
+        @formatter.format_compile_swift_with_module_optimization([
+          Pathname.new("/foo/bar/baz/yolo+a.swift"),
+          Pathname.new("/foo/bar/baz/yolo+b.swift"),
+          Pathname.new("/foo/bar/baz/yolo+c.swift")
+        ])
+        result.should ==
+          "> Compile Swift files (with module optimization):\n" \
+          "  yolo+a.swift\n" \
+          "  yolo+b.swift\n" \
+          "  yolo+c.swift"
+      end
+
       it 'formats compile swift sources' do
         @formatter.format_compile_swift_sources()
         result.should == '> Compile Swift sources'

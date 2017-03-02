@@ -23,6 +23,7 @@ module XCPretty
     def format_compile_command(compiler_command, file_path)            end
     def format_compile_storyboard(path)                                end
     def format_compile_swift_sources()                                 end
+    def format_compile_swift_with_module_optimization(paths)           end
     def format_compile_xib(path)                                       end
     def format_copy_header_file(source, destination)                   end
     def format_copy_png_file(source, destination)                      end
