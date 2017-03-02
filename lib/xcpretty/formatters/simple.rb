@@ -148,6 +148,10 @@ module XCPretty
       format("Copy", path.basename)
     end
 
+    def format_strip(path)
+      format("Strip", path.basename)
+    end
+
     def format_symlink(from_path, to_path)
       format("SymLink '#{from_path}' '#{to_path}'")
     end

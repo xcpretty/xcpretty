@@ -749,6 +749,13 @@ SwiftCodeGeneration normal arm64 /a/b/build/Build/Intermediates/ArchiveIntermedi
     /Applications/Xcode-8.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift -frontend -c -primary-file /Users/distiller/Lyft-iOS/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/Pods.build/Beta-iphoneos/SnapKit.build/Objects-normal/arm64/ConstraintMakerPriortizable.bc -target arm64-apple-ios8.0 -Xllvm -aarch64-use-tbi -O -module-name SnapKit -o /Users/distiller/Lyft-iOS/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/Pods.build/Beta-iphoneos/SnapKit.build/Objects-normal/arm64/ConstraintMakerPriortizable.o -embed-bitcode -disable-llvm-optzns
 )
 
+SAMPLE_STRIP = %Q(
+Strip /a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework/libPhoneNumber_iOS
+    cd /a/b/Pods
+    export PATH="/Applications/Xcode-8.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode-8.1.app/Contents/Developer/usr/bin:/Users/distiller/Library/Python/2.7/bin:/Users/distiller/Library/Python/2.7/bin:/usr/local/bin:/usr/local/lib/ruby/gems/2.3.0/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /Applications/Xcode-8.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -S /a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework/libPhoneNumber_iOS
+)
+
 SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec, line 80, hello xcpretty.png'
 SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'
 

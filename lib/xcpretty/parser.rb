@@ -422,6 +422,15 @@ chunk "SwiftCodeGeneration" do |c|
   c.line SWIFT
 end
 
+chunk "Strip" do |c|
+  c.line /^Strip (#{PATH})$/ do |f, m|
+    f.format_strip(path(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/strip /
+end
+
 # TODO: move
 def self.action_regex(action)
   target = /^=== #{action}(?: AGGREGATE)? TARGET (.*)/

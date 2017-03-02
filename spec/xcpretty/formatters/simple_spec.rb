@@ -157,6 +157,11 @@ module XCPretty
         result.should == "> Generate Swift Code asdf.bc"
       end
 
+      it 'formats strip' do
+        @formatter.format_strip(Pathname.new("/foo/bar/asdf"))
+        result.should == "> Strip asdf"
+      end
+
       it "formats info.plist processing" do
         @formatter.format_process_info_plist(Pathname.new("/paht/to/The Spacer-Info.plist"))
         result.should == "> Process The Spacer-Info.plist"
