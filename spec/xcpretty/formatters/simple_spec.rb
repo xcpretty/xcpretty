@@ -152,6 +152,10 @@ module XCPretty
         result.should == "> SymLink '/foo/bar' '/foo/baz'"
       end
 
+      it 'formats swift code generation' do
+        @formatter.format_swift_code_generation(Pathname.new("/foo/asdf.bc"))
+        result.should == "> Generate Swift Code asdf.bc"
+      end
 
       it "formats info.plist processing" do
         @formatter.format_process_info_plist(Pathname.new("/paht/to/The Spacer-Info.plist"))

@@ -53,6 +53,7 @@ module XCPretty
     def format_process_pch_command(path)                               end
     def format_shell_command(command, arguments)                       end
     def format_symlink(from_path, to_path)                             end
+    def format_swift_code_generation(path)                             end
     def format_test_run_finished(name, time)                           end
     def format_test_run_started(name)                                  end
     def format_test_suite_started(name)                                end

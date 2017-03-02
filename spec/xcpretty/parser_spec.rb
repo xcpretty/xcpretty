@@ -133,7 +133,8 @@ describe 'Parser' do
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_CODESIGN,
         SAMPLE_COPYSTRINGS, SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP,
-        SAMPLE_CREATE_UNIVERSAL_BINARY, SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK])
+        SAMPLE_CREATE_UNIVERSAL_BINARY, SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK,
+        SAMPLE_SWIFT_CODE_GENERATION])
     end
 
     it 'shuts up `cd`' do
@@ -146,7 +147,7 @@ describe 'Parser' do
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS,
         SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP, SAMPLE_CREATE_UNIVERSAL_BINARY,
-        SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK])
+        SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK, SAMPLE_SWIFT_CODE_GENERATION])
     end
 
     it 'suppresses builtin-' do
@@ -225,6 +226,14 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_merge_swift_module,
       Pathname.new("/Users/marinusalj/code/lyft/lyft-temp/build/Pods.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/x86_64/SnapKit.swiftmodule")]
+  end
+
+  it 'parses swift code generation' do
+    @parser.parse(SAMPLE_SWIFT_CODE_GENERATION.lines[1])
+    @formatter.flush.should == [
+      :format_swift_code_generation,
+      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/Pods.build/Beta-iphoneos/SnapKit.build/Objects-normal/arm64/ConstraintMakerPriortizable.bc")
+    ]
   end
 
   it 'parses Touch' do

@@ -413,6 +413,14 @@ chunk "SymLink" do |c|
   c.line /\s{4}\/bin\/ln /
 end
 
+chunk "SwiftCodeGeneration" do |c|
+  c.line /^SwiftCodeGeneration (?:#{WORD}\s)*(#{PATH})/ do |f, m|
+    f.format_swift_code_generation(path(m[1]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line SWIFT
+end
 
 # TODO: move
 def self.action_regex(action)

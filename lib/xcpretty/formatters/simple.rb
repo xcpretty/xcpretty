@@ -152,6 +152,10 @@ module XCPretty
       format("SymLink '#{from_path}' '#{to_path}'")
     end
 
+    def format_swift_code_generation(path)
+      format("Generate Swift Code", path.basename)
+    end
+
     def format_check_dependencies()
       format('Check Dependencies')
     end
