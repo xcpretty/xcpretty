@@ -143,7 +143,7 @@ chunk "Compiling" do |c|
   c.line CLANG
 end
 
-chunk "Comp[\w]+\siling Swift" do |c|
+chunk "Compiling Swift files" do |c|
   c.line /^CompileSwift (?:#{WORD}\s)*(#{UNESCAPED_PATH}\.swift)$/ do |f, m|
     f.format_compile(path(m[1]))
   end
@@ -169,7 +169,7 @@ chunk "Merge swift modules" do |c|
 end
 
 chunk "Ditto" do |c|
-  c.line /^Ditto (?:#{PATH}) (#{PATH})$/ do |f,m|
+  c.line /^Ditto (?:#{PATH}) (#{PATH})$/ do |f, m|
     f.format_ditto(path(m[1]))
   end
   c.line SHELL_CD
@@ -192,7 +192,7 @@ chunk "Write auxilliary files" do |c|
   end
   c.line SHELL_MKDIR
   c.line SHELL_CHMOD
-  c.line /^write-file (#{PATH})$/ do |f,m|
+  c.line /^write-file (#{PATH})$/ do |f, m|
     f.format_write_file(path(m[1]))
   end
 end
@@ -211,7 +211,7 @@ chunk "Check Dependencies" do |c|
 end
 
 chunk "Process info.plist" do |c|
-  c.line /^ProcessInfoPlistFile (?:#{PATH}.plist) (#{PATH}.plist)$/ do |f,m|
+  c.line /^ProcessInfoPlistFile (?:#{PATH}.plist) (#{PATH}.plist)$/ do |f, m|
     f.format_process_info_plist(path(m[1]))
   end
   c.line SHELL_CD
@@ -220,7 +220,7 @@ chunk "Process info.plist" do |c|
 end
 
 chunk "PhaseScriptExecution" do |c|
-  c.line /^PhaseScriptExecution\s((\\\ |\S)*)\s/ do |f,m|
+  c.line /^PhaseScriptExecution\s((\\\ |\S)*)\s/ do |f, m|
     f.format_phase_script_execution(m[1].delete("\\"))
   end
   c.line SHELL_CD
@@ -229,7 +229,7 @@ chunk "PhaseScriptExecution" do |c|
 end
 
 chunk "Touch" do |c|
-  c.line /^Touch (#{PATH})/ do |f,m|
+  c.line /^Touch (#{PATH})/ do |f, m|
     f.format_touch(path(m[1]))
   end
   c.line SHELL_CD
@@ -238,7 +238,7 @@ chunk "Touch" do |c|
 end
 
 chunk "Ld" do |c|
-  c.line /^Ld (#{PATH}) (#{WORD})\s(#{WORD})$/ do |f,m|
+  c.line /^Ld (#{PATH}) (#{WORD})\s(#{WORD})$/ do |f, m|
     f.format_ld(path(m[1]), m[2], m[3])
   end
   c.line SHELL_CD
@@ -247,7 +247,7 @@ chunk "Ld" do |c|
 end
 
 chunk "CpHeader" do |c|
-  c.line /^CpHeader (#{PATH}) (#{PATH})$/ do |f,m|
+  c.line /^CpHeader (#{PATH}) (#{PATH})$/ do |f, m|
     f.format_copy_header_file(path(m[1]), path(m[2]))
   end
   c.line SHELL_CD
@@ -256,7 +256,7 @@ chunk "CpHeader" do |c|
 end
 
 chunk "CpResource" do |c|
-  c.line /^CpResource (#{PATH}) (#{PATH})$/ do |f,m|
+  c.line /^CpResource (#{PATH}) (#{PATH})$/ do |f, m|
     f.format_cpresource(path(m[1]), path(m[2]))
   end
   c.line SHELL_CD
@@ -265,7 +265,7 @@ chunk "CpResource" do |c|
 end
 
 chunk "CompileXIB" do |c|
-  c.line /^CompileXIB (#{PATH})/ do |f,m|
+  c.line /^CompileXIB (#{PATH})/ do |f, m|
     f.format_compile_xib(path(m[1]))
   end
   c.line SHELL_CD
@@ -276,7 +276,7 @@ end
 chunk "CompileStoryboard" do |c|
   # Currently there's a bug in CompileStoryboard where it escapes only
   # spaces, but not & signs.
-  c.line /^CompileStoryboard (#{UNESCAPED_PATH}\.storyboard)$/ do |f,m|
+  c.line /^CompileStoryboard (#{UNESCAPED_PATH}\.storyboard)$/ do |f, m|
     f.format_compile_storyboard(path(m[1]))
   end
   c.line SHELL_CD
@@ -285,7 +285,7 @@ chunk "CompileStoryboard" do |c|
 end
 
 chunk "Libtool" do |c|
-  c.line /^Libtool (#{PATH}) (#{WORD}) (#{WORD})$/ do |f,m|
+  c.line /^Libtool (#{PATH}) (#{WORD}) (#{WORD})$/ do |f, m|
     f.format_libtool(path(m[1]))
   end
   c.line SHELL_CD
@@ -294,7 +294,7 @@ chunk "Libtool" do |c|
 end
 
 chunk "CopyPNGFile" do |c|
-  c.line /^CopyPNGFile (#{PATH}) (#{PATH})/ do |f,m|
+  c.line /^CopyPNGFile (#{PATH}) (#{PATH})/ do |f, m|
     f.format_copy_png_file(path(m[2]), path(m[1]))
   end
   c.line SHELL_CD
@@ -302,7 +302,7 @@ chunk "CopyPNGFile" do |c|
 end
 
 chunk "CopyStringsFile" do |c|
-  c.line /^CopyStringsFile (#{PATH}) (#{PATH})/ do |f,m|
+  c.line /^CopyStringsFile (#{PATH}) (#{PATH})/ do |f, m|
     f.format_copy_strings_file(path(m[2]))
   end
   c.line SHELL_CD
@@ -311,27 +311,27 @@ chunk "CopyStringsFile" do |c|
 end
 
 chunk "CopySwiftLibs" do |c|
-  c.line /^CopySwiftLibs (#{PATH})$/ do |f,m|
+  c.line /^CopySwiftLibs (#{PATH})$/ do |f, m|
     f.format_copy_swift_libs(path(m[1]))
   end
   c.line SHELL_CD
   c.line SHELL_EXPORT
   c.line /^\s{4}(?:#{PATH})\/usr\/bin\/swift-stdlib-tool /
   c.line /^\s{4}builtin-swiftStdLibTool /
-  c.line /^Codesigning (#{PATH})$/ do |f,m|
+  c.line /^Codesigning (#{PATH})$/ do |f, m|
     f.format_codesigning_swift_lib(path(m[1]))
   end
-  c.line /^Probing signature of (#{PATH})$/ do |f,m|
+  c.line /^Probing signature of (#{PATH})$/ do |f, m|
     f.format_probing_swift_lib(path(m[1]))
   end
   c.line /^\s{2}\/usr\/bin\/codesign /
-  c.line /^Code signature of (#{PATH}) is unchanged; keeping original$/ do |f,m|
+  c.line /^Code signature of (#{PATH}) is unchanged; keeping original$/ do |f, m|
     f.format_code_signature_unchanged(path(m[1]))
   end
 end
 
 chunk "CompileAssetCatalog" do |c|
-  c.line /^CompileAssetCatalog (?:#{PATH}) (#{PATH})/ do |f,m|
+  c.line /^CompileAssetCatalog (?:#{PATH}) (#{PATH})/ do |f, m|
     f.format_compile_asset_catalog(path(m[1]))
   end
   c.line SHELL_CD
@@ -342,7 +342,7 @@ chunk "CompileAssetCatalog" do |c|
 end
 
 chunk "LinkStoryboards" do |c|
-  c.line /^LinkStoryboards/ do |f,m|
+  c.line /^LinkStoryboards/ do |f, m|
     f.format_link_storyboards
   end
 
@@ -352,7 +352,7 @@ chunk "LinkStoryboards" do |c|
 end
 
 chunk "PBXCp" do |c|
-  c.line /^PBXCp (#{PATH}) (?:#{PATH})$/ do |f,m|
+  c.line /^PBXCp (#{PATH}) (?:#{PATH})$/ do |f, m|
     f.format_pbxcp(path(m[1]))
   end
   c.line SHELL_CD
@@ -365,23 +365,24 @@ def self.action_regex(action)
   target = /^=== #{action}(?: AGGREGATE)? TARGET (.*)/
   project = /OF PROJECT (.*)/
   configuration = /WITH(?: THE DEFAULT)? CONFIGURATION (.*) ===$/
-  return /#{target} #{project} #{configuration}/
+
+  /#{target} #{project} #{configuration}/
 end
 
 chunk "=== BUILD target" do |c|
-  c.line action_regex("BUILD") do |f,m|
+  c.line action_regex("BUILD") do |f, m|
     f.format_build_target(m[1], m[2], m[3])
   end
 end
 
 chunk "=== CLEAN target" do |c|
-  c.line action_regex("CLEAN") do |f,m|
+  c.line action_regex("CLEAN") do |f, m|
     f.format_clean_target(m[1], m[2], m[3])
   end
 end
 
 chunk "=== ANALYZE target" do |c|
-  c.line action_regex("ANALYZE") do |f,m|
+  c.line action_regex("ANALYZE") do |f, m|
     f.format_analyze_target(m[1], m[2], m[3])
   end
 end
