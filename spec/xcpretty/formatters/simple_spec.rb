@@ -147,6 +147,12 @@ module XCPretty
         result.should == "> Generate ObjectiveSugarTests.octest.dSYM"
       end
 
+      it "formats SymLink" do
+        @formatter.format_symlink(Pathname.new("/foo/bar"), Pathname.new("/foo/baz"))
+        result.should == "> SymLink '/foo/bar' '/foo/baz'"
+      end
+
+
       it "formats info.plist processing" do
         @formatter.format_process_info_plist(Pathname.new("/paht/to/The Spacer-Info.plist"))
         result.should == "> Process The Spacer-Info.plist"

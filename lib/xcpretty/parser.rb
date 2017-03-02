@@ -403,6 +403,16 @@ chunk "PBXCp" do |c|
   c.line SHELL_BUILTIN
 end
 
+chunk "SymLink" do |c|
+  c.line /^SymLink (#{PATH}) (#{PATH})$/ do |f, m|
+    f.format_symlink(path(m[1]), path(m[2]))
+  end
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+  c.line /\s{4}\/bin\/ln /
+end
+
+
 # TODO: move
 def self.action_regex(action)
   target = /^=== #{action}(?: AGGREGATE)? TARGET (.*)/

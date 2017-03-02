@@ -148,6 +148,10 @@ module XCPretty
       format("Copy", path.basename)
     end
 
+    def format_symlink(from_path, to_path)
+      format("SymLink '#{from_path}' '#{to_path}'")
+    end
+
     def format_check_dependencies()
       format('Check Dependencies')
     end

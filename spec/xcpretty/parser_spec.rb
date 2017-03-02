@@ -133,7 +133,7 @@ describe 'Parser' do
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_CODESIGN,
         SAMPLE_COPYSTRINGS, SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP,
-        SAMPLE_CREATE_UNIVERSAL_BINARY, SAMPLE_GENERATE_DSYM])
+        SAMPLE_CREATE_UNIVERSAL_BINARY, SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK])
     end
 
     it 'shuts up `cd`' do
@@ -146,7 +146,7 @@ describe 'Parser' do
         SAMPLE_COPYSWIFTLIBS, SAMPLE_COMPILE_ASSET_CATALOG,
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS,
         SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP, SAMPLE_CREATE_UNIVERSAL_BINARY,
-        SAMPLE_GENERATE_DSYM])
+        SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK])
     end
 
     it 'suppresses builtin-' do
@@ -280,6 +280,15 @@ describe 'Parser' do
   it 'prints unrecognized text if there is no chunk' do
     @parser.parse("YOLO")
     @formatter.flush.should == [:format_unknown, "YOLO"]
+  end
+
+  it 'parses SymLink' do
+    @parser.parse(SAMPLE_SYMLINK.lines[1])
+    @formatter.flush.should == [
+      :format_symlink,
+      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/BuildProductsPath/Beta-iphoneos/libPhoneNumber-iOS/libPhoneNumber_iOS.framework"),
+      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework")
+    ]
   end
 
   it 'parses create project structure' do

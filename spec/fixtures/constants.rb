@@ -735,6 +735,13 @@ PBXCp build/Products/Debug-watchsimulator/API.framework build/Products/Debug-wat
     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -resolve-src-symlinks /Users/marinusalj/code/lyft/lyft-ios/build/Products/Debug-watchsimulator/API.framework /Users/marinusalj/code/lyft/lyft-ios/build/Products/Debug-watchsimulator/WatchExtension.appex/Frameworks
 )
 
+SAMPLE_SYMLINK = %Q(
+SymLink /a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/BuildProductsPath/Beta-iphoneos/libPhoneNumber-iOS/libPhoneNumber_iOS.framework /a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework
+    cd /a/b/Pods
+    export PATH="/Applications/Xcode-8.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode-8.1.app/Contents/Developer/usr/bin:/Users/distiller/Library/Python/2.7/bin:/Users/distiller/Library/Python/2.7/bin:/usr/local/bin:/usr/local/lib/ruby/gems/2.3.0/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /bin/ln -sfh /a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libPhoneNumber_iOS.framework /a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/BuildProductsPath/Beta-iphoneos/libPhoneNumber-iOS/libPhoneNumber_iOS.framework
+)
+
 SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec, line 80, hello xcpretty.png'
 SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'
 
