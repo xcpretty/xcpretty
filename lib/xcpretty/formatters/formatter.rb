@@ -51,6 +51,7 @@ module XCPretty
     def format_process_info_plist(path)                                end
     def format_process_pch(file)                                       end
     def format_process_pch_command(path)                               end
+    def format_set_mode(mode, path)                                    end
     def format_set_owner_and_group(owner_group, path)                  end
     def format_shell_command(command, arguments)                       end
     def format_strip(path)                                             end

@@ -440,6 +440,12 @@ chunk "SetOwnerAndGroup" do |c|
   c.line /\s{4}\/usr\/sbin\/chown /
 end
 
+chunk "SetMode" do |c|
+  c.line /^SetMode ([\w\+\-,]+) (#{PATH})$/ do |f, m|
+    f.format_set_mode(m[1], path(m[2]))
+  end
+end
+
 # TODO: move
 def self.action_regex(action)
   target = /^=== #{action}(?: AGGREGATE)? TARGET (.*)/

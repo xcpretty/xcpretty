@@ -167,6 +167,11 @@ module XCPretty
         result.should == "> Set owner and group (marin:staff) on yolo.mirakul"
       end
 
+      it 'formats set mode' do
+        @formatter.format_set_mode("u+w,go-w,a+rX", Pathname.new("/foo/bar/baz"))
+        result.should == "> Set Mode (u+w,go-w,a+rX) baz"
+      end
+
       it "formats info.plist processing" do
         @formatter.format_process_info_plist(Pathname.new("/paht/to/The Spacer-Info.plist"))
         result.should == "> Process The Spacer-Info.plist"

@@ -763,6 +763,13 @@ SetOwnerAndGroup distiller:staff /a/b/build/Build/Intermediates/ArchiveIntermedi
     /usr/sbin/chown -RH distiller:staff /a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/watchos/LambdaKit.framework
 )
 
+SAMPLE_SET_MODE = %Q(
+SetMode u+w,go-w,a+rX /a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/FBSDKCoreKit.framework
+    cd /a/b/Pods
+    export PATH="/Applications/Xcode-8.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode-8.1.app/Contents/Developer/usr/bin:/Users/distiller/Library/Python/2.7/bin:/Users/distiller/Library/Python/2.7/bin:/usr/local/bin:/usr/local/lib/ruby/gems/2.3.0/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /bin/chmod -RH u+w,go-w,a+rX /a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/FBSDKCoreKit.framework
+)
+
 SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec, line 80, hello xcpretty.png'
 SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'
 

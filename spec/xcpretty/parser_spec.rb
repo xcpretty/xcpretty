@@ -254,6 +254,15 @@ describe 'Parser' do
     ]
   end
 
+  it 'parses SetMode' do
+    @parser.parse(SAMPLE_SET_MODE.lines[1])
+    @formatter.flush.should == [
+      :format_set_mode,
+      "u+w,go-w,a+rX",
+      Pathname.new("/a/b/build/Build/Intermediates/ArchiveIntermediates/Lyft/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/FBSDKCoreKit.framework")
+    ]
+  end
+
   it 'parses Touch' do
     @parser.parse(SAMPLE_TOUCH.lines[1])
     @formatter.flush.should == [:format_touch, Pathname.new("/Users/musalj/Library/Developer/Xcode/DerivedData/Alcatraz-aobuxcinaqyzjugrnxjjhfzgwaou/Build/Products/Debug/Alcatraz\ Tests.octest")]

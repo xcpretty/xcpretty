@@ -153,7 +153,11 @@ module XCPretty
     end
 
     def format_set_owner_and_group(owner_group, path)
-      format("Set owner and group", "(#{owner_group}) on #{path.basename}")
+      format("Set Owner And Group", "(#{owner_group}) on #{path.basename}")
+    end
+
+    def format_set_mode(mode, path)
+      format("Set Mode", "(#{mode}) #{path.basename}")
     end
 
     def format_symlink(from_path, to_path)
