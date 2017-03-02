@@ -373,6 +373,7 @@ chunk "CreateUniversalBinary" do |c|
   end
   c.line SHELL_EXPORT
   c.line SHELL_CD
+  c.line /^\s{4}(?:#{PATH})\/usr\/bin\/lipo /
 end
 
 chunk "GenerateDSYMFile" do |c|
