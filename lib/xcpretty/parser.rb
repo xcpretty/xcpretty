@@ -367,6 +367,11 @@ chunk "CompileAssetCatalog" do |c|
   c.line /^#{PATH}$/
 end
 
+chunk "CreateUniversalBinary" do |c|
+  c.line /^CreateUniversalBinary (#{PATH})/ do |f, m|
+    f.format_create_universal_binary(path(m[1]))
+  end
+end
 chunk "LinkStoryboards" do |c|
   c.line /^LinkStoryboards/ do |f, m|
     f.format_link_storyboards

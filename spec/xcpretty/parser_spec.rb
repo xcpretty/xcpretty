@@ -393,6 +393,13 @@ describe 'Parser' do
     ]
   end
 
+  it 'parses CreateUniversalBinary' do
+    @parser.parse(SAMPLE_CREATE_UNIVERSAL_BINARY.lines[1])
+    @formatter.flush.should == [
+      :format_create_universal_binary,
+      Pathname.new("/a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit")
+    ]
+  end
   it 'parses LinkStoryboards' do
     @parser.parse(SAMPLE_LINK_STORYBOARDS.lines[1])
     @formatter.flush.should == [:format_link_storyboards]

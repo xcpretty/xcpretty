@@ -60,6 +60,11 @@ module XCPretty
         result.should == "> Compile NSMutableArray+ObjectiveSugar.m"
       end
 
+      it 'formats create universal binary' do
+        @formatter.format_create_universal_binary(Pathname.new("/path/to/BinaryKit"))
+        result.should == "> Create Universal Binary BinaryKit"
+      end
+
       it "formats compiling xib output" do
         @formatter.format_compile_xib(Pathname.new("/path/to/MainMenu.xib"))
         result.should == "> Compile MainMenu.xib"

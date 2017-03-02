@@ -100,6 +100,10 @@ module XCPretty
       format("Copy", source.basename)
     end
 
+    def format_create_universal_binary(path)
+      format("Create Universal Binary", path.basename)
+    end
+
     def format_generate_dsym(dsym)
       format("Generate '#{dsym}'")
     end

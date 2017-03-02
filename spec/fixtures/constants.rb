@@ -195,6 +195,13 @@ Codesigning /Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimu
   /usr/bin/codesign '--force' '--sign' '-' '--verbose' '/Users/marinusalj/code/yolo/yolo-ios/build/Products/Debug-iphonesimulator/yolo.app/Frameworks/libswiftPassKit.dylib'
 )
 
+SAMPLE_CREATE_UNIVERSAL_BINARY = %Q(
+CreateUniversalBinary /a/b/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit normal i386\ x86_64
+    cd /Users/distiller/Lyft-iOS/Pods
+    export PATH="/Applications/Xcode-8.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode-8.1.app/Contents/Developer/usr/bin:/usr/local/bin:/usr/local/lib/ruby/gems/2.3.0/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /Applications/Xcode-8.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo -create /Users/distiller/Lyft-iOS/build/Build/Intermediates/Pods.build/QA-iphonesimulator/FBSDKLoginKit.build/Objects-normal/i386/FBSDKLoginKit /Users/distiller/Lyft-iOS/build/Build/Intermediates/Pods.build/QA-iphonesimulator/FBSDKLoginKit.build/Objects-normal/x86_64/FBSDKLoginKit -output /Users/distiller/Lyft-iOS/build/Build/Products/QA-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit
+)
+
 SAMPLE_PROCESS_INFOPLIST = %Q(
 ProcessInfoPlistFile /Users/marinusalj/code/lyft/lyft-temp/build/LambdaKit.framework/Info.plist Target\\ Support\\ Files/LambdaKit-iOS/Info.plist
     cd /Users/marinusalj/code/lyft/lyft-temp/Pods
