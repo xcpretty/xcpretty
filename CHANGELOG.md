@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0
+
+Improvements:
+- Easy to extend & patch. The new DSL is declarative and doesn't require
+  digging into parser states
+- Composable regex that's easy to understand
+- First class paths, so you can use them more flexible (basename, dirname)
+
+
 ## 0.2.1
 
 ###### Bug fixes
