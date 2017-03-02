@@ -33,16 +33,41 @@ describe 'Parser' do
     path.match(/(#{UNESCAPED_PATH})/)[1].should == path
   end
 
+  it 'parses CompileSwift with whole module optimization from a file list' do
+    path = "/tmp/folders/jm/fw86rxds0xn69sk40d18y69m0000gp/T/sources-43ef26"
+    FileUtils.mkdir_p(File.dirname(path))
+
+    File.write(path, "/foo/bar/baz.swift\n/bar/bang/f.swift\n")
+    @parser.parse(SAMPLE_COMPILE_SWIFT_WITH_OPTIMIZATION_WITH_FILE_LIST.lines[1])
+    @parser.parse(SAMPLE_COMPILE_SWIFT_WITH_OPTIMIZATION_WITH_FILE_LIST.lines[3])
+    @formatter.flush.should == [
+      :format_compile_swift_with_module_optimization,
+      [
+        Pathname.new("/foo/bar/baz.swift"),
+        Pathname.new("/bar/bang/f.swift")
+      ]
+    ]
+    FileUtils.rm(path)
+  end
+
+  it "doesn't crash if the -filelist file is not there" do
+    lambda {
+      @parser.parse(SAMPLE_COMPILE_SWIFT_WITH_OPTIMIZATION_WITH_FILE_LIST.lines[1])
+      @parser.parse(SAMPLE_COMPILE_SWIFT_WITH_OPTIMIZATION_WITH_FILE_LIST.lines[3])
+    }.should_not raise_error
+  end
+
+
   it 'parses CompileSwift with whole module optimization' do
     @parser.parse(SAMPLE_SWIFT_COMPILE_WITH_MODULE_OPTIMIZATION.lines[1])
     @parser.parse(SAMPLE_SWIFT_COMPILE_WITH_MODULE_OPTIMIZATION.lines[4])
     @formatter.flush.should == [
       :format_compile_swift_with_module_optimization,
       [
-        Pathname.new("/Users/distiller/Lyft-iOS/Lyft/API/Passenger/LyftAPI+EditPartySize.swift"),
-        Pathname.new("/Users/distiller/Lyft-iOS/Lyft/API/Passenger/LyftAPI+Payments.swift"),
-        Pathname.new("/Users/distiller/Lyft-iOS/Lyft/API/Passenger/RideHistoryRoute.swift"),
-        Pathname.new("/Users/distiller/Lyft-iOS/Lyft/API/Common/LyftAPI+Location.swift")
+        Pathname.new("/a/b/Lyft/API/Passenger/LyftAPI+EditPartySize.swift"),
+        Pathname.new("/a/b/Lyft/API/Passenger/LyftAPI+Payments.swift"),
+        Pathname.new("/a/b/Lyft/API/Passenger/RideHistoryRoute.swift"),
+        Pathname.new("/a/b/Lyft/API/Common/LyftAPI+Location.swift")
       ]
     ]
   end

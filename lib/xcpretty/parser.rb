@@ -159,6 +159,17 @@ chunk "Compiling bunch of Swift files with whole module optimization" do |c|
   c.line SHELL_CD
   c.line SHELL_EXPORT
 
+  # Sometimes the list of files is too big, that xcodebuild is storing it in a
+  # temporary file under -filelist flag
+  c.line /#{SWIFT} (?:#{FLAG} )*-filelist (#{PATH}) .*$/ do |f, m|
+    begin
+      paths = File.read(m[2]).lines.map { |fp| path(fp.chomp) }
+      f.format_compile_swift_with_module_optimization(paths)
+    rescue Errno::ENOENT
+    end
+  end
+
+  # List of files is passed thru command line
   c.line /#{SWIFT} (?:#{FLAG} )*(.*#{PATH}\.swift) .*$/ do |f, m|
     paths = m[2].split.map { |p| path(p) }
     f.format_compile_swift_with_module_optimization(paths)
