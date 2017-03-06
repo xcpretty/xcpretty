@@ -92,8 +92,8 @@ module XCPretty
     end
 
     def format_compile_swift_with_module_optimization(paths)
-      format("Compile Swift files (with module optimization):\n  " \
-             "#{paths.map(&:basename).join("\n  ")}")
+      format("Compile Swift files (with module optimization):\n" \
+             "\t#{paths.map(&:basename).join("\n\t")}")
     end
 
     def format_cpresource(source, destination)

@@ -116,9 +116,9 @@ module XCPretty
         ])
         result.should ==
           "> Compile Swift files (with module optimization):\n" \
-          "  yolo+a.swift\n" \
-          "  yolo+b.swift\n" \
-          "  yolo+c.swift"
+          "\tyolo+a.swift\n" \
+          "\tyolo+b.swift\n" \
+          "\tyolo+c.swift"
       end
 
       it 'formats compile swift sources' do
