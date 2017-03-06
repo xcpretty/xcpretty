@@ -153,8 +153,7 @@ chunk "Compiling Swift files" do |c|
 end
 
 chunk "Compiling bunch of Swift files with whole module optimization" do |c|
-  # TODO: stop sucking at regex and implement the words properly
-  c.line /^CompileSwift (#{WORD})( #{WORD})?( #{WORD})?$/
+  c.line /^CompileSwift( #{WORD})+$/
 
   c.line SHELL_CD
   c.line SHELL_EXPORT
@@ -165,13 +164,16 @@ chunk "Compiling bunch of Swift files with whole module optimization" do |c|
     begin
       paths = File.read(m[2]).lines.map { |fp| path(fp.chomp) }
       f.format_compile_swift_with_module_optimization(paths)
-    rescue Errno::ENOENT
+    rescue Errno::ENOENT => e
+      # No file found for the -filelist value.
+      # TODO: alert pageruty, @channel people on call, etc
+      puts e
     end
   end
 
   # List of files is passed thru command line
   c.line /#{SWIFT} (?:#{FLAG} )*(.*#{PATH}\.swift) .*$/ do |f, m|
-    paths = m[2].split.map { |p| path(p) }
+    paths = Shellwords.split(m[2]).map { |p| path(p) }
     f.format_compile_swift_with_module_optimization(paths)
   end
 end

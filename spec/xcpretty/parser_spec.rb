@@ -70,9 +70,9 @@ describe 'Parser' do
       :format_compile_swift_with_module_optimization,
       [
         path("/a/b/Lyft/API/Passenger/LyftAPI+EditPartySize.swift"),
-        path("/a/b/Lyft/API/Passenger/LyftAPI+Payments.swift"),
         path("/a/b/Lyft/API/Passenger/RideHistoryRoute.swift"),
-        path("/a/b/Lyft/API/Common/LyftAPI+Location.swift")
+        path("/a/b/Lyft/Classes/Passenger/In Ride Modes/Protocols/PickupCountdownPresenter.swift"),
+        path("/a/b/Lyft/API/Passenger/LyftAPI+Payments.swift"),
       ]
     ]
   end
