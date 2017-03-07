@@ -85,15 +85,14 @@ class Parser
     if @current_chunk
       @current_chunk = @current_chunk.handle(line, @formatter)
     else
-      @@chunks.each do |chunk|
-        @current_chunk = chunk.enter(line, @formatter)
-        return if @current_chunk
-      end
-      # Nobody recognizes this
-      formatter.format_unknown(line.chomp)
+      @current_chunk = @@chunks.find { |c| c.enter(line, @formatter) }
     end
+
+    # Nobody recognizes this. Just print out
+    formatter.format_unknown(line.chomp) unless @current_chunk
   end
 
+  # Adds a chunk to parser.
   def self.add(name, &block)
     @@chunks << Chunk.new(name, &block)
   end
