@@ -1,3 +1,4 @@
+require 'xcpretty/parser/parser'
 module XCPretty
 
 # PATH is a generic path matcher. It needs to end wither with / in case of a
@@ -285,7 +286,6 @@ chunk "LinkStoryboards" do |c|
   c.line /^LinkStoryboards/ do |f, m|
     f.format_link_storyboards
   end
-
   c.line SHELL_IBTOOL
   c.line SHELL_CD
   c.line SHELL_EXPORT
