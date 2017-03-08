@@ -1,13 +1,5 @@
 module XCPretty
 
-def self.chunk(name, &block)
-  Parser.add(name, &block)
-end
-
-def self.path(string)
-  Pathname.new(string.delete('\\'))
-end
-
 # PATH is a generic path matcher. It needs to end wither with / in case of a
 # directory match, or a word character in case of a file (or directory without
 # a trailing slash).

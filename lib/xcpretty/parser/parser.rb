@@ -1,5 +1,14 @@
 require 'pathname'
 module XCPretty
+
+def self.chunk(name, &block)
+  Parser.add(name, &block)
+end
+
+def self.path(string)
+  Pathname.new(string.delete('\\'))
+end
+
 module Log
   def self.debug(*args)
     if ENV["XCPRETTY_DEBUG"]
