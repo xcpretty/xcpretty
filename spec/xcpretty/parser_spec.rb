@@ -1,5 +1,6 @@
 require 'xcpretty'
-require 'xcpretty/parser'
+require 'xcpretty/parser/parser'
+require 'xcpretty/parser/chunks'
 require 'fixtures/constants'
 require 'spec_helper'
 
