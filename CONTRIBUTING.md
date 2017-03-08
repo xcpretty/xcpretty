@@ -54,8 +54,20 @@ end
 
 #### 2. Write a failing BDD test
 
-- These are unit tests, and they're very fast (below 200ms for the entire suite)
-- You should be running them continuously with `kicker`, or your awesome Vim binding
+- These are unit tests
+- They're fast to run (under 100ms for all of them)
+- They'll tell us exactly which piece of code failed and why
+- You can find them in `specs/`
+
+Here's an example unit test for testing a parser capability:
+
+``` ruby
+it 'exits only if the line is empty' do
+  @parser.parse(SAMPLE_COMPILE.lines[1])
+  @parser.parse("yolo\n")
+  @formatter.flush.should == [:format_unknown, "yolo"]
+end
+```
 
 
 #### 3. Implement your awesome contribution
