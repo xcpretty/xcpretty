@@ -71,10 +71,6 @@ OptionParser.new do |opts|
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
   opts.parse!
-
-  if STDIN.tty?
-    XCPretty.exit_with_error(opts.help)
-  end
 end
 
 #printer = XCPretty::Printer.new(printer_opts)
