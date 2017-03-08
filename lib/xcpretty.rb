@@ -1,4 +1,5 @@
 require 'xcpretty/version'
+require 'xcpretty/parser/chunks'
 require 'xcpretty/syntax'
 require 'xcpretty/snippet'
 require 'xcpretty/term'
