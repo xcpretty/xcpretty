@@ -14,7 +14,6 @@ require 'xcpretty/reporters/html'
 require 'xcpretty/reporters/json_compilation_database'
 
 module XCPretty
-
   def self.class_from_path(path)
     source = File.read(path)
     klass = eval(source, nil, path)
@@ -33,6 +32,5 @@ module XCPretty
     $stderr.puts "[!] #{message}"
     exit 1
   end
-
 end
 
