@@ -12,7 +12,7 @@ end
 module Log
   def self.debug(*args)
     if ENV["XCPRETTY_DEBUG"]
-      puts "DEBUG: #{args}"
+      puts "DEBUG [#{args.shift}]: #{args.join}"
     end
   end
 
@@ -45,7 +45,7 @@ class Chunk
   def enter(line, formatter)
     entry_regex, handler = @line_handlers.first
     if match = line.match(entry_regex)
-      Log.debug "Entered #{line}"
+      Log.debug(@name, "Entered #{line}")
       handler.call(formatter, match) if handler
       return self
     end
@@ -59,15 +59,16 @@ class Chunk
       matches = line.match(handler.first)
       next unless matches
 
-      Log.debug "Handling #{line}"
+      Log.debug(@name, "Handling #{line}")
       handler[1].call(formatter, matches) if handler[1]
       return self
     end
     if line.match(@exit)
-      Log.debug("Exiting")
+      Log.debug(@name, "Exiting")
       return nil
     end
 
+    Log.debug(@name, "Not recognized: ", line.chomp)
     formatter.format_unknown(line.chomp)
     return self
   end
