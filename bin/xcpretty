@@ -81,12 +81,6 @@ parser = XCPretty::Parser.new(formatter)
 
 STDIN.each_line do |line|
   parser.parse(line)
-  #formatters.each do |formatter|
-    #result.call(formatter) if result
-  #end
-
-  #printer.pretty_print(line)
-  #reporters.each { |r| r.handle(line) }
 end
 
 #printer.finish
