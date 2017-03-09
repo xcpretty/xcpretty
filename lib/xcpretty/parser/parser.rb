@@ -100,10 +100,10 @@ class Parser
       @current_chunk = @current_chunk.handle(line, @formatter)
     else
       @current_chunk = @@chunks.find { |c| c.enter(line, @formatter) }
-    end
 
-    # Nobody recognizes this. Just print out
-    formatter.format_unknown(line.chomp) unless @current_chunk
+      # Nobody recognizes this. Just print out
+      formatter.format_unknown(line.chomp) unless @current_chunk
+    end
   end
 
   # Adds a chunk to parser.
