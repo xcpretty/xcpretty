@@ -82,7 +82,7 @@ module XCPretty
 
     def find_test_suite(image_name)
       @test_suites.each do |key, value|
-        return key if image_name.start_with?(key)
+        return key if image_name.start_with?(key.split('.').last)
       end
       nil
     end
