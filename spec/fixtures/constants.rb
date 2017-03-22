@@ -582,6 +582,14 @@ SAMPLE_CODESIGN_ERROR_NO_SPACES = %Q(
 CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 7.0'
 )
 
+SAMPLE_REQUIRES_PROVISION = %Q(
+PROJECT_NAME requires a provisioning profile. Select a provisioning profile for the "Debug" build configuration in the project editor.
+)
+
+SAMPLE_NO_CERTIFICATE = %Q(
+No certificate matching 'iPhone Distribution: Name (B89SBB0AV9)' for team 'B89SBB0AV9':  Select a different signing certificate for CODE_SIGN_IDENTITY, a team that matches your selected certificate, or switch to automatic provisioning.
+)
+
 SAMPLE_FATAL_COMPILE_ERROR = %Q(
 In file included from /Users/musalj/code/OSS/SampleApp/Pods/SuperCoolPod/SuperAwesomeClass.m:12:
 In file included from /Users/musalj/code/OSS/SampleApp/Pods/../LessCoolPod/LessCoolClass.h:9:
@@ -644,6 +652,10 @@ Code signing is required for product type 'Application' in SDK 'iOS 10.0'
 SAMPLE_NO_PROFILE_MATCHING_ERROR = %Q(
 No profile matching 'TargetName' found:  Xcode couldn't find a profile matching 'TargetName'. Install the profile (by dragging and dropping it onto Xcode's dock item) or select a different one in the General tab of the target editor.
 )
+
+SAMPLE_SWIFT_UNAVAILABLE = "Swift is unavailable on iOS earlier than 7.0; please set IPHONEOS_DEPLOYMENT_TARGET to 7.0 or later (currently it is '6.0')."
+
+SAMPLE_USE_LEGACY_SWIFT = "“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets which use Swift. Use the [Edit > Convert > To Current Swift Syntax…] menu to choose a Swift version or use the Build Settings editor to configure the build setting directly."
 
 ################################################################################
 # WARNINGS

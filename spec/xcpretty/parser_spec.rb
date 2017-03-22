@@ -459,6 +459,34 @@ module XCPretty
         @parser.parse(SAMPLE_NO_PROFILE_MATCHING_ERROR)
       end
 
+      it "parses requires provision error:" do
+        @formatter.should receive(:format_error).with(
+          'PROJECT_NAME requires a provisioning profile. Select a provisioning profile for the "Debug" build configuration in the project editor.'
+        )
+        @parser.parse(SAMPLE_REQUIRES_PROVISION)
+      end
+
+      it "parses no certificate error:" do
+        @formatter.should receive(:format_error).with(
+          "No certificate matching 'iPhone Distribution: Name (B89SBB0AV9)' for team 'B89SBB0AV9':  Select a different signing certificate for CODE_SIGN_IDENTITY, a team that matches your selected certificate, or switch to automatic provisioning."
+        )
+        @parser.parse(SAMPLE_NO_CERTIFICATE)
+      end
+
+      it "parses swift unavailable error:" do
+        @formatter.should receive(:format_error).with(
+          SAMPLE_SWIFT_UNAVAILABLE
+        )
+        @parser.parse(SAMPLE_SWIFT_UNAVAILABLE)
+      end
+
+      it "parses use legacy swift error:" do
+        @formatter.should receive(:format_error).with(
+          SAMPLE_USE_LEGACY_SWIFT
+        )
+        @parser.parse(SAMPLE_USE_LEGACY_SWIFT)
+      end
+
       it "parses ld library errors" do
         @formatter.should receive(:format_error).with(
           SAMPLE_LD_LIBRARY_ERROR
