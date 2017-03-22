@@ -473,6 +473,20 @@ module XCPretty
         @parser.parse(SAMPLE_NO_CERTIFICATE)
       end
 
+      it "parses swift unavailable error:" do
+        @formatter.should receive(:format_error).with(
+          SAMPLE_SWIFT_UNAVAILABLE
+        )
+        @parser.parse(SAMPLE_SWIFT_UNAVAILABLE)
+      end
+
+      it "parses use legacy swift error:" do
+        @formatter.should receive(:format_error).with(
+          SAMPLE_USE_LEGACY_SWIFT
+        )
+        @parser.parse(SAMPLE_USE_LEGACY_SWIFT)
+      end
+
       it "parses ld library errors" do
         @formatter.should receive(:format_error).with(
           SAMPLE_LD_LIBRARY_ERROR

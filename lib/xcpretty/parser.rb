@@ -224,7 +224,7 @@ module XCPretty
 
       # @regex Captured groups
       # $1 = whole error
-      CHECK_DEPENDENCIES_ERRORS_MATCHER = /^(Code\s?Sign error:.*|Code signing is required for product type .* in SDK .*|No profile matching .* found:.*|Provisioning profile .* doesn't .*)$/
+      CHECK_DEPENDENCIES_ERRORS_MATCHER = /^(Code\s?Sign error:.*|Code signing is required for product type .* in SDK .*|No profile matching .* found:.*|Provisioning profile .* doesn't .*|Swift is unavailable on .*|.?Use Legacy Swift Language Version.*)$/
 
       # @regex Captured groups
       # $1 = whole error

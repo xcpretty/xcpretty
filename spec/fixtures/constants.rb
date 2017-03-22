@@ -653,6 +653,10 @@ SAMPLE_NO_PROFILE_MATCHING_ERROR = %Q(
 No profile matching 'TargetName' found:  Xcode couldn't find a profile matching 'TargetName'. Install the profile (by dragging and dropping it onto Xcode's dock item) or select a different one in the General tab of the target editor.
 )
 
+SAMPLE_SWIFT_UNAVAILABLE = "Swift is unavailable on iOS earlier than 7.0; please set IPHONEOS_DEPLOYMENT_TARGET to 7.0 or later (currently it is '6.0')."
+
+SAMPLE_USE_LEGACY_SWIFT = "“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets which use Swift. Use the [Edit > Convert > To Current Swift Syntax…] menu to choose a Swift version or use the Build Settings editor to configure the build setting directly."
+
 ################################################################################
 # WARNINGS
 ################################################################################
