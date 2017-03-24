@@ -552,6 +552,15 @@ module XCPretty
         @formatter.should receive(:format_will_not_be_code_signed).with(SAMPLE_WILL_NOT_BE_CODE_SIGNED)
         @parser.parse(SAMPLE_WILL_NOT_BE_CODE_SIGNED)
       end
+
+      it "parses Check dependencies unknown output" do
+        @formatter.should receive(:format_warning).with(SAMPLE_CHECK_DEPENDENCIES_WARNING)
+        @formatter.should_not receive(:format_warning).with("Another phase output")
+        @parser.parse("Check dependencies")
+        @parser.parse(SAMPLE_CHECK_DEPENDENCIES_WARNING)
+        @parser.parse("\n")
+        @parser.parse("Another phase output")
+      end
     end
 
     context "summary" do

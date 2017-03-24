@@ -280,6 +280,8 @@ module XCPretty
       # @regex Captured groups
       # $1 = reference
       SYMBOL_REFERENCED_FROM_MATCHER = /\s+"(.*)", referenced from:$/
+
+      EMPTY_LINE_MATCHER = /^\s?$/
     end
   end
 
@@ -411,6 +413,11 @@ module XCPretty
       when WILL_NOT_BE_CODE_SIGNED_MATCHER
         formatter.format_will_not_be_code_signed($1)
       else
+        # Check dependencies has no output if no problems are found
+        # Treat all unrecognized lines as warnings
+        if @check_dependencies_phase
+          formatter.format_warning(text)
+        end
         ""
       end
     end
@@ -432,6 +439,10 @@ module XCPretty
         store_failure(file: $1, test_suite: $2, test_case: $3, reason: $4)
       when UI_FAILING_TEST_MATCHER
         store_failure(file: $1, test_suite: @test_suite, test_case: @test_case, reason: $2)
+      when CHECK_DEPENDENCIES_MATCHER
+        @check_dependencies_phase = true
+      when EMPTY_LINE_MATCHER
+        @check_dependencies_phase = false
       end
     end
 

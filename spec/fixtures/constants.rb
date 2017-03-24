@@ -671,3 +671,5 @@ SAMPLE_FORMAT_WARNING = %Q(
 
 SAMPLE_WILL_NOT_BE_CODE_SIGNED = "FrameworkName will not be code signed because its settings don't specify a development team."
 
+SAMPLE_CHECK_DEPENDENCIES_WARNING = "Some unparsed dependency issue"
+
