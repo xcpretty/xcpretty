@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.6
+
+* Codesigning matchers improvements
+* Screenshots parsing fixes
+
+###### Bug fixes
+
+* Fix reporers crash by default ld warning implementation
+  | [iKiKi](https://github.com/iKiKi)
+  | [#187](https://github.com/supermarin/xcpretty/pull/187)
+
 ## 0.2.1
 
 ###### Bug fixes
