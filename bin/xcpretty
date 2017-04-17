@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby --disable-gems
 
 if RUBY_VERSION < '2.0.0'
   abort "error: XCPretty requires Ruby 2.0.0 or higher."
