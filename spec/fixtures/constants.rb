@@ -555,7 +555,7 @@ PBXCp build/Release/CocoaChipCore.framework build/Release/CocoaChip.app/Contents
 warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework/Versions/A/CocoaChipCore
 )
 
-SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec, line 80, hello xcpretty.png'
+SAMPLE_SCREENSHOT_FILE = 'test_init_PERFORMS_initialization.png'
 SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'
 
 ################################################################################

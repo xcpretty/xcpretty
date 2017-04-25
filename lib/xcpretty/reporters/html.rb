@@ -27,11 +27,12 @@ module XCPretty
     def format_failing_test(suite, test_case, reason, file)
       add_test(suite, name: test_case, failing: true,
                       reason: reason, file: file,
-                      snippet: formatted_snippet(file))
+                      snippet: formatted_snippet(file),
+                      screenshots: [])
     end
 
     def format_passing_test(suite, test_case, time)
-      add_test(suite, name: test_case, time: time)
+      add_test(suite, name: test_case, time: time, screenshots: [])
     end
 
     private
@@ -41,10 +42,9 @@ module XCPretty
       Syntax.highlight_html(snippet)
     end
 
-
     def add_test(suite_name, data)
       @test_count += 1
-      @test_suites[suite_name] ||= {tests: [], screenshots: []}
+      @test_suites[suite_name] = {tests: []}
       @test_suites[suite_name][:tests] << data
       if data[:failing]
         @test_suites[suite_name][:failing] = true
@@ -70,19 +70,18 @@ module XCPretty
       Dir.foreach(SCREENSHOT_DIR) do |item|
         next if item == '.' || item == '..' || File.extname(item) != '.png'
 
-        suite = item.split(".")
-        next if suite.empty?
+        test = find_test(item)
+        next if test.nil?
 
-        suite_name = find_test_suite(suite[0])
-        next if suite_name.nil?
-
-        @test_suites[suite_name][:screenshots] << item
+        test[:screenshots] << item
       end
     end
 
-    def find_test_suite(image_name)
-      @test_suites.each do |key, value|
-        return key if image_name.start_with?(key.split('.').last)
+    def find_test(image_name)
+      @test_suites.each do |name, info|
+        info[:tests].each do |test, index|
+          return test if image_name.start_with?(test[:name])
+        end
       end
       nil
     end

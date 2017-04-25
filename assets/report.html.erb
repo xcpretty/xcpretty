@@ -127,15 +127,6 @@
             <h3 class="title"><%= name %></h3>
           </section>
           <section class="tests">
-            <% unless info[:screenshots].empty? %>
-            <div class="screenshots <%= info[:failing] ? 'failing' : 'passing'%>">
-              <% info[:screenshots].each_with_index do |screenshot, index| %>
-                  <a href="javascript:toggleScreenshot('<%=name %>', <%=index %>)">
-                    <img class="screenshot" id="screenshot-<%=name %>-<%=index %>" src="<%=screenshot %>" />
-                  </a>
-              <% end %>
-            </div>
-            <% end %>
             <table>
             <% info[:tests].each_with_index do |test, index| %>
               <% detail_class = test[:name].gsub(/\s/,'') %>
@@ -147,7 +138,7 @@
                 </td>
                 <td><h3 class="title"><%= test[:name] %></h3></td>
               </tr>
-              <% if test[:reason] || test[:snippet] %>
+              <% if test[:reason] || test[:snippet] || test[:screenshots] %>
                 <tr class="details <%= detail_class %>">
                   <td></td>
                   <td>
@@ -157,6 +148,15 @@
                     <% if test[:snippet] %>
                       <section class="test-detail snippet"><%= test[:snippet] %></section>
                       <section class="test-detail"><%= test[:file] %></section>
+                    <% end %>
+                    <% if test[:screenshots] %>
+                      <section class="test-detail">
+                        <% test[:screenshots].each_with_index do |screenshot, index| %>
+                          <a href="javascript:toggleScreenshot('<%=test[:name] %>', <%=index %>)">
+                            <img class="screenshot" id="screenshot-<%=test[:name] %>-<%=index %>" src="<%=screenshot %>" />
+                          </a>
+                        <% end %>
+                      </section>
                     <% end %>
                   </td>
                 </tr>
