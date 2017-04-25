@@ -30,7 +30,8 @@
       .test.passing { background-color: #CAF59F;}
       .test.failing.odd { background-color: #EEC7CC;}
       .test.passing.odd { background-color: #E5FBCF;}
-      .details { background-color: #F4DDE0; border: 1px solid #C84F5E;}
+      .details.failing { background-color: #F4DDE0; border: 1px solid #C84F5E;}
+      .details.passing { background-color: #E5FBCF; border: 1px solid #A1D761;}
       .test .test-detail:last-child { padding-bottom: 8px;}
       .test .title { float: left; font-size: 0.9em; margin-top: 8px; font-family: Menlo, Monaco, monospace;}
       .test .time { float: left;margin: 4px 10px 0 20px;}
@@ -138,8 +139,8 @@
                 </td>
                 <td><h3 class="title"><%= test[:name] %></h3></td>
               </tr>
-              <% if test[:reason] || test[:snippet] || test[:screenshots] %>
-                <tr class="details <%= detail_class %>">
+              <% if test[:reason] || test[:snippet] || !test[:screenshots].empty? %>
+                <tr class="details <%= test[:failing] ? 'failing' : 'passing'%> <%= detail_class %>">
                   <td></td>
                   <td>
                     <% if test[:reason] %>
@@ -149,7 +150,7 @@
                       <section class="test-detail snippet"><%= test[:snippet] %></section>
                       <section class="test-detail"><%= test[:file] %></section>
                     <% end %>
-                    <% if test[:screenshots] %>
+                    <% unless test[:screenshots].empty? %>
                       <section class="test-detail">
                         <% test[:screenshots].each_with_index do |screenshot, index| %>
                           <a href="javascript:toggleScreenshot('<%=test[:name] %>', <%=index %>)">
