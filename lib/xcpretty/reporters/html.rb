@@ -44,7 +44,7 @@ module XCPretty
 
     def add_test(suite_name, data)
       @test_count += 1
-      @test_suites[suite_name] = {tests: []}
+      @test_suites[suite_name] ||= {tests: []}
       @test_suites[suite_name][:tests] << data
       if data[:failing]
         @test_suites[suite_name][:failing] = true
