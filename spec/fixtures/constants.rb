@@ -555,7 +555,7 @@ PBXCp build/Release/CocoaChipCore.framework build/Release/CocoaChip.app/Contents
 warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework/Versions/A/CocoaChipCore
 )
 
-SAMPLE_SCREENSHOT_FILE = 'test_init_PERFORMS_initialization.png'
+SAMPLE_SCREENSHOT_FILE = 'enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES.png'
 SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'
 
 ################################################################################
