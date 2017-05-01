@@ -80,7 +80,8 @@ module XCPretty
     def find_test(image_name)
       @test_suites.each do |name, info|
         info[:tests].each do |test, index|
-          return test if image_name.start_with?(test[:name])
+          combined_name = name + '_' + test[:name]
+          return test if image_name.start_with?(test[:name]) || image_name.start_with?(combined_name)
         end
       end
       nil
