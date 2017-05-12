@@ -201,7 +201,7 @@ module XCPretty
 
     it "parses passing ocunit tests" do
       @formatter.should receive(:format_passing_test).with('RACCommandSpec',
-                                                           'enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES',
+                                                           'enabled_signal_should_send_YES_while_executing_is_YES',
                                                            '0.001')
       @parser.parse(SAMPLE_OCUNIT_TEST)
     end
