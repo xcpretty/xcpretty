@@ -201,8 +201,10 @@ module XCPretty
     module Warnings
       # $1 = file_path
       # $2 = file_name
-      # $3 = reason
-      COMPILE_WARNING_MATCHER = /^(\/.+\/(.*):.*:.*):\swarning:\s(.*)$/
+      # $3 = cursor
+      # $4 = line
+      # $5 = reason
+      COMPILE_WARNING_MATCHER = /^(\/.+\/(.*):(.*):(.*)):\swarning:\s(.*)$/
 
       # $1 = ld prefix
       # $2 = warning message
@@ -237,8 +239,10 @@ module XCPretty
       # @regex Captured groups
       # $1 = file_path
       # $2 = file_name
-      # $3 = reason
-      COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):.*:.*):\s(?:fatal\s)?error:\s(.*)$/
+      # $3 = cursor
+      # $4 = line
+      # $5 = reason
+      COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):(.*):(.*)):\s(?:fatal\s)?error:\s(.*)$/
 
       # @regex Captured groups
       # $1 cursor (with whitespaces and tildes)
@@ -445,9 +449,11 @@ module XCPretty
     # @ return Hash { :file_name, :file_path, :reason, :line }
     def update_error_state(text)
       update_error = lambda {
-        current_issue[:reason]    = $3
+        current_issue[:reason]    = $5
         current_issue[:file_path] = $1
         current_issue[:file_name] = $2
+        current_issue[:cursor]    = $3
+        current_issue[:line]      = $4
       }
       if text =~ COMPILE_ERROR_MATCHER
         @formatting_error = true
