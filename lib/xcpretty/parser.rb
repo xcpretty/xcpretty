@@ -254,6 +254,7 @@ module XCPretty
       # $2 = file path
       FILE_MISSING_ERROR_MATCHER = /^<unknown>:0:\s(error:\s.*)\s'(\/.+\/.*\..*)'$/
 
+      # @regex Captured groups
       # $1 = whole error
       LD_ERROR_MATCHER = /^(ld:.*)/
 
@@ -280,6 +281,10 @@ module XCPretty
       # @regex Captured groups
       # $1 = reference
       SYMBOL_REFERENCED_FROM_MATCHER = /\s+"(.*)", referenced from:$/
+
+      # @regex Captured groups
+      # $1 = error reason
+      MODULE_INCLUDES_ERROR_MATCHER = /^\<module-includes\>:.*?:.*?:\s(?:fatal\s)?(error:\s.*)$/
     end
   end
 
@@ -368,6 +373,8 @@ module XCPretty
         formatter.format_libtool($1)
       when LINKING_MATCHER
         formatter.format_linking($1, $2, $3)
+      when MODULE_INCLUDES_ERROR_MATCHER
+        formatter.format_error($1)
       when TEST_CASE_MEASURED_MATCHER
         formatter.format_measuring_test($1, $2, $3)
       when TEST_CASE_PENDING_MATCHER

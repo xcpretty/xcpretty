@@ -523,6 +523,13 @@ module XCPretty
         @formatter.should receive(:format_error)
         @parser.parse(SAMPLE_CODE_SIGNING_IS_REQUIRED_ERROR)
       end
+
+      it "parses module includes error" do
+        @formatter.should receive(:format_error).with(
+          "error: umbrella header for module 'ModuleName' does not include header 'Header.h'"
+        )
+        @parser.parse(SAMPLE_MODULE_INCLUDES_ERROR)
+      end
     end
 
     context "warnings" do
