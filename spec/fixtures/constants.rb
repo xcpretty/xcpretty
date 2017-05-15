@@ -657,6 +657,8 @@ SAMPLE_SWIFT_UNAVAILABLE = "Swift is unavailable on iOS earlier than 7.0; please
 
 SAMPLE_USE_LEGACY_SWIFT = "“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets which use Swift. Use the [Edit > Convert > To Current Swift Syntax…] menu to choose a Swift version or use the Build Settings editor to configure the build setting directly."
 
+SAMPLE_MODULE_INCLUDES_ERROR = "<module-includes>:1:1: error: umbrella header for module 'ModuleName' does not include header 'Header.h'"
+
 ################################################################################
 # WARNINGS
 ################################################################################
