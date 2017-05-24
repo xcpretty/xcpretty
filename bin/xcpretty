@@ -68,9 +68,6 @@ OptionParser.new do |opts|
     end
     opts[:screenshots] = true
   end
-  opts.on('--[no-]pretty-report', 'Use pretty report or not. Use it by default. Only available for junit reporter.') do |value|
-    opts[:pretty_report] = value
-  end
   opts.on_tail('-h', '--help', 'Show this message') { puts opts; exit }
   opts.on_tail("-v", "--version", "Show version") { puts XCPretty::VERSION; exit }
   opts.parse!

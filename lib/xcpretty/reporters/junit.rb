@@ -21,7 +21,6 @@ module XCPretty
       @document.add_element('testsuites')
       @total_fails = 0
       @total_tests = 0
-      @pretty = options[:pretty_report].nil? ? true : options[:pretty_report]
     end
 
     def handle(line)
@@ -78,12 +77,8 @@ module XCPretty
     end
 
     def write_report
-      if @pretty
-        formatter = REXML::Formatters::Pretty.new(2)
-        formatter.compact = true
-      else
-        formatter = REXML::Formatters::Default.new
-      end
+      formatter = REXML::Formatters::Pretty.new(2)
+      formatter.compact = true
       output_file = File.open(@filepath, 'w+')
       result = formatter.write(@document, output_file)
       output_file.close
