@@ -8,6 +8,7 @@ SAMPLE_SPECTA_TEST_RUN_BEGINNING = "    Test Suite 'KIFTests.xctest' started at 
 SAMPLE_OCUNIT_TEST_RUN_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-10 07:03:03 +0000."
 SAMPLE_OCUNIT_FAILED_TEST_RUN_COMPLETION = "Test Suite '/Users/dm/someplace/Macadamia.octest' failed at 2014-09-24 23:09:20 +0000."
 SAMPLE_OCUNIT_PASSED_TEST_RUN_COMPLETION = "Test Suite 'Hazelnuts.xctest' passed at 2014-09-24 23:09:20 +0000."
+SAMPLE_OCUNIT_CRASHED_TEST_RUN_COMPLETION = "Restarting after unexpected exit or crash in SampleTests/crashed_test; summary will include totals from previous launches."
 SAMPLE_KIWI_TEST_RUN_COMPLETION = "Test Suite 'ObjectiveRecordTests.xctest' finished at 2013-12-10 06:15:42 +0000."
 SAMPLE_SPECTA_TEST_RUN_COMPLETION = "     Test Suite 'KIFTests.xctest' finished at 2014-02-28 15:44:32 +0000."
 
@@ -671,3 +672,9 @@ SAMPLE_FORMAT_WARNING = %Q(
 
 SAMPLE_WILL_NOT_BE_CODE_SIGNED = "FrameworkName will not be code signed because its settings don't specify a development team."
 
+SAMPLE_JUNIT_XML = "<root><children><grandchildren foo='bar'/></children></root>"
+SAMPLE_JUNIT_PRETTY_XML = %Q(<root>
+  <children>
+    <grandchildren foo='bar'/>
+  </children>
+</root>)

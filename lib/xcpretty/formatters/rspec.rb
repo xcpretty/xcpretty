@@ -19,6 +19,10 @@ module XCPretty
       red(FAIL)
     end
 
+    def format_error_test(test_suite, test_case, reason, stack_trace)
+      red(FAIL)
+    end
+
     def format_pending_test(suite, test_case)
       yellow(PENDING)
     end

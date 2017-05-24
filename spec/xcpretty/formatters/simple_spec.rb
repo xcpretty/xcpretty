@@ -100,6 +100,11 @@ module XCPretty
         "    x enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
       end
 
+      it "formats error tests" do
+        @formatter.format_error_test("SampleTests", "crashed_test", "unexpected exit or crash in SampleTests/crashed_test", "foo\nbar").should ==
+        "    x crashed_test, unexpected exit or crash in SampleTests/crashed_test"
+      end
+
       it "formats passing tests" do
         @formatter.format_passing_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", "0.001").should ==
         "    . _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"

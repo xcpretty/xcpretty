@@ -20,6 +20,12 @@ module XCPretty
       format_failure_diagnostics(test_suite, test_case, reason, file)
     end
 
+    def format_error_test(test_suite, test_case, reason, stack_trace)
+      increment_counter
+      "#{FAIL} #{counter} - #{test_case}" +
+      format_error_diagnostics(test_suite, test_case, reason, stack_trace)
+    end
+
     def format_pending_test(test_suite, test_case)
       increment_counter
       "#{FAIL} #{counter} - #{test_case} # TODO Not written yet"

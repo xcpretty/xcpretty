@@ -21,6 +21,7 @@ module XCPretty
       @document.add_element('testsuites')
       @total_fails = 0
       @total_tests = 0
+      @pretty = options[:pretty_report].nil? ? true : options[:pretty_report]
     end
 
     def handle(line)
@@ -58,6 +59,17 @@ module XCPretty
       @fail_count += 1
     end
 
+    def format_error_test(classname, test_case, reason, stack_trace)
+      test_node = suite(classname).add_element('testcase')
+      test_node.attributes['classname'] = classname
+      test_node.attributes['name']      = test_case
+      error_node = test_node.add_element('error')
+      error_node.attributes['message'] = reason
+      error_node.text = stack_trace
+      @test_count += 1
+      @fail_count += 1
+    end
+
     def finish
       set_test_counters
       @document.root.attributes['tests'] = @total_tests
@@ -66,8 +78,12 @@ module XCPretty
     end
 
     def write_report
-      formatter = REXML::Formatters::Pretty.new(2)
-      formatter.compact = true
+      if @pretty
+        formatter = REXML::Formatters::Pretty.new(2)
+        formatter.compact = true
+      else
+        formatter = REXML::Formatters::Default.new
+      end
       output_file = File.open(@filepath, 'w+')
       result = formatter.write(@document, output_file)
       output_file.close
