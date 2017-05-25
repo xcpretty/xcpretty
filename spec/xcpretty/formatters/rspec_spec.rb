@@ -32,7 +32,7 @@ module XCPretty
 
       it "prints F for error tests" do
         @formatter.format_error_test(
-             "SampleTests", "crashed_test", "unexpected exit or crash in SampleTests/crashed_test", "foo\nbar"
+          "SampleTests", "crashed_test", "unexpected exit or crash in SampleTests/crashed_test", "foo\nbar"
         ).should == "F"
       end
     end
