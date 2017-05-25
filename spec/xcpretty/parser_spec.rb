@@ -186,6 +186,15 @@ module XCPretty
       @parser.parse(SAMPLE_SPECTA_FAILURE)
     end
 
+    it "parses crashed tests" do
+      @parser.instance_variable_set(:@logs, %w(foo bar))
+      allow(@formatter).to receive(:format_error_test).with("SampleTests",
+                                                        "crashed_test",
+                                                        "unexpected exit or crash in SampleTests/crashed_test",
+                                                        "foo\nbar")
+      @parser.parse(SAMPLE_OCUNIT_CRASHED_TEST_RUN_COMPLETION)
+    end
+
     it "parses old specta failing tests" do
       @formatter.should receive(:format_failing_test).with("RACCommandSpec",
                                                            "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES",

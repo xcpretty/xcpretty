@@ -29,6 +29,12 @@ module XCPretty
           "///file", "NSNumber Specs", "adding numbers", "should add 2 numbers"
         ).should == "F"
       end
+
+      it "prints F for error tests" do
+        @formatter.format_error_test(
+          "SampleTests", "crashed_test", "unexpected exit or crash in SampleTests/crashed_test", "foo\nbar"
+        ).should == "F"
+      end
     end
 
     context "with colors" do

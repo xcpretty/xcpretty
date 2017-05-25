@@ -58,6 +58,17 @@ module XCPretty
       @fail_count += 1
     end
 
+    def format_error_test(classname, test_case, reason, stack_trace)
+      test_node = suite(classname).add_element('testcase')
+      test_node.attributes['classname'] = classname
+      test_node.attributes['name']      = test_case
+      error_node = test_node.add_element('error')
+      error_node.attributes['message'] = reason
+      error_node.text = stack_trace
+      @test_count += 1
+      @fail_count += 1
+    end
+
     def finish
       set_test_counters
       @document.root.attributes['tests'] = @total_tests

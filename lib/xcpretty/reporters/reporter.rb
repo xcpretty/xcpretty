@@ -36,6 +36,12 @@ module XCPretty
       @tests.push("#{test_case} in #{file} FAILED: #{reason}")
     end
 
+    def format_error_test(suite, test_case, reason, stack_trace)
+      @test_count += 1
+      @fail_count += 1
+      @tests.push("#{test_case} ERROR: #{reason}")
+    end
+
     def format_passing_test(suite, test_case, time)
       @test_count += 1
       @tests.push("#{test_case} PASSED")

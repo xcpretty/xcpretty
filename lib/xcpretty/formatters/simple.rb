@@ -7,12 +7,14 @@ module XCPretty
 
     PASS = "✓"
     FAIL = "✗"
+    ERROR = "✗"
     PENDING = "⧖"
     COMPLETION = "▸"
     MEASURE = '◷'
 
     ASCII_PASS = "."
     ASCII_FAIL = "x"
+    ASCII_ERROR = "x"
     ASCII_PENDING = "P"
     ASCII_COMPLETION = ">"
     ASCII_MEASURE = 'T'
@@ -81,6 +83,10 @@ module XCPretty
 
     def format_failing_test(suite, test_case, reason, file)
       INDENT + format_test("#{test_case}, #{reason}", :fail)
+    end
+
+    def format_error_test(suite, test_case, reason, stack_trace)
+      INDENT + format_test("#{test_case}, #{reason}", :error)
     end
 
     def format_passing_test(suite, test_case, time)

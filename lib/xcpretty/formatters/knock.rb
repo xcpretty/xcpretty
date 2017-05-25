@@ -14,6 +14,11 @@ module XCPretty
       format_failure_diagnostics(test_suite, test_case, reason, file)
     end
 
+    def format_error_test(test_suite, test_case, reason, stack_trace)
+      "#{FAIL} - #{test_case}: FAILED" +
+      format_error_diagnostics(test_suite, test_case, reason, stack_trace)
+    end
+
     def format_test_summary(executed_message, failures_per_suite)
       ''
     end
@@ -21,6 +26,11 @@ module XCPretty
     def format_failure_diagnostics(test_suite, test_case, reason, file)
       format_diagnostics(reason) +
       format_diagnostics("  #{file}: #{test_suite} - #{test_case}")
+    end
+
+    def format_error_diagnostics(test_suite, test_case, reason, stack_trace)
+      format_diagnostics(reason) +
+      format_diagnostics(" #{test_suite} - #{test_case}")
     end
 
     private

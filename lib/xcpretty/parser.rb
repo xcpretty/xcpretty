@@ -101,6 +101,12 @@ module XCPretty
     FAILING_TEST_MATCHER = /^\s*(.+:\d+):\serror:\s[\+\-]\[(.*)\s(.*)\]\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
 
     # @regex Captured groups
+    # $1 = reason
+    # $2 = test_suite
+    # $3 = test_case
+    CRASH_TEST_MATCHER = /^Restarting after (unexpected exit or crash in (.+)\/(.+)); summary will include totals from previous launches./
+
+    # @regex Captured groups
     # $1 = file
     # $2 = reason
     UI_FAILING_TEST_MATCHER = /^\s{4}t = \s+\d+\.\d+s\s+Assertion Failure: (.*:\d+): (.*)$/
@@ -359,6 +365,8 @@ module XCPretty
         formatter.format_failing_test(@test_suite, @test_case, $2, $1)
       when FAILING_TEST_MATCHER
         formatter.format_failing_test($2, $3, $4, $1)
+      when CRASH_TEST_MATCHER
+        formatter.format_error_test($2, $3, $1, @logs.join("\n"))
       when FATAL_ERROR_MATCHER
         formatter.format_error($1)
       when FILE_MISSING_ERROR_MATCHER
@@ -433,12 +441,22 @@ module XCPretty
       when TEST_CASE_STARTED_MATCHER
         @test_suite = $1
         @test_case = $2
+        @logs = []
+        @collecting_stacktrace = true
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
+        @collecting_stacktrace = false
       when FAILING_TEST_MATCHER
         store_failure(file: $1, test_suite: $2, test_case: $3, reason: $4)
+        @collecting_stacktrace = false
+      when CRASH_TEST_MATCHER
+        store_failure(test_suite: $2, test_case: $3, reason: $1)
+        @collecting_stacktrace = false
       when UI_FAILING_TEST_MATCHER
         store_failure(file: $1, test_suite: @test_suite, test_case: @test_case, reason: $2)
+        @collecting_stacktrace = false
+      else
+        @logs << text.chomp if @collecting_stacktrace
       end
     end
 
