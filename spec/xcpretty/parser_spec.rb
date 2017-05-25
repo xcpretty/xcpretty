@@ -187,7 +187,7 @@ module XCPretty
     end
 
     it "parses crashed tests" do
-      @parser.instance_variable_set(:@logs, %W(foo bar))
+      @parser.instance_variable_set(:@logs, %w(foo bar))
       allow(@formatter).to receive(:format_error_test).with("SampleTests",
                                                         "crashed_test",
                                                         "unexpected exit or crash in SampleTests/crashed_test",
