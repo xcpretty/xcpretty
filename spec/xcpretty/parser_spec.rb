@@ -206,6 +206,13 @@ module XCPretty
       @parser.parse(SAMPLE_OCUNIT_TEST)
     end
 
+    it "parses passing ocunit tests, but include invalid byte sequence" do
+      @formatter.should receive(:format_passing_test).with('RACCommandSpec',
+                                                           'enabled_signal_should_send_YES_while_executing_is_YES',
+                                                           '0.001')
+      @parser.parse(SAMPLE_OCUNIT_TEST_WITH_INVALID_BYTE_SEQUENCE)
+    end
+
     it "parses passing specta tests" do
       @formatter.should receive(:format_passing_test).with('SKWelcomeActivationViewControllerSpecSpec',
                                                            'SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code',

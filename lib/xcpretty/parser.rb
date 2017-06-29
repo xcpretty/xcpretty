@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'string/scrub' if RUBY_VERSION.to_f < 2.1
 
 module XCPretty
 
@@ -301,6 +302,7 @@ module XCPretty
     end
 
     def parse(text)
+      text = text.scrub('')
       update_test_state(text)
       update_error_state(text)
       update_linker_failure_state(text)

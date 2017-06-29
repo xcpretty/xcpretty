@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'rouge', '~> 2.0.7'
+  spec.add_dependency 'string-scrub', '~> 0.1.1' if RUBY_VERSION.to_f < 2.1
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
