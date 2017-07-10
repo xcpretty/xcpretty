@@ -68,11 +68,11 @@ Test Case '-[xcprettyFatalErrorTests.xcprettyFatalErrorTests testPerformanceExam
 /Users/kenji/Desktop/xcprettyFatalError/xcprettyFatalErrorTests/xcprettyFatalErrorTests.swift:40: Test Case '-[xcprettyFatalErrorTests.xcprettyFatalErrorTests testPerformanceExample]' measured [Time, seconds] average: 0.000, relative standard deviation: 174.575%, values: [0.000005, 0.000001, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
 Test Case '-[xcprettyFatalErrorTests.xcprettyFatalErrorTests testPerformanceExample]' passed (0.258 seconds).
 Test Suite 'xcprettyFatalErrorTests' failed at 2017-07-10 15:01:17.957.
-	 Executed 3 tests, with 1 failure (0 unexpected) in 0.258 (0.259) seconds
+     Executed 3 tests, with 1 failure (0 unexpected) in 0.258 (0.259) seconds
 Test Suite 'xcprettyFatalErrorTests.xctest' failed at 2017-07-10 15:01:17.958.
-	 Executed 3 tests, with 1 failure (0 unexpected) in 0.258 (0.259) seconds
+     Executed 3 tests, with 1 failure (0 unexpected) in 0.258 (0.259) seconds
 Test Suite 'Selected tests' failed at 2017-07-10 15:01:17.958.
-	 Executed 3 tests, with 1 failure (0 unexpected) in 0.258 (0.260) seconds
+     Executed 3 tests, with 1 failure (0 unexpected) in 0.258 (0.260) seconds
 )
 
 SAMPLE_BUILD = "=== BUILD TARGET The Spacer OF PROJECT Pods WITH THE DEFAULT CONFIGURATION Debug ==="

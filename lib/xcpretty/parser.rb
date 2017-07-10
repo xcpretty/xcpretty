@@ -106,6 +106,9 @@ module XCPretty
     UI_FAILING_TEST_MATCHER = /^\s{4}t = \s+\d+\.\d+s\s+Assertion Failure: (.*:\d+): (.*)$/
 
     # @regex Captured groups
+    RESTARTING_TESTS_MATCHER = /^Restarting after unexpected exit or crash in.+$/
+
+    # @regex Captured groups
     # $1 = dsym
     GENERATE_DSYM_MATCHER = /^GenerateDSYMFile \/.*\/(.*\.dSYM)/
 
@@ -355,6 +358,8 @@ module XCPretty
         formatter.format_cpresource($1)
       when EXECUTED_MATCHER
         format_summary_if_needed(text)
+      when RESTARTING_TESTS_MATCHER
+        formatter.format_failing_test(@test_suite, @test_case, "Test crashed", "n/a")
       when UI_FAILING_TEST_MATCHER
         formatter.format_failing_test(@test_suite, @test_case, $2, $1)
       when FAILING_TEST_MATCHER
@@ -439,6 +444,8 @@ module XCPretty
         store_failure(file: $1, test_suite: $2, test_case: $3, reason: $4)
       when UI_FAILING_TEST_MATCHER
         store_failure(file: $1, test_suite: @test_suite, test_case: @test_case, reason: $2)
+      when RESTARTING_TESTS_MATCHER
+        store_failure(file: "n/a", test_suite: @test_suite, test_case: @test_case, reason: "Test crashed")
       end
     end
 
