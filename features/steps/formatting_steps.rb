@@ -31,6 +31,10 @@ Given(/^I have a failing test in my suite$/) do
   add_run_input SAMPLE_OLD_SPECTA_FAILURE
 end
 
+Given(/^I have a swift fatal error in a test in my suite$/) do
+  add_run_input SAMPLE_SWIFT_FATAL_ERROR_IN_TEST_MAKE_TESTS_RESTARTING
+end
+
 Given(/^all of my tests will pass in my suite$/) do
   3.times { add_run_input SAMPLE_OCUNIT_TEST }
 end

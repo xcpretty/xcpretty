@@ -50,6 +50,30 @@ SAMPLE_XCTEST_FAILURE = ""
 SAMPLE_KIWI_FAILURE = "/Users/musalj/code/OSS/ObjectiveSugar/Example/ObjectiveSugarTests/NSNumberTests.m:49: error: -[NumberAdditions Iterators_TimesIteratesTheExactNumberOfTimes] : 'Iterators, times： iterates the exact number of times' [FAILED], expected subject to equal 4, got 5"
 SAMPLE_OLD_SPECTA_FAILURE = "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458: error: -[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES] : expected: 1, got: 0"
 SAMPLE_SPECTA_FAILURE = "         Test Case '-[SKWelcomeViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen]' started. \n/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11: error: -[SKWelcomeViewControllerSpecSpec SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen] : The step timed out after 2.00 seconds: Failed to find accessibility element with the label \"The asimplest way to make smarter business decisions\""
+SAMPLE_SWIFT_FATAL_ERROR_IN_TEST_MAKE_TESTS_RESTARTING = %Q(\
+Test Suite 'All tests' started at 2017-07-10 15:01:12.049
+Test Suite 'xcprettyFatalErrorTests.xctest' started at 2017-07-10 15:01:12.049
+Test Suite 'xcprettyFatalErrorTests' started at 2017-07-10 15:01:12.049
+Test Case '-[xcprettyFatalErrorTests.xcprettyFatalErrorTests testExample]' started.
+Test Case '-[xcprettyFatalErrorTests.xcprettyFatalErrorTests testExample]' passed (0.001 seconds).
+Test Case '-[xcprettyFatalErrorTests.xcprettyFatalErrorTests testFatalError]' started.
+fatal error: unexpectedly found nil while unwrapping an Optional value
+
+Restarting after unexpected exit or crash in xcprettyFatalErrorTests/testFatalError(); summary will include totals from previous launches.
+
+Test Suite 'Selected tests' started at 2017-07-10 15:01:17.698
+Test Suite 'xcprettyFatalErrorTests.xctest' started at 2017-07-10 15:01:17.698
+Test Suite 'xcprettyFatalErrorTests' started at 2017-07-10 15:01:17.699
+Test Case '-[xcprettyFatalErrorTests.xcprettyFatalErrorTests testPerformanceExample]' started.
+/Users/kenji/Desktop/xcprettyFatalError/xcprettyFatalErrorTests/xcprettyFatalErrorTests.swift:40: Test Case '-[xcprettyFatalErrorTests.xcprettyFatalErrorTests testPerformanceExample]' measured [Time, seconds] average: 0.000, relative standard deviation: 174.575%, values: [0.000005, 0.000001, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[xcprettyFatalErrorTests.xcprettyFatalErrorTests testPerformanceExample]' passed (0.258 seconds).
+Test Suite 'xcprettyFatalErrorTests' failed at 2017-07-10 15:01:17.957.
+	 Executed 3 tests, with 1 failure (0 unexpected) in 0.258 (0.259) seconds
+Test Suite 'xcprettyFatalErrorTests.xctest' failed at 2017-07-10 15:01:17.958.
+	 Executed 3 tests, with 1 failure (0 unexpected) in 0.258 (0.259) seconds
+Test Suite 'Selected tests' failed at 2017-07-10 15:01:17.958.
+	 Executed 3 tests, with 1 failure (0 unexpected) in 0.258 (0.260) seconds
+)
 
 SAMPLE_BUILD = "=== BUILD TARGET The Spacer OF PROJECT Pods WITH THE DEFAULT CONFIGURATION Debug ==="
 SAMPLE_ANALYZE_TARGET = "=== ANALYZE TARGET The Spacer OF PROJECT Pods WITH THE DEFAULT CONFIGURATION Debug ==="
