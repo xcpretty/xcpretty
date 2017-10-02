@@ -168,6 +168,11 @@ module XCPretty
       @parser.parse(SAMPLE_LIBTOOL)
     end
 
+    it "parses parallel xctest start" do
+      @parser.should receive(:update_test_started).with("AgaveNectarTests", "testToffeeProcess")
+      @parser.parse(SAMPLE_PARALLEL_XCTEST_CASE_STARTED)
+    end
+
     it "parses uitest failing tests" do
       @formatter.should receive(:format_failing_test).with(
         "viewUITests.vmtAboutWindow",
@@ -176,6 +181,16 @@ module XCPretty
         "<unknown>:0"
       )
       @parser.parse(SAMPLE_UITEST_CASE_WITH_FAILURE)
+    end
+
+    it "parses parallel uitest failing tests" do
+      @formatter.should receive(:format_failing_test).with(
+        "AgaveNectarTests",
+        "testRecordListNoSearch",
+        "Unable to determine reason for failure",
+        "<unknown>"
+      )
+      @parser.parse(SAMPLE_PARALLEL_XCTEST_CASE_WITH_FAILURE)
     end
 
     it "parses specta failing tests" do
@@ -217,6 +232,13 @@ module XCPretty
       @formatter.should receive(:format_pending_test).with('TAPIConversationSpec',
                                                            'TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpoint')
       @parser.parse(SAMPLE_PENDING_KIWI_TEST)
+    end
+
+    it "parses passing parallel xctests" do
+      @formatter.should receive(:format_passing_test).with('AgaveNectarTests',
+                                                           'testDryingIntoPowder',
+                                                           '23.619')
+      @parser.parse(SAMPLE_PARALLEL_XCTEST)
     end
 
     it 'parses measuring tests' do
@@ -341,6 +363,11 @@ module XCPretty
       @parser.parse(SAMPLE_SPECTA_TEST_RUN_COMPLETION)
     end
 
+    it "parses parallel XCTest test run failed" do
+      @formatter.should receive(:format_test_run_finished).with('AgaveNectarTests.xctest', '2017-09-29 15:15:18.078.')
+      @parser.parse(SAMPLE_PARALLEL_XCTEST_RUN_FAILED)
+    end
+
     it "parses ocunit test run started" do
       @formatter.should receive(:format_test_run_started).with('ReactiveCocoaTests.octest(Tests)')
       @parser.parse(SAMPLE_OCUNIT_TEST_RUN_BEGINNING)
@@ -351,6 +378,11 @@ module XCPretty
       @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
     end
 
+    it "parses parallel xctest run started" do
+      @formatter.should receive(:format_test_run_started).with('AgaveNectarTests.xctest')
+      @parser.parse(SAMPLE_PARALLEL_XCTEST_RUN_BEGINNING)
+    end
+
     it "parses ocunit test suite started" do
       @formatter.should receive(:format_test_suite_started).with('RACKVOWrapperSpec')
       @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
@@ -359,6 +391,11 @@ module XCPretty
     it "parses specta test suite started" do
       @formatter.should receive(:format_test_suite_started).with('All tests')
       @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+    end
+
+    it "parses parallel XCTest test suite started" do
+      @formatter.should receive(:format_test_suite_started).with('AgaveNectarTests')
+      @parser.parse(SAMPLE_PARALLEL_XCTEST_SUITE_STARTED)
     end
 
     context "errors" do
@@ -626,4 +663,3 @@ module XCPretty
 
   end
 end
-

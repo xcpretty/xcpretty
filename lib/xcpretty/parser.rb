@@ -123,18 +123,23 @@ module XCPretty
     # $1 = suite
     # $2 = test_case
     # $3 = time
-    TEST_CASE_PASSED_MATCHER = /^\s*Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+    TEST_CASE_PASSED_MATCHER = /^\s*(?:XCTestOutputBarrier)?Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
 
 
     # @regex Captured groups
     # $1 = suite
     # $2 = test_case
-    TEST_CASE_STARTED_MATCHER = /^Test Case '-\[(.*) (.*)\]' started.$/
+    TEST_CASE_STARTED_MATCHER = /^(?:XCTestOutputBarrier)?Test Case '-\[(.*) (.*)\]' started.$/
 
     # @regex Captured groups
     # $1 = suite
     # $2 = test_case
     TEST_CASE_PENDING_MATCHER = /^Test Case\s'-\[(.*)\s(.*)PENDING\]'\spassed/
+
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    PARALLEL_UI_TEST_CASE_FAILED_MATCHER = /^(?:XCTestOutputBarrier)?Test Case '-\[(.*) (.*)\]' failed\s\((\d*\.\d{3})\sseconds\).$/
 
     # @regex Captured groups
     # $1 = suite
@@ -171,16 +176,16 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TESTS_RUN_COMPLETION_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' (finished|passed|failed) at (.*)/
+    TESTS_RUN_COMPLETION_MATCHER = /^\s*(?:XCTestOutputBarrier)?Test Suite '(?:.*\/)?(.*[ox]ctest.*)' (finished|passed|failed) at (.*)/
 
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TEST_SUITE_STARTED_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)/
+    TEST_SUITE_STARTED_MATCHER = /^\s*(?:XCTestOutputBarrier)?Test Suite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)/
 
     # @regex Captured groups
     # $1 test suite name
-    TEST_SUITE_START_MATCHER = /^\s*Test Suite '(.*)' started at/
+    TEST_SUITE_START_MATCHER = /^\s*(?:XCTestOutputBarrier)?Test Suite '(.*)' started at/
 
     # @regex Captured groups
     # $1 file_name
@@ -357,6 +362,9 @@ module XCPretty
         format_summary_if_needed(text)
       when UI_FAILING_TEST_MATCHER
         formatter.format_failing_test(@test_suite, @test_case, $2, $1)
+      when PARALLEL_UI_TEST_CASE_FAILED_MATCHER
+        byebug
+        formatter.format_failing_test(@test_suite, @test_case, 'Unable to determine reason for failure', '<unknown>')
       when FAILING_TEST_MATCHER
         formatter.format_failing_test($2, $3, $4, $1)
       when FATAL_ERROR_MATCHER
@@ -424,6 +432,11 @@ module XCPretty
 
     private
 
+    def update_test_started(test_suite, test_case)
+      @test_suite = test_suite
+      @test_case = test_case
+    end
+
     def update_test_state(text)
       case text
       when TEST_SUITE_STARTED_MATCHER
@@ -431,14 +444,15 @@ module XCPretty
         @formatted_summary = false
         @failures = {}
       when TEST_CASE_STARTED_MATCHER
-        @test_suite = $1
-        @test_case = $2
+        update_test_started($1, $2)
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
       when FAILING_TEST_MATCHER
         store_failure(file: $1, test_suite: $2, test_case: $3, reason: $4)
       when UI_FAILING_TEST_MATCHER
         store_failure(file: $1, test_suite: @test_suite, test_case: @test_case, reason: $2)
+      when PARALLEL_UI_TEST_CASE_FAILED_MATCHER
+        store_failure(file: '<unknown>', test_suite: @test_suite, test_case: @test_case, reason: 'Unable to determine reason for test failure')
       end
     end
 
@@ -586,4 +600,3 @@ module XCPretty
 
   end
 end
-
