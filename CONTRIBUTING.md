@@ -14,7 +14,7 @@ Here's an example workflow for a contribution:
 - These are a full-stack end to end tests
 - You can find features in `features/`. You'll need to write a `feature` and implement it's `steps`.
 - Try to reuse as many matchers as possible
-- This tests are slower because they're executing `xcpretty` command for each test
+- These tests are slower because they're executing `xcpretty` command for each test
 
 Here's an example feature for adding output without UTF8:
 
@@ -61,4 +61,3 @@ end
 #### 3. Implement your awesome contribution
 
 - This should fix unit tests one-by-one, and finally your `feature` will be passing
-

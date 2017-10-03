@@ -17,6 +17,17 @@ SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04
 SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
 SAMPLE_XCTEST_SUITE_COMPLETION = "Test Suite 'ObjectiveSugarTests.xctest' finished at 2013-12-09 04:42:13 +0000."
 
+SAMPLE_PARALLEL_XCTEST_SUITE_STARTED = "XCTestOutputBarrierTest Suite 'AgaveNectarTests' started at 2017-09-29 15:44:41.825"
+SAMPLE_PARALLEL_XCTEST_RUN_FAILED = "XCTestOutputBarrierTest Suite 'AgaveNectarTests.xctest' failed at 2017-09-29 15:15:18.078."
+SAMPLE_PARALLEL_XCTEST_RUN_BEGINNING = "XCTestOutputBarrierTest Suite 'AgaveNectarTests.xctest' started at 2014-02-28 15:43:42 +0000"
+SAMPLE_PARALLEL_XCTEST = "XCTestOutputBarrierTest Case '-[AgaveNectarTests testDryingIntoPowder]' passed (23.619 seconds)."
+SAMPLE_PARALLEL_XCTEST_CASE_STARTED = "XCTestOutputBarrierTest Case '-[AgaveNectarTests testToffeeProcess]' started."
+SAMPLE_PARALLEL_XCTEST_CASE_WITH_FAILURE = %Q(\
+XCTestOutputBarrierTest Case '-[AgaveNectarTests testRecordListNoSearch]' started.
+XCTestOutputBarrierTest Case '-[AgaveNectarTests testRecordListNoSearch]' failed (21.681 seconds).
+)
+
+SAMPLE_UITEST_CASE_STARTED = "Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' started."
 SAMPLE_UITEST_CASE_WITH_FAILURE = %Q(\
 Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' started.
     t =     0.00s     Start Test at 2016-08-18 09:07:17.822
@@ -672,4 +683,3 @@ SAMPLE_FORMAT_WARNING = %Q(
 )
 
 SAMPLE_WILL_NOT_BE_CODE_SIGNED = "FrameworkName will not be code signed because its settings don't specify a development team."
-
