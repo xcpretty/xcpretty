@@ -90,6 +90,14 @@ module XCPretty
     CPRESOURCE_MATCHER = /^CpResource\s(.*)\s\//
 
     # @regex Captured groups
+    # $1 device
+    DEVICE_TESTS_FAILED_MATCHER = /^\s*Testing\sfailed\son\s'(.*)'/
+
+    # @regex Captured groups
+    # $1 device
+    DEVICE_TESTS_PASSED_MATCHER = /^\s*Testing\spassed\son\s'(.*)'/
+
+    # @regex Captured groups
     #
     EXECUTED_MATCHER = /^\s*Executed/
 
@@ -104,6 +112,11 @@ module XCPretty
     # $1 = file
     # $2 = reason
     UI_FAILING_TEST_MATCHER = /^\s{4}t = \s+\d+\.\d+s\s+Assertion Failure: (.*:\d+): (.*)$/
+
+    # @regex Captured groups
+    # $1 = test_case
+    # $2 = device
+    PARALLEL_FAILING_TEST_MATCHER = /^\s*Test\s[Cc]ase\s'(?:.*)\.(.*)\(\)'\sfailed\son\s'(.*)'/
 
     # @regex Captured groups
     # $1 = dsym
@@ -122,25 +135,27 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = test_case
+    # $3 = device
+    # $4 = time
+    TEST_CASE_PASSED_MATCHER = /^\s*Test [Cc]ase\s'(?:-\[(?:.*)\.)?(.*)(?:\s|\.)(.*)(?:\]|\(\))'\spassed\s(?:on\s'(.*)'\s)?\((\d*\.\d{3})\sseconds\)/
+
+
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    TEST_CASE_STARTED_MATCHER = /^Test [Cc]ase '-\[(.*) (.*)\]' started.$/
+
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    # $3 = device
+    TEST_CASE_PENDING_MATCHER = /^\s*Test [Cc]ase\s'(?:-\[(?:.*)\.)?(.*)(?:\s|\.)(.*)PENDING(?:\]|\(\))'\spassed\s(?:on\s'(.*)'\s)?/
+
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
     # $3 = time
-    TEST_CASE_PASSED_MATCHER = /^\s*Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
-
-
-    # @regex Captured groups
-    # $1 = suite
-    # $2 = test_case
-    TEST_CASE_STARTED_MATCHER = /^Test Case '-\[(.*) (.*)\]' started.$/
-
-    # @regex Captured groups
-    # $1 = suite
-    # $2 = test_case
-    TEST_CASE_PENDING_MATCHER = /^Test Case\s'-\[(.*)\s(.*)PENDING\]'\spassed/
-
-    # @regex Captured groups
-    # $1 = suite
-    # $2 = test_case
-    # $3 = time
-    TEST_CASE_MEASURED_MATCHER = /^[^:]*:[^:]*:\sTest Case\s'-\[(.*)\s(.*)\]'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
+    TEST_CASE_MEASURED_MATCHER = /^[^:]*:[^:]*:\sTest [Cc]ase\s'-\[(.*)\s(.*)\]'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
 
     PHASE_SUCCESS_MATCHER = /^\*\*\s(.*)\sSUCCEEDED\s\*\*/
 
@@ -171,16 +186,18 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TESTS_RUN_COMPLETION_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' (finished|passed|failed) at (.*)/
+    TESTS_RUN_COMPLETION_MATCHER = /^\s*Test [Ss]uite '(?:.*\/)?(.*[ox]ctest.*)' (finished|passed|failed) at (.*)/
 
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TEST_SUITE_STARTED_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)/
+    # $3 = device
+    TEST_SUITE_STARTED_MATCHER = /^\s*Test [Ss]uite '(?:.*\/)?(.*[ox]ctest.*)' started (?:at(.*)|on '(.*)')/
 
     # @regex Captured groups
     # $1 test suite name
-    TEST_SUITE_START_MATCHER = /^\s*Test Suite '(.*)' started at/
+    # $2 device
+    TEST_SUITE_START_MATCHER = /^\s*Test [Ss]uite '(.*)' started (?:at|on '(.*)')/
 
     # @regex Captured groups
     # $1 file_name
@@ -353,12 +370,18 @@ module XCPretty
         formatter.format_copy_plist_file($1, $2)
       when CPRESOURCE_MATCHER
         formatter.format_cpresource($1)
+      when DEVICE_TESTS_FAILED_MATCHER
+        formatter.format_device_tests_failed($1)
+      when DEVICE_TESTS_PASSED_MATCHER
+        formatter.format_device_tests_passed($1)
       when EXECUTED_MATCHER
         format_summary_if_needed(text)
       when UI_FAILING_TEST_MATCHER
-        formatter.format_failing_test(@test_suite, @test_case, $2, $1)
+        formatter.format_failing_test(@test_suite, @test_case, nil, $2, $1)
+      when PARALLEL_FAILING_TEST_MATCHER
+        formatter.format_failing_test(@test_suite, $1, $2, nil, nil)
       when FAILING_TEST_MATCHER
-        formatter.format_failing_test($2, $3, $4, $1)
+        formatter.format_failing_test($2, $3, nil, $4, $1)
       when FATAL_ERROR_MATCHER
         formatter.format_error($1)
       when FILE_MISSING_ERROR_MATCHER
@@ -378,9 +401,9 @@ module XCPretty
       when TEST_CASE_MEASURED_MATCHER
         formatter.format_measuring_test($1, $2, $3)
       when TEST_CASE_PENDING_MATCHER
-        formatter.format_pending_test($1, $2)
+        formatter.format_pending_test($1, $2, $3)
       when TEST_CASE_PASSED_MATCHER
-        formatter.format_passing_test($1, $2, $3)
+        formatter.format_passing_test($1, $2, $3, $4)
       when PODS_ERROR_MATCHER
         formatter.format_error($1)
       when PROCESS_INFO_PLIST_MATCHER
@@ -400,9 +423,9 @@ module XCPretty
       when TESTS_RUN_COMPLETION_MATCHER
         formatter.format_test_run_finished($1, $3)
       when TEST_SUITE_STARTED_MATCHER
-        formatter.format_test_run_started($1)
+        formatter.format_test_run_started($1, $3)
       when TEST_SUITE_START_MATCHER
-        formatter.format_test_suite_started($1)
+        formatter.format_test_suite_started($1, $2)
       when TIFFUTIL_MATCHER
         formatter.format_tiffutil($1)
       when TOUCH_MATCHER

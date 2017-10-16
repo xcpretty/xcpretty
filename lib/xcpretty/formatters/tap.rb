@@ -9,20 +9,23 @@ module XCPretty
       @counter = 0
     end
 
-    def format_passing_test(suite, test_case, time)
+    def format_passing_test(suite, test_case, device, time)
       increment_counter
-      "#{PASS} #{counter} - #{test_case}"
+      "#{PASS} #{counter} - #{format_test_description(test_case, device)}"
     end
 
-    def format_failing_test(test_suite, test_case, reason, file)
+    def format_failing_test(test_suite, test_case, device, reason, file)
       increment_counter
-      "#{FAIL} #{counter} - #{test_case}" +
-      format_failure_diagnostics(test_suite, test_case, reason, file)
+      tap_result = "#{FAIL} #{counter} - #{format_test_description(test_case, device)}"
+      if reason.nil? || reason.empty? || file.nil? || file.empty?
+        return tap_result
+      end
+      tap_result + format_failure_diagnostics(test_suite, test_case, reason, file)
     end
 
-    def format_pending_test(test_suite, test_case)
+    def format_pending_test(test_suite, test_case, device)
       increment_counter
-      "#{FAIL} #{counter} - #{test_case} # TODO Not written yet"
+      "#{FAIL} #{counter} - #{format_test_description(test_case, device)} # TODO Not written yet"
     end
 
     def format_test_summary(executed_message, failures_per_suite)
@@ -30,6 +33,14 @@ module XCPretty
     end
 
     private
+
+    def format_test_description(test_case, device)
+      if device.nil? || device.empty?
+        test_case
+      else
+        "#{test_case} on #{device}"
+      end
+    end
 
     def increment_counter
       @counter += 1

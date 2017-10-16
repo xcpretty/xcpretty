@@ -30,18 +30,29 @@ module XCPretty
       write_report
     end
 
-    def format_failing_test(suite, test_case, reason, file)
+    def format_failing_test(suite, test_case, device, reason, file)
       @test_count += 1
       @fail_count += 1
-      @tests.push("#{test_case} in #{file} FAILED: #{reason}")
+      test_description = test_case
+      if !device.to_s.empty?
+        test_description = "#{test_description} on #{device}"
+      end
+      if !file.to_s.empty?
+        test_description = "#{test_description} in #{file}"
+      end
+      if reason.to_s.empty?
+        @tests.push("#{test_description} FAILED")
+      else        
+        @tests.push("#{test_description} FAILED: #{reason}")
+      end
     end
 
-    def format_passing_test(suite, test_case, time)
+    def format_passing_test(suite, test_case, device, time)
       @test_count += 1
       @tests.push("#{test_case} PASSED")
     end
 
-    def format_pending_test(classname, test_case)
+    def format_pending_test(classname, test_case, device)
       @test_count += 1
       @tests.push("#{test_case} IS PENDING")
     end
