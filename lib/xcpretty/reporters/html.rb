@@ -24,20 +24,23 @@ module XCPretty
       @parser.parse(line)
     end
 
-    def format_failing_test(suite, test_case, reason, file)
+    def format_failing_test(suite, test_case, device, reason, file)
       add_test(suite, name: test_case, failing: true,
-                      reason: reason, file: file,
+                      reason: reason, file: file, device: device,
                       snippet: formatted_snippet(file),
                       screenshots: [])
     end
 
     def format_passing_test(suite, test_case, device, time)
-      add_test(suite, name: test_case, time: time, screenshots: [])
+      add_test(suite, name: test_case, device: device, time: time, screenshots: [])
     end
 
     private
 
     def formatted_snippet(filepath)
+      if filepath.to_s.empty?
+        return
+      end
       snippet = Snippet.from_filepath(filepath)
       Syntax.highlight_html(snippet)
     end

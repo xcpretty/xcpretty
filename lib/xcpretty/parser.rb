@@ -114,9 +114,10 @@ module XCPretty
     UI_FAILING_TEST_MATCHER = /^\s{4}t = \s+\d+\.\d+s\s+Assertion Failure: (.*:\d+): (.*)$/
 
     # @regex Captured groups
-    # $1 = test_case
-    # $2 = device
-    PARALLEL_FAILING_TEST_MATCHER = /^\s*Test\s[Cc]ase\s'(?:.*)\.(.*)\(\)'\sfailed\son\s'(.*)'/
+    # $1 = test_suite
+    # $2 = test_case
+    # $3 = device
+    PARALLEL_FAILING_TEST_MATCHER = /^\s*Test\s[Cc]ase\s'(.*)\.(.*)\(\)'\sfailed\son\s'(.*)'/
 
     # @regex Captured groups
     # $1 = dsym
@@ -137,7 +138,7 @@ module XCPretty
     # $2 = test_case
     # $3 = device
     # $4 = time
-    TEST_CASE_PASSED_MATCHER = /^\s*Test [Cc]ase\s'(?:-\[(?:.*)\.)?(.*)(?:\s|\.)(.*)(?:\]|\(\))'\spassed\s(?:on\s'(.*)'\s)?\((\d*\.\d{3})\sseconds\)/
+    TEST_CASE_PASSED_MATCHER = /^\s*Test [Cc]ase\s'-?\[?(.*)(?:\s|\.)(.*)(?:\]|\(\))'\spassed\s(?:on\s'(.*)'\s)?\((\d*\.\d{3})\sseconds\)/
 
 
     # @regex Captured groups
@@ -149,7 +150,7 @@ module XCPretty
     # $1 = suite
     # $2 = test_case
     # $3 = device
-    TEST_CASE_PENDING_MATCHER = /^\s*Test [Cc]ase\s'(?:-\[(?:.*)\.)?(.*)(?:\s|\.)(.*)PENDING(?:\]|\(\))'\spassed\s(?:on\s'(.*)'\s)?/
+    TEST_CASE_PENDING_MATCHER = /^\s*Test [Cc]ase\s'-?\[?(.*)(?:\s|\.)(.*)PENDING(?:\]|\(\))'\spassed\s(?:on\s'(.*)'\s)?/
 
     # @regex Captured groups
     # $1 = suite
@@ -379,7 +380,7 @@ module XCPretty
       when UI_FAILING_TEST_MATCHER
         formatter.format_failing_test(@test_suite, @test_case, nil, $2, $1)
       when PARALLEL_FAILING_TEST_MATCHER
-        formatter.format_failing_test(@test_suite, $1, $2, nil, nil)
+        formatter.format_failing_test($1, $2, $3, nil, nil)
       when FAILING_TEST_MATCHER
         formatter.format_failing_test($2, $3, nil, $4, $1)
       when FATAL_ERROR_MATCHER

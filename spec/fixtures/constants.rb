@@ -5,6 +5,7 @@ OCUNIT = 'ocunit'
 SAMPLE_OCUNIT_TEST_RUN_BEGINNING = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' started at 2013-12-10 07:04:33 +0000"
 SAMPLE_KIWI_TEST_RUN_BEGINNING = "Test Suite 'ObjectiveRecordTests.xctest' started at 2013-12-10 06:15:39 +0000"
 SAMPLE_SPECTA_TEST_RUN_BEGINNING = "    Test Suite 'KIFTests.xctest' started at 2014-02-28 15:43:42 +0000"
+SAMPLE_PARALLEL_TEST_RUN_BEGINNING = "Test suite 'KIFTests.xctest' started on 'iPhone 8'"
 SAMPLE_OCUNIT_TEST_RUN_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-10 07:03:03 +0000."
 SAMPLE_OCUNIT_FAILED_TEST_RUN_COMPLETION = "Test Suite '/Users/dm/someplace/Macadamia.octest' failed at 2014-09-24 23:09:20 +0000."
 SAMPLE_OCUNIT_PASSED_TEST_RUN_COMPLETION = "Test Suite 'Hazelnuts.xctest' passed at 2014-09-24 23:09:20 +0000."
@@ -13,9 +14,13 @@ SAMPLE_SPECTA_TEST_RUN_COMPLETION = "     Test Suite 'KIFTests.xctest' finished 
 
 SAMPLE_OCUNIT_SUITE_BEGINNING = "Test Suite 'RACKVOWrapperSpec' started at 2013-12-10 21:06:10 +0000"
 SAMPLE_SPECTA_SUITE_BEGINNING = "   Test Suite 'All tests' started at 2014-02-28 19:07:41 +0000"
+SAMPLE_PARALLEL_SUITE_BEGINNING = "Test suite 'All tests' started on 'iPhone 5s'"
 SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04:26:49 +0000."
 SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
 SAMPLE_XCTEST_SUITE_COMPLETION = "Test Suite 'ObjectiveSugarTests.xctest' finished at 2013-12-09 04:42:13 +0000."
+
+SAMPLE_PASSING_DEVICE_TESTS = "Testing passed on 'iPhone 5s'"
+SAMPLE_FAILING_DEVICE_TESTS = "Testing failed on 'iPhone 6'"
 
 SAMPLE_UITEST_CASE_WITH_FAILURE = %Q(\
 Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' started.
@@ -70,6 +75,9 @@ SAMPLE_SLOWISH_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YE
 SAMPLE_SLOW_TEST = "Test Case '-[RACCommandSpec enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES]' passed (0.101 seconds)."
 SAMPLE_KIWI_TEST = "Test Case '-[MappingsTests Mappings_SupportsCreatingAParentObjectUsingJustIDFromTheServer]' passed (0.004 seconds)."
 SAMPLE_PENDING_KIWI_TEST = "Test Case '-[TAPIConversationSpec TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpointPENDING]' passed (0.001 seconds)."
+SAMPLE_PASSING_PARALLEL_TEST = "Test case 'RACCommandSpec.enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES()' passed on 'iPhone 5s' (0.002 seconds)"
+SAMPLE_PENDING_PARALLEL_TEST = "Test case 'TAPIConversationSpec.TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpointPENDING()' passed on 'iPhone 5s' (0.002 seconds)"
+SAMPLE_FAILING_PARALLEL_TEST = "Test case 'SKWelcomeActivationViewControllerSpecSpec.SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code()' failed on 'iPhone 6' (6.274 seconds)"
 SAMPLE_MEASURING_TEST = "<unknown>:0: Test Case '-[SecEncodeTransformTests.SecEncodeTransformTests test_RFC4648_Decode_UsingBase32]' measured [Time, seconds] average: 0.013, relative standard deviation: 26.773%, values: [0.023838, 0.012034, 0.013512, 0.011022, 0.011203, 0.012814, 0.011131, 0.012740, 0.013646, 0.012145], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100"
 SAMPLE_COMPILE = %Q(
 CompileC /Users/musalj/Library/Developer/Xcode/DerivedData/ObjectiveSugar-ayzdhqmmwtqgysdpznmovjlupqjy/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-ObjectiveSugar.build/Objects-normal/i386/NSMutableArray+ObjectiveSugar.o /Users/musalj/code/OSS/ObjectiveSugar/Classes/NSMutableArray+ObjectiveSugar.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
