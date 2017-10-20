@@ -89,17 +89,13 @@ module XCPretty
 
     def format_failing_test(suite, test_case, device, reason, file)
       test_description = test_case
-      if !device.to_s.empty?
-        test_description = "#{test_description} (#{colored_device(device)})"
-      end
-      if !reason.to_s.empty?
-        test_description = "#{test_description}, #{reason}"
-      end
+      test_description = "#{test_description} (#{colored_device(device)})" unless device.to_s.empty?
+      test_description = "#{test_description}, #{reason}" unless reason.to_s.empty?
       INDENT + format_test(test_description, :fail)
     end
 
     def format_passing_test(suite, test_case, device, time)
-      if device.nil? || device.empty?
+      if device.to_s.empty?
         INDENT + format_test("#{test_case} (#{colored_time(time)} seconds)", :pass)
       else
         INDENT + format_test("#{test_case} (#{colored_device(device)}) (#{colored_time(time)} seconds)", :pass)
@@ -107,7 +103,7 @@ module XCPretty
     end
 
     def format_pending_test(suite, test_case, device)
-      if device.nil? || device.empty?
+      if device.to_s.empty?
         INDENT + format_test("#{test_case} [PENDING]", :pending)
       else
         INDENT + format_test("#{test_case} (#{colored_device(device)}) [PENDING]", :pending)
@@ -149,7 +145,7 @@ module XCPretty
     end
 
     def format_test_run_started(name, device)
-      if device.nil? || device.empty?
+      if device.to_s.empty?
         heading("Test Suite", name, "started")
       else
         [heading("Test Suite", name, "started"), "(#{colored_device(device)})"].join(" ").strip
@@ -157,7 +153,7 @@ module XCPretty
     end
 
     def format_test_suite_started(name, device)
-      if device.nil? || device.empty?
+      if device.to_s.empty?
         heading("", name, "")
       else
         [heading("", name, ""), "(#{colored_device(device)})"].join(" ").strip

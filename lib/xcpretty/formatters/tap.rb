@@ -17,7 +17,7 @@ module XCPretty
     def format_failing_test(test_suite, test_case, device, reason, file)
       increment_counter
       tap_result = "#{FAIL} #{counter} - #{format_test_description(test_case, device)}"
-      if reason.nil? || reason.empty? || file.nil? || file.empty?
+      if reason.to_s.empty? || file.to_s.empty?
         return tap_result
       end
       tap_result + format_failure_diagnostics(test_suite, test_case, reason, file)
@@ -35,11 +35,9 @@ module XCPretty
     private
 
     def format_test_description(test_case, device)
-      if device.nil? || device.empty?
-        test_case
-      else
-        "#{test_case} on #{device}"
-      end
+      test_description = test_case
+      test_description = "#{test_description} on #{device}" unless device.to_s.empty?
+      test_description
     end
 
     def increment_counter
