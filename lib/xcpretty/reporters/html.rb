@@ -32,7 +32,8 @@ module XCPretty
     end
 
     def format_passing_test(suite, test_case, device, time)
-      add_test(suite, name: test_case, device: device, time: time, screenshots: [])
+      add_test(suite, name: test_case, device: device,
+                      time: time, screenshots: [])
     end
 
     private

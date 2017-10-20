@@ -52,10 +52,10 @@ module XCPretty
       test_node.attributes['classname'] = classname
       test_node.attributes['name']      = format_name(test_case, device)
       fail_node = test_node.add_element('failure')
-      if !reason.to_s.empty?
+      unless reason.to_s.empty?
         fail_node.attributes['message'] = reason
       end
-      if !file.to_s.empty?
+      unless file.to_s.empty?
         fail_node.text = file.sub(@directory + '/', '')
       end
       @test_count += 1

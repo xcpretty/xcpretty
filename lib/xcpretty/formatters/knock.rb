@@ -10,11 +10,13 @@ module XCPretty
     end
 
     def format_failing_test(test_suite, test_case, device, reason, file)
-      knock_result = "#{FAIL} - #{format_test_description(test_case, device)}: FAILED"
+      knock_result =
+      "#{FAIL} - #{format_test_description(test_case, device)}: FAILED"
       if reason.nil? || reason.empty? || file.nil? || file.empty?
         return knock_result
       end
-      knock_result + format_failure_diagnostics(test_suite, test_case, reason, file)
+      knock_result +
+      format_failure_diagnostics(test_suite, test_case, reason, file)
     end
 
     def format_test_summary(executed_message, failures_per_suite)
