@@ -38,13 +38,11 @@ module XCPretty
     private
 
     def format_test_description(test_case, device)
-      test_description = test_case
       if device.to_s.empty?
         test_case
       else
         "#{test_case} on #{device}"
       end
-      test_description
     end
 
     def increment_counter

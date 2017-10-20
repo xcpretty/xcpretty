@@ -14,7 +14,6 @@ module XCPretty
 
     def initialize(options)
       super(options)
-      puts options
       @compilation_units = []
       @pch_path = nil
       @current_file = nil
