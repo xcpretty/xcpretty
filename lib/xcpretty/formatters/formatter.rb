@@ -30,10 +30,11 @@ module XCPretty
     def format_generate_dsym(dsym);                            EMPTY; end
     def format_linking(file, build_variant, arch);             EMPTY; end
     def format_libtool(library);                               EMPTY; end
-    def format_passing_test(suite, test, device, time);        EMPTY; end
-    def format_pending_test(suite, test, device);              EMPTY; end
+    def format_passing_device_test(suite, test, time, device); EMPTY; end
+    def format_pending_device_test(suite, test, device);       EMPTY; end
     def format_measuring_test(suite, test, time);              EMPTY; end
-    def format_failing_test(suite, test, device, reason, file_path); EMPTY; end
+    def format_failing_device_test(suite, test, reason,
+                                   file_path, device);         EMPTY; end
     def format_process_pch(file);                              EMPTY; end
     def format_process_pch_command(file_path);                 EMPTY; end
     def format_phase_success(phase_name);                      EMPTY; end
@@ -43,9 +44,9 @@ module XCPretty
     def format_preprocess(file);                               EMPTY; end
     def format_pbxcp(file);                                    EMPTY; end
     def format_shell_command(command, arguments);              EMPTY; end
-    def format_test_run_started(name, device);                 EMPTY; end
+    def format_device_test_run_started(name, device);          EMPTY; end
     def format_test_run_finished(name, time);                  EMPTY; end
-    def format_test_suite_started(name, device);               EMPTY; end
+    def format_device_test_suite_started(name, device);        EMPTY; end
     def format_test_summary(message, failures_per_suite);      EMPTY; end
     def format_touch(file_path, file_name);                    EMPTY; end
     def format_tiffutil(file);                                 EMPTY; end
@@ -66,12 +67,20 @@ module XCPretty
     #       the same for warnings
     def format_compile_warning(file_name, file_path, reason,
                                line, cursor);                  EMPTY; end
+
+    # DEPRECATED
+    def format_passing_test(suite, test, time);                EMPTY; end
+    def format_pending_test(suite, test);                      EMPTY; end
+    def format_failing_test(suite, test, reason, file_path);   EMPTY; end
+    def format_test_run_started(name);                         EMPTY; end
+    def format_test_suite_started(name);                       EMPTY; end
   end
 
   class Formatter
 
     include ANSI
     include FormatMethods
+    extend Gem::Deprecate
 
     attr_reader :parser
 
@@ -154,6 +163,35 @@ module XCPretty
       "#{yellow(warning_symbol + " " + message)}"
     end
 
+    # Backwards Compatibility / Deprecated Methods
+
+    def format_passing_device_test(suite, test, time, device)
+      format_passing_test(suite, test, time)
+    end
+
+    def format_pending_device_test(suite, test, device)
+      format_pending_test(suite, test)
+    end
+
+    def format_failing_device_test(suite, test, reason,  file_path, device)
+      format_failing_test(suite, test, reason,  file_path)
+    end
+
+    def format_device_test_run_started(name, device)
+      format_test_run_started(name)
+    end
+
+    def format_device_test_suite_started(name, device)
+      format_test_suite_started(name)
+    end
+
+    deprecate :format_passing_test, :format_passing_device_test, 2017, 10
+    deprecate :format_pending_test, :format_pending_device_test, 2017, 10
+    deprecate :format_failing_test, :format_failing_device_test, 2017, 10
+    deprecate :format_test_run_started,
+              :format_device_test_run_started, 2017, 10
+    deprecate :format_test_suite_started,
+              :format_device_test_suite_started, 2017, 10
 
     private
 

@@ -5,11 +5,11 @@ module XCPretty
     FAIL = 'not ok'
     PASS = 'ok'
 
-    def format_passing_test(suite, test_case, device, time)
+    def format_passing_device_test(suite, test_case, time, device)
       "#{PASS} - #{format_test_description(test_case, device)}"
     end
 
-    def format_failing_test(test_suite, test_case, device, reason, file)
+    def format_failing_device_test(test_suite, test_case, reason, file, device)
       knock_result =
       "#{FAIL} - #{format_test_description(test_case, device)}: FAILED"
       if reason.to_s.empty? || file.to_s.empty?

@@ -11,15 +11,15 @@ module XCPretty
       ''
     end
 
-    def format_passing_test(suite, test_case, device, time)
+    def format_passing_device_test(suite, test_case, time, device)
       green(PASS)
     end
 
-    def format_failing_test(test_suite, test_case, device, reason, file)
+    def format_failing_device_test(test_suite, test_case, reason, file, device)
       red(FAIL)
     end
 
-    def format_pending_test(suite, test_case, device)
+    def format_pending_device_test(suite, test_case, device)
       yellow(PENDING)
     end
 

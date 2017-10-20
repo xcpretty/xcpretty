@@ -27,11 +27,11 @@ module XCPretty
       @parser.parse(line)
     end
 
-    def format_test_run_started(name, device)
+    def format_device_test_run_started(name, device)
       @document.root.add_attribute('name', name)
     end
 
-    def format_passing_test(classname, test_case, device, time)
+    def format_passing_device_test(classname, test_case, time, device)
       test_node = suite(classname).add_element('testcase')
       test_node.attributes['classname'] = classname
       test_node.attributes['name']      = format_name(test_case, device)
@@ -39,7 +39,7 @@ module XCPretty
       @test_count += 1
     end
 
-    def format_pending_test(classname, test_case, device)
+    def format_pending_device_test(classname, test_case, device)
       test_node = suite(classname).add_element('testcase')
       test_node.attributes['classname'] = classname
       test_node.attributes['name']      = format_name(test_case, device)
@@ -47,7 +47,7 @@ module XCPretty
       @test_count += 1
     end
 
-    def format_failing_test(classname, test_case, device, reason, file)
+    def format_failing_device_test(classname, test_case, reason, file, device)
       test_node = suite(classname).add_element('testcase')
       test_node.attributes['classname'] = classname
       test_node.attributes['name']      = format_name(test_case, device)

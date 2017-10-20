@@ -96,32 +96,32 @@ module XCPretty
       end
 
       it "formats failing tests" do
-        @formatter.format_failing_test("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", nil, "expected: 1, got: 0", 'path/to/file').should ==
+        @formatter.format_failing_device_test("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "expected: 1, got: 0", 'path/to/file', nil).should ==
         "    x enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES, expected: 1, got: 0"
       end
 
       it "formats failing parallel tests" do
-        @formatter.format_failing_test("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", "iPhone X", nil, nil).should ==
+        @formatter.format_failing_device_test("RACCommandSpec", "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES", nil, nil, "iPhone X").should ==
         "    x enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES (iPhone X)"
       end
 
       it "formats passing tests" do
-        @formatter.format_passing_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", nil, "0.001").should ==
+        @formatter.format_passing_device_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", "0.001", nil).should ==
         "    . _tupleByAddingObject__should_add_a_non_nil_object (0.001 seconds)"
       end
 
       it "formats passing parallel tests" do
-        @formatter.format_passing_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", "iPhone X", "0.001").should ==
+        @formatter.format_passing_device_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", "0.001", "iPhone X").should ==
         "    . _tupleByAddingObject__should_add_a_non_nil_object (iPhone X) (0.001 seconds)"
       end
 
       it "formats pending tests" do
-        @formatter.format_pending_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", nil).should ==
+        @formatter.format_pending_device_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", nil).should ==
         "    P _tupleByAddingObject__should_add_a_non_nil_object [PENDING]"
       end
 
       it "formats pending parallel tests" do
-        @formatter.format_pending_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", "iPhone X").should ==
+        @formatter.format_pending_device_test("RACCommandSpec", "_tupleByAddingObject__should_add_a_non_nil_object", "iPhone X").should ==
         "    P _tupleByAddingObject__should_add_a_non_nil_object (iPhone X) [PENDING]"
       end
 
@@ -164,22 +164,22 @@ module XCPretty
       end
 
       it "formats test run start" do
-        @formatter.format_test_run_started("ReactiveCocoaTests.octest(Tests)", nil).should ==
+        @formatter.format_device_test_run_started("ReactiveCocoaTests.octest(Tests)", nil).should ==
         "Test Suite ReactiveCocoaTests.octest(Tests) started"
       end
 
       it "formats parallel test run start" do
-        @formatter.format_test_run_started("ReactiveCocoaTests.octest(Tests)", "iPhone X").should ==
+        @formatter.format_device_test_run_started("ReactiveCocoaTests.octest(Tests)", "iPhone X").should ==
         "Test Suite ReactiveCocoaTests.octest(Tests) started (iPhone X)"
       end
 
       it "formats tests suite started" do
-        @formatter.format_test_suite_started("RACKVOWrapperSpec", nil).should ==
+        @formatter.format_device_test_suite_started("RACKVOWrapperSpec", nil).should ==
         "RACKVOWrapperSpec"
       end
 
       it "formats parallel tests suite started" do
-        @formatter.format_test_suite_started("RACKVOWrapperSpec", "iPhone X").should ==
+        @formatter.format_device_test_suite_started("RACKVOWrapperSpec", "iPhone X").should ==
         "RACKVOWrapperSpec (iPhone X)"
       end
 

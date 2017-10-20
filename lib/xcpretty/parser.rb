@@ -378,11 +378,11 @@ module XCPretty
       when EXECUTED_MATCHER
         format_summary_if_needed(text)
       when UI_FAILING_TEST_MATCHER
-        formatter.format_failing_test(@test_suite, @test_case, nil, $2, $1)
+        formatter.format_failing_device_test(@test_suite, @test_case, $2, $1, nil)
       when PARALLEL_FAILING_TEST_MATCHER
-        formatter.format_failing_test($1, $2, $3, nil, nil)
+        formatter.format_failing_device_test($1, $2, nil, nil, $3)
       when FAILING_TEST_MATCHER
-        formatter.format_failing_test($2, $3, nil, $4, $1)
+        formatter.format_failing_device_test($2, $3, $4, $1, nil)
       when FATAL_ERROR_MATCHER
         formatter.format_error($1)
       when FILE_MISSING_ERROR_MATCHER
@@ -402,9 +402,9 @@ module XCPretty
       when TEST_CASE_MEASURED_MATCHER
         formatter.format_measuring_test($1, $2, $3)
       when TEST_CASE_PENDING_MATCHER
-        formatter.format_pending_test($1, $2, $3)
+        formatter.format_pending_device_test($1, $2, $3)
       when TEST_CASE_PASSED_MATCHER
-        formatter.format_passing_test($1, $2, $3, $4)
+        formatter.format_passing_device_test($1, $2, $4, $3)
       when PODS_ERROR_MATCHER
         formatter.format_error($1)
       when PROCESS_INFO_PLIST_MATCHER
@@ -424,9 +424,9 @@ module XCPretty
       when TESTS_RUN_COMPLETION_MATCHER
         formatter.format_test_run_finished($1, $3)
       when TEST_SUITE_STARTED_MATCHER
-        formatter.format_test_run_started($1, $3)
+        formatter.format_device_test_run_started($1, $3)
       when TEST_SUITE_START_MATCHER
-        formatter.format_test_suite_started($1, $2)
+        formatter.format_device_test_suite_started($1, $2)
       when TIFFUTIL_MATCHER
         formatter.format_tiffutil($1)
       when TOUCH_MATCHER
