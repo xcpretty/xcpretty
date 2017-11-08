@@ -185,14 +185,6 @@ module XCPretty
       format_test_suite_started(name)
     end
 
-    deprecate :format_passing_test, :format_passing_device_test, 2017, 10
-    deprecate :format_pending_test, :format_pending_device_test, 2017, 10
-    deprecate :format_failing_test, :format_failing_device_test, 2017, 10
-    deprecate :format_test_run_started,
-              :format_device_test_run_started, 2017, 10
-    deprecate :format_test_suite_started,
-              :format_device_test_suite_started, 2017, 10
-
     private
 
     def format_failures(failures_per_suite)
