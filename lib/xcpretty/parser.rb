@@ -145,6 +145,28 @@ module XCPretty
     # $3 = time
     TEST_CASE_MEASURED_MATCHER = /^[^:]*:[^:]*:\sTest Case\s'-\[(.*)\s(.*)\]'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
 
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    # $3 = time
+    SWIFT_TEST_CASE_PASSED_MATCHER = /^\s*Test Case\s'(.*)\.(.*)'\spassed\s\((\d*\.\d{3})\sseconds\)/
+
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    SWIFT_TEST_CASE_STARTED_MATCHER = /^Test Case '(.*)\.(.*)' started.$/
+
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    SWIFT_TEST_CASE_PENDING_MATCHER = /^Test Case\s'(.*)\.(.*)PENDING'\spassed/
+
+    # @regex Captured groups
+    # $1 = suite
+    # $2 = test_case
+    # $3 = time
+    SWIFT_TEST_CASE_MEASURED_MATCHER = /^[^:]*:[^:]*:\sTest Case\s'(.*)\.(.*)'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
+
     PHASE_SUCCESS_MATCHER = /^\*\*\s(.*)\sSUCCEEDED\s\*\*/
 
     # @regex Captured groups
@@ -380,11 +402,11 @@ module XCPretty
         formatter.format_linking($1, $2, $3)
       when MODULE_INCLUDES_ERROR_MATCHER
         formatter.format_error($1)
-      when TEST_CASE_MEASURED_MATCHER
+      when TEST_CASE_MEASURED_MATCHER, SWIFT_TEST_CASE_MEASURED_MATCHER
         formatter.format_measuring_test($1, $2, $3)
-      when TEST_CASE_PENDING_MATCHER
+      when TEST_CASE_PENDING_MATCHER, SWIFT_TEST_CASE_PENDING_MATCHER
         formatter.format_pending_test($1, $2)
-      when TEST_CASE_PASSED_MATCHER
+      when TEST_CASE_PASSED_MATCHER, SWIFT_TEST_CASE_PASSED_MATCHER
         formatter.format_passing_test($1, $2, $3)
       when PODS_ERROR_MATCHER
         formatter.format_error($1)
@@ -435,7 +457,7 @@ module XCPretty
         @tests_done = false
         @formatted_summary = false
         @failures = {}
-      when TEST_CASE_STARTED_MATCHER
+      when TEST_CASE_STARTED_MATCHER, SWIFT_TEST_CASE_STARTED_MATCHER
         @test_suite = $1
         @test_case = $2
       when TESTS_RUN_COMPLETION_MATCHER
