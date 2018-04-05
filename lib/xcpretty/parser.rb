@@ -167,6 +167,14 @@ module XCPretty
     # $3 = time
     SWIFT_TEST_CASE_MEASURED_MATCHER = /^[^:]*:[^:]*:\sTest Case\s'(.*)\.(.*)'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
 
+
+    # @regex Captured groups
+    # $1 = file
+    # $2 = test_suite
+    # $3 = test_case
+    # $4 = reason
+    SWIFT_FAILING_TEST_MATCHER = /^\s*(.+:\d+):\serror:\s(.*)\.(.*)\s:(?:\s'.*'\s\[FAILED\],)?\s(.*)/
+
     PHASE_SUCCESS_MATCHER = /^\*\*\s(.*)\sSUCCEEDED\s\*\*/
 
     # @regex Captured groups
@@ -384,7 +392,7 @@ module XCPretty
         formatter.format_failing_test(@test_suite, @test_case, "Test crashed", "n/a")
       when UI_FAILING_TEST_MATCHER
         formatter.format_failing_test(@test_suite, @test_case, $2, $1)
-      when FAILING_TEST_MATCHER
+      when FAILING_TEST_MATCHER, SWIFT_FAILING_TEST_MATCHER
         formatter.format_failing_test($2, $3, $4, $1)
       when FATAL_ERROR_MATCHER
         formatter.format_error($1)
@@ -462,7 +470,7 @@ module XCPretty
         @test_case = $2
       when TESTS_RUN_COMPLETION_MATCHER
         @tests_done = true
-      when FAILING_TEST_MATCHER
+      when FAILING_TEST_MATCHER, SWIFT_FAILING_TEST_MATCHER
         store_failure(file: $1, test_suite: $2, test_case: $3, reason: $4)
       when UI_FAILING_TEST_MATCHER
         store_failure(file: $1, test_suite: @test_suite, test_case: @test_case, reason: $2)
