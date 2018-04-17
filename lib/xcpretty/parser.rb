@@ -117,7 +117,7 @@ module XCPretty
     # $1 = test_suite
     # $2 = test_case
     # $3 = device
-    PARALLEL_FAILING_TEST_MATCHER = /^\s*Test\s[Cc]ase\s'(.*)\.(.*)\(\)'\sfailed\son\s'(.*)'/
+    PARALLEL_FAILING_TEST_MATCHER = /^\s*Test\s[Cc]ase\s'[\+\-]\[(.*)\s(.*)\]'\sfailed\son\s'(.*)'/
 
     # @regex Captured groups
     # $1 = dsym
