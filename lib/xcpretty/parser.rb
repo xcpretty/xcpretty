@@ -380,7 +380,7 @@ module XCPretty
       when UI_FAILING_TEST_MATCHER
         formatter.format_failing_device_test(@test_suite, @test_case, $2, $1, nil)
       when PARALLEL_FAILING_TEST_MATCHER
-        formatter.format_failing_device_test($1, $2, nil, nil, $3)
+        formatter.format_failing_device_test($2, $3, nil, nil, $4)
       when FAILING_TEST_MATCHER
         formatter.format_failing_device_test($2, $3, $4, $1, nil)
       when FATAL_ERROR_MATCHER
