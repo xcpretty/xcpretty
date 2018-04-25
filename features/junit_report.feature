@@ -42,3 +42,8 @@ Feature: Creating a JUnit test report
     Scenario: Writing to multiple custom file paths
         When I pipe to xcpretty with two custom "junit" report paths
         Then I should have test reports in two custom paths
+
+    Scenario: Showing tests with one having a swift fatal error
+        Given I have a swift fatal error in a test in my suite
+        When I pipe to xcpretty with "--report junit"
+        Then I should see a failed test node in my report
