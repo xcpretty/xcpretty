@@ -308,6 +308,15 @@ module XCPretty
       end
     end
 
+    it "parses undefined symbols 2" do
+      @formatter.should receive(:format_undefined_symbols).with("Undefined symbols for architecture arm64",
+                                                                '_OBJC_METACLASS_$_ARICompressingLogFileManager',
+                                                                '_OBJC_METACLASS_$_ARIPerformanceCompressingLogFileManager in libARIFoundationProfiler.a(ARIPerformanceCompressingLogFileManager.o)')
+      SAMPLE_UNDEFINED_SYMBOLS2.each_line do |line|
+        @parser.parse(line)
+      end
+    end
+
     it "parses duplicate symbols" do
       @formatter.should receive(:format_duplicate_symbols).with(
         "duplicate symbol _OBJC_IVAR_$ClassName._ivarName in",

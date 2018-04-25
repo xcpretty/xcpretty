@@ -638,6 +638,15 @@ Undefined symbols for architecture x86_64:
 ld: symbol(s) not found for architecture x86_64
 )
 
+SAMPLE_UNDEFINED_SYMBOLS2 = %Q(
+Undefined symbols for architecture arm64:
+  "_OBJC_METACLASS_$_ARICompressingLogFileManager", referenced from:
+      _OBJC_METACLASS_$_ARIPerformanceCompressingLogFileManager in libARIFoundationProfiler.a(ARIPerformanceCompressingLogFileManager.o)
+      _OBJC_METACLASS_$_ARIConsoleLogFileManager in ARIWebKit(ARIConsoleLogFileManager.o)
+      _OBJC_METACLASS_$_CSCompressingLogFileManager in ContentServiceSDK(CSCompressingLogFileManager.o)
+ld: symbol(s) not found for architecture arm64
+)
+
 SAMPLE_DUPLICATE_SYMBOLS = %Q(
 duplicate symbol _OBJC_IVAR_$ClassName._ivarName in:
     /Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Intermediates/App.build/Debug-iphonesimulator/App.build/Objects-normal/i386/ClassName.o
