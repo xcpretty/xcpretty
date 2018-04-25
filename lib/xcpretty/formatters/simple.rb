@@ -67,6 +67,14 @@ module XCPretty
       format("Copying", resource)
     end
 
+    def format_device_tests_passed(device)
+      format_device_tests(device, :pass)
+    end
+
+    def format_device_tests_failed(device)
+      format_device_tests(device, :fail)
+    end
+
     def format_generate_dsym(dsym)
       format("Generating '#{dsym}'")
     end
@@ -79,17 +87,36 @@ module XCPretty
       format("Linking", target)
     end
 
-    def format_failing_test(suite, test_case, reason, file)
-      INDENT + format_test("#{test_case}, #{reason}", :fail)
+    def format_failing_device_test(suite, test_case, reason, file, device)
+      test_description = test_case
+      unless device.to_s.empty?
+        test_description = "#{test_description} (#{colored_device(device)})"
+      end
+      unless reason.to_s.empty?
+        test_description = "#{test_description}, #{reason}"
+      end
+      INDENT + format_test(test_description, :fail)
     end
 
-    def format_passing_test(suite, test_case, time)
-      INDENT + format_test("#{test_case} (#{colored_time(time)} seconds)",
-                           :pass)
+    def format_passing_device_test(suite, test_case, time, device)
+      time = colored_time(time)
+      if device.to_s.empty?
+        INDENT +
+        format_test("#{test_case} (#{time} seconds)", :pass)
+      else
+        device = colored_device(device)
+        INDENT +
+        format_test("#{test_case} (#{device}) (#{time} seconds)", :pass)
+      end
     end
 
-    def format_pending_test(suite, test_case)
-      INDENT + format_test("#{test_case} [PENDING]", :pending)
+    def format_pending_device_test(suite, test_case, device)
+      if device.to_s.empty?
+        INDENT + format_test("#{test_case} [PENDING]", :pending)
+      else
+        device = colored_device(device)
+        INDENT + format_test("#{test_case} (#{device}) [PENDING]", :pending)
+      end
     end
 
     def format_measuring_test(suite, test_case, time)
@@ -126,12 +153,23 @@ module XCPretty
       format("Copying", file)
     end
 
-    def format_test_run_started(name)
-      heading("Test Suite", name, "started")
+    def format_device_test_run_started(name, device)
+      if device.to_s.empty?
+        heading("Test Suite", name, "started")
+      else
+        [
+          heading("Test Suite", name, "started"),
+          "(#{colored_device(device)})"
+        ].join(" ").strip
+      end
     end
 
-    def format_test_suite_started(name)
-      heading("", name, "")
+    def format_device_test_suite_started(name, device)
+      if device.to_s.empty?
+        heading("", name, "")
+      else
+        [heading("", name, ""), "(#{colored_device(device)})"].join(" ").strip
+      end
     end
 
     def format_touch(file_path, file_name)
@@ -161,6 +199,10 @@ module XCPretty
       [symbol, white(command), argument_text].join(" ").strip
     end
 
+    def format_device_tests(device, status)
+      [status_symbol(status), colored_device(device)].join(" ").strip
+    end
+
     def format_test(test_case, status)
       [status_symbol(status), test_case].join(" ").strip
     end
@@ -182,6 +224,10 @@ module XCPretty
       else
         ""
       end
+    end
+
+    def colored_device(device)
+      cyan(device)
     end
 
     def colored_time(time)

@@ -137,7 +137,12 @@
                     <h3 class="time"><%= test[:time] %>s</h3>
                   <% end %>
                 </td>
-                <td><h3 class="title"><%= test[:name] %></h3></td>
+                <td>
+                  <% if test[:device] %>
+                    <h3 class="title"><%= test[:name] %> (<%= test[:device] %>)</h3></td>
+                  <% else %>
+                    <h3 class="title"><%= test[:name] %></h3></td>
+                  <% end %>
               </tr>
               <% if test[:reason] || test[:snippet] || !test[:screenshots].empty? %>
                 <tr class="details <%= test[:failing] ? 'failing' : 'passing'%> <%= detail_class %>">

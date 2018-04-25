@@ -10,7 +10,7 @@ module XCPretty
 
     it "has name attribute in root node" do
       test_name = "ReactiveCocoaTests.xctest"
-      @formatter.format_test_run_started(test_name)
+      @formatter.format_device_test_run_started(test_name, nil)
       @formatter.finish
       document = REXML::Document.new(@reporter_file)
       document.root.attributes['name'].should == test_name

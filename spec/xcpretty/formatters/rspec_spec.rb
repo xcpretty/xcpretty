@@ -17,16 +17,16 @@ module XCPretty
     context "without colors" do
 
       it "prints dots for passing tests" do
-        @formatter.format_passing_test("sweez testz", "sample spec", "0.002").should == "."
+        @formatter.format_passing_device_test("sweez testz", "sample spec", "0.002", "iPhone X").should == "."
       end
 
       it "prints P for pending tests" do
-        @formatter.format_pending_test("sweez testz", "sample spec").should == "P"
+        @formatter.format_pending_device_test("sweez testz", "sample spec", "iPhone X").should == "P"
       end
 
       it "prints F for failing tests" do
-        @formatter.format_failing_test(
-          "///file", "NSNumber Specs", "adding numbers", "should add 2 numbers"
+        @formatter.format_failing_device_test(
+          "///file", "NSNumber Specs", "adding numbers", "should add 2 numbers", nil
         ).should == "F"
       end
     end
@@ -36,18 +36,18 @@ module XCPretty
       before { @formatter.colorize = true }
 
       it "prints green for passing tests" do
-        @formatter.format_passing_test("sweez testz", "sample spec", "0.002"
+        @formatter.format_passing_device_test("sweez testz", "sample spec", "0.002", "iPhone X"
         ).should be_colored :green
       end
 
       it "prints yellow for pending tests" do
-        @formatter.format_pending_test("sweez testz", "sample spec"
+        @formatter.format_pending_device_test("sweez testz", "sample spec", "iPhone X"
         ).should be_colored :yellow
       end
 
       it "prints red for failing tests" do
-        @formatter.format_failing_test(
-          "///file", "NSNumber Specs", "adding numbers", "should add 2 numbers"
+        @formatter.format_failing_device_test(
+          "///file", "NSNumber Specs", "adding numbers", "should add 2 numbers", nil
         ).should be_colored :red
       end
     end

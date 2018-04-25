@@ -27,33 +27,37 @@ module XCPretty
       @parser.parse(line)
     end
 
-    def format_test_run_started(name)
+    def format_device_test_run_started(name, device)
       @document.root.add_attribute('name', name)
     end
 
-    def format_passing_test(classname, test_case, time)
+    def format_passing_device_test(classname, test_case, time, device)
       test_node = suite(classname).add_element('testcase')
       test_node.attributes['classname'] = classname
-      test_node.attributes['name']      = test_case
+      test_node.attributes['name']      = format_name(test_case, device)
       test_node.attributes['time']      = time
       @test_count += 1
     end
 
-    def format_pending_test(classname, test_case)
+    def format_pending_device_test(classname, test_case, device)
       test_node = suite(classname).add_element('testcase')
       test_node.attributes['classname'] = classname
-      test_node.attributes['name']      = test_case
+      test_node.attributes['name']      = format_name(test_case, device)
       test_node.add_element('skipped')
       @test_count += 1
     end
 
-    def format_failing_test(classname, test_case, reason, file)
+    def format_failing_device_test(classname, test_case, reason, file, device)
       test_node = suite(classname).add_element('testcase')
       test_node.attributes['classname'] = classname
-      test_node.attributes['name']      = test_case
+      test_node.attributes['name']      = format_name(test_case, device)
       fail_node = test_node.add_element('failure')
-      fail_node.attributes['message'] = reason
-      fail_node.text = file.sub(@directory + '/', '')
+      unless reason.to_s.empty?
+        fail_node.attributes['message'] = reason
+      end
+      unless file.to_s.empty?
+        fail_node.text = file.sub(@directory + '/', '')
+      end
       @test_count += 1
       @fail_count += 1
     end
@@ -97,6 +101,16 @@ module XCPretty
       @test_count = 0
       @fail_count = 0
     end
+
+    def format_name(test_case, device)
+      if device.to_s.empty?
+        test_case
+      else
+        device_formatted = device.gsub(/[[:space:]]/, '')
+        "#{test_case}-#{device_formatted}"
+      end
+    end
+
   end
 end
 

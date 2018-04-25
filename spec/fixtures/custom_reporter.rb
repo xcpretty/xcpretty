@@ -1,18 +1,18 @@
 # encoding: utf-8
 class DogeReporter < XCPretty::Reporter
 
-  def format_failing_test(suite, test_case, reason, file)
+  def format_failing_device_test(suite, test_case, reason, file, device)
     @test_count += 1
     @fail_count += 1
     @tests.push("WOW such FAIL. Many #{test_case}. Much #{reason}. Very #{file}.")
   end
 
-  def format_passing_test(suite, test_case, time)
+  def format_passing_device_test(suite, test_case, time, device)
     @test_count += 1
     @tests.push("WOW such PASS. Many #{test_case}. Much green. Very success.")
   end
 
-  def format_pending_test(classname, test_case)
+  def format_pending_device_test(classname, test_case, device)
     @test_count += 1
     @tests.push("WOW such PENDING. Many #{test_case}. Much stop. Very wait.")
   end

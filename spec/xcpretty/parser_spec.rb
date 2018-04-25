@@ -169,28 +169,31 @@ module XCPretty
     end
 
     it "parses uitest failing tests" do
-      @formatter.should receive(:format_failing_test).with(
+      @formatter.should receive(:format_failing_device_test).with(
         "viewUITests.vmtAboutWindow",
         "testConnectToDesktop",
         "UI Testing Failure - Unable to find hit point for element Button 0x608001165880: {{74.0, -54.0}, {44.0, 38.0}}, label: 'Disconnect'",
-        "<unknown>:0"
+        "<unknown>:0",
+        nil
       )
       @parser.parse(SAMPLE_UITEST_CASE_WITH_FAILURE)
     end
 
     it "parses specta failing tests" do
-      @formatter.should receive(:format_failing_test).with("SKWelcomeViewControllerSpecSpec",
+      @formatter.should receive(:format_failing_device_test).with("SKWelcomeViewControllerSpecSpec",
                                                            "SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen",
                                                            "The step timed out after 2.00 seconds: Failed to find accessibility element with the label \"The asimplest way to make smarter business decisions\"",
-                                                           "/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11")
+                                                           "/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11",
+                                                           nil)
       @parser.parse(SAMPLE_SPECTA_FAILURE)
     end
 
     it "parses old specta failing tests" do
-      @formatter.should receive(:format_failing_test).with("RACCommandSpec",
+      @formatter.should receive(:format_failing_device_test).with("RACCommandSpec",
                                                            "enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES",
                                                            "expected: 1, got: 0",
-                                                           "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458")
+                                                           "/Users/musalj/code/OSS/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoaTests/RACCommandSpec.m:458",
+                                                           nil)
       @parser.parse(SAMPLE_OLD_SPECTA_FAILURE)
     end
 
@@ -200,23 +203,48 @@ module XCPretty
     end
 
     it "parses passing ocunit tests" do
-      @formatter.should receive(:format_passing_test).with('RACCommandSpec',
-                                                           'enabled_signal_should_send_YES_while_executing_is_YES',
-                                                           '0.001')
+      @formatter.should receive(:format_passing_device_test).with('RACCommandSpec',
+                                                                  'enabled_signal_should_send_YES_while_executing_is_YES',
+                                                                  '0.001',
+                                                                   nil)
       @parser.parse(SAMPLE_OCUNIT_TEST)
     end
 
     it "parses passing specta tests" do
-      @formatter.should receive(:format_passing_test).with('SKWelcomeActivationViewControllerSpecSpec',
-                                                           'SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code',
-                                                           '0.725')
+      @formatter.should receive(:format_passing_device_test).with('SKWelcomeActivationViewControllerSpecSpec',
+                                                                  'SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code',
+                                                                  '0.725',
+                                                                  nil)
       @parser.parse(SAMPLE_SPECTA_TEST)
     end
 
     it "parses pending tests" do
-      @formatter.should receive(:format_pending_test).with('TAPIConversationSpec',
-                                                           'TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpoint')
+      @formatter.should receive(:format_pending_device_test).with('TAPIConversationSpec',
+                                                                  'TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpoint',
+                                                                   nil)
       @parser.parse(SAMPLE_PENDING_KIWI_TEST)
+    end
+
+    it "parses passing parallel tests" do
+      @formatter.should receive(:format_passing_device_test).with('RACCommandSpec',
+                                                           'enabled_signal_should_send_YES_while_executing_is_YES_and_allowsConcurrentExecution_is_YES',
+                                                           '0.002',
+                                                           'iPhone 5s')
+      @parser.parse(SAMPLE_PASSING_PARALLEL_TEST)
+    end
+
+    it "parses pending parallel tests" do
+      @formatter.should receive(:format_pending_device_test).with('TAPIConversationSpec',
+                                                                  'TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpoint',
+                                                                  'iPhone 5s')
+      @parser.parse(SAMPLE_PENDING_PARALLEL_TEST)
+    end
+
+    it "parses failing parallel tests" do
+      @formatter.should receive(:format_failing_device_test).with('SKWelcomeActivationViewControllerSpecSpec',
+                                                           'SKWelcomeActivationViewController_When_a_user_enters_their_details_lets_them_enter_a_valid_manager_code',
+                                                           nil, nil, 'iPhone 6')
+      @parser.parse(SAMPLE_FAILING_PARALLEL_TEST)
     end
 
     it 'parses measuring tests' do
@@ -342,23 +370,43 @@ module XCPretty
     end
 
     it "parses ocunit test run started" do
-      @formatter.should receive(:format_test_run_started).with('ReactiveCocoaTests.octest(Tests)')
+      @formatter.should receive(:format_device_test_run_started).with('ReactiveCocoaTests.octest(Tests)', nil)
       @parser.parse(SAMPLE_OCUNIT_TEST_RUN_BEGINNING)
     end
 
     it "parses specta test run started" do
-      @formatter.should receive(:format_test_run_started).with('KIFTests.xctest')
+      @formatter.should receive(:format_device_test_run_started).with('KIFTests.xctest', nil)
       @parser.parse(SAMPLE_SPECTA_TEST_RUN_BEGINNING)
     end
 
+    it "parses parallel test run started" do
+      @formatter.should_receive(:format_device_test_run_started).with('KIFTests.xctest', 'iPhone 8')
+      @parser.parse(SAMPLE_PARALLEL_TEST_RUN_BEGINNING)
+    end
+
     it "parses ocunit test suite started" do
-      @formatter.should receive(:format_test_suite_started).with('RACKVOWrapperSpec')
+      @formatter.should receive(:format_device_test_suite_started).with('RACKVOWrapperSpec', nil)
       @parser.parse(SAMPLE_OCUNIT_SUITE_BEGINNING)
     end
 
     it "parses specta test suite started" do
-      @formatter.should receive(:format_test_suite_started).with('All tests')
+      @formatter.should receive(:format_device_test_suite_started).with('All tests', nil)
       @parser.parse(SAMPLE_SPECTA_SUITE_BEGINNING)
+    end
+
+    it "parses parallel test suite started" do
+      @formatter.should receive(:format_device_test_suite_started).with('All tests', 'iPhone 5s')
+      @parser.parse(SAMPLE_PARALLEL_SUITE_BEGINNING)
+    end
+
+    it "parses passed device tests" do
+      @formatter.should_receive(:format_device_tests_passed).with('iPhone 5s')
+      @parser.parse(SAMPLE_PASSING_DEVICE_TESTS)
+    end
+
+    it "parses failing device tests" do
+      @formatter.should_receive(:format_device_tests_failed).with('iPhone 6')
+      @parser.parse(SAMPLE_FAILING_DEVICE_TESTS)
     end
 
     context "errors" do
