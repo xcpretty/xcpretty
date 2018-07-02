@@ -44,6 +44,7 @@ module FormatMethods
   def format_phase_success(phase_name)                               end
   def format_preprocess(file)                                        end
   def format_probing_swift_lib(path)                                 end
+  def format_process_entitlements(target)                            end
   def format_process_info_plist(path)                                end
   def format_process_pch(file)                                       end
   def format_process_pch_command(path)                               end

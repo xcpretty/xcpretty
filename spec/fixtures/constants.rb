@@ -277,6 +277,26 @@ PhaseScriptExecution [CP]\\ Check\\ Pods\\ Manifest.lock build/Lyft.build/Debug-
 error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
 )
 
+SAMPLE_PROCESS_PRODUCT_PACKAGING = %Q(
+ProcessProductPackaging "" build.noindex/Build/Intermediates.noindex/App.build/QA-iphonesimulator/TargetName.build/TargetName.bundle-Simulated.xcent
+    cd /Users/distiller/src
+    export PATH="/Applications/Xcode-9.3.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode-9.3.app/Contents/Developer/usr/bin:/Users/distiller/Library/Python/2.7/bin:/Users/distiller/Library/Python/2.7/bin:/Users/distiller/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+
+Entitlements:
+
+{
+    "application-identifier" = "TEAMID.com.company.TargetName";
+    "keychain-access-groups" =     (
+        "TEAMID.com.company.TargetName"
+    );
+}
+
+
+    builtin-productPackagingUtility -entitlements -format xml -o /Users/distiller/src/build.noindex/Build/Intermediates.noindex/App.build/QA-iphonesimulator/TargetName.build/TargetName.bundle-Simulated.xcent
+
+)
+
 SAMPLE_NEW_RUN_SCRIPT = %Q(
 PhaseScriptExecution Generate\ View\ Controller\ Factory build/Lyft.build/Debug-iphonesimulator/Lyft.build/Script-679D9DF81B72DA39003A5532.sh
     cd /Users/marinusalj/code/lyft/lyft-temp

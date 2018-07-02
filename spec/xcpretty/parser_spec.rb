@@ -141,7 +141,7 @@ describe 'Parser' do
         SAMPLE_COPYSTRINGS, SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP,
         SAMPLE_CREATE_UNIVERSAL_BINARY, SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK,
         SAMPLE_SWIFT_CODE_GENERATION, SAMPLE_STRIP, SAMPLE_SET_OWNER_AND_GROUP,
-        SAMPLE_SET_MODE ])
+        SAMPLE_SET_MODE, SAMPLE_PROCESS_PRODUCT_PACKAGING ])
     end
 
     it 'shuts up `cd`' do
@@ -155,13 +155,15 @@ describe 'Parser' do
         SAMPLE_COMPILE_STORYBOARD, SAMPLE_COPYPNGFILE, SAMPLE_COPYSTRINGS,
         SAMPLE_LINK_STORYBOARDS, SAMPLE_PBXCP, SAMPLE_CREATE_UNIVERSAL_BINARY,
         SAMPLE_GENERATE_DSYM, SAMPLE_SYMLINK, SAMPLE_SWIFT_CODE_GENERATION,
-        SAMPLE_STRIP, SAMPLE_SET_OWNER_AND_GROUP, SAMPLE_SET_MODE])
+        SAMPLE_STRIP, SAMPLE_SET_OWNER_AND_GROUP, SAMPLE_SET_MODE,
+        SAMPLE_PROCESS_PRODUCT_PACKAGING])
     end
 
     it 'suppresses builtin-' do
       suppress(/^\s{4}builtin-/, [
         SAMPLE_PROCESS_INFOPLIST, SAMPLE_DITTO, SAMPLE_CPHEADER,
-        SAMPLE_CPRESOURCE, SAMPLE_COPYSTRINGS, SAMPLE_PBXCP])
+        SAMPLE_CPRESOURCE, SAMPLE_COPYSTRINGS, SAMPLE_PBXCP,
+        SAMPLE_PROCESS_PRODUCT_PACKAGING])
     end
 
     it 'shuts up setenv' do
@@ -357,6 +359,14 @@ describe 'Parser' do
     @formatter.flush.should == [
       :format_phase_script_execution,
       "[CP] Check Pods Manifest.lock"
+    ]
+  end
+
+  it 'parses product packaging' do
+    @parser.parse(SAMPLE_PROCESS_PRODUCT_PACKAGING.lines[1])
+    @formatter.flush.should == [
+      :format_process_entitlements,
+      'TargetName.bundle'
     ]
   end
 
