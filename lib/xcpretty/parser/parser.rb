@@ -55,6 +55,11 @@ class Chunk
   # line was recognized, it will either be printed (block given) or ignored (no
   # block given).  If the line was not recognized, it will be printed as it is.
   def handle(line, formatter)
+    if line.match(@exit)
+      Log.debug(@name, "Exiting")
+      return nil
+    end
+
     @line_handlers.each do |handler|
       matches = line.match(handler.first)
       next unless matches
@@ -62,10 +67,6 @@ class Chunk
       Log.debug(@name, "Handling #{line}")
       handler[1].call(formatter, matches) if handler[1]
       return self
-    end
-    if line.match(@exit)
-      Log.debug(@name, "Exiting")
-      return nil
     end
 
     Log.debug(@name, "Not recognized: ", line.chomp)

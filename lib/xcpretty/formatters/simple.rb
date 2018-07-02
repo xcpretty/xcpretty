@@ -132,6 +132,10 @@ module XCPretty
       format("Probe signature of", path.basename)
     end
 
+    def format_process_entitlements(target)
+      format("Processing entitlements for", target)
+    end
+
     def format_process_info_plist(path)
       format("Process", path.basename)
     end

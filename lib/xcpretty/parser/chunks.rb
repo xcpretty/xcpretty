@@ -140,6 +140,16 @@ chunk "Process info.plist" do |c|
   c.line SHELL_BUILTIN
 end
 
+chunk "Process entitlements" do |c|
+  c.line /^ProcessProductPackaging .* (#{PATH})(?:-Simulated)\.xcent$/ do |f, m|
+    f.format_process_entitlements(path(m[1]).basename.to_s)
+  end
+  c.exit /^\s{4}builtin-productPackagingUtility.*$/
+  c.line /.*/
+  c.line SHELL_CD
+  c.line SHELL_EXPORT
+end
+
 chunk "PhaseScriptExecution" do |c|
   c.line /^PhaseScriptExecution\s((\\\ |\S)*)\s/ do |f, m|
     f.format_phase_script_execution(m[1].delete("\\"))
