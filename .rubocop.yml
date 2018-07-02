@@ -227,7 +227,7 @@ Style/TrailingBlankLines:
   Enabled: true
   EnforcedStyle: final_blank_line
 
-Style/TrailingComma:
+Style/TrailingCommaInArrayLiteral:
   Enabled: true
 
 Style/TrailingWhitespace:
