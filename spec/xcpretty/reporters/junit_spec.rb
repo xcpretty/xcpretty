@@ -1,5 +1,6 @@
-require 'xcpretty'
+require 'rexml/document'
 require 'tempfile'
+require 'xcpretty'
 
 module XCPretty
   describe JUnit do
@@ -17,4 +18,3 @@ module XCPretty
     end
   end
 end
-
