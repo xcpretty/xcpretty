@@ -80,7 +80,6 @@ class Parser
 
   def initialize(formatter)
     @formatter = formatter
-    @chunks = []
   end
 
   # Parses a line of a log file.
