@@ -32,6 +32,7 @@ module FormatMethods
   def format_ditto(path)                                             end
   def format_failing_test(suite, test, time, path)                   end
   def format_generate_dsym(dsym)                                     end
+  def format_ld(path, build_variants, arch)                          end
   def format_libtool(library)                                        end
   def format_linking(path, build_variant, arch)                      end
   def format_link_storyboards()                                      end
