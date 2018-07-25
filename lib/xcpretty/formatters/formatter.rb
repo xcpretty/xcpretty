@@ -152,7 +152,7 @@ module XCPretty
     def format_will_not_be_code_signed(message)
       "#{yellow(warning_symbol + " " + message)}"
     end
-    
+
     def format_other(text)
       ""
     end
