@@ -423,7 +423,7 @@ module XCPretty
       when WILL_NOT_BE_CODE_SIGNED_MATCHER
         formatter.format_will_not_be_code_signed($1)
       else
-        ""
+        formatter.format_other(text)
       end
     end
 

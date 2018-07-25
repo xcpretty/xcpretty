@@ -49,6 +49,7 @@ module XCPretty
     def format_tiffutil(file);                                 EMPTY; end
     def format_write_file(file);                               EMPTY; end
     def format_write_auxiliary_files;                          EMPTY; end
+    def format_other(text)                                     EMPTY; end
 
     # COMPILER / LINKER ERRORS AND WARNINGS
     def format_compile_error(file_name, file_path, reason,
@@ -150,6 +151,10 @@ module XCPretty
 
     def format_will_not_be_code_signed(message)
       "#{yellow(warning_symbol + " " + message)}"
+    end
+
+    def format_other(text)
+      ""
     end
 
 
