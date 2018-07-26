@@ -452,6 +452,13 @@ module XCPretty
         @parser.parse(SAMPLE_CODESIGN_ERROR)
       end
 
+      it "parses code sign error for newer xcode versions:" do
+        @formatter.should receive(:format_error).with(
+          'Code Signing Error: Signing certificate is invalid. Signing certificate "iPhone Distribution: Nick de la Hunt (6BT8K489FY)", serial number "37A0162FDCA15F37", is not valid for code signing. It may have been revoked or expired.'
+        )
+        @parser.parse(SAMPLE_CODESIGN_NEWER_XCODE_ERROR)
+      end
+
       it "parses CodeSign error: (no spaces)" do
         @formatter.should receive(:format_error).with(
           "CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 7.0'"

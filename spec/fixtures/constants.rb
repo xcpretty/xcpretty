@@ -602,6 +602,10 @@ SAMPLE_CODESIGN_ERROR = %Q(
 Code Sign error: No code signing identites found: No valid signing identities (i.e. certificate and private key pair) matching the team ID ‚ÄúCAT6HF57NJ‚Äù were found.
 )
 
+SAMPLE_CODESIGN_NEWER_XCODE_ERROR = %Q(
+Code Signing Error: Signing certificate is invalid. Signing certificate "iPhone Distribution: Nick de la Hunt (6BT8K489FY)", serial number "37A0162FDCA15F37", is not valid for code signing. It may have been revoked or expired.
+)
+
 SAMPLE_CODESIGN_ERROR_NO_SPACES = %Q(
 CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 7.0'
 )
