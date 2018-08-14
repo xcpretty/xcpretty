@@ -111,6 +111,11 @@ module XCPretty
       end
     end
 
+    it "parses compiling files in the root path" do
+      @formatter.should receive(:format_compile).with("TestFile.m", "TestFile.m")
+      @parser.parse(SAMPLE_COMPILE_FILE_IN_ROOT_PATH)
+    end
+
     it "parses compiling XIBs" do
       @formatter.should receive(:format_compile_xib).with("MainMenu.xib", "CocoaChip/en.lproj/MainMenu.xib")
       @parser.parse(SAMPLE_COMPILE_XIB)

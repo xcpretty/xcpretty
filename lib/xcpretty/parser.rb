@@ -55,7 +55,7 @@ module XCPretty
     # @regex Captured groups
     # $1 file_path
     # $2 file_name (e.g. KWNull.m)
-    COMPILE_MATCHER = /^Compile[\w]+\s.+?\s((?:\\.|[^ ])+\/((?:\\.|[^ ])+\.(?:m|mm|c|cc|cpp|cxx|swift)))\s.*/
+    COMPILE_MATCHER = /^Compile[\w]+\s.+?\s((?:(?:\\.|[^ ])+\/)*((?:\\.|[^ ])+\.(?:m|mm|c|cc|cpp|cxx|swift)))\s.*/
 
     # @regex Captured groups
     # $1 compiler_command
