@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0
+
+###### Enhancements
+
+* Add catch-all formatter to allow formatting unrecognized text
+  | [Chris Ballinger](https://github.com/chrisballinger)
+  | [#327](https://github.com/supermarin/xcpretty/pull/327)
+
+* Support `ccache-clang` (and other commands) in formatted output and JSON
+  compilation database reports
+  | [Delisa Mason](https://github.com/kattrali)
+  | [#332](https://github.com/supermarin/xcpretty/pull/332)
+
+
 ## 0.2.6
 
 * Codesigning matchers improvements
