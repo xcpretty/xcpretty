@@ -3,6 +3,10 @@ Given(/^I have a file to compile$/) do
   add_run_input SAMPLE_COMPILE
 end
 
+Given(/^I have a file to compile with ccache$/) do
+  add_run_input SAMPLE_COMPILE_CCACHE
+end
+
 Given(/^I have a xib to compile$/) do
   add_run_input SAMPLE_COMPILE_XIB
 end
