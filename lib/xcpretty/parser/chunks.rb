@@ -141,8 +141,9 @@ chunk "Process info.plist" do |c|
 end
 
 chunk "Process entitlements" do |c|
-  c.line /^ProcessProductPackaging .* (#{PATH})(?:-Simulated)\.xcent$/ do |f, m|
-    f.format_process_entitlements(path(m[1]).basename.to_s)
+  c.line /^ProcessProductPackaging .* (#{PATH})\.xcent$/ do |f, m|
+    product_name = path(m[1]).basename.to_s.sub(/-Simulated$/, "")
+    f.format_process_entitlements(product_name)
   end
   c.exit /^\s{4}builtin-productPackagingUtility.*$/
   c.line /.*/
