@@ -277,6 +277,13 @@ PhaseScriptExecution [CP]\\ Check\\ Pods\\ Manifest.lock build/Lyft.build/Debug-
 error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
 )
 
+SAMPLE_PROCESS_PRODUCT_PACKAGING_APP = %Q(
+ProcessProductPackaging /Users/foo/Library/MobileDevice/Provisioning\ Profiles/bar.mobileprovision build.noindex/Build/Intermediates.noindex/ArchiveIntermediates/Scheme/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/Scheme.app/embedded.mobileprovision
+    cd /Users/distiller/Lyft-iOS
+    export PATH="/Applications/Xcode-9.4.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode-9.4.1.app/Contents/Developer/usr/bin:/Users/distiller/Library/Python/2.7/bin:/Users/distiller/Library/Python/2.7/bin:/Users/distiller/Library/Python/2.7/bin:/Users/distiller/Library/Python/2.7/bin:/Users/distiller/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    builtin-productPackagingUtility /Users/foo/Library/MobileDevice/Provisioning\ Profiles/bar.mobileprovision -o /Users/foo/src/build.noindex/Build/Intermediates.noindex/ArchiveIntermediates/Scheme/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/Scheme.app/embedded.mobileprovision
+)
+
 SAMPLE_PROCESS_PRODUCT_PACKAGING = %Q(
 ProcessProductPackaging "" build.noindex/Build/Intermediates.noindex/App.build/QA-iphonesimulator/TargetName.build/TargetName.bundle-Simulated.xcent
     cd /Users/distiller/src
