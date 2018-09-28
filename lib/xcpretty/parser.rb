@@ -128,6 +128,10 @@ module XCPretty
     # $3 = time
     TEST_CASE_PASSED_MATCHER = /^\s*Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
 
+    # @regex Captured groups
+    # $1 = test run time debug data
+    # $2 = test run debug message
+    TEST_CASE_DEBUG_DATA_MATCHER = /^\s+t =\s+(\d+\.\d+s)\s+(.*)$/
 
     # @regex Captured groups
     # $1 = suite
@@ -386,6 +390,8 @@ module XCPretty
         formatter.format_pending_test($1, $2)
       when TEST_CASE_PASSED_MATCHER
         formatter.format_passing_test($1, $2, $3)
+      when TEST_CASE_DEBUG_DATA_MATCHER
+        formatter.format_test_debug_data($1, $2)
       when PODS_ERROR_MATCHER
         formatter.format_error($1)
       when PROCESS_INFO_PLIST_MATCHER
