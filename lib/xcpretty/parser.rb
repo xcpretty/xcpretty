@@ -271,7 +271,7 @@ module XCPretty
 
       # @regex Captured groups
       # $1 symbol location
-      LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER = /^(.* in .*\.o)$/
+      LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER = /^(.* in .*\.o.*?)$/
 
       # @regex Captured groups
       # $1 reason
