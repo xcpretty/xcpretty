@@ -241,4 +241,4 @@ Feature: Showing build output in simple format
         Given the linker has failed with undefined symbols and not end with o
         When I pipe to xcpretty with "--simple --no-color"
         Then I should see the undefined symbol message
-        And I should see the symbol and reference that caused failure
+        And I should see the symbol and reference not end with o that caused failure

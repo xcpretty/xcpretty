@@ -352,6 +352,11 @@ Then(/^I should see the symbol and reference that caused failure$/) do
   run_output.should include("objc-class-ref in ATZRadialProgressControl.o")
 end
 
+Then(/^I should see the symbol and reference not end with o that caused failure$/) do
+  run_output.should include("_OBJC_CLASS_$_CABasicAnimation")
+  run_output.should include("objc-class-ref in ATZRadialProgressControl.a(ATZRadialProgressControl_A.o)")
+end
+
 Then(/^I should see the name of a pending test$/) do
   run_output.should =~ PENDING_TEST_NAME_MATCHER
 end
