@@ -308,6 +308,15 @@ module XCPretty
       end
     end
 
+    it "parses undefined symbols not end with o" do
+      @formatter.should receive(:format_undefined_symbols).with("Undefined symbols for architecture x86_64",
+                                                                '_OBJC_CLASS_$_CABasicAnimation',
+                                                                'objc-class-ref in ATZRadialProgressControl.a(ATZRadialProgressControl_A.o)')
+      SAMPLE_UNDEFINED_SYMBOLS_NOT_END_WITH_O.each_line do |line|
+        @parser.parse(line)
+      end
+    end
+
     it "parses duplicate symbols" do
       @formatter.should receive(:format_duplicate_symbols).with(
         "duplicate symbol _OBJC_IVAR_$ClassName._ivarName in",

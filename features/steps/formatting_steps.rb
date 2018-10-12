@@ -108,6 +108,10 @@ Given(/^the linker has failed with undefined symbols$/) do
   add_run_input SAMPLE_UNDEFINED_SYMBOLS
 end
 
+Given(/^the linker has failed with undefined symbols and not end with o$/) do
+  add_run_input SAMPLE_UNDEFINED_SYMBOLS_NOT_END_WITH_O
+end
+
 Given(/^I have a pending test in my suite$/) do
   add_run_input SAMPLE_PENDING_KIWI_TEST
 end

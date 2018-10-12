@@ -645,6 +645,13 @@ Undefined symbols for architecture x86_64:
 ld: symbol(s) not found for architecture x86_64
 )
 
+SAMPLE_UNDEFINED_SYMBOLS_NOT_END_WITH_O = %Q(
+    Undefined symbols for architecture x86_64:
+      "_OBJC_CLASS_$_CABasicAnimation", referenced from:
+          objc-class-ref in ATZRadialProgressControl.a(ATZRadialProgressControl_A.o)
+    ld: symbol(s) not found for architecture x86_64
+    )
+
 SAMPLE_DUPLICATE_SYMBOLS = %Q(
 duplicate symbol _OBJC_IVAR_$ClassName._ivarName in:
     /Users/username/Library/Developer/Xcode/DerivedData/App-arcyyktezaigixbocjwfhsjllojz/Build/Intermediates/App.build/Debug-iphonesimulator/App.build/Objects-normal/i386/ClassName.o
