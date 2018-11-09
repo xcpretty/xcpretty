@@ -153,8 +153,8 @@
                     <% if !test[:screenshots].empty? %>
                       <section class="test-detail">
                         <% test[:screenshots].each_with_index do |screenshot, idx| %>
-                          <a href="javascript:toggleScreenshot('<%=test[:name] %>', <%=index %>)">
-                            <img class="screenshot" id="screenshot-<%=test[:name] %>-<%=index %>" src="<%=screenshot %>" />
+                          <a href="javascript:toggleScreenshot('<%=test[:name] %>', <%=idx %>)">
+                            <img class="screenshot" id="screenshot-<%=test[:name] %>-<%=idx %>" src="<%=screenshot %>" />
                           </a>
                         <% end %>
                       </section>
