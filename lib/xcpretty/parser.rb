@@ -419,7 +419,7 @@ module XCPretty
       when SHELL_COMMAND_MATCHER
         formatter.format_shell_command($1, $2)
       when GENERIC_WARNING_MATCHER
-        formatter.format_warning($1)
+        formatter.format_warning($1) unless should_inhibit_warnings
       when WILL_NOT_BE_CODE_SIGNED_MATCHER
         formatter.format_will_not_be_code_signed($1)
       else
@@ -460,8 +460,8 @@ module XCPretty
         @formatting_error = true
         update_error.call
       elsif text =~ COMPILE_WARNING_MATCHER
-        @formatting_warning = true
-        update_error.call
+        @formatting_warning = true unless should_inhibit_warnings
+        update_error.call unless should_inhibit_warnings
       elsif text =~ CURSOR_MATCHER
         current_issue[:cursor]    = $1.chomp
       elsif @formatting_error || @formatting_warning
@@ -589,6 +589,10 @@ module XCPretty
 
     def unescaped(*escaped_values)
       escaped_values.map { |v| v.delete('\\') }
+    end
+
+    def should_inhibit_warnings
+      ENV["XCPRETTY_INHIBIT_WARNINGS"] != nil
     end
 
   end
