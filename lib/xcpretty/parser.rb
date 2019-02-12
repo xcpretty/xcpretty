@@ -343,9 +343,9 @@ module XCPretty
       when NO_CERTIFICATE_MATCHER
         formatter.format_error($1)
       when COMPILE_MATCHER
-        formatter.format_compile($2, $1)
+        formatter.format_compile($2, *unescaped($1))
       when COMPILE_COMMAND_MATCHER
-        formatter.format_compile_command($1, $2)
+        formatter.format_compile_command($1, *unescaped($2))
       when COMPILE_XIB_MATCHER
         formatter.format_compile_xib($2, $1)
       when COMPILE_STORYBOARD_MATCHER

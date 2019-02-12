@@ -74,7 +74,7 @@ module XCPretty
     end
 
     it 'parses compiler_space_in_path' do
-      @formatter.should receive(:format_compile).with('SASellableItem.m', "SACore/App/Models/Core\\ Data/human/SASellableItem.m")
+      @formatter.should receive(:format_compile).with('SASellableItem.m', "SACore/App/Models/Core Data/human/SASellableItem.m")
       @parser.parse(SAMPLE_COMPILE_SPACE_IN_PATH)
     end
 
