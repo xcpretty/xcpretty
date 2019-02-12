@@ -43,3 +43,14 @@ Then(/^entries with a command shouldn't have malformed "-include" directives$/) 
   entries.length.should == 0
 end
 
+Given(/^I have a project with spaces$/) do
+  add_run_input File.open('features/fixtures/xcodebuild_with_spaces.log', 'r').read
+end
+
+Then(/^the file entry does not contain escape sequences$/) do
+  json_db[0]['file'].should_not include('\\ ')
+end
+
+Then(/^the directory entry does not contain escape sequences$/) do
+  json_db[0]['directory'].should_not include('\\ ')
+end

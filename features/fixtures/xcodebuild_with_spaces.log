@@ -1,0 +1,87 @@
+note: Using new build system
+note: Planning build
+note: Constructing build description
+CreateBuildDirectory /A\ Project\ With\ Spaces/build (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    builtin-create-build-directory /A\ Project\ With\ Spaces/build
+
+MkDir /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    /bin/mkdir -p /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework
+
+MkDir /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/Headers (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    /bin/mkdir -p /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/Headers
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-all-non-framework-target-headers.hmap (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-project-headers.hmap (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-project-headers.hmap
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-all-target-headers.hmap (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-all-target-headers.hmap
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-own-target-headers.hmap (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-own-target-headers.hmap
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-generated-files.hmap (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-generated-files.hmap
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces.hmap (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces.hmap
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/all-product-headers.yaml (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/all-product-headers.yaml
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/module.modulemap (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/module.modulemap
+
+ProcessInfoPlistFile /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/Info.plist /A\ Project\ With\ Spaces/A\ Project\ With\ Spaces/Info.plist (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    builtin-infoPlistUtility /A\ Project\ With\ Spaces/A\ Project\ With\ Spaces/Info.plist -expandbuildsettings -format binary -platform iphoneos -requiredArchitecture arm64 -o /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/Info.plist
+
+CpHeader /A\ Project\ With\ Spaces/A\ Project\ With\ Spaces/A_Project_With_Spaces.h /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/Headers/A_Project_With_Spaces.h (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /A\ Project\ With\ Spaces/A\ Project\ With\ Spaces/A_Project_With_Spaces.h /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/Headers
+
+Ditto /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/module.modulemap /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/Modules/module.modulemap (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/module.modulemap /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/Modules
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/DerivedSources/A_Project_With_Spaces_vers.c (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/DerivedSources/A_Project_With_Spaces_vers.c
+
+WriteAuxiliaryFile /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/Objects-normal/arm64/A_Project_With_Spaces.LinkFileList (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    write-file /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/Objects-normal/arm64/A_Project_With_Spaces.LinkFileList
+
+CompileC /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/Objects-normal/arm64/A_Project_With_Spaces_vers.o /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/DerivedSources/A_Project_With_Spaces_vers.c normal arm64 c com.apple.compilers.llvm.clang.1_0.compiler (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode-10.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu11 -fmodules -gmodules -fmodules-prune-interval=86400 -fmodules-prune-after=345600 -fbuild-session-file=/var/folders/gr/tndblrwd3_q34kmq3p3clb1r0000gp/C/org.llvm.clang/ModuleCache.noindex/Session.modulevalidation -fmodules-validate-once-per-build-session -Wnon-modular-include-in-framework-module -Werror=non-modular-include-in-framework-module -fmodule-name=A_Project_With_Spaces -Wno-trigraphs -fpascal-strings -Os -fno-common -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wdocumentation -Wunreachable-code -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-float-conversion -Wnon-literal-null-conversion -Wobjc-literal-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -isysroot /Applications/Xcode-10.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk -fstrict-aliasing -Wdeprecated-declarations -miphoneos-version-min=12.1 -g -Wno-sign-conversion -Winfinite-recursion -Wcomma -Wblock-capture-autoreleasing -Wstrict-prototypes -Wno-semicolon-before-method-body -Wunguarded-availability -fembed-bitcode-marker -iquote /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-generated-files.hmap -I/A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-own-target-headers.hmap -I/A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-all-non-framework-target-headers.hmap -ivfsoverlay /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/all-product-headers.yaml -iquote /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/A_Project_With_Spaces-project-headers.hmap -I/A\ Project\ With\ Spaces/build/Release-iphoneos/include -I/A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/DerivedSources/arm64 -I/A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/DerivedSources -F/A\ Project\ With\ Spaces/build/Release-iphoneos -MMD -MT dependencies -MF /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/Objects-normal/arm64/A_Project_With_Spaces_vers.d --serialize-diagnostics /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/Objects-normal/arm64/A_Project_With_Spaces_vers.dia -c /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/DerivedSources/A_Project_With_Spaces_vers.c -o /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/Objects-normal/arm64/A_Project_With_Spaces_vers.o
+
+Ld /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/A_Project_With_Spaces normal arm64 (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    export IPHONEOS_DEPLOYMENT_TARGET=12.1
+    /Applications/Xcode-10.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch arm64 -dynamiclib -isysroot /Applications/Xcode-10.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk -L/A\ Project\ With\ Spaces/build/Release-iphoneos -F/A\ Project\ With\ Spaces/build/Release-iphoneos -filelist /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/Objects-normal/arm64/A_Project_With_Spaces.LinkFileList -install_name @rpath/A_Project_With_Spaces.framework/A_Project_With_Spaces -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -rpath -Xlinker @loader_path/Frameworks -miphoneos-version-min=12.1 -dead_strip -Xlinker -object_path_lto -Xlinker /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/Objects-normal/arm64/A_Project_With_Spaces_lto.o -fembed-bitcode-marker -compatibility_version 1 -current_version 1 -Xlinker -dependency_info -Xlinker /A\ Project\ With\ Spaces/build/A\ Project\ With\ Spaces.build/Release-iphoneos/A\ Project\ With\ Spaces.build/Objects-normal/arm64/A_Project_With_Spaces_dependency_info.dat -o /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/A_Project_With_Spaces
+
+GenerateDSYMFile /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework.dSYM /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/A_Project_With_Spaces (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    /Applications/Xcode-10.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework/A_Project_With_Spaces -o /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework.dSYM
+
+Touch /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework (in target: A Project With Spaces)
+    cd /A\ Project\ With\ Spaces
+    /usr/bin/touch -c /A\ Project\ With\ Spaces/build/Release-iphoneos/A_Project_With_Spaces.framework
+
+** BUILD SUCCEEDED **
+

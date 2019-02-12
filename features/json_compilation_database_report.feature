@@ -31,3 +31,9 @@ Feature: Create a JSON compilation database
         Given some big input
         When I pipe to xcpretty with "--report json-compilation-database" and specify a custom path
         Then entries with a command shouldn't have malformed "-include" directives
+
+	Scenario: Spaces in project file names are not escaped
+        Given I have a project with spaces
+        When I pipe to xcpretty with "--report json-compilation-database" and specify a custom path
+        Then the file entry does not contain escape sequences
+        Then the directory entry does not contain escape sequences
