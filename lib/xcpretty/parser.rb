@@ -126,24 +126,24 @@ module XCPretty
     # $1 = suite
     # $2 = test_case
     # $3 = time
-    TEST_CASE_PASSED_MATCHER = /^\s*Test Case\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
+    TEST_CASE_PASSED_MATCHER = /^\s*Test [Cc]ase\s'-\[(.*)\s(.*)\]'\spassed\s\((\d*\.\d{3})\sseconds\)/
 
 
     # @regex Captured groups
     # $1 = suite
     # $2 = test_case
-    TEST_CASE_STARTED_MATCHER = /^Test Case '-\[(.*) (.*)\]' started.$/
+    TEST_CASE_STARTED_MATCHER = /^Test [Cc]ase '-\[(.*) (.*)\]' started.$/
 
     # @regex Captured groups
     # $1 = suite
     # $2 = test_case
-    TEST_CASE_PENDING_MATCHER = /^Test Case\s'-\[(.*)\s(.*)PENDING\]'\spassed/
+    TEST_CASE_PENDING_MATCHER = /^Test [Cc]ase\s'-\[(.*)\s(.*)PENDING\]'\spassed/
 
     # @regex Captured groups
     # $1 = suite
     # $2 = test_case
     # $3 = time
-    TEST_CASE_MEASURED_MATCHER = /^[^:]*:[^:]*:\sTest Case\s'-\[(.*)\s(.*)\]'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
+    TEST_CASE_MEASURED_MATCHER = /^[^:]*:[^:]*:\sTest [Cc]ase\s'-\[(.*)\s(.*)\]'\smeasured\s\[Time,\sseconds\]\saverage:\s(\d*\.\d{3}),/
 
     PHASE_SUCCESS_MATCHER = /^\*\*\s(.*)\sSUCCEEDED\s\*\*/
 
@@ -174,16 +174,16 @@ module XCPretty
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TESTS_RUN_COMPLETION_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' (finished|passed|failed) at (.*)/
+    TESTS_RUN_COMPLETION_MATCHER = /^\s*Test [Ss]uite '(?:.*\/)?(.*[ox]ctest.*)' (finished|passed|failed) at (.*)/
 
     # @regex Captured groups
     # $1 = suite
     # $2 = time
-    TEST_SUITE_STARTED_MATCHER = /^\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)/
+    TEST_SUITE_STARTED_MATCHER = /^\s*Test [Ss]uite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)/
 
     # @regex Captured groups
     # $1 test suite name
-    TEST_SUITE_START_MATCHER = /^\s*Test Suite '(.*)' started at/
+    TEST_SUITE_START_MATCHER = /^\s*Test [Ss]uite '(.*)' started at/
 
     # @regex Captured groups
     # $1 file_name
