@@ -49,10 +49,12 @@ end
 
 Given(/^I have a slow\-ish test in my suite$/) do
   add_run_input SAMPLE_SLOWISH_TEST
+  add_run_input SAMPLE_SWIFT_SLOWISH_TEST
 end
 
 Given(/^I have a slow test in my suite$/) do
   add_run_input SAMPLE_SLOW_TEST
+  add_run_input SAMPLE_SWIFT_SLOW_TEST
 end
 
 Given(/^the tests have started running$/) do
