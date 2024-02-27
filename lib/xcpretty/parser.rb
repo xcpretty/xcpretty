@@ -274,6 +274,10 @@ module XCPretty
       LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER = /^(.* in .*\.o)$/
 
       # @regex Captured groups
+      # $1 symbol location(static library)
+      LINKER_UNDEFINED_SYMBOL_STATIC_LIBRARY_LOCATION_MATCHER = /^\s+(.* in .*\.o)/
+
+      # @regex Captured groups
       # $1 reason
       LINKER_UNDEFINED_SYMBOLS_MATCHER = /^(Undefined symbols for architecture .*):$/
 
@@ -481,6 +485,8 @@ module XCPretty
       case text
       when SYMBOL_REFERENCED_FROM_MATCHER
         current_linker_failure[:symbol] = $1
+      when LINKER_UNDEFINED_SYMBOL_STATIC_LIBRARY_LOCATION_MATCHER
+        current_linker_failure[:reference] = text.strip
       when LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER
         current_linker_failure[:reference] = text.strip
       when LINKER_DUPLICATE_SYMBOLS_LOCATION_MATCHER
