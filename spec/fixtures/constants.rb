@@ -17,6 +17,12 @@ SAMPLE_KIWI_SUITE_COMPLETION = "Test Suite 'All tests' finished at 2013-12-08 04
 SAMPLE_OCUNIT_SUITE_COMPLETION = "Test Suite '/Users/musalj/Library/Developer/Xcode/DerivedData/ReactiveCocoa-eznxkbqvgfsnrvetemqloysuwagb/Build/Products/Test/ReactiveCocoaTests.octest(Tests)' finished at 2013-12-08 22:09:37 +0000."
 SAMPLE_XCTEST_SUITE_COMPLETION = "Test Suite 'ObjectiveSugarTests.xctest' finished at 2013-12-09 04:42:13 +0000."
 
+SAMPLE_UITEST_DEBUG_DATA = %Q(\
+Wait for connect to desktop done
+    t =    19.06s     Snapshot accessibility hierarchy for com.vmware.horizon
+    t =    20.31s     Find: Descendants matching type Window
+    t =    20.32s     Find: Elements matching predicate '"rdsh1" IN identifiers'
+)
 SAMPLE_UITEST_CASE_WITH_FAILURE = %Q(\
 Test Case '-[viewUITests.vmtAboutWindow testConnectToDesktop]' started.
     t =     0.00s     Start Test at 2016-08-18 09:07:17.822

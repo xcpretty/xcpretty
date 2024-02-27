@@ -132,6 +132,12 @@ module XCPretty
       @parser.parse(SAMPLE_COPYSTRINGS)
     end
 
+    it "parses UITest debug data" do
+      @formatter.should receive(:format_test_debug_data).with('19.06s', 'Snapshot accessibility hierarchy for com.vmware.horizon')
+      @parser.parse(SAMPLE_UITEST_DEBUG_DATA)
+    end
+
+
     it "parses CpHeader" do
       @formatter.should receive(:format_copy_header_file).with(
         '/path/to/Header.h', '/some other/path/Header.h')
