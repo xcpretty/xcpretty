@@ -181,7 +181,7 @@ module XCPretty
     it "parses specta failing tests" do
       @formatter.should receive(:format_failing_test).with("SKWelcomeViewControllerSpecSpec",
                                                            "SKWelcomeViewController_When_a_user_opens_the_app_from_a_clean_installation_displays_the_welcome_screen",
-                                                           "The step timed out after 2.00 seconds: Failed to find accessibility element with the label \"The asimplest way to make smarter business decisions\"",
+                                                           "The step timed out after 2.00 seconds: Failed to find accessibility element with the label &quot;The asimplest way to make smarter business decisions&quot;",
                                                            "/Users/vickeryj/Code/ipad-register/KIFTests/Specs/SKWelcomeViewControllerSpec.m:11")
       @parser.parse(SAMPLE_SPECTA_FAILURE)
     end
@@ -217,6 +217,14 @@ module XCPretty
       @formatter.should receive(:format_pending_test).with('TAPIConversationSpec',
                                                            'TAPIConversation_createConversation_SendsAPOSTRequestToTheConversationsEndpoint')
       @parser.parse(SAMPLE_PENDING_KIWI_TEST)
+    end
+
+    it "parses and escapes Swift enum names", focus: true do
+      @formatter.should receive(:format_failing_test).with('App_Tests.ComparatorSpec',
+                                                           'a_comparator__when_matching_against_test1__returns_almost_equal_for_test2',
+                                                           'expected to equal &lt;ComparisonAlmostEqual&gt;, got &lt;ComparisonEqual&gt;',
+                                                           '/Users/revolt/Development/App/Comparator/ComparatorSpec.swift:76')
+      @parser.parse(SAMPLE_SWIFT_ENUM_FAILURE)
     end
 
     it 'parses measuring tests' do

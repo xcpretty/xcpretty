@@ -363,7 +363,7 @@ module XCPretty
       when UI_FAILING_TEST_MATCHER
         formatter.format_failing_test(@test_suite, @test_case, $2, $1)
       when FAILING_TEST_MATCHER
-        formatter.format_failing_test($2, $3, $4, $1)
+        formatter.format_failing_test($2, $3, ERB::Util.html_escape($4), $1)
       when FATAL_ERROR_MATCHER
         formatter.format_error($1)
       when FILE_MISSING_ERROR_MATCHER
