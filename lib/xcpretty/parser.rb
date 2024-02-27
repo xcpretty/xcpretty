@@ -106,7 +106,7 @@ module XCPretty
     UI_FAILING_TEST_MATCHER = /^\s{4}t = \s+\d+\.\d+s\s+Assertion Failure: (.*:\d+): (.*)$/
 
     # @regex Captured groups
-    RESTARTING_TESTS_MATCHER = /^Restarting after unexpected exit or crash in.+$/
+    RESTARTING_TESTS_MATCHER = /^Restarting after unexpected exit, crash, or test timeout in.+$/
 
     # @regex Captured groups
     # $1 = dsym
