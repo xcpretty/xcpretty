@@ -57,7 +57,7 @@ module XCPretty
     def format_error(message);                                 EMPTY; end
     def format_file_missing_error(error, file_path);           EMPTY; end
     def format_ld_warning(message);                            EMPTY; end
-    def format_undefined_symbols(message, symbol, reference);  EMPTY; end
+    def format_undefined_symbols(message, infos);              EMPTY; end
     def format_duplicate_symbols(message, file_paths);         EMPTY; end
     def format_warning(message);                             message; end
 
@@ -138,10 +138,16 @@ module XCPretty
       "#{yellow(warning_symbol + ' ' + reason)}"
     end
 
-    def format_undefined_symbols(message, symbol, reference)
-      "\n#{red(error_symbol + " " + message)}\n" \
-        "> Symbol: #{symbol}\n" \
-        "> Referenced from: #{reference}\n\n"
+    def format_undefined_symbols(message, infos)
+      msg = "\n#{red(error_symbol + " " + message)}\n" 
+      infos.each do |info|
+        msg = "#{msg}> Symbol: #{info[:symbol]}\n"
+        info[:references].each do |reference|
+          msg = "#{msg}> Referenced from: #{reference}\n"
+        end
+        msg = "#{msg}\n"
+      end
+      msg
     end
 
     def format_duplicate_symbols(message, file_paths)

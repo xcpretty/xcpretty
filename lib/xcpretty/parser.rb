@@ -271,7 +271,7 @@ module XCPretty
 
       # @regex Captured groups
       # $1 symbol location
-      LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER = /^(.* in .*\.o)$/
+      LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER = /^(.* in .*\.o[\)]?)$/
 
       # @regex Captured groups
       # $1 reason
@@ -310,7 +310,6 @@ module XCPretty
 
       return format_compile_error if should_format_error?
       return format_compile_warning if should_format_warning?
-      return format_undefined_symbols if should_format_undefined_symbols?
       return format_duplicate_symbols if should_format_duplicate_symbols?
 
       case text
@@ -373,7 +372,7 @@ module XCPretty
       when LD_WARNING_MATCHER
         formatter.format_ld_warning($1 + $2)
       when LD_ERROR_MATCHER
-        formatter.format_error($1)
+        format_undefined_symbols($1) if should_format_undefined_symbols?
       when LIBTOOL_MATCHER
         formatter.format_libtool($1)
       when LINKING_MATCHER
@@ -480,9 +479,10 @@ module XCPretty
 
       case text
       when SYMBOL_REFERENCED_FROM_MATCHER
-        current_linker_failure[:symbol] = $1
+        info = {symbol: $1 , references: []}
+        current_linker_failure[:infos] << info
       when LINKER_UNDEFINED_SYMBOL_LOCATION_MATCHER
-        current_linker_failure[:reference] = text.strip
+        current_linker_failure[:infos][-1][:references] << text.strip
       when LINKER_DUPLICATE_SYMBOLS_LOCATION_MATCHER
         current_linker_failure[:files] << $1
       end
@@ -502,7 +502,7 @@ module XCPretty
     end
 
     def should_format_undefined_symbols?
-      current_linker_failure[:message] && current_linker_failure[:symbol] && current_linker_failure[:reference]
+      current_linker_failure[:message] && current_linker_failure[:infos].count > 1
     end
 
     def should_format_duplicate_symbols?
@@ -514,7 +514,7 @@ module XCPretty
     end
 
     def current_linker_failure
-      @linker_failure ||= {files: []}
+      @linker_failure ||= {files: [], infos: []}
     end
 
     def format_compile_error
@@ -539,12 +539,12 @@ module XCPretty
                                        warning[:cursor])
     end
 
-    def format_undefined_symbols
+    def format_undefined_symbols(ld_error)
       result = formatter.format_undefined_symbols(
         current_linker_failure[:message],
-        current_linker_failure[:symbol],
-        current_linker_failure[:reference]
+        current_linker_failure[:infos]
       )
+      result += formatter.format_error(ld_error)
       reset_linker_format_state
       result
     end
