@@ -205,7 +205,7 @@ module XCPretty
       # $1 = file_path
       # $2 = file_name
       # $3 = reason
-      COMPILE_WARNING_MATCHER = /^(\/.+\/(.*):.*:.*):\swarning:\s(.*)$/
+      COMPILE_WARNING_MATCHER = /^(.+\/(.*):.*:.*):\swarning:\s(.*)$/
 
       # $1 = ld prefix
       # $2 = warning message
@@ -241,7 +241,7 @@ module XCPretty
       # $1 = file_path
       # $2 = file_name
       # $3 = reason
-      COMPILE_ERROR_MATCHER = /^(\/.+\/(.*):.*:.*):\s(?:fatal\s)?error:\s(.*)$/
+      COMPILE_ERROR_MATCHER = /^(.+\/(.*):.*:.*):\s(?:fatal\s)?error:\s(.*)$/
 
       # @regex Captured groups
       # $1 cursor (with whitespaces and tildes)
