@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0
+
+###### Enhancements
+
+* Fix unescaped HTML not being rendered properly
+  | [iulianOnofrei (U-lee-aan)](https://github.com/revolter)
+  | [#313](https://github.com/xcpretty/xcpretty/pull/313)
+
+* Bump rouge and bundler
+  | [Owen Hart](https://github.com/owjsub)
+  | [#383](https://github.com/xcpretty/xcpretty/pull/383)
+
+
 ## 0.3.0
 
 ###### Enhancements
@@ -24,6 +37,7 @@
 * Fix reporers crash by default ld warning implementation
   | [iKiKi](https://github.com/iKiKi)
   | [#187](https://github.com/supermarin/xcpretty/pull/187)
+
 
 ## 0.2.1
 
