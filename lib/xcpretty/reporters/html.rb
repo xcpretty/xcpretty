@@ -50,6 +50,28 @@ module XCPretty
         @test_suites[suite_name][:failing] = true
         @fail_count += 1
       end
+      # Maintaining test count in case of multiple failures in a single test
+      @index = @test_suites[suite_name][:tests].length - 1
+      check_duplicate_classname(@index, suite_name)
+    end
+
+    def check_duplicate_classname(currentIndex, suite_name)
+      if currentIndex == 0
+        # Do nothig
+      elsif currentIndex == 1
+        if @test_suites[suite_name][:tests][0][:name] == @test_suites[suite_name][:tests][1][:name]
+          @fail_count -= 1
+          @test_count -= 1
+        end
+      else 
+        for var in 0..Integer(currentIndex-1)
+          if @test_suites[suite_name][:tests][var][:name] == @test_suites[suite_name][:tests][currentIndex][:name]
+            @fail_count -= 1
+            @test_count -= 1
+            break
+          end
+        end
+      end
     end
 
     def write_report
