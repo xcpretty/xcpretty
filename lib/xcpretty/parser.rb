@@ -31,6 +31,10 @@ module XCPretty
     CHECK_DEPENDENCIES_MATCHER = /^Check dependencies/
 
     # @regex Captured groups
+    # $1 target
+    EXTERNAL_BUILD_TOOL_MATCHER = /^ExternalBuildToolExecution (.*)$/
+
+    # @regex Captured groups
     # $1 command path
     # $2 arguments
     SHELL_COMMAND_MATCHER = /^\s{4}(cd|setenv|(?:[\w\/:\\\s\-.]+?\/)?[\w\-]+)\s(.*)$/
@@ -330,6 +334,8 @@ module XCPretty
         formatter.format_copy_strings_file($1)
       when CHECK_DEPENDENCIES_MATCHER
         formatter.format_check_dependencies
+      when EXTERNAL_BUILD_TOOL_MATCHER
+        formatter.format_external_build_tool($1)
       when CLANG_ERROR_MATCHER
         formatter.format_error($1)
       when CODESIGN_FRAMEWORK_MATCHER
