@@ -2,15 +2,15 @@ Lint/AssignmentInCondition:
   Exclude:
     - 'bin/xcpretty'
 
-Lint/DefEndAlignment:
+Layout/DefEndAlignment:
   Enabled: true
   Exclude:
     - 'lib/xcpretty/formatters/formatter.rb'
 
-Lint/EndAlignment:
+Layout/EndAlignment:
   Enabled: true
 
-Lint/Eval:
+Security/Eval:
   Exclude:
     - 'lib/xcpretty.rb'
 
@@ -65,12 +65,12 @@ Performance/Size:
 Performance/StringReplacement:
   Enabled: true
 
-Style/AlignHash:
+Layout/AlignHash:
   Enabled: true
   Exclude:
     - 'spec/**/*.rb'
 
-Style/AlignParameters:
+Layout/AlignParameters:
   Enabled: true
   Exclude:
     - 'spec/**/*.rb'
@@ -85,13 +85,13 @@ Style/BracesAroundHashParameters:
   Enabled: true
 
 # Configuration parameters: IndentWhenRelativeTo, SupportedStyles, IndentOneStep.
-Style/CaseIndentation:
+Layout/CaseIndentation:
   Enabled: true
 
 Style/ClassVars:
   Enabled: false
 
-Style/ClosingParenthesisIndentation:
+Layout/ClosingParenthesisIndentation:
   Enabled: false
 
 # Offense count: 1
@@ -101,7 +101,7 @@ Style/CommandLiteral:
   Exclude:
     - 'features/support/*.rb'
 
-Style/CommentIndentation:
+Layout/CommentIndentation:
   Enabled: true
 
 Style/Documentation:
@@ -112,29 +112,29 @@ Style/DoubleNegation:
     - 'lib/xcpretty/ansi.rb'
     - 'lib/xcpretty/formatters/formatter.rb'
 
-Style/EmptyLineBetweenDefs:
+Layout/EmptyLineBetweenDefs:
   Exclude:
     - 'lib/xcpretty/formatters/formatter.rb'
 
-Style/EmptyLines:
+Layout/EmptyLines:
   Enabled: false
 
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - 'spec/**/*.rb'
 
-Style/EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
-Style/EmptyLinesAroundModuleBody:
+Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 
-Style/ExtraSpacing:
+Layout/ExtraSpacing:
   Enabled: true
   Exclude:
     - 'lib/xcpretty/formatters/formatter.rb'
 
-Style/FirstParameterIndentation:
+Layout/FirstParameterIndentation:
   Enabled: true
 
 Style/GuardClause:
@@ -146,11 +146,11 @@ Style/HashSyntax:
 Style/IfUnlessModifier:
   Enabled: false
 
-Style/IndentationWidth:
+Layout/IndentationWidth:
   Exclude:
     - 'spec/**/*.rb'
 
-Style/LeadingCommentSpace:
+Layout/LeadingCommentSpace:
   Enabled: true
 
 Style/LineEndConcatenation:
@@ -159,7 +159,7 @@ Style/LineEndConcatenation:
 Style/MethodDefParentheses:
   Enabled: true
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Enabled: false
 
 Style/NonNilCheck:
@@ -191,24 +191,24 @@ Style/SingleLineMethods:
   Exclude:
     - 'lib/xcpretty/formatters/formatter.rb'
 
-Style/SpaceAfterComma:
+Layout/SpaceAfterComma:
   Enabled: true
 
-Style/SpaceAroundEqualsInParameterDefault:
+Layout/SpaceAroundEqualsInParameterDefault:
   Enabled: false
 
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   Enabled: true
 
-Style/SpaceInsideBlockBraces:
+Layout/SpaceInsideBlockBraces:
   Enabled: true
   EnforcedStyle: space
 
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   Enabled: true
   EnforcedStyle: no_space
 
-Style/SpaceInsideParens:
+Layout/SpaceInsideParens:
   Enabled: true
 
 Style/SpecialGlobalVars:
@@ -223,14 +223,20 @@ Style/StringLiteralsInInterpolation:
 Style/SymbolProc:
   Enabled: false
 
-Style/TrailingBlankLines:
+Layout/TrailingBlankLines:
   Enabled: true
   EnforcedStyle: final_blank_line
 
-Style/TrailingComma:
+Style/TrailingCommaInArguments:
   Enabled: true
 
-Style/TrailingWhitespace:
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+
+Layout/TrailingWhitespace:
   Enabled: true
 
 Style/UnneededPercentQ:
