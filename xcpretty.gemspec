@@ -27,12 +27,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'rouge', '~> 3.28.0'
+  spec.add_dependency 'erb', '2.2.0'
 
   spec.add_development_dependency "bundler", "~> 2.1.4"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rubocop", "~> 0.34.0"
   spec.add_development_dependency "rspec", "2.99.0"
   spec.add_development_dependency "cucumber", "~> 1.0"
-  spec.add_development_dependency "erb", "2.2.0"
 end
 
