@@ -299,7 +299,15 @@ module XCPretty
 
     attr_reader :formatter
 
+    def load_dependencies
+      unless @@loaded ||= false
+        require 'erb'
+        @@loaded = true
+      end
+    end
+
     def initialize(formatter)
+      load_dependencies
       @formatter = formatter
     end
 
