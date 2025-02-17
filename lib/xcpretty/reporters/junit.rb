@@ -51,6 +51,8 @@ module XCPretty
       test_node = suite(classname).add_element('testcase')
       test_node.attributes['classname'] = classname
       test_node.attributes['name']      = test_case
+      # A fake time is added to let Sonar parse failed tests.
+      test_node.attributes['time']      = "0"
       fail_node = test_node.add_element('failure')
       fail_node.attributes['message'] = reason
       fail_node.text = file.sub(@directory + '/', '')
