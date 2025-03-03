@@ -47,10 +47,13 @@ $ xcodebuild [flags] | tee xcodebuild.log | xcpretty
 ## Formats
 
 - `--simple`, `-s` (default)
+
 ![xcpretty --simple](http://i.imgur.com/LdmozBS.gif)
 
 - `--test`, `-t` (RSpec style)
+
 ![xcpretty alpha](http://i.imgur.com/VeTQQub.gif)
+
 - `--tap` ([Test Anything Protocol](http://testanything.org)-compatible output)
 - `--knock`, `-k` (a [simplified version](https://github.com/chneukirchen/knock) of the Test Anything Protocol)
 
@@ -66,6 +69,7 @@ $ xcodebuild [flags] | tee xcodebuild.log | xcpretty
 - `--report junit`, `-r junit`: Creates a JUnit-style XML report at `build/reports/junit.xml`, compatible with Jenkins and TeamCity CI.
 
 - `--report html`, `-r html`: Creates a simple HTML report at `build/reports/tests.html`.
+
 ![xcpretty html](http://i.imgur.com/0Rnux3v.gif)
 
 - `--report json-compilation-database`, `-r json-compilation-database`: Creates a [JSON compilation database](http://clang.llvm.org/docs/JSONCompilationDatabase.html) at `build/reports/compilation_db.json`. This is a format to replay single compilations independently of the build system.
