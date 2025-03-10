@@ -108,6 +108,10 @@ Given(/^the linker has failed with undefined symbols$/) do
   add_run_input SAMPLE_UNDEFINED_SYMBOLS
 end
 
+Given(/^the linker has failed with undefined symbols and not end with o$/) do
+  add_run_input SAMPLE_UNDEFINED_SYMBOLS_NOT_END_WITH_O
+end
+
 Given(/^I have a pending test in my suite$/) do
   add_run_input SAMPLE_PENDING_KIWI_TEST
 end
@@ -346,6 +350,11 @@ end
 Then(/^I should see the symbol and reference that caused failure$/) do
   run_output.should include("_OBJC_CLASS_$_CABasicAnimation")
   run_output.should include("objc-class-ref in ATZRadialProgressControl.o")
+end
+
+Then(/^I should see the symbol and reference not end with o that caused failure$/) do
+  run_output.should include("_OBJC_CLASS_$_CABasicAnimation")
+  run_output.should include("objc-class-ref in ATZRadialProgressControl.a(ATZRadialProgressControl_A.o)")
 end
 
 Then(/^I should see the name of a pending test$/) do
