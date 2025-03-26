@@ -1,11 +1,20 @@
 # Changelog
 
+## 0.4.1
+
+###### Bug fixes
+
+* Fix uninitialized constant XCPretty::Parser::ERB crash
+  | [Iulian Onofrei](https://github.com/revolter)
+  | [#313](https://github.com/xcpretty/xcpretty/pull/400)
+
+
 ## 0.4.0
 
 ###### Enhancements
 
 * Fix unescaped HTML not being rendered properly
-  | [iulianOnofrei (U-lee-aan)](https://github.com/revolter)
+  | [Iulian Onofrei](https://github.com/revolter)
   | [#313](https://github.com/xcpretty/xcpretty/pull/313)
 
 * Bump rouge and bundler
