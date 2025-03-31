@@ -42,6 +42,24 @@ module XCPretty
     end
 
     def write_report
+      if File.exist?(@filepath)
+        begin
+          json = JSON.parse(File.read(@filepath))
+        rescue JSON::ParserError
+          # drop the current database if it is not valid.
+          json = []
+        end
+        json.each do |c|
+          found = @compilation_units.detect do |u|
+            u[:file] == c["file"] && u[:directory] == c["directory"]
+          end
+          unless found
+            @compilation_units << {command: c["command"],
+                                   file: c["file"],
+                                   directory: c["directory"]}
+          end
+        end
+      end
       File.open(@filepath, 'w') do |f|
         f.write(@compilation_units.to_json)
       end
