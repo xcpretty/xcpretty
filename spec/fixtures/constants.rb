@@ -586,6 +586,20 @@ PBXCp build/Release/CocoaChipCore.framework build/Release/CocoaChip.app/Contents
     builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework /Users/dustin/Source/CocoaChip/build/Release/CocoaChip.app/Contents/Frameworks
 warning: skipping copy phase strip, binary is code signed: /Users/dustin/Source/CocoaChip/build/Release/CocoaChipCore.framework/Versions/A/CocoaChipCore
 )
+SAMPLE_EXTERNAL_BUILD_TOOL = %Q(
+ExternalBuildToolExecution MyTargetName
+    cd /Users/musalj/code/OSS/ObjectiveSugar/Example
+    export ACTION build
+    export AD_HOC_CODE_SIGNING_ALLOWED NO
+    export ALTERNATE_GROUP staff
+    export ALTERNATE_MODE u+w,go-w,a+rX
+    export ALTERNATE_OWNER musalj
+    export ALWAYS_SEARCH_USER_PATHS NO
+    export ALWAYS_USE_SEPARATE_HEADERMAPS YES
+    export arch i386
+    export variant normal
+    /usr/bin/make -j8
+).freeze
 
 SAMPLE_SCREENSHOT_FILE = 'RACCommandSpec_enabled_signal_should_send_YES_while_executing_is_YES.png'
 SAMPLE_UNRELATED_IMAGE_FILE = 'apple_raw.png'

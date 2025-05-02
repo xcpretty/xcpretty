@@ -14,6 +14,7 @@ module XCPretty
     def format_aggregate_target(target, project, configuration); EMPTY; end
     def format_analyze_target(target, project, configuration); EMPTY; end
     def format_check_dependencies;                             EMPTY; end
+    def format_external_build_tool(target);                    EMPTY; end
     def format_clean(project, target, configuration);          EMPTY; end
     def format_clean_target(target, project, configuration);   EMPTY; end
     def format_clean_remove;                                   EMPTY; end
