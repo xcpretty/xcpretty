@@ -236,3 +236,9 @@ Feature: Showing build output in simple format
         Given the matching profile is missing
         When I pipe to xcpretty with "--simple --no-color"
         Then I should see the no profile matching message
+
+    Scenario: Showing undefined symbol not end with o matching error
+        Given the linker has failed with undefined symbols and not end with o
+        When I pipe to xcpretty with "--simple --color"
+        Then I should see the undefined symbol message
+        And I should see the symbol and reference not end with o that caused failure
