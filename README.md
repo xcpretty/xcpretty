@@ -8,6 +8,13 @@ It does one thing, and it should do it well.
 [![Code Climate](http://img.shields.io/codeclimate/github/supermarin/xcpretty.svg)](https://codeclimate.com/github/supermarin/xcpretty)
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
+## Requirements
+```
+bash
+ruby >= 2.0
+default ruby version starting at OSX Yosemite. 
+```
+
 ## Installation
 ``` bash
 $ gem install xcpretty
