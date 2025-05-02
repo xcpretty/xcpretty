@@ -84,6 +84,7 @@ module XCPretty
       set_test_counters
       @last_suite = @document.root.add_element('testsuite')
       @last_suite.attributes['name'] = classname
+      @last_suite.attributes['package'] = classname
       @last_suite
     end
 
