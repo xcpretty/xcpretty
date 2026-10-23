@@ -185,6 +185,83 @@ module XCPretty
     # $1 test suite name
     TEST_SUITE_START_MATCHER = /^\s*Test Suite '(.*)' started at/
 
+    # Swift Testing (Apple's testing framework, xcodebuild 16+) writes its own
+    # block in the xcodebuild output, in addition to the classic XCTest lines.
+    # Every Swift Testing line starts with a status marker glyph, optionally
+    # wrapped in ANSI color codes and/or zero-width space indentation
+    # (xcodebuild indents failure details with U+200B), followed by one or
+    # two spaces. The markers include characters from Apple's SF Symbols
+    # Private Use Area, so no character class can enumerate them - any
+    # non-space character is accepted instead. Classic XCTest lines never
+    # carry such a marker, so these matchers can never consume them, and
+    # vice versa.
+    SWIFT_TESTING_LINE = %r{^\s*(?:\u{200B}|\e\[[0-9;]*m)*[^ ]\s{1,2}}
+
+    # @regex Captured groups
+    # no groups
+    SWIFT_TESTING_RUN_STARTED_MATCHER = /#{SWIFT_TESTING_LINE}Test run started\.$/
+
+    # @regex Captured groups
+    # $1 = suite name (quoted display name or bare symbol name)
+    SWIFT_TESTING_SUITE_STARTED_MATCHER = /#{SWIFT_TESTING_LINE}Suite (.+) started\.$/
+
+    # @regex Captured groups
+    # $1 = test name (quoted display name or bare symbol name)
+    SWIFT_TESTING_TEST_STARTED_MATCHER = /#{SWIFT_TESTING_LINE}Test (?!run )(.+) started\.$/
+
+    # @regex Captured groups
+    # $1 = parameterized test name
+    # $2 = case count
+    # $3 = time
+    SWIFT_TESTING_TEST_CASES_PASSED_MATCHER = /#{SWIFT_TESTING_LINE}Test (.+) with (\d+) test cases passed after ([\d.]+) seconds\.$/
+
+    # @regex Captured groups
+    # $1 = parameterized test name
+    # $2 = case count
+    # $3 = time
+    # $4 = issue count
+    SWIFT_TESTING_TEST_CASES_FAILED_MATCHER = /#{SWIFT_TESTING_LINE}Test (.+) with (\d+) test cases failed after ([\d.]+) seconds with (\d+) issues?\.$/
+
+    # @regex Captured groups
+    # $1 = test name
+    # $2 = file of the issue (the reason text may contain colons, so the
+    #      line:column suffix is anchored right before the reason)
+    # $3 = issue reason (may be empty; detail lines follow separately)
+    SWIFT_TESTING_ISSUE_MATCHER = /#{SWIFT_TESTING_LINE}Test (.+) recorded an issue at (.*?):\d+:\d+: ([^\s].*)?$/
+
+    # @regex Captured groups
+    # $1 = test name
+    # $2 = file of the issue
+    # $3 = issue reason (argument dump form)
+    SWIFT_TESTING_ISSUE_ARGUMENTS_MATCHER = /#{SWIFT_TESTING_LINE}Test (.+) recorded an issue with \d+ arguments.* at (.*?):\d+:\d+: ([^\s].*)?$/
+
+    # @regex Captured groups
+    # $1 = test name
+    # $2 = time
+    SWIFT_TESTING_TEST_PASSED_MATCHER = /#{SWIFT_TESTING_LINE}Test (?!run )(.+) passed after ([\d.]+) seconds\.$/
+
+    # @regex Captured groups
+    # $1 = test name
+    # $2 = time
+    # $3 = issue count
+    SWIFT_TESTING_TEST_FAILED_MATCHER = /#{SWIFT_TESTING_LINE}Test (?!run )(.+) failed after ([\d.]+) seconds with (\d+) issues?\.$/
+
+    # @regex Captured groups
+    # $1 = test name
+    # $2 = skip reason, if any
+    SWIFT_TESTING_TEST_SKIPPED_MATCHER = /#{SWIFT_TESTING_LINE}Test (?!run )(.+) skipped(?:\.|:\s(.*))?$/
+
+    # @regex Captured groups
+    # $1 = test count
+    # $2 = time
+    SWIFT_TESTING_RUN_PASSED_MATCHER = /#{SWIFT_TESTING_LINE}Test run with (\d+) tests?(?: in \d+ suites?)? passed after ([\d.]+) seconds\.$/
+
+    # @regex Captured groups
+    # $1 = test count
+    # $2 = time
+    # $3 = issue count
+    SWIFT_TESTING_RUN_FAILED_MATCHER = /#{SWIFT_TESTING_LINE}Test run with (\d+) tests?(?: in \d+ suites?)? failed after ([\d.]+) seconds with (\d+) issues?\.$/
+
     # @regex Captured groups
     # $1 file_name
     TIFFUTIL_MATCHER = /^TiffUtil\s(.*)/
@@ -309,6 +386,7 @@ module XCPretty
     def initialize(formatter)
       load_dependencies
       @formatter = formatter
+      reset_swift_testing_state
     end
 
     def parse(text)
@@ -431,7 +509,7 @@ module XCPretty
       when WILL_NOT_BE_CODE_SIGNED_MATCHER
         formatter.format_will_not_be_code_signed($1)
       else
-        formatter.format_other(text)
+        dispatch_swift_testing(text) || formatter.format_other(text)
       end
     end
 
@@ -597,6 +675,134 @@ module XCPretty
 
     def unescaped(*escaped_values)
       escaped_values.map { |v| v.delete('\\') }
+    end
+
+    # Synthetic testsuite name all Swift Testing results are grouped under:
+    # tests run in parallel and their completion events carry no suite name.
+    SWIFT_TESTING_SUITE_NAME = "Swift Testing".freeze
+
+    # Cheap pre-filter: every Swift Testing event line starts with the marker
+    # prefix followed by "Test"/"Suite". Matching that anchored prefix fails
+    # almost immediately on unrelated build lines, whereas every full matcher
+    # below would otherwise scan a whole (potentially very long) line.
+    SWIFT_TESTING_CANDIDATE = /#{Matchers::SWIFT_TESTING_LINE}(?:Test|Suite) /.freeze
+
+    def reset_swift_testing_state
+      @swift_testing_issues = {}
+      @swift_testing_failed = {}
+    end
+
+    def dispatch_swift_testing(text)
+      return nil unless text =~ SWIFT_TESTING_CANDIDATE
+
+      case text
+      when SWIFT_TESTING_RUN_STARTED_MATCHER
+        reset_swift_testing_state
+        ""
+      when SWIFT_TESTING_TEST_STARTED_MATCHER
+        ""
+      when SWIFT_TESTING_SUITE_STARTED_MATCHER
+        formatter.format_test_suite_started(swift_testing_sanitize($1))
+      when SWIFT_TESTING_ISSUE_ARGUMENTS_MATCHER
+        record_swift_testing_issue($1, $2, $3)
+      when SWIFT_TESTING_ISSUE_MATCHER
+        record_swift_testing_issue($1, $2, $3)
+      when SWIFT_TESTING_TEST_CASES_PASSED_MATCHER
+        emit_swift_testing_passing($1, $3)
+      when SWIFT_TESTING_TEST_PASSED_MATCHER
+        emit_swift_testing_passing($1, $2)
+      when SWIFT_TESTING_TEST_CASES_FAILED_MATCHER
+        emit_swift_testing_failing($1, $4)
+      when SWIFT_TESTING_TEST_FAILED_MATCHER
+        emit_swift_testing_failing($1, $3)
+      when SWIFT_TESTING_TEST_SKIPPED_MATCHER
+        emit_swift_testing_skipped($1)
+      when SWIFT_TESTING_RUN_PASSED_MATCHER, SWIFT_TESTING_RUN_FAILED_MATCHER
+        format_swift_testing_summary_if_needed($1)
+      end
+    end
+
+    # Apple quotes display names; symbol names are printed bare.
+    def swift_testing_sanitize(name)
+      name.gsub(/\A"|"\z/, "")
+    end
+
+    # Issue lines are emitted before the completion line of the test they
+    # belong to, so their reasons are buffered until the test completes.
+    def record_swift_testing_issue(name, file, reason)
+      name = swift_testing_sanitize(name)
+      swift_testing_issues[name] ||= []
+      swift_testing_issues[name] << {file: file, reason: reason}
+      ""
+    end
+
+    def swift_testing_issues
+      @swift_testing_issues ||= {}
+    end
+
+    def emit_swift_testing_passing(name, time)
+      name = swift_testing_sanitize(name)
+      # A pass means Apple's known-issue path: issues recorded for a passing
+      # test are expected and must not surface as failures.
+      swift_testing_issues.delete(name)
+      formatter.format_passing_test(SWIFT_TESTING_SUITE_NAME, name, time)
+    end
+
+    def emit_swift_testing_failing(name, issue_count)
+      name = swift_testing_sanitize(name)
+      # Parameterized parents repeat the outcome of their cases, so every
+      # failing test is reported once.
+      return "" if @swift_testing_failed[name]
+
+      emit_swift_testing_failure(name, issue_count)
+    end
+
+    def emit_swift_testing_skipped(name)
+      name = swift_testing_sanitize(name)
+      swift_testing_issues.delete(name)
+      formatter.format_pending_test(SWIFT_TESTING_SUITE_NAME, name)
+    end
+
+    def emit_swift_testing_failure(name, issue_count = nil)
+      @swift_testing_failed[name] = true
+      issues = swift_testing_issues.delete(name) || []
+      reason = issues.map { |issue| issue[:reason] }.compact.reject(&:empty?).join("; ")
+      if reason.empty?
+        reason = if issue_count
+                   "Failed with #{issue_count} #{issue_count == 1 ? "issue" : "issues"}"
+                 else
+                   "Failed"
+                 end
+      end
+      file = issues.map { |issue| issue[:file] }.compact.first || "n/a"
+      reason = ERB::Util.html_escape(reason)
+      store_failure(file: file, test_suite: SWIFT_TESTING_SUITE_NAME,
+                    test_case: name, reason: reason)
+      formatter.format_failing_test(SWIFT_TESTING_SUITE_NAME, name, reason, file)
+    end
+
+    # Swift Testing completion lines arrive after all Swift Testing test
+    # events and report their own totals, so the Swift Testing block gets its
+    # own summary. It deliberately bypasses should_format_summary?: in a mixed
+    # log the XCTest summary is emitted before the Swift Testing block, and
+    # both summaries have to appear.
+    def format_swift_testing_summary_if_needed(test_count)
+      # Whatever is still buffered belongs to a test that crashed before its
+      # completion line; report it as a failure instead of dropping silently.
+      swift_testing_issues.keys.each do |name|
+        emit_swift_testing_failure(name)
+      end
+
+      failures = failures_per_suite.select do |suite, _|
+        suite == SWIFT_TESTING_SUITE_NAME
+      end
+      count = failures.fetch(SWIFT_TESTING_SUITE_NAME, []).size
+      formatter.format_test_summary(
+        "Swift Testing: Test run with #{test_count} " \
+        "#{test_count.to_i == 1 ? "test" : "tests"}, with #{count} " \
+        "#{count == 1 ? "failure" : "failures"}",
+        failures
+      )
     end
 
   end
