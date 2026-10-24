@@ -793,6 +793,9 @@ module XCPretty
         emit_swift_testing_failure(name)
       end
 
+      # Only the Swift Testing suite is passed: in a mixed log the XCTest
+      # failures were already rendered by the XCTest summary, and re-passing
+      # them here would print them twice.
       failures = failures_per_suite.select do |suite, _|
         suite == SWIFT_TESTING_SUITE_NAME
       end
