@@ -639,6 +639,135 @@ module XCPretty
       end
     end
 
+    context "Swift Testing" do
+      it "consumes lifecycle events without result information" do
+        @formatter.should_not_receive(:format_passing_test)
+        @formatter.should_not_receive(:format_failing_test)
+        @formatter.should_not_receive(:format_test_summary)
+        @parser.parse(SAMPLE_SWIFT_TESTING_RUN_STARTED).should == ""
+        @parser.parse(SAMPLE_SWIFT_TESTING_TEST_STARTED).should == ""
+        @parser.parse(SAMPLE_SWIFT_TESTING_CASE_STARTED).should == ""
+      end
+
+      it "reports suites by display name" do
+        @formatter.should_receive(:format_test_suite_started).with("Math Suite")
+        @parser.parse(SAMPLE_SWIFT_TESTING_SUITE_STARTED)
+      end
+
+      it "reports passing tests grouped under the Swift Testing suite" do
+        @formatter.should_receive(:format_passing_test)
+                 .with("Swift Testing", "add is commutative", "0.001")
+        @parser.parse(SAMPLE_SWIFT_TESTING_TEST_PASSED)
+      end
+
+      it "reports parameterized tests once with their aggregated result" do
+        @formatter.should_receive(:format_passing_test)
+                 .with("Swift Testing", "parametrized(n:)", "0.001")
+        @parser.parse(SAMPLE_SWIFT_TESTING_CASES_PASSED)
+      end
+
+      it "buffers issues until the test completes" do
+        @formatter.should_not_receive(:format_failing_test)
+        @formatter.should_not_receive(:format_passing_test)
+        @parser.parse(SAMPLE_SWIFT_TESTING_ISSUE)
+      end
+
+      it "reports failing tests with the buffered issue as failure reason" do
+        @parser.parse(SAMPLE_SWIFT_TESTING_ISSUE)
+        @formatter.should_receive(:format_failing_test)
+                 .with("Swift Testing", "add wrong",
+                       "Expectation failed: stlib.add(2, 2) == 5",
+                       "SwiftTestingOne.swift")
+        @parser.parse(SAMPLE_SWIFT_TESTING_TEST_FAILED)
+      end
+
+      it "reports failing parameterized tests" do
+        @formatter.should_receive(:format_failing_test)
+                 .with("Swift Testing", "parametrized(n:)", anything, anything)
+        @parser.parse(SAMPLE_SWIFT_TESTING_CASES_FAILED)
+      end
+
+      it "joins buffered issues of one test" do
+        @parser.parse(SAMPLE_SWIFT_TESTING_ISSUE)
+        @parser.parse(SAMPLE_SWIFT_TESTING_ISSUE)
+        @formatter.should_receive(:format_failing_test)
+                 .with("Swift Testing", "add wrong",
+                       "Expectation failed: stlib.add(2, 2) == 5; " \
+                       "Expectation failed: stlib.add(2, 2) == 5",
+                       anything)
+        @parser.parse(SAMPLE_SWIFT_TESTING_TEST_FAILED)
+      end
+
+      it "deduplicates repeated failures of the same test" do
+        @formatter.should_receive(:format_failing_test).once
+        @parser.parse(SAMPLE_SWIFT_TESTING_TEST_FAILED)
+        @parser.parse(SAMPLE_SWIFT_TESTING_TEST_FAILED)
+      end
+
+      it "drops issues of tests with known issues, matching Apple semantics" do
+        @formatter.should_not_receive(:format_failing_test)
+        @parser.parse(SAMPLE_SWIFT_TESTING_ISSUE)
+        @formatter.should_receive(:format_passing_test)
+                 .with("Swift Testing", "add wrong", "0.001")
+        @parser.parse(SAMPLE_SWIFT_TESTING_KNOWN_ISSUE_PASS)
+      end
+
+      it "reports skipped tests as pending" do
+        @formatter.should_receive(:format_pending_test)
+                 .with("Swift Testing", "Repeated calls to #expect() run in reasonable time")
+        @parser.parse(SAMPLE_SWIFT_TESTING_TEST_SKIPPED)
+      end
+
+      it "records argument dumps in the failure reason without breaking parsing" do
+        @parser.parse(SAMPLE_SWIFT_TESTING_ISSUE_WITH_ARGS)
+        @formatter.should_receive(:format_failing_test)
+                 .with("Swift Testing", "parametrized",
+                       "Expectation failed: 1 == 2", "Test.swift")
+        @parser.parse(SAMPLE_SWIFT_TESTING_ARGS_FAILED)
+      end
+
+      it "summarizes a passing run" do
+        @formatter.should_receive(:format_test_summary)
+                 .with("Swift Testing: Test run with 3 tests, with 0 failures", {})
+        @parser.parse(SAMPLE_SWIFT_TESTING_RUN_PASSED)
+      end
+
+      it "summarizes a failing run with the failures it collected" do
+        @parser.parse(SAMPLE_SWIFT_TESTING_TEST_FAILED)
+        @formatter.should_receive(:format_test_summary) do |message, failures|
+          message.should == "Swift Testing: Test run with 351 tests, with 1 failure"
+          failures.keys.should == ["Swift Testing"]
+          failures["Swift Testing"].size.should == 1
+        end
+        @parser.parse(SAMPLE_SWIFT_TESTING_RUN_FAILED)
+      end
+
+      it "counts buffered issues of crashed tests as failures" do
+        @parser.parse(SAMPLE_SWIFT_TESTING_ISSUE)
+        @formatter.should_receive(:format_test_summary) do |message, failures|
+          message.should == "Swift Testing: Test run with 3 tests, with 1 failure"
+          failures["Swift Testing"].size.should == 1
+        end
+        @parser.parse(SAMPLE_SWIFT_TESTING_RUN_PASSED)
+      end
+
+      it "keeps XCTest summaries intact in mixed logs" do
+        @formatter.should_receive(:format_test_summary).twice
+        @parser.parse(SAMPLE_OCUNIT_TEST_RUN_BEGINNING)
+        @parser.parse(SAMPLE_OCUNIT_TEST_RUN_COMPLETION)
+        @parser.parse(SAMPLE_EXECUTED_TESTS)
+        @parser.parse(SAMPLE_SWIFT_TESTING_RUN_PASSED)
+      end
+
+      it "resets buffered state between runs" do
+        @parser.parse(SAMPLE_SWIFT_TESTING_ISSUE)
+        @parser.parse(SAMPLE_SWIFT_TESTING_RUN_STARTED)
+        @formatter.should_receive(:format_test_summary)
+                 .with("Swift Testing: Test run with 3 tests, with 0 failures", {})
+        @parser.parse(SAMPLE_SWIFT_TESTING_RUN_PASSED)
+      end
+    end
+
   end
 end
 

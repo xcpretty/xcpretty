@@ -706,3 +706,28 @@ SAMPLE_FORMAT_WARNING = %Q(
 SAMPLE_WILL_NOT_BE_CODE_SIGNED = "FrameworkName will not be code signed because its settings don't specify a development team."
 SAMPLE_FORMAT_OTHER_UNRECOGNIZED_STRING = "This is a string that won't be matched by any other regex."
 
+
+################################################################################
+# SWIFT TESTING
+################################################################################
+# Markers include characters from Apple's SF Symbols Private Use Area
+# (U+100884, U+10065F) as emitted by newer Xcode versions, and BMP symbols
+# (U+25C7, U+2714, U+2718) as emitted by Swift 6 / `swift test`.
+
+SAMPLE_SWIFT_TESTING_RUN_STARTED = "\u{25C7} Test run started."
+SAMPLE_SWIFT_TESTING_SUITE_STARTED = "\u{25C7} Suite \"Math Suite\" started."
+SAMPLE_SWIFT_TESTING_TEST_STARTED = "\u{25C7} Test \"add wrong\" started."
+SAMPLE_SWIFT_TESTING_CASE_STARTED = "\u{25C7} Test case passing 1 argument n \u{2192} 1 to parametrized(n:) started."
+SAMPLE_SWIFT_TESTING_ISSUE = "\u{200B}\u{2718} Test \"add wrong\" recorded an issue at SwiftTestingOne.swift:5:39: Expectation failed: stlib.add(2, 2) == 5"
+SAMPLE_SWIFT_TESTING_ISSUE_WITH_ARGS = "\u{2718} Test \"parametrized\" recorded an issue with 3 arguments input \u{2192} \"1\", expected \u{2192} \"2\", other \u{2192} nil at Test.swift:363:7: Expectation failed: 1 == 2"
+SAMPLE_SWIFT_TESTING_ARGS_FAILED = "\u{2718} Test \"parametrized\" failed after 0.001 seconds with 1 issue."
+SAMPLE_SWIFT_TESTING_TEST_PASSED = "\u{2714} Test \"add is commutative\" passed after 0.001 seconds."
+SAMPLE_SWIFT_TESTING_KNOWN_ISSUE_PASS = "\u{2714} Test \"add wrong\" passed after 0.001 seconds."
+SAMPLE_SWIFT_TESTING_CASES_PASSED = "\u{2714} Test parametrized(n:) with 3 test cases passed after 0.001 seconds."
+SAMPLE_SWIFT_TESTING_CASES_FAILED = "\u{2718} Test parametrized(n:) with 3 test cases failed after 0.001 seconds with 2 issues."
+SAMPLE_SWIFT_TESTING_TEST_FAILED = "\u{2718} Test \"add wrong\" failed after 0.001 seconds with 1 issue."
+SAMPLE_SWIFT_TESTING_TEST_SKIPPED = "\u{10065F}  Test \"Repeated calls to #expect() run in reasonable time\" skipped: \"time-sensitive\""
+SAMPLE_SWIFT_TESTING_SUITE_FAILED = "\u{2718} Suite \"Math Suite\" failed after 0.001 seconds with 1 issue."
+SAMPLE_SWIFT_TESTING_RUN_PASSED = "\u{2714} Test run with 3 tests in 1 suite passed after 0.001 seconds."
+SAMPLE_SWIFT_TESTING_RUN_FAILED = "\u{100884}  Test run with 351 tests failed after 3.787 seconds with 6 issues."
+
